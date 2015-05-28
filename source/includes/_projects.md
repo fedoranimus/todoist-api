@@ -55,7 +55,7 @@ collapsed | If set to 1 the project's sub projects are collapsed. Otherwise they
 > An example of adding a project:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "project_add", "temp_id": "4ff1e388-5ca6-453a-b0e8-662ebf373b6b", "uuid": "32774db9-a1da-4550-8d9d-910372124fa4", "args": {"name": "Project4"}}]'
 { ...
@@ -92,7 +92,7 @@ item_order | The order of the new project.
 > An example of updating a project:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_update", "uuid": "1ca42128-d12f-4a66-8413-4d6ff2838fde", "args": {"id": 128501815, "indent": 2}}]'
 { ...
@@ -132,7 +132,7 @@ collapsed | `1` if the project should be collapsed, `0` if it should not be coll
 
 ```shell
 
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_delete", "uuid": "367182ba-125f-4dbb-bff6-c1343fd751e4", "args": {"ids": [128501815]}}]'
 { ...
@@ -162,7 +162,7 @@ ids | List of the ids of the projects to delete.
 > An example of archiving a project:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_archive", "uuid": "bbec1a60-2bdd-48ac-a623-c8eb968e1697", "args": {"id": 128501682}}]'
 { ...
@@ -191,7 +191,7 @@ id | The id of the project to archive.
 > An example of unarchiving a project:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_unarchive", "uuid": "7d86f042-e098-4fa6-9c1f-a61fe8c39d74", "args": {"id": 128501682}}]'
 { ...
@@ -220,7 +220,7 @@ id | The id of the project to unarchive.
 > An example of updating the orders and indents of multiple projects at once:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_update_orders_indents", "uuid": "bf0855a3-0138-4b76-b895-88cad8db9edc", "args": {"ids_to_orders_indents": {"128501470": [42, 1], "128501607": [43, 1]}}}]'
 { ...

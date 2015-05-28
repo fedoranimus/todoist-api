@@ -68,7 +68,7 @@ The `code` parameter contains the authorization code that you will use to exchan
 > An example of exchanging the token:
 
 ```
-$ curl https://todoist.com/oauth/access_token -X POST \
+$ curl https://todoist.com/oauth/access_token \
     -d client_id=0123456789abcdef \
     -d client_secret=secret \
     -d code=abcdef \

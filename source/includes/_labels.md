@@ -36,7 +36,7 @@ item_order | Label’s order in the label list.
 > An example of adding a label:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "label_add", "temp_id": "f2f182ed-89fa-4bbb-8a42-ec6f7aa47fd0", "uuid": "ba204343-03a4-41ff-b964-95a102d12b35", "args": {"name": "Label1"}}]'
 { ...
@@ -72,7 +72,7 @@ item_order | Label’s order in the label list.
 > An example of updating a label:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "label_update", "uuid": "9c9a6e34-2382-4f43-a217-9ab017a83523", "args": {"id": 1234, "color": 3}}]'
 { ...
@@ -109,7 +109,7 @@ item_order | Label’s order in the label list.
 > An example of deleting a label:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "label_delete", "uuid": "aabaa5e0-b91b-439c-aa83-d1b35a5e9fb3", "args": {"id": 1234}}]'
 { ...
@@ -138,7 +138,7 @@ id | The id of the label.
 > An example of updating the orders of multiple labels at once:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "label_update_orders", "uuid": "1402a911-5b7a-4beb-bb1f-fb9e1ed798fb", "args": {"id_order_mapping": {"1234":  1, "5678": 2}}}]'
 { ...

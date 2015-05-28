@@ -43,7 +43,7 @@ query | The query to search for. [Examples of searches](https://todoist.com/Help
 > An example of adding a filter:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "filter_add", "temp_id": "9204ca9f-e91c-436b-b408-ea02b3972686", "uuid": "0b8690b8-59e6-4d5b-9c08-6b4f1e8e0eb8", "args": {"name": "Filter1", "query": "no due date"}}]'
 { ...
@@ -81,7 +81,7 @@ color | The color of the filter.
 > An example of updating a filter:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "filter_update", "uuid": "a68b588a-44f7-434c-b3c5-a699949f755c", "args": {"id": 9, "query": "tomorrow"}}]'
 { ...
@@ -119,7 +119,7 @@ color | The color of the filter.
 > An example of deleting a filter:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "filter_delete", "uuid": "b8186025-66d5-4eae-b0dd-befa541abbed", "args": {"id": 9}}]'
 { ...
@@ -148,7 +148,7 @@ id | The id of the filter.
 > An example of updating the orders of multiple filters at once:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "filter_update_orders", "uuid": "517560cc-f165-4ff6-947b-3adda8aef744", "args": {"id_order_mapping": {"9":  1, "10": 2}}}]'
 { ...

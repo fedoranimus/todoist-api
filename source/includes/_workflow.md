@@ -5,7 +5,7 @@
 > An example of the JSON object returned, of a new user's empty account complete data:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d seq_no=0 \
     -d seq_no_global=0 \
@@ -297,7 +297,7 @@ SettingsNotifications | This is needed on platforms that implement native notifi
 > Example of creating a new project, where an HTTP 200 OK with a JSON object of temporary id to real id mappings is returned (this will be explained later):
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "project_add", "temp_id": "381e601f-0ef3-4ed6-bf95-58f896d1a314", "uuid": "ed1ce597-e4c7-4a88-ba48-e048d827c067", "args": {"name": "Project1", "item_order": 1, "indent": 1, "color": 1}}]'
 {

@@ -232,7 +232,7 @@ reason_for_delete | Reason for deletion (used for feedback).
 > An example of updating the user's properties:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "user_update", "uuid": "52f83009-7e27-4b9f-9943-1c5e3d1e6889", "args": {"time_format": 0}}]'
 { ...
@@ -267,7 +267,7 @@ default_reminder | Can be one of the following values: `email` to send reminders
 ## Update karma goals
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "update_goals", "uuid": "b9bbeaf8-9db6-452a-a843-a192f1542892", "args": {"vacation_mode": 1}}]'
 { ...

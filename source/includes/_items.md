@@ -85,7 +85,7 @@ responsible_uid | The id of user who is responsible for accomplishing the curren
 > An example of adding a task:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_add", "temp_id": "43f7ed23-a038-46b5-b2c9-4abda9097ffa", "uuid": "997d4b43-55f1-48a9-9e66-de5785dfd69b", "args": {"content": "Task1", "project_id": 128501470}}]'
 { ...
@@ -131,7 +131,7 @@ note | Add a note directly to the task, note is a string of the content.
 > An example of updating a task:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_update", "uuid": "318d16a7-0c88-46e0-9eb5-cde6c72477c8", "args": {"id": 33548400, "priority": 2}}]'
 { ...
@@ -175,7 +175,7 @@ responsible_uid | The id of user who is responsible for accomplishing the curren
 > An example of deleting a task:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_delete", "uuid": "f8539c77-7fd7-4846-afad-3b201f0be8a5", "args": {"ids": [33548400]}}]'
 { ...
@@ -204,7 +204,7 @@ ids | List of the ids of the items to delete.
 > An example of moving of a task from one project to another project:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_move", "uuid": "818f108a-36d3-423d-857f-62837c245f3b", "args": {"project_items": {"128501470": [33548400]}, "to_project": 128501607}}]'
 { ...
@@ -234,7 +234,7 @@ to_project | A project_id that the items should be moved to. Could be `1245`.
 > An example of completing a task:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_complete", "uuid": "a74bfb5c-5f1d-4d14-baea-b7415446a871", "args": {"project_id": 128501470, "ids": [33548400]}}]'
 { ...
@@ -270,7 +270,7 @@ force_history | If these tasks should be moved to history, default is `1`. Setti
 > An example of uncompleting a task:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_uncomplete", "uuid": "710a60e1-174a-4313-bb9f-4df01e0349fd", "args": {"project_id": 128501470, "ids": [33548400]}}]'
 { ...
@@ -308,7 +308,7 @@ restore_state | A dictionary, where item id is the key, and its value is a list 
 > An example of completing a recurring task:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_update_date_complete", "uuid": "c5888360-96b1-46be-aaac-b49b1135feab", "args": {"id": 33548400, "new_date_utc": "2014-10-30T23:59", "date_string": "every day", "is_forward": 1}}]'
 { ...
@@ -344,7 +344,7 @@ is_forward | Indicates if it's a complete `1` or uncomplete `0`.
 > An example of updating the orders and indents of multiple items at once:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_update_orders_indents", "uuid": "a2bf0c06-f834-4442-99ab-b86fdfc66ed5", "args": {"ids_to_orders_indents": {"33548400": [1, 1]}}}]'
 { ...
@@ -372,7 +372,7 @@ ids_to_orders_indents | A dictionary, where an item id is the key, and a list wi
 > An example of updating the day orders of multiple items at once:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync -X POST \
+$ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_update_day_orders", "uuid": "dbeb40fc-905f-4d8a-8bae-547d3bbd6e91", "args": {"ids_to_orders": {"33548400": 1}}}]'
 { ...
