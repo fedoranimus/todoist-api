@@ -228,7 +228,7 @@ id | The id of the note.
 $ curl https://todoist.com/API/v6/upload_file \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d file_name=example.jpg \
-    --get --upload-file @example.jpg
+    --get --upload-file example.jpg
 {
   "file_name": "example.jpg",
   "file_size": 85665,
