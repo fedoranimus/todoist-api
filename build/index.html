@@ -176,7 +176,7 @@ are not related to the full model, but are nonetheless useful.</p>
 
 <p>Note that we encourage your application to use the <a href="http://en.wikipedia.org/wiki/OAuth">OAuth</a> protocol to obtain the access token from the user, as the other authentication methods (<code class="prettyprint">login</code> and <code class="prettyprint">login_with_google</code>) are scheduled for deprecation.</p>
 <h2 id='oauth'>OAuth</h2>
-<p>External applications could obtain a user authorized API token via the OAuth2 protocol.  Developers need to register their applications before getting started.  A registered Todoist application is assigned a unique Client ID and Client Secret which are needed for the OAuth2 flow.</p>
+<p>External applications could obtain a user authorized API token via the OAuth2 protocol.  <strong>Before getting started, developers need to create their applications in App Management Console and configure a valid OAuth redirect URL.</strong>  A registered Todoist application is assigned a unique Client ID and Client Secret which are needed for the OAuth2 flow.</p>
 
 <p>This procedure is comprised of 3 steps, which will be described below.</p>
 <h3 id='step-1-the-authorization-request'>Step 1: The authorization request</h3>
@@ -185,7 +185,6 @@ are not related to the full model, but are nonetheless useful.</p>
 </blockquote>
 <pre class="highlight plaintext"><code>$ curl https://todoist.com/oauth/authorize \
     -d client_id=0123456789abcdef \
-    -d redirect_uri=https://example.com \
     -d scope=data:read,data:delete \
     -d state=secretstring
 </code></pre>
@@ -211,20 +210,6 @@ are not related to the full model, but are nonetheless useful.</p>
 <tr>
 <td>state</td>
 <td>A unique and unguessable string. It is used to protect you against cross-site request forgery attacks.</td>
-</tr>
-</tbody></table>
-
-<p>There is also an optional parameter:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>redirect_uri</td>
-<td>The URL where users will be redirected to, after the authorization.  If left out, the redirect URI configured in the application settings will be used by default.</td>
 </tr>
 </tbody></table>
 
@@ -271,8 +256,8 @@ are not related to the full model, but are nonetheless useful.</p>
 <td>When the user denies your authorization request, Todoist will redirect the user to the configured redirect URI with <code class="prettyprint">error</code> paramete: <code class="prettyprint">http://example.com?error=access_denied</code>.</td>
 </tr>
 <tr>
-<td>Redirect URI Mismatch</td>
-<td>The <code class="prettyprint">redirect_uri</code> parameter must either match or be the subpath of the redirect URI which was configured in application settings. If the requirement is not satisfied, Todoist will redirect the user to the configured redirect URI with <code class="prettyprint">error</code> parameter: <code class="prettyprint">http://example.com?error=redirect_uri_mismatch</code></td>
+<td>Redirect URI Not Configured</td>
+<td>This JSON error will be returned to the requester (your user&rsquo;s browser) if redirect URI is not configured in the App Management Console.</td>
 </tr>
 <tr>
 <td>Invalid Application Status</td>
@@ -284,7 +269,7 @@ are not related to the full model, but are nonetheless useful.</p>
 </tr>
 </tbody></table>
 <h3 id='step-2-the-redirection-to-your-application-site'>Step 2: The redirection to your application site</h3>
-<p>When the user grants your authorization request , the user will be redirected to the <code class="prettyprint">redirect_uri</code> which you specified earlier. The redirect request will come with two query parameters attached: <code class="prettyprint">code</code> and <code class="prettyprint">state</code>. </p>
+<p>When the user grants your authorization request , the user will be redirected to the redirect URL configured in your application setting. The redirect request will come with two query parameters attached: <code class="prettyprint">code</code> and <code class="prettyprint">state</code>. </p>
 
 <p>The <code class="prettyprint">code</code> parameter contains the authorization code that you will use to exchange for an access token. The <code class="prettyprint">state</code> parameter should match the <code class="prettyprint">state</code> parameter that you supplied in the previous step.  If the <code class="prettyprint">state</code> is unmatched, your request has been compromised by other parties, and the process should be aborted.</p>
 <h3 id='step-3-the-token-exchange'>Step 3: The token exchange</h3>
@@ -331,20 +316,6 @@ are not related to the full model, but are nonetheless useful.</p>
 </tr>
 </tbody></table>
 
-<p>There is also an optional parameter:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>redirect_uri</td>
-<td>The URL that you specified in the first step.  Their values must be identical.</td>
-</tr>
-</tbody></table>
-
 <p>And here are some common errors that you may encountered (all the error response will be in JSON format):</p>
 
 <table><thead>
@@ -360,10 +331,6 @@ are not related to the full model, but are nonetheless useful.</p>
 <tr>
 <td>Incorrect Client Credentials Error</td>
 <td>Occurs when the <code class="prettyprint">client_id</code> or <code class="prettyprint">client_secret</code> parameters are incorrect: <code class="prettyprint">{&quot;error&quot;: &quot;incorrect_application_credentials&quot;}</code></td>
-</tr>
-<tr>
-<td>Redirect URI Mismatch Error</td>
-<td>Occurs when the <code class="prettyprint">redirect_uri</code> does not match the redirect URL which you specified in the previous authorization request: <code class="prettyprint">{&quot;error&quot;: &quot;redirect_uri_mismatch&quot;}</code></td>
 </tr>
 </tbody></table>
 <h2 id='login-with-password'>Login with password</h2>

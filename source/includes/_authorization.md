@@ -6,7 +6,7 @@ Note that we encourage your application to use the [OAuth](http://en.wikipedia.o
 
 ## OAuth
 
-External applications could obtain a user authorized API token via the OAuth2 protocol.  Developers need to register their applications before getting started.  A registered Todoist application is assigned a unique Client ID and Client Secret which are needed for the OAuth2 flow.
+External applications could obtain a user authorized API token via the OAuth2 protocol.  __Before getting started, developers need to create their applications in App Management Console and configure a valid OAuth redirect URL.__  A registered Todoist application is assigned a unique Client ID and Client Secret which are needed for the OAuth2 flow.
 
 This procedure is comprised of 3 steps, which will be described below.
 
@@ -17,7 +17,6 @@ This procedure is comprised of 3 steps, which will be described below.
 ```
 $ curl https://todoist.com/oauth/authorize \
     -d client_id=0123456789abcdef \
-    -d redirect_uri=https://example.com \
     -d scope=data:read,data:delete \
     -d state=secretstring
 ```
@@ -32,11 +31,6 @@ client_id | The unique Client ID of the Todoist application that you registered.
 scope | A comma separated list of permissions which you would like the users to grant to your application. See below a table with more details about this.
 state | A unique and unguessable string. It is used to protect you against cross-site request forgery attacks.
 
-There is also an optional parameter:
-
-Name | Description
----- | -----------
-redirect_uri | The URL where users will be redirected to, after the authorization.  If left out, the redirect URI configured in the application settings will be used by default.
 
 Here are the scope parameters mentioned before:
 
@@ -53,13 +47,13 @@ And here are some common errors that you may encountered:
 Error | Description
 ----- | -----------
 User Rejected Authorization Request | When the user denies your authorization request, Todoist will redirect the user to the configured redirect URI with `error` paramete: `http://example.com?error=access_denied`.
-Redirect URI Mismatch | The `redirect_uri` parameter must either match or be the subpath of the redirect URI which was configured in application settings. If the requirement is not satisfied, Todoist will redirect the user to the configured redirect URI with `error` parameter: `http://example.com?error=redirect_uri_mismatch`
+Redirect URI Not Configured | This JSON error will be returned to the requester (your user's browser) if redirect URI is not configured in the App Management Console.
 Invalid Application Status | When your application exceeds the maximum token limit or when your application is being suspended due to abuse, Todoist will redirect the user to the configured redirect URI with the `error` parameter: `http://example.com?error=invalid_application_status`.
 Invalid Scope | When the `scope` parameter is invalid, Todoist will redirect the user to the configured redirect URI with `error` parameter: `http://example.com?error=invalid_scope`.
 
 ### Step 2: The redirection to your application site
 
-When the user grants your authorization request , the user will be redirected to the `redirect_uri` which you specified earlier. The redirect request will come with two query parameters attached: `code` and `state`. 
+When the user grants your authorization request , the user will be redirected to the redirect URL configured in your application setting. The redirect request will come with two query parameters attached: `code` and `state`. 
 
 The `code` parameter contains the authorization code that you will use to exchange for an access token. The `state` parameter should match the `state` parameter that you supplied in the previous step.  If the `state` is unmatched, your request has been compromised by other parties, and the process should be aborted.
 
@@ -94,19 +88,12 @@ client_id | The unique Client ID of the Todoist application that you registered.
 client_secret | The unique Client Secret of the Todoist application that you registered.
 code | The unique string code which you obtained in the previous step.
 
-There is also an optional parameter:
-
-Name | Description
----- | -----------
-redirect_uri | The URL that you specified in the first step.  Their values must be identical.
-
 And here are some common errors that you may encountered (all the error response will be in JSON format):
 
 Error | Description
 ----- | -----------
 Bad Authorization Code Error | Occurs when the `code` parameter does not match the code that is given in the redirect request: `{"error": "bad_authorization_code"}`
 Incorrect Client Credentials Error | Occurs when the `client_id` or `client_secret` parameters are incorrect: `{"error": "incorrect_application_credentials"}`
-Redirect URI Mismatch Error | Occurs when the `redirect_uri` does not match the redirect URL which you specified in the previous authorization request: `{"error": "redirect_uri_mismatch"}`
 
 ## Login with password
 
