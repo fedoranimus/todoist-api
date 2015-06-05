@@ -351,9 +351,11 @@ Data | Description
 TempIdMapping | A JSON list containing all the temporary ids mapped to real ids.
 SyncStatus | A JSON list containing the return value of each of the items that where synced.
 
-### Limits
+## Limits
 
-The maximal number of commands is 100 per request. This is done to prevent timeouts and other problems when dealing with big requests.
+The maximum number of commands is 100 per request, and this is done to prevent timeouts and other problems when dealing with big requests.
+
+There's also a maximum number of 50 sync requests per minute, in order to prevent clients from accidentally overloading our servers.
 
 ## Temporary ids
 
