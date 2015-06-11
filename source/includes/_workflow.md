@@ -330,7 +330,7 @@ It supports two big features which can make syncing easier: temporary ids, that 
 
 Parameter | Description
 --------- | -----------
-commands | A list of JSON object commands. These commands are specified later in the documentation.
+commands | A list of JSON object commands, which will be processed by the server in the same order as specified in this list (so special care should be taken on this order).  The available commands to sent are described later in the documentation.
 token | User's API token (returned on successful login). Else the session cookie is used.
 
 ### Commands parameters
@@ -344,12 +344,12 @@ temp_id | Only for commands creating a new object, a unique temporary id.
 
 ### Explanation of extra data returned
 
-When there are items to be synced to the server, some extra data are returned.
+When there are commands to be sent to the server, some extra data are returned.
 
 Data | Description
 ---- | -----------
 TempIdMapping | A JSON list containing all the temporary ids mapped to real ids.
-SyncStatus | A JSON list containing the return value of each of the items that where synced.
+SyncStatus | A JSON list containing the return value of each of the commands sent.
 
 ## Limits
 

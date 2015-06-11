@@ -951,7 +951,7 @@ are not related to the full model, but are nonetheless useful.</p>
 </thead><tbody>
 <tr>
 <td>commands</td>
-<td>A list of JSON object commands. These commands are specified later in the documentation.</td>
+<td>A list of JSON object commands, which will be processed by the server in the same order as specified in this list (so special care should be taken on this order).  The available commands to sent, are described later in the documentation.</td>
 </tr>
 <tr>
 <td>token</td>
@@ -983,7 +983,7 @@ are not related to the full model, but are nonetheless useful.</p>
 </tr>
 </tbody></table>
 <h3 id='explanation-of-extra-data-returned'>Explanation of extra data returned</h3>
-<p>When there are items to be synced to the server, some extra data are returned.</p>
+<p>When there are commands to be sent to the server, some extra data are returned.</p>
 
 <table><thead>
 <tr>
@@ -997,7 +997,7 @@ are not related to the full model, but are nonetheless useful.</p>
 </tr>
 <tr>
 <td>SyncStatus</td>
-<td>A JSON list containing the return value of each of the items that where synced.</td>
+<td>A JSON list containing the return value of each of the commands sent.</td>
 </tr>
 </tbody></table>
 <h2 id='limits'>Limits</h2>
