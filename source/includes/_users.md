@@ -87,6 +87,7 @@ mobile_number | User's mobile number.
 mobile_host | User's mobile host.
 premium_until | When does the user's Premium subscription expire?
 default_reminder | What is the default reminder for the user? Reminders are only possible for Premium users. The default reminder can be one of the following:  `email`, `mobile`, `push`, and `no_default`.
+auto_reminder | How many minutes before should the default reminder be set? It can be `-1, 0, 10, 30, 60, 120`, e.g. 10 minutes before the due date. `-1` is set to mean that no default reminder will be added
 
 ## Register a new user
 
