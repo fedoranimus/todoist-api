@@ -2919,7 +2919,7 @@ provided information, and a 5xx code an internal, possibly temporary, error.</p>
 </tr>
 <tr>
 <td>service</td>
-<td>The way to get notified of the reminder: <code class="prettyprint">email</code> for e-mail, <code class="prettyprint">sms</code> for mobile text message, or <code class="prettyprint">push</code> for mobile push notification.</td>
+<td>The way to get notified of the reminder: <code class="prettyprint">email</code> for e-mail, <code class="prettyprint">mobile</code> for mobile text message, or <code class="prettyprint">push</code> for mobile push notification.</td>
 </tr>
 <tr>
 <td>type</td>
@@ -3016,7 +3016,7 @@ provided information, and a 5xx code an internal, possibly temporary, error.</p>
 </thead><tbody>
 <tr>
 <td>service</td>
-<td>The way to get notified of the reminder: <code class="prettyprint">email</code> for e-mail, <code class="prettyprint">sms</code> for mobile text message, or <code class="prettyprint">push</code> for mobile push notification.</td>
+<td>The way to get notified of the reminder: <code class="prettyprint">email</code> for e-mail, <code class="prettyprint">mobile</code> for mobile text message, or <code class="prettyprint">push</code> for mobile push notification.</td>
 </tr>
 <tr>
 <td>type</td>
@@ -3103,7 +3103,7 @@ provided information, and a 5xx code an internal, possibly temporary, error.</p>
 </thead><tbody>
 <tr>
 <td>service</td>
-<td>The way to get notified of the reminder: <code class="prettyprint">email</code> for e-mail, <code class="prettyprint">sms</code> for mobile text message, or <code class="prettyprint">push</code> for mobile push notification.</td>
+<td>The way to get notified of the reminder: <code class="prettyprint">email</code> for e-mail, <code class="prettyprint">mobile</code> for mobile text message, or <code class="prettyprint">push</code> for mobile push notification.</td>
 </tr>
 <tr>
 <td>type</td>
@@ -3325,7 +3325,11 @@ provided information, and a 5xx code an internal, possibly temporary, error.</p>
 </tr>
 <tr>
 <td>default_reminder</td>
-<td>What is the default reminder for the user? Reminders are only possible for Premium users. The default reminder can be one of the following:  <code class="prettyprint">email</code>, <code class="prettyprint">mobile</code>, <code class="prettyprint">push</code>, and <code class="prettyprint">no_default</code>.</td>
+<td>What is the default reminder for the user? Reminders are only possible for Premium users. The default reminder can be one of the following:  <code class="prettyprint">email</code>, <code class="prettyprint">mobile</code>, <code class="prettyprint">push</code></td>
+</tr>
+<tr>
+<td>auto_reminder</td>
+<td>How many minutes before should the default reminder be set? It can be <code class="prettyprint">-1, 0, 10, 30, 60, 120</code>, e.g. 10 minutes before the due date. <code class="prettyprint">-1</code> is set to mean that no default reminder will be added</td>
 </tr>
 </tbody></table>
 <h2 id='register-a-new-user'>Register a new user</h2>
