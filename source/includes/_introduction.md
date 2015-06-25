@@ -101,6 +101,6 @@ A more detailed list of minor changes are included here, because they might be u
 For those calls that were kept from the old *Standard API*, here follows a list of the changes that took place:
 
 * The `loginWithGoogle`, `uploadFile`, `deleteUser`, `getRedirectLink`, `getProductivityStats`, `updateNotificationSettings`, `getAllCompletedTasks` and `addItem` calls were renamed to `login_with_google`, `upload_file`, `delete_user`, `get_redirect_link`, `get_productivity_stats`, `update_notification_settings`, `get_all_completed_tasks` and `add_item` respectively.
-* The now renamed `get_all_completed_tasks` call, now takes two additional parameters, `to_date` and `offset`, in order to better select which completed tasks to access.
+* The renamed `get_all_completed_tasks` call, now takes two additional parameters, `to_date` and `offset`, in order to better select which completed tasks to access.
 
 Finally, and although this affects both the new API and the older APIs, we would nonetheless like to mention here, that due to security reasons, support for callbacks (JSONP) was removed.  This was used for overcoming the same-origin policy of modern browsers, and we can only suggest that a utility like [cURL](http://curl.haxx.se) is used to access our APIs instead.
