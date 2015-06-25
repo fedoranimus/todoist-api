@@ -158,6 +158,8 @@ $ curl https://todoist.com/API/v6/sync \
 >>> api.commit()
 ```
 
+Update the orders of multiple labels at once.
+
 ### Required arguments
 
 Argument | Description

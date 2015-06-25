@@ -168,6 +168,8 @@ $ curl https://todoist.com/API/v6/sync \
 >>> api.commit()
 ```
 
+Update the orders of multiple filters at once.
+
 ### Required arguments
 
 Argument | Description

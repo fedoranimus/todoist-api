@@ -396,11 +396,10 @@ While the system remembers temporary ids and their mappings to real ids, it's im
 
 ## Errors
 
-Another improvement in the version 6 of the API is the better and more
-consistent error reporting.  So now the server uses the HTTP status codes to
-indicate result or failure of a request.  And as is usually customary in web servers,
-a 2xx code indicates success, a 4xx code an error due to incorrect user
-provided information, and a 5xx code an internal, possibly temporary, error.
+The server uses the HTTP status codes to indicate result or failure of a
+request.  And as is usually customary in web servers, a 2xx code indicates
+success, a 4xx code an error due to incorrect user provided information, and a
+5xx code an internal, possibly temporary, error.
 
 ### Status codes
 

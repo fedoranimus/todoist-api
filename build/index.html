@@ -94,23 +94,25 @@ SOFTWARE.
 <p>The Todoist API is based on <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>, so you can use it with a tool like <a href="http://curl.haxx.se">cURL</a>, but language bindings also exist for <a href="https://www.python.org">Python</a>, so it is easier and faster to write your own scripts or applications interacting with Todoist.</p>
 
 <p>The <a href="https://github.com/Doist/todoist-api">source code</a> of this API documentation is also available.</p>
-<h2 id='libraries'>Libraries</h2><h3 id='python'>Python</h3>
+<h2 id='libraries'>Libraries</h2>
+<p>At the moment there are language bindings for Python, but we are planning on creating client libraries for other languages and platforms in the future.</p>
+<h3 id='python'>Python</h3>
 <blockquote>
 <p>You can install the Todoist Python library from PyPI with:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>$ pip install todoist-python
 </code></pre>
 
-<p>At the moment there are language bindings for Python, in the form of the <a href="https://github.com/Doist/todoist-python">Todoist Python API library</a>.</p>
+<p>The language bindings for Python come in the form of the <a href="https://github.com/Doist/todoist-python">Todoist Python API library</a>.</p>
 
 <p>A <a href="https://pypi.python.org/pypi/todoist-python">PyPI package</a> has been also prepared in order to easily install the Todoist Python library in your system.</p>
 
 <p>There is more detailed documentation speficically for the Todoist Python API library, and this <a href="http://todoist-python.readthedocs.org/en/latest/">API reference</a> documentation can be also read online.</p>
 <h2 id='overview'>Overview</h2>
-<p>The API has been simplified (in version 6), and almost all interactions with
-the Todoist server can be done with a single call, which can be used to get the
-full model (projects, items, etc.), and then update it, or perform changes to
-it.</p>
+<p>The Todoist API is based on syncing data from and to the server, so almost all
+interactions with the Todoist server can be done with a single call: <code class="prettyprint">sync</code>.
+This can be used to get the full model (projects, items, etc.), and then
+update it, or perform changes to it.</p>
 
 <p>Then there are a few more auxiliary calls that can perform some actions that
 are not related to the full model, but are nonetheless useful.</p>
@@ -122,16 +124,16 @@ are not related to the full model, but are nonetheless useful.</p>
 </tr>
 </thead><tbody>
 <tr>
+<td>sync</td>
+<td>Retrieves or sends data.</td>
+</tr>
+<tr>
 <td>login</td>
 <td>Logins to the server using the user&rsquo;s password.</td>
 </tr>
 <tr>
 <td>login_with_google</td>
 <td>Logins to the server using OAuth2.</td>
-</tr>
-<tr>
-<td>sync</td>
-<td>Retrieves or sends data.</td>
 </tr>
 <tr>
 <td>upload_file</td>
@@ -170,6 +172,60 @@ are not related to the full model, but are nonetheless useful.</p>
 <td>Adds a new item.</td>
 </tr>
 </tbody></table>
+<h2 id='changes'>Changes</h2>
+<p>The <em>Todoist API</em> is currently in version 6, and it replaces the older <em>Standard API</em> and <em>Sync API</em>, both of which were considered as version 5.</p>
+<h3 id='the-old-apis'>The old APIs</h3>
+<p>Both the <em>Standard API</em> and the <em>Sync API</em> are considered deprecated since the release of the current <em>Todoist API</em>, which means that we are recommending everyone to migrate their clients to use our new API.  For the time being, the old APIs will still be available, and while there is no plan to put an end to them anytime soon, it must be noted that we will not be extending them either.</p>
+
+<p>The <a href="https://todoist.com/API/deprecated">Standard and Sync API reference documentation</a> will still be available, but from a different location than before, as the old URLs are now redirecting to the present documentation.</p>
+<h3 id='the-new-api'>The new API</h3>
+<p>The new <em>Todoist API</em> is actually based on the old <em>Sync API</em>, but it was further simplified, while at the same time a lot of effort went into improving different aspects of it.</p>
+
+<p>Some very few calls from the old <em>Standard API</em> are now part of the new <em>Todoist API</em>, and they are basically those that provide some needed functionality that is unrelated to the user&rsquo;s data and objects.</p>
+
+<p>Another addition is the OAuth support, which means that applications can now use the OAuth2 protocol to obtain a user authorized API access token.</p>
+
+<p>Here follows a list of the most major changes from the old <em>Sync API</em>:</p>
+
+<ul>
+<li>The <code class="prettyprint">get</code>, <code class="prettyprint">sync</code> and <code class="prettyprint">syncAndGetUpdated</code> API calls, were combined into one call, that is called <code class="prettyprint">sync</code>, and which can be used to fetch and send data.</li>
+<li>All the <code class="prettyprint">sync</code> call commands are sending back to client return values, including the bulk commands that operate on multiple items at once.</li>
+<li>A new error reporting subsystem was added, and now each error in one of the API calls or any of the commands of the <code class="prettyprint">sync</code> call, is reported back as a JSON object, and it includes details on what went wrong and why.</li>
+<li>A new input validation mechanism was implemented, and missing arguments or invalid input values are reported back as JSON errors.</li>
+<li>Special care has been taken to improve the consistency of each the <code class="prettyprint">sync</code> call commands with each other, for a more unified experience.</li>
+<li>UUIDs are now the default way for specifying temporary IDs and timestamps for each <code class="prettyprint">sync</code> call and its commands, which makes it easier for clients to overcome the problem of uniqueness between requests and objects.</li>
+<li>And while it is not visible, the new API had also had its internals reworked in many places, something important in order to make it faster and less error-prone to introduce new functionality.</li>
+</ul>
+
+<p>A more detailed list of minor changes are included here, because they might be useful to those migrating from the old <em>Sync API</em>:</p>
+
+<ul>
+<li>The <code class="prettyprint">sync</code> call <code class="prettyprint">items_to_sync</code> argument has been renamed to <code class="prettyprint">commands</code>.</li>
+<li>The <code class="prettyprint">sync</code> call <code class="prettyprint">resource_types</code> argument is now required, and also by default no data are returned, unless some resources have been specified with this argument.</li>
+<li>The <code class="prettyprint">sync</code> call has a new required argument, the <code class="prettyprint">seq_no_global</code>, which should be defined in the same way as the <code class="prettyprint">seq_no</code> argument.</li>
+<li>The <code class="prettyprint">sync</code> call <code class="prettyprint">include_notification_settings</code> argument has been removed, and instead the <code class="prettyprint">notification_settings</code> resource should be included in the <code class="prettyprint">resource_types</code> argument. </li>
+<li>The <code class="prettyprint">sync</code> call <code class="prettyprint">resource_types</code> argument has a new resource called <code class="prettyprint">user</code> that includes the accounts&rsquo;s details in the returned data.</li>
+<li>The <code class="prettyprint">sync</code> call <code class="prettyprint">resource_types</code> argument has a new resource called <code class="prettyprint">all</code> that makes it possible to fetch all types of objects, ie. all the user data.</li>
+<li>The <code class="prettyprint">timestamp</code> parameter of the <code class="prettyprint">sync</code> call <code class="prettyprint">commands</code> argument has been replaced by the <code class="prettyprint">uuid</code> parameter which accepts UUIDs.</li>
+<li>The <code class="prettyprint">temp_id</code> parameter of the <code class="prettyprint">sync</code> call <code class="prettyprint">commands</code> argument is now accepting UUIDs.</li>
+<li>The <code class="prettyprint">SyncStatus</code> list is included in the extra data returned by the <code class="prettyprint">sync</code> call, in addition to the <code class="prettyprint">TempIdMapping</code> list.</li>
+<li>The server now returns different HTTP status codes to indicate whether a request was successful or not and why.</li>
+<li>The <code class="prettyprint">project_add</code> command of the <code class="prettyprint">sync</code> call now accepts <code class="prettyprint">project_id</code> as a parameter for adding project notes, in addition to <code class="prettyprint">item_id</code> for adding item notes.</li>
+<li>The <code class="prettyprint">item_uncomplete_update_meta</code> command of the <code class="prettyprint">sync</code> call was removed, and it was replaced by the <code class="prettyprint">restore_state</code> parameter that can be defined in the <code class="prettyprint">sync</code> call <code class="prettyprint">item_uncomplete</code> command. </li>
+<li>The <code class="prettyprint">label_register</code> command of the <code class="prettyprint">sync</code> call was renamed to <code class="prettyprint">label_add</code>.</li>
+<li>The <code class="prettyprint">label_update_orders</code> command was added in the <code class="prettyprint">sync</code> call, and it can be used to update multiple label orders at once.</li>
+<li>The <code class="prettyprint">note_id</code> parameter of the <code class="prettyprint">note_update</code> and <code class="prettyprint">note_delete</code> commands of the <code class="prettyprint">sync</code> call was renamed to <code class="prettyprint">id</code>.</li>
+<li>The <code class="prettyprint">update_goals</code> command was added in the <code class="prettyprint">sync</code> call, and it can be used to update the user&rsquo;s karma goals.</li>
+</ul>
+
+<p>For those calls that were kept from the old <em>Standard API</em>, here follows a list of the changes that took place:</p>
+
+<ul>
+<li>The <code class="prettyprint">loginWithGoogle</code>, <code class="prettyprint">uploadFile</code>, <code class="prettyprint">deleteUser</code>, <code class="prettyprint">getRedirectLink</code>, <code class="prettyprint">getProductivityStats</code>, <code class="prettyprint">updateNotificationSettings</code>, <code class="prettyprint">getAllCompletedTasks</code> and <code class="prettyprint">addItem</code> calls were renamed to <code class="prettyprint">login_with_google</code>, <code class="prettyprint">upload_file</code>, <code class="prettyprint">delete_user</code>, <code class="prettyprint">get_redirect_link</code>, <code class="prettyprint">get_productivity_stats</code>, <code class="prettyprint">update_notification_settings</code>, <code class="prettyprint">get_all_completed_tasks</code> and <code class="prettyprint">add_item</code> respectively.</li>
+<li>The now renamed <code class="prettyprint">get_all_completed_tasks</code> call, now takes two additional parameters, <code class="prettyprint">to_date</code> and <code class="prettyprint">offset</code>, in order to better select which completed tasks to access.</li>
+</ul>
+
+<p>Finally, and although this affects both the new API and the older APIs, we would nonetheless like to mention here, that due to security reasons, support for callbacks (JSONP) was removed.  This was used for overcoming the same-origin policy of modern browsers, and we can only suggest that a utility like <code class="prettyprint">cURL</code> is used to access our APIs instead.</p>
 
         <h1 id='authorization'>Authorization</h1>
 <p>In order to make authorized calls to Todoist APIs, your application must first obtain an access token from the users. This section describes the different ways of obtaining such a token.</p>
@@ -1040,11 +1096,10 @@ are not related to the full model, but are nonetheless useful.</p>
 
 <p>While the system remembers temporary ids and their mappings to real ids, it&rsquo;s important to use real ids when they are available to you (typically after a sync). This is important since the API only remembers the last 500 temporary ids for each user!</p>
 <h2 id='errors'>Errors</h2>
-<p>Another improvement in the version 6 of the API is the better and more
-consistent error reporting.  So now the server uses the HTTP status codes to
-indicate result or failure of a request.  And as is usually customary in web servers,
-a 2xx code indicates success, a 4xx code an error due to incorrect user
-provided information, and a 5xx code an internal, possibly temporary, error.</p>
+<p>The server uses the HTTP status codes to indicate result or failure of a
+request.  And as is usually customary in web servers, a 2xx code indicates
+success, a 4xx code an error due to incorrect user provided information, and a
+5xx code an internal, possibly temporary, error.</p>
 <h3 id='status-codes'>Status codes</h3>
 <table><thead>
 <tr>
@@ -2216,6 +2271,8 @@ provided information, and a 5xx code an internal, possibly temporary, error.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">update_orders</span><span class="p">({</span><span class="mi">1234</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5678</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
+
+<p>Update the orders of multiple labels at once.</p>
 <h3 id='required-arguments'>Required arguments</h3>
 <table><thead>
 <tr>
@@ -2859,6 +2916,8 @@ provided information, and a 5xx code an internal, possibly temporary, error.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">update_orders</span><span class="p">({</span><span class="mi">9</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
+
+<p>Update the orders of multiple filters at once.</p>
 <h3 id='required-arguments'>Required arguments</h3>
 <table><thead>
 <tr>
