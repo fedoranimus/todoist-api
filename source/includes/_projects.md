@@ -44,7 +44,7 @@ Property | Description
 -------- | -----------
 id | The unique id of the project.
 user_id | The unique id of the user that owns the project.
-name | The name of the project. If the name starts with a star `*` then the name is a group. In this example, `* Life` is a group:
+name | The name of the project.
 color | The color of the project, an index is an array. For example `#bde876`, `#ff8581`, etc.
 indent | The indent of the item (a number between 1 and 4 where 1 is top-level).
 item_order | Project's order in the project list. Smaller number should be located in the top.
