@@ -748,7 +748,7 @@ are not related to the full model, but are nonetheless useful.</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">sync</span><span class="p">([</span><span class="s">'all'</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">resource_types</span><span class="o">=</span><span class="p">[</span><span class="s">'all'</span><span class="p">])</span>
 <span class="p">{</span> <span class="s">'CollaboratorStates'</span><span class="p">:</span> <span class="p">[],</span>
   <span class="s">'Collaborators'</span><span class="p">:</span> <span class="p">[],</span>
   <span class="s">'DayOrders'</span><span class="p">:</span> <span class="p">{},</span>
