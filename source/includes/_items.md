@@ -8,7 +8,7 @@
   "user_id": 1855589,
   "project_id": 128501470,
   "content": "Task1",
-  "date_string": ""
+  "date_string": "",
   "date_lang": "en",
   "due_date_utc": null,
   "due_date": null,
@@ -26,7 +26,7 @@
   "is_deleted": 0,
   "is_archived": 0,
   "sync_id": null,
-  "date_added": "Fri 26 Sep 2014 08:25:05 +0000",
+  "date_added": "Fri 26 Sep 2014 08:25:05 +0000"
 }
 ```
 
@@ -48,13 +48,13 @@
   'children': None,
   'labels': [],
   'assigned_by_uid': 1855589,
-  'responsible_uid': None
+  'responsible_uid': None,
   'checked': 0,
   'in_history': 0,
   'is_deleted': 0,
   'is_archived': 0,
   'sync_id': None,
-  'date_added': 'Fri 26 Sep 2014 08:25:05 +0000',
+  'date_added': 'Fri 26 Sep 2014 08:25:05 +0000'
 }
 ```
 

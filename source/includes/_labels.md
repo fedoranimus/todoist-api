@@ -9,7 +9,7 @@
   "name": "Label1"
   "color": 7,
   "item_order": 0,
-  "is_deleted": 0,
+  "is_deleted": 0
 }
 ```
 
@@ -20,7 +20,7 @@
   'name': 'Label1',
   'color': 7,
   'item_order': 0,
-  'is_deleted': 0,
+  'is_deleted': 0
 }
 ```
 

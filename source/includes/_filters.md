@@ -4,25 +4,25 @@
 
 ```shell
 {
-  "id": 4638878
+  "id": 4638878,
   "user_id": 1855589,
   "name": "Priority 1",
   "query": "priority 1",
   "color": 6,
   "item_order": 3,
-  "is_deleted": 0,
+  "is_deleted": 0
 }
 ```
 
 ```python
 {
-  'id': 4638878
+  'id': 4638878,
   'user_id': 1855589,
   'name': 'Priority 1',
   'query': 'priority 1',
   'color': 6,
   'item_order': 3,
-  'is_deleted': 0,
+  'is_deleted': 0
 }
 ```
 

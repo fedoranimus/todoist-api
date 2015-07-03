@@ -13,15 +13,15 @@
   "collapsed": 0,
   "shared": false,
   "is_deleted": 0,
-  "is_archived": 0
+  "is_archived": 0,
   "archived_date": null,
-  "archived_timestamp": 0,
+  "archived_timestamp": 0
 }
 ```
 
 ```python
 {
-  'id': 128501470
+  'id': 128501470,
   'user_id': 1855589,
   'name': 'Project1',
   'color': 1,
@@ -32,7 +32,7 @@
   'is_deleted': 0,
   'is_archived': 0,
   'archived_date': None,
-  'archived_timestamp': 0,
+  'archived_timestamp': 0
 }
 ```
 
