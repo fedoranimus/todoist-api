@@ -1821,6 +1821,10 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
 </tr>
 <tr>
+<td>due_date</td>
+<td>The same as <code class="prettyprint">due_date_utc</code> (to be deprecated).</td>
+</tr>
+<tr>
 <td>priority</td>
 <td>The priority of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, <code class="prettyprint">4</code> for very urgent and <code class="prettyprint">1</code> for natural).</td>
 </tr>
@@ -3032,27 +3036,31 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <p>A reminder in Todoist is a JSON object. Typically a reminder object will look like:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="o">{</span>
-  <span class="s2">"due_date"</span>: <span class="s2">"Mon 06 Oct 2014 11:00:00 +0000"</span>,
-  <span class="s2">"due_date_utc"</span>: <span class="s2">"Mon 06 Oct 2014 11:00:00 +0000"</span>,
-  <span class="s2">"is_deleted"</span>: 0,
-  <span class="s2">"service"</span>: <span class="s2">"email"</span>,
-  <span class="s2">"item_id"</span>: 33511505,
+  <span class="s2">"id"</span>: 12763422,
   <span class="s2">"notify_uid"</span>: 1855589,
+  <span class="s2">"item_id"</span>: 33511505,
+  <span class="s2">"service"</span>: <span class="s2">"email"</span>,
   <span class="s2">"type"</span>: <span class="s2">"absolute"</span>,
-  <span class="s2">"id"</span>: 1234,
-  <span class="s2">"date_string"</span>: <span class="s2">"Oct 6 @ 2pm"</span>
+  <span class="s2">"date_string"</span>: <span class="s2">"Oct 6 @ 2pm"</span>,
+  <span class="s2">"date_lang"</span> : <span class="s2">"en"</span>,
+  <span class="s2">"due_date_utc"</span>: <span class="s2">"Mon 06 Oct 2014 11:00:00 +0000"</span>,
+  <span class="s2">"due_date"</span>: <span class="s2">"Mon 06 Oct 2014 11:00:00 +0000"</span>,
+  <span class="s2">"mm_offset"</span>: 180,
+  <span class="s2">"is_deleted"</span>: 0
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="p">{</span>
-  <span class="s">'due_date'</span><span class="p">:</span> <span class="s">'Mon 06 Oct 2014 11:00:00 +0000'</span><span class="p">,</span>
-  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'service'</span><span class="p">:</span> <span class="s">'email'</span><span class="p">,</span>
-  <span class="s">'due_date_utc'</span><span class="p">:</span> <span class="s">'Mon 06 Oct 2014 11:00:00 +0000'</span><span class="p">,</span>
-  <span class="s">'item_id'</span><span class="p">:</span> <span class="mi">33511505</span><span class="p">,</span>
+  <span class="s">'id'</span><span class="p">:</span> <span class="mi">12763422</span><span class="p">,</span>
   <span class="s">'notify_uid'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
+  <span class="s">'item_id'</span><span class="p">:</span> <span class="mi">33511505</span><span class="p">,</span>
+  <span class="s">'service'</span><span class="p">:</span> <span class="s">'email'</span><span class="p">,</span>
   <span class="s">'type'</span><span class="p">:</span> <span class="s">'absolute'</span><span class="p">,</span>
-  <span class="s">'id'</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
   <span class="s">'date_string'</span><span class="p">:</span> <span class="s">'Oct 6 @ 2pm'</span>
+  <span class="s">'date_lang'</span> <span class="p">:</span> <span class="s">'en'</span><span class="p">,</span>
+  <span class="s">'due_date_utc'</span><span class="p">:</span> <span class="s">'Mon 06 Oct 2014 11:00:00 +0000'</span><span class="p">,</span>
+  <span class="s">'due_date'</span><span class="p">:</span> <span class="s">'Mon 06 Oct 2014 11:00:00 +0000'</span><span class="p">,</span>
+  <span class="s">'mm_offset'</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>
+  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span>
 <span class="p">}</span>
 </code></pre>
 
@@ -3066,11 +3074,15 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the reminder.</td>
+<td>The id of the reminder (a unique number).</td>
+</tr>
+<tr>
+<td>notify_uid</td>
+<td>The user id which should be notified of the reminder, typically the current user id creating the reminder (a unique number).</td>
 </tr>
 <tr>
 <td>item_id</td>
-<td>The item id for which the reminder is about.</td>
+<td>The item id for which the reminder is about (a unique number).</td>
 </tr>
 <tr>
 <td>service</td>
@@ -3081,20 +3093,48 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <td>The type of the reminder: <code class="prettyprint">relative</code> for a time-based reminder specified in minutes from now, <code class="prettyprint">absolute</code> for a time-based reminder with a specific time and date in the future, and <code class="prettyprint">location</code> for a location-based reminder.</td>
 </tr>
 <tr>
-<td>due_date_utc</td>
-<td>Should be formatted as <code class="prettyprint">YYYY-MM-DDTHH:MM</code>, example: <code class="prettyprint">2012-3-24T23:59</code>. Value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
-</tr>
-<tr>
 <td>date_string</td>
 <td>The date of the task, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code>. Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string.</td>
+<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
-<td>notify_uid</td>
-<td>The user id which should be notified of the reminder, typically the current user id creating the reminder.</td>
+<td>due_date_utc</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
+</tr>
+<tr>
+<td>due_date</td>
+<td>The same as <code class="prettyprint">due_date_utc</code> (to be deprecated).</td>
+</tr>
+<tr>
+<td>mm_offset</td>
+<td>The relative time in minutes before the due date of the item, in which the reminder should be triggered. Note, that the item should have a due date set in order to add a relative reminder.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>An alias name for the location (a string value).</td>
+</tr>
+<tr>
+<td>loc_lat</td>
+<td>The location latitude (a float number as string).</td>
+</tr>
+<tr>
+<td>loc_long</td>
+<td>The location longitude (a float number as a string).</td>
+</tr>
+<tr>
+<td>loc_trigger</td>
+<td>What should the trigger the reminder: <code class="prettyprint">on_enter</code> for entering the location, or <code class="prettyprint">on_leave</code> for leaving the location.</td>
+</tr>
+<tr>
+<td>radius</td>
+<td>The radius around the location that is still considered as part of the location (a number in meters).</td>
+</tr>
+<tr>
+<td>is_deleted</td>
+<td>Whether the reminder is marked as deleted (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 </tbody></table>
 <h2 id='add-a-reminder'>Add a reminder</h2>
@@ -3106,7 +3146,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "reminder_add", "temp_id": "e24ad822-a0df-4b7d-840f-83a5424a484a", "uuid": "41e59a76-3430-4e44-92b9-09d114be0d49", "args": {"item_id": 33511505, "service": "email", "minute_offset": 30}}]'</span>
 <span class="o">{</span> ...
   <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"41e59a76-3430-4e44-92b9-09d114be0d49"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
-  <span class="s2">"TempIdMapping"</span>: <span class="o">{</span><span class="s2">"e24ad822-a0df-4b7d-840f-83a5424a484a"</span>: 1234<span class="o">}</span>,
+  <span class="s2">"TempIdMapping"</span>: <span class="o">{</span><span class="s2">"e24ad822-a0df-4b7d-840f-83a5424a484a"</span>: 12763422<span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -3123,7 +3163,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "reminder_add", "temp_id": "952a365e-4965-4113-b4f4-80cdfcada172u", "uuid": "e7c8be2d-f484-4852-9422-a9984c58b1cd", "args": {"item_id": 33511505, "service": "email", "due_date_utc": "2014-10-15T11:00"}}]'</span>
 <span class="o">{</span> ...
   <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"e7c8be2d-f484-4852-9422-a9984c58b1cd"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
-  <span class="s2">"TempIdMapping"</span>: <span class="o">{</span><span class="s2">"952a365e-4965-4113-b4f4-80cdfcada172"</span>: 1234<span class="o">}</span>,
+  <span class="s2">"TempIdMapping"</span>: <span class="o">{</span><span class="s2">"952a365e-4965-4113-b4f4-80cdfcada172"</span>: 12763422<span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -3140,7 +3180,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "reminder_add", "temp_id": "7ad9609d-579f-4828-95c5-3600acdb2c81", "uuid": "830cf409-daba-479c-a624-68eb0c07d01c", "args": {"item_id": 33511505, "service": "email", "type": "location", "name": "Aliados", "loc_lat": "41.148581", "loc_long":"-8.610945000000015", "loc_trigger":"on_enter", "radius": 100}}]'</span>
 <span class="o">{</span> ...
   <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"830cf409-daba-479c-a624-68eb0c07d01c"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
-  <span class="s2">"TempIdMapping"</span>: <span class="o">{</span><span class="s2">"7ad9609d-579f-4828-95c5-3600acdb2c81"</span>: 1234<span class="o">}</span>,
+  <span class="s2">"TempIdMapping"</span>: <span class="o">{</span><span class="s2">"7ad9609d-579f-4828-95c5-3600acdb2c81"</span>: 12763422<span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -3159,7 +3199,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>item_id</td>
-<td>The item id for which the reminder is about.</td>
+<td>The item id for which the reminder is about (a number or temp id).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -3170,6 +3210,10 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
+<td>notify_uid</td>
+<td>The user id which should be notified of the reminder, typically the current user id creating the reminder (a unique number).</td>
+</tr>
+<tr>
 <td>service</td>
 <td>The way to get notified of the reminder: <code class="prettyprint">email</code> for e-mail, <code class="prettyprint">mobile</code> for mobile text message, or <code class="prettyprint">push</code> for mobile push notification.</td>
 </tr>
@@ -3178,36 +3222,36 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <td>The type of the reminder: <code class="prettyprint">relative</code> for a time-based reminder specified in minutes from now, <code class="prettyprint">absolute</code> for a time-based reminder with a specific time and date in the future, and <code class="prettyprint">location</code> for a location-based reminder.</td>
 </tr>
 <tr>
-<td>minute_offset</td>
-<td>The relative time in minutes before the due date of the item, in which the reminder should be triggered. Note, that the item should have a due date set in order to add a relative reminder.</td>
-</tr>
-<tr>
-<td>due_date_utc</td>
-<td>Should be formatted as <code class="prettyprint">YYYY-MM-DDTHH:MM</code>, example: <code class="prettyprint">2012-3-24T23:59</code>. Value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
-</tr>
-<tr>
 <td>date_string</td>
 <td>The date of the task, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code>. Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string.</td>
+<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
-<td>notify_uid</td>
-<td>The user id which should be notified of the reminder, typically the current user id creating the reminder.</td>
+<td>due_date_utc</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
+</tr>
+<tr>
+<td>due_date</td>
+<td>The same as <code class="prettyprint">due_date_utc</code> (to be deprecated).</td>
+</tr>
+<tr>
+<td>minute_offset</td>
+<td>The relative time in minutes before the due date of the item, in which the reminder should be triggered. Note, that the item should have a due date set in order to add a relative reminder.</td>
 </tr>
 <tr>
 <td>name</td>
-<td>An alias name for the location.</td>
+<td>An alias name for the location (a string value).</td>
 </tr>
 <tr>
 <td>loc_lat</td>
-<td>The location latitude.</td>
+<td>The location latitude (a float number as string).</td>
 </tr>
 <tr>
 <td>loc_long</td>
-<td>The location longitude.</td>
+<td>The location longitude (a float number as a string).</td>
 </tr>
 <tr>
 <td>loc_trigger</td>
@@ -3215,7 +3259,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>radius</td>
-<td>The radius around the location that is still considered as part of the location.</td>
+<td>The radius around the location that is still considered as part of the location (a number in meters).</td>
 </tr>
 </tbody></table>
 <h2 id='update-a-reminder'>Update a reminder</h2>
@@ -3224,14 +3268,14 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "reminder_update", "uuid": "b0e7562e-ea9f-4c84-87ee-9cbf9c103234", "args": {"id": 1234, "due_date_utc": "2014-10-10T15:00"}}]'</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "reminder_update", "uuid": "b0e7562e-ea9f-4c84-87ee-9cbf9c103234", "args": {"id": 12763422, "due_date_utc": "2014-10-10T15:00"}}]'</span>
 <span class="o">{</span> ...
   <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"b0e7562e-ea9f-4c84-87ee-9cbf9c103234"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">reminder</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">reminders</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">reminder</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">reminders</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="mi">12763422</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">reminder</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">due_date_utc</span><span class="o">=</span><span class="s">'2014-10-10T15:00'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
@@ -3246,7 +3290,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the filter.</td>
+<td>The id of the reminder (a number or temp id).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -3257,6 +3301,10 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
+<td>notify_uid</td>
+<td>The user id which should be notified of the reminder, typically the current user id creating the reminder (a unique number).</td>
+</tr>
+<tr>
 <td>service</td>
 <td>The way to get notified of the reminder: <code class="prettyprint">email</code> for e-mail, <code class="prettyprint">mobile</code> for mobile text message, or <code class="prettyprint">push</code> for mobile push notification.</td>
 </tr>
@@ -3265,36 +3313,36 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <td>The type of the reminder: <code class="prettyprint">relative</code> for a time-based reminder specified in minutes from now, <code class="prettyprint">absolute</code> for a time-based reminder with a specific time and date in the future, and <code class="prettyprint">location</code> for a location-based reminder.</td>
 </tr>
 <tr>
-<td>minute_offset</td>
-<td>The relative time in minutes from the current time in which the reminder should be triggered.</td>
-</tr>
-<tr>
-<td>due_date_utc</td>
-<td>Should be formatted as <code class="prettyprint">YYYY-MM-DDTHH:MM</code>, example: <code class="prettyprint">2012-3-24T23:59</code>. Value of <code class="prettyprint">due_date</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date</code> (<code class="prettyprint">due_date</code>) can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
-</tr>
-<tr>
 <td>date_string</td>
 <td>The date of the task, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code>. Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string.</td>
+<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
-<td>notify_uid</td>
-<td>The user id which should be notified of the reminder, typically the current user id creating the reminder.</td>
+<td>due_date_utc</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
+</tr>
+<tr>
+<td>due_date</td>
+<td>The same as <code class="prettyprint">due_date_utc</code> (to be deprecated).</td>
+</tr>
+<tr>
+<td>minute_offset</td>
+<td>The relative time in minutes before the due date of the item, in which the reminder should be triggered. Note, that the item should have a due date set in order to add a relative reminder.</td>
 </tr>
 <tr>
 <td>name</td>
-<td>An alias name for the location.</td>
+<td>An alias name for the location (a string value).</td>
 </tr>
 <tr>
 <td>loc_lat</td>
-<td>The location latitude.</td>
+<td>The location latitude (a float number as string).</td>
 </tr>
 <tr>
 <td>loc_long</td>
-<td>The location longitude.</td>
+<td>The location longitude (a float number as a string).</td>
 </tr>
 <tr>
 <td>loc_trigger</td>
@@ -3302,7 +3350,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>radius</td>
-<td>The radius around the location that is still considered as part of the location.</td>
+<td>The radius around the location that is still considered as part of the location (a number in meters).</td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-reminder'>Delete a reminder</h2>
@@ -3318,7 +3366,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">reminder</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">reminders</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">reminder</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">reminders</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="mi">12763422</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">reminder</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
@@ -3333,7 +3381,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the filter.</td>
+<td>The id of the filter (a number or temp id).</td>
 </tr>
 </tbody></table>
 <h2 id='clear-the-locations'>Clear the locations</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
