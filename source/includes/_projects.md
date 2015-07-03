@@ -4,35 +4,35 @@
 
 ```shell
 {
-  "color": 1,
-  "collapsed": 0,
-  "archived_date": null,
-  "indent": 1,
-  "is_deleted": 0,
   "id": 128501470,
   "user_id": 1855589,
   "name": "Project1",
-  "archived_timestamp": 0,
+  "color": 1,
+  "indent": 1,
   "item_order": 36,
+  "collapsed": 0,
   "shared": false,
+  "is_deleted": 0,
   "is_archived": 0
+  "archived_date": null,
+  "archived_timestamp": 0,
 }
 ```
 
 ```python
 {
-  'shared': False,
-  'name': 'Project1',
-  'user_id': 1855589,
-  'color': 1,
-  'is_deleted': 0,
-  'collapsed': 0,
-  'archived_date': None,
-  'item_order': 36,
-  'indent': 1,
-  'is_archived': 0,
-  'archived_timestamp': 0,
   'id': 128501470
+  'user_id': 1855589,
+  'name': 'Project1',
+  'color': 1,
+  'indent': 1,
+  'item_order': 36,
+  'collapsed': 0,
+  'shared': False,
+  'is_deleted': 0,
+  'is_archived': 0,
+  'archived_date': None,
+  'archived_timestamp': 0,
 }
 ```
 
@@ -42,13 +42,19 @@ A project in Todoist is a JSON object. Typically a project will have the followi
 
 Property | Description
 -------- | -----------
-id | The unique id of the project.
-user_id | The unique id of the user that owns the project.
-name | The name of the project.
+id | The id of the project (a unique number).
+user_id | The id of the user that owns the project (a unique number).
+name | The name of the project (a string value).
 color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
-indent | The indent of the item (a number between 1 and 4 where 1 is top-level).
-item_order | Project's order in the project list. Smaller number should be located in the top.
-collapsed | If set to 1 the project's sub projects are collapsed. Otherwise they aren't.
+indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
+item_order | Project's order in the project list (a number, where a smaller value should be located in the top).
+collapsed | Whether the project's sub-projects are collapsed (where `1` is true and `0` is false).
+shared | Whether the project is shared (a `true` or `false` value)
+is_deleted | Whether the project is marked as deleted (where `1` is true and `0` is false).
+is_archived | Whether the project is marked as archived (where `1` is true and `0` is false).
+archived_date | The date when the project was archived (`null` if not set).
+archived_timestamp | The timestamp of when the project was archived (`0` if not set).
+
 
 ## Add a project
 
@@ -77,7 +83,7 @@ Add a new project.
 
 Argument | Description
 -------- | -----------
-name | The name of the new project.
+name | The name of the project (a string value).
 
 ### Optional arguments
 
@@ -85,7 +91,7 @@ Argument | Description
 -------- | -----------
 color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
 indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
-item_order | The order of the new project.
+item_order | Project's order in the project list (a number, where a smaller value should be located in the top).
 
 ## Update a project
 
@@ -114,17 +120,18 @@ Update an existing project.
 
 Argument | Description
 -------- | -----------
-id | The id of the project to update.
+id | The id of the project (a unique number or a temporary string id).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-name | New name of the project.
+name | The name of the project (a string value).
 color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
 indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
-item_order | The order of the project.
-collapsed | `1` if the project should be collapsed, `0` if it should not be collapsed.
+item_order | Project's order in the project list (a number, where a smaller value should be located in the top).
+collapsed | Whether the project's sub-projects are collapsed (where `1` is true and `0` is false).
+
 
 ## Delete projects
 
@@ -154,7 +161,7 @@ Delete an existing project.
 
 Argument | Description
 -------- | -----------
-ids | List of the ids of the projects to delete.
+ids | List of the ids of the projects to delete (unique numbers or temporary string ids).
 
 
 ## Archive a project
@@ -184,7 +191,7 @@ Archive project and its children. Only available for Todoist Premium users.
 
 Argument | Description
 -------- | -----------
-id | The id of the project to archive.
+id | The id of the project (a unique number or a temporary string id).
 
 ## Unarchive a project
 
@@ -213,7 +220,7 @@ Unarchive project and its children. Only available for Todoist Premium users.
 
 Argument | Description
 -------- | -----------
-id | The id of the project to unarchive.
+id | The id of the project (a unique number or a temporary string id).
 
 ## Update multiple orders/indents
 
@@ -246,4 +253,4 @@ Update the orders and indents of multiple projects at once.
 
 Argument | Description
 -------- | -----------
-ids_to_orders_indents | A dictionary, where a project id is the key, and a list with two elements, the order and the indent, are its value: `project_id: [item_order, indent]`.
+ids_to_orders_indents | A dictionary, where a project id is the key, and a list with two elements, the order and the indent, are its value: `project_id: [item_order, indent]`

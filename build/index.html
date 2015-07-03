@@ -1192,33 +1192,33 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <p>A project in Todoist is a JSON object. Typically a project object will look like this:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="o">{</span>
-  <span class="s2">"color"</span>: 1,
-  <span class="s2">"collapsed"</span>: 0,
-  <span class="s2">"archived_date"</span>: null,
-  <span class="s2">"indent"</span>: 1,
-  <span class="s2">"is_deleted"</span>: 0,
   <span class="s2">"id"</span>: 128501470,
   <span class="s2">"user_id"</span>: 1855589,
   <span class="s2">"name"</span>: <span class="s2">"Project1"</span>,
-  <span class="s2">"archived_timestamp"</span>: 0,
+  <span class="s2">"color"</span>: 1,
+  <span class="s2">"indent"</span>: 1,
   <span class="s2">"item_order"</span>: 36,
+  <span class="s2">"collapsed"</span>: 0,
   <span class="s2">"shared"</span>: <span class="nb">false</span>,
+  <span class="s2">"is_deleted"</span>: 0,
   <span class="s2">"is_archived"</span>: 0
+  <span class="s2">"archived_date"</span>: null,
+  <span class="s2">"archived_timestamp"</span>: 0,
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="p">{</span>
-  <span class="s">'shared'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">'name'</span><span class="p">:</span> <span class="s">'Project1'</span><span class="p">,</span>
-  <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
-  <span class="s">'color'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'collapsed'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'archived_date'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
-  <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'archived_timestamp'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s">'id'</span><span class="p">:</span> <span class="mi">128501470</span>
+  <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
+  <span class="s">'name'</span><span class="p">:</span> <span class="s">'Project1'</span><span class="p">,</span>
+  <span class="s">'color'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
+  <span class="s">'collapsed'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'shared'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'archived_date'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'archived_timestamp'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre>
 
@@ -1232,15 +1232,15 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The unique id of the project.</td>
+<td>The id of the project (a unique number).</td>
 </tr>
 <tr>
 <td>user_id</td>
-<td>The unique id of the user that owns the project.</td>
+<td>The id of the user that owns the project (a unique number).</td>
 </tr>
 <tr>
 <td>name</td>
-<td>The name of the project.</td>
+<td>The name of the project (a string value).</td>
 </tr>
 <tr>
 <td>color</td>
@@ -1248,15 +1248,35 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>indent</td>
-<td>The indent of the item (a number between 1 and 4 where 1 is top-level).</td>
+<td>The indent of the item (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
 <td>item_order</td>
-<td>Project&rsquo;s order in the project list. Smaller number should be located in the top.</td>
+<td>Project&rsquo;s order in the project list (a number, where a smaller value should be located in the top).</td>
 </tr>
 <tr>
 <td>collapsed</td>
-<td>If set to 1 the project&rsquo;s sub projects are collapsed. Otherwise they aren&rsquo;t.</td>
+<td>Whether the project&rsquo;s sub-projects are collapsed (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
+</tr>
+<tr>
+<td>shared</td>
+<td>Whether the project is shared (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value)</td>
+</tr>
+<tr>
+<td>is_deleted</td>
+<td>Whether the project is marked as deleted (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
+</tr>
+<tr>
+<td>is_archived</td>
+<td>Whether the project is marked as archived (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
+</tr>
+<tr>
+<td>archived_date</td>
+<td>The date when the project was archived (<code class="prettyprint">null</code> if not set).</td>
+</tr>
+<tr>
+<td>archived_timestamp</td>
+<td>The timestamp of when the project was archived (<code class="prettyprint">0</code> if not set).</td>
 </tr>
 </tbody></table>
 <h2 id='add-a-project'>Add a project</h2>
@@ -1287,7 +1307,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>The name of the new project.</td>
+<td>The name of the project (a string value).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -1307,7 +1327,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>item_order</td>
-<td>The order of the new project.</td>
+<td>Project&rsquo;s order in the project list (a number, where a smaller value should be located in the top).</td>
 </tr>
 </tbody></table>
 <h2 id='update-a-project'>Update a project</h2>
@@ -1338,7 +1358,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the project to update.</td>
+<td>The id of the project (a unique number or a temporary string id).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -1350,7 +1370,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>New name of the project.</td>
+<td>The name of the project (a string value).</td>
 </tr>
 <tr>
 <td>color</td>
@@ -1362,11 +1382,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>item_order</td>
-<td>The order of the project.</td>
+<td>Project&rsquo;s order in the project list (a number, where a smaller value should be located in the top).</td>
 </tr>
 <tr>
 <td>collapsed</td>
-<td><code class="prettyprint">1</code> if the project should be collapsed, <code class="prettyprint">0</code> if it should not be collapsed.</td>
+<td>Whether the project&rsquo;s sub-projects are collapsed (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 </tbody></table>
 <h2 id='delete-projects'>Delete projects</h2>
@@ -1398,7 +1418,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>ids</td>
-<td>List of the ids of the projects to delete.</td>
+<td>List of the ids of the projects to delete (unique numbers or temporary string ids).</td>
 </tr>
 </tbody></table>
 <h2 id='archive-a-project'>Archive a project</h2>
@@ -1429,7 +1449,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the project to archive.</td>
+<td>The id of the project (a unique number or a temporary string id).</td>
 </tr>
 </tbody></table>
 <h2 id='unarchive-a-project'>Unarchive a project</h2>
@@ -1460,7 +1480,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the project to unarchive.</td>
+<td>The id of the project (a unique number or a temporary string id).</td>
 </tr>
 </tbody></table>
 <h2 id='update-multiple-ordersindents'>Update multiple orders/indents</h2>
@@ -1495,7 +1515,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>ids_to_orders_indents</td>
-<td>A dictionary, where a project id is the key, and a list with two elements, the order and the indent, are its value: <code class="prettyprint">project_id: [item_order, indent]</code>.</td>
+<td>A dictionary, where a project id is the key, and a list with two elements, the order and the indent, are its value: <code class="prettyprint">project_id: [item_order, indent]</code></td>
 </tr>
 </tbody></table>
 
