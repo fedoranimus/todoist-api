@@ -28,7 +28,7 @@ Property | Description
 -------- | -----------
 id | The id of the label.
 name| The name of the label.
-color | The color of the label.
+color | The color of the label (a number between `0` and `7`, or between `0` and `12` for premium users).
 item_order | Label’s order in the label list.
 
 ## Add a label
@@ -64,7 +64,7 @@ name | The name of the label.
 
 Argument | Description
 -------- | -----------
-color | The color of the label.
+color | The color of the label (a number between `0` and `7`, or between `0` and `12` for premium users).
 item_order | Label’s order in the label list.
 
 ## Update a label
@@ -101,7 +101,7 @@ id | The id of the label.
 Argument | Description
 -------- | -----------
 name | The name of the label.
-color | The color of the label.
+color | The color of the label (a number between `0` and `7`, or between `0` and `12` for premium users).
 item_order | Label’s order in the label list.
 
 ## Delete a label

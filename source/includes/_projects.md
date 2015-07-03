@@ -45,7 +45,7 @@ Property | Description
 id | The unique id of the project.
 user_id | The unique id of the user that owns the project.
 name | The name of the project.
-color | The color of the project, an index is an array. For example `#bde876`, `#ff8581`, etc.
+color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
 indent | The indent of the item (a number between 1 and 4 where 1 is top-level).
 item_order | Project's order in the project list. Smaller number should be located in the top.
 collapsed | If set to 1 the project's sub projects are collapsed. Otherwise they aren't.
@@ -83,7 +83,7 @@ name | The name of the new project.
 
 Argument | Description
 -------- | -----------
-color | The color of the new project.
+color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
 indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
 item_order | The order of the new project.
 
@@ -121,7 +121,7 @@ id | The id of the project to update.
 Argument | Description
 -------- | -----------
 name | New name of the project.
-color | New color of the project.
+color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
 indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
 item_order | The order of the project.
 collapsed | `1` if the project should be collapsed, `0` if it should not be collapsed.

@@ -35,7 +35,7 @@ Property | Description
 id | The id of the filter.
 name | The name of the filter.
 item_order | Filter's order in the filter list.
-color | The color of the filter.
+color | The color of the filter (a number between `0` and `7`, or between `0` and `12` for premium users).
 query | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
 
 ## Add a filter
@@ -74,7 +74,7 @@ query | The query to search for. [Examples of searches](https://todoist.com/Help
 Argument | Description
 -------- | -----------
 item_order | Filter's order in the filter list.
-color | The color of the filter.
+color | The color of the filter (a number between `0` and `7`, or between `0` and `12` for premium users).
 
 ## Update a filter
 
@@ -112,7 +112,7 @@ Argument | Description
 name | The name of the filter.
 query | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
 item_order | Filter's order in the filter list.
-color | The color of the filter.
+color | The color of the filter (a number between `0` and `7`, or between `0` and `12` for premium users).
 
 ## Delete a filter
 
