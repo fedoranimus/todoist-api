@@ -47,7 +47,7 @@ user_id | The id of the user that owns the project (a unique number).
 name | The name of the project (a string value).
 color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
 indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
-item_order | Project's order in the project list (a number, where a smaller value should be located in the top).
+item_order | Project's order in the project list (a number, where the smallest value should place the project at the top).
 collapsed | Whether the project's sub-projects are collapsed (where `1` is true and `0` is false).
 shared | Whether the project is shared (a `true` or `false` value)
 is_deleted | Whether the project is marked as deleted (where `1` is true and `0` is false).
@@ -91,7 +91,7 @@ Argument | Description
 -------- | -----------
 color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
 indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
-item_order | Project's order in the project list (a number, where a smaller value should be located in the top).
+item_order | Project's order in the project list (a number, where the smallest value should place the project at the top).
 
 ## Update a project
 
@@ -120,7 +120,7 @@ Update an existing project.
 
 Argument | Description
 -------- | -----------
-id | The id of the project (a unique number or a temporary string id).
+id | The id of the project (a number or a temp id).
 
 ### Optional arguments
 
@@ -129,7 +129,7 @@ Argument | Description
 name | The name of the project (a string value).
 color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
 indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
-item_order | Project's order in the project list (a number, where a smaller value should be located in the top).
+item_order | Project's order in the project list (a number, where the smallest value should place the project at the top).
 collapsed | Whether the project's sub-projects are collapsed (where `1` is true and `0` is false).
 
 
@@ -161,7 +161,7 @@ Delete an existing project.
 
 Argument | Description
 -------- | -----------
-ids | List of the ids of the projects to delete (unique numbers or temporary string ids).
+ids | List of the ids of the projects to delete (numbers or temp ids).
 
 
 ## Archive a project
@@ -191,7 +191,7 @@ Archive project and its children. Only available for Todoist Premium users.
 
 Argument | Description
 -------- | -----------
-id | The id of the project (a unique number or a temporary string id).
+id | The id of the project (a number or a temp id).
 
 ## Unarchive a project
 
@@ -220,7 +220,7 @@ Unarchive project and its children. Only available for Todoist Premium users.
 
 Argument | Description
 -------- | -----------
-id | The id of the project (a unique number or a temporary string id).
+id | The id of the project (a number or a temp id).
 
 ## Update multiple orders/indents
 

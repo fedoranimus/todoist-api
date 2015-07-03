@@ -1252,7 +1252,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>item_order</td>
-<td>Project&rsquo;s order in the project list (a number, where a smaller value should be located in the top).</td>
+<td>Project&rsquo;s order in the project list (a number, where the smallest value should place the project at the top).</td>
 </tr>
 <tr>
 <td>collapsed</td>
@@ -1327,7 +1327,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>item_order</td>
-<td>Project&rsquo;s order in the project list (a number, where a smaller value should be located in the top).</td>
+<td>Project&rsquo;s order in the project list (a number, where the smallest value should place the project at the top).</td>
 </tr>
 </tbody></table>
 <h2 id='update-a-project'>Update a project</h2>
@@ -1358,7 +1358,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the project (a unique number or a temporary string id).</td>
+<td>The id of the project (a number or a temp id).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -1382,7 +1382,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>item_order</td>
-<td>Project&rsquo;s order in the project list (a number, where a smaller value should be located in the top).</td>
+<td>Project&rsquo;s order in the project list (a number, where the smallest value should place the project at the top).</td>
 </tr>
 <tr>
 <td>collapsed</td>
@@ -1418,7 +1418,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>ids</td>
-<td>List of the ids of the projects to delete (unique numbers or temporary string ids).</td>
+<td>List of the ids of the projects to delete (numbers or temp ids).</td>
 </tr>
 </tbody></table>
 <h2 id='archive-a-project'>Archive a project</h2>
@@ -1449,7 +1449,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the project (a unique number or a temporary string id).</td>
+<td>The id of the project (a number or a temp id).</td>
 </tr>
 </tbody></table>
 <h2 id='unarchive-a-project'>Unarchive a project</h2>
@@ -1480,7 +1480,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the project (a unique number or a temporary string id).</td>
+<td>The id of the project (a number or a temp id).</td>
 </tr>
 </tbody></table>
 <h2 id='update-multiple-ordersindents'>Update multiple orders/indents</h2>
@@ -1524,55 +1524,55 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <p>A item in Todoist is a JSON object. The dates will be in UTC timezone. Typically a item object will look like:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="o">{</span>
-  <span class="s2">"due_date"</span>: null,
-  <span class="s2">"day_order"</span>: -1,
-  <span class="s2">"assigned_by_uid"</span>: 1855589,
-  <span class="s2">"is_archived"</span>: 0,
-  <span class="s2">"labels"</span>: <span class="o">[]</span>,
-  <span class="s2">"sync_id"</span>: null,
-  <span class="s2">"in_history"</span>: 0,
-  <span class="s2">"has_notifications"</span>: 0,
-  <span class="s2">"indent"</span>: 1,
-  <span class="s2">"checked"</span>: 0,
-  <span class="s2">"date_added"</span>: <span class="s2">"Fri 26 Sep 2014 08:25:05 +0000"</span>,
   <span class="s2">"id"</span>: 33511505,
-  <span class="s2">"content"</span>: <span class="s2">"Task1"</span>,
   <span class="s2">"user_id"</span>: 1855589,
+  <span class="s2">"project_id"</span>: 128501470,
+  <span class="s2">"content"</span>: <span class="s2">"Task1"</span>,
+  <span class="s2">"date_string"</span>: <span class="s2">""</span>
+  <span class="s2">"date_lang"</span>: <span class="s2">"en"</span>,
   <span class="s2">"due_date_utc"</span>: null,
-  <span class="s2">"children"</span>: null,
+  <span class="s2">"due_date"</span>: null,
+  <span class="s2">"indent"</span>: 1,
   <span class="s2">"priority"</span>: 1,
   <span class="s2">"item_order"</span>: 1,
-  <span class="s2">"is_deleted"</span>: 0,
-  <span class="s2">"responsible_uid"</span>: null,
-  <span class="s2">"project_id"</span>: 128501470,
+  <span class="s2">"day_order"</span>: -1,
   <span class="s2">"collapsed"</span>: 0,
-  <span class="s2">"date_string"</span>: <span class="s2">""</span>
+  <span class="s2">"children"</span>: null,
+  <span class="s2">"labels"</span>: <span class="o">[]</span>,
+  <span class="s2">"assigned_by_uid"</span>: 1855589,
+  <span class="s2">"responsible_uid"</span>: null,
+  <span class="s2">"checked"</span>: 0,
+  <span class="s2">"in_history"</span>: 0,
+  <span class="s2">"is_deleted"</span>: 0,
+  <span class="s2">"is_archived"</span>: 0,
+  <span class="s2">"sync_id"</span>: null,
+  <span class="s2">"date_added"</span>: <span class="s2">"Fri 26 Sep 2014 08:25:05 +0000"</span>,
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="p">{</span>
-  <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'labels'</span><span class="p">:</span> <span class="p">[],</span>
-  <span class="s">'sync_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'in_history'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'checked'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'children'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'priority'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
   <span class="s">'id'</span><span class="p">:</span> <span class="mi">33511505</span><span class="p">,</span>
-  <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span><span class="p">,</span>
-  <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
   <span class="s">'project_id'</span><span class="p">:</span> <span class="mi">128501470</span><span class="p">,</span>
+  <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span><span class="p">,</span>
   <span class="s">'date_string'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
-  <span class="s">'due_date'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'day_order'</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-  <span class="s">'assigned_by_uid'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
-  <span class="s">'collapsed'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'has_notifications'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'date_added'</span><span class="p">:</span> <span class="s">'Fri 26 Sep 2014 08:25:05 +0000'</span><span class="p">,</span>
-  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'date_lang'</span><span class="p">:</span> <span class="s">'en'</span><span class="p">,</span>
   <span class="s">'due_date_utc'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'due_date'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'priority'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'day_order'</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+  <span class="s">'collapsed'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'children'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'labels'</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">'assigned_by_uid'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
   <span class="s">'responsible_uid'</span><span class="p">:</span> <span class="bp">None</span>
+  <span class="s">'checked'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'in_history'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'sync_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'date_added'</span><span class="p">:</span> <span class="s">'Fri 26 Sep 2014 08:25:05 +0000'</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre>
 <h3 id='properties'>Properties</h3>
@@ -1584,19 +1584,19 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>Unique task id.</td>
+<td>The id of the task (a unique number).</td>
 </tr>
 <tr>
 <td>user_id</td>
-<td>The owner of the task.</td>
-</tr>
-<tr>
-<td>content</td>
-<td>The text of the task.</td>
+<td>The owner of the task (a unique number).</td>
 </tr>
 <tr>
 <td>project_id</td>
-<td>The id of the project to add the task to.</td>
+<td>The id of the project to add the task to (a unique number).</td>
+</tr>
+<tr>
+<td>content</td>
+<td>The text of the task (a string value).</td>
 </tr>
 <tr>
 <td>date_string</td>
@@ -1604,23 +1604,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string.</td>
+<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc</td>
-<td>Should be formatted as <code class="prettyprint">YYYY-MM-DDTHH:MM</code>, example: <code class="prettyprint">2012-3-24T23:59</code>. Value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
-</tr>
-<tr>
-<td>in_history</td>
-<td>If set to <code class="prettyprint">1</code>, the task is marked completed.</td>
-</tr>
-<tr>
-<td>collapsed</td>
-<td>If set to <code class="prettyprint">1</code> the task&rsquo;s sub tasks are collapsed. Otherwise they aren&rsquo;t.</td>
-</tr>
-<tr>
-<td>indent</td>
-<td>The indent of the item (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
 </tr>
 <tr>
 <td>priority</td>
@@ -1628,15 +1616,23 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>indent</td>
-<td>The indent of the item (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
+<td>The indent of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
 <td>item_order</td>
-<td>The order of the task.</td>
+<td>The order of the task inside a project (a number, where the smallest value would place the task at the top).</td>
+</tr>
+<tr>
+<td>day_order</td>
+<td>The order of the task inside the <code class="prettyprint">Today</code> or <code class="prettyprint">Next 7 days</code> view (a number, where the smallest value would place the task at the top).</td>
+</tr>
+<tr>
+<td>collapsed</td>
+<td>Whether the task&rsquo;s sub-tasks are collapsed (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
 <td>children</td>
-<td>The tasks child tasks (a list of task ids such as <code class="prettyprint">[13134,232345]</code>).</td>
+<td>The task&rsquo;s child tasks (a list of task ids such as <code class="prettyprint">[13134,232345]</code>).</td>
 </tr>
 <tr>
 <td>labels</td>
@@ -1644,11 +1640,35 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>assigned_by_uid</td>
-<td>The id of user who assigns current task. Makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by your uid.</td>
+<td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
 </tr>
 <tr>
 <td>responsible_uid</td>
-<td>The id of user who is responsible for accomplishing the current task. Makes sense for shared projects only. Accepts 0 or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by null.</td>
+<td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to <code class="prettyprint">null</code>.</td>
+</tr>
+<tr>
+<td>checked</td>
+<td>Whether the task is marked as completed (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
+</tr>
+<tr>
+<td>in_history</td>
+<td>Whether the task has been marked as completed and moved to history (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false)</td>
+</tr>
+<tr>
+<td>is_deleted</td>
+<td>Whether the task is marked as deleted (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
+</tr>
+<tr>
+<td>is_archived</td>
+<td>Whether the task is marked as archived (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
+</tr>
+<tr>
+<td>sync_id</td>
+<td>A special id for shared tasks (a number or <code class="prettyprint">null</code> if not set).</td>
+</tr>
+<tr>
+<td>task_added</td>
+<td>The date when the task was created.</td>
 </tr>
 </tbody></table>
 <h2 id='add-an-item'>Add an item</h2>
@@ -1678,12 +1698,12 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>content</td>
-<td>The text of the task.</td>
+<td>project_id</td>
+<td>The id of the project to add the task to (a number or a temp id).</td>
 </tr>
 <tr>
-<td>project_id</td>
-<td>The id of the project to add the task to.</td>
+<td>content</td>
+<td>The text of the task (a string value).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -1694,48 +1714,56 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>priority</td>
-<td>The priority of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, <code class="prettyprint">4</code> for very urgent and <code class="prettyprint">1</code> for natural).</td>
-</tr>
-<tr>
-<td>indent</td>
-<td>The indent of the item (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
-</tr>
-<tr>
 <td>date_string</td>
 <td>The date of the task, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code>. Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string.</td>
+<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc</td>
-<td>Should be formatted as <code class="prettyprint">YYYY-MM-DDTHH:MM</code>, example: <code class="prettyprint">2012-3-24T23:59</code>. Value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>The priority of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, <code class="prettyprint">4</code> for very urgent and <code class="prettyprint">1</code> for natural).</td>
+</tr>
+<tr>
+<td>indent</td>
+<td>The indent of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
 <td>item_order</td>
-<td>The order of the task.</td>
+<td>The order of the task inside a project (a number, where the smallest value would place the task at the top).</td>
+</tr>
+<tr>
+<td>day_order</td>
+<td>The order of the task inside the <code class="prettyprint">Today</code> or <code class="prettyprint">Next 7 days</code> view (a number, where the smallest value would place the task at the top).</td>
+</tr>
+<tr>
+<td>collapsed</td>
+<td>Whether the task&rsquo;s sub-tasks are collapsed (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
 <td>children</td>
-<td>The tasks child tasks (a list of task ids such as <code class="prettyprint">[13134,232345]</code>)</td>
+<td>The task&rsquo;s child tasks (a list of task ids such as <code class="prettyprint">[13134,232345]</code>).</td>
 </tr>
 <tr>
 <td>labels</td>
-<td>The tasks labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>)</td>
+<td>The tasks labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>).</td>
 </tr>
 <tr>
 <td>assigned_by_uid</td>
-<td>The id of user who assigns current task. Makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by your uid.</td>
+<td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
 </tr>
 <tr>
 <td>responsible_uid</td>
-<td>The id of user who is responsible for accomplishing the current task. Makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by null.</td>
+<td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to <code class="prettyprint">null</code>.</td>
 </tr>
 <tr>
 <td>note</td>
-<td>Add a note directly to the task, note is a string of the content.</td>
+<td>Add a note directly to the task (a string value that will become the content of the note).</td>
 </tr>
 </tbody></table>
 <h2 id='update-an-item'>Update an item</h2>
@@ -1766,7 +1794,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the item to update.</td>
+<td>The id of the task (a number).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -1778,7 +1806,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>content</td>
-<td>The text of the task.</td>
+<td>The text of the task (a string value).</td>
 </tr>
 <tr>
 <td>date_string</td>
@@ -1786,7 +1814,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string.</td>
+<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
+</tr>
+<tr>
+<td>due_date_utc</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
 </tr>
 <tr>
 <td>priority</td>
@@ -1794,31 +1826,39 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>indent</td>
-<td>The indent of the item (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
+<td>The indent of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
 <td>item_order</td>
-<td>The order of the task.</td>
+<td>The order of the task inside a project (a number, where the smallest value would place the task at the top).</td>
+</tr>
+<tr>
+<td>day_order</td>
+<td>The order of the task inside the <code class="prettyprint">Today</code> or <code class="prettyprint">Next 7 days</code> view (a number, where the smallest value would place the task at the top).</td>
 </tr>
 <tr>
 <td>collapsed</td>
-<td><code class="prettyprint">1</code> if the item should be collapsed, <code class="prettyprint">0</code> if it should not be collapsed.</td>
+<td>Whether the task&rsquo;s sub-tasks are collapsed (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
 <td>children</td>
-<td>The tasks child tasks (a list of task ids such as <code class="prettyprint">[13134,232345]</code>)</td>
+<td>The task&rsquo;s child tasks (a list of task ids such as <code class="prettyprint">[13134,232345]</code>).</td>
 </tr>
 <tr>
 <td>labels</td>
-<td>The tasks labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>)</td>
+<td>The tasks labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>).</td>
 </tr>
 <tr>
-<td>assigned_by_uid</td>
-<td>The id of user who assigns current task. Makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by your uid.</td>
+<td>aassigned_by_uid</td>
+<td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
 </tr>
 <tr>
 <td>responsible_uid</td>
-<td>The id of user who is responsible for accomplishing the current task. Makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by null.</td>
+<td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to <code class="prettyprint">null</code>.</td>
+</tr>
+<tr>
+<td>note</td>
+<td>Add a note directly to the task (a string value that will become the content of the note).</td>
 </tr>
 </tbody></table>
 <h2 id='delete-items'>Delete items</h2>
@@ -1849,7 +1889,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>ids</td>
-<td>List of the ids of the items to delete.</td>
+<td>List of the ids of the tasks to delete (numbers or temp ids).</td>
 </tr>
 </tbody></table>
 <h2 id='move-an-item'>Move an item</h2>
@@ -1881,11 +1921,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>project_items</td>
-<td>A JSON mapping telling Todoist where the items are currently found. From project ids to item ids, could be like this <code class="prettyprint">{&quot;1523&quot;:[&quot;9637423&quot;]}</code>, where <code class="prettyprint">1523</code> is project id and <code class="prettyprint">9637423</code> is item id.</td>
+<td>A JSON mapping telling Todoist where the items are currently found. From project ids to item ids, could be like this <code class="prettyprint">{&quot;1523&quot;:[&quot;9637423&quot;]}</code>, where <code class="prettyprint">1523</code> is project id and <code class="prettyprint">9637423</code> is the item id.</td>
 </tr>
 <tr>
 <td>to_project</td>
-<td>A project_id that the items should be moved to. Could be <code class="prettyprint">1245</code>.</td>
+<td>A project id that the tasks should be moved, for example <code class="prettyprint">1245</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='complete-items'>Complete items</h2>
@@ -1916,11 +1956,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>project_id</td>
-<td>The id of the project which the items are part of.</td>
+<td>The id of the project which the items are part of (a number or a temp id).</td>
 </tr>
 <tr>
 <td>ids</td>
-<td>A JSON list of ids to complete.</td>
+<td>A JSON list of ids to complete (numbers or temp ids).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -1932,7 +1972,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>force_history</td>
-<td>If these tasks should be moved to history, default is <code class="prettyprint">1</code>. Setting it to <code class="prettyprint">0</code> will not move it to history. Useful when checking off sub tasks.</td>
+<td>Whether these tasks should be moved to history (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false, and the default is <code class="prettyprint">1</code>) This is useful when checking off sub tasks.</td>
 </tr>
 </tbody></table>
 <h2 id='uncomplete-items'>Uncomplete items</h2>
@@ -1963,11 +2003,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>project_id</td>
-<td>The id of the project to which the items will be moved to.</td>
+<td>The id of the project to which the items will be moved to (a number or a temp id).</td>
 </tr>
 <tr>
 <td>ids</td>
-<td>A JSON list of ids to uncomplete.</td>
+<td>A JSON list of ids to uncomplete (numbers or temp ids).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -1979,11 +2019,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>update_item_orders</td>
-<td>If this is set to <code class="prettyprint">0</code> the item orders should not be updated, while by default this is set <code class="prettyprint">1</code> and they are updated.</td>
+<td>Whether the item orders should be updated (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false, and the default is <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
 <td>restore_state</td>
-<td>A dictionary, where item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent: <code class="prettyprint">item_id: [in_history, checked, item_order, indent]</code></td>
+<td>A dictionary, where the item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent: <code class="prettyprint">item_id: [in_history, checked, item_order, indent]</code></td>
 </tr>
 </tbody></table>
 <h2 id='complete-a-recurring-task'>Complete a recurring task</h2>
@@ -2013,7 +2053,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the item to update.</td>
+<td>The id of the item to update (a number or a temp id).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -2025,7 +2065,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>new_date_utc</td>
-<td>Should be formatted as <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (in UTC).</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
 </tr>
 <tr>
 <td>date_string</td>
@@ -2033,7 +2073,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>is_forward</td>
-<td>Indicates if it&rsquo;s a complete <code class="prettyprint">1</code> or uncomplete <code class="prettyprint">0</code>.</td>
+<td>Whether the task is to be completed (value <code class="prettyprint">1</code>) or uncompleted (value <code class="prettyprint">0</code>), while the default is <code class="prettyprint">1</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='update-multiple-ordersindents'>Update multiple orders/indents</h2>
@@ -4355,7 +4395,6 @@ success, a 4xx code an error due to incorrect user provided information, and a
   <span class="s2">"labels"</span>: <span class="o">[]</span>,
   <span class="s2">"sync_id"</span>: null,
   <span class="s2">"in_history"</span>: 0,
-  <span class="s2">"has_notifications"</span>: 0,
   <span class="s2">"date_added"</span>: <span class="s2">"Wed 18 Feb 2015 11:09:11 +0000"</span>,
   <span class="s2">"indent"</span>: 1,
   <span class="s2">"children"</span>: null,
@@ -4392,7 +4431,6 @@ success, a 4xx code an error due to incorrect user provided information, and a
   <span class="s">'due_date'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
   <span class="s">'assigned_by_uid'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
   <span class="s">'collapsed'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'has_notifications'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
   <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s">'due_date_utc'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>

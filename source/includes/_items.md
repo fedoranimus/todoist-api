@@ -4,57 +4,57 @@
 
 ```shell
 {
-  "due_date": null,
-  "day_order": -1,
-  "assigned_by_uid": 1855589,
-  "is_archived": 0,
-  "labels": [],
-  "sync_id": null,
-  "in_history": 0,
-  "has_notifications": 0,
-  "indent": 1,
-  "checked": 0,
-  "date_added": "Fri 26 Sep 2014 08:25:05 +0000",
   "id": 33511505,
-  "content": "Task1",
   "user_id": 1855589,
+  "project_id": 128501470,
+  "content": "Task1",
+  "date_string": ""
+  "date_lang": "en",
   "due_date_utc": null,
-  "children": null,
+  "due_date": null,
+  "indent": 1,
   "priority": 1,
   "item_order": 1,
-  "is_deleted": 0,
-  "responsible_uid": null,
-  "project_id": 128501470,
+  "day_order": -1,
   "collapsed": 0,
-  "date_string": ""
+  "children": null,
+  "labels": [],
+  "assigned_by_uid": 1855589,
+  "responsible_uid": null,
+  "checked": 0,
+  "in_history": 0,
+  "is_deleted": 0,
+  "is_archived": 0,
+  "sync_id": null,
+  "date_added": "Fri 26 Sep 2014 08:25:05 +0000",
 }
 ```
 
 ```python
 {
-  'is_archived': 0,
-  'labels': [],
-  'sync_id': None,
-  'in_history': 0,
-  'indent': 1,
-  'checked': 0,
-  'children': None,
-  'priority': 1,
-  'user_id': 1855589,
   'id': 33511505,
-  'content': 'Task1',
-  'item_order': 1,
+  'user_id': 1855589,
   'project_id': 128501470,
+  'content': 'Task1',
   'date_string': '',
-  'due_date': None,
-  'day_order': -1,
-  'assigned_by_uid': 1855589,
-  'collapsed': 0,
-  'has_notifications': 0,
-  'date_added': 'Fri 26 Sep 2014 08:25:05 +0000',
-  'is_deleted': 0,
+  'date_lang': 'en',
   'due_date_utc': None,
+  'due_date': None,
+  'priority': 1,
+  'indent': 1,
+  'item_order': 1,
+  'day_order': -1,
+  'collapsed': 0,
+  'children': None,
+  'labels': [],
+  'assigned_by_uid': 1855589,
   'responsible_uid': None
+  'checked': 0,
+  'in_history': 0,
+  'is_deleted': 0,
+  'is_archived': 0,
+  'sync_id': None,
+  'date_added': 'Fri 26 Sep 2014 08:25:05 +0000',
 }
 ```
 
@@ -62,23 +62,29 @@
 
 Property | Description
 -------- | -----------
-id | Unique task id.
-user_id | The owner of the task.
-content | The text of the task.
-project_id | The id of the project to add the task to.
+id | The id of the task (a unique number).
+user_id | The owner of the task (a unique number).
+project_id | The id of the project to add the task to (a unique number).
+content | The text of the task (a string value).
 date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-date_lang | The language of the date_string.
-due_date_utc | Should be formatted as `YYYY-MM-DDTHH:MM`, example: `2012-3-24T23:59`. Value of `due_date_utc` must be in UTC. If you want to pass in due dates, note that `date_string` is required, while `due_date_utc` can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
-in_history | If set to `1`, the task is marked completed.
-collapsed | If set to `1` the task's sub tasks are collapsed. Otherwise they aren't.
-indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
+date_lang | The language of the date_string (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
+due_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. If you want to pass in due dates, note that `date_string` is required, while `due_date_utc` can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
 priority | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
-indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
-item_order | The order of the task.
-children | The tasks child tasks (a list of task ids such as `[13134,232345]`).
+indent | The indent of the task (a number between `1` and `4`, where `1` is top-level).
+item_order | The order of the task inside a project (a number, where the smallest value would place the task at the top).
+day_order | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
+collapsed | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
+children | The task's child tasks (a list of task ids such as `[13134,232345]`).
 labels | The tasks labels (a list of label ids such as `[2324,2525]`).
-assigned_by_uid | The id of user who assigns current task. Makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by your uid.
-responsible_uid | The id of user who is responsible for accomplishing the current task. Makes sense for shared projects only. Accepts 0 or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by null.
+assigned_by_uid | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
+responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
+checked | Whether the task is marked as completed (where `1` is true and `0` is false).
+in_history | Whether the task has been marked as completed and moved to history (where `1` is true and `0` is false)
+is_deleted | Whether the task is marked as deleted (where `1` is true and `0` is false).
+is_archived | Whether the task is marked as archived (where `1` is true and `0` is false).
+sync_id | A special id for shared tasks (a number or `null` if not set).
+task_added | The date when the task was created.
+
 
 ## Add an item
 
@@ -107,24 +113,26 @@ Add a new task to a project.
 
 Argument | Description
 -------- | -----------
-content | The text of the task.
-project_id | The id of the project to add the task to.
+project_id | The id of the project to add the task to (a number or a temp id).
+content | The text of the task (a string value).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-priority | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
-indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
 date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-date_lang | The language of the date_string.
-due_date_utc | Should be formatted as `YYYY-MM-DDTHH:MM`, example: `2012-3-24T23:59`. Value of `due_date_utc` must be in UTC. If you want to pass in due dates, note that `date_string` is required, while `due_date_utc` can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
-item_order | The order of the task.
-children | The tasks child tasks (a list of task ids such as `[13134,232345]`)
-labels | The tasks labels (a list of label ids such as `[2324,2525]`)
-assigned_by_uid | The id of user who assigns current task. Makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by your uid.
-responsible_uid | The id of user who is responsible for accomplishing the current task. Makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by null.
-note | Add a note directly to the task, note is a string of the content.
+date_lang | The language of the date_string (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
+due_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. If you want to pass in due dates, note that `date_string` is required, while `due_date_utc` can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
+priority | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
+indent | The indent of the task (a number between `1` and `4`, where `1` is top-level).
+item_order | The order of the task inside a project (a number, where the smallest value would place the task at the top).
+day_order | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
+collapsed | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
+children | The task's child tasks (a list of task ids such as `[13134,232345]`).
+labels | The tasks labels (a list of label ids such as `[2324,2525]`).
+assigned_by_uid | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
+responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
+note | Add a note directly to the task (a string value that will become the content of the note).
 
 ## Update an item
 
@@ -152,23 +160,26 @@ Update an existing task.
 ### Required arguments
 Argument | Description
 -------- | -----------
-id | The id of the item to update.
+id | The id of the task (a number).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-content | The text of the task.
+content | The text of the task (a string value).
 date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-date_lang | The language of the date_string.
+date_lang | The language of the date_string (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
+due_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. If you want to pass in due dates, note that `date_string` is required, while `due_date_utc` can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
 priority | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
-indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
-item_order | The order of the task.
-collapsed | `1` if the item should be collapsed, `0` if it should not be collapsed.
-children | The tasks child tasks (a list of task ids such as `[13134,232345]`)
-labels | The tasks labels (a list of label ids such as `[2324,2525]`)
-assigned_by_uid | The id of user who assigns current task. Makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by your uid.
-responsible_uid | The id of user who is responsible for accomplishing the current task. Makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by null.
+indent | The indent of the task (a number between `1` and `4`, where `1` is top-level).
+item_order | The order of the task inside a project (a number, where the smallest value would place the task at the top).
+day_order | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
+collapsed | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
+children | The task's child tasks (a list of task ids such as `[13134,232345]`).
+labels | The tasks labels (a list of label ids such as `[2324,2525]`).
+aassigned_by_uid | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
+responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
+note | Add a note directly to the task (a string value that will become the content of the note).
 
 ## Delete items
 
@@ -197,7 +208,7 @@ Delete an existing task.
 
 Argument | Description
 -------- | -----------
-ids | List of the ids of the items to delete.
+ids | List of the ids of the tasks to delete (numbers or temp ids).
 
 ## Move an item
 
@@ -226,8 +237,8 @@ Move a task from one project to another project.
 ### Required arguments
 Argument | Description
 -------- | -----------
-project_items | A JSON mapping telling Todoist where the items are currently found. From project ids to item ids, could be like this `{"1523":["9637423"]}`, where `1523` is project id and `9637423` is item id.
-to_project | A project_id that the items should be moved to. Could be `1245`.
+project_items | A JSON mapping telling Todoist where the items are currently found. From project ids to item ids, could be like this `{"1523":["9637423"]}`, where `1523` is project id and `9637423` is the item id.
+to_project | A project id that the tasks should be moved, for example `1245`.
 
 ## Complete items
 
@@ -256,14 +267,14 @@ Complete tasks and move them to history.
 
 Argument | Description
 -------- | -----------
-project_id | The id of the project which the items are part of.
-ids | A JSON list of ids to complete.
+project_id | The id of the project which the items are part of (a number or a temp id).
+ids | A JSON list of ids to complete (numbers or temp ids).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-force_history | If these tasks should be moved to history, default is `1`. Setting it to `0` will not move it to history. Useful when checking off sub tasks.
+force_history | Whether these tasks should be moved to history (where `1` is true and `0` is false, and the default is `1`) This is useful when checking off sub tasks.
 
 ## Uncomplete items
 
@@ -292,15 +303,15 @@ Uncomplete tasks and move them to the active projects.
 
 Argument | Description
 -------- | -----------
-project_id | The id of the project to which the items will be moved to.
-ids | A JSON list of ids to uncomplete.
+project_id | The id of the project to which the items will be moved to (a number or a temp id).
+ids | A JSON list of ids to uncomplete (numbers or temp ids).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-update_item_orders | If this is set to `0` the item orders should not be updated, while by default this is set `1` and they are updated.
-restore_state | A dictionary, where item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent: `item_id: [in_history, checked, item_order, indent]`
+update_item_orders | Whether the item orders should be updated (where `1` is true and `0` is false, and the default is `1`).
+restore_state | A dictionary, where the item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent: `item_id: [in_history, checked, item_order, indent]`
 
 
 ## Complete a recurring task
@@ -329,15 +340,15 @@ Complete a recurring task, and the reason why this is a special case is because 
 
 Argument | Description
 -------- | -----------
-id | The id of the item to update.
+id | The id of the item to update (a number or a temp id).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-new_date_utc | Should be formatted as `YYYY-MM-DDTHH:MM` (in UTC).
+new_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. If you want to pass in due dates, note that `date_string` is required, while `due_date_utc` can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
 date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-is_forward | Indicates if it's a complete `1` or uncomplete `0`.
+is_forward | Whether the task is to be completed (value `1`) or uncompleted (value `0`), while the default is `1`.
 
 ## Update multiple orders/indents
 
