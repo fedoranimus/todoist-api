@@ -28,14 +28,14 @@ Share a project.
 
 Argument | Description
 -------- | -----------
-project_id | The project to be shared.
-email | The user email with whom to share the project.
+project_id | The project to be shared (a unique number or temp id).
+email | The user email with whom to share the project (a string value representing a valid email address).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-message | A message to be sent to the user.
+message | A message to be sent to the user (a string value).
 
 ## Delete a collaborator
 
@@ -63,8 +63,8 @@ Delete a person from a shared project.
 
 Argument | Description
 -------- | -----------
-project_id | The project to be shared.
-email | The user email with whom the project was shared with.
+project_id | The project to be shared (a number or temp id).
+email | The user email with whom the project was shared with (a string value representing a valid email address).
 
 ## Accept an invitation
 
@@ -92,8 +92,8 @@ Accept an invitation.
 
 Argument | Description
 -------- | -----------
-invitation_id | The invitation id.
-invitation_secret | The secret fetched from the live notification.
+invitation_id | The invitation id (a number).
+invitation_secret | The secret fetched from the live notification (a string value).
 
 ## Reject an invitation
 
@@ -121,8 +121,8 @@ Reject an invitation.
 
 Argument | Description
 -------- | -----------
-invitation_id | The invitation id.
-invitation_secret | The secret fetched from the live notification.
+invitation_id | The invitation id (a number).
+invitation_secret | The secret fetched from the live notification (a string value).
 
 ## Delete an invitation
 
@@ -150,7 +150,7 @@ Delete an invitation.
 
 Argument | Description
 -------- | -----------
-invitation_id | The invitation to be deleted.
+invitation_id | The invitation to be deleted (a number).
 
 ## Take ownership
 
@@ -178,7 +178,7 @@ Take ownership of a shared project.
 
 Argument | Description
 -------- | -----------
-project_id | The shared project of which to take the ownership.
+project_id | The shared project of which to take the ownership (a number or temp id).
 
 ## Accept a business invitation
 
@@ -206,8 +206,8 @@ Accept an invitation from Todoist for Business.
 
 Argument | Description
 -------- | -----------
-invitation_id | The invitation id.
-invitation_secret | The secret fetched from the live notification.
+invitation_id | The invitation id (a number).
+invitation_secret | The secret fetched from the live notification (a string value).
 
 ## Reject a business invitation
 
@@ -232,5 +232,5 @@ Reject an invitation from Todoist for Business.
 
 Argument | Description
 -------- | -----------
-invitation_id | The invitation id.
-invitation_secret | The secret fetched from the live notification.
+invitation_id | The invitation id (a number).
+invitation_secret | The secret fetched from the live notification (a string value).

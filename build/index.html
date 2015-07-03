@@ -4062,7 +4062,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>token</td>
-<td>The user&rsquo;s token (received on login).</td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
 </tr>
 <tr>
 <td>queries</td>
@@ -4078,7 +4078,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>as_count</td>
-<td>If set to <code class="prettyprint">1</code> then no data will be returned, instead the count of tasks matching will be returned.</td>
+<td>Whether only the count of tasks matching the query should be returned (if set to <code class="prettyprint">1</code>), or the actual data themselves (if set to <code class="prettyprint">0</code>).</td>
 </tr>
 </tbody></table>
 
@@ -4106,7 +4106,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>token</td>
-<td>The user&rsquo;s token (received on login).</td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-parameters'>Optional parameters</h3>
@@ -4118,11 +4118,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>path</td>
-<td>The path to redirect user&rsquo;s browser (default is &ldquo;/app&rdquo;).</td>
+<td>The path to redirect user&rsquo;s browser (a string value, where the default is <code class="prettyprint">/app</code>).</td>
 </tr>
 <tr>
 <td>hash</td>
-<td>The hash part of the path to redirect user&rsquo;s browser.</td>
+<td>The hash part of the path to redirect user&rsquo;s browser (a string value).</td>
 </tr>
 </tbody></table>
 <h2 id='get-productivity-stats'>Get productivity stats</h2>
@@ -4256,7 +4256,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>token</td>
-<td>The user&rsquo;s token (received on login).</td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
 </tr>
 </tbody></table>
 <h2 id='update-notification-settings'>Update notification settings</h2>
@@ -4400,19 +4400,19 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>token</td>
-<td>The user&rsquo;s token (received on login).</td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
 </tr>
 <tr>
 <td>notification_type</td>
-<td>The notification type.</td>
+<td>The notification type (a string value).  For a list of notifications have a look at the <code class="prettyprint">Live Notifications</code> section.</td>
 </tr>
 <tr>
 <td>service</td>
-<td>The service type, which can be <code class="prettyprint">email</code> or <code class="prettyprint">push</code>.</td>
+<td>The service type, which can take the values: <code class="prettyprint">email</code> or <code class="prettyprint">push</code>.</td>
 </tr>
 <tr>
 <td>dont_notify</td>
-<td>Should we notify on this service? Can be <code class="prettyprint">1</code> or <code class="prettyprint">0</code>.</td>
+<td>Whether notifications of this service should be notified (<code class="prettyprint">1</code> to not notify, and <code class="prettyprint">0</code> to nofify).</td>
 </tr>
 </tbody></table>
 <h2 id='get-all-completed-items'>Get all completed items</h2>
@@ -4491,7 +4491,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>token</td>
-<td>The user&rsquo;s token (received on login).</td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-parameters'>Optional parameters</h3>
@@ -4503,23 +4503,23 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>project_id</td>
-<td>Filter the tasks by <code class="prettyprint">project_id</code>.</td>
+<td>Filter the tasks by project id (a unique number).</td>
 </tr>
 <tr>
 <td>limit</td>
-<td>The number of items to return (default is <code class="prettyprint">30</code>, while maximum is <code class="prettyprint">50</code>).</td>
+<td>The number of items to return (a number, where the default is <code class="prettyprint">30</code>, and the maximum is <code class="prettyprint">50</code>).</td>
 </tr>
 <tr>
 <td>offset</td>
-<td>Can be used for pagination, when more than the <code class="prettyprint">limit</code> tasks are returned.</td>
+<td>Can be used for pagination, when more than the <code class="prettyprint">limit</code> number of tasks are returned (a number).</td>
 </tr>
 <tr>
 <td>from_date</td>
-<td>Return items with a completed date same or older than <code class="prettyprint">from_date</code> (formated as <code class="prettyprint">2007-4-29T10:13</code>).</td>
+<td>Return items with a completed date same or older than <code class="prettyprint">from_date</code> (a string value formatted as <code class="prettyprint">2007-4-29T10:13</code>).</td>
 </tr>
 <tr>
 <td>to_date</td>
-<td>Return items with a completed date newer than <code class="prettyprint">to_date</code> (formated as <code class="prettyprint">2007-4-29T10:13</code>).</td>
+<td>Return items with a completed date newer than <code class="prettyprint">to_date</code> (a string value formatted as <code class="prettyprint">2007-4-29T10:13</code>).</td>
 </tr>
 </tbody></table>
 <h2 id='add-item'>Add item</h2>
@@ -4587,11 +4587,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>token</td>
-<td>The user&rsquo;s token (received on login).</td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
 </tr>
 <tr>
 <td>content</td>
-<td>The text of the task.</td>
+<td>The text of the task (a string value).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-parameters'>Optional parameters</h3>
@@ -4603,7 +4603,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>project_id</td>
-<td>The id of the project to add the task to (defaults to <code class="prettyprint">Inbox</code> project).</td>
+<td>The id of the project to add the task to (a unique number), while the default is the user&rsquo;s <code class="prettyprint">Inbox</code> project.</td>
 </tr>
 <tr>
 <td>date_string</td>
@@ -4615,31 +4615,27 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>indent</td>
-<td>The indent of the item (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
+<td>The indent of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
 <td>item_order</td>
-<td>The order of the task.</td>
-</tr>
-<tr>
-<td>children</td>
-<td>The tasks child tasks (a list of task ids such as <code class="prettyprint">[13134,232345]</code>)</td>
+<td>The order of the task inside a project (a number, where the smallest value would place the task at the top).</td>
 </tr>
 <tr>
 <td>labels</td>
-<td>The tasks labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>)</td>
+<td>The tasks labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>).</td>
 </tr>
 <tr>
 <td>assigned_by_uid</td>
-<td>The id of user who assigns current task. Makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by your uid.</td>
+<td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
 </tr>
 <tr>
 <td>responsible_uid</td>
-<td>The id of user who is responsible for accomplishing the current task. Makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by null.</td>
+<td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to <code class="prettyprint">null</code>.</td>
 </tr>
 <tr>
 <td>note</td>
-<td>Add a note directly to the task, note is a string of the content.</td>
+<td>Add a note directly to the task (a string value that will become the content of the note).</td>
 </tr>
 </tbody></table>
 
@@ -4672,11 +4668,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>project_id</td>
-<td>The project to be shared.</td>
+<td>The project to be shared (a unique number or temp id).</td>
 </tr>
 <tr>
 <td>email</td>
-<td>The user email with whom to share the project.</td>
+<td>The user email with whom to share the project (a string value representing a valid email address).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -4688,7 +4684,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>message</td>
-<td>A message to be sent to the user.</td>
+<td>A message to be sent to the user (a string value).</td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-collaborator'>Delete a collaborator</h2>
@@ -4718,11 +4714,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>project_id</td>
-<td>The project to be shared.</td>
+<td>The project to be shared (a number or temp id).</td>
 </tr>
 <tr>
 <td>email</td>
-<td>The user email with whom the project was shared with.</td>
+<td>The user email with whom the project was shared with (a string value representing a valid email address).</td>
 </tr>
 </tbody></table>
 <h2 id='accept-an-invitation'>Accept an invitation</h2>
@@ -4752,11 +4748,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>invitation_id</td>
-<td>The invitation id.</td>
+<td>The invitation id (a number).</td>
 </tr>
 <tr>
 <td>invitation_secret</td>
-<td>The secret fetched from the live notification.</td>
+<td>The secret fetched from the live notification (a string value).</td>
 </tr>
 </tbody></table>
 <h2 id='reject-an-invitation'>Reject an invitation</h2>
@@ -4786,11 +4782,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>invitation_id</td>
-<td>The invitation id.</td>
+<td>The invitation id (a number).</td>
 </tr>
 <tr>
 <td>invitation_secret</td>
-<td>The secret fetched from the live notification.</td>
+<td>The secret fetched from the live notification (a string value).</td>
 </tr>
 </tbody></table>
 <h2 id='delete-an-invitation'>Delete an invitation</h2>
@@ -4820,7 +4816,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>invitation_id</td>
-<td>The invitation to be deleted.</td>
+<td>The invitation to be deleted (a number).</td>
 </tr>
 </tbody></table>
 <h2 id='take-ownership'>Take ownership</h2>
@@ -4850,7 +4846,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>project_id</td>
-<td>The shared project of which to take the ownership.</td>
+<td>The shared project of which to take the ownership (a number or temp id).</td>
 </tr>
 </tbody></table>
 <h2 id='accept-a-business-invitation'>Accept a business invitation</h2>
@@ -4880,11 +4876,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>invitation_id</td>
-<td>The invitation id.</td>
+<td>The invitation id (a number).</td>
 </tr>
 <tr>
 <td>invitation_secret</td>
-<td>The secret fetched from the live notification.</td>
+<td>The secret fetched from the live notification (a string value).</td>
 </tr>
 </tbody></table>
 <h2 id='reject-a-business-invitation'>Reject a business invitation</h2>
@@ -4911,11 +4907,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>invitation_id</td>
-<td>The invitation id.</td>
+<td>The invitation id (a number).</td>
 </tr>
 <tr>
 <td>invitation_secret</td>
-<td>The secret fetched from the live notification.</td>
+<td>The secret fetched from the live notification (a string value).</td>
 </tr>
 </tbody></table>
 
@@ -5438,7 +5434,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>seq_no</td>
-<td>The sequence number of the last read notification.</td>
+<td>The sequence number of the last read notification (a number).</td>
 </tr>
 </tbody></table>
 

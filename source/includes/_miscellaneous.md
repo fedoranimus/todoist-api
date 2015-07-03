@@ -23,14 +23,14 @@ Get the user's absolute URL to redirect or to open in a browser. For the first t
 
 Parameter | Description
 --------- | -----------
-token | The user's token (received on login).
+token | The user's token received on login (a string hash value).
 
 ### Optional parameters
 
 Parameter | Description
 --------- | -----------
-path | The path to redirect user's browser (default is "/app").
-hash | The hash part of the path to redirect user's browser.
+path | The path to redirect user's browser (a string value, where the default is `/app`).
+hash | The hash part of the path to redirect user's browser (a string value).
 
 ## Get productivity stats
 
@@ -162,7 +162,7 @@ Get the user's productivity stats.
 
 Parameter | Description
 --------- | -----------
-token | The user's token (received on login).
+token | The user's token received on login (a string hash value).
 
 ## Update notification settings
 
@@ -304,10 +304,10 @@ Update the user's notification settings.
 
 Parameter | Description
 --------- | -----------
-token | The user's token (received on login).
-notification_type | The notification type.
-service | The service type, which can be `email` or `push`.
-dont_notify | Should we notify on this service? Can be `1` or `0`.
+token | The user's token received on login (a string hash value).
+notification_type | The notification type (a string value).  For a list of notifications have a look at the `Live Notifications` section.
+service | The service type, which can take the values: `email` or `push`.
+dont_notify | Whether notifications of this service should be notified (`1` to not notify, and `0` to nofify).
 
 ## Get all completed items
 
@@ -384,17 +384,17 @@ Get all the user's completed items (tasks). Only available for Todoist Premium u
 
 Parameter | Description
 --------- | -----------
-token | The user's token (received on login).
+token | The user's token received on login (a string hash value).
 
 ### Optional parameters
 
 Parameter | Description
 --------- | -----------
-project_id | Filter the tasks by `project_id`.
-limit | The number of items to return (default is `30`, while maximum is `50`).
-offset | Can be used for pagination, when more than the `limit` tasks are returned.
-from_date | Return items with a completed date same or older than `from_date` (formated as `2007-4-29T10:13`).
-to_date | Return items with a completed date newer than `to_date` (formated as `2007-4-29T10:13`).
+project_id | Filter the tasks by project id (a unique number).
+limit | The number of items to return (a number, where the default is `30`, and the maximum is `50`).
+offset | Can be used for pagination, when more than the `limit` number of tasks are returned (a number).
+from_date | Return items with a completed date same or older than `from_date` (a string value formatted as `2007-4-29T10:13`).
+to_date | Return items with a completed date newer than `to_date` (a string value formatted as `2007-4-29T10:13`).
 
 ## Add item
 
@@ -460,20 +460,19 @@ Add a new task to a project.  Note, that this is provided as a helper method, a 
 
 Parameter | Description
 --------- | -----------
-token | The user's token (received on login).
-content | The text of the task.
+token | The user's token received on login (a string hash value).
+content | The text of the task (a string value).
 
 ### Optional parameters
 
 Parameter | Description
 --------- | -----------
-project_id | The id of the project to add the task to (defaults to `Inbox` project).
+project_id | The id of the project to add the task to (a unique number), while the default is the user's `Inbox` project.
 date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 priority | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
-indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
-item_order | The order of the task.
-children | The tasks child tasks (a list of task ids such as `[13134,232345]`)
-labels | The tasks labels (a list of label ids such as `[2324,2525]`)
-assigned_by_uid | The id of user who assigns current task. Makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by your uid.
-responsible_uid | The id of user who is responsible for accomplishing the current task. Makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up by null.
-note | Add a note directly to the task, note is a string of the content.
+indent | The indent of the task (a number between `1` and `4`, where `1` is top-level).
+item_order | The order of the task inside a project (a number, where the smallest value would place the task at the top).
+labels | The tasks labels (a list of label ids such as `[2324,2525]`).
+assigned_by_uid | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
+responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
+note | Add a note directly to the task (a string value that will become the content of the note).

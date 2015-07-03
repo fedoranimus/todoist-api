@@ -344,4 +344,4 @@ Mark the last read live notification.
 
 Argument | Description
 -------- | -----------
-seq_no | The sequence number of the last read notification.
+seq_no | The sequence number of the last read notification (a number).

@@ -195,11 +195,11 @@ You can query after date, priority, or labels (only available for Todoist Premiu
 
 Argument | Description
 -------- | -----------
-token | The user's token (received on login).
+token | The user's token received on login (a string hash value).
 queries | A JSON list of queries to search. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page, but note, that not all of these examples are currently applicable for this method.
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-as_count | If set to `1` then no data will be returned, instead the count of tasks matching will be returned.
+as_count | Whether only the count of tasks matching the query should be returned (if set to `1`), or the actual data themselves (if set to `0`).
