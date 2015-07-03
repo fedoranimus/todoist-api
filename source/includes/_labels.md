@@ -4,21 +4,23 @@
 
 ```shell
 {
-  "is_deleted": 0,
-  "uid": 1,
-  "color": 7,
-  "id": 1234,
+  "id": 790748,
+  "uid": 1855589,
   "name": "Label1"
+  "color": 7,
+  "item_order": 0,
+  "is_deleted": 0,
 }
 ```
 
 ```python
 {
-  'color': 7,
-  'is_deleted': 0,
-  'uid': 1,
+  'id': 790748,
+  'uid': 1855589,
   'name': 'Label1',
-  'id': 1234
+  'color': 7,
+  'item_order': 0,
+  'is_deleted': 0,
 }
 ```
 
@@ -26,10 +28,12 @@
 
 Property | Description
 -------- | -----------
-id | The id of the label.
-name| The name of the label.
+id | The id of the label (a unique number).
+uid | The id of the user that owns the label (a unique number).
+name| The name of the label (a string value).
 color | The color of the label (a number between `0` and `7`, or between `0` and `12` for premium users).
-item_order | Label’s order in the label list.
+item_order | Label’s order in the label list (a number, where the smallest value should place the label at the top).
+is_deleted | Whether the label is marked as deleted (where `1` is true and `0` is false).
 
 ## Add a label
 
@@ -41,7 +45,7 @@ $ curl https://todoist.com/API/v6/sync \
     -d commands='[{"type": "label_add", "temp_id": "f2f182ed-89fa-4bbb-8a42-ec6f7aa47fd0", "uuid": "ba204343-03a4-41ff-b964-95a102d12b35", "args": {"name": "Label1"}}]'
 { ...
   "SyncStatus": {"ba204343-03a4-41ff-b964-95a102d12b35": "ok"},
-  "TempIdMapping": {"f2f182ed-89fa-4bbb-8a42-ec6f7aa47fd0": 1234},
+  "TempIdMapping": {"f2f182ed-89fa-4bbb-8a42-ec6f7aa47fd0": 790748},
   ... }
 ```
 
@@ -58,14 +62,14 @@ Add a label.
 
 Argument | Description
 -------- | -----------
-name | The name of the label.
+name| The name of the label (a string value).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
 color | The color of the label (a number between `0` and `7`, or between `0` and `12` for premium users).
-item_order | Label’s order in the label list.
+item_order | Label’s order in the label list (a number, where the smallest value should place the label at the top).
 
 ## Update a label
 
@@ -74,7 +78,7 @@ item_order | Label’s order in the label list.
 ```shell
 $ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d commands='[{"type": "label_update", "uuid": "9c9a6e34-2382-4f43-a217-9ab017a83523", "args": {"id": 1234, "color": 3}}]'
+    -d commands='[{"type": "label_update", "uuid": "9c9a6e34-2382-4f43-a217-9ab017a83523", "args": {"id": 790748, "color": 3}}]'
 { ...
   "SyncStatus": {"9c9a6e34-2382-4f43-a217-9ab017a83523": "ok"},
   ... }
@@ -83,7 +87,7 @@ $ curl https://todoist.com/API/v6/sync \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> label = api.labels.get_by_id(1234)
+>>> label = api.labels.get_by_id(790748)
 >>> label.update(color=3)
 >>> api.commit()
 ```
@@ -94,7 +98,7 @@ Update a label.
 
 Argument | Description
 -------- | -----------
-id | The id of the label.
+id | The id of the label (a number or temp id).
 
 ### Optional arguments
 
@@ -111,7 +115,7 @@ item_order | Label’s order in the label list.
 ```shell
 $ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d commands='[{"type": "label_delete", "uuid": "aabaa5e0-b91b-439c-aa83-d1b35a5e9fb3", "args": {"id": 1234}}]'
+    -d commands='[{"type": "label_delete", "uuid": "aabaa5e0-b91b-439c-aa83-d1b35a5e9fb3", "args": {"id": 790748}}]'
 { ...
   "SyncStatus": {"aabaa5e0-b91b-439c-aa83-d1b35a5e9fb3": "ok"},
   ... }
@@ -120,7 +124,7 @@ $ curl https://todoist.com/API/v6/sync \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> label = api.labels.get_by_id(1234)
+>>> label = api.labels.get_by_id(790748)
 >>> label.delete()
 >>> api.commit()
 ```
@@ -131,7 +135,7 @@ Delete a label.
 
 Argument | Description
 -------- | -----------
-id | The id of the label.
+id | The id of the label (a number or temp id).
 
 ## Update multiple orders
 
@@ -140,12 +144,12 @@ id | The id of the label.
 ```shell
 $ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d commands=[{"type": "label_update_orders", "uuid": "1402a911-5b7a-4beb-bb1f-fb9e1ed798fb", "args": {"id_order_mapping": {"1234":  1, "5678": 2}}}]'
+    -d commands=[{"type": "label_update_orders", "uuid": "1402a911-5b7a-4beb-bb1f-fb9e1ed798fb", "args": {"id_order_mapping": {"790748":  1, "790749": 2}}}]'
 { ...
   "SyncStatus": {
     "517560cc-f165-4ff6-947b-3adda8aef744": {
-      "1234": "ok",
-      "5678": "ok"
+      "790748": "ok",
+      "790749": "ok"
     }
   },
   ... }
@@ -154,7 +158,7 @@ $ curl https://todoist.com/API/v6/sync \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.labels.update_orders({1234: 1, 5678: 2})
+>>> api.labels.update_orders({790748: 1, 790749: 2})
 >>> api.commit()
 ```
 

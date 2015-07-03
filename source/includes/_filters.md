@@ -4,25 +4,25 @@
 
 ```shell
 {
+  "id": 4638878
   "user_id": 1855589,
   "name": "Priority 1",
+  "query": "priority 1",
   "color": 6,
   "item_order": 3,
-  "query": "priority 1",
   "is_deleted": 0,
-  "id": 4638878
 }
 ```
 
 ```python
 {
+  'id': 4638878
   'user_id': 1855589,
   'name': 'Priority 1',
-  'color': 6,
-  'is_deleted': 0,
-  'item_order': 3,
   'query': 'priority 1',
-  'id': 4638878
+  'color': 6,
+  'item_order': 3,
+  'is_deleted': 0,
 }
 ```
 
@@ -32,11 +32,12 @@ Filters are only available for Todoist Premium users.
 
 Property | Description
 -------- | -----------
-id | The id of the filter.
-name | The name of the filter.
-item_order | Filter's order in the filter list.
-color | The color of the filter (a number between `0` and `7`, or between `0` and `12` for premium users).
+id | The id of the filter (a unique number).
+name | The name of the filter (a string value).
 query | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
+color | The color of the filter (a number between `0` and `7`, or between `0` and `12` for premium users).
+item_order | Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).
+is_deleted | Whether the filter is marked as deleted (where `1` is true and `0` is false).
 
 ## Add a filter
 
@@ -66,15 +67,15 @@ Add a filter.
 
 Argument | Description
 -------- | -----------
-name | The name of the filter.
+name | The name of the filter (a string value).
 query | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-item_order | Filter's order in the filter list.
 color | The color of the filter (a number between `0` and `7`, or between `0` and `12` for premium users).
+item_order | Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).
 
 ## Update a filter
 
@@ -103,16 +104,16 @@ Update a filter.
 
 Argument | Description
 -------- | -----------
-id | The id of the filter.
+id | The id of the filter (a number or temp id).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-name | The name of the filter.
+name | The name of the filter (a string value).
 query | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
-item_order | Filter's order in the filter list.
 color | The color of the filter (a number between `0` and `7`, or between `0` and `12` for premium users).
+item_order | Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).
 
 ## Delete a filter
 
@@ -141,7 +142,7 @@ Delete a filter.
 
 Argument | Description
 -------- | -----------
-id | The id of the filter.
+id | The id of the filter (a number or temp id).
 
 ## Update multiple orders
 

@@ -2142,19 +2142,21 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <p>A label in Todoist is a JSON object. Typically a label object will look like:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="o">{</span>
-  <span class="s2">"is_deleted"</span>: 0,
-  <span class="s2">"uid"</span>: 1,
-  <span class="s2">"color"</span>: 7,
-  <span class="s2">"id"</span>: 1234,
+  <span class="s2">"id"</span>: 790748,
+  <span class="s2">"uid"</span>: 1855589,
   <span class="s2">"name"</span>: <span class="s2">"Label1"</span>
+  <span class="s2">"color"</span>: 7,
+  <span class="s2">"item_order"</span>: 0,
+  <span class="s2">"is_deleted"</span>: 0,
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="p">{</span>
-  <span class="s">'color'</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'uid'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'id'</span><span class="p">:</span> <span class="mi">790748</span><span class="p">,</span>
+  <span class="s">'uid'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
   <span class="s">'name'</span><span class="p">:</span> <span class="s">'Label1'</span><span class="p">,</span>
-  <span class="s">'id'</span><span class="p">:</span> <span class="mi">1234</span>
+  <span class="s">'color'</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+  <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre>
 <h3 id='properties'>Properties</h3>
@@ -2166,11 +2168,15 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the label.</td>
+<td>The id of the label (a unique number).</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>The id of the user that owns the label (a unique number).</td>
 </tr>
 <tr>
 <td>name</td>
-<td>The name of the label.</td>
+<td>The name of the label (a string value).</td>
 </tr>
 <tr>
 <td>color</td>
@@ -2178,7 +2184,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>item_order</td>
-<td>Label’s order in the label list.</td>
+<td>Label’s order in the label list (a number, where the smallest value should place the label at the top).</td>
+</tr>
+<tr>
+<td>is_deleted</td>
+<td>Whether the label is marked as deleted (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 </tbody></table>
 <h2 id='add-a-label'>Add a label</h2>
@@ -2190,7 +2200,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "label_add", "temp_id": "f2f182ed-89fa-4bbb-8a42-ec6f7aa47fd0", "uuid": "ba204343-03a4-41ff-b964-95a102d12b35", "args": {"name": "Label1"}}]'</span>
 <span class="o">{</span> ...
   <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"ba204343-03a4-41ff-b964-95a102d12b35"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
-  <span class="s2">"TempIdMapping"</span>: <span class="o">{</span><span class="s2">"f2f182ed-89fa-4bbb-8a42-ec6f7aa47fd0"</span>: 1234<span class="o">}</span>,
+  <span class="s2">"TempIdMapping"</span>: <span class="o">{</span><span class="s2">"f2f182ed-89fa-4bbb-8a42-ec6f7aa47fd0"</span>: 790748<span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -2209,7 +2219,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>The name of the label.</td>
+<td>The name of the label (a string value).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -2225,7 +2235,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>item_order</td>
-<td>Label’s order in the label list.</td>
+<td>Label’s order in the label list (a number, where the smallest value should place the label at the top).</td>
 </tr>
 </tbody></table>
 <h2 id='update-a-label'>Update a label</h2>
@@ -2234,14 +2244,14 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "label_update", "uuid": "9c9a6e34-2382-4f43-a217-9ab017a83523", "args": {"id": 1234, "color": 3}}]'</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "label_update", "uuid": "9c9a6e34-2382-4f43-a217-9ab017a83523", "args": {"id": 790748, "color": 3}}]'</span>
 <span class="o">{</span> ...
   <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"9c9a6e34-2382-4f43-a217-9ab017a83523"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">label</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">label</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="mi">790748</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">label</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
@@ -2256,7 +2266,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the label.</td>
+<td>The id of the label (a number or temp id).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -2285,14 +2295,14 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "label_delete", "uuid": "aabaa5e0-b91b-439c-aa83-d1b35a5e9fb3", "args": {"id": 1234}}]'</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "label_delete", "uuid": "aabaa5e0-b91b-439c-aa83-d1b35a5e9fb3", "args": {"id": 790748}}]'</span>
 <span class="o">{</span> ...
   <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"aabaa5e0-b91b-439c-aa83-d1b35a5e9fb3"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">label</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">label</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="mi">790748</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">label</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
@@ -2307,7 +2317,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the label.</td>
+<td>The id of the label (a number or temp id).</td>
 </tr>
 </tbody></table>
 <h2 id='update-multiple-orders'>Update multiple orders</h2>
@@ -2316,19 +2326,19 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"label_update_orders"</span>, <span class="s2">"uuid"</span>: <span class="s2">"1402a911-5b7a-4beb-bb1f-fb9e1ed798fb"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"id_order_mapping"</span>: <span class="o">{</span><span class="s2">"1234"</span>:  1, <span class="s2">"5678"</span>: 2<span class="o">}}}]</span><span class="s1">'
+    -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"label_update_orders"</span>, <span class="s2">"uuid"</span>: <span class="s2">"1402a911-5b7a-4beb-bb1f-fb9e1ed798fb"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"id_order_mapping"</span>: <span class="o">{</span><span class="s2">"790748"</span>:  1, <span class="s2">"790749"</span>: 2<span class="o">}}}]</span><span class="s1">'
 { ...
   "SyncStatus": {
     "517560cc-f165-4ff6-947b-3adda8aef744": {
-      "1234": "ok",
-      "5678": "ok"
+      "790748": "ok",
+      "790749": "ok"
     }
   },
   ... }
 </span></code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">update_orders</span><span class="p">({</span><span class="mi">1234</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5678</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">update_orders</span><span class="p">({</span><span class="mi">790748</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">790749</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
@@ -2768,23 +2778,23 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <p>A filter in Todoist is a JSON object. Typically a filter object will look like:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 4638878
   <span class="s2">"user_id"</span>: 1855589,
   <span class="s2">"name"</span>: <span class="s2">"Priority 1"</span>,
+  <span class="s2">"query"</span>: <span class="s2">"priority 1"</span>,
   <span class="s2">"color"</span>: 6,
   <span class="s2">"item_order"</span>: 3,
-  <span class="s2">"query"</span>: <span class="s2">"priority 1"</span>,
   <span class="s2">"is_deleted"</span>: 0,
-  <span class="s2">"id"</span>: 4638878
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="p">{</span>
+  <span class="s">'id'</span><span class="p">:</span> <span class="mi">4638878</span>
   <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
   <span class="s">'name'</span><span class="p">:</span> <span class="s">'Priority 1'</span><span class="p">,</span>
-  <span class="s">'color'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
   <span class="s">'query'</span><span class="p">:</span> <span class="s">'priority 1'</span><span class="p">,</span>
-  <span class="s">'id'</span><span class="p">:</span> <span class="mi">4638878</span>
+  <span class="s">'color'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+  <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre>
 
@@ -2798,23 +2808,27 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the filter.</td>
+<td>The id of the filter (a unique number).</td>
 </tr>
 <tr>
 <td>name</td>
-<td>The name of the filter.</td>
+<td>The name of the filter (a string value).</td>
 </tr>
 <tr>
-<td>item_order</td>
-<td>Filter&rsquo;s order in the filter list.</td>
+<td>query</td>
+<td>The query to search for. <a href="https://todoist.com/Help/Filtering">Examples of searches</a> can be found in the Todoist help page.</td>
 </tr>
 <tr>
 <td>color</td>
 <td>The color of the filter (a number between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).</td>
 </tr>
 <tr>
-<td>query</td>
-<td>The query to search for. <a href="https://todoist.com/Help/Filtering">Examples of searches</a> can be found in the Todoist help page.</td>
+<td>item_order</td>
+<td>Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).</td>
+</tr>
+<tr>
+<td>is_deleted</td>
+<td>Whether the filter is marked as deleted (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 </tbody></table>
 <h2 id='add-a-filter'>Add a filter</h2>
@@ -2846,7 +2860,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>The name of the filter.</td>
+<td>The name of the filter (a string value).</td>
 </tr>
 <tr>
 <td>query</td>
@@ -2861,12 +2875,12 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>item_order</td>
-<td>Filter&rsquo;s order in the filter list.</td>
-</tr>
-<tr>
 <td>color</td>
 <td>The color of the filter (a number between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).</td>
+</tr>
+<tr>
+<td>item_order</td>
+<td>Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).</td>
 </tr>
 </tbody></table>
 <h2 id='update-a-filter'>Update a filter</h2>
@@ -2897,7 +2911,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the filter.</td>
+<td>The id of the filter (a number or temp id).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -2909,19 +2923,19 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>The name of the filter.</td>
+<td>The name of the filter (a string value).</td>
 </tr>
 <tr>
 <td>query</td>
 <td>The query to search for. <a href="https://todoist.com/Help/Filtering">Examples of searches</a> can be found in the Todoist help page.</td>
 </tr>
 <tr>
-<td>item_order</td>
-<td>Filter&rsquo;s order in the filter list.</td>
-</tr>
-<tr>
 <td>color</td>
 <td>The color of the filter (a number between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).</td>
+</tr>
+<tr>
+<td>item_order</td>
+<td>Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).</td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-filter'>Delete a filter</h2>
@@ -2952,7 +2966,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the filter.</td>
+<td>The id of the filter (a number or temp id).</td>
 </tr>
 </tbody></table>
 <h2 id='update-multiple-orders'>Update multiple orders</h2>
