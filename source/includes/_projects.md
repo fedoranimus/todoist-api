@@ -49,7 +49,7 @@ color | The color of the project (a number between `0` and `11`, or between `0` 
 indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
 item_order | Project's order in the project list (a number, where the smallest value should place the project at the top).
 collapsed | Whether the project's sub-projects are collapsed (where `1` is true and `0` is false).
-shared | Whether the project is shared (a `true` or `false` value)
+shared | Whether the project is shared (a `true` or `false` value).
 is_deleted | Whether the project is marked as deleted (where `1` is true and `0` is false).
 is_archived | Whether the project is marked as archived (where `1` is true and `0` is false).
 archived_date | The date when the project was archived (`null` if not set).

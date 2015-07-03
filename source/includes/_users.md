@@ -6,88 +6,102 @@ A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typic
 
 ```shell
 {
-  "start_page": "overdue, 7 days",
-  "is_premium": false,
-  "sort_order": 0,
-  "full_name": "Example User",
-  "has_push_reminders": false,
-  "timezone": "Europe\/Athens",
   "id": 1855589,
-  "next_week": 1,
-  "completed_count": 20,
-  "tz_offset": ["+03:00", 3, 0, 1],
+  "api_token": "0123456789abcdef0123456789abcdef01234567",
   "email": "me@xample.com",
-  "karma": 684.0,
-  "start_day": 1,
-  "date_format": 0,
+  "full_name": "Example User",
   "inbox_project": 128501411,
+  "timezone": "Europe\/Athens",
+  "tz_offset": ["+03:00", 3, 0, 1],
+  "start_page": "overdue, 7 days",
+  "start_day": 1,
+  "next_week": 1,
+  "date_format": 0,
   "time_format": 0,
+  "sort_order": 0,
+  "has_push_reminders": false,
+  "default_reminder": null,
+  "mobile_host": null,
+  "mobile_number": null,
+  "completed_count": 20,
+  "karma": 684.0,
+  "karma_trend": "-",
+  "is_premium": false,
+  "premium_until": null,
+  "is_biz_admin": false,
+  "business_account_id": null,
   "image_id": null,
   "beta": 0,
-  "karma_trend": "-",
-  "business_account_id": null,
-  "mobile_number": null,
-  "mobile_host": null,
   "is_dummy": 0,
-  "premium_until": null,
-  "join_date": "Wed 30 Apr 2014 13:24:38 +0000",
-  "api_token": "0123456789abcdef0123456789abcdef01234567",
-  "is_biz_admin": false,
-  "default_reminder": null
+  "join_date": "Wed 30 Apr 2014 13:24:38 +0000"
 }
 ```
 
 ```python
 {
-  'beta': 0,
-  'business_account_id': None,
-  'completed_count': 20,
-  'date_format': 0,
-  'default_reminder': None,
+  'id': 1855589,
+  'api_token': '0123456789abcdef0123456789abcdef01234567',
   'email': 'me@exampe.com',
   'full_name': 'Example User',
-  'has_push_reminders': False,
-  'id': 1855589,
-  'image_id': None,
   'inbox_project': 128501411,
-  'is_biz_admin': False,
-  'is_dummy': 0,
-  'is_premium': False,
-  'join_date': 'Wed 30 Apr 2014 13:24:38 +0000',
-  'karma': 684.0,
-  'karma_trend': '-',
+  'timezone': 'Europe/Athens',
+  'tz_offset': ['+03:00', 3, 0, 1],
+  'start_page': 'overdue, 7 days',
+  'start_day': 1,
+  'next_week': 1,
+  'date_format': 0,
+  'time_format': 0,
+  'sort_order': 0,
+  'has_push_reminders': False,
+  'default_reminder': None,
   'mobile_host': None,
   'mobile_number': None,
-  'next_week': 1,
+  'completed_count': 20,
+  'karma': 684.0,
+  'karma_trend': '-',
+  'is_premium': False,
   'premium_until': None,
-  'sort_order': 0,
-  'start_day': 1,
-  'start_page': 'overdue, 7 days',
-  'time_format': 0,
-  'timezone': 'Europe/Athens',
-  'api_token': '0123456789abcdef0123456789abcdef01234567',
-  'tz_offset': ['+03:00', 3, 0, 1]
+  'is_biz_admin': False,
+  'business_account_id': None,
+  'image_id': None,
+  'beta': 0,
+  'is_dummy': 0,
+  'join_date': 'Wed 30 Apr 2014 13:24:38 +0000'
 }
 ```
 ### Properties
 
 Property | Description
 -------- | -----------
-id| User's unique id.
-api_token | User's token (that should be used to call the other API methods).
-email | User's email.
-full_name | User's real name.
-start_page | User's default view on Todoist. The start page can be one of the following: `_info_page` for the info page, `_blank` for a blank page, `_project_<PROJECT_ID>` for project with id `<PROJECT_ID>`, and `<ANY_QUERY>` to query after anything.
-timezone | User's timezone in a string.
+id | The user's id (a unique number).
+api_token | The user's token that should be used to call the other API methods (a unique string hash value).
+email | The user's email (a string value representing a valid email address).
+full_name | The user's real name (a string value in a `Name Surname` format).
+inbox_project | The id of the user's `Inbox` project (a unique number).
+timezone | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`).
 tz_offset | User's timezone offset `[GMT_STRING, HOURS, MINUTES, IS_DAYLIGHT_SAVINGS_TIME]`.
-time_format | If it's `0` then show time as `13:00`, else show time as `1:00pm`.
-date_format | If it's `0` then show dates as `DD-MM-YYYY`, else show dates as `MM-DD-YYYY`.
-sort_order | If it's `0` then show `Oldest dates first` when viewing projects. Else `Oldest dates last`.
-mobile_number | User's mobile number.
-mobile_host | User's mobile host.
-premium_until | When does the user's Premium subscription expire?
-default_reminder | What is the default reminder for the user? Reminders are only possible for Premium users. The default reminder can be one of the following:  `email`, `mobile`, `push`
-auto_reminder | How many minutes before should the default reminder be set? It can be `-1, 0, 10, 30, 60, 120`, e.g. 10 minutes before the due date. `-1` is set to mean that no default reminder will be added
+start_page | The user's default view on Todoist. The start page can be one of the following: `_info_page` for the info page, `_blank` for a blank page, `_project_<PROJECT_ID>` for project with id `<PROJECT_ID>`, and `<ANY_QUERY>` to query after anything.
+start_day | The first day of the week (a number between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
+next_week | The day of the next week, that tasks will be postponed to (a number between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
+time_format | Whether to use a `24h` format such as `13:00` (if set to `0`) when displaying time, or a `12h` format such as `1:00pm` (if set to `1`).
+date_format | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
+sort_order | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
+has_push_reminders | Whether the user has push reminders enabled (a `true` or `false` value).
+default_reminder | The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of Android or iOS official client must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
+mobile_number | The user's mobile number (a string value or `null` if not set).
+mobile_host | The user's mobile host (a string value or `null` if not set).
+completed_count | The total number of completed tasks (a number).
+karma | The user's karma score (a number).
+karma_trend | The user's karma trend (a string value like `up`).
+is_premium | Whether the user has a Premium subscription (a `true` or `false` value).
+premium_until | The date when the user's Premium subscription ends (`null` if not a Premium user).
+is_biz_admin | Whether the user is business account administrator (a `true` or `false` value).
+business_account_id | The id of the user's business account (a unique number).
+image_id | The id of the user's avatar (a unique string hash value).
+beta | Whether the user is in beta status (where `1` is true and `0` is false).
+is_dummy | Whether the user is a dummy user (where `1` is true and `0` is false).
+join_date | The date when the user joined Todoist.
+
 
 ## Register a new user
 
@@ -100,38 +114,34 @@ $ curl https://todoist.com/API/v6/register \
     -d full_name=Example\ User \
     -d password=secret
 {
-  "start_day": 7,
-  "start_page": "overdue, 7 days",
-  "date_format": 1,
-  "last_used_ip": "10.20.30.40",
+  "id": 1855589,
   "api_token": "0123456789abcdef0123456789abcdef01234567",
-  "karma_trend": "-",
+  "email": "me@xample.com",
+  "full_name": "Example User",
   "inbox_project": 128501411,
-  "time_format": 1,
+  "timezone": "Europe\/Athens",
+  "tz_offset": ["+03:00", 3, 0, 1],
+  "start_page": "overdue, 7 days",
+  "start_day": 1,
+  "next_week": 1,
+  "date_format": 0,
+  "time_format": 0,
+  "sort_order": 0,
+  "has_push_reminders": false,
+  "default_reminder": null,
+  "mobile_host": null,
+  "mobile_number": null,
+  "completed_count": 20,
+  "karma": 684.0,
+  "karma_trend": "-",
+  "is_premium": false,
+  "premium_until": null,
+  "is_biz_admin": false,
+  "business_account_id": null,
   "image_id": null,
   "beta": 0,
-  "sort_order": 0,
-  "business_account_id": null,
-  "full_name": "Example User",
-  "mobile_number": null,
-  "shard_id": 2,
-  "timezone": "UTC",
-  "is_premium": false,
-  "mobile_host": null,
-  "id": 1855589,
-  "has_push_reminders": false,
   "is_dummy": 0,
-  "premium_until": null,
-  "team_inbox": null,
-  "next_week": 1,
-  "token": "0123456789abcdef0123456789abcdef01234567",
-  "tz_offset": ["+00:00", 0, 0, 0],
-  "join_date": "Wed 30 Apr 2014 13:24:38 +0000",
-  "seq_no": 2180270834,
-  "karma": 0.0,
-  "is_biz_admin": false,
-  "default_reminder": null,
-  "email": "me@example.com"}
+  "join_date": "Wed 30 Apr 2014 13:24:38 +0000"
 }
 ```
 
@@ -140,38 +150,34 @@ $ curl https://todoist.com/API/v6/register \
 >>> api = todoist.TodoistAPI()
 >>> api.register('me@example.com', 'Example User', 'secret')
 {
-  'start_page': 'overdue, 7 days',
-  'join_date': 'Wed 30 Apr 2014 13:24:38 +0000',
-  'last_used_ip': '10.20.30.40',
-  'is_premium': False,
-  'sort_order': 0,
-  'full_name': 'Example User',
-  'api_token': '0123456789abcdef0123456789abcdef01234567',
-  'shard_id': 2,
-  'has_push_reminders': False,
   'id': 1855589,
-  'team_inbox': None,
-  'next_week': 1,
-  'tz_offset': ['+00:00', 0, 0, 0],
-  'timezone': 'UTC',
-  'email': 'me@example.com',
-  'start_day': 7,
-  'is_dummy': 0,
+  'api_token': '0123456789abcdef0123456789abcdef01234567',
+  'email': 'me@exampe.com',
+  'full_name': 'Example User',
   'inbox_project': 128501411,
-  'time_format': 1,
+  'timezone': 'Europe/Athens',
+  'tz_offset': ['+03:00', 3, 0, 1],
+  'start_page': 'overdue, 7 days',
+  'start_day': 1,
+  'next_week': 1,
+  'date_format': 0,
+  'time_format': 0,
+  'sort_order': 0,
+  'has_push_reminders': False,
+  'default_reminder': None,
+  'mobile_host': None,
+  'mobile_number': None,
+  'completed_count': 20,
+  'karma': 684.0,
+  'karma_trend': '-',
+  'is_premium': False,
+  'premium_until': None,
+  'is_biz_admin': False,
+  'business_account_id': None,
   'image_id': None,
   'beta': 0,
-  'premium_until': None,
-  'business_account_id': None,
-  'mobile_number': None,
-  'mobile_host': None,
-  'date_format': 1,
-  'karma_trend': '-',
-  'token': '0123456789abcdef0123456789abcdef01234567',
-  'seq_no': 2180270834,
-  'karma': 0.0,
-  'is_biz_admin': False,
-  'default_reminder': None
+  'is_dummy': 0,
+  'join_date': 'Wed 30 Apr 2014 13:24:38 +0000',
 }
 
 ```
@@ -182,16 +188,16 @@ Register a new user.
 
 Parameter | Description
 --------- | -----------
-email | User's email.
-full_name | User's full name.
-password | User's password, should be at least 5 characters long.
+email | The user's email (a string value representing a valid email address).
+full_name | The user's real name (a string value in a `Name Surname` format).
+password | The user's password (a string value).
 
 ### Optional parameters
 
 Parameter | Description
 --------- | -----------
-lang | User's language. Can be `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `hi`, `ko`, `pt`, `ru`, `zh_TW`.
-timezone | User's timezone. As default we use the user's IP address to determine the timezone.
+lang | The user's language, which can take the values: `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `hi`, `ko`, `pt`, `ru`, `zh_TW`.
+timezone | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`). By default we use the user's IP address to determine the timezone.
 
 ## Delete an existing user
 
@@ -217,14 +223,14 @@ Delete an existing user.
 
 Parameter | Description
 --------- | -----------
-token | User's token.
-current_password | User's current password.
+token | The user's token (a string hash value).
+current_password | The user's current password (a string value).
 
 ### Optional parameters
 
 Parameter | Description
 --------- | -----------
-reason_for_delete | Reason for deletion (used for feedback).
+reason_for_delete | A reason for deletion, that is used for sending feedback back to us (a string value).
 
 
 ## Update user's properties
@@ -254,16 +260,20 @@ Update the details of the user.
 
 Parameter | Description
 --------- | -----------
-email | User's email.
-full_name | User's full name.
-password | User's password, which should be at least 5 characters long.
-timezone | User's timezone.
-date_format | How should dates be formatted? If `0` `DD-MM-YYYY` will be used, if `1` `MM-DD-YYYY` will be used.
-time_format | How should times be formatted? If `0` `13:00` will be used, if `1` `1:00pm` will be used.
-start_day | First day of week. `1` for Monday, `7` for Sunday.
-next_week | When postponing what day should we choose? `1` for Monday, `7` for Sunday.
-start_page | Can be one of following values: `_blank` to show blank page, `_info_page` to show info page `_project_<PROJECT_ID>` where `<PROJECT_ID>` is the id of the project to show, `<ANY_QUERY>` to query after anything (for example `tod,tom,!!1`).
-default_reminder | Can be one of the following values: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of Android or iOS official client must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
+email | The user's email (a string value representing a valid email address).
+full_name | The user's real name (a string value in a `Name Surname` format).
+password | The user's password (a string value).
+timezone | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`).
+start_page | The user's default view on Todoist. The start page can be one of the following: `_info_page` for the info page, `_blank` for a blank page, `_project_<PROJECT_ID>` for project with id `<PROJECT_ID>`, and `<ANY_QUERY>` to query after anything.
+start_day | The first day of the week (a number between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
+next_week | The day of the next week, that tasks will be postponed to (a number between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
+time_format | Whether to use a `24h` format such as `13:00` (if set to `0`) when displaying time, or a `12h` format such as `1:00pm` (if set to `1`).
+date_format | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
+sort_order | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
+default_reminder | The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of Android or iOS official client must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
+mobile_number | The user's mobile number (a string value or `null` if not set).
+mobile_host | The user's mobile host (a string value or `null` if not set).
+
 
 ## Update karma goals
 
@@ -289,8 +299,8 @@ Update the karma goals of the user.
 
 Parameter | Description
 --------- | -----------
-daily_goal | The target number of tasks to complete per day.
-weekly_goal | The target number of tasks to complete per week.
-ignore_days | A list with the days of the week to ignore.  `1` for Monday, `7` for Sunday.
-vacation_mode | Marks the user as being on vacation.
-karma_disabled | Disables the karma and goals measuring alltogether.
+daily_goal | The target number of tasks to complete per day (a number).
+weekly_goal | The target number of tasks to complete per week (a number).
+ignore_days | A list with the days of the week to ignore (`1` for `Monday` and `7` for `Sunday`).
+vacation_mode | Marks the user as being on vacation (where `1` is true and `0` is false).
+karma_disabled | Whether to disable the karma and goals measuring alltogether (where `1` is true and `0` is false).

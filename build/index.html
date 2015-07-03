@@ -1260,7 +1260,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>shared</td>
-<td>Whether the project is shared (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value)</td>
+<td>Whether the project is shared (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
 </tr>
 <tr>
 <td>is_deleted</td>
@@ -3406,65 +3406,65 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <p>An example of a user object:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="o">{</span>
-  <span class="s2">"start_page"</span>: <span class="s2">"overdue, 7 days"</span>,
-  <span class="s2">"is_premium"</span>: <span class="nb">false</span>,
-  <span class="s2">"sort_order"</span>: 0,
-  <span class="s2">"full_name"</span>: <span class="s2">"Example User"</span>,
-  <span class="s2">"has_push_reminders"</span>: <span class="nb">false</span>,
-  <span class="s2">"timezone"</span>: <span class="s2">"Europe</span><span class="se">\/</span><span class="s2">Athens"</span>,
   <span class="s2">"id"</span>: 1855589,
-  <span class="s2">"next_week"</span>: 1,
-  <span class="s2">"completed_count"</span>: 20,
-  <span class="s2">"tz_offset"</span>: <span class="o">[</span><span class="s2">"+03:00"</span>, 3, 0, 1],
+  <span class="s2">"api_token"</span>: <span class="s2">"0123456789abcdef0123456789abcdef01234567"</span>,
   <span class="s2">"email"</span>: <span class="s2">"me@xample.com"</span>,
-  <span class="s2">"karma"</span>: 684.0,
-  <span class="s2">"start_day"</span>: 1,
-  <span class="s2">"date_format"</span>: 0,
+  <span class="s2">"full_name"</span>: <span class="s2">"Example User"</span>,
   <span class="s2">"inbox_project"</span>: 128501411,
+  <span class="s2">"timezone"</span>: <span class="s2">"Europe</span><span class="se">\/</span><span class="s2">Athens"</span>,
+  <span class="s2">"tz_offset"</span>: <span class="o">[</span><span class="s2">"+03:00"</span>, 3, 0, 1],
+  <span class="s2">"start_page"</span>: <span class="s2">"overdue, 7 days"</span>,
+  <span class="s2">"start_day"</span>: 1,
+  <span class="s2">"next_week"</span>: 1,
+  <span class="s2">"date_format"</span>: 0,
   <span class="s2">"time_format"</span>: 0,
+  <span class="s2">"sort_order"</span>: 0,
+  <span class="s2">"has_push_reminders"</span>: <span class="nb">false</span>,
+  <span class="s2">"default_reminder"</span>: null,
+  <span class="s2">"mobile_host"</span>: null,
+  <span class="s2">"mobile_number"</span>: null,
+  <span class="s2">"completed_count"</span>: 20,
+  <span class="s2">"karma"</span>: 684.0,
+  <span class="s2">"karma_trend"</span>: <span class="s2">"-"</span>,
+  <span class="s2">"is_premium"</span>: <span class="nb">false</span>,
+  <span class="s2">"premium_until"</span>: null,
+  <span class="s2">"is_biz_admin"</span>: <span class="nb">false</span>,
+  <span class="s2">"business_account_id"</span>: null,
   <span class="s2">"image_id"</span>: null,
   <span class="s2">"beta"</span>: 0,
-  <span class="s2">"karma_trend"</span>: <span class="s2">"-"</span>,
-  <span class="s2">"business_account_id"</span>: null,
-  <span class="s2">"mobile_number"</span>: null,
-  <span class="s2">"mobile_host"</span>: null,
   <span class="s2">"is_dummy"</span>: 0,
-  <span class="s2">"premium_until"</span>: null,
-  <span class="s2">"join_date"</span>: <span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span>,
-  <span class="s2">"api_token"</span>: <span class="s2">"0123456789abcdef0123456789abcdef01234567"</span>,
-  <span class="s2">"is_biz_admin"</span>: <span class="nb">false</span>,
-  <span class="s2">"default_reminder"</span>: null
+  <span class="s2">"join_date"</span>: <span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span>
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="p">{</span>
-  <span class="s">'beta'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'business_account_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'completed_count'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-  <span class="s">'date_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'default_reminder'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
+  <span class="s">'api_token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
   <span class="s">'email'</span><span class="p">:</span> <span class="s">'me@exampe.com'</span><span class="p">,</span>
   <span class="s">'full_name'</span><span class="p">:</span> <span class="s">'Example User'</span><span class="p">,</span>
-  <span class="s">'has_push_reminders'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">'id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
-  <span class="s">'image_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
   <span class="s">'inbox_project'</span><span class="p">:</span> <span class="mi">128501411</span><span class="p">,</span>
-  <span class="s">'is_biz_admin'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">'is_dummy'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'is_premium'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">'join_date'</span><span class="p">:</span> <span class="s">'Wed 30 Apr 2014 13:24:38 +0000'</span><span class="p">,</span>
-  <span class="s">'karma'</span><span class="p">:</span> <span class="mf">684.0</span><span class="p">,</span>
-  <span class="s">'karma_trend'</span><span class="p">:</span> <span class="s">'-'</span><span class="p">,</span>
+  <span class="s">'timezone'</span><span class="p">:</span> <span class="s">'Europe/Athens'</span><span class="p">,</span>
+  <span class="s">'tz_offset'</span><span class="p">:</span> <span class="p">[</span><span class="s">'+03:00'</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+  <span class="s">'start_page'</span><span class="p">:</span> <span class="s">'overdue, 7 days'</span><span class="p">,</span>
+  <span class="s">'start_day'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'next_week'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'date_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'time_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'sort_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'has_push_reminders'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+  <span class="s">'default_reminder'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
   <span class="s">'mobile_host'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
   <span class="s">'mobile_number'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'next_week'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'completed_count'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="s">'karma'</span><span class="p">:</span> <span class="mf">684.0</span><span class="p">,</span>
+  <span class="s">'karma_trend'</span><span class="p">:</span> <span class="s">'-'</span><span class="p">,</span>
+  <span class="s">'is_premium'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
   <span class="s">'premium_until'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'sort_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'start_day'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'start_page'</span><span class="p">:</span> <span class="s">'overdue, 7 days'</span><span class="p">,</span>
-  <span class="s">'time_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'timezone'</span><span class="p">:</span> <span class="s">'Europe/Athens'</span><span class="p">,</span>
-  <span class="s">'api_token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
-  <span class="s">'tz_offset'</span><span class="p">:</span> <span class="p">[</span><span class="s">'+03:00'</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+  <span class="s">'is_biz_admin'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+  <span class="s">'business_account_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'image_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'beta'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'is_dummy'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'join_date'</span><span class="p">:</span> <span class="s">'Wed 30 Apr 2014 13:24:38 +0000'</span>
 <span class="p">}</span>
 </code></pre>
 <h3 id='properties'>Properties</h3>
@@ -3476,63 +3476,115 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>User&rsquo;s unique id.</td>
+<td>The user&rsquo;s id (a unique number).</td>
 </tr>
 <tr>
 <td>api_token</td>
-<td>User&rsquo;s token (that should be used to call the other API methods).</td>
+<td>The user&rsquo;s token that should be used to call the other API methods (a unique string hash value).</td>
 </tr>
 <tr>
 <td>email</td>
-<td>User&rsquo;s email.</td>
+<td>The user&rsquo;s email (a string value representing a valid email address).</td>
 </tr>
 <tr>
 <td>full_name</td>
-<td>User&rsquo;s real name.</td>
+<td>The user&rsquo;s real name (a string value in a <code class="prettyprint">Name Surname</code> format).</td>
 </tr>
 <tr>
-<td>start_page</td>
-<td>User&rsquo;s default view on Todoist. The start page can be one of the following: <code class="prettyprint">_info_page</code> for the info page, <code class="prettyprint">_blank</code> for a blank page, <code class="prettyprint">_project_&lt;PROJECT_ID&gt;</code> for project with id <code class="prettyprint">&lt;PROJECT_ID&gt;</code>, and <code class="prettyprint">&lt;ANY_QUERY&gt;</code> to query after anything.</td>
+<td>inbox_project</td>
+<td>The id of the user&rsquo;s <code class="prettyprint">Inbox</code> project (a unique number).</td>
 </tr>
 <tr>
 <td>timezone</td>
-<td>User&rsquo;s timezone in a string.</td>
+<td>The user&rsquo;s timezone (a string value such as <code class="prettyprint">UTC</code>, <code class="prettyprint">Europe/Lisbon</code>, <code class="prettyprint">US/Eastern</code>, <code class="prettyprint">Asian/Taipei</code>).</td>
 </tr>
 <tr>
 <td>tz_offset</td>
 <td>User&rsquo;s timezone offset <code class="prettyprint">[GMT_STRING, HOURS, MINUTES, IS_DAYLIGHT_SAVINGS_TIME]</code>.</td>
 </tr>
 <tr>
+<td>start_page</td>
+<td>The user&rsquo;s default view on Todoist. The start page can be one of the following: <code class="prettyprint">_info_page</code> for the info page, <code class="prettyprint">_blank</code> for a blank page, <code class="prettyprint">_project_&lt;PROJECT_ID&gt;</code> for project with id <code class="prettyprint">&lt;PROJECT_ID&gt;</code>, and <code class="prettyprint">&lt;ANY_QUERY&gt;</code> to query after anything.</td>
+</tr>
+<tr>
+<td>start_day</td>
+<td>The first day of the week (a number between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+</tr>
+<tr>
+<td>next_week</td>
+<td>The day of the next week, that tasks will be postponed to (a number between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+</tr>
+<tr>
 <td>time_format</td>
-<td>If it&rsquo;s <code class="prettyprint">0</code> then show time as <code class="prettyprint">13:00</code>, else show time as <code class="prettyprint">1:00pm</code>.</td>
+<td>Whether to use a <code class="prettyprint">24h</code> format such as <code class="prettyprint">13:00</code> (if set to <code class="prettyprint">0</code>) when displaying time, or a <code class="prettyprint">12h</code> format such as <code class="prettyprint">1:00pm</code> (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
 <td>date_format</td>
-<td>If it&rsquo;s <code class="prettyprint">0</code> then show dates as <code class="prettyprint">DD-MM-YYYY</code>, else show dates as <code class="prettyprint">MM-DD-YYYY</code>.</td>
+<td>Whether to use the <code class="prettyprint">DD-MM-YYYY</code> date format (if set to <code class="prettyprint">0</code>), or the <code class="prettyprint">MM-DD-YYYY</code> format (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
 <td>sort_order</td>
-<td>If it&rsquo;s <code class="prettyprint">0</code> then show <code class="prettyprint">Oldest dates first</code> when viewing projects. Else <code class="prettyprint">Oldest dates last</code>.</td>
+<td>Whether to show projects in an <code class="prettyprint">oldest dates first</code> order (if set to <code class="prettyprint">0</code>, or a <code class="prettyprint">oldest dates last</code> order (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
-<td>mobile_number</td>
-<td>User&rsquo;s mobile number.</td>
-</tr>
-<tr>
-<td>mobile_host</td>
-<td>User&rsquo;s mobile host.</td>
-</tr>
-<tr>
-<td>premium_until</td>
-<td>When does the user&rsquo;s Premium subscription expire?</td>
+<td>has_push_reminders</td>
+<td>Whether the user has push reminders enabled (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
 </tr>
 <tr>
 <td>default_reminder</td>
-<td>What is the default reminder for the user? Reminders are only possible for Premium users. The default reminder can be one of the following:  <code class="prettyprint">email</code>, <code class="prettyprint">mobile</code>, <code class="prettyprint">push</code></td>
+<td>The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of Android or iOS official client must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
 </tr>
 <tr>
-<td>auto_reminder</td>
-<td>How many minutes before should the default reminder be set? It can be <code class="prettyprint">-1, 0, 10, 30, 60, 120</code>, e.g. 10 minutes before the due date. <code class="prettyprint">-1</code> is set to mean that no default reminder will be added</td>
+<td>mobile_number</td>
+<td>The user&rsquo;s mobile number (a string value or <code class="prettyprint">null</code> if not set).</td>
+</tr>
+<tr>
+<td>mobile_host</td>
+<td>The user&rsquo;s mobile host (a string value or <code class="prettyprint">null</code> if not set).</td>
+</tr>
+<tr>
+<td>completed_count</td>
+<td>The total number of completed tasks (a number).</td>
+</tr>
+<tr>
+<td>karma</td>
+<td>The user&rsquo;s karma score (a number).</td>
+</tr>
+<tr>
+<td>karma_trend</td>
+<td>The user&rsquo;s karma trend (a string value like <code class="prettyprint">up</code>).</td>
+</tr>
+<tr>
+<td>is_premium</td>
+<td>Whether the user has a Premium subscription (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
+</tr>
+<tr>
+<td>premium_until</td>
+<td>The date when the user&rsquo;s Premium subscription ends (<code class="prettyprint">null</code> if not a Premium user).</td>
+</tr>
+<tr>
+<td>is_biz_admin</td>
+<td>Whether the user is business account administrator (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
+</tr>
+<tr>
+<td>business_account_id</td>
+<td>The id of the user&rsquo;s business account (a unique number).</td>
+</tr>
+<tr>
+<td>image_id</td>
+<td>The id of the user&rsquo;s avatar (a unique string hash value).</td>
+</tr>
+<tr>
+<td>beta</td>
+<td>Whether the user is in beta status (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
+</tr>
+<tr>
+<td>is_dummy</td>
+<td>Whether the user is a dummy user (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
+</tr>
+<tr>
+<td>join_date</td>
+<td>The date when the user joined Todoist.</td>
 </tr>
 </tbody></table>
 <h2 id='register-a-new-user'>Register a new user</h2>
@@ -3544,76 +3596,68 @@ success, a 4xx code an error due to incorrect user provided information, and a
     -d <span class="nv">full_name</span><span class="o">=</span>Example<span class="se">\ </span>User <span class="se">\</span>
     -d <span class="nv">password</span><span class="o">=</span>secret
 <span class="o">{</span>
-  <span class="s2">"start_day"</span>: 7,
-  <span class="s2">"start_page"</span>: <span class="s2">"overdue, 7 days"</span>,
-  <span class="s2">"date_format"</span>: 1,
-  <span class="s2">"last_used_ip"</span>: <span class="s2">"10.20.30.40"</span>,
+  <span class="s2">"id"</span>: 1855589,
   <span class="s2">"api_token"</span>: <span class="s2">"0123456789abcdef0123456789abcdef01234567"</span>,
-  <span class="s2">"karma_trend"</span>: <span class="s2">"-"</span>,
+  <span class="s2">"email"</span>: <span class="s2">"me@xample.com"</span>,
+  <span class="s2">"full_name"</span>: <span class="s2">"Example User"</span>,
   <span class="s2">"inbox_project"</span>: 128501411,
-  <span class="s2">"time_format"</span>: 1,
+  <span class="s2">"timezone"</span>: <span class="s2">"Europe</span><span class="se">\/</span><span class="s2">Athens"</span>,
+  <span class="s2">"tz_offset"</span>: <span class="o">[</span><span class="s2">"+03:00"</span>, 3, 0, 1],
+  <span class="s2">"start_page"</span>: <span class="s2">"overdue, 7 days"</span>,
+  <span class="s2">"start_day"</span>: 1,
+  <span class="s2">"next_week"</span>: 1,
+  <span class="s2">"date_format"</span>: 0,
+  <span class="s2">"time_format"</span>: 0,
+  <span class="s2">"sort_order"</span>: 0,
+  <span class="s2">"has_push_reminders"</span>: <span class="nb">false</span>,
+  <span class="s2">"default_reminder"</span>: null,
+  <span class="s2">"mobile_host"</span>: null,
+  <span class="s2">"mobile_number"</span>: null,
+  <span class="s2">"completed_count"</span>: 20,
+  <span class="s2">"karma"</span>: 684.0,
+  <span class="s2">"karma_trend"</span>: <span class="s2">"-"</span>,
+  <span class="s2">"is_premium"</span>: <span class="nb">false</span>,
+  <span class="s2">"premium_until"</span>: null,
+  <span class="s2">"is_biz_admin"</span>: <span class="nb">false</span>,
+  <span class="s2">"business_account_id"</span>: null,
   <span class="s2">"image_id"</span>: null,
   <span class="s2">"beta"</span>: 0,
-  <span class="s2">"sort_order"</span>: 0,
-  <span class="s2">"business_account_id"</span>: null,
-  <span class="s2">"full_name"</span>: <span class="s2">"Example User"</span>,
-  <span class="s2">"mobile_number"</span>: null,
-  <span class="s2">"shard_id"</span>: 2,
-  <span class="s2">"timezone"</span>: <span class="s2">"UTC"</span>,
-  <span class="s2">"is_premium"</span>: <span class="nb">false</span>,
-  <span class="s2">"mobile_host"</span>: null,
-  <span class="s2">"id"</span>: 1855589,
-  <span class="s2">"has_push_reminders"</span>: <span class="nb">false</span>,
   <span class="s2">"is_dummy"</span>: 0,
-  <span class="s2">"premium_until"</span>: null,
-  <span class="s2">"team_inbox"</span>: null,
-  <span class="s2">"next_week"</span>: 1,
-  <span class="s2">"token"</span>: <span class="s2">"0123456789abcdef0123456789abcdef01234567"</span>,
-  <span class="s2">"tz_offset"</span>: <span class="o">[</span><span class="s2">"+00:00"</span>, 0, 0, 0],
-  <span class="s2">"join_date"</span>: <span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span>,
-  <span class="s2">"seq_no"</span>: 2180270834,
-  <span class="s2">"karma"</span>: 0.0,
-  <span class="s2">"is_biz_admin"</span>: <span class="nb">false</span>,
-  <span class="s2">"default_reminder"</span>: null,
-  <span class="s2">"email"</span>: <span class="s2">"me@example.com"</span><span class="o">}</span>
+  <span class="s2">"join_date"</span>: <span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span>
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s">'me@example.com'</span><span class="p">,</span> <span class="s">'Example User'</span><span class="p">,</span> <span class="s">'secret'</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="s">'start_page'</span><span class="p">:</span> <span class="s">'overdue, 7 days'</span><span class="p">,</span>
-  <span class="s">'join_date'</span><span class="p">:</span> <span class="s">'Wed 30 Apr 2014 13:24:38 +0000'</span><span class="p">,</span>
-  <span class="s">'last_used_ip'</span><span class="p">:</span> <span class="s">'10.20.30.40'</span><span class="p">,</span>
-  <span class="s">'is_premium'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">'sort_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'full_name'</span><span class="p">:</span> <span class="s">'Example User'</span><span class="p">,</span>
-  <span class="s">'api_token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
-  <span class="s">'shard_id'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-  <span class="s">'has_push_reminders'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
   <span class="s">'id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
-  <span class="s">'team_inbox'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'next_week'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'tz_offset'</span><span class="p">:</span> <span class="p">[</span><span class="s">'+00:00'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-  <span class="s">'timezone'</span><span class="p">:</span> <span class="s">'UTC'</span><span class="p">,</span>
-  <span class="s">'email'</span><span class="p">:</span> <span class="s">'me@example.com'</span><span class="p">,</span>
-  <span class="s">'start_day'</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-  <span class="s">'is_dummy'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'api_token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
+  <span class="s">'email'</span><span class="p">:</span> <span class="s">'me@exampe.com'</span><span class="p">,</span>
+  <span class="s">'full_name'</span><span class="p">:</span> <span class="s">'Example User'</span><span class="p">,</span>
   <span class="s">'inbox_project'</span><span class="p">:</span> <span class="mi">128501411</span><span class="p">,</span>
-  <span class="s">'time_format'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'timezone'</span><span class="p">:</span> <span class="s">'Europe/Athens'</span><span class="p">,</span>
+  <span class="s">'tz_offset'</span><span class="p">:</span> <span class="p">[</span><span class="s">'+03:00'</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+  <span class="s">'start_page'</span><span class="p">:</span> <span class="s">'overdue, 7 days'</span><span class="p">,</span>
+  <span class="s">'start_day'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'next_week'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'date_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'time_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'sort_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'has_push_reminders'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+  <span class="s">'default_reminder'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'mobile_host'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'mobile_number'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'completed_count'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="s">'karma'</span><span class="p">:</span> <span class="mf">684.0</span><span class="p">,</span>
+  <span class="s">'karma_trend'</span><span class="p">:</span> <span class="s">'-'</span><span class="p">,</span>
+  <span class="s">'is_premium'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+  <span class="s">'premium_until'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'is_biz_admin'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+  <span class="s">'business_account_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
   <span class="s">'image_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
   <span class="s">'beta'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'premium_until'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'business_account_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'mobile_number'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'mobile_host'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'date_format'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'karma_trend'</span><span class="p">:</span> <span class="s">'-'</span><span class="p">,</span>
-  <span class="s">'token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
-  <span class="s">'seq_no'</span><span class="p">:</span> <span class="mi">2180270834</span><span class="p">,</span>
-  <span class="s">'karma'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-  <span class="s">'is_biz_admin'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">'default_reminder'</span><span class="p">:</span> <span class="bp">None</span>
+  <span class="s">'is_dummy'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'join_date'</span><span class="p">:</span> <span class="s">'Wed 30 Apr 2014 13:24:38 +0000'</span><span class="p">,</span>
 <span class="p">}</span>
 
 </code></pre>
@@ -3628,15 +3672,15 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>email</td>
-<td>User&rsquo;s email.</td>
+<td>The user&rsquo;s email (a string value representing a valid email address).</td>
 </tr>
 <tr>
 <td>full_name</td>
-<td>User&rsquo;s full name.</td>
+<td>The user&rsquo;s real name (a string value in a <code class="prettyprint">Name Surname</code> format).</td>
 </tr>
 <tr>
 <td>password</td>
-<td>User&rsquo;s password, should be at least 5 characters long.</td>
+<td>The user&rsquo;s password (a string value).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-parameters'>Optional parameters</h3>
@@ -3648,11 +3692,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>lang</td>
-<td>User&rsquo;s language. Can be <code class="prettyprint">de</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">pt_BR</code>, <code class="prettyprint">zh_CN</code>, <code class="prettyprint">es</code>, <code class="prettyprint">hi</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">zh_TW</code>.</td>
+<td>The user&rsquo;s language, which can take the values: <code class="prettyprint">de</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">pt_BR</code>, <code class="prettyprint">zh_CN</code>, <code class="prettyprint">es</code>, <code class="prettyprint">hi</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">zh_TW</code>.</td>
 </tr>
 <tr>
 <td>timezone</td>
-<td>User&rsquo;s timezone. As default we use the user&rsquo;s IP address to determine the timezone.</td>
+<td>The user&rsquo;s timezone (a string value such as <code class="prettyprint">UTC</code>, <code class="prettyprint">Europe/Lisbon</code>, <code class="prettyprint">US/Eastern</code>, <code class="prettyprint">Asian/Taipei</code>). By default we use the user&rsquo;s IP address to determine the timezone.</td>
 </tr>
 </tbody></table>
 <h2 id='delete-an-existing-user'>Delete an existing user</h2>
@@ -3680,11 +3724,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>token</td>
-<td>User&rsquo;s token.</td>
+<td>The user&rsquo;s token (a string hash value).</td>
 </tr>
 <tr>
 <td>current_password</td>
-<td>User&rsquo;s current password.</td>
+<td>The user&rsquo;s current password (a string value).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-parameters'>Optional parameters</h3>
@@ -3696,7 +3740,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>reason_for_delete</td>
-<td>Reason for deletion (used for feedback).</td>
+<td>A reason for deletion, that is used for sending feedback back to us (a string value).</td>
 </tr>
 </tbody></table>
 <h2 id='update-user39s-properties'>Update user&rsquo;s properties</h2>
@@ -3726,43 +3770,55 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>email</td>
-<td>User&rsquo;s email.</td>
+<td>The user&rsquo;s email (a string value representing a valid email address).</td>
 </tr>
 <tr>
 <td>full_name</td>
-<td>User&rsquo;s full name.</td>
+<td>The user&rsquo;s real name (a string value in a <code class="prettyprint">Name Surname</code> format).</td>
 </tr>
 <tr>
 <td>password</td>
-<td>User&rsquo;s password, which should be at least 5 characters long.</td>
+<td>The user&rsquo;s password (a string value).</td>
 </tr>
 <tr>
 <td>timezone</td>
-<td>User&rsquo;s timezone.</td>
-</tr>
-<tr>
-<td>date_format</td>
-<td>How should dates be formatted? If <code class="prettyprint">0</code> <code class="prettyprint">DD-MM-YYYY</code> will be used, if <code class="prettyprint">1</code> <code class="prettyprint">MM-DD-YYYY</code> will be used.</td>
-</tr>
-<tr>
-<td>time_format</td>
-<td>How should times be formatted? If <code class="prettyprint">0</code> <code class="prettyprint">13:00</code> will be used, if <code class="prettyprint">1</code> <code class="prettyprint">1:00pm</code> will be used.</td>
-</tr>
-<tr>
-<td>start_day</td>
-<td>First day of week. <code class="prettyprint">1</code> for Monday, <code class="prettyprint">7</code> for Sunday.</td>
-</tr>
-<tr>
-<td>next_week</td>
-<td>When postponing what day should we choose? <code class="prettyprint">1</code> for Monday, <code class="prettyprint">7</code> for Sunday.</td>
+<td>The user&rsquo;s timezone (a string value such as <code class="prettyprint">UTC</code>, <code class="prettyprint">Europe/Lisbon</code>, <code class="prettyprint">US/Eastern</code>, <code class="prettyprint">Asian/Taipei</code>).</td>
 </tr>
 <tr>
 <td>start_page</td>
-<td>Can be one of following values: <code class="prettyprint">_blank</code> to show blank page, <code class="prettyprint">_info_page</code> to show info page <code class="prettyprint">_project_&lt;PROJECT_ID&gt;</code> where <code class="prettyprint">&lt;PROJECT_ID&gt;</code> is the id of the project to show, <code class="prettyprint">&lt;ANY_QUERY&gt;</code> to query after anything (for example <code class="prettyprint">tod,tom,!!1</code>).</td>
+<td>The user&rsquo;s default view on Todoist. The start page can be one of the following: <code class="prettyprint">_info_page</code> for the info page, <code class="prettyprint">_blank</code> for a blank page, <code class="prettyprint">_project_&lt;PROJECT_ID&gt;</code> for project with id <code class="prettyprint">&lt;PROJECT_ID&gt;</code>, and <code class="prettyprint">&lt;ANY_QUERY&gt;</code> to query after anything.</td>
+</tr>
+<tr>
+<td>start_day</td>
+<td>The first day of the week (a number between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+</tr>
+<tr>
+<td>next_week</td>
+<td>The day of the next week, that tasks will be postponed to (a number between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+</tr>
+<tr>
+<td>time_format</td>
+<td>Whether to use a <code class="prettyprint">24h</code> format such as <code class="prettyprint">13:00</code> (if set to <code class="prettyprint">0</code>) when displaying time, or a <code class="prettyprint">12h</code> format such as <code class="prettyprint">1:00pm</code> (if set to <code class="prettyprint">1</code>).</td>
+</tr>
+<tr>
+<td>date_format</td>
+<td>Whether to use the <code class="prettyprint">DD-MM-YYYY</code> date format (if set to <code class="prettyprint">0</code>), or the <code class="prettyprint">MM-DD-YYYY</code> format (if set to <code class="prettyprint">1</code>).</td>
+</tr>
+<tr>
+<td>sort_order</td>
+<td>Whether to show projects in an <code class="prettyprint">oldest dates first</code> order (if set to <code class="prettyprint">0</code>, or a <code class="prettyprint">oldest dates last</code> order (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
 <td>default_reminder</td>
-<td>Can be one of the following values: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of Android or iOS official client must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
+<td>The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of Android or iOS official client must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
+</tr>
+<tr>
+<td>mobile_number</td>
+<td>The user&rsquo;s mobile number (a string value or <code class="prettyprint">null</code> if not set).</td>
+</tr>
+<tr>
+<td>mobile_host</td>
+<td>The user&rsquo;s mobile host (a string value or <code class="prettyprint">null</code> if not set).</td>
 </tr>
 </tbody></table>
 <h2 id='update-karma-goals'>Update karma goals</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
@@ -3788,23 +3844,23 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>daily_goal</td>
-<td>The target number of tasks to complete per day.</td>
+<td>The target number of tasks to complete per day (a number).</td>
 </tr>
 <tr>
 <td>weekly_goal</td>
-<td>The target number of tasks to complete per week.</td>
+<td>The target number of tasks to complete per week (a number).</td>
 </tr>
 <tr>
 <td>ignore_days</td>
-<td>A list with the days of the week to ignore.  <code class="prettyprint">1</code> for Monday, <code class="prettyprint">7</code> for Sunday.</td>
+<td>A list with the days of the week to ignore (<code class="prettyprint">1</code> for <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> for <code class="prettyprint">Sunday</code>).</td>
 </tr>
 <tr>
 <td>vacation_mode</td>
-<td>Marks the user as being on vacation.</td>
+<td>Marks the user as being on vacation (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
 <td>karma_disabled</td>
-<td>Disables the karma and goals measuring alltogether.</td>
+<td>Whether to disable the karma and goals measuring alltogether (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 </tbody></table>
 
