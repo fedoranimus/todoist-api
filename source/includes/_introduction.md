@@ -51,9 +51,11 @@ update_notification_settings | Updates the notification settings.
 get_all_completed_items | Gets the user's completed tasks.
 add_item | Adds a new item.
 
-## Changes
+## Upgrading
 
 The *Todoist API* is currently in version 6, and it replaces the older *Standard API* and *Sync API*, both of which were considered as version 5.
+
+In this section we document all the changes between the two different versions of our API, in order to make it easier to upgrade your client code.
 
 ### The old APIs
 
