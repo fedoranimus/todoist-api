@@ -6,6 +6,10 @@ The Todoist API is based on [REST](http://en.wikipedia.org/wiki/Representational
 
 The [source code](https://github.com/Doist/todoist-api) of this API documentation is also available.
 
+In order to keep track of any changes we do to our API documentation, we recommend you to subscribe to the [Todoist API page on API Changelog](https://www.apichangelog.com/api/todoist).
+
+<p><script type="text/javascript" src="//www.apichangelog.com/static/widget/follow.js" api="todoist"></script></p>
+
 ## Libraries
 
 At the moment there are language bindings for Python, but we are planning on creating client libraries for other languages and platforms in the future.
