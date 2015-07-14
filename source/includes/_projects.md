@@ -45,7 +45,7 @@ Property | Description
 id | The id of the project (a unique number).
 user_id | The id of the user that owns the project (a unique number).
 name | The name of the project (a string value).
-color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
+color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).  The color codes corresponding to these numbers are: `#95ef63`, `#ff8581`, `#ffc471`, `#f9ec75`, `#a8c8e4`, `#d2b8a3`, `#e2a8e4`, `#cccccc`, `#fb886e`, `#ffcc00`, `#74e8d3`, `#3bd5fb`.  And for the additional colors of the premium users: `#dc4fad`, `#ac193d`, `#d24726`, `#82ba00`, `#03b3b2`, `#008299`, `#5db2ff`, `#0072c6`, `#000000`, `#777777`.
 indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
 item_order | Project's order in the project list (a number, where the smallest value should place the project at the top).
 collapsed | Whether the project's sub-projects are collapsed (where `1` is true and `0` is false).
