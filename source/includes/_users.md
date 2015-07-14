@@ -91,7 +91,7 @@ default_reminder | The default reminder fo the user. Reminders are only possible
 mobile_number | The user's mobile number (a string value or `null` if not set).
 mobile_host | The user's mobile host (a string value or `null` if not set).
 completed_count | The total number of completed tasks (a number).
-karma | The user's karma score (a number).
+karma | The user's karma score (a float number).
 karma_trend | The user's karma trend (a string value like `up`).
 is_premium | Whether the user has a Premium subscription (a `true` or `false` value).
 premium_until | The date when the user's Premium subscription ends (`null` if not a Premium user).

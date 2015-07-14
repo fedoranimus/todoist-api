@@ -68,13 +68,13 @@ project_id | The id of the project to add the task to (a unique number).
 content | The text of the task (a string value).
 date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang | The language of the date_string (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
-due_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. If you want to pass in due dates, note that `date_string` is required, while `due_date_utc` can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
+due_date_utc | The date of the task in a format like `Mon 07 Aug 2006 12:34:56 +0100` (or `null` if not set).
 priority | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
 indent | The indent of the task (a number between `1` and `4`, where `1` is top-level).
 item_order | The order of the task inside a project (a number, where the smallest value would place the task at the top).
 day_order | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
 collapsed | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
-children | The task's child tasks (a list of task ids such as `[13134,232345]`).
+children | The task's child tasks (will always be `null`, as this is deprecated).
 labels | The tasks labels (a list of label ids such as `[2324,2525]`).
 assigned_by_uid | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
 responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
@@ -83,7 +83,7 @@ in_history | Whether the task has been marked as completed and is marked to be m
 is_deleted | Whether the task is marked as deleted (where `1` is true and `0` is false).
 is_archived | Whether the task is marked as archived (where `1` is true and `0` is false).
 sync_id | A special id for shared tasks (a number or `null` if not set).
-task_added | The date when the task was created.
+date_added | The date when the task was created.
 
 
 ## Add an item
@@ -128,7 +128,7 @@ indent | The indent of the task (a number between `1` and `4`, where `1` is top-
 item_order | The order of the task inside a project (a number, where the smallest value would place the task at the top).
 day_order | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
 collapsed | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
-children | The task's child tasks (a list of task ids such as `[13134,232345]`).
+children | The task's child tasks (will always be `null`, as this is deprecated).
 labels | The tasks labels (a list of label ids such as `[2324,2525]`).
 assigned_by_uid | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
 responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
@@ -176,7 +176,7 @@ indent | The indent of the task (a number between `1` and `4`, where `1` is top-
 item_order | The order of the task inside a project (a number, where the smallest value would place the task at the top).
 day_order | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
 collapsed | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
-children | The task's child tasks (a list of task ids such as `[13134,232345]`).
+children | The task's child tasks (will always be `null`, as this is deprecated).
 labels | The tasks labels (a list of label ids such as `[2324,2525]`).
 aassigned_by_uid | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
 responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
