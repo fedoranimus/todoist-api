@@ -132,7 +132,6 @@ children | The task's child tasks (will always be `null`, as this is deprecated)
 labels | The tasks labels (a list of label ids such as `[2324,2525]`).
 assigned_by_uid | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
 responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
-note | Add a note directly to the task (a string value that will become the content of the note).
 
 ## Update an item
 
@@ -180,7 +179,6 @@ children | The task's child tasks (will always be `null`, as this is deprecated)
 labels | The tasks labels (a list of label ids such as `[2324,2525]`).
 aassigned_by_uid | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
 responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
-note | Add a note directly to the task (a string value that will become the content of the note).
 
 ## Delete items
 
