@@ -1610,7 +1610,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
+<td>The language of the <code class="prettyprint">date_string</code> (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc</td>
@@ -1725,11 +1725,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
+<td>The language of the <code class="prettyprint">date_string</code> (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc</td>
-<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If <code class="prettyprint">date_string</code> is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
 </tr>
 <tr>
 <td>priority</td>
@@ -1820,11 +1820,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
+<td>The language of the <code class="prettyprint">date_string</code> (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc</td>
-<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If <code class="prettyprint">date_string</code> is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
 </tr>
 <tr>
 <td>due_date</td>
@@ -2075,7 +2075,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </thead><tbody>
 <tr>
 <td>new_date_utc</td>
-<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If <code class="prettyprint">date_string</code> is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
 </tr>
 <tr>
 <td>date_string</td>
@@ -3104,7 +3104,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
+<td>The language of the <code class="prettyprint">date_string</code> (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc</td>
@@ -3233,11 +3233,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
+<td>The language of the <code class="prettyprint">date_string</code> (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc</td>
-<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. Either <code class="prettyprint">due_date_utc</code> or <code class="prettyprint">date_string</code> can be used to set the reminder date, but the value of <code class="prettyprint">due_date_utc</code> takes precedence over the value of <code class="prettyprint">date_string</code>.</td>
 </tr>
 <tr>
 <td>due_date</td>
@@ -3324,11 +3324,11 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 <tr>
 <td>date_lang</td>
-<td>The language of the date_string (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
+<td>The language of the <code class="prettyprint">date_string</code> (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc</td>
-<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. If you want to pass in due dates, note that <code class="prettyprint">date_string</code> is required, while <code class="prettyprint">due_date_utc</code> can be omitted. If date_string is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
+<td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). Either <code class="prettyprint">due_date_utc</code> or <code class="prettyprint">date_string</code> can be used to set the reminder date, but the value of <code class="prettyprint">due_date_utc</code> takes precedence over the value of <code class="prettyprint">date_string</code>.</td>
 </tr>
 <tr>
 <td>due_date</td>
