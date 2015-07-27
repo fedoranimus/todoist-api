@@ -468,7 +468,7 @@ content | The text of the task (a string value).
 Parameter | Description
 --------- | -----------
 project_id | The id of the project to add the task to (a unique number), while the default is the user's `Inbox` project.
-date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 priority | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
 indent | The indent of the task (a number between `1` and `4`, where `1` is top-level).
 item_order | The order of the task inside a project (a number, where the smallest value would place the task at the top).

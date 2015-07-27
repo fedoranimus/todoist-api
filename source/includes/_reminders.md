@@ -45,7 +45,7 @@ notify_uid | The user id which should be notified of the reminder, typically the
 item_id | The item id for which the reminder is about (a unique number).
 service | The way to get notified of the reminder: `email` for e-mail, `mobile` for mobile text message, or `push` for mobile push notification.
 type | The type of the reminder: `relative` for a time-based reminder specified in minutes from now, `absolute` for a time-based reminder with a specific time and date in the future, and `location` for a location-based reminder.
-date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string if not set). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
 due_date_utc | The date of the task in a format like `Mon 07 Aug 2006 12:34:56 +0100` (or `null` if not set).
 due_date | The same as `due_date_utc` (to be deprecated).
@@ -132,7 +132,7 @@ Argument | Description
 notify_uid | The user id which should be notified of the reminder, typically the current user id creating the reminder (a unique number).
 service | The way to get notified of the reminder: `email` for e-mail, `mobile` for mobile text message, or `push` for mobile push notification.
 type | The type of the reminder: `relative` for a time-based reminder specified in minutes from now, `absolute` for a time-based reminder with a specific time and date in the future, and `location` for a location-based reminder.
-date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
 due_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. Either `due_date_utc` or `date_string` can be used to set the reminder date, but the value of `due_date_utc` takes precedence over the value of `date_string`.
 due_date | The same as `due_date_utc` (to be deprecated).
@@ -179,7 +179,7 @@ Argument | Description
 notify_uid | The user id which should be notified of the reminder, typically the current user id creating the reminder (a unique number).
 service | The way to get notified of the reminder: `email` for e-mail, `mobile` for mobile text message, or `push` for mobile push notification.
 type | The type of the reminder: `relative` for a time-based reminder specified in minutes from now, `absolute` for a time-based reminder with a specific time and date in the future, and `location` for a location-based reminder.
-date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
 due_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). Either `due_date_utc` or `date_string` can be used to set the reminder date, but the value of `due_date_utc` takes precedence over the value of `date_string`.
 due_date | The same as `due_date_utc` (to be deprecated).

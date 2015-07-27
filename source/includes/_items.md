@@ -66,7 +66,7 @@ id | The id of the task (a unique number).
 user_id | The owner of the task (a unique number).
 project_id | The id of the project to add the task to (a unique number).
 content | The text of the task (a string value).
-date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string if not set). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
 due_date_utc | The date of the task in a format like `Mon 07 Aug 2006 12:34:56 +0100` (or `null` if not set).
 priority | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
@@ -120,7 +120,7 @@ content | The text of the task (a string value).
 
 Argument | Description
 -------- | -----------
-date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
 due_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. If you want to pass in due dates, note that `date_string` is required, while `due_date_utc` can be omitted. If `date_string` is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
 priority | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
@@ -166,7 +166,7 @@ id | The id of the task (a number).
 Argument | Description
 -------- | -----------
 content | The text of the task (a string value).
-date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
 due_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. If you want to pass in due dates, note that `date_string` is required, while `due_date_utc` can be omitted. If `date_string` is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
 due_date | The same as `due_date_utc` (to be deprecated).
@@ -346,7 +346,7 @@ id | The id of the item to update (a number or a temp id).
 Argument | Description
 -------- | -----------
 new_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. If you want to pass in due dates, note that `date_string` is required, while `due_date_utc` can be omitted. If `date_string` is provided, it will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
-date_string | The date of the task, added in free form text, for example it can be `every day @ 10`. Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 is_forward | Whether the task is to be completed (value `1`) or uncompleted (value `0`), while the default is `1`.
 
 ## Update multiple orders/indents
