@@ -271,6 +271,7 @@ resource_types | This parameter controls which resources to fetch from the serve
 Parameter | Description
 --------- | -----------
 day_orders_timestamp | The `sync` API requests return `DayOrdersTimestamp` that specifies when the day orders were last updated. If you omit `day_orders_timestamp` then none of then will be fetched. If you specify `day_orders_timestamp` then day orders will be returned if your timestamp is different from the servers. If you send `day_orders_timestamp` and the day orders have not been updated then the server won't return the `DayOrders` entry at all.
+chaos_monkey | Use chaos_monkey to simulate errors. Should be an integer between 0 and 100. `chaos_monkey` set to 50 will randomly return errors on 50% of the commands
 
 ### Explanation of data returned
 
