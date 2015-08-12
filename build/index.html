@@ -911,6 +911,10 @@ are not related to the full model, but are nonetheless useful.</p>
 <td>day_orders_timestamp</td>
 <td>The <code class="prettyprint">sync</code> API requests return <code class="prettyprint">DayOrdersTimestamp</code> that specifies when the day orders were last updated. If you omit <code class="prettyprint">day_orders_timestamp</code> then none of then will be fetched. If you specify <code class="prettyprint">day_orders_timestamp</code> then day orders will be returned if your timestamp is different from the servers. If you send <code class="prettyprint">day_orders_timestamp</code> and the day orders have not been updated then the server won&rsquo;t return the <code class="prettyprint">DayOrders</code> entry at all.</td>
 </tr>
+<tr>
+<td>chaos_monkey</td>
+<td>Use chaos_monkey to simulate errors. Should be an integer between 0 and 100. <code class="prettyprint">chaos_monkey</code> set to 50 will randomly return errors on 50% of the commands</td>
+</tr>
 </tbody></table>
 <h3 id='explanation-of-data-returned'>Explanation of data returned</h3>
 <p>A brief explanation of what each object returned contains, while each of them will be later described in more detail.</p>
@@ -1283,6 +1287,14 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <tr>
 <td>archived_timestamp</td>
 <td>The timestamp of when the project was archived (<code class="prettyprint">0</code> if not set).</td>
+</tr>
+<tr>
+<td>inbox_project</td>
+<td>Whether the project is <code class="prettyprint">Inbox</code> (<code class="prettyprint">true</code> or otherwise this property is not sent).</td>
+</tr>
+<tr>
+<td>team_inbox</td>
+<td>Whether the project is <code class="prettyprint">TeamInbox</code> (<code class="prettyprint">true</code> or otherwise this property is not sent).</td>
 </tr>
 </tbody></table>
 <h2 id='add-a-project'>Add a project</h2>

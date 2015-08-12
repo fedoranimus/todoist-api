@@ -54,6 +54,8 @@ is_deleted | Whether the project is marked as deleted (where `1` is true and `0`
 is_archived | Whether the project is marked as archived (where `1` is true and `0` is false).
 archived_date | The date when the project was archived (`null` if not set).
 archived_timestamp | The timestamp of when the project was archived (`0` if not set).
+inbox_project | Whether the project is `Inbox` (`true` or otherwise this property is not sent).
+team_inbox | Whether the project is `TeamInbox` (`true` or otherwise this property is not sent).
 
 
 ## Add a project
