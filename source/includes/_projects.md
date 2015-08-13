@@ -175,7 +175,7 @@ $ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_archive", "uuid": "bbec1a60-2bdd-48ac-a623-c8eb968e1697", "args": {"ids": [128501682]}}]'
 { ...
-  "SyncStatus": {"bbec1a60-2bdd-48ac-a623-c8eb968e1697": {"128501682": "ok}},
+  "SyncStatus": {"bbec1a60-2bdd-48ac-a623-c8eb968e1697": {"128501682": "ok"}},
   ... }
 ```
 
