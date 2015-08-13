@@ -173,9 +173,9 @@ ids | List of the ids of the projects to delete (numbers or temp ids).
 ```shell
 $ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d commands=[{"type": "project_archive", "uuid": "bbec1a60-2bdd-48ac-a623-c8eb968e1697", "args": {"id": 128501682}}]'
+    -d commands=[{"type": "project_archive", "uuid": "bbec1a60-2bdd-48ac-a623-c8eb968e1697", "args": {"ids": [128501682]}}]'
 { ...
-  "SyncStatus": {"bbec1a60-2bdd-48ac-a623-c8eb968e1697": "ok},
+  "SyncStatus": {"bbec1a60-2bdd-48ac-a623-c8eb968e1697": {"128501682": "ok}},
   ... }
 ```
 
@@ -193,7 +193,7 @@ Archive project and its children. Only available for Todoist Premium users.
 
 Argument | Description
 -------- | -----------
-id | The id of the project (a number or a temp id).
+ids | List of the ids of the projects to archive (numbers or temp ids).
 
 ## Unarchive a project
 
@@ -202,9 +202,9 @@ id | The id of the project (a number or a temp id).
 ```shell
 $ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d commands=[{"type": "project_unarchive", "uuid": "7d86f042-e098-4fa6-9c1f-a61fe8c39d74", "args": {"id": 128501682}}]'
+    -d commands=[{"type": "project_unarchive", "uuid": "7d86f042-e098-4fa6-9c1f-a61fe8c39d74", "args": {"ids": [128501682]}}]'
 { ...
-  "SyncStatus": {"7d86f042-e098-4fa6-9c1f-a61fe8c39d74": "ok"},
+  "SyncStatus": {"7d86f042-e098-4fa6-9c1f-a61fe8c39d74": {"128501682": "ok"}},
   ... }
 ```
 
@@ -222,7 +222,7 @@ Unarchive project and its children. Only available for Todoist Premium users.
 
 Argument | Description
 -------- | -----------
-id | The id of the project (a number or a temp id).
+ids | List of the ids of the projects to unarchive (numbers or temp ids).
 
 ## Update multiple orders/indents
 

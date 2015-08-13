@@ -1445,9 +1445,9 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"project_archive"</span>, <span class="s2">"uuid"</span>: <span class="s2">"bbec1a60-2bdd-48ac-a623-c8eb968e1697"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"id"</span>: 128501682<span class="o">}}]</span><span class="s1">'
+    -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"project_archive"</span>, <span class="s2">"uuid"</span>: <span class="s2">"bbec1a60-2bdd-48ac-a623-c8eb968e1697"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"ids"</span>: <span class="o">[</span>128501682]<span class="o">}}]</span><span class="s1">'
 { ...
-  "SyncStatus": {"bbec1a60-2bdd-48ac-a623-c8eb968e1697": "ok},
+  "SyncStatus": {"bbec1a60-2bdd-48ac-a623-c8eb968e1697": {"128501682": "ok}},
   ... }
 </span></code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -1466,8 +1466,8 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The id of the project (a number or a temp id).</td>
+<td>ids</td>
+<td>List of the ids of the projects to archive (numbers or temp ids).</td>
 </tr>
 </tbody></table>
 <h2 id='unarchive-a-project'>Unarchive a project</h2>
@@ -1476,9 +1476,9 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"project_unarchive"</span>, <span class="s2">"uuid"</span>: <span class="s2">"7d86f042-e098-4fa6-9c1f-a61fe8c39d74"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"id"</span>: 128501682<span class="o">}}]</span><span class="s1">'
+    -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"project_unarchive"</span>, <span class="s2">"uuid"</span>: <span class="s2">"7d86f042-e098-4fa6-9c1f-a61fe8c39d74"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"ids"</span>: <span class="o">[</span>128501682]<span class="o">}}]</span><span class="s1">'
 { ...
-  "SyncStatus": {"7d86f042-e098-4fa6-9c1f-a61fe8c39d74": "ok"},
+  "SyncStatus": {"7d86f042-e098-4fa6-9c1f-a61fe8c39d74": {"128501682": "ok"}},
   ... }
 </span></code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -1497,8 +1497,8 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The id of the project (a number or a temp id).</td>
+<td>ids</td>
+<td>List of the ids of the projects to unarchive (numbers or temp ids).</td>
 </tr>
 </tbody></table>
 <h2 id='update-multiple-ordersindents'>Update multiple orders/indents</h2>
