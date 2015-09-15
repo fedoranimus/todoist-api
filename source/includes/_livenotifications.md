@@ -266,7 +266,8 @@ notification_type | Required. Type of notification. Different notification type 
 seq_no | Required. Notification sequence number.
 from_user | Optional. User data, useful on `share_invitation_sent`.
 project_name | Optional. The project name, useful for `share_invitation_*` where you may not have the project in the local model.
-invitation_secret | Optional. Useful for accepting/rejecting invitations.
+invitation_id | Optional. The invitation id. Useful for accepting/rejecting invitations.
+invitation_secret | Optional. The invitation secret key. Useful for accepting/rejecting invitations.
 
 Here are the extra properties for the `share_invitation_sent` type of live notifications:
 
