@@ -114,7 +114,7 @@
     "notification_type": "biz_policy_disallowed_invitation",
     "project_id": 456,
     "seq_no": 1234567890,
-    "user": {
+    "from_user": {
         "email": "you@example.com",
         "full_name": "Example User",
         "id": "789",
@@ -129,7 +129,7 @@
     "notification_key": "notification_123",
     "notification_type": "biz_policy_rejected_invitation",
     "seq_no": 1234567890,
-    "user": {
+    "from_user": {
         "email": "you@example.com",
         "full_name": "Example User",
         "id": "789",
@@ -190,7 +190,8 @@
     "invitation_secret": "abcdefghijklmno",
     "notification_key": "notification_123",
     "notification_type": "biz_invitation_created",
-    "seq_no": 1234567890
+    "seq_no": 1234567890,
+    "state": "accepted"
 }
 
 {
