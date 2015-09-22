@@ -4524,12 +4524,16 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <td>Can be used for pagination, when more than the <code class="prettyprint">limit</code> number of tasks are returned (a number).</td>
 </tr>
 <tr>
-<td>from_date</td>
-<td>Return items with a completed date same or older than <code class="prettyprint">from_date</code> (a string value formatted as <code class="prettyprint">2007-4-29T10:13</code>).</td>
+<td>until</td>
+<td>Return items with a completed date same or older than <code class="prettyprint">until</code> (a string value formatted as <code class="prettyprint">2007-4-29T10:13</code>).</td>
 </tr>
 <tr>
-<td>to_date</td>
-<td>Return items with a completed date newer than <code class="prettyprint">to_date</code> (a string value formatted as <code class="prettyprint">2007-4-29T10:13</code>).</td>
+<td>since</td>
+<td>Return items with a completed date newer than <code class="prettyprint">since</code> (a string value formatted as <code class="prettyprint">2007-4-29T10:13</code>).</td>
+</tr>
+<tr>
+<td>annotate_notes</td>
+<td>Return notes together with the completed items (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
 </tr>
 </tbody></table>
 <h2 id='add-item'>Add item</h2>

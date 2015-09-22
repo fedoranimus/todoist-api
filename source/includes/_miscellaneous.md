@@ -393,8 +393,9 @@ Parameter | Description
 project_id | Filter the tasks by project id (a unique number).
 limit | The number of items to return (a number, where the default is `30`, and the maximum is `50`).
 offset | Can be used for pagination, when more than the `limit` number of tasks are returned (a number).
-from_date | Return items with a completed date same or older than `from_date` (a string value formatted as `2007-4-29T10:13`).
-to_date | Return items with a completed date newer than `to_date` (a string value formatted as `2007-4-29T10:13`).
+until | Return items with a completed date same or older than `until` (a string value formatted as `2007-4-29T10:13`).
+since | Return items with a completed date newer than `since` (a string value formatted as `2007-4-29T10:13`).
+annotate_notes | Return notes together with the completed items (a `true` or `false` value).
 
 ## Add item
 
