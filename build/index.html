@@ -5836,8 +5836,8 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='event-structure--delivery'>Event Structure / Delivery</h2><h3 id='event-json-object'>Event JSON Object</h3>
-<p>Each webhook event is structured as a JSON object. The event JSON object follows this general structure:</p>
+<h2 id='request-format--delivery'>Request Format / Delivery</h2><h3 id='event-json-object'>Event JSON Object</h3>
+<p>Each webhook event notification request contains a JSON object. The event JSON object follows this general structure:</p>
 
 <p><code class="prettyprint">{&quot;event_name&quot;: &quot;...&quot;, &quot;user_id&quot;=..., &quot;event_data&quot;: {...}}</code></p>
 
@@ -5853,8 +5853,7 @@ Host: your_callback_url_host
 Content-Type: application/json
 X-Todoist-Hmac-SHA256: UEEq9si3Vf9yRSrLthbpazbb69kP9+CZQ7fXmVyjhPs=
 
-[
-  {
+{
     "event_name": "item:added",
     "user_id": 1234,
     "event_data": {
@@ -5882,48 +5881,32 @@ X-Todoist-Hmac-SHA256: UEEq9si3Vf9yRSrLthbpazbb69kP9+CZQ7fXmVyjhPs=
       "collapsed": 0,
       "date_string": ""
     }
-  },
-  {
-    "event_name": "item:updated",
-    "user_id": 528,
-    "event_data": {
-      "due_date": null,
-      "day_order": -1,
-      "assigned_by_uid": 1855589,
-      "is_archived": 0,
-      "labels": [],
-      "sync_id": null,
-      "in_history": 0,
-      "has_notifications": 0,
-      "indent": 1,
-      "checked": 0,
-      "date_added": "Fri 26 Sep 2014 08:25:05 +0000",
-      "id": 43311505,
-      "content": "Task1",
-      "user_id": 1855589,
-      "due_date_utc": null,
-      "children": null,
-      "priority": 1,
-      "item_order": 1,
-      "is_deleted": 0,
-      "responsible_uid": null,
-      "project_id": 223501470,
-      "collapsed": 0,
-      "date_string": ""
-    }
-  },
-  ...
 }
+  ...
 </code></pre>
-<h3 id='event-delivery'>Event Delivery</h3>
-<p>When your subscribed webhook events occourred, we would deliver an event notification to your configured webhook callback url via a HTTP POST request. Notice that the payload would be a <strong>JSON array</strong> because multiple event notifications could be delivered in a single notification request.</p>
-<h3 id='payload-verification'>Payload Verification</h3>
-<p>To verify each webhook request was indeed sent by Todoist, we would include a <strong>X-Todoist-Hmac-SHA256</strong> header which was a SHA256 Hmac 
-generated using your <code class="prettyprint">client_secret</code> as the encryption key and the whole request payload as the message to be encrypted. The resulting Hmac would be encoded in 
-a base64 string.</p>
+<h3 id='request-header'>Request Header</h3>
+<table><thead>
+<tr>
+<th>Header Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>User-Agent</td>
+<td>Will be set to &ldquo;Todoist-Webhooks&rdquo;</td>
+</tr>
+<tr>
+<td>X-Todoist-Hmac-SHA256</td>
+<td>To verify each webhook request was indeed sent by Todoist, a <code class="prettyprint">X-Todoist-Hmac-SHA256</code> header is included; it is a SHA256 Hmac generated using your <code class="prettyprint">client_secret</code> as the encryption key and the whole request payload as the message to be encrypted. The resulting Hmac would be encoded in a base64 string.</td>
+</tr>
+<tr>
+<td>X-Todoist-Delivery-ID</td>
+<td>Each webhook event notification has a unique <code class="prettyprint">X-Todoist-Delivery-ID</code>. When a notification request failed to be delivered to your endpoint, the request would be redelivered again with the same <code class="prettyprint">X-Todoist-Delivery-ID</code>.</td>
+</tr>
+</tbody></table>
 <h3 id='failed-delivery'>Failed Delivery</h3>
 <p>When a event notification failed to be delivered to your webhook callback URL endpoint (i.e. due to server error, network failure, incorrect response&hellip;etc), 
-it would be redelivered after 30 mins (1hr and 1.5hr for the second and the third retry respectively), and each notification would be redelivered for at most three times.</p>
+it would be redelivered after 15 mins, and each notification would be redelivered for at most three times.</p>
 
 <p><strong>Your callback endpoint must respond with a HTTP 200 when receiving a event notification request.</strong> Response other than HTTP 200 would be considered as failed delivery, and the notification would be redelivered again.</p>
 

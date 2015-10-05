@@ -39,12 +39,12 @@ filter:updated |
 
 
 
-## Event Structure / Delivery
+## Request Format / Delivery
 
 
 ### Event JSON Object
 
-Each webhook event is structured as a JSON object. The event JSON object follows this general structure:
+Each webhook event notification request contains a JSON object. The event JSON object follows this general structure:
 
 `{"event_name": "...", "user_id"=..., "event_data": {...}}`
 
@@ -63,8 +63,7 @@ Host: your_callback_url_host
 Content-Type: application/json
 X-Todoist-Hmac-SHA256: UEEq9si3Vf9yRSrLthbpazbb69kP9+CZQ7fXmVyjhPs=
 
-[
-  {
+{
     "event_name": "item:added",
     "user_id": 1234,
     "event_data": {
@@ -92,55 +91,23 @@ X-Todoist-Hmac-SHA256: UEEq9si3Vf9yRSrLthbpazbb69kP9+CZQ7fXmVyjhPs=
       "collapsed": 0,
       "date_string": ""
     }
-  },
-  {
-    "event_name": "item:updated",
-    "user_id": 528,
-    "event_data": {
-      "due_date": null,
-      "day_order": -1,
-      "assigned_by_uid": 1855589,
-      "is_archived": 0,
-      "labels": [],
-      "sync_id": null,
-      "in_history": 0,
-      "has_notifications": 0,
-      "indent": 1,
-      "checked": 0,
-      "date_added": "Fri 26 Sep 2014 08:25:05 +0000",
-      "id": 43311505,
-      "content": "Task1",
-      "user_id": 1855589,
-      "due_date_utc": null,
-      "children": null,
-      "priority": 1,
-      "item_order": 1,
-      "is_deleted": 0,
-      "responsible_uid": null,
-      "project_id": 223501470,
-      "collapsed": 0,
-      "date_string": ""
-    }
-  },
-  ...
 }
+  ...
 ```
 
-
-### Event Delivery
-
-When your subscribed webhook events occourred, we would deliver an event notification to your configured webhook callback url via a HTTP POST request. Notice that the payload would be a __JSON array__ because multiple event notifications could be delivered in a single notification request.
+### Request Header
 
 
-### Payload Verification 
+Header Name | Description
+-------- | -----------
+User-Agent | Will be set to "Todoist-Webhooks"
+X-Todoist-Hmac-SHA256 | To verify each webhook request was indeed sent by Todoist, a `X-Todoist-Hmac-SHA256` header is included; it is a SHA256 Hmac generated using your `client_secret` as the encryption key and the whole request payload as the message to be encrypted. The resulting Hmac would be encoded in a base64 string.
+X-Todoist-Delivery-ID | Each webhook event notification has a unique `X-Todoist-Delivery-ID`. When a notification request failed to be delivered to your endpoint, the request would be redelivered again with the same `X-Todoist-Delivery-ID`.
 
-To verify each webhook request was indeed sent by Todoist, we would include a __X-Todoist-Hmac-SHA256__ header which was a SHA256 Hmac 
-generated using your `client_secret` as the encryption key and the whole request payload as the message to be encrypted. The resulting Hmac would be encoded in 
-a base64 string.
 
 
 ### Failed Delivery
 When a event notification failed to be delivered to your webhook callback URL endpoint (i.e. due to server error, network failure, incorrect response...etc), 
-it would be redelivered after 30 mins (1hr and 1.5hr for the second and the third retry respectively), and each notification would be redelivered for at most three times.
+it would be redelivered after 15 mins, and each notification would be redelivered for at most three times.
 
 __Your callback endpoint must respond with a HTTP 200 when receiving a event notification request.__ Response other than HTTP 200 would be considered as failed delivery, and the notification would be redelivered again.
