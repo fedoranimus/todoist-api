@@ -1716,10 +1716,6 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>project_id</td>
-<td>The id of the project to add the task to (a number or a temp id).</td>
-</tr>
-<tr>
 <td>content</td>
 <td>The text of the task (a string value).</td>
 </tr>
@@ -1731,6 +1727,10 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>project_id</td>
+<td>The id of the project to add the task to (a number or a temp id).  By default the task is added to the user’s <code class="prettyprint">Inbox</code> project.</td>
+</tr>
 <tr>
 <td>date_string</td>
 <td>The date of the task, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code> (or <code class="prettyprint">null</code> or an empty string to unset). Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>

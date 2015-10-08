@@ -113,13 +113,13 @@ Add a new task to a project.
 
 Argument | Description
 -------- | -----------
-project_id | The id of the project to add the task to (a number or a temp id).
 content | The text of the task (a string value).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
+project_id | The id of the project to add the task to (a number or a temp id).  By default the task is added to the user’s `Inbox` project.
 date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
 due_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. Note that, when the `due_date_utc` argument is specified, the `date_string` is required and has to specified as well, and also, the `date_string` argument will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
