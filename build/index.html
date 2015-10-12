@@ -1960,7 +1960,8 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
-<p>Complete tasks and move them to history.</p>
+<p>Complete tasks and optionally move them to history. See also <code class="prettyprint">item_close</code> for
+a simplified version of the task.</p>
 <h3 id='required-arguments'>Required arguments</h3>
 <table><thead>
 <tr>
@@ -2057,7 +2058,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
-<p>Complete a recurring task, and the reason why this is a special case is because we need to mark a recurring completion (and using <code class="prettyprint">item_update</code> won&rsquo;t do this).</p>
+<p>Complete a recurring task, and the reason why this is a special case is because we need to mark a recurring completion (and using <code class="prettyprint">item_update</code> won&rsquo;t do this). See also <code class="prettyprint">item_close</code> for a simplified version of the task.</p>
 <h3 id='required-arguments'>Required arguments</h3>
 <table><thead>
 <tr>
@@ -2088,6 +2089,40 @@ success, a 4xx code an error due to incorrect user provided information, and a
 <tr>
 <td>is_forward</td>
 <td>Whether the task is to be completed (value <code class="prettyprint">1</code>) or uncompleted (value <code class="prettyprint">0</code>), while the default is <code class="prettyprint">1</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='close-item'>Close item</h2>
+<blockquote>
+<p>An example of closing an item:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "item_close", "uuid": "c5888360-96b1-46be-aaac-b49b1135feab", "args": {"id": 33548400}}]'</span>
+<span class="o">{</span> ...
+  <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"c5888360-96b1-46be-aaac-b49b1135feab"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
+  ... <span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="mi">33548400</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre>
+
+<p>A simplified version of <code class="prettyprint">item_complete</code> / <code class="prettyprint">item_update_date_complete</code>. The command
+does exactly what official clients do when you close a task: regular task is
+completed and moved to history, subtask is checked (marked as done, but not moved
+to history), recurring task is moved forward (due date is updated).</p>
+<h3 id='required-arguments'>Required arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the item to close (a number or a temp id).</td>
 </tr>
 </tbody></table>
 <h2 id='update-multiple-ordersindents'>Update multiple orders/indents</h2>
