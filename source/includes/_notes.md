@@ -14,7 +14,7 @@
     "file_size": 1234,
     "file_url": "https://example.com/File1.txt",
     "upload_state": "completed"
-  }
+  },
   "uids_to_notify": null,
   "is_deleted": 0,
   "is_archived": 0,
@@ -35,7 +35,7 @@
     'file_size': 1234,
     'file_url': 'https://example.com/File1.txt',
     'upload_state': 'completed'
-  }
+  },
   'uids_to_notify': None,
   'is_deleted': 0,
   'is_archived': 0,
