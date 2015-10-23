@@ -17,7 +17,7 @@ includes:
   - filters
   - reminders
   - users
-  - query
+#  - query
   - miscellaneous
   - sharing
   - livenotifications
