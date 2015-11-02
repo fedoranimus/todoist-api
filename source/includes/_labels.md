@@ -6,7 +6,7 @@
 {
   "id": 790748,
   "uid": 1855589,
-  "name": "Label1"
+  "name": "Label1",
   "color": 7,
   "item_order": 0,
   "is_deleted": 0
