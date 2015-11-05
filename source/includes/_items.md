@@ -113,13 +113,13 @@ Add a new task to a project.
 
 Argument | Description
 -------- | -----------
-project_id | The id of the project to add the task to (a number or a temp id).
 content | The text of the task (a string value).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
+project_id | The id of the project to add the task to (a number or a temp id).  By default the task is added to the user’s `Inbox` project.
 date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
 due_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. Note that, when the `due_date_utc` argument is specified, the `date_string` is required and has to specified as well, and also, the `date_string` argument will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
@@ -260,7 +260,8 @@ $ curl https://todoist.com/API/v6/sync \
 >>> api.commit()
 ```
 
-Complete tasks and move them to history.
+Complete tasks and optionally move them to history. See also `item_close` for
+a simplified version of the task.
 
 ### Required arguments
 
@@ -333,7 +334,7 @@ $ curl https://todoist.com/API/v6/sync \
 >>> api.commit()
 ```
 
-Complete a recurring task, and the reason why this is a special case is because we need to mark a recurring completion (and using `item_update` won't do this).
+Complete a recurring task, and the reason why this is a special case is because we need to mark a recurring completion (and using `item_update` won't do this). See also `item_close` for a simplified version of the task.
 
 ### Required arguments
 
@@ -348,6 +349,39 @@ Argument | Description
 new_date_utc | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `new_date_utc` must be in UTC. Note that, when the `new_date_utc` argument is specified, the `date_string` is required and has to specified as well, and also, the `date_string` argument will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
 date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 is_forward | Whether the task is to be completed (value `1`) or uncompleted (value `0`), while the default is `1`.
+
+
+## Close item
+
+> An example of closing an item:
+
+```shell
+$ curl https://todoist.com/API/v6/sync \
+    -d token=0123456789abcdef0123456789abcdef01234567 \
+    -d commands='[{"type": "item_close", "uuid": "c5888360-96b1-46be-aaac-b49b1135feab", "args": {"id": 33548400}}]'
+{ ...
+  "SyncStatus": {"c5888360-96b1-46be-aaac-b49b1135feab": "ok"},
+  ... }
+```
+
+```python
+>>> import todoist
+>>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
+>>> api.items.get_by_id(33548400)
+>>> item.close()
+>>> api.commit()
+```
+
+A simplified version of `item_complete` / `item_update_date_complete`. The command
+does exactly what official clients do when you close a task: regular task is
+completed and moved to history, subtask is checked (marked as done, but not moved
+to history), recurring task is moved forward (due date is updated).
+
+### Required arguments
+
+Argument | Description
+-------- | -----------
+id | The id of the item to close (a number or a temp id).
 
 ## Update multiple orders/indents
 

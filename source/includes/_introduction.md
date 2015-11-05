@@ -46,7 +46,6 @@ sync | Retrieves or sends data.
 login | Logins to the server using the user's password.
 login_with_google | Logins to the server using OAuth2.
 upload_file | Uploads a file.
-query | Query after date, priority or labels.
 register | Registers a new account.
 delete_user | Deletes an existing account.
 get_redirect_link | Gets the redirect link.
@@ -54,6 +53,8 @@ get_productivity_stats | Gets the productivity stats.
 update_notification_settings | Updates the notification settings.
 get_all_completed_items | Gets the user's completed tasks.
 add_item | Adds a new item.
+
+<!-- query | Query after date, priority or labels. -->
 
 ## Upgrading
 

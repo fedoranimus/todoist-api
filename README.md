@@ -21,7 +21,7 @@ You're going to need:
 
 You can now see the docs at <http://localhost:4567>. And as you edit `source/index.md`, your server should automatically update.
 
-Now that all is setup in your machine, you'll probably want to learn more about the [Slate template](https://github.com/tripit/slate), which is used for this API documenentation.  There is a lot of articles on it at [the Slate wiki](https://github.com/tripit/slate/wiki).
+Now that all is setup in your machine, you'll probably want to learn more about the [Slate template](https://github.com/tripit/slate), which is used for this API documentation.  There is a lot of articles on it at [the Slate wiki](https://github.com/tripit/slate/wiki).
 
 
 ### Build distribution
