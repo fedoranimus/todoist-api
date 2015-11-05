@@ -1,8 +1,8 @@
 # Labels
 
-> A label in Todoist is a JSON object. Typically a label object will look like:
+> An example label object
 
-```shell
+```json
 {
   "id": 790748,
   "uid": 1855589,
@@ -13,16 +13,6 @@
 }
 ```
 
-```python
-{
-  'id': 790748,
-  'uid': 1855589,
-  'name': 'Label1',
-  'color': 7,
-  'item_order': 0,
-  'is_deleted': 0
-}
-```
 
 ### Properties
 

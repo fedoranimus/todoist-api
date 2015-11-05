@@ -1,8 +1,8 @@
 # Filters
 
-> A filter in Todoist is a JSON object. Typically a filter object will look like:
+> An example filter object
 
-```shell
+```json
 {
   "id": 4638878,
   "user_id": 1855589,
@@ -11,18 +11,6 @@
   "color": 6,
   "item_order": 3,
   "is_deleted": 0
-}
-```
-
-```python
-{
-  'id': 4638878,
-  'user_id': 1855589,
-  'name': 'Priority 1',
-  'query': 'priority 1',
-  'color': 6,
-  'item_order': 3,
-  'is_deleted': 0
 }
 ```
 

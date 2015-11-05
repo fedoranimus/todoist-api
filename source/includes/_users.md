@@ -2,9 +2,9 @@
 
 A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typically a user object will have the following properties:
 
-> An example of a user object:
+> An example user object
 
-```shell
+```json
 {
   "id": 1855589,
   "api_token": "0123456789abcdef0123456789abcdef01234567",
@@ -37,38 +37,6 @@ A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typic
 }
 ```
 
-```python
-{
-  'id': 1855589,
-  'api_token': '0123456789abcdef0123456789abcdef01234567',
-  'email': 'me@exampe.com',
-  'full_name': 'Example User',
-  'inbox_project': 128501411,
-  'timezone': 'Europe/Athens',
-  'tz_offset': ['+03:00', 3, 0, 1],
-  'start_page': 'overdue, 7 days',
-  'start_day': 1,
-  'next_week': 1,
-  'date_format': 0,
-  'time_format': 0,
-  'sort_order': 0,
-  'has_push_reminders': False,
-  'default_reminder': None,
-  'mobile_host': None,
-  'mobile_number': None,
-  'completed_count': 20,
-  'karma': 684.0,
-  'karma_trend': '-',
-  'is_premium': False,
-  'premium_until': None,
-  'is_biz_admin': False,
-  'business_account_id': None,
-  'image_id': None,
-  'beta': 0,
-  'is_dummy': 0,
-  'join_date': 'Wed 30 Apr 2014 13:24:38 +0000'
-}
-```
 ### Properties
 
 Property | Description

@@ -1,8 +1,8 @@
 # Projects
 
-> A project in Todoist is a JSON object. Typically a project object will look like this:
+> An example project object
 
-```shell
+```json
 {
   "id": 128501470,
   "user_id": 1855589,
@@ -19,22 +19,6 @@
 }
 ```
 
-```python
-{
-  'id': 128501470,
-  'user_id': 1855589,
-  'name': 'Project1',
-  'color': 1,
-  'indent': 1,
-  'item_order': 36,
-  'collapsed': 0,
-  'shared': False,
-  'is_deleted': 0,
-  'is_archived': 0,
-  'archived_date': None,
-  'archived_timestamp': 0
-}
-```
 
 A project in Todoist is a JSON object. Typically a project will have the following properties:
 

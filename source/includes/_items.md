@@ -1,8 +1,8 @@
 # Items
 
-> A item in Todoist is a JSON object. The dates will be in UTC timezone. Typically a item object will look like:
+> An example item object
 
-```shell
+```json
 {
   "id": 33511505,
   "user_id": 1855589,
@@ -30,33 +30,6 @@
 }
 ```
 
-```python
-{
-  'id': 33511505,
-  'user_id': 1855589,
-  'project_id': 128501470,
-  'content': 'Task1',
-  'date_string': '',
-  'date_lang': 'en',
-  'due_date_utc': None,
-  'due_date': None,
-  'priority': 1,
-  'indent': 1,
-  'item_order': 1,
-  'day_order': -1,
-  'collapsed': 0,
-  'children': None,
-  'labels': [],
-  'assigned_by_uid': 1855589,
-  'responsible_uid': None,
-  'checked': 0,
-  'in_history': 0,
-  'is_deleted': 0,
-  'is_archived': 0,
-  'sync_id': None,
-  'date_added': 'Fri 26 Sep 2014 08:25:05 +0000'
-}
-```
 
 ### Properties
 

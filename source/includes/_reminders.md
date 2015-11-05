@@ -1,8 +1,8 @@
 # Reminders
 
-> A reminder in Todoist is a JSON object. Typically a reminder object will look like:
+> An example reminder object
 
-```shell
+```json
 {
   "id": 12763422,
   "notify_uid": 1855589,
@@ -18,21 +18,6 @@
 }
 ```
 
-```python
-{
-  'id': 12763422,
-  'notify_uid': 1855589,
-  'item_id': 33511505,
-  'service': 'email',
-  'type': 'absolute',
-  'date_string': 'Oct 6 @ 2pm'
-  'date_lang' : 'en',
-  'due_date_utc': 'Mon 06 Oct 2014 11:00:00 +0000',
-  'due_date': 'Mon 06 Oct 2014 11:00:00 +0000',
-  'mm_offset': 180,
-  'is_deleted': 0
-}
-```
 
 Reminders are only available for Todoist Premium users.
 
