@@ -6,7 +6,7 @@ Note that we encourage your application to use the [OAuth](http://en.wikipedia.o
 
 ## OAuth
 
-External applications could obtain a user authorized API token via the OAuth2 protocol.  __Before getting started, developers need to create their applications in App Management Console and configure a valid OAuth redirect URL.__  A registered Todoist application is assigned a unique Client ID and Client Secret which are needed for the OAuth2 flow.
+External applications could obtain a user authorized API token via the OAuth2 protocol. Before getting started, developers need to create their applications in App Management Console and configure a valid OAuth redirect URL. A registered Todoist application is assigned a unique Client ID and Client Secret which are needed for the OAuth2 flow.
 
 This procedure is comprised of 3 steps, which will be described below.
 
@@ -14,11 +14,11 @@ This procedure is comprised of 3 steps, which will be described below.
 
 > An example of redirecting a user to the authorization URL:
 
-```
-$ curl https://todoist.com/oauth/authorize \
-    -d client_id=0123456789abcdef \
-    -d scope=data:read,data:delete \
-    -d state=secretstring
+```shell
+$ curl "https://todoist.com/oauth/authorize" \
+    -d "client_id=0123456789abcdef" \
+    -d "scope=data:read,data:delete" \
+    -d "state=secretstring"
 ```
 
 Redirect users to the authorization URL at the endpoint `https://todoist.com/oauth/authorize`, with the specified request parameters.
@@ -61,17 +61,17 @@ The `code` parameter contains the authorization code that you will use to exchan
 
 > An example of exchanging the token:
 
-```
-$ curl https://todoist.com/oauth/access_token \
-    -d client_id=0123456789abcdef \
-    -d client_secret=secret \
-    -d code=abcdef \
-    -d redirect_uri=https://example.com
+```shell
+$ curl "https://todoist.com/oauth/access_token" \
+    -d "client_id=0123456789abcdef" \
+    -d "client_secret=secret" \
+    -d "code=abcdef" \
+    -d "redirect_uri=https://example.com"
 ```
 
 > On success, Todoist returns HTTP 200 with token in JSON object format:
 
-```
+```json
 {
   "access_token": "0123456789abcdef0123456789abcdef01234567", 
   "token_type": "Bearer"
@@ -100,9 +100,22 @@ Incorrect Client Credentials Error | Occurs when the `client_id` or `client_secr
 > On success, an HTTP 200 OK with a JSON object with user data is returned:
 
 ```shell
-$ curl https://todoist.com/API/v6/login \
-    -d email=me@example.com \
-    -d password=secret
+$ curl "https://todoist.com/API/v6/login" \
+    -d "email=me@example.com" \
+    -d "password=secret"
+```
+
+
+```python
+>>> import todoist
+>>> api = todoist.TodoistAPI()
+>>> api.login('me@example.com', 'secret')
+```
+
+
+> On success, Todoist returns HTTP 200 with token in JSON object format:
+
+```json
 {
   "start_page": "overdue, 7 days",
   "date_format": 0,
@@ -138,45 +151,6 @@ $ curl https://todoist.com/API/v6/login \
 }
 ```
 
-```python
->>> import todoist
->>> api = todoist.TodoistAPI()
->>> api.login('me@example.com', 'secret')
-{
-  'api_token': '0123456789abcdef0123456789abcdef01234567',
-  'beta': 0,
-  'business_account_id': None,
-  'date_format': 0,
-  'default_reminder': None,
-  'email': 'me@example.com',
-  'full_name': 'Example User',
-  'has_push_reminders': False,
-  'id': 1855589,
-  'image_id': None,
-  'inbox_project': 128501411,
-  'is_biz_admin': False,
-  'is_dummy': 0,
-  'is_premium': False,
-  'join_date': 'Wed 30 Apr 2014 13:24:38 +0000',
-  'karma': 684.0,
-  'karma_trend': '-',
-  'last_used_ip': '10.20.30.40',
-  'mobile_host': None,
-  'mobile_number': None,
-  'next_week': 1,
-  'premium_until': None,
-  'seq_no': 2180270834,
-  'shard_id': 2,
-  'sort_order': 0,
-  'start_day': 1,
-  'start_page': 'overdue, 7 days',
-  'team_inbox': None,
-  'time_format': 0,
-  'timezone': 'Europe/Athens',
-  'token': '0123456789abcdef0123456789abcdef01234567',
-  'tz_offset': ['+03:00', 3, 0, 1]
-}
-```
 
 Login user into Todoist to get a token, which is necessary to do any communication with the server.
 
@@ -192,9 +166,9 @@ password | User's password.
 > On success, an HTTP 200 OK with a JSON object with user data is returned:
 
 ```shell
-$ curl https://todoist.com/API/v6/login_with_google \
-    -d email=me@example.com \
-    -d oauth2_token=01234567-89ab-cdef-0123-456789abcdef
+$ curl "https://todoist.com/API/v6/login_with_google" \
+    -d "email=me@example.com" \
+    -d "oauth2_token=01234567-89ab-cdef-0123-456789abcdef"
 
 {
   "start_page": "overdue, 7 days",
