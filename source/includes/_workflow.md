@@ -1,6 +1,6 @@
 # Sync workflow
 
-## Retrieve data
+## Read data
 
 > An example of the JSON object returned, of a new user's empty account complete data:
 
@@ -8,10 +8,9 @@
 $ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d seq_no=0 \
-    -d seq_no_global=0 \
     -d resource_types='["all"]'
+
 {
-  "seq_no_global": 2180537512,
   "Collaborators": [],
   "DayOrdersTimestamp": "1344642991.1",
   "Notes": [],
@@ -21,113 +20,23 @@ $ curl https://todoist.com/API/v6/sync \
   "DayOrders": {},
   "LiveNotifications": [],
   "seq_no": 2180537512,
+  "WebStaticVersion": 305,
+  "LiveNotificationsLastRead": 0,
   "User": {
-    "start_page": "overdue, 7 days",
-    "join_date": "Wed 30 Apr 2014 13:24:38 +0000",
-    "is_premium": false,
-    "sort_order": 0,
-    "full_name": "Example User",
-    "has_push_reminders": false,
-    "timezone": "Europe\/Athens",
-    "id": 1855589,
-    "next_week": 1,
-    "completed_count": 20,
-    "tz_offset": ["+03:00", 3, 0, 1],
-    "email": "me@example.com",
-    "start_day": 1,
-    "is_dummy": 0,
-    "inbox_project": 128501411,
-    "time_format": 0,
-    "image_id": null,
-    "beta": 0,
-    "premium_until": null,
-    "business_account_id": null,
-    "mobile_number": null,
-    "mobile_host": null,
-    "date_format": 0,
-    "karma_trend": "-",
-    "token": "0123456789abcdef0123456789abcdef01234567",
-    "karma": 684.0,
-    "is_biz_admin": false,
-    "default_reminder": null
+    ...
   },
   "Filters": [
-    { "user_id": 1855589,
-      "name": "No due date",
-      "color": 6,
-      "is_deleted": 0,
-      "item_order": 8,
-      "query": "no date",
-      "id": 1855589 },
-    { "user_id": 1855589,
-      "name": "View all",
-      "color": 6,
-      "is_deleted": 0,
-      "item_order": 7,
-      "query": "view all",
-      "id": 1855589 },
-    { "user_id": 1855589,
-      "name": "Priority 4",
-      "color": 6,
-      "is_deleted": 0,
-      "item_order": 6,
-      "query": "priority 4",
-      "id": 1855589 },
-    { "user_id": 1855589,
-      "name": "Priority 3",
-      "color": 6,
-      "is_deleted": 0,
-      "item_order": 5,
-      "query": "priority 3",
-      "id": 1855589 },
-    { "user_id": 1855589,
-      "name": "Priority 2",
-      "color": 6,
-      "is_deleted": 0,
-      "item_order": 4,
-      "query": "priority 2",
-      "id": 1855589 },
-    { "user_id": 1855589,
-      "name": "Priority 1",
-      "color": 6,
-      "is_deleted": 0,
-      "item_order": 3,
-      "query": "priority 1",
-      "id": 1855589 },
-    { "user_id": 1855589,
-      "name": "Assigned to others",
-      "color": 12,
-      "is_deleted": 0,
-      "item_order": 2,
-      "query": ":to_others:",
-      "id": 1855589 },
-    { "user_id": 1855589,
-      "name": "Assigned to me",
-      "color": 12,
-      "is_deleted": 0,
-      "item_order": 1,
-      "query": ":to_me:",
-      "id": 1855589 }
+    ...
   ],
-  "Items": [],
-  "WebStaticVersion": 305,
-  "Reminders": [],
+  "Items": [
+    ...
+  ],
+  "Reminders": [
+    ...
+  ],
   "Projects": [
-    { "color": 7,
-      "collapsed": 0,
-      "inbox_project": true,
-      "archived_date": null,
-      "archived_timestamp": 0,
-      "id": 1855589,
-      "indent": 1,
-      "name": "Inbox",
-      "user_id": 1855589,
-      "is_deleted": 0,
-      "item_order": 0,
-      "shared": false,
-      "is_archived": 0}
+    ...
   ],
-  "LiveNotificationsLastRead": 0
 }
 ```
 
@@ -135,123 +44,25 @@ $ curl https://todoist.com/API/v6/sync \
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
 >>> api.sync(resource_types=['all'])
-{ 'CollaboratorStates': [],
+{ 
+  'CollaboratorStates': [],
   'Collaborators': [],
   'DayOrders': {},
   'DayOrdersTimestamp': '1344642991.1',
-  'Filters': [
-    { 'color': 6,
-      'id': 4638883,
-      'is_deleted': 0,
-      'item_order': 8,
-      'name': 'No due date',
-      'query': 'no date',
-      'user_id': 1855589},
-    { 'color': 6,
-      'id': 4638882,
-      'is_deleted': 0,
-      'item_order': 7,
-      'name': 'View all',
-      'query': 'view all',
-      'user_id': 1855589},
-    { 'color': 6,
-      'id': 4638881,
-      'is_deleted': 0,
-      'item_order': 6,
-      'name': 'Priority 4',
-      'query': 'priority 4',
-      'user_id': 1855589},
-    { 'color': 6,
-      'id': 4638880,
-      'is_deleted': 0,
-      'item_order': 5,
-      'name': 'Priority 3',
-      'query': 'priority 3',
-      'user_id': 1855589},
-    { 'color': 6,
-      'id': 4638879,
-      'is_deleted': 0,
-      'item_order': 4,
-      'name': 'Priority 2',
-      'query': 'priority 2',
-      'user_id': 1855589},
-    { 'color': 6,
-      'id': 4638878,
-      'is_deleted': 0,
-      'item_order': 3,
-      'name': 'Priority 1',
-      'query': 'priority 1',
-      'user_id': 1855589},
-    { 'color': 12,
-      'id': 4638876,
-      'is_deleted': 0,
-      'item_order': 2,
-      'name': 'Assigned to others',
-      'query': ':to_others:',
-      'user_id': 1855589},
-    { 'color': 12,
-      'id': 4638874,
-      'is_deleted': 0,
-      'item_order': 1,
-      'name': 'Assigned to me',
-      'query': ':to_me:',
-      'user_id': 1855589},
-  ],
-  'Items': [],
-  'Labels': [],
-  'LiveNotifications': [],
   'LiveNotificationsLastRead': 0,
-  'Notes': [],
-  'Projects': [
-    { 'archived_date': None,
-       'archived_timestamp': 0,
-       'collapsed': 0,
-       'color': 7,
-       'id': 128501411,
-       'inbox_project': True,
-       'indent': 1,
-       'is_archived': 0,
-       'is_deleted': 0,
-       'item_order': 0,
-       'name': 'Inbox',
-       'shared': False,
-       'user_id': 1855589}
-  ],
-  'Reminders': [],
-  'User': {
-    'beta': 0,
-    'business_account_id': None,
-    'completed_count': 20,
-    'date_format': 0,
-    'default_reminder': None,
-    'email': 'me@example.com',
-    'full_name': 'Example User',
-    'has_push_reminders': False,
-    'id': 1855589,
-    'image_id': None,
-    'inbox_project': 128501411,
-    'is_biz_admin': False,
-    'is_dummy': 0,
-    'is_premium': False,
-    'join_date': 'Wed 30 Apr 2014 13:24:38 +0000',
-    'karma': 684.0,
-    'karma_trend': '-',
-    'mobile_host': None,
-    'mobile_number': None,
-    'next_week': 1,
-    'premium_until': None,
-    'sort_order': 0,
-    'start_day': 1,
-    'start_page': 'overdue, 7 days',
-    'time_format': 0,
-    'timezone': 'Europe/Athens',
-    'token': '0123456789abcdef0123456789abcdef01234567',
-    'tz_offset': ['+03:00', 3, 0, 1]
-  },
   'UserId': 1855589,
   'WebStaticVersion': 305,
   'seq_no': 2180537512L,
-  'seq_no_global': 2180537512L
+  'Filters': [],
+  'Items': [],
+  'Labels': [],
+  'LiveNotifications': [],
+  'Notes': [],
+  'Projects': [],
+  'Reminders': [],
+  'User': {
+    ...
+  }
 }
 ```
 
@@ -263,7 +74,6 @@ Parameter | Description
 --------- | -----------
 token | User's API token (returned on successful login). Else the session cookie is used.
 seq_no | Sequence number. On the initial request you should pass `0`. On all other requests you should pass the last `seq_no` you received from the server.
-seq_no_global | Global sequence number. On the initial request you should pass `0`. On all other requests you should pass the last `seq_no_global` you received from the server.
 resource_types | This parameter controls which resources to fetch from the server.  It can be useful for speeding up the load of most important user's data (like the list of projects and tasks) and to get the rest of the data asynchronously later on. It should be a JSON-encoded list of strings. For example, `["projects", "labels", "filters"]`. Below is the list of recognizable values for strings: `projects` for the list of projects, `items` for list of tasks, `labels` for the list of labels, `notes` for the list of notes, `filters` for the list of filters, `reminders` for the list of reminders, `locations` for the list of locations, `user` for the user's details, `live_notifications` for the list of live notifications, `day_orders` for the list of day orders, `collaborators` for the list of collaborators, and `all` for all the above.  In order to include the notification settings (that is needed on platforms that implement native notifications), the `notification_settings` has to explicitly be included in the list of resource types.
 
 ### Optional parameters
@@ -293,7 +103,7 @@ LiveNotifications | A JSON list of notifications for the user.
 LiveNotificationsLastRead | What is the last live notification the user has seen? This is used to implement unread notifications.
 SettingsNotifications | This is needed on platforms that implement native notifications.
 
-## Send data
+## Write data
 
 > Example of creating a new project, where an HTTP 200 OK with a JSON object of temporary id to real id mappings is returned (this will be explained later):
 
@@ -302,11 +112,10 @@ $ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "project_add", "temp_id": "381e601f-0ef3-4ed6-bf95-58f896d1a314", "uuid": "ed1ce597-e4c7-4a88-ba48-e048d827c067", "args": {"name": "Project1", "item_order": 1, "indent": 1, "color": 1}}]'
 {
-  "seq_no_global": 2180537513,
   "UserId": 1855589,
   "seq_no": 2180537513,
   "SyncStatus": {"ed1ce597-e4c7-4a88-ba48-e048d827c067": "ok"},
-  "TempIdMapping": {"381e601f-0ef3-4ed6-bf95-58f896d1a314": 128501470},
+  "TempIdMapping": {"381e601f-0ef3-4ed6-bf95-58f896d1a314": 128501470}
 }
 ```
 
@@ -318,8 +127,7 @@ $ curl https://todoist.com/API/v6/sync \
   'SyncStatus': {'ed1ce597-e4c7-4a88-ba48-e048d827c067': 'ok'},
   'TempIdMapping': {'381e601f-0ef3-4ed6-bf95-58f896d1a314': 128501470},
   'UserId': 1855589,
-  'seq_no': 2180537513L,
-  'seq_no_global': 2180537513L,
+  'seq_no': 2180537513L
 }
 ```
 
@@ -343,22 +151,8 @@ args | The arguments of this specific command.
 uuid | A universal unique identifier (UUID) that is used for duplication protection, ie. to ensure that the same command isn't executed twice.
 temp_id | Only for commands creating a new object, a unique temporary id.
 
-### Explanation of extra data returned
 
-When there are commands to be sent to the server, some extra data are returned.
-
-Data | Description
----- | -----------
-TempIdMapping | A JSON list containing all the temporary ids mapped to real ids.
-SyncStatus | A JSON list containing the return value of each of the commands sent.
-
-## Limits
-
-The maximum number of commands is 100 per request, and this is done to prevent timeouts and other problems when dealing with big requests.
-
-There's also a maximum number of 50 sync requests per minute for each user, in order to prevent clients from accidentally overloading our servers.
-
-## Temporary ids
+### Temporary ids
 
 > An example that shows how temporary ids can be used and referenced:
 
@@ -394,6 +188,22 @@ There's also a maximum number of 50 sync requests per minute for each user, in o
 Your application will use temporary ids and the Sync API has special support for them.  We suggest that you use UUIDs to generate these ids to give them uniqueness.
 
 While the system remembers temporary ids and their mappings to real ids, it's important to use real ids when they are available to you (typically after a sync). This is important since the API only remembers the last 500 temporary ids for each user!
+
+### Explanation of extra data returned
+
+When there are commands to be sent to the server, some extra data are returned.
+
+Data | Description
+---- | -----------
+TempIdMapping | A JSON list containing all the temporary ids mapped to real ids.
+SyncStatus | A JSON list containing the return value of each of the commands sent.
+
+### Limits
+
+The maximum number of commands is 100 per request, and this is done to prevent timeouts and other problems when dealing with big requests.
+
+There's also a maximum number of 50 sync requests per minute for each user, in order to prevent clients from accidentally overloading our servers.
+
 
 ## Errors
 
