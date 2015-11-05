@@ -16,12 +16,12 @@ under the License.
 
 @import 'variables';
 
-<%= Rouge::Themes::Base16::Monokai.render(:scope => '.highlight') %>
+<%= Rouge::Themes::ThankfulEyes.render(:scope => '.highlight') %>
 
-.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #909090;
+
+//overwritten ThankfulEyes themes
+.highlight .s, .highlight .sb, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .sr, .highlight .s1 {
+    color: #fff0a6;
+    font-weight: normal;
 }
 
-.highlight, .highlight .w {
-  background-color: $code-bg;
-}

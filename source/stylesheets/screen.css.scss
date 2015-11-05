@@ -727,10 +727,6 @@ a{
     @extend %code-font;
   }
 
-  .highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-    color: #B7B7B7;
-  }
-
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
