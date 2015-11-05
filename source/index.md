@@ -3,8 +3,8 @@ title: API Documentation | Todoist Developer
 
 
 language_tabs:
-  - shell: CURL
-  - python: PYTHON
+  - shell
+  - python
 
 includes:
   - introduction
