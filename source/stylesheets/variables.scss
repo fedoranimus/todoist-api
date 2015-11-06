@@ -33,13 +33,14 @@ $color-paper-grey: #F7F7F8;
 
 
 
+$nav-bg: #F7F7F7; // #393939 Before
 
-$nav-bg: #EFEFF0; // #393939 Before
+
 $examples-bg: #393939;
 $code-bg: #292929;
 $code-annotation-bg: #1c1c1c;
-$nav-subitem-bg: #EFEFF0; // #262626 Before
-$nav-active-bg: #EFEFF0; // #2467af Before
+$nav-subitem-bg: #F7F7F7;
+$nav-active-bg: #F7F7F7;
 $lang-select-border: #000;
 $lang-select-bg: #222;
 $lang-select-active-bg: $examples-bg; // feel free to change this to blue or something
@@ -70,7 +71,7 @@ $lang-select-pressed-text: #fff; // color of language tab text when mouse is pre
 // SIZES
 ////////////////////
 
-$top-nav-height: 42px;
+$top-nav-height: 60px;
 
 $nav-width: 230px; // width of the navbar
 $examples-width: 50%; // portion of the screen taken up by code examples
@@ -89,7 +90,7 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 ////////////////////
 %default-font {
   // font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: 'Graphik Web', 'Open Sans', Arial, sans-serif;
   font-size: 13px;
 }
 
