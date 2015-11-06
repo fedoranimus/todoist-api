@@ -91,7 +91,7 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 %default-font {
   // font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-family: 'Graphik Web', 'Open Sans', Arial, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 %header-font {
@@ -105,6 +105,9 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
   font-size: 12px;
   line-height: 1.5;
 }
+
+
+$nav-font-size: 14px;
 
 
 // OTHER

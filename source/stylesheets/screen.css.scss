@@ -45,7 +45,7 @@ html, body {
 
 .site-header {
   box-sizing: border-box;
-  padding: 10px 10px;
+  padding: 15px 10px 10px 10px;
   background-color: white;
   position: fixed;
   z-index: 100;
@@ -59,7 +59,7 @@ html, body {
   display: block;
   float: left;
   text-align: right;
-  margin-right: 120px;
+  margin-right: 50px;
   margin-left: 20px;
 
   img {
@@ -72,15 +72,13 @@ html, body {
 .site-nav {
   float: left;
   vertical-align: middle;
-  margin-top: 2px;
-
-
+  margin-top: 7px;
 
   a {
     color: #a2a5a6;
     margin-right: 2em;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: normal;
 
     &:hover {
       color: #474746;
@@ -162,7 +160,7 @@ a{
   font-weight: bold;
   border-right: 1px solid $separator-color;
 
-  top: 70px;
+  top: $top-nav-height + 25px;
   left: 0;
   bottom: 0;
 
@@ -256,8 +254,9 @@ a{
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-weight: 500;
-    font-size: 13px;
+    font-weight: normal;
+
+    font-size: $nav-font-size;
   }
 
 
@@ -323,7 +322,6 @@ a{
     }
     .tocify-item>a {
       padding-left: 2.5em;
-      font-size: 13px;
       font-weight: normal;
       line-height: 2em;
     }
@@ -402,11 +400,7 @@ a{
   min-height: 100%;
 
   padding-bottom: 1px; // prevent margin overflow
-  padding-top: 50px;
-
-  -webkit-box-shadow: -1px 0px 2px 1px rgba(0,0,0,0.06);
-  -moz-box-shadow: -1px 0px 2px 1px rgba(0,0,0,0.06);
-  box-shadow: -1px 0px 2px 1px rgba(0,0,0,0.06);
+  padding-top: $top-nav-height + 20px;
 
   // The dark box is what gives the code samples their dark background.
   // It sits essentially under the actual content block, which has a
@@ -504,16 +498,17 @@ a{
 
   h1 {
     @extend %header-font;
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: normal;
     padding-top: 2em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
     color: $title-color;
+
+
     border-top: 1px solid $separator-color;
     background-color: $main-bg;
-
   }
 
   h1:first-child, div:first-child + h1 {
@@ -525,8 +520,8 @@ a{
   h2 {
     @extend %header-font;
     color: $title-color;
-    font-weight: 400;
-    font-size: 24px;
+    font-weight: normal;
+    font-size: 28px;
     margin-top: 4em;
     margin-bottom: 0;
     border-top: 1px solid $separator-color;
