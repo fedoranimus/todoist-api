@@ -19,9 +19,6 @@
 }
 ```
 
-
-A project in Todoist is a JSON object. Typically a project will have the following properties:
-
 ### Properties
 
 Property | Description
@@ -44,7 +41,6 @@ team_inbox *Boolean* | Whether the project is `TeamInbox` (`true` or otherwise t
 
 ## Add a project
 
-> An example of adding a project:
 
 ```shell
 $ curl https://todoist.com/API/v6/sync \
@@ -81,7 +77,6 @@ item_order *Integer* | Project's order in the project list (a number, where the 
 
 ## Update a project
 
-> An example of updating a project:
 
 ```shell
 $ curl https://todoist.com/API/v6/sync \
@@ -121,7 +116,6 @@ collapsed  *Integer* | Whether the project's sub-projects are collapsed (where `
 
 ## Delete projects
 
-> An example of deleting a project:
 
 ```shell
 
@@ -152,7 +146,6 @@ ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projec
 
 ## Archive a project
 
-> An example of archiving a project:
 
 ```shell
 $ curl https://todoist.com/API/v6/sync \
@@ -181,7 +174,6 @@ ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projec
 
 ## Unarchive a project
 
-> An example of unarchiving a project:
 
 ```shell
 $ curl https://todoist.com/API/v6/sync \
@@ -210,7 +202,6 @@ ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projec
 
 ## Update multiple orders/indents
 
-> An example of updating the orders and indents of multiple projects at once:
 
 ```shell
 $ curl https://todoist.com/API/v6/sync \
