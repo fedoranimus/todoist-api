@@ -236,17 +236,17 @@ are not related to the full model, but are nonetheless useful.</p>
 
 <p>Note that we encourage your application to use the <a href="http://en.wikipedia.org/wiki/OAuth">OAuth</a> protocol to obtain the access token from the user, as the other authentication methods (<code class="prettyprint">login</code> and <code class="prettyprint">login_with_google</code>) are scheduled for deprecation.</p>
 <h2 id='oauth'>OAuth</h2>
-<p>External applications could obtain a user authorized API token via the OAuth2 protocol.  <strong>Before getting started, developers need to create their applications in App Management Console and configure a valid OAuth redirect URL.</strong>  A registered Todoist application is assigned a unique Client ID and Client Secret which are needed for the OAuth2 flow.</p>
+<p>External applications could obtain a user authorized API token via the OAuth2 protocol. Before getting started, developers need to create their applications in App Management Console and configure a valid OAuth redirect URL. A registered Todoist application is assigned a unique Client ID and Client Secret which are needed for the OAuth2 flow.</p>
 
 <p>This procedure is comprised of 3 steps, which will be described below.</p>
 <h3 id='step-1-the-authorization-request'>Step 1: The authorization request</h3>
 <blockquote>
 <p>An example of redirecting a user to the authorization URL:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>$ curl https://todoist.com/oauth/authorize \
-    -d client_id=0123456789abcdef \
-    -d scope=data:read,data:delete \
-    -d state=secretstring
+<pre class="highlight shell"><code><span class="gp">$ </span>curl <span class="s2">"https://todoist.com/oauth/authorize"</span> <span class="se">\</span>
+    -d <span class="s2">"client_id=0123456789abcdef"</span> <span class="se">\</span>
+    -d <span class="s2">"scope=data:read,data:delete"</span> <span class="se">\</span>
+    -d <span class="s2">"state=secretstring"</span>
 </code></pre>
 
 <p>Redirect users to the authorization URL at the endpoint <code class="prettyprint">https://todoist.com/oauth/authorize</code>, with the specified request parameters.</p>
@@ -336,11 +336,11 @@ are not related to the full model, but are nonetheless useful.</p>
 <blockquote>
 <p>An example of exchanging the token:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>$ curl https://todoist.com/oauth/access_token \
-    -d client_id=0123456789abcdef \
-    -d client_secret=secret \
-    -d code=abcdef \
-    -d redirect_uri=https://example.com
+<pre class="highlight shell"><code><span class="gp">$ </span>curl <span class="s2">"https://todoist.com/oauth/access_token"</span> <span class="se">\</span>
+    -d <span class="s2">"client_id=0123456789abcdef"</span> <span class="se">\</span>
+    -d <span class="s2">"client_secret=secret"</span> <span class="se">\</span>
+    -d <span class="s2">"code=abcdef"</span> <span class="se">\</span>
+    -d <span class="s2">"redirect_uri=https://example.com"</span>
 </code></pre>
 
 <blockquote>
@@ -397,81 +397,52 @@ are not related to the full model, but are nonetheless useful.</p>
 <blockquote>
 <p>On success, an HTTP 200 OK with a JSON object with user data is returned:</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/login <span class="se">\</span>
-    -d <span class="nv">email</span><span class="o">=</span>me@example.com <span class="se">\</span>
-    -d <span class="nv">password</span><span class="o">=</span>secret
-<span class="o">{</span>
-  <span class="s2">"start_page"</span>: <span class="s2">"overdue, 7 days"</span>,
-  <span class="s2">"date_format"</span>: 0,
-  <span class="s2">"last_used_ip"</span>: <span class="s2">"10.20.30.40"</span>,
-  <span class="s2">"api_token"</span>: <span class="s2">"0123456789abcdef0123456789abcdef01234567"</span>,
-  <span class="s2">"karma_trend"</span>: <span class="s2">"-"</span>,
-  <span class="s2">"inbox_project"</span>: 128501411,
-  <span class="s2">"time_format"</span>: 0,
-  <span class="s2">"image_id"</span>: null,
-  <span class="s2">"beta"</span>: 0,
-  <span class="s2">"sort_order"</span>: 0,
-  <span class="s2">"business_account_id"</span>: null,
-  <span class="s2">"full_name"</span>: <span class="s2">"Example User"</span>,
-  <span class="s2">"mobile_number"</span>: null,
-  <span class="s2">"shard_id"</span>: 2,
-  <span class="s2">"timezone"</span>: <span class="s2">"Europe/Athens"</span>,
-  <span class="s2">"is_premium"</span>: <span class="nb">false</span>,
-  <span class="s2">"mobile_host"</span>: null,
-  <span class="s2">"id"</span>: 1855589,
-  <span class="s2">"has_push_reminders"</span>: <span class="nb">false</span>,
-  <span class="s2">"is_dummy"</span>: 0,
-  <span class="s2">"premium_until"</span>: null,
-  <span class="s2">"team_inbox"</span>: null,
-  <span class="s2">"next_week"</span>: 1,
-  <span class="s2">"token"</span>: <span class="s2">"0123456789abcdef0123456789abcdef01234567"</span>,
-  <span class="s2">"tz_offset"</span>: <span class="o">[</span><span class="s2">"+03:00"</span>, 3, 0, 1],
-  <span class="s2">"join_date"</span>: <span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span>,
-  <span class="s2">"seq_no"</span>: 2180270834,
-  <span class="s2">"karma"</span>: 684.0,
-  <span class="s2">"is_biz_admin"</span>: <span class="nb">false</span>,
-  <span class="s2">"default_reminder"</span>: null,
-  <span class="s2">"email"</span>: <span class="s2">"me@example.com"</span>
-<span class="o">}</span>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl <span class="s2">"https://todoist.com/API/v6/login"</span> <span class="se">\</span>
+    -d <span class="s2">"email=me@example.com"</span> <span class="se">\</span>
+    -d <span class="s2">"password=secret"</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s">'me@example.com'</span><span class="p">,</span> <span class="s">'secret'</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="s">'api_token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
-  <span class="s">'beta'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'business_account_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'date_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'default_reminder'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'email'</span><span class="p">:</span> <span class="s">'me@example.com'</span><span class="p">,</span>
-  <span class="s">'full_name'</span><span class="p">:</span> <span class="s">'Example User'</span><span class="p">,</span>
-  <span class="s">'has_push_reminders'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">'id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
-  <span class="s">'image_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'inbox_project'</span><span class="p">:</span> <span class="mi">128501411</span><span class="p">,</span>
-  <span class="s">'is_biz_admin'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">'is_dummy'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'is_premium'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">'join_date'</span><span class="p">:</span> <span class="s">'Wed 30 Apr 2014 13:24:38 +0000'</span><span class="p">,</span>
-  <span class="s">'karma'</span><span class="p">:</span> <span class="mf">684.0</span><span class="p">,</span>
-  <span class="s">'karma_trend'</span><span class="p">:</span> <span class="s">'-'</span><span class="p">,</span>
-  <span class="s">'last_used_ip'</span><span class="p">:</span> <span class="s">'10.20.30.40'</span><span class="p">,</span>
-  <span class="s">'mobile_host'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'mobile_number'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'next_week'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'premium_until'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'seq_no'</span><span class="p">:</span> <span class="mi">2180270834</span><span class="p">,</span>
-  <span class="s">'shard_id'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-  <span class="s">'sort_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'start_day'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'start_page'</span><span class="p">:</span> <span class="s">'overdue, 7 days'</span><span class="p">,</span>
-  <span class="s">'team_inbox'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'time_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'timezone'</span><span class="p">:</span> <span class="s">'Europe/Athens'</span><span class="p">,</span>
-  <span class="s">'token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
-  <span class="s">'tz_offset'</span><span class="p">:</span> <span class="p">[</span><span class="s">'+03:00'</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="p">}</span>
 </code></pre>
+
+<blockquote>
+<p>On success, Todoist returns HTTP 200 with token in JSON object format:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"start_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"overdue, 7 days"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_used_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.20.30.40"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"api_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"karma_trend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"inbox_project"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501411</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"beta"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"business_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shard_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Athens"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_premium"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobile_host"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"has_push_reminders"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_dummy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"premium_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"team_inbox"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"next_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tz_offset"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"+03:00"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">2180270834</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"karma"</span><span class="p">:</span><span class="w"> </span><span class="mf">684.0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_biz_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"default_reminder"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@example.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p>Login user into Todoist to get a token, which is necessary to do any communication with the server.</p>
 <h3 id='required-parameters'>Required parameters</h3>
@@ -494,9 +465,9 @@ are not related to the full model, but are nonetheless useful.</p>
 <blockquote>
 <p>On success, an HTTP 200 OK with a JSON object with user data is returned:</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/login_with_google <span class="se">\</span>
-    -d <span class="nv">email</span><span class="o">=</span>me@example.com <span class="se">\</span>
-    -d <span class="nv">oauth2_token</span><span class="o">=</span>01234567-89ab-cdef-0123-456789abcdef
+<pre class="highlight shell"><code><span class="gp">$ </span>curl <span class="s2">"https://todoist.com/API/v6/login_with_google"</span> <span class="se">\</span>
+    -d <span class="s2">"email=me@example.com"</span> <span class="se">\</span>
+    -d <span class="s2">"oauth2_token=01234567-89ab-cdef-0123-456789abcdef"</span>
 
 <span class="o">{</span>
   <span class="s2">"start_page"</span>: <span class="s2">"overdue, 7 days"</span>,
@@ -621,17 +592,16 @@ are not related to the full model, but are nonetheless useful.</p>
 
 <p><code class="prettyprint">Settings</code> -&gt; <code class="prettyprint">Todoist Settings</code> -&gt; <code class="prettyprint">Account</code> -&gt; <code class="prettyprint">API token</code></p>
 
-        <h1 id='sync-workflow'>Sync workflow</h1><h2 id='retrieve-data'>Retrieve data</h2>
+        <h1 id='sync-workflow'>Sync workflow</h1><h2 id='read-data'>Read data</h2>
 <blockquote>
 <p>An example of the JSON object returned, of a new user&rsquo;s empty account complete data:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">seq_no</span><span class="o">=</span>0 <span class="se">\</span>
-    -d <span class="nv">seq_no_global</span><span class="o">=</span>0 <span class="se">\</span>
     -d <span class="nv">resource_types</span><span class="o">=</span><span class="s1">'["all"]'</span>
+
 <span class="o">{</span>
-  <span class="s2">"seq_no_global"</span>: 2180537512,
   <span class="s2">"Collaborators"</span>: <span class="o">[]</span>,
   <span class="s2">"DayOrdersTimestamp"</span>: <span class="s2">"1344642991.1"</span>,
   <span class="s2">"Notes"</span>: <span class="o">[]</span>,
@@ -641,235 +611,47 @@ are not related to the full model, but are nonetheless useful.</p>
   <span class="s2">"DayOrders"</span>: <span class="o">{}</span>,
   <span class="s2">"LiveNotifications"</span>: <span class="o">[]</span>,
   <span class="s2">"seq_no"</span>: 2180537512,
+  <span class="s2">"WebStaticVersion"</span>: 305,
+  <span class="s2">"LiveNotificationsLastRead"</span>: 0,
   <span class="s2">"User"</span>: <span class="o">{</span>
-    <span class="s2">"start_page"</span>: <span class="s2">"overdue, 7 days"</span>,
-    <span class="s2">"join_date"</span>: <span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span>,
-    <span class="s2">"is_premium"</span>: <span class="nb">false</span>,
-    <span class="s2">"sort_order"</span>: 0,
-    <span class="s2">"full_name"</span>: <span class="s2">"Example User"</span>,
-    <span class="s2">"has_push_reminders"</span>: <span class="nb">false</span>,
-    <span class="s2">"timezone"</span>: <span class="s2">"Europe</span><span class="se">\/</span><span class="s2">Athens"</span>,
-    <span class="s2">"id"</span>: 1855589,
-    <span class="s2">"next_week"</span>: 1,
-    <span class="s2">"completed_count"</span>: 20,
-    <span class="s2">"tz_offset"</span>: <span class="o">[</span><span class="s2">"+03:00"</span>, 3, 0, 1],
-    <span class="s2">"email"</span>: <span class="s2">"me@example.com"</span>,
-    <span class="s2">"start_day"</span>: 1,
-    <span class="s2">"is_dummy"</span>: 0,
-    <span class="s2">"inbox_project"</span>: 128501411,
-    <span class="s2">"time_format"</span>: 0,
-    <span class="s2">"image_id"</span>: null,
-    <span class="s2">"beta"</span>: 0,
-    <span class="s2">"premium_until"</span>: null,
-    <span class="s2">"business_account_id"</span>: null,
-    <span class="s2">"mobile_number"</span>: null,
-    <span class="s2">"mobile_host"</span>: null,
-    <span class="s2">"date_format"</span>: 0,
-    <span class="s2">"karma_trend"</span>: <span class="s2">"-"</span>,
-    <span class="s2">"token"</span>: <span class="s2">"0123456789abcdef0123456789abcdef01234567"</span>,
-    <span class="s2">"karma"</span>: 684.0,
-    <span class="s2">"is_biz_admin"</span>: <span class="nb">false</span>,
-    <span class="s2">"default_reminder"</span>: null
+    ...
   <span class="o">}</span>,
   <span class="s2">"Filters"</span>: <span class="o">[</span>
-    <span class="o">{</span> <span class="s2">"user_id"</span>: 1855589,
-      <span class="s2">"name"</span>: <span class="s2">"No due date"</span>,
-      <span class="s2">"color"</span>: 6,
-      <span class="s2">"is_deleted"</span>: 0,
-      <span class="s2">"item_order"</span>: 8,
-      <span class="s2">"query"</span>: <span class="s2">"no date"</span>,
-      <span class="s2">"id"</span>: 1855589 <span class="o">}</span>,
-    <span class="o">{</span> <span class="s2">"user_id"</span>: 1855589,
-      <span class="s2">"name"</span>: <span class="s2">"View all"</span>,
-      <span class="s2">"color"</span>: 6,
-      <span class="s2">"is_deleted"</span>: 0,
-      <span class="s2">"item_order"</span>: 7,
-      <span class="s2">"query"</span>: <span class="s2">"view all"</span>,
-      <span class="s2">"id"</span>: 1855589 <span class="o">}</span>,
-    <span class="o">{</span> <span class="s2">"user_id"</span>: 1855589,
-      <span class="s2">"name"</span>: <span class="s2">"Priority 4"</span>,
-      <span class="s2">"color"</span>: 6,
-      <span class="s2">"is_deleted"</span>: 0,
-      <span class="s2">"item_order"</span>: 6,
-      <span class="s2">"query"</span>: <span class="s2">"priority 4"</span>,
-      <span class="s2">"id"</span>: 1855589 <span class="o">}</span>,
-    <span class="o">{</span> <span class="s2">"user_id"</span>: 1855589,
-      <span class="s2">"name"</span>: <span class="s2">"Priority 3"</span>,
-      <span class="s2">"color"</span>: 6,
-      <span class="s2">"is_deleted"</span>: 0,
-      <span class="s2">"item_order"</span>: 5,
-      <span class="s2">"query"</span>: <span class="s2">"priority 3"</span>,
-      <span class="s2">"id"</span>: 1855589 <span class="o">}</span>,
-    <span class="o">{</span> <span class="s2">"user_id"</span>: 1855589,
-      <span class="s2">"name"</span>: <span class="s2">"Priority 2"</span>,
-      <span class="s2">"color"</span>: 6,
-      <span class="s2">"is_deleted"</span>: 0,
-      <span class="s2">"item_order"</span>: 4,
-      <span class="s2">"query"</span>: <span class="s2">"priority 2"</span>,
-      <span class="s2">"id"</span>: 1855589 <span class="o">}</span>,
-    <span class="o">{</span> <span class="s2">"user_id"</span>: 1855589,
-      <span class="s2">"name"</span>: <span class="s2">"Priority 1"</span>,
-      <span class="s2">"color"</span>: 6,
-      <span class="s2">"is_deleted"</span>: 0,
-      <span class="s2">"item_order"</span>: 3,
-      <span class="s2">"query"</span>: <span class="s2">"priority 1"</span>,
-      <span class="s2">"id"</span>: 1855589 <span class="o">}</span>,
-    <span class="o">{</span> <span class="s2">"user_id"</span>: 1855589,
-      <span class="s2">"name"</span>: <span class="s2">"Assigned to others"</span>,
-      <span class="s2">"color"</span>: 12,
-      <span class="s2">"is_deleted"</span>: 0,
-      <span class="s2">"item_order"</span>: 2,
-      <span class="s2">"query"</span>: <span class="s2">":to_others:"</span>,
-      <span class="s2">"id"</span>: 1855589 <span class="o">}</span>,
-    <span class="o">{</span> <span class="s2">"user_id"</span>: 1855589,
-      <span class="s2">"name"</span>: <span class="s2">"Assigned to me"</span>,
-      <span class="s2">"color"</span>: 12,
-      <span class="s2">"is_deleted"</span>: 0,
-      <span class="s2">"item_order"</span>: 1,
-      <span class="s2">"query"</span>: <span class="s2">":to_me:"</span>,
-      <span class="s2">"id"</span>: 1855589 <span class="o">}</span>
+    ...
   <span class="o">]</span>,
-  <span class="s2">"Items"</span>: <span class="o">[]</span>,
-  <span class="s2">"WebStaticVersion"</span>: 305,
-  <span class="s2">"Reminders"</span>: <span class="o">[]</span>,
+  <span class="s2">"Items"</span>: <span class="o">[</span>
+    ...
+  <span class="o">]</span>,
+  <span class="s2">"Reminders"</span>: <span class="o">[</span>
+    ...
+  <span class="o">]</span>,
   <span class="s2">"Projects"</span>: <span class="o">[</span>
-    <span class="o">{</span> <span class="s2">"color"</span>: 7,
-      <span class="s2">"collapsed"</span>: 0,
-      <span class="s2">"inbox_project"</span>: <span class="nb">true</span>,
-      <span class="s2">"archived_date"</span>: null,
-      <span class="s2">"archived_timestamp"</span>: 0,
-      <span class="s2">"id"</span>: 1855589,
-      <span class="s2">"indent"</span>: 1,
-      <span class="s2">"name"</span>: <span class="s2">"Inbox"</span>,
-      <span class="s2">"user_id"</span>: 1855589,
-      <span class="s2">"is_deleted"</span>: 0,
-      <span class="s2">"item_order"</span>: 0,
-      <span class="s2">"shared"</span>: <span class="nb">false</span>,
-      <span class="s2">"is_archived"</span>: 0<span class="o">}</span>
+    ...
   <span class="o">]</span>,
-  <span class="s2">"LiveNotificationsLastRead"</span>: 0
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">resource_types</span><span class="o">=</span><span class="p">[</span><span class="s">'all'</span><span class="p">])</span>
-<span class="p">{</span> <span class="s">'CollaboratorStates'</span><span class="p">:</span> <span class="p">[],</span>
+<span class="p">{</span> 
+  <span class="s">'CollaboratorStates'</span><span class="p">:</span> <span class="p">[],</span>
   <span class="s">'Collaborators'</span><span class="p">:</span> <span class="p">[],</span>
   <span class="s">'DayOrders'</span><span class="p">:</span> <span class="p">{},</span>
   <span class="s">'DayOrdersTimestamp'</span><span class="p">:</span> <span class="s">'1344642991.1'</span><span class="p">,</span>
-  <span class="s">'Filters'</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="s">'color'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-      <span class="s">'id'</span><span class="p">:</span> <span class="mi">4638883</span><span class="p">,</span>
-      <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-      <span class="s">'name'</span><span class="p">:</span> <span class="s">'No due date'</span><span class="p">,</span>
-      <span class="s">'query'</span><span class="p">:</span> <span class="s">'no date'</span><span class="p">,</span>
-      <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">},</span>
-    <span class="p">{</span> <span class="s">'color'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-      <span class="s">'id'</span><span class="p">:</span> <span class="mi">4638882</span><span class="p">,</span>
-      <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-      <span class="s">'name'</span><span class="p">:</span> <span class="s">'View all'</span><span class="p">,</span>
-      <span class="s">'query'</span><span class="p">:</span> <span class="s">'view all'</span><span class="p">,</span>
-      <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">},</span>
-    <span class="p">{</span> <span class="s">'color'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-      <span class="s">'id'</span><span class="p">:</span> <span class="mi">4638881</span><span class="p">,</span>
-      <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-      <span class="s">'name'</span><span class="p">:</span> <span class="s">'Priority 4'</span><span class="p">,</span>
-      <span class="s">'query'</span><span class="p">:</span> <span class="s">'priority 4'</span><span class="p">,</span>
-      <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">},</span>
-    <span class="p">{</span> <span class="s">'color'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-      <span class="s">'id'</span><span class="p">:</span> <span class="mi">4638880</span><span class="p">,</span>
-      <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-      <span class="s">'name'</span><span class="p">:</span> <span class="s">'Priority 3'</span><span class="p">,</span>
-      <span class="s">'query'</span><span class="p">:</span> <span class="s">'priority 3'</span><span class="p">,</span>
-      <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">},</span>
-    <span class="p">{</span> <span class="s">'color'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-      <span class="s">'id'</span><span class="p">:</span> <span class="mi">4638879</span><span class="p">,</span>
-      <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-      <span class="s">'name'</span><span class="p">:</span> <span class="s">'Priority 2'</span><span class="p">,</span>
-      <span class="s">'query'</span><span class="p">:</span> <span class="s">'priority 2'</span><span class="p">,</span>
-      <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">},</span>
-    <span class="p">{</span> <span class="s">'color'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-      <span class="s">'id'</span><span class="p">:</span> <span class="mi">4638878</span><span class="p">,</span>
-      <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-      <span class="s">'name'</span><span class="p">:</span> <span class="s">'Priority 1'</span><span class="p">,</span>
-      <span class="s">'query'</span><span class="p">:</span> <span class="s">'priority 1'</span><span class="p">,</span>
-      <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">},</span>
-    <span class="p">{</span> <span class="s">'color'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-      <span class="s">'id'</span><span class="p">:</span> <span class="mi">4638876</span><span class="p">,</span>
-      <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-      <span class="s">'name'</span><span class="p">:</span> <span class="s">'Assigned to others'</span><span class="p">,</span>
-      <span class="s">'query'</span><span class="p">:</span> <span class="s">':to_others:'</span><span class="p">,</span>
-      <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">},</span>
-    <span class="p">{</span> <span class="s">'color'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-      <span class="s">'id'</span><span class="p">:</span> <span class="mi">4638874</span><span class="p">,</span>
-      <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-      <span class="s">'name'</span><span class="p">:</span> <span class="s">'Assigned to me'</span><span class="p">,</span>
-      <span class="s">'query'</span><span class="p">:</span> <span class="s">':to_me:'</span><span class="p">,</span>
-      <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">},</span>
-  <span class="p">],</span>
-  <span class="s">'Items'</span><span class="p">:</span> <span class="p">[],</span>
-  <span class="s">'Labels'</span><span class="p">:</span> <span class="p">[],</span>
-  <span class="s">'LiveNotifications'</span><span class="p">:</span> <span class="p">[],</span>
   <span class="s">'LiveNotificationsLastRead'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'Notes'</span><span class="p">:</span> <span class="p">[],</span>
-  <span class="s">'Projects'</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="s">'archived_date'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-       <span class="s">'archived_timestamp'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-       <span class="s">'collapsed'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-       <span class="s">'color'</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-       <span class="s">'id'</span><span class="p">:</span> <span class="mi">128501411</span><span class="p">,</span>
-       <span class="s">'inbox_project'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-       <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-       <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-       <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-       <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-       <span class="s">'name'</span><span class="p">:</span> <span class="s">'Inbox'</span><span class="p">,</span>
-       <span class="s">'shared'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-       <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">}</span>
-  <span class="p">],</span>
-  <span class="s">'Reminders'</span><span class="p">:</span> <span class="p">[],</span>
-  <span class="s">'User'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'beta'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s">'business_account_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'completed_count'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-    <span class="s">'date_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s">'default_reminder'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'email'</span><span class="p">:</span> <span class="s">'me@example.com'</span><span class="p">,</span>
-    <span class="s">'full_name'</span><span class="p">:</span> <span class="s">'Example User'</span><span class="p">,</span>
-    <span class="s">'has_push_reminders'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-    <span class="s">'id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
-    <span class="s">'image_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'inbox_project'</span><span class="p">:</span> <span class="mi">128501411</span><span class="p">,</span>
-    <span class="s">'is_biz_admin'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-    <span class="s">'is_dummy'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s">'is_premium'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-    <span class="s">'join_date'</span><span class="p">:</span> <span class="s">'Wed 30 Apr 2014 13:24:38 +0000'</span><span class="p">,</span>
-    <span class="s">'karma'</span><span class="p">:</span> <span class="mf">684.0</span><span class="p">,</span>
-    <span class="s">'karma_trend'</span><span class="p">:</span> <span class="s">'-'</span><span class="p">,</span>
-    <span class="s">'mobile_host'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'mobile_number'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'next_week'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s">'premium_until'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'sort_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s">'start_day'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s">'start_page'</span><span class="p">:</span> <span class="s">'overdue, 7 days'</span><span class="p">,</span>
-    <span class="s">'time_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s">'timezone'</span><span class="p">:</span> <span class="s">'Europe/Athens'</span><span class="p">,</span>
-    <span class="s">'token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
-    <span class="s">'tz_offset'</span><span class="p">:</span> <span class="p">[</span><span class="s">'+03:00'</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-  <span class="p">},</span>
   <span class="s">'UserId'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
   <span class="s">'WebStaticVersion'</span><span class="p">:</span> <span class="mi">305</span><span class="p">,</span>
   <span class="s">'seq_no'</span><span class="p">:</span> <span class="il">2180537512L</span><span class="p">,</span>
-  <span class="s">'seq_no_global'</span><span class="p">:</span> <span class="il">2180537512L</span>
+  <span class="s">'Filters'</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">'Items'</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">'Labels'</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">'LiveNotifications'</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">'Notes'</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">'Projects'</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">'Reminders'</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">'User'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="o">...</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
 
@@ -888,10 +670,6 @@ are not related to the full model, but are nonetheless useful.</p>
 <tr>
 <td>seq_no</td>
 <td>Sequence number. On the initial request you should pass <code class="prettyprint">0</code>. On all other requests you should pass the last <code class="prettyprint">seq_no</code> you received from the server.</td>
-</tr>
-<tr>
-<td>seq_no_global</td>
-<td>Global sequence number. On the initial request you should pass <code class="prettyprint">0</code>. On all other requests you should pass the last <code class="prettyprint">seq_no_global</code> you received from the server.</td>
 </tr>
 <tr>
 <td>resource_types</td>
@@ -976,7 +754,7 @@ are not related to the full model, but are nonetheless useful.</p>
 <td>This is needed on platforms that implement native notifications.</td>
 </tr>
 </tbody></table>
-<h2 id='send-data'>Send data</h2>
+<h2 id='write-data'>Write data</h2>
 <blockquote>
 <p>Example of creating a new project, where an HTTP 200 OK with a JSON object of temporary id to real id mappings is returned (this will be explained later):</p>
 </blockquote>
@@ -984,11 +762,10 @@ are not related to the full model, but are nonetheless useful.</p>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "project_add", "temp_id": "381e601f-0ef3-4ed6-bf95-58f896d1a314", "uuid": "ed1ce597-e4c7-4a88-ba48-e048d827c067", "args": {"name": "Project1", "item_order": 1, "indent": 1, "color": 1}}]'</span>
 <span class="o">{</span>
-  <span class="s2">"seq_no_global"</span>: 2180537513,
   <span class="s2">"UserId"</span>: 1855589,
   <span class="s2">"seq_no"</span>: 2180537513,
   <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"ed1ce597-e4c7-4a88-ba48-e048d827c067"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
-  <span class="s2">"TempIdMapping"</span>: <span class="o">{</span><span class="s2">"381e601f-0ef3-4ed6-bf95-58f896d1a314"</span>: 128501470<span class="o">}</span>,
+  <span class="s2">"TempIdMapping"</span>: <span class="o">{</span><span class="s2">"381e601f-0ef3-4ed6-bf95-58f896d1a314"</span>: 128501470<span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -998,8 +775,7 @@ are not related to the full model, but are nonetheless useful.</p>
   <span class="s">'SyncStatus'</span><span class="p">:</span> <span class="p">{</span><span class="s">'ed1ce597-e4c7-4a88-ba48-e048d827c067'</span><span class="p">:</span> <span class="s">'ok'</span><span class="p">},</span>
   <span class="s">'TempIdMapping'</span><span class="p">:</span> <span class="p">{</span><span class="s">'381e601f-0ef3-4ed6-bf95-58f896d1a314'</span><span class="p">:</span> <span class="mi">128501470</span><span class="p">},</span>
   <span class="s">'UserId'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
-  <span class="s">'seq_no'</span><span class="p">:</span> <span class="il">2180537513L</span><span class="p">,</span>
-  <span class="s">'seq_no_global'</span><span class="p">:</span> <span class="il">2180537513L</span><span class="p">,</span>
+  <span class="s">'seq_no'</span><span class="p">:</span> <span class="il">2180537513L</span>
 <span class="p">}</span>
 </code></pre>
 
@@ -1046,29 +822,7 @@ are not related to the full model, but are nonetheless useful.</p>
 <td>Only for commands creating a new object, a unique temporary id.</td>
 </tr>
 </tbody></table>
-<h3 id='explanation-of-extra-data-returned'>Explanation of extra data returned</h3>
-<p>When there are commands to be sent to the server, some extra data are returned.</p>
-
-<table><thead>
-<tr>
-<th>Data</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>TempIdMapping</td>
-<td>A JSON list containing all the temporary ids mapped to real ids.</td>
-</tr>
-<tr>
-<td>SyncStatus</td>
-<td>A JSON list containing the return value of each of the commands sent.</td>
-</tr>
-</tbody></table>
-<h2 id='limits'>Limits</h2>
-<p>The maximum number of commands is 100 per request, and this is done to prevent timeouts and other problems when dealing with big requests.</p>
-
-<p>There&rsquo;s also a maximum number of 50 sync requests per minute for each user, in order to prevent clients from accidentally overloading our servers.</p>
-<h2 id='temporary-ids'>Temporary ids</h2>
+<h3 id='temporary-ids'>Temporary ids</h3>
 <blockquote>
 <p>An example that shows how temporary ids can be used and referenced:</p>
 </blockquote>
@@ -1103,6 +857,28 @@ are not related to the full model, but are nonetheless useful.</p>
 <p>Your application will use temporary ids and the Sync API has special support for them.  We suggest that you use UUIDs to generate these ids to give them uniqueness.</p>
 
 <p>While the system remembers temporary ids and their mappings to real ids, it&rsquo;s important to use real ids when they are available to you (typically after a sync). This is important since the API only remembers the last 500 temporary ids for each user!</p>
+<h3 id='explanation-of-extra-data-returned'>Explanation of extra data returned</h3>
+<p>When there are commands to be sent to the server, some extra data are returned.</p>
+
+<table><thead>
+<tr>
+<th>Data</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TempIdMapping</td>
+<td>A JSON list containing all the temporary ids mapped to real ids.</td>
+</tr>
+<tr>
+<td>SyncStatus</td>
+<td>A JSON list containing the return value of each of the commands sent.</td>
+</tr>
+</tbody></table>
+<h3 id='limits'>Limits</h3>
+<p>The maximum number of commands is 100 per request, and this is done to prevent timeouts and other problems when dealing with big requests.</p>
+
+<p>There&rsquo;s also a maximum number of 50 sync requests per minute for each user, in order to prevent clients from accidentally overloading our servers.</p>
 <h2 id='errors'>Errors</h2>
 <p>The server uses the HTTP status codes to indicate result or failure of a
 request.  And as is usually customary in web servers, a 2xx code indicates
