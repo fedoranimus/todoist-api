@@ -591,10 +591,13 @@ a{
     }
 
     td {
+
+      // Special style for specifying type info
       em {
         display: block;
         font-style: normal;
-        color: #B1B0B0;
+        color: #908F8F;
+        font-size: 12px;
       }
     }
 

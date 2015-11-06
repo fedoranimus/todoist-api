@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
-    <link rel="icon" href="images/favicon.ico">
+    <link rel="icon" href="images/favicon.png">
 
     <title>API Documentation | Todoist Developer</title>
 
     <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600,500,400,300' rel='stylesheet' type='text/css'>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
       <script src="javascripts/all_nosearch.js" type="text/javascript"></script>
@@ -937,59 +936,59 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The id of the project (a unique number).</td>
+<td>id <em>Integer</em></td>
+<td>The id of the project.</td>
 </tr>
 <tr>
-<td>user_id</td>
-<td>The id of the user that owns the project (a unique number).</td>
+<td>user_id <em>Integer</em></td>
+<td>The id of the user who owns the project.</td>
 </tr>
 <tr>
-<td>name</td>
-<td>The name of the project (a string value).</td>
+<td>name  <em>String</em></td>
+<td>The name of the project.</td>
 </tr>
 <tr>
-<td>color</td>
+<td>color <em>Integer</em></td>
 <td>The color of the project (a number between <code class="prettyprint">0</code> and <code class="prettyprint">11</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">21</code> for premium users).  The color codes corresponding to these numbers are: <code class="prettyprint">#95ef63</code>, <code class="prettyprint">#ff8581</code>, <code class="prettyprint">#ffc471</code>, <code class="prettyprint">#f9ec75</code>, <code class="prettyprint">#a8c8e4</code>, <code class="prettyprint">#d2b8a3</code>, <code class="prettyprint">#e2a8e4</code>, <code class="prettyprint">#cccccc</code>, <code class="prettyprint">#fb886e</code>, <code class="prettyprint">#ffcc00</code>, <code class="prettyprint">#74e8d3</code>, <code class="prettyprint">#3bd5fb</code>.  And for the additional colors of the premium users: <code class="prettyprint">#dc4fad</code>, <code class="prettyprint">#ac193d</code>, <code class="prettyprint">#d24726</code>, <code class="prettyprint">#82ba00</code>, <code class="prettyprint">#03b3b2</code>, <code class="prettyprint">#008299</code>, <code class="prettyprint">#5db2ff</code>, <code class="prettyprint">#0072c6</code>, <code class="prettyprint">#000000</code>, <code class="prettyprint">#777777</code>.</td>
 </tr>
 <tr>
-<td>indent</td>
+<td>indent <em>Integer</em></td>
 <td>The indent of the item (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
-<td>item_order</td>
+<td>item_order <em>Integer</em></td>
 <td>Project&rsquo;s order in the project list (a number, where the smallest value should place the project at the top).</td>
 </tr>
 <tr>
-<td>collapsed</td>
+<td>collapsed  <em>Integer</em></td>
 <td>Whether the project&rsquo;s sub-projects are collapsed (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
-<td>shared</td>
+<td>shared  <em>Boolean</em></td>
 <td>Whether the project is shared (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
 </tr>
 <tr>
-<td>is_deleted</td>
+<td>is_deleted <em>Integer</em></td>
 <td>Whether the project is marked as deleted (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
-<td>is_archived</td>
+<td>is_archived <em>Integer</em></td>
 <td>Whether the project is marked as archived (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
-<td>archived_date</td>
+<td>archived_date <em>String</em></td>
 <td>The date when the project was archived (<code class="prettyprint">null</code> if not set).</td>
 </tr>
 <tr>
-<td>archived_timestamp</td>
+<td>archived_timestamp <em>Integer</em></td>
 <td>The timestamp of when the project was archived (<code class="prettyprint">0</code> if not set).</td>
 </tr>
 <tr>
-<td>inbox_project</td>
+<td>inbox_project <em>Boolean</em></td>
 <td>Whether the project is <code class="prettyprint">Inbox</code> (<code class="prettyprint">true</code> or otherwise this property is not sent).</td>
 </tr>
 <tr>
-<td>team_inbox</td>
+<td>team_inbox <em>Boolean</em></td>
 <td>Whether the project is <code class="prettyprint">TeamInbox</code> (<code class="prettyprint">true</code> or otherwise this property is not sent).</td>
 </tr>
 </tbody></table>
@@ -1020,7 +1019,7 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
+<td>name <em>String</em></td>
 <td>The name of the project (a string value).</td>
 </tr>
 </tbody></table>
@@ -1032,15 +1031,15 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>color</td>
+<td>color <em>Integer</em></td>
 <td>The color of the project (a number between <code class="prettyprint">0</code> and <code class="prettyprint">11</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">21</code> for premium users).</td>
 </tr>
 <tr>
-<td>indent</td>
+<td>indent <em>Integer</em></td>
 <td>The indent of the item (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
-<td>item_order</td>
+<td>item_order <em>Integer</em></td>
 <td>Project&rsquo;s order in the project list (a number, where the smallest value should place the project at the top).</td>
 </tr>
 </tbody></table>
@@ -1071,8 +1070,8 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The id of the project (a number or a temp id).</td>
+<td>id  <em>Integer or String (temp_id)</em></td>
+<td>The id of the project (could be temp id).</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -1083,23 +1082,23 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
+<td>name <em>String</em></td>
 <td>The name of the project (a string value).</td>
 </tr>
 <tr>
-<td>color</td>
+<td>color <em>Integer</em></td>
 <td>The color of the project (a number between <code class="prettyprint">0</code> and <code class="prettyprint">11</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">21</code> for premium users).</td>
 </tr>
 <tr>
-<td>indent</td>
+<td>indent  <em>Integer</em></td>
 <td>The indent of the item (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
-<td>item_order</td>
+<td>item_order  <em>Integer</em></td>
 <td>Project&rsquo;s order in the project list (a number, where the smallest value should place the project at the top).</td>
 </tr>
 <tr>
-<td>collapsed</td>
+<td>collapsed  <em>Integer</em></td>
 <td>Whether the project&rsquo;s sub-projects are collapsed (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 </tbody></table>
@@ -1131,8 +1130,8 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>ids</td>
-<td>List of the ids of the projects to delete (numbers or temp ids).</td>
+<td>ids  <em>Array of Integer (id) or String (temp id)</em></td>
+<td>List of the ids of the projects to delete (could be temp ids).</td>
 </tr>
 </tbody></table>
 <h2 id='archive-a-project'>Archive a project</h2>
@@ -1162,8 +1161,8 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>ids</td>
-<td>List of the ids of the projects to archive (numbers or temp ids).</td>
+<td>ids  <em>Array of Integer (id) or String (temp id)</em></td>
+<td>List of the ids of the projects to archive (could be temp ids).</td>
 </tr>
 </tbody></table>
 <h2 id='unarchive-a-project'>Unarchive a project</h2>
@@ -1193,8 +1192,8 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>ids</td>
-<td>List of the ids of the projects to unarchive (numbers or temp ids).</td>
+<td>ids  <em>Array of Integer (id) or String (temp id)</em></td>
+<td>List of the ids of the projects to unarchive (could be temp ids).</td>
 </tr>
 </tbody></table>
 <h2 id='update-multiple-ordersindents'>Update multiple orders/indents</h2>
@@ -1228,8 +1227,8 @@ success, a 4xx code an error due to incorrect user provided information, and a
 </tr>
 </thead><tbody>
 <tr>
-<td>ids_to_orders_indents</td>
-<td>A dictionary, where a project id is the key, and a list with two elements, the order and the indent, are its value: <code class="prettyprint">project_id: [item_order, indent]</code></td>
+<td>ids_to_orders_indents <em>Object</em></td>
+<td>A dictionary object, with a project id as key and a two elements list as value: <code class="prettyprint">project_id: [item_order, indent]</code></td>
 </tr>
 </tbody></table>
 

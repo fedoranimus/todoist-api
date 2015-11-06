@@ -26,20 +26,20 @@ A project in Todoist is a JSON object. Typically a project will have the followi
 
 Property | Description
 -------- | -----------
-id | The id of the project (a unique number).
-user_id | The id of the user that owns the project (a unique number).
-name | The name of the project (a string value).
-color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).  The color codes corresponding to these numbers are: `#95ef63`, `#ff8581`, `#ffc471`, `#f9ec75`, `#a8c8e4`, `#d2b8a3`, `#e2a8e4`, `#cccccc`, `#fb886e`, `#ffcc00`, `#74e8d3`, `#3bd5fb`.  And for the additional colors of the premium users: `#dc4fad`, `#ac193d`, `#d24726`, `#82ba00`, `#03b3b2`, `#008299`, `#5db2ff`, `#0072c6`, `#000000`, `#777777`.
-indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
-item_order | Project's order in the project list (a number, where the smallest value should place the project at the top).
-collapsed | Whether the project's sub-projects are collapsed (where `1` is true and `0` is false).
-shared | Whether the project is shared (a `true` or `false` value).
-is_deleted | Whether the project is marked as deleted (where `1` is true and `0` is false).
-is_archived | Whether the project is marked as archived (where `1` is true and `0` is false).
-archived_date | The date when the project was archived (`null` if not set).
-archived_timestamp | The timestamp of when the project was archived (`0` if not set).
-inbox_project | Whether the project is `Inbox` (`true` or otherwise this property is not sent).
-team_inbox | Whether the project is `TeamInbox` (`true` or otherwise this property is not sent).
+id *Integer* | The id of the project.
+user_id *Integer* | The id of the user who owns the project.
+name  *String* | The name of the project.
+color *Integer* | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).  The color codes corresponding to these numbers are: `#95ef63`, `#ff8581`, `#ffc471`, `#f9ec75`, `#a8c8e4`, `#d2b8a3`, `#e2a8e4`, `#cccccc`, `#fb886e`, `#ffcc00`, `#74e8d3`, `#3bd5fb`.  And for the additional colors of the premium users: `#dc4fad`, `#ac193d`, `#d24726`, `#82ba00`, `#03b3b2`, `#008299`, `#5db2ff`, `#0072c6`, `#000000`, `#777777`.
+indent *Integer* | The indent of the item (a number between `1` and `4`, where `1` is top-level).
+item_order *Integer* | Project's order in the project list (a number, where the smallest value should place the project at the top).
+collapsed  *Integer* | Whether the project's sub-projects are collapsed (where `1` is true and `0` is false).
+shared  *Boolean* | Whether the project is shared (a `true` or `false` value).
+is_deleted *Integer* | Whether the project is marked as deleted (where `1` is true and `0` is false).
+is_archived *Integer* | Whether the project is marked as archived (where `1` is true and `0` is false).
+archived_date *String* | The date when the project was archived (`null` if not set).
+archived_timestamp *Integer* | The timestamp of when the project was archived (`0` if not set).
+inbox_project *Boolean* | Whether the project is `Inbox` (`true` or otherwise this property is not sent).
+team_inbox *Boolean* | Whether the project is `TeamInbox` (`true` or otherwise this property is not sent).
 
 
 ## Add a project
@@ -69,15 +69,15 @@ Add a new project.
 
 Argument | Description
 -------- | -----------
-name | The name of the project (a string value).
+name *String* | The name of the project (a string value).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
-indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
-item_order | Project's order in the project list (a number, where the smallest value should place the project at the top).
+color *Integer* | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
+indent *Integer* | The indent of the item (a number between `1` and `4`, where `1` is top-level).
+item_order *Integer* | Project's order in the project list (a number, where the smallest value should place the project at the top).
 
 ## Update a project
 
@@ -106,17 +106,17 @@ Update an existing project.
 
 Argument | Description
 -------- | -----------
-id | The id of the project (a number or a temp id).
+id  *Integer or String (temp_id)* | The id of the project (could be temp id).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-name | The name of the project (a string value).
-color | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
-indent | The indent of the item (a number between `1` and `4`, where `1` is top-level).
-item_order | Project's order in the project list (a number, where the smallest value should place the project at the top).
-collapsed | Whether the project's sub-projects are collapsed (where `1` is true and `0` is false).
+name *String* | The name of the project (a string value).
+color *Integer* | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
+indent  *Integer* | The indent of the item (a number between `1` and `4`, where `1` is top-level).
+item_order  *Integer* | Project's order in the project list (a number, where the smallest value should place the project at the top).
+collapsed  *Integer* | Whether the project's sub-projects are collapsed (where `1` is true and `0` is false).
 
 
 ## Delete projects
@@ -147,7 +147,7 @@ Delete an existing project.
 
 Argument | Description
 -------- | -----------
-ids | List of the ids of the projects to delete (numbers or temp ids).
+ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projects to delete (could be temp ids).
 
 
 ## Archive a project
@@ -177,7 +177,7 @@ Archive project and its children. Only available for Todoist Premium users.
 
 Argument | Description
 -------- | -----------
-ids | List of the ids of the projects to archive (numbers or temp ids).
+ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projects to archive (could be temp ids).
 
 ## Unarchive a project
 
@@ -206,7 +206,7 @@ Unarchive project and its children. Only available for Todoist Premium users.
 
 Argument | Description
 -------- | -----------
-ids | List of the ids of the projects to unarchive (numbers or temp ids).
+ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projects to unarchive (could be temp ids).
 
 ## Update multiple orders/indents
 
@@ -239,4 +239,4 @@ Update the orders and indents of multiple projects at once.
 
 Argument | Description
 -------- | -----------
-ids_to_orders_indents | A dictionary, where a project id is the key, and a list with two elements, the order and the indent, are its value: `project_id: [item_order, indent]`
+ids_to_orders_indents *Object* | A dictionary object, with a project id as key and a two elements list as value: `project_id: [item_order, indent]`
