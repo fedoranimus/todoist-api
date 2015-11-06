@@ -571,7 +571,6 @@ a{
     overflow: auto;
 
     tbody{
-      border: 1px solid #e3e3e3;
     }
 
     th,td {
@@ -581,13 +580,22 @@ a{
     }
 
     th {
-      padding: 5px 10px;
-      vertical-align: bottom;
+      padding: 10px 10px 10px 0px;
+      min-width: 30px;
     }
 
     td {
-      padding: 10px;
+      padding: 10px 10px 10px 0px;
       color: $paragraph-color;
+      border-top: 1px solid #EBEBEC;
+    }
+
+    td {
+      em {
+        display: block;
+        font-style: normal;
+        color: #B1B0B0;
+      }
     }
 
     tr:last-child {
@@ -595,11 +603,9 @@ a{
     }
 
     tr:nth-child(odd)>td {
-      background-color: $main-bg;
     }
 
     tr:nth-child(even)>td {
-      background-color: $color-paper-grey;
     }
   }
 
