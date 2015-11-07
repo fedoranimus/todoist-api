@@ -7,9 +7,8 @@ language_tabs:
   - python
 
 includes:
-  - introduction
-  - authorization
   - workflow
+  - authorization
   - projects
   - items
   - labels

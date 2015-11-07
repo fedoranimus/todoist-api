@@ -29,3 +29,17 @@ Now that all is setup in your machine, you'll probably want to learn more about 
 ```
 rake build
 ```
+
+
+### Doc Writer Guide 
+
+
+
+##### Terminology 
+
+"Sync API request" - We will use capitalized "Sync" word to refer to all requests made to the 
+sync API endpoint (https://todoist.com/API/v6/sync)
+
+
+##### JSON
+When describing a JSON data, make sure you use the terms that is consistent to the spec. (i.e. Use "array", not "list". Use "object", not "dictionary").
