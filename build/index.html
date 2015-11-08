@@ -90,7 +90,7 @@ SOFTWARE.
 <p>Todoist API (also known as the &ldquo;Sync API&rdquo;) is specially designed for efficient data sync between 
 clients (i.e. our mobile apps) and Todoist. </p>
 
-<p>All Sync API requests shared the same endpoint URL
+<p>All Sync API requests shared the same endpoint URL:
 <strong>https://todoist.com/API/v6/sync</strong></p>
 
 <p>Sync API requests should be made in HTTP POST (application/x-www-form-urlencoded). Sync API responses, including error, will be returned in JSON. </p>
@@ -176,12 +176,12 @@ clients (i.e. our mobile apps) and Todoist. </p>
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
+<td>token <em>String</em></td>
 <td>User&rsquo;s API token</td>
 </tr>
 <tr>
-<td>seq_no</td>
-<td>Sequence number, used to allow client to perform incremental sync. On the initial request you should pass <code class="prettyprint">0</code>. On all other requests you should pass the last <code class="prettyprint">seq_no</code> you received from the server.</td>
+<td>seq_no <em>Integer</em></td>
+<td>Sequence number, used to allow client to perform incremental sync. Pass <code class="prettyprint">0</code> to retrieve all active resource datas. More detail about it below.</td>
 </tr>
 <tr>
 <td>resource_types <em>JSON array of string</em></td>
@@ -200,8 +200,16 @@ clients (i.e. our mobile apps) and Todoist. </p>
 <td>The Sync API requests return <code class="prettyprint">DayOrdersTimestamp</code> that specifies when the day orders were last updated. If you omit <code class="prettyprint">day_orders_timestamp</code> then none of then will be fetched. If you specify <code class="prettyprint">day_orders_timestamp</code> then day orders will be returned if your timestamp is different from the servers. If you send <code class="prettyprint">day_orders_timestamp</code> and the day orders have not been updated then the server won&rsquo;t return the <code class="prettyprint">DayOrders</code> entry at all.</td>
 </tr>
 </tbody></table>
+<h3 id='incremental-sync-code-classprettyprintseq_nocode-usage'>Incremental sync (<code class="prettyprint">seq_no</code> usage)</h3>
+<p>Sync API allow clients to retrive only updated resources, and this is done by using the &ldquo;sequence number&rdquo;, <code class="prettyprint">seq_no</code>, in your Sync API request.</p>
+
+<p>On your initial sync request, specify <code class="prettyprint">seq_no=0</code> in your request, and the user&rsquo;s all active resources datas will be returned. 
+Todoist API server will also return a new <code class="prettyprint">seq_no</code> in the Sync API response. </p>
+
+<p>In your subsequent Sync request, use the <code class="prettyprint">seq_no</code> that you receive from your previous Sync response, 
+and the Todoist API server will return only the updated resource datas.</p>
 <h3 id='response'>Response</h3>
-<p>When the request succeeded, a HTTP 200 response will be returned with a JSON object containning the requested resources.</p>
+<p>When the request succeeded, a HTTP 200 response will be returned with a JSON object containning the requested resources and also a new <code class="prettyprint">seq_no</code>.</p>
 
 <table><thead>
 <tr>
@@ -209,6 +217,10 @@ clients (i.e. our mobile apps) and Todoist. </p>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>seq_no</td>
+<td>A new sequence number. Used by the client in the next sync request to perform incremental sync.</td>
+</tr>
 <tr>
 <td>User</td>
 <td>An User object.</td>
@@ -837,8 +849,8 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <td>User&rsquo;s language. Can be <code class="prettyprint">de</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">pt_BR</code>, <code class="prettyprint">zh_CN</code>, <code class="prettyprint">es</code>, <code class="prettyprint">hi</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">zh_TW</code></td>
 </tr>
 </tbody></table>
-<h2 id='token-from-settings'>Token from Settings</h2>
-<p>You can also obtain your personal access token directly from the Todoist web application Settings: </p>
+<h2 id='personal-token'>Personal Token</h2>
+<p>You can also obtain your personal access token directly from your Todoist Settings: </p>
 
 <p><code class="prettyprint">Settings</code> -&gt; <code class="prettyprint">Todoist Settings</code> -&gt; <code class="prettyprint">Account</code> -&gt; <code class="prettyprint">API token</code></p>
 
@@ -5004,7 +5016,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <p>The Todoist Webhooks API allows applications to receive realtime notification (in form of HTTP POST payload) on the subscribed user events. </p>
 
 <p>Notice that once you have webhook setup, you will start receiving webhook events from <strong>all your app users</strong> immediately.</p>
-<h2 id='webhooks-configuration'>Webhooks Configuration</h2>
+<h2 id='configuration'>Configuration</h2>
 <p>Before you can start receiving webhook event notifications, you must first have your webhook configured at the App Management Console. </p>
 <h3 id='events'>Events</h3>
 <p>Here is a list of events that you could subscribe to, and they are configured at the App Management Console.</p>
@@ -5092,7 +5104,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='request-format--delivery'>Request Format / Delivery</h2><h3 id='event-json-object'>Event JSON Object</h3>
+<h2 id='request-format'>Request Format</h2><h3 id='event-json-object'>Event JSON Object</h3>
 <p>Each webhook event notification request contains a JSON object. The event JSON object follows this general structure:</p>
 
 <p><code class="prettyprint">{&quot;event_name&quot;: &quot;...&quot;, &quot;user_id&quot;=..., &quot;event_data&quot;: {...}}</code></p>

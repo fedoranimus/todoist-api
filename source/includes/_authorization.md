@@ -269,8 +269,8 @@ full_name | User's full name if user is about to be registered. If not set, a us
 timezone | User's timezone if user is about to be registered. If not set, we guess the timezone from the client's IP address. In case of failure, "UTC" timezone will be set up for a newly created account.
 lang | User's language. Can be `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `hi`, `ko`, `pt`, `ru`, `zh_TW`
 
-## Token from Settings
+## Personal Token
 
-You can also obtain your personal access token directly from the Todoist web application Settings: 
+You can also obtain your personal access token directly from your Todoist Settings: 
 
 `Settings` -> `Todoist Settings` -> `Account` -> `API token`

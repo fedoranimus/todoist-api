@@ -5,7 +5,7 @@ The Todoist Webhooks API allows applications to receive realtime notification (i
 Notice that once you have webhook setup, you will start receiving webhook events from __all your app users__ immediately.
 
 
-## Webhooks Configuration
+## Configuration
 
 Before you can start receiving webhook event notifications, you must first have your webhook configured at the App Management Console. 
 
@@ -39,7 +39,7 @@ filter:updated |
 
 
 
-## Request Format / Delivery
+## Request Format
 
 
 ### Event JSON Object

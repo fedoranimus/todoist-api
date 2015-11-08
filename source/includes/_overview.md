@@ -3,7 +3,7 @@
 Todoist API (also known as the "Sync API") is specially designed for efficient data sync between 
 clients (i.e. our mobile apps) and Todoist. 
 
-All Sync API requests shared the same endpoint URL
+All Sync API requests shared the same endpoint URL:
 **https://todoist.com/API/v6/sync**
 
 Sync API requests should be made in HTTP POST (application/x-www-form-urlencoded). Sync API responses, including error, will be returned in JSON. 
@@ -94,8 +94,8 @@ To retrive your user resources, make a Sync API request with the following param
 
 Parameter | Description
 --------- | -----------
-token | User's API token
-seq_no | Sequence number, used to allow client to perform incremental sync. On the initial request you should pass `0`. On all other requests you should pass the last `seq_no` you received from the server.
+token *String* | User's API token
+seq_no *Integer* | Sequence number, used to allow client to perform incremental sync. Pass `0` to retrieve all active resource datas. More detail about it below.
 resource_types *JSON array of string* | Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of avaialbe resource types: `labels`, `items`, `notes`, `filters`, `reminders`, `locations`, `user`, `live_notifications`, `day_orders`, `collaborators`, `notification_settings`. You may use `all` to include all the resource types
 
 
@@ -108,13 +108,29 @@ day_orders_timestamp | The Sync API requests return `DayOrdersTimestamp` that sp
 
 
 
+### Incremental sync (`seq_no` usage)
+
+Sync API allow clients to retrive only updated resources, and this is done by using the "sequence number", `seq_no`, in your Sync API request.
+
+On your initial sync request, specify `seq_no=0` in your request, and the user's all active resources datas will be returned. 
+Todoist API server will also return a new `seq_no` in the Sync API response. 
+
+In your subsequent Sync request, use the `seq_no` that you receive from your previous Sync response, 
+and the Todoist API server will return only the updated resource datas.
+
+
+
+
+
+
 ### Response
 
-When the request succeeded, a HTTP 200 response will be returned with a JSON object containning the requested resources.
+When the request succeeded, a HTTP 200 response will be returned with a JSON object containning the requested resources and also a new `seq_no`.
 
 
 Field | Description
 ---- | -----------
+seq_no | A new sequence number. Used by the client in the next sync request to perform incremental sync.
 User | An User object.
 Projects |  An array of Project objects.
 Items | A array of Item objects.
