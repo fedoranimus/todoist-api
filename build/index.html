@@ -104,7 +104,7 @@ clients (i.e. our mobile apps) and Todoist. </p>
 
 <p><br/><br/>
 <script type="text/javascript" src="//www.apichangelog.com/static/widget/follow.js" api="todoist"></script></p>
-<h2 id='read-resources'>Read Resources</h2>
+<h2 id='read-resources'>Read resources</h2>
 <blockquote>
 <p>An example response of a read request.</p>
 </blockquote>
@@ -274,7 +274,7 @@ and the Todoist API server will return only the updated resource datas.</p>
 <td>User&rsquo;s notification setting, used by clients that support native notifications.</td>
 </tr>
 </tbody></table>
-<h2 id='write-resources'>Write Resources</h2>
+<h2 id='write-resources'>Write resources</h2>
 <blockquote>
 <p>Example API call that creating a new project.</p>
 </blockquote>
@@ -383,7 +383,7 @@ a command.</p></li>
 For commands that are related to creation of resources (i.e. <code class="prettyprint">item_add</code>, <code class="prettyprint">project_add</code>), you can 
 specify a extra <code class="prettyprint">temp_id</code> as a placeholder for the actual ID of the resource. The other commands in 
 the same sequence could directly refer to <code class="prettyprint">temp_id</code> if needed.</p>
-<h3 id='response'>Response</h3>
+<h3 id='response--error'>Response / Error</h3>
 <p>The result of commands execution will be stored in the following response JSON object field:</p>
 
 <table><thead>
@@ -438,13 +438,13 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 
 <ul>
 <li><p>a &quot;ok&rdquo; string which signals success of the command</p></li>
-<li><p>an error object containings error information of a command</p></li>
+<li><p>an error object containings error information of a command. </p></li>
 </ul>
-<h3 id='limits'>Limits</h3>
-<p>The maximum number of commands is 100 per request, and this is done to prevent timeouts and other problems when dealing with big requests.</p>
 
-<p>There&rsquo;s also a maximum number of 50 sync requests per minute for each user, in order to prevent clients from accidentally overloading our servers.</p>
-<h2 id='responsse-status-codes'>Responsse status codes</h2>
+<p>Please see the adjancent code examples for the possible format of the <code class="prettyprint">SyncStatus</code></p>
+<h2 id='response-status-codes'>Response status codes</h2>
+<p>The server uses the HTTP status codes to indicate result or failure of a request. And as is usually customary in web servers, a 2xx code indicates success, a 4xx code an error due to incorrect user provided information, and a 5xx code an internal, possibly temporary, error.</p>
+
 <table><thead>
 <tr>
 <th>Status code</th>
@@ -484,14 +484,22 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <td>The server is currently unable to handle the request.</td>
 </tr>
 </tbody></table>
-<h2 id='client-libraries'>client libraries</h2><h3 id='python'>python</h3>
+<h3 id='limits'>Limits</h3>
+<p>The maximum number of commands is 100 per request, and this is done to prevent timeouts and other problems when dealing with big requests.</p>
+
+<p>There&rsquo;s also a maximum number of 50 sync requests per minute for each user, in order to prevent clients from accidentally overloading our servers.</p>
+<h2 id='client-libraries'>Client libraries</h2><h3 id='python'>Python</h3>
 <blockquote>
 <p>install todoist python library via pip:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>$ pip install todoist-python
 </code></pre>
 
-<p><a href="https://github.com/doist/todoist-python">todoist python api library</a> (<a href="http://todoist-python.readthedocs.org/en/latest/">library doc</a>)</p>
+<p><a href="https://github.com/doist/todoist-python">Github</a></p>
+
+<p><a href="http://todoist-python.readthedocs.org/en/latest/">Library doc</a></p>
+
+<p><a href="https://pypi.python.org/pypi/todoist-python">PyPI</a></p>
 <h2 id='v5-to-v6-migration-guide'>v5 to v6 migration guide</h2>
 <p>The <em>Todoist API</em> is currently in version 6, and it replaces the older <em>Standard API</em> and <em>Sync API</em>, both of which were considered as version 5.</p>
 

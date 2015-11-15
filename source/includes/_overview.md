@@ -19,7 +19,7 @@ Sync API supports the following features:
 <script type="text/javascript" src="//www.apichangelog.com/static/widget/follow.js" api="todoist"></script>
 
 
-## Read Resources
+## Read resources
 
 > An example response of a read request.
 
@@ -146,7 +146,7 @@ LiveNotificationsLastRead | What is the last live notification the user has seen
 SettingsNotifications | User's notification setting, used by clients that support native notifications.
 
 
-## Write Resources
+## Write resources
 
 > Example API call that creating a new project.
 
@@ -249,7 +249,7 @@ the same sequence could directly refer to `temp_id` if needed.
 
 
 
-### Response
+### Response / Error
 
 The result of commands execution will be stored in the following response JSON object field:
 
@@ -295,19 +295,16 @@ The status result of each command execution is in the `SyncStatus` dictionary ob
 
 - a "ok" string which signals success of the command
 
-- an error object containings error information of a command
+- an error object containings error information of a command. 
+
+Please see the adjancent code examples for the possible format of the `SyncStatus`
 
 
 
-### Limits
 
-The maximum number of commands is 100 per request, and this is done to prevent timeouts and other problems when dealing with big requests.
+## Response status codes
 
-There's also a maximum number of 50 sync requests per minute for each user, in order to prevent clients from accidentally overloading our servers.
-
-
-
-## Responsse status codes
+The server uses the HTTP status codes to indicate result or failure of a request. And as is usually customary in web servers, a 2xx code indicates success, a 4xx code an error due to incorrect user provided information, and a 5xx code an internal, possibly temporary, error.
 
 Status code | Description
 ------------|------------
@@ -323,9 +320,18 @@ Status code | Description
 
 
 
-## client libraries
 
-### python
+### Limits
+
+The maximum number of commands is 100 per request, and this is done to prevent timeouts and other problems when dealing with big requests.
+
+There's also a maximum number of 50 sync requests per minute for each user, in order to prevent clients from accidentally overloading our servers.
+
+
+
+## Client libraries
+
+### Python
 
 > install todoist python library via pip:
 
@@ -333,7 +339,11 @@ Status code | Description
 $ pip install todoist-python
 ```
 
-[todoist python api library](https://github.com/doist/todoist-python) ([library doc] (http://todoist-python.readthedocs.org/en/latest/))
+[Github](https://github.com/doist/todoist-python)
+
+[Library doc](http://todoist-python.readthedocs.org/en/latest/)
+
+[PyPI](https://pypi.python.org/pypi/todoist-python)
 
 
 ## v5 to v6 migration guide
