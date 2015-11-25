@@ -41,7 +41,7 @@ project_id *Integer* | Project that the task reside in
 content *String* | The text of the task
 date_string *String* | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string if not set). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang *String* | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
-due_date_utc  *String* | The date of the task in a format like `Mon 07 Aug 2006 12:34:56 +0100` (or `null` if not set).
+due_date_utc  *String* | The date of the task in the format `Mon 07 Aug 2006 12:34:56 +0000` (or `null` if not set). For all day task (i.e. task due "Today"), the time part will be set as xx:xx:59.
 priority *Integer* | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
 indent *Integer* | The indent of the task (a number between `1` and `4`, where `1` is top-level).
 item_order *Integer* | The order of the task inside a project (the smallest value would place the task at the top).
