@@ -5077,9 +5077,10 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tbody></table>
 
         <h1 id='webhooks'>Webhooks</h1>
-<p>The Todoist Webhooks API allows applications to receive realtime notification (in form of HTTP POST payload) on the subscribed user events. </p>
-
-<p>Notice that once you have webhook setup, you will start receiving webhook events from <strong>all your app users</strong> immediately.</p>
+<p>The Todoist Webhooks API allows applications to receive realtime notification (in form of HTTP POST payload) on the subscribed user events. 
+Notice that once you have webhook setup, you will start receiving webhook events from <strong>all your app users</strong> immediately.</p>
+<h3 id='important-considerations'>Important Considerations</h3>
+<p>Due to the nature of network request, your application should assume webhook requests could arrive out of order or could even fail to arrive; webhooks should be used only as notifications and not as a primary Todoist data source (make sure your application could still work when webhook is not available).  </p>
 <h2 id='configuration'>Configuration</h2>
 <p>Before you can start receiving webhook event notifications, you must first have your webhook configured at the App Management Console. </p>
 <h3 id='events'>Events</h3>

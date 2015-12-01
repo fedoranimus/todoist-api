@@ -1,8 +1,11 @@
 # Webhooks
 
 The Todoist Webhooks API allows applications to receive realtime notification (in form of HTTP POST payload) on the subscribed user events. 
-
 Notice that once you have webhook setup, you will start receiving webhook events from __all your app users__ immediately.
+
+
+### Important Considerations
+Due to the nature of network request, your application should assume webhook requests could arrive out of order or could even fail to arrive; webhooks should be used only as notifications and not as a primary Todoist data source (make sure your application could still work when webhook is not available).  
 
 
 ## Configuration
