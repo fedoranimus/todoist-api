@@ -16,7 +16,7 @@ You're going to need:
  1. Fork this repository on Github.
  2. Clone *your forked repository* (not our original one) to your hard drive with `git clone https://github.com/YOURUSERNAME/todoist-api.git`
  3. `cd todoist-api`
- 4. Install all dependencies: `bundle install`
+ 4. Install all dependencies: `bundle install` (a `bundle update` maybe needed before that)
  5. Start the test server: `bundle exec middleman server`
 
 You can now see the docs at <http://localhost:4567>. And as you edit `source/index.md`, your server should automatically update.
@@ -31,13 +31,13 @@ rake build
 ```
 
 
-### Doc Writer Guide 
+### Doc Writer Guide
 
 
 
-##### Terminology 
+##### Terminology
 
-"Sync API request" - We will use capitalized "Sync" word to refer to all requests made to the 
+"Sync API request" - We will use capitalized "Sync" word to refer to all requests made to the
 sync API endpoint (https://todoist.com/API/v6/sync)
 
 
