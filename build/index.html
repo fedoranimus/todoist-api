@@ -353,21 +353,21 @@ a command.</p></li>
 <p>An example that shows how temporary ids can be used and referenced:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_add"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"temp_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c7beb07f-b226-4eb1-bf63-30d782b07b1a"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Project"</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_add"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"temp_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c7beb07f-b226-4eb1-bf63-30d782b07b1a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Project"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ac417051-1cdc-4dc3-b4f8-14526d5bfd16"</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ac417051-1cdc-4dc3-b4f8-14526d5bfd16"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item_add"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"temp_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43f7ed23-a038-46b5-b2c9-4abda9097ffa"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a test task"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c7beb07f-b226-4eb1-bf63-30d782b07b1a"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item_add"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"temp_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43f7ed23-a038-46b5-b2c9-4abda9097ffa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a test task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c7beb07f-b226-4eb1-bf63-30d782b07b1a"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"849fff4e-8551-4abb-bd2a-838d092775d7"</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"849fff4e-8551-4abb-bd2a-838d092775d7"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -406,7 +406,7 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <p>An example of a single request sync return value:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"SyncStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"863aca2c-65b4-480a-90ae-af160129abbd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">}</span><span class="w">
+  </span><span class="s2">"SyncStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"863aca2c-65b4-480a-90ae-af160129abbd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -414,9 +414,9 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <p>An example of a multiple requests sync return value:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"SyncStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"32eaa699-e9d7-47ed-91ea-e58d475791f1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"bec5b356-3cc1-462a-9887-fe145e3e1ebf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid temporary id"</span><span class="p">}</span><span class="w">
+  </span><span class="s2">"SyncStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"32eaa699-e9d7-47ed-91ea-e58d475791f1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bec5b356-3cc1-462a-9887-fe145e3e1ebf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid temporary id"</span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -425,10 +425,10 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <p>An example of a single request operating on multiple objects return value:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"SyncStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"66386321-fb87-4f95-9dfe-7bf5c3823e85"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"128501470"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"128501607"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project not found"</span><span class="p">}</span><span class="w">
+  </span><span class="s2">"SyncStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"66386321-fb87-4f95-9dfe-7bf5c3823e85"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"128501470"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"128501607"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project not found"</span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -673,8 +673,8 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <p>On success, Todoist returns HTTP 200 with token in JSON object format:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -736,37 +736,37 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <p>On success, Todoist returns HTTP 200 with token in JSON object format:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"start_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"overdue, 7 days"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"last_used_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.20.30.40"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"api_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"karma_trend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"inbox_project"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501411</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"time_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"beta"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"business_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"shard_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Athens"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_premium"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"mobile_host"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"has_push_reminders"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_dummy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"premium_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"team_inbox"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"next_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tz_offset"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"+03:00"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
-  </span><span class="nt">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">2180270834</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"karma"</span><span class="p">:</span><span class="w"> </span><span class="mf">684.0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_biz_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"default_reminder"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@example.com"</span><span class="w">
+  </span><span class="s2">"start_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"overdue, 7 days"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_used_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.20.30.40"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"api_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"karma_trend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"inbox_project"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501411</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"beta"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"business_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shard_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Athens"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_premium"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobile_host"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"has_push_reminders"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_dummy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"premium_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"team_inbox"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"next_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tz_offset"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"+03:00"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">2180270834</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"karma"</span><span class="p">:</span><span class="w"> </span><span class="mf">684.0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_biz_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"default_reminder"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -923,18 +923,18 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <p>An example project object</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501470</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project1"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"indent"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"item_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_archived"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"archived_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"archived_timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501470</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"indent"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"item_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_archived"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"archived_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"archived_timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id='properties'>Properties</h3>
@@ -1222,29 +1222,29 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <p>An example item object</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33511505</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501470</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task1"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date_string"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date_lang"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"due_date_utc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"indent"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"item_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"day_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"children"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">12839231</span><span class="p">,</span><span class="w"> </span><span class="mi">18391839</span><span class="p">],</span><span class="w">
-  </span><span class="nt">"assigned_by_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"responsible_uid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checked"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"in_history"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_archived"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"sync_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fri 26 Sep 2014 08:25:05 +0000"</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33511505</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501470</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_string"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_lang"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"due_date_utc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"indent"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"item_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"day_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">12839231</span><span class="p">,</span><span class="w"> </span><span class="mi">18391839</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"assigned_by_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"responsible_uid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"in_history"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_archived"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sync_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fri 26 Sep 2014 08:25:05 +0000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id='properties'>Properties</h3>
@@ -1789,12 +1789,12 @@ to history), recurring task is moved forward (due date is updated).</p>
 <p>An example label object</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">790748</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Label1"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"item_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">790748</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Label1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"item_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id='properties'>Properties</h3>
@@ -1999,22 +1999,22 @@ to history), recurring task is moved forward (due date is updated).</p>
 <p>An example task note object</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17299568</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"posted_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501470</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33548400</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Note"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"file_attachment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"file_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text/plain"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File1.txt"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"file_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/File1.txt"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"upload_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17299568</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"posted_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501470</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33548400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Note"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"file_attachment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"file_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text/plain"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File1.txt"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/File1.txt"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"upload_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"uids_to_notify"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_archived"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"posted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed 01 Oct 2014 14:54:55 +0000"</span><span class="w">
+  </span><span class="s2">"uids_to_notify"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_archived"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"posted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed 01 Oct 2014 14:54:55 +0000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2165,7 +2165,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>file_attachment</td>
-<td>A file attached to the note (see more details about attachments above).</td>
+<td>A file attached to the note (see more details about attachments above, and learn how to upload a file in the <code class="prettyprint">Uploads</code> section).</td>
 </tr>
 </tbody></table>
 <h2 id='add-a-project-note'>Add a project note</h2>
@@ -2212,7 +2212,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>file_attachment</td>
-<td>A file attached to the note (see more details about attachments above).</td>
+<td>A file attached to the note (see more details about attachments above, and learn how to upload a file in the <code class="prettyprint">Uploads</code> section).</td>
 </tr>
 </tbody></table>
 <h2 id='update-a-note'>Update a note</h2>
@@ -2259,7 +2259,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>file_attachment</td>
-<td>A file attached to the note (see more details about attachments above).</td>
+<td>A file attached to the note (see more details about attachments above, and learn how to upload a file in the <code class="prettyprint">Uploads</code> section).</td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-note'>Delete a note</h2>
@@ -2551,13 +2551,13 @@ to history), recurring task is moved forward (due date is updated).</p>
 <p>An example filter object</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4638878</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Priority 1"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"priority 1"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"item_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4638878</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Priority 1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"priority 1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"item_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2773,17 +2773,17 @@ to history), recurring task is moved forward (due date is updated).</p>
 <p>An example reminder object</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12763422</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notify_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33511505</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"absolute"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date_string"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oct 6 @ 2pm"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date_lang"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"due_date_utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon 06 Oct 2014 11:00:00 +0000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon 06 Oct 2014 11:00:00 +0000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"mm_offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12763422</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notify_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33511505</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"absolute"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_string"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oct 6 @ 2pm"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_lang"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"due_date_utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon 06 Oct 2014 11:00:00 +0000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon 06 Oct 2014 11:00:00 +0000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mm_offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -3129,34 +3129,34 @@ to history), recurring task is moved forward (due date is updated).</p>
 <p>An example user object</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"api_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@xample.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"inbox_project"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501411</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe\/Athens"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tz_offset"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"+03:00"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
-  </span><span class="nt">"start_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"overdue, 7 days"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"start_day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"next_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"time_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"has_push_reminders"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"default_reminder"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"mobile_host"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"completed_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"karma"</span><span class="p">:</span><span class="w"> </span><span class="mf">684.0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"karma_trend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_premium"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"premium_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_biz_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"business_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"beta"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"is_dummy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"api_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@xample.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"inbox_project"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501411</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe\/Athens"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tz_offset"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"+03:00"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"start_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"overdue, 7 days"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"next_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"has_push_reminders"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"default_reminder"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobile_host"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"completed_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"karma"</span><span class="p">:</span><span class="w"> </span><span class="mf">684.0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"karma_trend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_premium"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"premium_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_biz_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"business_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"beta"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_dummy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id='properties'>Properties</h3>
@@ -4398,226 +4398,226 @@ to history), recurring task is moved forward (due date is updated).</p>
 <p>Examples of live notifications:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"invitation_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcdefghijklmno"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"share_invitation_sent"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345567890</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invitation_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcdefghijklmno"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"share_invitation_sent"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345567890</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"share_invitation_accepted"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"share_invitation_accepted"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"share_invitation_rejected"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reject_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@example.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"share_invitation_rejected"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reject_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user_left_project"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user_left_project"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user_removed_from_project"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"removed_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"removed_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user_removed_from_project"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"removed_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"removed_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"assigned_by_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"item_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewTask"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item_assigned"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"responsible_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"assigned_by_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"item_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewTask"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item_assigned"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"responsible_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"assigned_by_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"item_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewTask"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item_completed"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"responsible_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"assigned_by_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"item_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewTask"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item_completed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"responsible_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"assigned_by_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"item"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"item_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewTask"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item_uncompleted"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"project"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"responsible_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"assigned_by_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"item_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewTask"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item_uncompleted"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"responsible_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"note_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewTask"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"note_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"note_added"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"note_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewTask"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"note_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"note_added"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@example.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_policy_disallowed_invitation"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"321"</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_policy_disallowed_invitation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"321"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"inviter_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_policy_rejected_invitation"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"321"</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"inviter_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_policy_rejected_invitation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"321"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"active_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1399299727</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_trial_will_end"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"business_monthly"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"active_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1399299727</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_trial_will_end"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"plan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"business_monthly"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"active_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1399299727</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"attempt_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 x Subscription to Monthly ($3.00/month)"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"next_payment_attempt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1399299735</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_payment_failed"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"business_monthly"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"active_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1399299727</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attempt_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 x Subscription to Monthly ($3.00/month)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_payment_attempt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1399299735</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_payment_failed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"plan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"business_monthly"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"active_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1399299727</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_account_disabled"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"business_monthly"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"active_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1399299727</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_account_disabled"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"plan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"business_monthly"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Inc."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789"</span><span class="w">
+    </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Inc."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"invitation_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to our team!"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"invitation_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcdefghijklmno"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_invitation_created"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="w">
+    </span><span class="s2">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invitation_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to our team!"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invitation_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcdefghijklmno"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_invitation_created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Inc."</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789"</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Inc."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_invitation_accepted"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_invitation_accepted"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"from_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Inc."</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789"</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1377639720</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_uid"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Inc."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_invitation_rejected"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="s2">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz_invitation_rejected"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seq_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id='types'>Types</h3>

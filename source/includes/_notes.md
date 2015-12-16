@@ -103,7 +103,7 @@ content | The content of the note (a string value).
 
 Argument | Description
 -------- | -----------
-file_attachment | A file attached to the note (see more details about attachments above).
+file_attachment | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
 
 
 ## Add a project note
@@ -140,7 +140,7 @@ content | The content of the note (a string value).
 
 Argument | Description
 -------- | -----------
-file_attachment | A file attached to the note (see more details about attachments above).
+file_attachment | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
 
 ## Update a note
 
@@ -176,7 +176,7 @@ id | The id of the note (a unique number or temp id).
 Argument | Description
 -------- | -----------
 content | The content of the note (a string value).
-file_attachment | A file attached to the note (see more details about attachments above).
+file_attachment | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
 
 ## Delete a note
 
