@@ -182,14 +182,14 @@ last_id *Integer* | Can be used for pagination. This should be the minimum uploa
 $ curl https://todoist.com/API/v6/uploads/delete \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d file_url='https://*.cloudfront.net/*/example.jpg'
-True
+"ok"
 ```
 
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
 >>> api.delete_upload('https://*.cloudfront.net/*/example.jpg')
-True
+ok
 ```
 
 Delete an upload.
