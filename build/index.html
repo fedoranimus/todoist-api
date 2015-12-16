@@ -84,7 +84,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
---> 
+-->
 
         <h1 id='api-overview'>API Overview</h1>
 <p>Todoist API (also known as the &ldquo;Sync API&rdquo;) is specially designed for efficient data sync between 
@@ -2293,6 +2293,9 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>The id of the note (a unique number or temp id).</td>
 </tr>
 </tbody></table>
+
+        <h1 id='uploads'>Uploads</h1>
+<p>Files can be uploaded to our servers and used as file attachments in Notes.</p>
 <h2 id='upload-a-file'>Upload a file</h2>
 <blockquote>
 <p>On success, an HTTP 200 OK with JSON data of file data is returned:</p>
@@ -2353,12 +2356,12 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
-<td>The user&rsquo;s token received on login (a string value).</td>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
 </tr>
 <tr>
-<td>file_name</td>
-<td>The file name to be uploaded (a string value).</td>
+<td>file_name <em>String</em></td>
+<td>The file name to be uploaded.</td>
 </tr>
 </tbody></table>
 <h3 id='base-file-properties'>Base file properties</h3>
@@ -2369,24 +2372,24 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>file_name</td>
-<td>The name of the file (a string value).</td>
+<td>file_name <em>String</em></td>
+<td>The name of the file.</td>
 </tr>
 <tr>
-<td>file_size</td>
-<td>The size of the file in bytes (a number).</td>
+<td>file_size <em>Integer</em></td>
+<td>The size of the file in bytes.</td>
 </tr>
 <tr>
-<td>file_type</td>
-<td>MIME type (a string value such as <code class="prettyprint">text/plain</code> or <code class="prettyprint">image/png</code>).</td>
+<td>file_type <em>String</em></td>
+<td>MIME type (i.e. <code class="prettyprint">text/plain</code>, <code class="prettyprint">image/png</code>).</td>
 </tr>
 <tr>
-<td>file_url</td>
+<td>file_url <em>String</em></td>
 <td>The URL where the file is located (a string value representing an HTTP URL). Note that we don&rsquo;t cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) respources, as exposing this files in Todoist may issue a browser warning.</td>
 </tr>
 <tr>
-<td>upload_state</td>
-<td>Upload completion state (a string value such as <code class="prettyprint">pending</code> or <code class="prettyprint">completed</code>).</td>
+<td>upload_state <em>String</em></td>
+<td>Upload completion state (either <code class="prettyprint">pending</code> or <code class="prettyprint">completed</code>).</td>
 </tr>
 </tbody></table>
 <h3 id='image-file-properties'>Image file properties</h3>
@@ -2413,6 +2416,135 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tbody></table>
 <h3 id='audio-file-properties'>Audio file properties</h3>
 <p>If you upload an audio file, you may provide an extra attribute <code class="prettyprint">file_duration</code> (duration of the audio file in seconds, which takes an integer value). In the web interface the file is rendered back with a <code class="prettyprint">&lt;audio&gt;</code> tag, so you should make sure it&rsquo;s supported in current web browsers. See <a href="https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats">supported media formats</a> for the reference.</p>
+<h2 id='get-uploads'>Get uploads</h2>
+<blockquote>
+<p>An example of getting the user&rsquo;s uploads</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/uploads/get <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
+<span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"file_size"</span>: 86406,
+        <span class="s2">"file_type"</span>: <span class="s2">"image/jpeg"</span>,
+        <span class="s2">"file_url"</span>: <span class="s2">"https://*.cloudfront.net/*/example.jpg"</span>,
+        <span class="s2">"filename"</span>: <span class="s2">"example.jpg"</span>,
+        <span class="s2">"id"</span>: 34xx,
+        <span class="s2">"ip"</span>: <span class="s2">"8.8.8.x"</span>,
+        <span class="s2">"item_id"</span>: 26166xxxxxx,
+        <span class="s2">"note_id"</span>: 6157xxxxxx,
+        <span class="s2">"project_id"</span>: 156996xxxxxx,
+        <span class="s2">"uploaded"</span>: <span class="s2">"Wed 16 Dec 2015 13:18:17 +0000"</span>,
+        <span class="s2">"user_id"</span>: 5713xxxxxx
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"file_size"</span>: 312,
+        <span class="s2">"file_type"</span>: <span class="s2">"text/plain"</span>,
+        <span class="s2">"file_url"</span>: <span class="s2">"https://*.cloudfront.net/*/todo.txt"</span>,
+        <span class="s2">"filename"</span>: <span class="s2">"todo.txt"</span>,
+        <span class="s2">"id"</span>: 34xx,
+        <span class="s2">"ip"</span>: <span class="s2">"2.86.104.243"</span>,
+        <span class="s2">"item_id"</span>: 26166xxxxxx,
+        <span class="s2">"note_id"</span>: 6157xxxxxx,
+        <span class="s2">"project_id"</span>: 156996xxxxxx,
+        <span class="s2">"uploaded"</span>: <span class="s2">"Wed 16 Dec 2015 12:08:14 +0000"</span>,
+        <span class="s2">"user_id"</span>: 5713xxxxxx
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_uploads</span><span class="p">()</span>
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">"file_size"</span><span class="p">:</span> <span class="mi">86406</span><span class="p">,</span>
+        <span class="s">"file_type"</span><span class="p">:</span> <span class="s">"image/jpeg"</span><span class="p">,</span>
+        <span class="s">"file_url"</span><span class="p">:</span> <span class="s">"https://*.cloudfront.net/*/example.jpg"</span><span class="p">,</span>
+        <span class="s">"filename"</span><span class="p">:</span> <span class="s">"example.jpg"</span><span class="p">,</span>
+        <span class="s">"id"</span><span class="p">:</span> <span class="mi">34</span><span class="n">xx</span><span class="p">,</span>
+        <span class="s">"ip"</span><span class="p">:</span> <span class="s">"8.8.8.x"</span><span class="p">,</span>
+        <span class="s">"item_id"</span><span class="p">:</span> <span class="mi">26166</span><span class="n">xxxxxx</span><span class="p">,</span>
+        <span class="s">"note_id"</span><span class="p">:</span> <span class="mi">6157</span><span class="n">xxxxxx</span><span class="p">,</span>
+        <span class="s">"project_id"</span><span class="p">:</span> <span class="mi">156996</span><span class="n">xxxxxx</span><span class="p">,</span>
+        <span class="s">"uploaded"</span><span class="p">:</span> <span class="s">"Wed 16 Dec 2015 13:18:17 +0000"</span><span class="p">,</span>
+        <span class="s">"user_id"</span><span class="p">:</span> <span class="mi">5713</span><span class="n">xxxxxx</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s">"file_size"</span><span class="p">:</span> <span class="mi">312</span><span class="p">,</span>
+        <span class="s">"file_type"</span><span class="p">:</span> <span class="s">"text/plain"</span><span class="p">,</span>
+        <span class="s">"file_url"</span><span class="p">:</span> <span class="s">"https://*.cloudfront.net/*/todo.txt"</span><span class="p">,</span>
+        <span class="s">"filename"</span><span class="p">:</span> <span class="s">"todo.txt"</span><span class="p">,</span>
+        <span class="s">"id"</span><span class="p">:</span> <span class="mi">34</span><span class="n">xx</span><span class="p">,</span>
+        <span class="s">"ip"</span><span class="p">:</span> <span class="s">"2.86.104.243"</span><span class="p">,</span>
+        <span class="s">"item_id"</span><span class="p">:</span> <span class="mi">26166</span><span class="n">xxxxxx</span><span class="p">,</span>
+        <span class="s">"note_id"</span><span class="p">:</span> <span class="mi">6157</span><span class="n">xxxxxx</span><span class="p">,</span>
+        <span class="s">"project_id"</span><span class="p">:</span> <span class="mi">156996</span><span class="n">xxxxxx</span><span class="p">,</span>
+        <span class="s">"uploaded"</span><span class="p">:</span> <span class="s">"Wed 16 Dec 2015 12:08:14 +0000"</span><span class="p">,</span>
+        <span class="s">"user_id"</span><span class="p">:</span> <span class="mi">5713</span><span class="n">xxxxxx</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
+
+<p>Get all user&rsquo;s uploads.</p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit <em>Integer</em></td>
+<td>The number of items to return (a number, where the default is <code class="prettyprint">30</code>, and the maximum is <code class="prettyprint">50</code>).</td>
+</tr>
+<tr>
+<td>last_id <em>Integer</em></td>
+<td>Can be used for pagination. This should be the minimum upload id you&rsquo;ve fetched so far. All results will be before that id.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-upload'>Delete upload</h2>
+<blockquote>
+<p>An example of deleting an upload</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/uploads/delete <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">file_url</span><span class="o">=</span><span class="s1">'https://*.cloudfront.net/*/example.jpg'</span>
+True
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">delete_upload</span><span class="p">(</span><span class="s">'https://*.cloudfront.net/*/example.jpg'</span><span class="p">)</span>
+<span class="bp">True</span>
+</code></pre>
+
+<p>Delete an upload.</p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
+</tr>
+<tr>
+<td>file_url <em>String</em></td>
+<td>The file URL to delete.</td>
+</tr>
+</tbody></table>
 
         <h1 id='filters'>Filters</h1>
 <blockquote>
