@@ -719,7 +719,7 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <td>Occurs when the <code class="prettyprint">client_id</code> or <code class="prettyprint">client_secret</code> parameters are incorrect: <code class="prettyprint">{&quot;error&quot;: &quot;incorrect_application_credentials&quot;}</code></td>
 </tr>
 </tbody></table>
-<h2 id='login-with-password'>Login with password</h2>
+<h2 id='login-with-password-deprecated'>Login with password [deprecated]</h2>
 <blockquote>
 <p>On success, an HTTP 200 OK with a JSON object with user data is returned:</p>
 </blockquote>
@@ -771,6 +771,8 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 </span></code></pre>
 
 <p>Login user into Todoist to get a token, which is necessary to do any communication with the server.</p>
+
+<p><strong>Please note that this authentication method is deprecated and is scheduled for removal. Pleasse use the OAuth authentication method instead.</strong></p>
 <h3 id='required-parameters'>Required parameters</h3>
 <table><thead>
 <tr>
@@ -913,10 +915,76 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <td>User&rsquo;s language. Can be <code class="prettyprint">de</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">pt_BR</code>, <code class="prettyprint">zh_CN</code>, <code class="prettyprint">es</code>, <code class="prettyprint">hi</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">zh_TW</code></td>
 </tr>
 </tbody></table>
-<h2 id='personal-token'>Personal Token</h2>
-<p>You can also obtain your personal access token directly from your Todoist Settings: </p>
+<h2 id='revoke-access-tokens'>Revoke Access Tokens</h2>
+<p>Access tokens obtain via OAuth could be revoked making a JSON request (HTTP POST) to the following endpoint 
+<code class="prettyprint">
+https://todoist.com/td_apps/access_tokens/revoke
+</code></p>
+<pre class="highlight shell"><code>curl https://todoist.com/td_apps/access_tokens/revoke -H <span class="s2">"Content-Type: application/json"</span> -X POST -d <span class="s1">'{"client_id":"xyz", "client_secret":"xyz", "access_token":"xyz"}'</span>
+</code></pre>
+<h3 id='required-parameters'>Required parameters:</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>client_id</td>
+<td>The unique Client ID of the Todoist application that you registered.</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>The unique Client Secret of the Todoist application that you registered.</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token obtained from the OAuth authentication</td>
+</tr>
+</tbody></table>
 
-<p><code class="prettyprint">Settings</code> -&gt; <code class="prettyprint">Todoist Settings</code> -&gt; <code class="prettyprint">Account</code> -&gt; <code class="prettyprint">API token</code></p>
+<p>Upon successful request, a HTTP 204 response will be returned.</p>
+<h2 id='migrate-personal-tokens-to-oauth-tokens'>Migrate Personal Tokens to OAuth Tokens</h2>
+<p>Tokens obtained via the old <a href="https://developer.todoist.com/#login-with-password">email/password</a> authentication method could 
+be migrated to the new OAuth access token. Migrating your users&#39; personal tokens will allow users to see your app in their Todoist Setting page and give them the ability to manage their app authorization.</p>
+
+<p>Migration API endpoint (HTTP POST, with JSON request parameters):
+<code class="prettyprint">
+https://todoist.com/td_apps/access_tokens/migrate_personal_token
+</code></p>
+<pre class="highlight shell"><code>curl https://todoist.com/td_apps/access_tokens/migrate_personal_token -H <span class="s2">"Content-Type: application/json"</span> -X POST -d <span class="s1">'{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}'</span> 
+
+<span class="o">{</span><span class="s2">"access_token"</span>: <span class="s2">"...."</span>, <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span><span class="o">}</span>
+</code></pre>
+<h3 id='required-parameters'>Required parameters:</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>client_id</td>
+<td>The unique Client ID of the Todoist application that you registered.</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>The unique Client Secret of the Todoist application that you registered.</td>
+</tr>
+<tr>
+<td>personal_token</td>
+<td>Token obtained from the email/password authentication</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>Scopes of the OAuth token. Please refer to the <a href="https://developer.todoist.com/#oauth">OAuth</a> section for the detail list of available scopes.</td>
+</tr>
+</tbody></table>
+
+<p>Upon succesful request, a HTTP 200 response return be returned new OAuth token in JSON format.
+<code class="prettyprint">
+{&quot;access_token&quot;: &quot;....&quot;, &quot;token_type&quot;: &quot;Bearer&quot;}
+</code></p>
 
         <h1 id='projects'>Projects</h1>
 <blockquote>

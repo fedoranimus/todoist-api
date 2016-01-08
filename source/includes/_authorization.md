@@ -95,7 +95,7 @@ Error | Description
 Bad Authorization Code Error | Occurs when the `code` parameter does not match the code that is given in the redirect request: `{"error": "bad_authorization_code"}`
 Incorrect Client Credentials Error | Occurs when the `client_id` or `client_secret` parameters are incorrect: `{"error": "incorrect_application_credentials"}`
 
-## Login with password
+## Login with password [deprecated]
 
 > On success, an HTTP 200 OK with a JSON object with user data is returned:
 
@@ -153,6 +153,8 @@ $ curl "https://todoist.com/API/v6/login" \
 
 
 Login user into Todoist to get a token, which is necessary to do any communication with the server.
+
+__Please note that this authentication method is deprecated and is scheduled for removal. Pleasse use the OAuth authentication method instead.__
 
 ### Required parameters
 
@@ -269,8 +271,58 @@ full_name | User's full name if user is about to be registered. If not set, a us
 timezone | User's timezone if user is about to be registered. If not set, we guess the timezone from the client's IP address. In case of failure, "UTC" timezone will be set up for a newly created account.
 lang | User's language. Can be `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `hi`, `ko`, `pt`, `ru`, `zh_TW`
 
-## Personal Token
 
-You can also obtain your personal access token directly from your Todoist Settings: 
+## Revoke Access Tokens
 
-`Settings` -> `Todoist Settings` -> `Account` -> `API token`
+Access tokens obtain via OAuth could be revoked making a JSON request (HTTP POST) to the following endpoint 
+```
+https://todoist.com/td_apps/access_tokens/revoke
+```
+
+
+```shell
+curl https://todoist.com/td_apps/access_tokens/revoke -H "Content-Type: application/json" -X POST -d '{"client_id":"xyz", "client_secret":"xyz", "access_token":"xyz"}'
+```
+
+### Required parameters:
+
+Name | Description
+---- | -----------
+client_id | The unique Client ID of the Todoist application that you registered.
+client_secret | The unique Client Secret of the Todoist application that you registered.
+access_token | Access token obtained from the OAuth authentication
+
+Upon successful request, a HTTP 204 response will be returned.
+
+
+## Migrate Personal Tokens to OAuth Tokens
+
+Tokens obtained via the old [email/password](https://developer.todoist.com/#login-with-password) authentication method could 
+be migrated to the new OAuth access token. Migrating your users' personal tokens will allow users to see your app in their Todoist Setting page and give them the ability to manage their app authorization.
+
+Migration API endpoint (HTTP POST, with JSON request parameters):
+```
+https://todoist.com/td_apps/access_tokens/migrate_personal_token
+```
+
+```shell
+curl https://todoist.com/td_apps/access_tokens/migrate_personal_token -H "Content-Type: application/json" -X POST -d '{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}' 
+
+{"access_token": "....", "token_type": "Bearer"}
+```
+
+### Required parameters:
+
+Name | Description
+---- | -----------
+client_id | The unique Client ID of the Todoist application that you registered.
+client_secret | The unique Client Secret of the Todoist application that you registered.
+personal_token | Token obtained from the email/password authentication
+scope | Scopes of the OAuth token. Please refer to the [OAuth](https://developer.todoist.com/#oauth) section for the detail list of available scopes.
+
+Upon succesful request, a HTTP 200 response return be returned new OAuth token in JSON format.
+```
+{"access_token": "....", "token_type": "Bearer"}
+```
+
+
