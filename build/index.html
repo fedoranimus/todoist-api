@@ -918,9 +918,9 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <h2 id='revoke-access-tokens'>Revoke Access Tokens</h2>
 <p>Access tokens obtain via OAuth could be revoked making a JSON request (HTTP POST) to the following endpoint 
 <code class="prettyprint">
-https://todoist.com/td_apps/access_tokens/revoke
+https://todoist.com/api/access_tokens/revoke
 </code></p>
-<pre class="highlight shell"><code>curl https://todoist.com/td_apps/access_tokens/revoke -H <span class="s2">"Content-Type: application/json"</span> -X POST -d <span class="s1">'{"client_id":"xyz", "client_secret":"xyz", "access_token":"xyz"}'</span>
+<pre class="highlight shell"><code>curl https://todoist.com/api/access_tokens/revoke -H <span class="s2">"Content-Type: application/json"</span> -X POST -d <span class="s1">'{"client_id":"xyz", "client_secret":"xyz", "access_token":"xyz"}'</span>
 </code></pre>
 <h3 id='required-parameters'>Required parameters:</h3>
 <table><thead>
@@ -950,9 +950,9 @@ be migrated to the new OAuth access token. Migrating your users&#39; personal to
 
 <p>Migration API endpoint (HTTP POST, with JSON request parameters):
 <code class="prettyprint">
-https://todoist.com/td_apps/access_tokens/migrate_personal_token
+https://todoist.com/api/access_tokens/migrate_personal_token
 </code></p>
-<pre class="highlight shell"><code>curl https://todoist.com/td_apps/access_tokens/migrate_personal_token -H <span class="s2">"Content-Type: application/json"</span> -X POST -d <span class="s1">'{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}'</span> 
+<pre class="highlight shell"><code>curl https://todoist.com/api/access_tokens/migrate_personal_token -H <span class="s2">"Content-Type: application/json"</span> -X POST -d <span class="s1">'{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}'</span> 
 
 <span class="o">{</span><span class="s2">"access_token"</span>: <span class="s2">"...."</span>, <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span><span class="o">}</span>
 </code></pre>

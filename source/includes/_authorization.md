@@ -276,12 +276,12 @@ lang | User's language. Can be `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `
 
 Access tokens obtain via OAuth could be revoked making a JSON request (HTTP POST) to the following endpoint 
 ```
-https://todoist.com/td_apps/access_tokens/revoke
+https://todoist.com/api/access_tokens/revoke
 ```
 
 
 ```shell
-curl https://todoist.com/td_apps/access_tokens/revoke -H "Content-Type: application/json" -X POST -d '{"client_id":"xyz", "client_secret":"xyz", "access_token":"xyz"}'
+curl https://todoist.com/api/access_tokens/revoke -H "Content-Type: application/json" -X POST -d '{"client_id":"xyz", "client_secret":"xyz", "access_token":"xyz"}'
 ```
 
 ### Required parameters:
@@ -302,11 +302,11 @@ be migrated to the new OAuth access token. Migrating your users' personal tokens
 
 Migration API endpoint (HTTP POST, with JSON request parameters):
 ```
-https://todoist.com/td_apps/access_tokens/migrate_personal_token
+https://todoist.com/api/access_tokens/migrate_personal_token
 ```
 
 ```shell
-curl https://todoist.com/td_apps/access_tokens/migrate_personal_token -H "Content-Type: application/json" -X POST -d '{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}' 
+curl https://todoist.com/api/access_tokens/migrate_personal_token -H "Content-Type: application/json" -X POST -d '{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}' 
 
 {"access_token": "....", "token_type": "Bearer"}
 ```
