@@ -22,6 +22,7 @@ includes:
   - sharing
   - livenotifications
   - urlschemes
+  - backups
   - webhooks
 
 search: false

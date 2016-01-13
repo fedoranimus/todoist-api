@@ -5276,6 +5276,39 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </tbody></table>
 
+        <h1 id='backups'>Backups</h1>
+<p>Todoist creates a backup achieves of users&#39; data on the daily basis. Backup achieves can be accessed from the web app 
+(Todoist Setting / Backups). The list of recent backup achieves can also be accessed via the following API endpoints: </p>
+
+<p><code class="prettyprint">/API/v6/backups/get</code> (HTTP POST, application/x-www-form-urlencoded)</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/backups/get <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
+</code></pre>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>access token</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Upon successful request, a HTTP 200 response will be returned with a list of backup achieve in JSON format.</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"version"</span>: <span class="s2">"2016-01-13 02:03"</span>, 
+        <span class="s2">"url"</span>: <span class="s2">"https://s3.amazonaws.com/user_backups.todoist.com/..."</span>
+    <span class="o">}</span>,
+    ...
+<span class="o">]</span>
+</code></pre>
+
         <h1 id='webhooks'>Webhooks</h1>
 <p>The Todoist Webhooks API allows applications to receive realtime notification (in form of HTTP POST payload) on the subscribed user events. 
 Notice that once you have webhook setup, you will start receiving webhook events from <strong>all your app users</strong> immediately.</p>
