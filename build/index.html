@@ -1634,7 +1634,7 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 </tbody></table>
 <h2 id='complete-items'>Complete items</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "item_complete", "uuid": "a74bfb5c-5f1d-4d14-baea-b7415446a871", "args": {"project_id": 128501470, "ids": [33548400]}}]'</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "item_complete", "uuid": "a74bfb5c-5f1d-4d14-baea-b7415446a871", "args": {"ids": [33548400]}}]'</span>
 <span class="o">{</span> ...
   <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"a74bfb5c-5f1d-4d14-baea-b7415446a871"</span>: <span class="o">{</span><span class="s2">"33548400"</span>: <span class="s2">"ok"</span><span class="o">}}</span>,
   ... <span class="o">}</span>
@@ -1655,10 +1655,6 @@ a simplified version of the task.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>project_id <em>Integer or String</em></td>
-<td>The id of the project which the items are part of (a number or a temp id).</td>
-</tr>
 <tr>
 <td>ids <em>Array of Integer or String (temp id)</em></td>
 <td>A JSON list of ids to complete (numbers or temp ids).</td>

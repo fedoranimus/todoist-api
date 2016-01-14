@@ -205,7 +205,7 @@ to_project *Integer* | A project id that the tasks should be moved, for example 
 ```shell
 $ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d commands='[{"type": "item_complete", "uuid": "a74bfb5c-5f1d-4d14-baea-b7415446a871", "args": {"project_id": 128501470, "ids": [33548400]}}]'
+    -d commands='[{"type": "item_complete", "uuid": "a74bfb5c-5f1d-4d14-baea-b7415446a871", "args": {"ids": [33548400]}}]'
 { ...
   "SyncStatus": {"a74bfb5c-5f1d-4d14-baea-b7415446a871": {"33548400": "ok"}},
   ... }
@@ -226,7 +226,6 @@ a simplified version of the task.
 
 Argument | Description
 -------- | -----------
-project_id *Integer or String* | The id of the project which the items are part of (a number or a temp id).
 ids *Array of Integer or String (temp id)* | A JSON list of ids to complete (numbers or temp ids).
 
 ### Optional arguments
