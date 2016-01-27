@@ -1,18 +1,18 @@
 # API Overview
 
 Todoist API (also known as the "Sync API") is specially designed for efficient data sync between 
-clients (i.e. our mobile apps) and Todoist. 
+clients (e.g. our mobile apps) and Todoist. 
 
-All Sync API requests shared the same endpoint URL:
+All Sync API requests share the same endpoint URL:
 **https://todoist.com/API/v6/sync**
 
-Sync API requests should be made in HTTP POST (application/x-www-form-urlencoded). Sync API responses, including error, will be returned in JSON. 
+Sync API requests should be made in HTTP POST (application/x-www-form-urlencoded). Sync API responses, including errors, will be returned in JSON. 
 
-Sync API supports the following features:
+Sync API supports the following features -
 
-- Batching: reading and writing of multiple resources can be done in a single HTTP request. Batch request s help clients reduce the number of network calls needed to sync resources.
+- Batching: reading and writing of multiple resources can be done in a single HTTP request. Batch requests help clients reduce the number of network calls needed to sync resources.
 
-- Incremental sync: You can only retrive datas that are updated since the last time you perform sync request.
+- Incremental sync: You only retrieve data that are updated since the last time you performed a sync request.
 
 
 <br/><br/>
@@ -86,7 +86,7 @@ $ curl https://todoist.com/API/v6/sync \
 ```
 
 
-To retrive your user resources, make a Sync API request with the following parameters: 
+To retrieve your user resources, make a Sync API request with the following parameters: 
 
 
 
@@ -95,8 +95,8 @@ To retrive your user resources, make a Sync API request with the following param
 Parameter | Description
 --------- | -----------
 token *String* | User's API token
-seq_no *Integer* | Sequence number, used to allow client to perform incremental sync. Pass `0` to retrieve all active resource datas. More detail about it below.
-resource_types *JSON array of string* | Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of avaialbe resource types: `labels`, `projects`,`items`, `notes`, `filters`, `reminders`, `locations`, `user`, `live_notifications`, `day_orders`, `collaborators`, `notification_settings`. You may use `all` to include all the resource types
+seq_no *Integer* | Sequence number, used to allow client to perform incremental sync. Pass `0` to retrieve all active resource data. More details about this below.
+resource_types *JSON array of strings* | Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of avaialbe resource types: `labels`, `projects`,`items`, `notes`, `filters`, `reminders`, `locations`, `user`, `live_notifications`, `day_orders`, `collaborators`, `notification_settings`. You may use `all` to include all the resource types.
 
 
 
@@ -104,19 +104,19 @@ resource_types *JSON array of string* | Used to specify what resources to fetch 
 
 Parameter | Description
 --------- | -----------
-day_orders_timestamp | The Sync API requests return `DayOrdersTimestamp` that specifies when the day orders were last updated. If you omit `day_orders_timestamp` then none of then will be fetched. If you specify `day_orders_timestamp` then day orders will be returned if your timestamp is different from the servers. If you send `day_orders_timestamp` and the day orders have not been updated then the server won't return the `DayOrders` entry at all.
+day_orders_timestamp | The Sync API requests return `DayOrdersTimestamp` that specifies when the day orders were last updated. If you omit `day_orders_timestamp` then none of them will be fetched. If you specify `day_orders_timestamp` then day orders will be returned if your timestamp is different from the servers. If you send `day_orders_timestamp` and the day orders have not been updated then the server won't return the `DayOrders` entry at all.
 
 
 
 ### Incremental sync (`seq_no` usage)
 
-Sync API allow clients to retrive only updated resources, and this is done by using the "sequence number", `seq_no`, in your Sync API request.
+The Sync API allows clients to retrieve only updated resources, and this is done by using the "sequence number", `seq_no`, in your Sync API request.
 
-On your initial sync request, specify `seq_no=0` in your request, and the user's all active resources datas will be returned. 
+On your initial sync request, specify `seq_no=0` in your request, and all the user's active resource data will be returned. 
 Todoist API server will also return a new `seq_no` in the Sync API response. 
 
-In your subsequent Sync request, use the `seq_no` that you receive from your previous Sync response, 
-and the Todoist API server will return only the updated resource datas.
+In your subsequent Sync request, use the `seq_no` that you received from your previous Sync response, 
+and the Todoist API server will return only the updated resource data.
 
 
 
@@ -125,30 +125,30 @@ and the Todoist API server will return only the updated resource datas.
 
 ### Response
 
-When the request succeeded, a HTTP 200 response will be returned with a JSON object containning the requested resources and also a new `seq_no`.
+When the request succeeds, an HTTP 200 response will be returned with a JSON object containing the requested resources and also a new `seq_no`.
 
 
 Field | Description
 ---- | -----------
-seq_no | A new sequence number. Used by the client in the next sync request to perform incremental sync.
-User | An User object.
+seq_no | A new sequence number. Used by the client in the next sync request to perform an incremental sync.
+User | A User object.
 Projects |  An array of Project objects.
 Items | A array of Item objects.
-Labels | A array of Label objects
+Labels | An array of Label objects.
 Filters | A array of Filter objects.
 DayOrders |  A JSON object specifying the order of items in daily agenda. If `DayOrdersTimestamp` is sent and day orders have not been updated then `DayOrders` won't be returned at all!
-DayOrdersTimestamp | A string specifying when day orders where last updated. Use this to not fetch day orders on every request.
-Reminders |  A array of Reminder objects
+DayOrdersTimestamp | A string specifying when day orders were last updated. Use this to not fetch day orders on every request.
+Reminders |  An array of Reminder objects.
 Collaborators | A JSON object containing all collaborators for all shared projects. The `projects` field contains the list of all shared projects, where the user acts as one of collaborators.
-CollaboratorsStates | A array specifying the state of each collaborator in each project. The state can be invited, active, inactive, deleted.
-LiveNotifications | A array of LiveNotification object
+CollaboratorsStates | An array specifying the state of each collaborator in each project. The state can be invited, active, inactive, deleted.
+LiveNotifications | An array of LiveNotification objects
 LiveNotificationsLastRead | What is the last live notification the user has seen? This is used to implement unread notifications.
 SettingsNotifications | User's notification setting, used by clients that support native notifications.
 
 
 ## Write resources
 
-> Example API call that creating a new project.
+> Example API call that creates a new project.
 
 ```shell
 $ curl https://todoist.com/API/v6/sync \
@@ -192,8 +192,8 @@ Field | Description
 --------- | -----------
 type *String* | The type of the command.
 args *Object* | The arguments of this specific command.
-uuid *String* | Command UUID. More detail about it below.
-temp_id *String* | Temporary resource ID, Optional. Only specified for commands that create new resource ("item_add" command). More detail about it below.
+uuid *String* | Command UUID. More details about this below.
+temp_id *String* | Temporary resource ID, Optional. Only specified for commands that create new resource ("item_add" command). More details about this below.
 
 
 ### Command UUID
@@ -238,11 +238,11 @@ a command.
 >  You can see that the project_add command specified a temp_id property ("c7beb07f-b226-4eb1-bf63-30d782b07b1a") as placeholder of the actual project_id. The item_add command can refrence to this temporary project id. The API will automatically resolve these ids.
 ```
 
-Some commands depends on the result of previous commands. For instance, you have a command sequence: `"project_add"` and `"item_add"` which first creates a project and then add a new task to the newly created project. In order to run the later `item_add` command, we need to obtain the project ID returned from the previous command. Therefore, the normal approach would be to run these two commands in two separate HTTP requests.
+Some commands depend on the result of previous command. For instance, you have a command sequence: `"project_add"` and `"item_add"` which first creates a project and then add a new task to the newly created project. In order to run the later `item_add` command, we need to obtain the project ID returned from the previous command. Therefore, the normal approach would be to run these two commands in two separate HTTP requests.
 
-The temporary resource ID feature allows you two run two or more dependent commands in a single HTTP request.
+The temporary resource ID feature allows you to run two or more dependent commands in a single HTTP request.
 For commands that are related to creation of resources (i.e. `item_add`, `project_add`), you can 
-specify a extra `temp_id` as a placeholder for the actual ID of the resource. The other commands in 
+specify an extra `temp_id` as a placeholder for the actual ID of the resource. The other commands in 
 the same sequence could directly refer to `temp_id` if needed.
 
 
@@ -251,7 +251,7 @@ the same sequence could directly refer to `temp_id` if needed.
 
 ### Response / Error
 
-The result of commands execution will be stored in the following response JSON object field:
+The result of command executions will be stored in the following response JSON object field:
 
 Data | Description
 ---- | -----------
@@ -291,20 +291,20 @@ SyncStatus *Object* | A dictionary object containing result of each command exec
 }
 ```
 
-The status result of each command execution is in the `SyncStatus` dictionary object. The key is a command `uuid` and the value will be the result status of the command execution. There are two possible value for each command status
+The status result of each command execution is in the `SyncStatus` dictionary object. The key is a command `uuid` and the value will be the result status of the command execution. There are two possible values for each command status -
 
-- a "ok" string which signals success of the command
+- an "ok" string which signals success of the command
 
 - an error object containings error information of a command. 
 
-Please see the adjancent code examples for the possible format of the `SyncStatus`
+Please see the adjacent code examples for the possible format of the `SyncStatus`.
 
 
 
 
 ## Response status codes
 
-The server uses the HTTP status codes to indicate result or failure of a request. And as is usually customary in web servers, a 2xx code indicates success, a 4xx code an error due to incorrect user provided information, and a 5xx code an internal, possibly temporary, error.
+The server uses the HTTP status codes to indicate the success or failure of a request. And as is customary in web servers, a 2xx code indicates - success, a 4xx code - an error due to incorrect user provided information, and a 5xx code - an internal, possibly temporary, error.
 
 Status code | Description
 ------------|------------
@@ -382,7 +382,7 @@ A more detailed list of minor changes are included here, because they might be u
 * The `sync` call `resource_types` argument is now required, and also by default no data are returned, unless some resources have been specified with this argument.
 * The `sync` call has a new required argument, the `seq_no_global`, which should be defined in the same way as the `seq_no` argument.
 * The `sync` call `include_notification_settings` argument has been removed, and instead the `notification_settings` resource should be included in the `resource_types` argument. 
-* The `sync` call `resource_types` argument has a new resource called `user` that includes the accounts's details in the returned data.
+* The `sync` call `resource_types` argument has a new resource called `user` that includes the accounts' details in the returned data.
 * The `sync` call `resource_types` argument has a new resource called `all` that makes it possible to fetch all types of objects, ie. all the user data.
 * The `timestamp` parameter of the `sync` call `commands` argument has been replaced by the `uuid` parameter which accepts UUIDs.
 * The `temp_id` parameter of the `sync` call `commands` argument is now accepting UUIDs.
