@@ -239,7 +239,7 @@ force_history *Integer* | Whether these tasks should be moved to history (where 
 ```shell
 $ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d commands='[{"type": "item_uncomplete", "uuid": "710a60e1-174a-4313-bb9f-4df01e0349fd", "args": {"project_id": 128501470, "ids": [33548400]}}]'
+    -d commands='[{"type": "item_uncomplete", "uuid": "710a60e1-174a-4313-bb9f-4df01e0349fd", "args": {"ids": [33548400]}}]'
 { ...
   "SyncStatus": {"710a60e1-174a-4313-bb9f-4df01e0349fd": {"33548400": "ok"}},
   ... }
@@ -259,7 +259,6 @@ Uncomplete tasks and move them to the active projects.
 
 Argument | Description
 -------- | -----------
-project_id *Integer or String (temp id)* | The id of the project to which the items will be moved to (a number or a temp id).
 ids *Array of Integer or String (temp id)*| A list of item to uncomplete.
 
 ### Optional arguments

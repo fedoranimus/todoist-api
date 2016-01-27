@@ -1674,7 +1674,7 @@ a simplified version of the task.</p>
 </tbody></table>
 <h2 id='uncomplete-items'>Uncomplete items</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "item_uncomplete", "uuid": "710a60e1-174a-4313-bb9f-4df01e0349fd", "args": {"project_id": 128501470, "ids": [33548400]}}]'</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "item_uncomplete", "uuid": "710a60e1-174a-4313-bb9f-4df01e0349fd", "args": {"ids": [33548400]}}]'</span>
 <span class="o">{</span> ...
   <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"710a60e1-174a-4313-bb9f-4df01e0349fd"</span>: <span class="o">{</span><span class="s2">"33548400"</span>: <span class="s2">"ok"</span><span class="o">}}</span>,
   ... <span class="o">}</span>
@@ -1694,10 +1694,6 @@ a simplified version of the task.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>project_id <em>Integer or String (temp id)</em></td>
-<td>The id of the project to which the items will be moved to (a number or a temp id).</td>
-</tr>
 <tr>
 <td>ids <em>Array of Integer or String (temp id)</em></td>
 <td>A list of item to uncomplete.</td>
@@ -5273,8 +5269,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tbody></table>
 
         <h1 id='backups'>Backups</h1>
-<p>Todoist creates a backup archive of users&#39; data on a daily basis. Backup archives can be accessed from the web app 
-(Todoist Settings / Backups). The list of recent backup archives can also be accessed via the following API endpoints: </p>
+<p>Todoist creates a backup achieves of users&#39; data on the daily basis. Backup achieves can be accessed from the web app 
+(Todoist Setting / Backups). The list of recent backup achieves can also be accessed via the following API endpoints: </p>
 
 <p><code class="prettyprint">/API/v6/backups/get</code> (HTTP POST, application/x-www-form-urlencoded)</p>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/backups/get <span class="se">\</span>
@@ -5306,10 +5302,10 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 
         <h1 id='webhooks'>Webhooks</h1>
-<p>The Todoist Webhooks API allows applications to receive real-time notification (in the form of HTTP POST payload) on the subscribed user events. 
+<p>The Todoist Webhooks API allows applications to receive realtime notification (in form of HTTP POST payload) on the subscribed user events. 
 Notice that once you have webhook setup, you will start receiving webhook events from <strong>all your app users</strong> immediately.</p>
 <h3 id='important-considerations'>Important Considerations</h3>
-<p>Due to the nature of network requests, your application should assume webhook requests could arrive out of order or could even fail to arrive; webhooks should be used only as notifications and not as a primary Todoist data source (make sure your application could still work when webhook is not available).  </p>
+<p>Due to the nature of network request, your application should assume webhook requests could arrive out of order or could even fail to arrive; webhooks should be used only as notifications and not as a primary Todoist data source (make sure your application could still work when webhook is not available).  </p>
 <h2 id='configuration'>Configuration</h2>
 <p>Before you can start receiving webhook event notifications, you must first have your webhook configured at the App Management Console. </p>
 <h3 id='events'>Events</h3>
@@ -5403,8 +5399,8 @@ Notice that once you have webhook setup, you will start receiving webhook events
 
 <p><code class="prettyprint">{&quot;event_name&quot;: &quot;...&quot;, &quot;user_id&quot;=..., &quot;event_data&quot;: {...}}</code></p>
 
-<p>The structure of &ldquo;event_data&rdquo; object varies depending on the type of event it is. For instance, if it is an &ldquo;item:added&rdquo; event notification, 
-The &ldquo;event_data&rdquo; will represent the newly added item.</p>
+<p>The structure of &ldquo;event_data&rdquo; object varies depending on the type of event it is. For instance, if it is a &ldquo;item:added&rdquo; event notification, 
+The &ldquo;event_data&rdquo; will represents the newly added item.</p>
 
 <blockquote>
 <p>Example Delivery</p>
@@ -5467,10 +5463,10 @@ X-Todoist-Hmac-SHA256: UEEq9si3Vf9yRSrLthbpazbb69kP9+CZQ7fXmVyjhPs=
 </tr>
 </tbody></table>
 <h3 id='failed-delivery'>Failed Delivery</h3>
-<p>When an event notification failed to be delivered to your webhook callback URL endpoint (i.e. due to server error, network failure, incorrect response, etc), 
-it would be re-delivered after 15 mins, and each notification would be re-delivered for at most three times.</p>
+<p>When a event notification failed to be delivered to your webhook callback URL endpoint (i.e. due to server error, network failure, incorrect response&hellip;etc), 
+it would be redelivered after 15 mins, and each notification would be redelivered for at most three times.</p>
 
-<p><strong>Your callback endpoint must respond with a HTTP 200 when receiving an event notification request.</strong> Response other than HTTP 200 would be considered as failed delivery, and the notification would be delivered again.</p>
+<p><strong>Your callback endpoint must respond with a HTTP 200 when receiving a event notification request.</strong> Response other than HTTP 200 would be considered as failed delivery, and the notification would be redelivered again.</p>
 
     </div>
     <div class="dark-box">
