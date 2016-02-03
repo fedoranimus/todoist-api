@@ -37,7 +37,7 @@ Property | Description
 -------- | -----------
 id  *Integer* | The id of the task.
 user_id *Integer* | The owner of the task.
-project_id *Integer* | Project that the task reside in
+project_id *Integer* | Project that the task resides in
 content *String* | The text of the task
 date_string *String* | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string if not set). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang *String* | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
@@ -48,7 +48,7 @@ item_order *Integer* | The order of the task inside a project (the smallest valu
 day_order *Integer* | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
 collapsed  *Integer* | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
 labels *Array of Integer* | The tasks labels (a list of label ids such as `[2324,2525]`).
-assigned_by_uid *Integer* | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
+assigned_by_uid *Integer* | The id of the user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
 responsible_uid  *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
 checked  *Integer* | Whether the task is marked as completed (where `1` is true and `0` is false).
 in_history  *Integer* | Whether the task has been marked as completed and is marked to be moved to history, because all the child tasks of its parent are also marked as completed (where `1` is true and `0` is false)
@@ -99,8 +99,8 @@ item_order *Integer* | The order of the task inside a project (a number, where t
 day_order *Integer* | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
 collapsed *Integer* | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
 labels *Array of Integer* | The tasks labels (a list of label ids such as `[2324,2525]`).
-assigned_by_uid *Integer* | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
-responsible_uid *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
+assigned_by_uid *Integer* | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will be automatically setup to your uid.
+responsible_uid *Integer* | The id of the user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
 
 ## Update an item
 
@@ -142,8 +142,8 @@ item_order  *Integer* | The order of the task inside a project (a number, where 
 day_order  *Integer* | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
 collapsed *Integer* | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
 labels  *Array of Integer* | The tasks labels (a list of label ids such as `[2324,2525]`).
-aassigned_by_uid *Integer* | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
-responsible_uid  *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
+aassigned_by_uid *Integer* | The id of the user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will be automatically setup to your uid.
+responsible_uid  *Integer* | The id of the user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will be automatically set to `null`.
 
 ## Delete items
 
@@ -197,8 +197,8 @@ Move a task from one project to another project.
 ### Required arguments
 Argument | Description
 -------- | -----------
-project_items *Object* | A JSON mapping telling Todoist where the items are currently found. From project ids to item ids, could be like this `{"1523":["9637423"]}`, where `1523` is project id and `9637423` is the item id.
-to_project *Integer* | A project id that the tasks should be moved, for example `1245`.
+project_items *Object* | A JSON mapping telling Todoist where the items are currently found. From project ids to item ids, for example `{"1523":["9637423"]}`, where `1523` is the project id and `9637423` is the item id.
+to_project *Integer* | The project id that the tasks should be moved to, for example `1245`.
 
 ## Complete items
 
@@ -220,7 +220,7 @@ $ curl https://todoist.com/API/v6/sync \
 ```
 
 Complete tasks and optionally move them to history. See also `item_close` for
-a simplified version of the task.
+a simplified version of the command.
 
 ### Required arguments
 
@@ -260,14 +260,14 @@ Uncomplete tasks and move them to the active projects.
 Argument | Description
 -------- | -----------
 project_id *Integer or String (temp id)* | The id of the project to which the items will be moved to (a number or a temp id).
-ids *Array of Integer or String (temp id)*| A list of item to uncomplete.
+ids *Array of Integer or String (temp id)*| A list of items to uncomplete.
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
 update_item_orders *Integer* | Whether the item orders should be updated (where `1` is true and `0` is false, and the default is `1`).
-restore_state *Object* | A dictionary object, where the item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent: `item_id: [in_history, checked, item_order, indent]`
+restore_state *Object* | A dictionary object, where the item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent - `item_id: [in_history, checked, item_order, indent]`
 
 
 ## Complete a recurring task
@@ -289,7 +289,7 @@ $ curl https://todoist.com/API/v6/sync \
 >>> api.commit()
 ```
 
-Complete a recurring task, and the reason why this is a special case is because we need to mark a recurring completion (and using `item_update` won't do this). See also `item_close` for a simplified version of the task.
+Complete a recurring task, and the reason why this is a special case is because we need to mark a recurring completion (and using `item_update` won't do this). See also `item_close` for a simplified version of the command.
 
 ### Required arguments
 
