@@ -38,7 +38,7 @@ file_attachment | A file attached to the note (see more details about attachment
 uids_to_notify | A list of user ids to notify (unique numbers).
 is_deleted | Whether the note is marked as deleted (where `1` is true and `0` is false).
 is_archived | Whether the note is marked as archived (where `1` is true and `0` is false).
-posted | The date when the notes was posted.
+posted | The date when the note was posted.
 
 ### File attachments
 
@@ -56,7 +56,7 @@ upload_state | Upload completion state (a string value such as `pending` or `com
 
 ### Image file properties
 
-If you upload an image, you may provide thumbnail paths to ensure Todoist handles them appropriately. Valid thumbnail information is a JSON array with URL, width in pixels, height in pixels. Ex.: ["http://example.com/img.jpg",400,300]. "Canonical" thumbnails (ones we create by `upload_file` API call) have following sizes: 96x96, 288x288, 528x528.
+If you upload an image, you may provide thumbnail paths to ensure Todoist handles them appropriately. Valid thumbnail information is a JSON array with URL, width in pixels, height in pixels. Ex.: ["http://example.com/img.jpg",400,300]. "Canonical" thumbnails (ones we create by `upload_file` API call) have the following sizes: 96x96, 288x288, 528x528.
 
 Attribute | Description
 --------- | -----------
@@ -66,7 +66,7 @@ tn_s | Small thumbnail (a list that contains the URL, the width and the height o
 
 ### Audio file properties
 
-If you upload an audio file, you may provide an extra attribute `file_duration` (duration of the audio file in seconds, which takes an integer value). In the web interface the file is rendered back with a `<audio>` tag, so you should make sure it's supported in current web browsers. See [supported media formats](https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats) for the reference.
+If you upload an audio file, you may provide an extra attribute `file_duration` (duration of the audio file in seconds, which takes an integer value). In the web interface the file is rendered with a `<audio>` tag, so you should make sure it's supported in current web browsers. See [supported media formats](https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats) for the reference.
 
 
 ## Add a note
