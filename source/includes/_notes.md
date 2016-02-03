@@ -51,7 +51,7 @@ Attribute | Description
 file_name | The name of the file (a string value).
 file_size | The size of the file in bytes (a number).
 file_type | MIME type (a string value such as `text/plain` or `image/png`).
-file_url | The URL where the file is located (a string value representing an HTTP URL). Note that we don't cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) respources, as exposing this files in Todoist may issue a browser warning.
+file_url | The URL where the file is located (a string value representing an HTTP URL). Note that we don't cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) resources, as exposing this files in Todoist may issue a browser warning.
 upload_state | Upload completion state (a string value such as `pending` or `completed`).
 
 ### Image file properties
