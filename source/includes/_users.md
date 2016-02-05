@@ -44,7 +44,7 @@ Property | Description
 id | The user's id (a unique number).
 api_token | The user's token that should be used to call the other API methods (a unique string hash value).
 email | The user's email (a string value representing a valid email address).
-full_name | The user's real name (a string value in a `Name Surname` format).
+full_name | The user's real name (a string value in a `Firstname Surname` format).
 inbox_project | The id of the user's `Inbox` project (a unique number).
 timezone | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`).
 tz_offset | User's timezone offset `[GMT_STRING, HOURS, MINUTES, IS_DAYLIGHT_SAVINGS_TIME]`.
@@ -55,7 +55,7 @@ time_format | Whether to use a `24h` format such as `13:00` (if set to `0`) when
 date_format | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
 sort_order | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
 has_push_reminders | Whether the user has push reminders enabled (a `true` or `false` value).
-default_reminder | The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of Android or iOS official client must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
+default_reminder | The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
 mobile_number | The user's mobile number (a string value or `null` if not set).
 mobile_host | The user's mobile host (a string value or `null` if not set).
 completed_count | The total number of completed tasks (a number).
@@ -63,7 +63,7 @@ karma | The user's karma score (a float number).
 karma_trend | The user's karma trend (a string value like `up`).
 is_premium | Whether the user has a Premium subscription (a `true` or `false` value).
 premium_until | The date when the user's Premium subscription ends (`null` if not a Premium user).
-is_biz_admin | Whether the user is business account administrator (a `true` or `false` value).
+is_biz_admin | Whether the user is a business account administrator (a `true` or `false` value).
 business_account_id | The id of the user's business account (a unique number).
 image_id | The id of the user's avatar (a unique string hash value).
 beta | Whether the user is in beta status (where `1` is true and `0` is false).
@@ -73,7 +73,7 @@ join_date | The date when the user joined Todoist.
 
 ## Register a new user
 
-> And example of registering a new user:
+> An example of registering a new user:
 
 
 ```shell
@@ -157,14 +157,14 @@ Register a new user.
 Parameter | Description
 --------- | -----------
 email | The user's email (a string value representing a valid email address).
-full_name | The user's real name (a string value in a `Name Surname` format).
+full_name | The user's real name (a string value in a `Firstname Surname` format).
 password | The user's password (a string value).
 
 ### Optional parameters
 
 Parameter | Description
 --------- | -----------
-lang | The user's language, which can take the values: `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `hi`, `ko`, `pt`, `ru`, `zh_TW`.
+lang | The user's language, which can take one of the following values: `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `hi`, `ko`, `pt`, `ru`, `zh_TW`.
 timezone | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`). By default we use the user's IP address to determine the timezone.
 
 ## Delete an existing user
@@ -198,7 +198,7 @@ current_password | The user's current password (a string value).
 
 Parameter | Description
 --------- | -----------
-reason_for_delete | A reason for deletion, that is used for sending feedback back to us (a string value).
+reason_for_delete | A reason for deletion, that is used for sending feedback back to Todoist (a string value).
 
 
 ## Update user's properties
@@ -238,7 +238,7 @@ next_week | The day of the next week, that tasks will be postponed to (a number 
 time_format | Whether to use a `24h` format such as `13:00` (if set to `0`) when displaying time, or a `12h` format such as `1:00pm` (if set to `1`).
 date_format | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
 sort_order | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
-default_reminder | The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of Android or iOS official client must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
+default_reminder | The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
 mobile_number | The user's mobile number (a string value or `null` if not set).
 mobile_host | The user's mobile host (a string value or `null` if not set).
 
@@ -271,4 +271,4 @@ daily_goal | The target number of tasks to complete per day (a number).
 weekly_goal | The target number of tasks to complete per week (a number).
 ignore_days | A list with the days of the week to ignore (`1` for `Monday` and `7` for `Sunday`).
 vacation_mode | Marks the user as being on vacation (where `1` is true and `0` is false).
-karma_disabled | Whether to disable the karma and goals measuring alltogether (where `1` is true and `0` is false).
+karma_disabled | Whether to disable the karma and goals measuring altogether (where `1` is true and `0` is false).
