@@ -1,7 +1,7 @@
 # Webhooks
 
 The Todoist Webhooks API allows applications to receive real-time notification (in the form of HTTP POST payload) on the subscribed user events. 
-Notice that once you have webhook setup, you will start receiving webhook events from __all your app users__ immediately.
+Notice that once you have a webhook setup, you will start receiving webhook events from __all your app users__ immediately.
 
 
 ### Important Considerations
@@ -51,7 +51,7 @@ Each webhook event notification request contains a JSON object. The event JSON o
 
 `{"event_name": "...", "user_id"=..., "event_data": {...}}`
 
-The structure of "event_data" object varies depending on the type of event it is. For instance, if it is an "item:added" event notification, 
+The structure of the "event_data" object varies depending on the type of event it is. For instance, if it is an "item:added" event notification, 
 The "event_data" will represent the newly added item.
 
 
@@ -110,7 +110,7 @@ X-Todoist-Delivery-ID | Each webhook event notification has a unique `X-Todoist-
 
 
 ### Failed Delivery
-When an event notification failed to be delivered to your webhook callback URL endpoint (i.e. due to server error, network failure, incorrect response...etc), 
+When an event notification failed to be delivered to your webhook callback URL endpoint (i.e. due to server error, network failure, incorrect response, etc), 
 it would be re-delivered after 15 mins, and each notification would be re-delivered for at most three times.
 
 __Your callback endpoint must respond with a HTTP 200 when receiving an event notification request.__ A response other than HTTP 200 would be considered as failed delivery, and the notification would be delivered again.
