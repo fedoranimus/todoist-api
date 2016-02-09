@@ -239,13 +239,13 @@ share_invitation_rejected | Sent to the sharing invitation sender, when the rece
 user_left_project | Sent to everyone when somebody leaves the project.
 user_removed_from_project | Sent to everyone, when a person removes somebody from the project.
 item_assigned | Sent to user who is responsible for the task. Optionally it's also sent to the user who created the task initially, if the assigner and the task creator is not the same person.
-item_completed | Sent to the user who assigned the task when the task is completed. Optionally it's also sent to the user who is responsible for this task, if the responsible and the user who completed the task is not the same person.
-item_uncompleted | Sent to the user who assigned the task when the task is uncompleted. Optionally it's also sent to the user who is responsible for this task, if the responsible and the user who completed the task is not the same person.
+item_completed | Sent to the user who assigned the task when the task is completed. Optionally it's also sent to the user who is responsible for this task, if the responsible user and the user who completed the task is not the same person.
+item_uncompleted | Sent to the user who assigned the task when the task is uncompleted. Optionally it's also sent to the user who is responsible for this task, if the responsible user and the user who completed the task is not the same person.
 note_added | Sent to all members of the shared project, whenever someone adds a note to the task.
 biz_policy_disallowed_invitation | Sent to you when you try to share a project with someone outside of your business account, but the business account policy disallows this action. 
 biz_policy_rejected_invitation | Sent to you when you try to accept the invitation to a shared project from someone outside of your business account, but the business account policy disallows this action. 
 biz_trial_will_end | Sent to all business account administrators three days before the trial period of a subscription is scheduled to end.
-biz_payment_failed | Sent to all business account administrators whenever an invoice attempts to be paid, and the payment fails. This can occur either due to a declined payment, or because the customer has no active card. A particular case of note is that if a customer with no active card reaches the end of its free trial.
+biz_payment_failed | Sent to all business account administrators whenever an invoice attempt payment fails. This can occur either due to a declined payment, or because the customer has no active card. A particular case of note is that if a customer with no active card reaches the end of its free trial.
 biz_account_disabled | Sent to all business account administrators when the account is disabled.
 biz_invitation_created | Sent to an invitee, when one of business account administrators invites this user to the business account.
 biz_invitation_accepted | Sent to an inviter, when the invitation is accepted.
@@ -259,8 +259,8 @@ Every live notification has the following properties:
 
 Property | Description
 -------- | -----------
-created | Required. Live notification creation date. Integer representing a timestamps since epoch.
-from_uid | Required. The id of user who initiated this live notification.
+created | Required. Live notification creation date. Integer representing a timestamp since epoch.
+from_uid | Required. The id of the user who initiated this live notification.
 notification_key | Required. Unique notification key.
 notification_type | Required. Type of notification. Different notification type define different extra fields which are described below.
 seq_no | Required. Notification sequence number.

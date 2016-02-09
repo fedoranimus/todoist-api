@@ -1,6 +1,6 @@
 # URL schemes
 
-The following URL schemes might be also useful when accessing the Todoist applications (iOS and Android) or when performing certain action with them, so they are also included here for completeness.
+The following URL schemes might also be useful when accessing the Todoist applications (iOS and Android) or when performing certain actions with them, so they are also included here for completeness.
 
 ## Views
 
@@ -13,7 +13,7 @@ todoist://today | Opens the today view.
 todoist://next7days | Opens the next 7 days view.
 todoist://profile | Opens the profile view.
 todoist://inbox | Opens the inbox view.
-todoist://teaminbox | Opens the team inbox view. If the user doesn't have a business account (access to team inbox), it will show an alert saying that he/she doesn't have access to the team inbox because doesn't have a business account and will be redirected automatically to the inbox view.
+todoist://teaminbox | Opens the team inbox view. If the user doesn't have a business account (access to team inbox), it will show an alert saying that he/she doesn't have access to the team inbox because he/she doesn't have a business account and will be redirected automatically to the inbox view.
 todoist://notifications | Opens notifications view.
 
 ## Tasks
@@ -82,7 +82,7 @@ The following scheme is available to open a specific project:
 
 Scheme | Description
 ------ | -----------
-todoist://project | Opens an specific project using the id of the project.
+todoist://project | Opens a specific project using the id of the project.
 
 The `todoist://project` scheme accepts the following required value:
 
@@ -108,7 +108,7 @@ The following scheme is available to open a specific label:
 
 Scheme | Description
 ------ | -----------
-todoist://label | Opens an specific label using the id of the label.
+todoist://label | Opens a specific label using the id of the label.
 
 The `todoist://label` scheme accepts the following required value:
 
@@ -134,7 +134,7 @@ The following scheme is available to open a specific filter:
 
 Scheme | Description
 ------ | -----------
-todoist://filter | Opens an specific filter using the id of the filter.
+todoist://filter | Opens a specific filter using the id of the filter.
 
 The `todoist://filter` scheme accepts the following required value:
 
@@ -157,8 +157,8 @@ Scheme | Description
 ------ | -----------
 todoist://search | Used to search in the Todoist application.
 
-The `todoist:/search` scheme accepts the following required value:
+The `todoist://search` scheme accepts the following required value:
 
 Value | Description
 ----  | -----------
-query | The query to search in the Todoist application, which should be a string that in `Percent-encoding` (also known as URL encoding).
+query | The query to search in the Todoist application, which should be a string that is in `Percent-encoding` (also known as URL encoding).
