@@ -1,12 +1,12 @@
 # API Overview
 
-Todoist API (also known as the "Sync API") is specially designed for efficient data sync between 
-clients (e.g. our mobile apps) and Todoist. 
+Todoist API (also known as the "Sync API") is specially designed for efficient data sync between
+clients (e.g. our mobile apps) and Todoist.
 
 All Sync API requests share the same endpoint URL:
 **https://todoist.com/API/v6/sync**
 
-Sync API requests should be made in HTTP POST (application/x-www-form-urlencoded). Sync API responses, including errors, will be returned in JSON. 
+Sync API requests should be made in HTTP POST (application/x-www-form-urlencoded). Sync API responses, including errors, will be returned in JSON.
 
 Sync API supports the following features -
 
@@ -63,7 +63,7 @@ $ curl https://todoist.com/API/v6/sync \
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
 >>> api.sync(resource_types=['all'])
-{ 
+{
   'CollaboratorStates': [],
   'Collaborators': [],
   'DayOrders': {},
@@ -86,7 +86,7 @@ $ curl https://todoist.com/API/v6/sync \
 ```
 
 
-To retrieve your user resources, make a Sync API request with the following parameters: 
+To retrieve your user resources, make a Sync API request with the following parameters:
 
 
 
@@ -112,10 +112,10 @@ day_orders_timestamp | The Sync API requests return `DayOrdersTimestamp` that sp
 
 The Sync API allows clients to retrieve only updated resources, and this is done by using the "sequence number", `seq_no`, in your Sync API request.
 
-On your initial sync request, specify `seq_no=0` in your request, and all the user's active resource data will be returned. 
-Todoist API server will also return a new `seq_no` in the Sync API response. 
+On your initial sync request, specify `seq_no=0` in your request, and all the user's active resource data will be returned.
+Todoist API server will also return a new `seq_no` in the Sync API response.
 
-In your subsequent Sync request, use the `seq_no` that you received from your previous Sync response, 
+In your subsequent Sync request, use the `seq_no` that you received from your previous Sync response,
 and the Todoist API server will return only the updated resource data.
 
 
@@ -166,7 +166,7 @@ $ curl https://todoist.com/API/v6/sync \
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
 >>> api.sync(commands=[{'type': 'project_add', 'temp_id': '381e601f-0ef3-4ed6-bf95-58f896d1a314', 'uuid': 'ed1ce597-e4c7-4a88-ba48-e048d827c067', 'args': {'name': 'Project1', 'item_order': 1, 'indent': 1, 'color': 1}}]
-{ 
+{
   'SyncStatus': {'ed1ce597-e4c7-4a88-ba48-e048d827c067': 'ok'},
   'TempIdMapping': {'381e601f-0ef3-4ed6-bf95-58f896d1a314': 128501470},
   'UserId': 1855589,
@@ -200,7 +200,7 @@ temp_id *String* | Temporary resource ID, Optional. Only specified for commands 
 
 API clients should generate a unique string ID for each command and specify it in the `uuid` field. The Command UUID will be used for two purposes:
 
-1. Command result mapping: Each command's result will be stored in the `SyncStatus` field of the response JSON object. The `SyncStatus` object has its key mapped to a command's `uuid` and its value containing the result of 
+1. Command result mapping: Each command's result will be stored in the `SyncStatus` field of the response JSON object. The `SyncStatus` object has its key mapped to a command's `uuid` and its value containing the result of
 a command.
 
 
@@ -241,8 +241,8 @@ a command.
 Some commands depend on the result of previous command. For instance, you have a command sequence: `"project_add"` and `"item_add"` which first creates a project and then add a new task to the newly created project. In order to run the later `item_add` command, we need to obtain the project ID returned from the previous command. Therefore, the normal approach would be to run these two commands in two separate HTTP requests.
 
 The temporary resource ID feature allows you to run two or more dependent commands in a single HTTP request.
-For commands that are related to creation of resources (i.e. `item_add`, `project_add`), you can 
-specify an extra `temp_id` as a placeholder for the actual ID of the resource. The other commands in 
+For commands that are related to creation of resources (i.e. `item_add`, `project_add`), you can
+specify an extra `temp_id` as a placeholder for the actual ID of the resource. The other commands in
 the same sequence could directly refer to `temp_id` if needed.
 
 
@@ -295,7 +295,7 @@ The status result of each command execution is in the `SyncStatus` dictionary ob
 
 - an "ok" string which signals success of the command
 
-- an error object containings error information of a command. 
+- an error object containings error information of a command.
 
 Please see the adjacent code examples for the possible format of the `SyncStatus`.
 
@@ -381,7 +381,7 @@ A more detailed list of minor changes are included here, because they might be u
 * The `sync` call `items_to_sync` argument has been renamed to `commands`.
 * The `sync` call `resource_types` argument is now required, and also by default no data are returned, unless some resources have been specified with this argument.
 * The `sync` call has a new required argument, the `seq_no_global`, which should be defined in the same way as the `seq_no` argument.
-* The `sync` call `include_notification_settings` argument has been removed, and instead the `notification_settings` resource should be included in the `resource_types` argument. 
+* The `sync` call `include_notification_settings` argument has been removed, and instead the `notification_settings` resource should be included in the `resource_types` argument.
 * The `sync` call `resource_types` argument has a new resource called `user` that includes the accounts' details in the returned data.
 * The `sync` call `resource_types` argument has a new resource called `all` that makes it possible to fetch all types of objects, ie. all the user data.
 * The `timestamp` parameter of the `sync` call `commands` argument has been replaced by the `uuid` parameter which accepts UUIDs.
@@ -389,7 +389,7 @@ A more detailed list of minor changes are included here, because they might be u
 * The `SyncStatus` list is included in the extra data returned by the `sync` call, in addition to the `TempIdMapping` list.
 * The server now returns different HTTP status codes to indicate whether a request was successful or not and why.
 * The `project_add` command of the `sync` call now accepts `project_id` as a parameter for adding project notes, in addition to `item_id` for adding item notes.
-* The `item_uncomplete_update_meta` command of the `sync` call was removed, and it was replaced by the `restore_state` parameter that can be defined in the `sync` call `item_uncomplete` command. 
+* The `item_uncomplete_update_meta` command of the `sync` call was removed, and it was replaced by the `restore_state` parameter that can be defined in the `sync` call `item_uncomplete` command.
 * The `label_register` command of the `sync` call was renamed to `label_add`.
 * The `label_update_orders` command was added in the `sync` call, and it can be used to update multiple label orders at once.
 * The `note_id` parameter of the `note_update` and `note_delete` commands of the `sync` call was renamed to `id`.

@@ -67,7 +67,7 @@ $ curl https://todoist.com/API/v6/get_productivity_stats \
   "goals": {
     "karma_disabled": 0,
     "user_id": 4,
-    "max_weekly_streak": { 
+    "max_weekly_streak": {
       "count": 0,
       "start": "",
       "end": ""

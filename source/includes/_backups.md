@@ -1,7 +1,7 @@
 # Backups
 
-Todoist creates a backup archive of users' data on a daily basis. Backup archives can be accessed from the web app 
-(Todoist Setting / Backups). The list of recent backup archives can also be accessed via the following API endpoints: 
+Todoist creates a backup archive of users' data on a daily basis. Backup archives can be accessed from the web app
+(Todoist Setting / Backups). The list of recent backup archives can also be accessed via the following API endpoints:
 
 `/API/v6/backups/get` (HTTP POST, application/x-www-form-urlencoded)
 
@@ -25,7 +25,7 @@ token *String* | access token
 ```shell
 [
     {
-        "version": "2016-01-13 02:03", 
+        "version": "2016-01-13 02:03",
         "url": "https://s3.amazonaws.com/user_backups.todoist.com/..."
     },
     ...

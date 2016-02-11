@@ -36,10 +36,10 @@ Here are the scope parameters mentioned before:
 
 Name | Description
 ---- | -----------
-task:add | Grants permission to add tasks to the Inbox project (The application cannot read tasks data).  
-data:read | Grants read-only access to application data, including tasks, projects, labels, and filters. 
+task:add | Grants permission to add tasks to the Inbox project (The application cannot read tasks data).
+data:read | Grants read-only access to application data, including tasks, projects, labels, and filters.
 data:read_write | Grants read and write access to application data, including tasks, projects, labels, and filters. This scope includes `task:add` and `data:read` scopes.
-data:delete | Grants permission to delete application data, including tasks, labels, and filters. 
+data:delete | Grants permission to delete application data, including tasks, labels, and filters.
 project:delete | Grants permission to delete projects.
 
 And here are some common errors that you may encounter:
@@ -53,7 +53,7 @@ Invalid Scope | When the `scope` parameter is invalid, Todoist will redirect the
 
 ### Step 2: The redirection to your application site
 
-When the user grants your authorization request , the user will be redirected to the redirect URL configured in your application setting. The redirect request will come with two query parameters attached: `code` and `state`. 
+When the user grants your authorization request , the user will be redirected to the redirect URL configured in your application setting. The redirect request will come with two query parameters attached: `code` and `state`.
 
 The `code` parameter contains the authorization code that you will use to exchange for an access token. The `state` parameter should match the `state` parameter that you supplied in the previous step.  If the `state` is unmatched, your request has been compromised by other parties, and the process should be aborted.
 
@@ -73,7 +73,7 @@ $ curl "https://todoist.com/oauth/access_token" \
 
 ```json
 {
-  "access_token": "0123456789abcdef0123456789abcdef01234567", 
+  "access_token": "0123456789abcdef0123456789abcdef01234567",
   "token_type": "Bearer"
 }
 ```
@@ -274,7 +274,7 @@ lang | User's language. Can be `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `
 
 ## Revoke Access Tokens
 
-Access tokens obtained via OAuth could be revoked making a JSON request (HTTP POST) to the following endpoint: 
+Access tokens obtained via OAuth could be revoked making a JSON request (HTTP POST) to the following endpoint:
 ```
 https://todoist.com/api/access_tokens/revoke
 ```
@@ -297,7 +297,7 @@ Upon successful request, a HTTP 204 response will be returned.
 
 ## Migrate Personal Tokens to OAuth Tokens
 
-Tokens obtained via the old [email/password](https://developer.todoist.com/#login-with-password) authentication method could 
+Tokens obtained via the old [email/password](https://developer.todoist.com/#login-with-password) authentication method could
 be migrated to the new OAuth access token. Migrating your users' personal tokens will allow users to see your app in their Todoist Setting page and give them the ability to manage their app authorization.
 
 Migration API endpoint (HTTP POST, with JSON request parameters):
@@ -306,7 +306,7 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 ```
 
 ```shell
-curl https://todoist.com/api/access_tokens/migrate_personal_token -H "Content-Type: application/json" -X POST -d '{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}' 
+curl https://todoist.com/api/access_tokens/migrate_personal_token -H "Content-Type: application/json" -X POST -d '{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}'
 
 {"access_token": "....", "token_type": "Bearer"}
 ```

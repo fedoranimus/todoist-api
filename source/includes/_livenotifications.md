@@ -242,8 +242,8 @@ item_assigned | Sent to user who is responsible for the task. Optionally it's al
 item_completed | Sent to the user who assigned the task when the task is completed. Optionally it's also sent to the user who is responsible for this task, if the responsible user and the user who completed the task is not the same person.
 item_uncompleted | Sent to the user who assigned the task when the task is uncompleted. Optionally it's also sent to the user who is responsible for this task, if the responsible user and the user who completed the task is not the same person.
 note_added | Sent to all members of the shared project, whenever someone adds a note to the task.
-biz_policy_disallowed_invitation | Sent to you when you try to share a project with someone outside of your business account, but the business account policy disallows this action. 
-biz_policy_rejected_invitation | Sent to you when you try to accept the invitation to a shared project from someone outside of your business account, but the business account policy disallows this action. 
+biz_policy_disallowed_invitation | Sent to you when you try to share a project with someone outside of your business account, but the business account policy disallows this action.
+biz_policy_rejected_invitation | Sent to you when you try to accept the invitation to a shared project from someone outside of your business account, but the business account policy disallows this action.
 biz_trial_will_end | Sent to all business account administrators three days before the trial period of a subscription is scheduled to end.
 biz_payment_failed | Sent to all business account administrators whenever an invoice attempt payment fails. This can occur either due to a declined payment, or because the customer has no active card. A particular case of note is that if a customer with no active card reaches the end of its free trial.
 biz_account_disabled | Sent to all business account administrators when the account is disabled.
@@ -255,7 +255,7 @@ biz_invitation_rejected | Sent to an inviter, when the invitation is rejected.
 
 Some properties are common for all types of notifications, whereas some others depend on the notification type.
 
-Every live notification has the following properties: 
+Every live notification has the following properties:
 
 Property | Description
 -------- | -----------
