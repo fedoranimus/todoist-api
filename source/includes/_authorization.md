@@ -28,7 +28,7 @@ Here follow the required parameters:
 Name | Description
 ---- | -----------
 client_id | The unique Client ID of the Todoist application that you registered.
-scope | A comma separated list of permissions which you would like the users to grant to your application. See below a table with more details about this.
+scope | A comma separated list of permissions that you would like the users to grant to your application. See below a table with more details about this.
 state | A unique and unguessable string. It is used to protect you against cross-site request forgery attacks.
 
 
@@ -38,15 +38,15 @@ Name | Description
 ---- | -----------
 task:add | Grants permission to add tasks to the Inbox project (The application cannot read tasks data).  
 data:read | Grants read-only access to application data, including tasks, projects, labels, and filters. 
-data:read_write | Grants read and write access to application data, including tasks, projects, labels, and filters. This scope include `task:add` and `data:read` scopes.
+data:read_write | Grants read and write access to application data, including tasks, projects, labels, and filters. This scope includes `task:add` and `data:read` scopes.
 data:delete | Grants permission to delete application data, including tasks, labels, and filters. 
 project:delete | Grants permission to delete projects.
 
-And here are some common errors that you may encountered:
+And here are some common errors that you may encounter:
 
 Error | Description
 ----- | -----------
-User Rejected Authorization Request | When the user denies your authorization request, Todoist will redirect the user to the configured redirect URI with `error` paramete: `http://example.com?error=access_denied`.
+User Rejected Authorization Request | When the user denies your authorization request, Todoist will redirect the user to the configured redirect URI with the `error` parameter: `http://example.com?error=access_denied`.
 Redirect URI Not Configured | This JSON error will be returned to the requester (your user's browser) if redirect URI is not configured in the App Management Console.
 Invalid Application Status | When your application exceeds the maximum token limit or when your application is being suspended due to abuse, Todoist will redirect the user to the configured redirect URI with the `error` parameter: `http://example.com?error=invalid_application_status`.
 Invalid Scope | When the `scope` parameter is invalid, Todoist will redirect the user to the configured redirect URI with `error` parameter: `http://example.com?error=invalid_scope`.
@@ -86,9 +86,9 @@ Name | Description
 ---- | -----------
 client_id | The unique Client ID of the Todoist application that you registered.
 client_secret | The unique Client Secret of the Todoist application that you registered.
-code | The unique string code which you obtained in the previous step.
+code | The unique string code that you obtained in the previous step.
 
-And here are some common errors that you may encountered (all the error response will be in JSON format):
+And here are some common errors that you may encounter (all the error responses will be in JSON format):
 
 Error | Description
 ----- | -----------
@@ -274,7 +274,7 @@ lang | User's language. Can be `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `
 
 ## Revoke Access Tokens
 
-Access tokens obtain via OAuth could be revoked making a JSON request (HTTP POST) to the following endpoint 
+Access tokens obtained via OAuth could be revoked making a JSON request (HTTP POST) to the following endpoint: 
 ```
 https://todoist.com/api/access_tokens/revoke
 ```
@@ -318,9 +318,9 @@ Name | Description
 client_id | The unique Client ID of the Todoist application that you registered.
 client_secret | The unique Client Secret of the Todoist application that you registered.
 personal_token | Token obtained from the email/password authentication
-scope | Scopes of the OAuth token. Please refer to the [OAuth](https://developer.todoist.com/#oauth) section for the detail list of available scopes.
+scope | Scopes of the OAuth token. Please refer to the [OAuth](https://developer.todoist.com/#oauth) section for the detailed list of available scopes.
 
-Upon succesful request, a HTTP 200 response return be returned new OAuth token in JSON format.
+Upon succesful request, a HTTP 200 response will be returned with a new OAuth token in JSON format:
 ```
 {"access_token": "....", "token_type": "Bearer"}
 ```

@@ -88,18 +88,18 @@ SOFTWARE.
 
         <h1 id='api-overview'>API Overview</h1>
 <p>Todoist API (also known as the &ldquo;Sync API&rdquo;) is specially designed for efficient data sync between 
-clients (i.e. our mobile apps) and Todoist. </p>
+clients (e.g. our mobile apps) and Todoist. </p>
 
-<p>All Sync API requests shared the same endpoint URL:
+<p>All Sync API requests share the same endpoint URL:
 <strong>https://todoist.com/API/v6/sync</strong></p>
 
-<p>Sync API requests should be made in HTTP POST (application/x-www-form-urlencoded). Sync API responses, including error, will be returned in JSON. </p>
+<p>Sync API requests should be made in HTTP POST (application/x-www-form-urlencoded). Sync API responses, including errors, will be returned in JSON. </p>
 
-<p>Sync API supports the following features:</p>
+<p>Sync API supports the following features -</p>
 
 <ul>
-<li><p>Batching: reading and writing of multiple resources can be done in a single HTTP request. Batch request s help clients reduce the number of network calls needed to sync resources.</p></li>
-<li><p>Incremental sync: You can only retrive datas that are updated since the last time you perform sync request.</p></li>
+<li><p>Batching: reading and writing of multiple resources can be done in a single HTTP request. Batch requests help clients reduce the number of network calls needed to sync resources.</p></li>
+<li><p>Incremental sync: You only retrieve data that are updated since the last time you performed a sync request.</p></li>
 </ul>
 
 <p><br/><br/>
@@ -167,7 +167,7 @@ clients (i.e. our mobile apps) and Todoist. </p>
 <span class="p">}</span>
 </code></pre>
 
-<p>To retrive your user resources, make a Sync API request with the following parameters: </p>
+<p>To retrieve your user resources, make a Sync API request with the following parameters: </p>
 <h3 id='required-parameters'>Required parameters</h3>
 <table><thead>
 <tr>
@@ -181,11 +181,11 @@ clients (i.e. our mobile apps) and Todoist. </p>
 </tr>
 <tr>
 <td>seq_no <em>Integer</em></td>
-<td>Sequence number, used to allow client to perform incremental sync. Pass <code class="prettyprint">0</code> to retrieve all active resource datas. More detail about it below.</td>
+<td>Sequence number, used to allow client to perform incremental sync. Pass <code class="prettyprint">0</code> to retrieve all active resource data. More details about this below.</td>
 </tr>
 <tr>
-<td>resource_types <em>JSON array of string</em></td>
-<td>Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of avaialbe resource types: <code class="prettyprint">labels</code>, <code class="prettyprint">projects</code>,<code class="prettyprint">items</code>, <code class="prettyprint">notes</code>, <code class="prettyprint">filters</code>, <code class="prettyprint">reminders</code>, <code class="prettyprint">locations</code>, <code class="prettyprint">user</code>, <code class="prettyprint">live_notifications</code>, <code class="prettyprint">day_orders</code>, <code class="prettyprint">collaborators</code>, <code class="prettyprint">notification_settings</code>. You may use <code class="prettyprint">all</code> to include all the resource types</td>
+<td>resource_types <em>JSON array of strings</em></td>
+<td>Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of avaialbe resource types: <code class="prettyprint">labels</code>, <code class="prettyprint">projects</code>,<code class="prettyprint">items</code>, <code class="prettyprint">notes</code>, <code class="prettyprint">filters</code>, <code class="prettyprint">reminders</code>, <code class="prettyprint">locations</code>, <code class="prettyprint">user</code>, <code class="prettyprint">live_notifications</code>, <code class="prettyprint">day_orders</code>, <code class="prettyprint">collaborators</code>, <code class="prettyprint">notification_settings</code>. You may use <code class="prettyprint">all</code> to include all the resource types.</td>
 </tr>
 </tbody></table>
 <h3 id='optional-parameters'>Optional parameters</h3>
@@ -197,19 +197,19 @@ clients (i.e. our mobile apps) and Todoist. </p>
 </thead><tbody>
 <tr>
 <td>day_orders_timestamp</td>
-<td>The Sync API requests return <code class="prettyprint">DayOrdersTimestamp</code> that specifies when the day orders were last updated. If you omit <code class="prettyprint">day_orders_timestamp</code> then none of then will be fetched. If you specify <code class="prettyprint">day_orders_timestamp</code> then day orders will be returned if your timestamp is different from the servers. If you send <code class="prettyprint">day_orders_timestamp</code> and the day orders have not been updated then the server won&rsquo;t return the <code class="prettyprint">DayOrders</code> entry at all.</td>
+<td>The Sync API requests return <code class="prettyprint">DayOrdersTimestamp</code> that specifies when the day orders were last updated. If you omit <code class="prettyprint">day_orders_timestamp</code> then none of them will be fetched. If you specify <code class="prettyprint">day_orders_timestamp</code> then day orders will be returned if your timestamp is different from the servers. If you send <code class="prettyprint">day_orders_timestamp</code> and the day orders have not been updated then the server won&rsquo;t return the <code class="prettyprint">DayOrders</code> entry at all.</td>
 </tr>
 </tbody></table>
 <h3 id='incremental-sync-code-classprettyprintseq_nocode-usage'>Incremental sync (<code class="prettyprint">seq_no</code> usage)</h3>
-<p>Sync API allow clients to retrive only updated resources, and this is done by using the &ldquo;sequence number&rdquo;, <code class="prettyprint">seq_no</code>, in your Sync API request.</p>
+<p>The Sync API allows clients to retrieve only updated resources, and this is done by using the &ldquo;sequence number&rdquo;, <code class="prettyprint">seq_no</code>, in your Sync API request.</p>
 
-<p>On your initial sync request, specify <code class="prettyprint">seq_no=0</code> in your request, and the user&rsquo;s all active resources datas will be returned. 
+<p>On your initial sync request, specify <code class="prettyprint">seq_no=0</code> in your request, and all the user&rsquo;s active resource data will be returned. 
 Todoist API server will also return a new <code class="prettyprint">seq_no</code> in the Sync API response. </p>
 
-<p>In your subsequent Sync request, use the <code class="prettyprint">seq_no</code> that you receive from your previous Sync response, 
-and the Todoist API server will return only the updated resource datas.</p>
+<p>In your subsequent Sync request, use the <code class="prettyprint">seq_no</code> that you received from your previous Sync response, 
+and the Todoist API server will return only the updated resource data.</p>
 <h3 id='response'>Response</h3>
-<p>When the request succeeded, a HTTP 200 response will be returned with a JSON object containning the requested resources and also a new <code class="prettyprint">seq_no</code>.</p>
+<p>When the request succeeds, an HTTP 200 response will be returned with a JSON object containing the requested resources and also a new <code class="prettyprint">seq_no</code>.</p>
 
 <table><thead>
 <tr>
@@ -219,11 +219,11 @@ and the Todoist API server will return only the updated resource datas.</p>
 </thead><tbody>
 <tr>
 <td>seq_no</td>
-<td>A new sequence number. Used by the client in the next sync request to perform incremental sync.</td>
+<td>A new sequence number. Used by the client in the next sync request to perform an incremental sync.</td>
 </tr>
 <tr>
 <td>User</td>
-<td>An User object.</td>
+<td>A User object.</td>
 </tr>
 <tr>
 <td>Projects</td>
@@ -235,7 +235,7 @@ and the Todoist API server will return only the updated resource datas.</p>
 </tr>
 <tr>
 <td>Labels</td>
-<td>A array of Label objects</td>
+<td>An array of Label objects.</td>
 </tr>
 <tr>
 <td>Filters</td>
@@ -247,11 +247,11 @@ and the Todoist API server will return only the updated resource datas.</p>
 </tr>
 <tr>
 <td>DayOrdersTimestamp</td>
-<td>A string specifying when day orders where last updated. Use this to not fetch day orders on every request.</td>
+<td>A string specifying when day orders were last updated. Use this to not fetch day orders on every request.</td>
 </tr>
 <tr>
 <td>Reminders</td>
-<td>A array of Reminder objects</td>
+<td>An array of Reminder objects.</td>
 </tr>
 <tr>
 <td>Collaborators</td>
@@ -259,11 +259,11 @@ and the Todoist API server will return only the updated resource datas.</p>
 </tr>
 <tr>
 <td>CollaboratorsStates</td>
-<td>A array specifying the state of each collaborator in each project. The state can be invited, active, inactive, deleted.</td>
+<td>An array specifying the state of each collaborator in each project. The state can be invited, active, inactive, deleted.</td>
 </tr>
 <tr>
 <td>LiveNotifications</td>
-<td>A array of LiveNotification object</td>
+<td>An array of LiveNotification objects</td>
 </tr>
 <tr>
 <td>LiveNotificationsLastRead</td>
@@ -276,7 +276,7 @@ and the Todoist API server will return only the updated resource datas.</p>
 </tbody></table>
 <h2 id='write-resources'>Write resources</h2>
 <blockquote>
-<p>Example API call that creating a new project.</p>
+<p>Example API call that creates a new project.</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
@@ -333,11 +333,11 @@ and the Todoist API server will return only the updated resource datas.</p>
 </tr>
 <tr>
 <td>uuid <em>String</em></td>
-<td>Command UUID. More detail about it below.</td>
+<td>Command UUID. More details about this below.</td>
 </tr>
 <tr>
 <td>temp_id <em>String</em></td>
-<td>Temporary resource ID, Optional. Only specified for commands that create new resource (&ldquo;item_add&rdquo; command). More detail about it below.</td>
+<td>Temporary resource ID, Optional. Only specified for commands that create new resource (&ldquo;item_add&rdquo; command). More details about this below.</td>
 </tr>
 </tbody></table>
 <h3 id='command-uuid'>Command UUID</h3>
@@ -377,14 +377,14 @@ a command.</p></li>
 &ldquo;`</p>
 </blockquote>
 
-<p>Some commands depends on the result of previous commands. For instance, you have a command sequence: <code class="prettyprint">&quot;project_add&quot;</code> and <code class="prettyprint">&quot;item_add&quot;</code> which first creates a project and then add a new task to the newly created project. In order to run the later <code class="prettyprint">item_add</code> command, we need to obtain the project ID returned from the previous command. Therefore, the normal approach would be to run these two commands in two separate HTTP requests.</p>
+<p>Some commands depend on the result of previous command. For instance, you have a command sequence: <code class="prettyprint">&quot;project_add&quot;</code> and <code class="prettyprint">&quot;item_add&quot;</code> which first creates a project and then add a new task to the newly created project. In order to run the later <code class="prettyprint">item_add</code> command, we need to obtain the project ID returned from the previous command. Therefore, the normal approach would be to run these two commands in two separate HTTP requests.</p>
 
-<p>The temporary resource ID feature allows you two run two or more dependent commands in a single HTTP request.
+<p>The temporary resource ID feature allows you to run two or more dependent commands in a single HTTP request.
 For commands that are related to creation of resources (i.e. <code class="prettyprint">item_add</code>, <code class="prettyprint">project_add</code>), you can 
-specify a extra <code class="prettyprint">temp_id</code> as a placeholder for the actual ID of the resource. The other commands in 
+specify an extra <code class="prettyprint">temp_id</code> as a placeholder for the actual ID of the resource. The other commands in 
 the same sequence could directly refer to <code class="prettyprint">temp_id</code> if needed.</p>
 <h3 id='response--error'>Response / Error</h3>
-<p>The result of commands execution will be stored in the following response JSON object field:</p>
+<p>The result of command executions will be stored in the following response JSON object field:</p>
 
 <table><thead>
 <tr>
@@ -434,16 +434,16 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>The status result of each command execution is in the <code class="prettyprint">SyncStatus</code> dictionary object. The key is a command <code class="prettyprint">uuid</code> and the value will be the result status of the command execution. There are two possible value for each command status</p>
+<p>The status result of each command execution is in the <code class="prettyprint">SyncStatus</code> dictionary object. The key is a command <code class="prettyprint">uuid</code> and the value will be the result status of the command execution. There are two possible values for each command status -</p>
 
 <ul>
-<li><p>a &quot;ok&rdquo; string which signals success of the command</p></li>
+<li><p>an &quot;ok&rdquo; string which signals success of the command</p></li>
 <li><p>an error object containings error information of a command. </p></li>
 </ul>
 
-<p>Please see the adjancent code examples for the possible format of the <code class="prettyprint">SyncStatus</code></p>
+<p>Please see the adjacent code examples for the possible format of the <code class="prettyprint">SyncStatus</code>.</p>
 <h2 id='response-status-codes'>Response status codes</h2>
-<p>The server uses the HTTP status codes to indicate result or failure of a request. And as is usually customary in web servers, a 2xx code indicates success, a 4xx code an error due to incorrect user provided information, and a 5xx code an internal, possibly temporary, error.</p>
+<p>The server uses the HTTP status codes to indicate the success or failure of a request. And as is customary in web servers, a 2xx code indicates - success, a 4xx code - an error due to incorrect user provided information, and a 5xx code - an internal, possibly temporary, error.</p>
 
 <table><thead>
 <tr>
@@ -534,7 +534,7 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 <li>The <code class="prettyprint">sync</code> call <code class="prettyprint">resource_types</code> argument is now required, and also by default no data are returned, unless some resources have been specified with this argument.</li>
 <li>The <code class="prettyprint">sync</code> call has a new required argument, the <code class="prettyprint">seq_no_global</code>, which should be defined in the same way as the <code class="prettyprint">seq_no</code> argument.</li>
 <li>The <code class="prettyprint">sync</code> call <code class="prettyprint">include_notification_settings</code> argument has been removed, and instead the <code class="prettyprint">notification_settings</code> resource should be included in the <code class="prettyprint">resource_types</code> argument. </li>
-<li>The <code class="prettyprint">sync</code> call <code class="prettyprint">resource_types</code> argument has a new resource called <code class="prettyprint">user</code> that includes the accounts&rsquo;s details in the returned data.</li>
+<li>The <code class="prettyprint">sync</code> call <code class="prettyprint">resource_types</code> argument has a new resource called <code class="prettyprint">user</code> that includes the accounts&#39; details in the returned data.</li>
 <li>The <code class="prettyprint">sync</code> call <code class="prettyprint">resource_types</code> argument has a new resource called <code class="prettyprint">all</code> that makes it possible to fetch all types of objects, ie. all the user data.</li>
 <li>The <code class="prettyprint">timestamp</code> parameter of the <code class="prettyprint">sync</code> call <code class="prettyprint">commands</code> argument has been replaced by the <code class="prettyprint">uuid</code> parameter which accepts UUIDs.</li>
 <li>The <code class="prettyprint">temp_id</code> parameter of the <code class="prettyprint">sync</code> call <code class="prettyprint">commands</code> argument is now accepting UUIDs.</li>
@@ -591,7 +591,7 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 </tr>
 <tr>
 <td>scope</td>
-<td>A comma separated list of permissions which you would like the users to grant to your application. See below a table with more details about this.</td>
+<td>A comma separated list of permissions that you would like the users to grant to your application. See below a table with more details about this.</td>
 </tr>
 <tr>
 <td>state</td>
@@ -617,7 +617,7 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 </tr>
 <tr>
 <td>data:read_write</td>
-<td>Grants read and write access to application data, including tasks, projects, labels, and filters. This scope include <code class="prettyprint">task:add</code> and <code class="prettyprint">data:read</code> scopes.</td>
+<td>Grants read and write access to application data, including tasks, projects, labels, and filters. This scope includes <code class="prettyprint">task:add</code> and <code class="prettyprint">data:read</code> scopes.</td>
 </tr>
 <tr>
 <td>data:delete</td>
@@ -629,7 +629,7 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 </tr>
 </tbody></table>
 
-<p>And here are some common errors that you may encountered:</p>
+<p>And here are some common errors that you may encounter:</p>
 
 <table><thead>
 <tr>
@@ -639,7 +639,7 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 </thead><tbody>
 <tr>
 <td>User Rejected Authorization Request</td>
-<td>When the user denies your authorization request, Todoist will redirect the user to the configured redirect URI with <code class="prettyprint">error</code> paramete: <code class="prettyprint">http://example.com?error=access_denied</code>.</td>
+<td>When the user denies your authorization request, Todoist will redirect the user to the configured redirect URI with the <code class="prettyprint">error</code> parameter: <code class="prettyprint">http://example.com?error=access_denied</code>.</td>
 </tr>
 <tr>
 <td>Redirect URI Not Configured</td>
@@ -698,11 +698,11 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 </tr>
 <tr>
 <td>code</td>
-<td>The unique string code which you obtained in the previous step.</td>
+<td>The unique string code that you obtained in the previous step.</td>
 </tr>
 </tbody></table>
 
-<p>And here are some common errors that you may encountered (all the error response will be in JSON format):</p>
+<p>And here are some common errors that you may encounter (all the error responses will be in JSON format):</p>
 
 <table><thead>
 <tr>
@@ -916,7 +916,7 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 </tr>
 </tbody></table>
 <h2 id='revoke-access-tokens'>Revoke Access Tokens</h2>
-<p>Access tokens obtain via OAuth could be revoked making a JSON request (HTTP POST) to the following endpoint 
+<p>Access tokens obtained via OAuth could be revoked making a JSON request (HTTP POST) to the following endpoint: 
 <code class="prettyprint">
 https://todoist.com/api/access_tokens/revoke
 </code></p>
@@ -977,11 +977,11 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 </tr>
 <tr>
 <td>scope</td>
-<td>Scopes of the OAuth token. Please refer to the <a href="https://developer.todoist.com/#oauth">OAuth</a> section for the detail list of available scopes.</td>
+<td>Scopes of the OAuth token. Please refer to the <a href="https://developer.todoist.com/#oauth">OAuth</a> section for the detailed list of available scopes.</td>
 </tr>
 </tbody></table>
 
-<p>Upon succesful request, a HTTP 200 response return be returned new OAuth token in JSON format.
+<p>Upon succesful request, a HTTP 200 response will be returned with a new OAuth token in JSON format:
 <code class="prettyprint">
 {&quot;access_token&quot;: &quot;....&quot;, &quot;token_type&quot;: &quot;Bearer&quot;}
 </code></p>
@@ -1213,7 +1213,7 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
-<p>Archive project and its children. Only available for Todoist Premium users.</p>
+<p>Archive project and its children. <em>Only available for Todoist Premium users</em>.</p>
 <h3 id='required-arguments'>Required arguments</h3>
 <table><thead>
 <tr>
@@ -1240,7 +1240,7 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
-<p>Unarchive project and its children. Only available for Todoist Premium users.</p>
+<p>Unarchive project and its children. <em>Only available for Todoist Premium users</em>.</p>
 <h3 id='required-arguments'>Required arguments</h3>
 <table><thead>
 <tr>
@@ -1332,7 +1332,7 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 </tr>
 <tr>
 <td>project_id <em>Integer</em></td>
-<td>Project that the task reside in</td>
+<td>Project that the task resides in</td>
 </tr>
 <tr>
 <td>content <em>String</em></td>
@@ -1376,7 +1376,7 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 </tr>
 <tr>
 <td>assigned_by_uid <em>Integer</em></td>
-<td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
+<td>The id of the user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
 </tr>
 <tr>
 <td>responsible_uid <em>Integer</em></td>
@@ -1483,7 +1483,7 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 </tr>
 <tr>
 <td>assigned_by_uid <em>Integer</em></td>
-<td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
+<td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will be automatically setup to your uid.</td>
 </tr>
 <tr>
 <td>responsible_uid <em>Integer</em></td>
@@ -1565,8 +1565,8 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 <td>The tasks labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>).</td>
 </tr>
 <tr>
-<td>aassigned_by_uid <em>Integer</em></td>
-<td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
+<td>assigned_by_uid <em>Integer</em></td>
+<td>The id of the user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will be automatically setup to your uid.</td>
 </tr>
 <tr>
 <td>responsible_uid <em>Integer</em></td>
@@ -1625,11 +1625,11 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 </thead><tbody>
 <tr>
 <td>project_items <em>Object</em></td>
-<td>A JSON mapping telling Todoist where the items are currently found. From project ids to item ids, could be like this <code class="prettyprint">{&quot;1523&quot;:[&quot;9637423&quot;]}</code>, where <code class="prettyprint">1523</code> is project id and <code class="prettyprint">9637423</code> is the item id.</td>
+<td>A JSON mapping telling Todoist where the items are currently found. From project ids to item ids, for example <code class="prettyprint">{&quot;1523&quot;:[&quot;9637423&quot;]}</code>, where <code class="prettyprint">1523</code> is the project id and <code class="prettyprint">9637423</code> is the item id.</td>
 </tr>
 <tr>
 <td>to_project <em>Integer</em></td>
-<td>A project id that the tasks should be moved, for example <code class="prettyprint">1245</code>.</td>
+<td>The project id that the tasks should be moved to, for example <code class="prettyprint">1245</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='complete-items'>Complete items</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
@@ -1647,7 +1647,7 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 </code></pre>
 
 <p>Complete tasks and optionally move them to history. See also <code class="prettyprint">item_close</code> for
-a simplified version of the task.</p>
+a simplified version of the command.</p>
 <h3 id='required-arguments'>Required arguments</h3>
 <table><thead>
 <tr>
@@ -1696,7 +1696,7 @@ a simplified version of the task.</p>
 </thead><tbody>
 <tr>
 <td>ids <em>Array of Integer or String (temp id)</em></td>
-<td>A list of item to uncomplete.</td>
+<td>A list of items to uncomplete.</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -1712,7 +1712,7 @@ a simplified version of the task.</p>
 </tr>
 <tr>
 <td>restore_state <em>Object</em></td>
-<td>A dictionary object, where the item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent: <code class="prettyprint">item_id: [in_history, checked, item_order, indent]</code></td>
+<td>A dictionary object, where the item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent - <code class="prettyprint">item_id: [in_history, checked, item_order, indent]</code></td>
 </tr>
 </tbody></table>
 <h2 id='complete-a-recurring-task'>Complete a recurring task</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
@@ -1728,7 +1728,7 @@ a simplified version of the task.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
-<p>Complete a recurring task, and the reason why this is a special case is because we need to mark a recurring completion (and using <code class="prettyprint">item_update</code> won&rsquo;t do this). See also <code class="prettyprint">item_close</code> for a simplified version of the task.</p>
+<p>Complete a recurring task, and the reason why this is a special case is because we need to mark a recurring completion (and using <code class="prettyprint">item_update</code> won&rsquo;t do this). See also <code class="prettyprint">item_close</code> for a simplified version of the command.</p>
 <h3 id='required-arguments'>Required arguments</h3>
 <table><thead>
 <tr>
@@ -2124,7 +2124,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>posted</td>
-<td>The date when the notes was posted.</td>
+<td>The date when the note was posted.</td>
 </tr>
 </tbody></table>
 <h3 id='file-attachments'>File attachments</h3>
@@ -2150,7 +2150,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>file_url</td>
-<td>The URL where the file is located (a string value representing an HTTP URL). Note that we don&rsquo;t cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) respources, as exposing this files in Todoist may issue a browser warning.</td>
+<td>The URL where the file is located (a string value representing an HTTP URL). Note that we don&rsquo;t cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) resources, as exposing this files in Todoist may issue a browser warning.</td>
 </tr>
 <tr>
 <td>upload_state</td>
@@ -2158,7 +2158,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </tbody></table>
 <h3 id='image-file-properties'>Image file properties</h3>
-<p>If you upload an image, you may provide thumbnail paths to ensure Todoist handles them appropriately. Valid thumbnail information is a JSON array with URL, width in pixels, height in pixels. Ex.: [&ldquo;http://example.com/img.jpg&rdquo;,400,300]. &ldquo;Canonical&rdquo; thumbnails (ones we create by <code class="prettyprint">upload_file</code> API call) have following sizes: 96x96, 288x288, 528x528.</p>
+<p>If you upload an image, you may provide thumbnail paths to ensure Todoist handles them appropriately. Valid thumbnail information is a JSON array with URL, width in pixels, height in pixels. Ex.: [&ldquo;http://example.com/img.jpg&rdquo;,400,300]. &ldquo;Canonical&rdquo; thumbnails (ones we create by <code class="prettyprint">upload_file</code> API call) have the following sizes: 96x96, 288x288, 528x528.</p>
 
 <table><thead>
 <tr>
@@ -2180,7 +2180,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </tbody></table>
 <h3 id='audio-file-properties'>Audio file properties</h3>
-<p>If you upload an audio file, you may provide an extra attribute <code class="prettyprint">file_duration</code> (duration of the audio file in seconds, which takes an integer value). In the web interface the file is rendered back with a <code class="prettyprint">&lt;audio&gt;</code> tag, so you should make sure it&rsquo;s supported in current web browsers. See <a href="https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats">supported media formats</a> for the reference.</p>
+<p>If you upload an audio file, you may provide an extra attribute <code class="prettyprint">file_duration</code> (duration of the audio file in seconds, which takes an integer value). In the web interface the file is rendered with a <code class="prettyprint">&lt;audio&gt;</code> tag, so you should make sure it&rsquo;s supported in current web browsers. See <a href="https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats">supported media formats</a> for the reference.</p>
 <h2 id='add-a-note'>Add a note</h2>
 <blockquote>
 <p>An example of adding a note:</p>
@@ -2445,7 +2445,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>file_url <em>String</em></td>
-<td>The URL where the file is located (a string value representing an HTTP URL). Note that we don&rsquo;t cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) respources, as exposing this files in Todoist may issue a browser warning.</td>
+<td>The URL where the file is located (a string value representing an HTTP URL). Note that we don&rsquo;t cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) resources, as exposing this files in Todoist may issue a browser warning.</td>
 </tr>
 <tr>
 <td>upload_state <em>String</em></td>
@@ -2570,7 +2570,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>last_id <em>Integer</em></td>
-<td>Can be used for pagination. This should be the minimum upload id you&rsquo;ve fetched so far. All results will be before that id.</td>
+<td>Can be used for pagination. This should be the minimum upload id you&rsquo;ve fetched so far. All results will be listed before that id.</td>
 </tr>
 </tbody></table>
 <h2 id='delete-upload'>Delete upload</h2>
@@ -2909,7 +2909,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>loc_trigger</td>
-<td>What should the trigger the reminder: <code class="prettyprint">on_enter</code> for entering the location, or <code class="prettyprint">on_leave</code> for leaving the location.</td>
+<td>What should trigger the reminder: <code class="prettyprint">on_enter</code> for entering the location, or <code class="prettyprint">on_leave</code> for leaving the location.</td>
 </tr>
 <tr>
 <td>radius</td>
@@ -3038,7 +3038,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>loc_trigger</td>
-<td>What should the trigger the reminder: <code class="prettyprint">on_enter</code> for entering the location, or <code class="prettyprint">on_leave</code> for leaving the location.</td>
+<td>What should trigger the reminder: <code class="prettyprint">on_enter</code> for entering the location, or <code class="prettyprint">on_leave</code> for leaving the location.</td>
 </tr>
 <tr>
 <td>radius</td>
@@ -3129,7 +3129,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>loc_trigger</td>
-<td>What should the trigger the reminder: <code class="prettyprint">on_enter</code> for entering the location, or <code class="prettyprint">on_leave</code> for leaving the location.</td>
+<td>What should trigger the reminder: <code class="prettyprint">on_enter</code> for entering the location, or <code class="prettyprint">on_leave</code> for leaving the location.</td>
 </tr>
 <tr>
 <td>radius</td>
@@ -3240,7 +3240,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>full_name</td>
-<td>The user&rsquo;s real name (a string value in a <code class="prettyprint">Name Surname</code> format).</td>
+<td>The user&rsquo;s real name (a string value in a <code class="prettyprint">Firstname Surname</code> format).</td>
 </tr>
 <tr>
 <td>inbox_project</td>
@@ -3284,7 +3284,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>default_reminder</td>
-<td>The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of Android or iOS official client must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
+<td>The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
 </tr>
 <tr>
 <td>mobile_number</td>
@@ -3316,7 +3316,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>is_biz_admin</td>
-<td>Whether the user is business account administrator (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
+<td>Whether the user is a business account administrator (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
 </tr>
 <tr>
 <td>business_account_id</td>
@@ -3341,7 +3341,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tbody></table>
 <h2 id='register-a-new-user'>Register a new user</h2>
 <blockquote>
-<p>And example of registering a new user:</p>
+<p>An example of registering a new user:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/register <span class="se">\</span>
     -d <span class="nv">email</span><span class="o">=</span>me@example.com <span class="se">\</span>
@@ -3428,7 +3428,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>full_name</td>
-<td>The user&rsquo;s real name (a string value in a <code class="prettyprint">Name Surname</code> format).</td>
+<td>The user&rsquo;s real name (a string value in a <code class="prettyprint">Firstname Surname</code> format).</td>
 </tr>
 <tr>
 <td>password</td>
@@ -3444,7 +3444,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>lang</td>
-<td>The user&rsquo;s language, which can take the values: <code class="prettyprint">de</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">pt_BR</code>, <code class="prettyprint">zh_CN</code>, <code class="prettyprint">es</code>, <code class="prettyprint">hi</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">zh_TW</code>.</td>
+<td>The user&rsquo;s language, which can take one of the following values: <code class="prettyprint">de</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">pt_BR</code>, <code class="prettyprint">zh_CN</code>, <code class="prettyprint">es</code>, <code class="prettyprint">hi</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">zh_TW</code>.</td>
 </tr>
 <tr>
 <td>timezone</td>
@@ -3492,7 +3492,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>reason_for_delete</td>
-<td>A reason for deletion, that is used for sending feedback back to us (a string value).</td>
+<td>A reason for deletion, that is used for sending feedback back to Todoist (a string value).</td>
 </tr>
 </tbody></table>
 <h2 id='update-user39s-properties'>Update user&rsquo;s properties</h2>
@@ -3562,7 +3562,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>default_reminder</td>
-<td>The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of Android or iOS official client must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
+<td>The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
 </tr>
 <tr>
 <td>mobile_number</td>
@@ -3612,7 +3612,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>karma_disabled</td>
-<td>Whether to disable the karma and goals measuring alltogether (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
+<td>Whether to disable the karma and goals measuring altogether (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 </tbody></table>
 
@@ -3652,7 +3652,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>path</td>
-<td>The path to redirect user&rsquo;s browser (a string value, where the default is <code class="prettyprint">/app</code>).</td>
+<td>The path to redirect the user&rsquo;s browser (a string value, where the default is <code class="prettyprint">/app</code>).</td>
 </tr>
 <tr>
 <td>hash</td>
@@ -4161,11 +4161,11 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>labels</td>
-<td>The tasks labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>).</td>
+<td>The task&rsquo;s labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>).</td>
 </tr>
 <tr>
 <td>assigned_by_uid</td>
-<td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
+<td>The id of the user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
 </tr>
 <tr>
 <td>responsible_uid</td>
@@ -4252,7 +4252,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>project_id</td>
-<td>The project to be shared (a number or temp id).</td>
+<td>The project to be affected (a number or temp id).</td>
 </tr>
 <tr>
 <td>email</td>
@@ -4715,11 +4715,11 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>item_completed</td>
-<td>Sent to the user who assigned the task when the task is completed. Optionally it&rsquo;s also sent to the user who is responsible for this task, if the responsible and the user who completed the task is not the same person.</td>
+<td>Sent to the user who assigned the task when the task is completed. Optionally it&rsquo;s also sent to the user who is responsible for this task, if the responsible user and the user who completed the task is not the same person.</td>
 </tr>
 <tr>
 <td>item_uncompleted</td>
-<td>Sent to the user who assigned the task when the task is uncompleted. Optionally it&rsquo;s also sent to the user who is responsible for this task, if the responsible and the user who completed the task is not the same person.</td>
+<td>Sent to the user who assigned the task when the task is uncompleted. Optionally it&rsquo;s also sent to the user who is responsible for this task, if the responsible user and the user who completed the task is not the same person.</td>
 </tr>
 <tr>
 <td>note_added</td>
@@ -4739,7 +4739,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>biz_payment_failed</td>
-<td>Sent to all business account administrators whenever an invoice attempts to be paid, and the payment fails. This can occur either due to a declined payment, or because the customer has no active card. A particular case of note is that if a customer with no active card reaches the end of its free trial.</td>
+<td>Sent to all business account administrators whenever an invoice attempt payment fails. This can occur either due to a declined payment, or because the customer has no active card. A particular case of note is that if a customer with no active card reaches the end of its free trial.</td>
 </tr>
 <tr>
 <td>biz_account_disabled</td>
@@ -4771,11 +4771,11 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>created</td>
-<td>Required. Live notification creation date. Integer representing a timestamps since epoch.</td>
+<td>Required. Live notification creation date. Integer representing a timestamp since epoch.</td>
 </tr>
 <tr>
 <td>from_uid</td>
-<td>Required. The id of user who initiated this live notification.</td>
+<td>Required. The id of the user who initiated this live notification.</td>
 </tr>
 <tr>
 <td>notification_key</td>
@@ -4982,7 +4982,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tbody></table>
 
         <h1 id='url-schemes'>URL schemes</h1>
-<p>The following URL schemes might be also useful when accessing the Todoist applications (iOS and Android) or when performing certain action with them, so they are also included here for completeness.</p>
+<p>The following URL schemes might also be useful when accessing the Todoist applications (iOS and Android) or when performing certain actions with them, so they are also included here for completeness.</p>
 <h2 id='views'>Views</h2>
 <p>The following schemes are available to open a specific view:</p>
 
@@ -5014,7 +5014,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>todoist://teaminbox</td>
-<td>Opens the team inbox view. If the user doesn&rsquo;t have a business account (access to team inbox), it will show an alert saying that he/she doesn&rsquo;t have access to the team inbox because doesn&rsquo;t have a business account and will be redirected automatically to the inbox view.</td>
+<td>Opens the team inbox view. If the user doesn&rsquo;t have a business account (access to team inbox), it will show an alert saying that he/she doesn&rsquo;t have access to the team inbox because he/she doesn&rsquo;t have a business account and will be redirected automatically to the inbox view.</td>
 </tr>
 <tr>
 <td>todoist://notifications</td>
@@ -5120,7 +5120,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>todoist://project</td>
-<td>Opens an specific project using the id of the project.</td>
+<td>Opens a specific project using the id of the project.</td>
 </tr>
 </tbody></table>
 
@@ -5168,7 +5168,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>todoist://label</td>
-<td>Opens an specific label using the id of the label.</td>
+<td>Opens a specific label using the id of the label.</td>
 </tr>
 </tbody></table>
 
@@ -5216,7 +5216,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>todoist://filter</td>
-<td>Opens an specific filter using the id of the filter.</td>
+<td>Opens a specific filter using the id of the filter.</td>
 </tr>
 </tbody></table>
 
@@ -5254,7 +5254,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </tbody></table>
 
-<p>The <code class="prettyprint">todoist:/search</code> scheme accepts the following required value:</p>
+<p>The <code class="prettyprint">todoist://search</code> scheme accepts the following required value:</p>
 
 <table><thead>
 <tr>
@@ -5264,13 +5264,13 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>query</td>
-<td>The query to search in the Todoist application, which should be a string that in <code class="prettyprint">Percent-encoding</code> (also known as URL encoding).</td>
+<td>The query to search in the Todoist application, which should be a string that is in <code class="prettyprint">Percent-encoding</code> (also known as URL encoding).</td>
 </tr>
 </tbody></table>
 
         <h1 id='backups'>Backups</h1>
-<p>Todoist creates a backup achieves of users&#39; data on the daily basis. Backup achieves can be accessed from the web app 
-(Todoist Setting / Backups). The list of recent backup achieves can also be accessed via the following API endpoints: </p>
+<p>Todoist creates a backup archive of users&#39; data on a daily basis. Backup archives can be accessed from the web app 
+(Todoist Setting / Backups). The list of recent backup archives can also be accessed via the following API endpoints: </p>
 
 <p><code class="prettyprint">/API/v6/backups/get</code> (HTTP POST, application/x-www-form-urlencoded)</p>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/backups/get <span class="se">\</span>
@@ -5290,7 +5290,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tbody></table>
 
 <blockquote>
-<p>Upon successful request, a HTTP 200 response will be returned with a list of backup achieve in JSON format.</p>
+<p>Upon successful request, a HTTP 200 response will be returned with a list of backup archives in JSON format.</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="o">[</span>
     <span class="o">{</span>
@@ -5302,10 +5302,10 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 
         <h1 id='webhooks'>Webhooks</h1>
-<p>The Todoist Webhooks API allows applications to receive realtime notification (in form of HTTP POST payload) on the subscribed user events. 
-Notice that once you have webhook setup, you will start receiving webhook events from <strong>all your app users</strong> immediately.</p>
+<p>The Todoist Webhooks API allows applications to receive real-time notification (in the form of HTTP POST payload) on the subscribed user events. 
+Notice that once you have a webhook setup, you will start receiving webhook events from <strong>all your app users</strong> immediately.</p>
 <h3 id='important-considerations'>Important Considerations</h3>
-<p>Due to the nature of network request, your application should assume webhook requests could arrive out of order or could even fail to arrive; webhooks should be used only as notifications and not as a primary Todoist data source (make sure your application could still work when webhook is not available).  </p>
+<p>Due to the nature of network requests, your application should assume webhook requests could arrive out of order or could even fail to arrive; webhooks should be used only as notifications and not as a primary Todoist data source (make sure your application could still work when webhook is not available).  </p>
 <h2 id='configuration'>Configuration</h2>
 <p>Before you can start receiving webhook event notifications, you must first have your webhook configured at the App Management Console. </p>
 <h3 id='events'>Events</h3>
@@ -5399,8 +5399,8 @@ Notice that once you have webhook setup, you will start receiving webhook events
 
 <p><code class="prettyprint">{&quot;event_name&quot;: &quot;...&quot;, &quot;user_id&quot;=..., &quot;event_data&quot;: {...}}</code></p>
 
-<p>The structure of &ldquo;event_data&rdquo; object varies depending on the type of event it is. For instance, if it is a &ldquo;item:added&rdquo; event notification, 
-The &ldquo;event_data&rdquo; will represents the newly added item.</p>
+<p>The structure of the &ldquo;event_data&rdquo; object varies depending on the type of event it is. For instance, if it is an &ldquo;item:added&rdquo; event notification, 
+The &ldquo;event_data&rdquo; will represent the newly added item.</p>
 
 <blockquote>
 <p>Example Delivery</p>
@@ -5455,18 +5455,18 @@ X-Todoist-Hmac-SHA256: UEEq9si3Vf9yRSrLthbpazbb69kP9+CZQ7fXmVyjhPs=
 </tr>
 <tr>
 <td>X-Todoist-Hmac-SHA256</td>
-<td>To verify each webhook request was indeed sent by Todoist, a <code class="prettyprint">X-Todoist-Hmac-SHA256</code> header is included; it is a SHA256 Hmac generated using your <code class="prettyprint">client_secret</code> as the encryption key and the whole request payload as the message to be encrypted. The resulting Hmac would be encoded in a base64 string.</td>
+<td>To verify each webhook request was indeed sent by Todoist, an <code class="prettyprint">X-Todoist-Hmac-SHA256</code> header is included; it is a SHA256 Hmac generated using your <code class="prettyprint">client_secret</code> as the encryption key and the whole request payload as the message to be encrypted. The resulting Hmac would be encoded in a base64 string.</td>
 </tr>
 <tr>
 <td>X-Todoist-Delivery-ID</td>
-<td>Each webhook event notification has a unique <code class="prettyprint">X-Todoist-Delivery-ID</code>. When a notification request failed to be delivered to your endpoint, the request would be redelivered again with the same <code class="prettyprint">X-Todoist-Delivery-ID</code>.</td>
+<td>Each webhook event notification has a unique <code class="prettyprint">X-Todoist-Delivery-ID</code>. When a notification request failed to be delivered to your endpoint, the request would be re-delivered with the same <code class="prettyprint">X-Todoist-Delivery-ID</code>.</td>
 </tr>
 </tbody></table>
 <h3 id='failed-delivery'>Failed Delivery</h3>
-<p>When a event notification failed to be delivered to your webhook callback URL endpoint (i.e. due to server error, network failure, incorrect response&hellip;etc), 
-it would be redelivered after 15 mins, and each notification would be redelivered for at most three times.</p>
+<p>When an event notification failed to be delivered to your webhook callback URL endpoint (i.e. due to server error, network failure, incorrect response, etc), 
+it would be re-delivered after 15 mins, and each notification would be re-delivered for at most three times.</p>
 
-<p><strong>Your callback endpoint must respond with a HTTP 200 when receiving a event notification request.</strong> Response other than HTTP 200 would be considered as failed delivery, and the notification would be redelivered again.</p>
+<p><strong>Your callback endpoint must respond with a HTTP 200 when receiving an event notification request.</strong> A response other than HTTP 200 would be considered as failed delivery, and the notification would be delivered again.</p>
 
     </div>
     <div class="dark-box">

@@ -63,7 +63,7 @@ Delete a person from a shared project.
 
 Argument | Description
 -------- | -----------
-project_id | The project to be shared (a number or temp id).
+project_id | The project to be affected (a number or temp id).
 email | The user email with whom the project was shared with (a string value representing a valid email address).
 
 ## Accept an invitation

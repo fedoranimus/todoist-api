@@ -1,7 +1,7 @@
 # Backups
 
-Todoist creates a backup achieves of users' data on the daily basis. Backup achieves can be accessed from the web app 
-(Todoist Setting / Backups). The list of recent backup achieves can also be accessed via the following API endpoints: 
+Todoist creates a backup archive of users' data on a daily basis. Backup archives can be accessed from the web app 
+(Todoist Setting / Backups). The list of recent backup archives can also be accessed via the following API endpoints: 
 
 `/API/v6/backups/get` (HTTP POST, application/x-www-form-urlencoded)
 
@@ -20,7 +20,7 @@ Parameter | Description
 token *String* | access token
 
 
->Upon successful request, a HTTP 200 response will be returned with a list of backup achieve in JSON format.
+>Upon successful request, a HTTP 200 response will be returned with a list of backup archives in JSON format.
 
 ```shell
 [

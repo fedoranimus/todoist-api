@@ -29,7 +29,7 @@ token | The user's token received on login (a string hash value).
 
 Parameter | Description
 --------- | -----------
-path | The path to redirect user's browser (a string value, where the default is `/app`).
+path | The path to redirect the user's browser (a string value, where the default is `/app`).
 hash | The hash part of the path to redirect user's browser (a string value).
 
 ## Get productivity stats
@@ -473,7 +473,7 @@ date_string | The date of the task, added in free form text, for example it can 
 priority | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
 indent | The indent of the task (a number between `1` and `4`, where `1` is top-level).
 item_order | The order of the task inside a project (a number, where the smallest value would place the task at the top).
-labels | The tasks labels (a list of label ids such as `[2324,2525]`).
-assigned_by_uid | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
+labels | The task's labels (a list of label ids such as `[2324,2525]`).
+assigned_by_uid | The id of the user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
 responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
 note | Add a note directly to the task (a string value that will become the content of the note).
