@@ -49,7 +49,7 @@ day_order *Integer* | The order of the task inside the `Today` or `Next 7 days` 
 collapsed  *Integer* | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
 labels *Array of Integer* | The tasks labels (a list of label ids such as `[2324,2525]`).
 assigned_by_uid *Integer* | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
-responsible_uid  *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
+responsible_uid *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or `null` or an empty string to unset.
 checked  *Integer* | Whether the task is marked as completed (where `1` is true and `0` is false).
 in_history  *Integer* | Whether the task has been marked as completed and is marked to be moved to history, because all the child tasks of its parent are also marked as completed (where `1` is true and `0` is false)
 is_deleted  *Integer* | Whether the task is marked as deleted (where `1` is true and `0` is false).
@@ -100,7 +100,7 @@ day_order *Integer* | The order of the task inside the `Today` or `Next 7 days` 
 collapsed *Integer* | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
 labels *Array of Integer* | The tasks labels (a list of label ids such as `[2324,2525]`).
 assigned_by_uid *Integer* | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
-responsible_uid *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
+responsible_uid *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or `null` or an empty string to unset.
 
 ## Update an item
 
@@ -143,7 +143,7 @@ day_order  *Integer* | The order of the task inside the `Today` or `Next 7 days`
 collapsed *Integer* | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
 labels  *Array of Integer* | The tasks labels (a list of label ids such as `[2324,2525]`).
 aassigned_by_uid *Integer* | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
-responsible_uid  *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
+responsible_uid *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or `null` or an empty string to unset.
 
 ## Delete items
 

@@ -1379,8 +1379,8 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 <td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
 </tr>
 <tr>
-<td>responsible_uid  <em>Integer</em></td>
-<td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to <code class="prettyprint">null</code>.</td>
+<td>responsible_uid <em>Integer</em></td>
+<td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or <code class="prettyprint">null</code> or an empty string to unset.</td>
 </tr>
 <tr>
 <td>checked  <em>Integer</em></td>
@@ -1487,7 +1487,7 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 </tr>
 <tr>
 <td>responsible_uid <em>Integer</em></td>
-<td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to <code class="prettyprint">null</code>.</td>
+<td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or <code class="prettyprint">null</code> or an empty string to unset.</td>
 </tr>
 </tbody></table>
 <h2 id='update-an-item'>Update an item</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
@@ -1569,8 +1569,8 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 <td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
 </tr>
 <tr>
-<td>responsible_uid  <em>Integer</em></td>
-<td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to <code class="prettyprint">null</code>.</td>
+<td>responsible_uid <em>Integer</em></td>
+<td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or <code class="prettyprint">null</code> or an empty string to unset.</td>
 </tr>
 </tbody></table>
 <h2 id='delete-items'>Delete items</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
