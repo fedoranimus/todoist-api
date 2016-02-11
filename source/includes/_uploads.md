@@ -71,7 +71,7 @@ Attribute | Description
 file_name *String* | The name of the file.
 file_size *Integer* | The size of the file in bytes.
 file_type *String* | MIME type (i.e. `text/plain`, `image/png`).
-file_url *String* | The URL where the file is located (a string value representing an HTTP URL). Note that we don't cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) respources, as exposing this files in Todoist may issue a browser warning.
+file_url *String* | The URL where the file is located (a string value representing an HTTP URL). Note that we don't cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) resources, as exposing this files in Todoist may issue a browser warning.
 upload_state *String* | Upload completion state (either `pending` or `completed`).
 
 ### Image file properties
@@ -172,7 +172,7 @@ token *String* | The user's token received on login (a string hash value).
 Parameter | Description
 --------- | -----------
 limit *Integer* | The number of items to return (a number, where the default is `30`, and the maximum is `50`).
-last_id *Integer* | Can be used for pagination. This should be the minimum upload id you've fetched so far. All results will be before that id.
+last_id *Integer* | Can be used for pagination. This should be the minimum upload id you've fetched so far. All results will be listed before that id.
 
 ## Delete upload
 

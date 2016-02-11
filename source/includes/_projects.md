@@ -164,7 +164,7 @@ $ curl https://todoist.com/API/v6/sync \
 >>> api.commit()
 ```
 
-Archive project and its children. Only available for Todoist Premium users.
+Archive project and its children. <em>Only available for Todoist Premium users</em>.
 
 ### Required arguments
 
@@ -192,7 +192,7 @@ $ curl https://todoist.com/API/v6/sync \
 >>> api.commit()
 ```
 
-Unarchive project and its children. Only available for Todoist Premium users.
+Unarchive project and its children. <em>Only available for Todoist Premium users</em>.
 
 ### Required arguments
 

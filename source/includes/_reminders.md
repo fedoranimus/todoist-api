@@ -38,7 +38,7 @@ mm_offset | The relative time in minutes before the due date of the item, in whi
 name | An alias name for the location (a string value).
 loc_lat | The location latitude (a float number as string).
 loc_long | The location longitude (a float number as a string).
-loc_trigger | What should the trigger the reminder: `on_enter` for entering the location, or `on_leave` for leaving the location.
+loc_trigger | What should trigger the reminder: `on_enter` for entering the location, or `on_leave` for leaving the location.
 radius | The radius around the location that is still considered as part of the location (a number in meters).
 is_deleted | Whether the reminder is marked as deleted (where `1` is true and `0` is false).
 
@@ -125,7 +125,7 @@ minute_offset | The relative time in minutes before the due date of the item, in
 name | An alias name for the location (a string value).
 loc_lat | The location latitude (a float number as string).
 loc_long | The location longitude (a float number as a string).
-loc_trigger | What should the trigger the reminder: `on_enter` for entering the location, or `on_leave` for leaving the location.
+loc_trigger | What should trigger the reminder: `on_enter` for entering the location, or `on_leave` for leaving the location.
 radius | The radius around the location that is still considered as part of the location (a number in meters).
 
 ## Update a reminder
@@ -172,7 +172,7 @@ minute_offset | The relative time in minutes before the due date of the item, in
 name | An alias name for the location (a string value).
 loc_lat | The location latitude (a float number as string).
 loc_long | The location longitude (a float number as a string).
-loc_trigger | What should the trigger the reminder: `on_enter` for entering the location, or `on_leave` for leaving the location.
+loc_trigger | What should trigger the reminder: `on_enter` for entering the location, or `on_leave` for leaving the location.
 radius | The radius around the location that is still considered as part of the location (a number in meters).
 
 ## Delete a reminder
