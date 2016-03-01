@@ -7,7 +7,7 @@ A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typic
 ```json
 {
   "id": 1855589,
-  "api_token": "0123456789abcdef0123456789abcdef01234567",
+  "token": "0123456789abcdef0123456789abcdef01234567",
   "email": "me@xample.com",
   "full_name": "Example User",
   "inbox_project": 128501411,
@@ -21,9 +21,11 @@ A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typic
   "sort_order": 0,
   "has_push_reminders": false,
   "default_reminder": null,
+  "auto_reminder" : 30,
   "mobile_host": null,
   "mobile_number": null,
   "completed_count": 20,
+  "completed_today" : 2,
   "karma": 684.0,
   "karma_trend": "-",
   "is_premium": false,
@@ -31,6 +33,14 @@ A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typic
   "is_biz_admin": false,
   "business_account_id": null,
   "image_id": null,
+  "avatar_small" : "https://*.cloudfront.net/*_small.jpg",
+  "avatar_medium" : "https://*.cloudfront.net/*_medium.jpg",
+  "avatar_big" : "https://*.cloudfront.net/*_big.jpg",
+  "avatar_s640" : "https://*.cloudfront.net/*_s640.jpg",
+  "theme" : 0,
+  "guide_mode" : false,
+  "restriction" : 3,
+  "features" : {},
   "beta": 0,
   "is_dummy": 0,
   "join_date": "Wed 30 Apr 2014 13:24:38 +0000"
@@ -42,7 +52,7 @@ A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typic
 Property | Description
 -------- | -----------
 id | The user's id (a unique number).
-api_token | The user's token that should be used to call the other API methods (a unique string hash value).
+token | The user's token that should be used to call the other API methods (a unique string hash value).
 email | The user's email (a string value representing a valid email address).
 full_name | The user's real name (a string value in a `Firstname Surname` format).
 inbox_project | The id of the user's `Inbox` project (a unique number).
@@ -55,10 +65,12 @@ time_format | Whether to use a `24h` format such as `13:00` (if set to `0`) when
 date_format | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
 sort_order | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
 has_push_reminders | Whether the user has push reminders enabled (a `true` or `false` value).
-default_reminder | The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
+default_reminder | The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
+auto_reminder | The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task (a number).
 mobile_number | The user's mobile number (a string value or `null` if not set).
 mobile_host | The user's mobile host (a string value or `null` if not set).
 completed_count | The total number of completed tasks (a number).
+completed_today | The number of completed tasks for today (a number).
 karma | The user's karma score (a float number).
 karma_trend | The user's karma trend (a string value like `up`).
 is_premium | Whether the user has a Premium subscription (a `true` or `false` value).
@@ -66,6 +78,14 @@ premium_until | The date when the user's Premium subscription ends (`null` if no
 is_biz_admin | Whether the user is a business account administrator (a `true` or `false` value).
 business_account_id | The id of the user's business account (a unique number).
 image_id | The id of the user's avatar (a unique string hash value).
+avatar_small | The link to a 35x35 pixels image of the user's avatar (a string URL).
+avatar_medium | The link to a 60x60 pixels image of the user's avatar (a string URL).
+avatar_big | The link to a 195x195 pixels image of the user's avatar (a string URL).
+avatar_s640 | The link to a 640x640 pixels image of the user's avatar (a string URL).
+theme | The currently selected Todoist theme (a number between `0` and `10`).
+guide_mode | Whether guide is enabled or not (a `true` or `false` value).
+restriction | Used internally for any special restrictions that apply to the user.
+features | Used internally for any special features that apply to the user.
 beta | Whether the user is in beta status (where `1` is true and `0` is false).
 is_dummy | Whether the user is a dummy user (where `1` is true and `0` is false).
 join_date | The date when the user joined Todoist.
@@ -83,7 +103,7 @@ $ curl https://todoist.com/API/v6/register \
     -d password=secret
 {
   "id": 1855589,
-  "api_token": "0123456789abcdef0123456789abcdef01234567",
+  "token": "0123456789abcdef0123456789abcdef01234567",
   "email": "me@xample.com",
   "full_name": "Example User",
   "inbox_project": 128501411,
@@ -97,9 +117,11 @@ $ curl https://todoist.com/API/v6/register \
   "sort_order": 0,
   "has_push_reminders": false,
   "default_reminder": null,
+  "auto_reminder" : 30,
   "mobile_host": null,
   "mobile_number": null,
   "completed_count": 20,
+  "completed_today" : 2,
   "karma": 684.0,
   "karma_trend": "-",
   "is_premium": false,
@@ -107,6 +129,14 @@ $ curl https://todoist.com/API/v6/register \
   "is_biz_admin": false,
   "business_account_id": null,
   "image_id": null,
+  "avatar_small" : "https://*.cloudfront.net/*_small.jpg",
+  "avatar_medium" : "https://*.cloudfront.net/*_medium.jpg",
+  "avatar_big" : "https://*.cloudfront.net/*_big.jpg",
+  "avatar_s640" : "https://*.cloudfront.net/*_s640.jpg",
+  "theme" : 0,
+  "guide_mode" : false,
+  "restriction" : 3,
+  "features" : {},
   "beta": 0,
   "is_dummy": 0,
   "join_date": "Wed 30 Apr 2014 13:24:38 +0000"
@@ -119,7 +149,7 @@ $ curl https://todoist.com/API/v6/register \
 >>> api.register('me@example.com', 'Example User', 'secret')
 {
   'id': 1855589,
-  'api_token': '0123456789abcdef0123456789abcdef01234567',
+  'token': '0123456789abcdef0123456789abcdef01234567',
   'email': 'me@exampe.com',
   'full_name': 'Example User',
   'inbox_project': 128501411,
@@ -133,9 +163,11 @@ $ curl https://todoist.com/API/v6/register \
   'sort_order': 0,
   'has_push_reminders': False,
   'default_reminder': None,
+  'auto_reminder' : 30,
   'mobile_host': None,
   'mobile_number': None,
   'completed_count': 20,
+  'completed_today' : 2,
   'karma': 684.0,
   'karma_trend': '-',
   'is_premium': False,
@@ -143,6 +175,14 @@ $ curl https://todoist.com/API/v6/register \
   'is_biz_admin': False,
   'business_account_id': None,
   'image_id': None,
+  'avatar_small' : 'https://*.cloudfront.net/*_small.jpg',
+  'avatar_medium' : 'https://*.cloudfront.net/*_medium.jpg',
+  'avatar_big' : 'https://*.cloudfront.net/*_big.jpg',
+  'avatar_s640' : 'https://*.cloudfront.net/*_s640.jpg',
+  'theme' : 0,
+  'guide_mode' : False,
+  'restriction' : 3,
+  'features' : {},
   'beta': 0,
   'is_dummy': 0,
   'join_date': 'Wed 30 Apr 2014 13:24:38 +0000',
@@ -239,8 +279,10 @@ time_format | Whether to use a `24h` format such as `13:00` (if set to `0`) when
 date_format | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
 sort_order | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
 default_reminder | The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
+auto_reminder | The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task (a number).
 mobile_number | The user's mobile number (a string value or `null` if not set).
 mobile_host | The user's mobile host (a string value or `null` if not set).
+theme | The currently selected Todoist theme (a number between `0` and `10`).
 
 
 ## Update karma goals

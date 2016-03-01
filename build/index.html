@@ -3190,7 +3190,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"api_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@xample.com"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"inbox_project"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501411</span><span class="p">,</span><span class="w">
@@ -3204,9 +3204,11 @@ to history), recurring task is moved forward (due date is updated).</p>
   </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"has_push_reminders"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"default_reminder"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"auto_reminder"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mobile_host"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"completed_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"completed_today"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="s2">"karma"</span><span class="p">:</span><span class="w"> </span><span class="mf">684.0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"karma_trend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"is_premium"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -3214,6 +3216,14 @@ to history), recurring task is moved forward (due date is updated).</p>
   </span><span class="s2">"is_biz_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"business_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avatar_small"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_small.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avatar_medium"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_medium.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avatar_big"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_big.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avatar_s640"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_s640.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"theme"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"guide_mode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"restriction"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"features"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
   </span><span class="s2">"beta"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"is_dummy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span><span class="w">
@@ -3231,7 +3241,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>The user&rsquo;s id (a unique number).</td>
 </tr>
 <tr>
-<td>api_token</td>
+<td>token</td>
 <td>The user&rsquo;s token that should be used to call the other API methods (a unique string hash value).</td>
 </tr>
 <tr>
@@ -3284,7 +3294,11 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>default_reminder</td>
-<td>The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
+<td>The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
+</tr>
+<tr>
+<td>auto_reminder</td>
+<td>The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task (a number).</td>
 </tr>
 <tr>
 <td>mobile_number</td>
@@ -3297,6 +3311,10 @@ to history), recurring task is moved forward (due date is updated).</p>
 <tr>
 <td>completed_count</td>
 <td>The total number of completed tasks (a number).</td>
+</tr>
+<tr>
+<td>completed_today</td>
+<td>The number of completed tasks for today (a number).</td>
 </tr>
 <tr>
 <td>karma</td>
@@ -3327,6 +3345,38 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>The id of the user&rsquo;s avatar (a unique string hash value).</td>
 </tr>
 <tr>
+<td>avatar_small</td>
+<td>The link to a 35x35 pixels image of the user&rsquo;s avatar (a string URL).</td>
+</tr>
+<tr>
+<td>avatar_medium</td>
+<td>The link to a 60x60 pixels image of the user&rsquo;s avatar (a string URL).</td>
+</tr>
+<tr>
+<td>avatar_big</td>
+<td>The link to a 195x195 pixels image of the user&rsquo;s avatar (a string URL).</td>
+</tr>
+<tr>
+<td>avatar_s640</td>
+<td>The link to a 640x640 pixels image of the user&rsquo;s avatar (a string URL).</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>The currently selected Todoist theme (a number between <code class="prettyprint">0</code> and <code class="prettyprint">10</code>).</td>
+</tr>
+<tr>
+<td>guide_mode</td>
+<td>Whether guide is enabled or not (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
+</tr>
+<tr>
+<td>restriction</td>
+<td>Used internally for any special restrictions that apply to the user.</td>
+</tr>
+<tr>
+<td>features</td>
+<td>Used internally for any special features that apply to the user.</td>
+</tr>
+<tr>
 <td>beta</td>
 <td>Whether the user is in beta status (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
@@ -3349,7 +3399,7 @@ to history), recurring task is moved forward (due date is updated).</p>
     -d <span class="nv">password</span><span class="o">=</span>secret
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1855589,
-  <span class="s2">"api_token"</span>: <span class="s2">"0123456789abcdef0123456789abcdef01234567"</span>,
+  <span class="s2">"token"</span>: <span class="s2">"0123456789abcdef0123456789abcdef01234567"</span>,
   <span class="s2">"email"</span>: <span class="s2">"me@xample.com"</span>,
   <span class="s2">"full_name"</span>: <span class="s2">"Example User"</span>,
   <span class="s2">"inbox_project"</span>: 128501411,
@@ -3363,9 +3413,11 @@ to history), recurring task is moved forward (due date is updated).</p>
   <span class="s2">"sort_order"</span>: 0,
   <span class="s2">"has_push_reminders"</span>: <span class="nb">false</span>,
   <span class="s2">"default_reminder"</span>: null,
+  <span class="s2">"auto_reminder"</span> : 30,
   <span class="s2">"mobile_host"</span>: null,
   <span class="s2">"mobile_number"</span>: null,
   <span class="s2">"completed_count"</span>: 20,
+  <span class="s2">"completed_today"</span> : 2,
   <span class="s2">"karma"</span>: 684.0,
   <span class="s2">"karma_trend"</span>: <span class="s2">"-"</span>,
   <span class="s2">"is_premium"</span>: <span class="nb">false</span>,
@@ -3373,6 +3425,14 @@ to history), recurring task is moved forward (due date is updated).</p>
   <span class="s2">"is_biz_admin"</span>: <span class="nb">false</span>,
   <span class="s2">"business_account_id"</span>: null,
   <span class="s2">"image_id"</span>: null,
+  <span class="s2">"avatar_small"</span> : <span class="s2">"https://*.cloudfront.net/*_small.jpg"</span>,
+  <span class="s2">"avatar_medium"</span> : <span class="s2">"https://*.cloudfront.net/*_medium.jpg"</span>,
+  <span class="s2">"avatar_big"</span> : <span class="s2">"https://*.cloudfront.net/*_big.jpg"</span>,
+  <span class="s2">"avatar_s640"</span> : <span class="s2">"https://*.cloudfront.net/*_s640.jpg"</span>,
+  <span class="s2">"theme"</span> : 0,
+  <span class="s2">"guide_mode"</span> : <span class="nb">false</span>,
+  <span class="s2">"restriction"</span> : 3,
+  <span class="s2">"features"</span> : <span class="o">{}</span>,
   <span class="s2">"beta"</span>: 0,
   <span class="s2">"is_dummy"</span>: 0,
   <span class="s2">"join_date"</span>: <span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span>
@@ -3383,7 +3443,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s">'me@example.com'</span><span class="p">,</span> <span class="s">'Example User'</span><span class="p">,</span> <span class="s">'secret'</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="s">'id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
-  <span class="s">'api_token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
+  <span class="s">'token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
   <span class="s">'email'</span><span class="p">:</span> <span class="s">'me@exampe.com'</span><span class="p">,</span>
   <span class="s">'full_name'</span><span class="p">:</span> <span class="s">'Example User'</span><span class="p">,</span>
   <span class="s">'inbox_project'</span><span class="p">:</span> <span class="mi">128501411</span><span class="p">,</span>
@@ -3397,9 +3457,11 @@ to history), recurring task is moved forward (due date is updated).</p>
   <span class="s">'sort_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s">'has_push_reminders'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
   <span class="s">'default_reminder'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'auto_reminder'</span> <span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
   <span class="s">'mobile_host'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
   <span class="s">'mobile_number'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
   <span class="s">'completed_count'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="s">'completed_today'</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
   <span class="s">'karma'</span><span class="p">:</span> <span class="mf">684.0</span><span class="p">,</span>
   <span class="s">'karma_trend'</span><span class="p">:</span> <span class="s">'-'</span><span class="p">,</span>
   <span class="s">'is_premium'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
@@ -3407,6 +3469,14 @@ to history), recurring task is moved forward (due date is updated).</p>
   <span class="s">'is_biz_admin'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
   <span class="s">'business_account_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
   <span class="s">'image_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'avatar_small'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_small.jpg'</span><span class="p">,</span>
+  <span class="s">'avatar_medium'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_medium.jpg'</span><span class="p">,</span>
+  <span class="s">'avatar_big'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_big.jpg'</span><span class="p">,</span>
+  <span class="s">'avatar_s640'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_s640.jpg'</span><span class="p">,</span>
+  <span class="s">'theme'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'guide_mode'</span> <span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+  <span class="s">'restriction'</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="s">'features'</span> <span class="p">:</span> <span class="p">{},</span>
   <span class="s">'beta'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s">'is_dummy'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s">'join_date'</span><span class="p">:</span> <span class="s">'Wed 30 Apr 2014 13:24:38 +0000'</span><span class="p">,</span>
@@ -3565,12 +3635,20 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
 </tr>
 <tr>
+<td>auto_reminder</td>
+<td>The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task (a number).</td>
+</tr>
+<tr>
 <td>mobile_number</td>
 <td>The user&rsquo;s mobile number (a string value or <code class="prettyprint">null</code> if not set).</td>
 </tr>
 <tr>
 <td>mobile_host</td>
 <td>The user&rsquo;s mobile host (a string value or <code class="prettyprint">null</code> if not set).</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>The currently selected Todoist theme (a number between <code class="prettyprint">0</code> and <code class="prettyprint">10</code>).</td>
 </tr>
 </tbody></table>
 <h2 id='update-karma-goals'>Update karma goals</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
