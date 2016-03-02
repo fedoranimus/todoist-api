@@ -104,6 +104,7 @@ content | The content of the note (a string value).
 Argument | Description
 -------- | -----------
 file_attachment | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
+uids_to_notify | A list of user ids to notify (unique numbers).
 
 
 ## Add a project note
