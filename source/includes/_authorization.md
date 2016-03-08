@@ -36,7 +36,7 @@ Here are the scope parameters mentioned before:
 
 Name | Description
 ---- | -----------
-task:add | Grants permission to add tasks to the Inbox project (The application cannot read tasks data).
+task:add | Grants permission to add tasks to the Inbox project (the application cannot read tasks data). This is only used by the helper method of [adding an item](#add-item).
 data:read | Grants read-only access to application data, including tasks, projects, labels, and filters.
 data:read_write | Grants read and write access to application data, including tasks, projects, labels, and filters. This scope includes `task:add` and `data:read` scopes.
 data:delete | Grants permission to delete application data, including tasks, labels, and filters.
