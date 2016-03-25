@@ -61,14 +61,23 @@ Get a template for a project as a file.
 $ curl https://todoist.com/API/v6/templates/export_as_url \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d project_id=128501470
-https://todoist.com/importFromTemplate?t_url=https://*.cloudfront.net/*_Project1.csv
+{
+  "file_name": "*_Project1.csv",
+  "file_url": "https://*.cloudfront.net/*_Project1.csv"
+}
 ```
 
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
 >>> api.export_template_as_url(128501470)
-https://todoist.com/importFromTemplate?t_url=https://*.cloudfront.net/*_Project1.csv
+{
+  'file_name': '*_Project1.csv',
+  'file_url': 'https://*.cloudfront.net/*_Project1.csv'
+}
+
 ```
 
 Get a template for a project as a shareable URL.
+
+The URL can then be passed to `https://todoist.com/importFromTemplate?t_url=<url>` to make a sharable template.
