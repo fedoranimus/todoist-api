@@ -7,10 +7,10 @@ Files can be uploaded to our servers and used as file attachments in Notes.
 > On success, an HTTP 200 OK with JSON data of file data is returned:
 
 ```shell
-$ curl https://todoist.com/API/v6/upload_file \
-    -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d file_name=example.jpg \
-    --get --upload-file example.jpg
+$ curl https://todoist.com/API/v6/uploads/add \
+    -F token=0123456789abcdef0123456789abcdef01234567 \
+    -F file_name=example.jpg \
+    -F file=@/path/to/example.jpg
 {
   "file_name": "example.jpg",
   "file_size": 85665,

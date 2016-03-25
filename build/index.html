@@ -1285,6 +1285,67 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 </tr>
 </tbody></table>
 
+        <h1 id='templates'>Templates</h1>
+<p>Templates allow exporting of a projects tasks into a file or URL, and then importing of the complete task list to a new or existing project.  Note that, templates are only available for Todoist Premium users.</p>
+<h2 id='import-into-project'>Import into project</h2>
+<blockquote>
+<p>On success, an HTTP 200 OK with JSON data of file data is returned:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/templates/import_into_project <span class="se">\</span>
+    -F <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -F <span class="nv">project_id</span><span class="o">=</span>128501470 <span class="se">\</span>
+    -F <span class="nv">file</span><span class="o">=</span>@example.csv
+<span class="o">{</span>
+  <span class="s2">"status"</span>: <span class="s2">"ok"</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">import_template_into_project</span><span class="p">(</span><span class="mi">128501470</span><span class="p">,</span> <span class="s">'example.csv'</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="s">'status'</span><span class="p">:</span> <span class="s">'ok'</span>
+<span class="p">}</span>
+
+</code></pre>
+
+<p>Upload a file suitable to be passed as a template to be imported into a project.</p>
+<h2 id='export-as-file'>Export as file</h2>
+<blockquote>
+<p>On success, a CSV template is returned:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/templates/export_as_file <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">project_id</span><span class="o">=</span>128501470
+TYPE,CONTENT,PRIORITY,INDENT,AUTHOR,RESPONSIBLE,DATE,DATE_LANG
+task,Task1,4,1,Firstname <span class="o">(</span>1<span class="o">)</span>,,,en
+,,,,,,,
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">export_template_as_file</span><span class="p">(</span><span class="mi">128501470</span><span class="p">)</span>
+<span class="n">TYPE</span><span class="p">,</span><span class="n">CONTENT</span><span class="p">,</span><span class="n">PRIORITY</span><span class="p">,</span><span class="n">INDENT</span><span class="p">,</span><span class="n">AUTHOR</span><span class="p">,</span><span class="n">RESPONSIBLE</span><span class="p">,</span><span class="n">DATE</span><span class="p">,</span><span class="n">DATE_LANG</span>
+<span class="n">task</span><span class="p">,</span><span class="n">Task1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">Firstname</span> <span class="p">(</span><span class="mi">1</span><span class="p">),,,</span><span class="n">en</span>
+<span class="p">,,,,,,,</span>
+</code></pre>
+
+<p>Get a template for a project as a file.</p>
+<h2 id='export-as-shareable-url'>Export as shareable URL</h2>
+<blockquote>
+<p>On success, a URL is returned:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/templates/export_as_url <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">project_id</span><span class="o">=</span>128501470
+https://todoist.com/importFromTemplate?t_url<span class="o">=</span>https://<span class="k">*</span>.cloudfront.net/<span class="k">*</span>_Project1.csv
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">export_template_as_url</span><span class="p">(</span><span class="mi">128501470</span><span class="p">)</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">todoist</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">importFromTemplate</span><span class="err">?</span><span class="n">t_url</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//*.</span><span class="n">cloudfront</span><span class="o">.</span><span class="n">net</span><span class="o">/*</span><span class="n">_Project1</span><span class="o">.</span><span class="n">csv</span>
+</code></pre>
+
+<p>Get a template for a project as a shareable URL.</p>
+
         <h1 id='items'>Items</h1>
 <blockquote>
 <p>An example item object</p>
@@ -2364,10 +2425,10 @@ to history), recurring task is moved forward (due date is updated).</p>
 <blockquote>
 <p>On success, an HTTP 200 OK with JSON data of file data is returned:</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/upload_file <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">file_name</span><span class="o">=</span>example.jpg <span class="se">\</span>
-    --get --upload-file example.jpg
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/uploads/add <span class="se">\</span>
+    -F <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -F <span class="nv">file_name</span><span class="o">=</span>example.jpg <span class="se">\</span>
+    -F <span class="nv">file</span><span class="o">=</span>@/path/to/example.jpg
 <span class="o">{</span>
   <span class="s2">"file_name"</span>: <span class="s2">"example.jpg"</span>,
   <span class="s2">"file_size"</span>: 85665,

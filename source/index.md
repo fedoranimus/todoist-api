@@ -10,6 +10,7 @@ includes:
   - overview
   - authorization
   - projects
+  - templates
   - items
   - labels
   - notes
