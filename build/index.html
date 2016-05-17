@@ -3572,50 +3572,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </tbody></table>
 
-        <h1 id='miscellaneous'>Miscellaneous</h1><h2 id='get-redirect-link'>Get redirect link</h2>
-<blockquote>
-<p>An example of getting the user&rsquo;s absolute URL to redirect or to open in a browser:</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/get_redirect_link <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
-<span class="o">{</span><span class="s2">"link"</span>: <span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">local.todoist.com</span><span class="se">\/</span><span class="s2">secureRedirect?path=%2Fapp&amp;token=abcdefghijklmnopqrstuvwxyz01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span><span class="o">}</span>
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_redirect_link</span><span class="p">()</span>
-<span class="p">{</span><span class="s">'link'</span><span class="p">:</span> <span class="s">'https:</span><span class="err">\</span><span class="s">/</span><span class="err">\</span><span class="s">/local.todoist.com</span><span class="err">\</span><span class="s">/secureRedirect?path=</span><span class="si">%2</span><span class="s">Fapp&amp;token=abcdefghijklmnopqrstuvwxyz.0123456789.ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span><span class="p">}</span>
-</code></pre>
-
-<p>Get the user&rsquo;s absolute URL to redirect or to open in a browser. For the first time the link logs in the user automatically and performs a redirect to a given page, but once used, the link keeps working as a plain redirect. The link keeps working as a login link for as long as one week after it&rsquo;s been issued.</p>
-<h3 id='required-parameters'>Required parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>token</td>
-<td>The user&rsquo;s token received on login (a string hash value).</td>
-</tr>
-</tbody></table>
-<h3 id='optional-parameters'>Optional parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>path</td>
-<td>The path to redirect the user&rsquo;s browser (a string value, where the default is <code class="prettyprint">/app</code>).</td>
-</tr>
-<tr>
-<td>hash</td>
-<td>The hash part of the path to redirect user&rsquo;s browser (a string value).</td>
-</tr>
-</tbody></table>
-<h2 id='get-productivity-stats'>Get productivity stats</h2>
+        <h1 id='miscellaneous'>Miscellaneous</h1><h2 id='get-productivity-stats'>Get productivity stats</h2>
 <blockquote>
 <p>An example of getting the user&rsquo;s productivity stats:</p>
 </blockquote>

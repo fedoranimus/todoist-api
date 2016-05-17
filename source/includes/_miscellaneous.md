@@ -1,37 +1,5 @@
 # Miscellaneous
 
-## Get redirect link
-
-> An example of getting the user's absolute URL to redirect or to open in a browser:
-
-```shell
-$ curl https://todoist.com/API/v6/get_redirect_link \
-    -d token=0123456789abcdef0123456789abcdef01234567
-{"link": "https:\/\/local.todoist.com\/secureRedirect?path=%2Fapp&token=abcdefghijklmnopqrstuvwxyz01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"}
-```
-
-```python
->>> import todoist
->>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.get_redirect_link()
-{'link': 'https:\/\/local.todoist.com\/secureRedirect?path=%2Fapp&token=abcdefghijklmnopqrstuvwxyz.0123456789.ABCDEFGHIJKLMNOPQRSTUVWXYZ'}
-```
-
-Get the user's absolute URL to redirect or to open in a browser. For the first time the link logs in the user automatically and performs a redirect to a given page, but once used, the link keeps working as a plain redirect. The link keeps working as a login link for as long as one week after it's been issued.
-
-### Required parameters
-
-Parameter | Description
---------- | -----------
-token | The user's token received on login (a string hash value).
-
-### Optional parameters
-
-Parameter | Description
---------- | -----------
-path | The path to redirect the user's browser (a string value, where the default is `/app`).
-hash | The hash part of the path to redirect user's browser (a string value).
-
 ## Get productivity stats
 
 > An example of getting the user's productivity stats:
