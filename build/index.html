@@ -4098,14 +4098,14 @@ to history), recurring task is moved forward (due date is updated).</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "share_project", "temp_id": "854be9cd-965f-4ddd-a07e-6a1d4a6e6f7a", "uuid": "fe6637e3-03ce-4236-a202-8b28de2c8372", "args": {"project_id": "128501470", "message": "", "email": "you@example.com"}}]'</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "share_project", "temp_id": "854be9cd-965f-4ddd-a07e-6a1d4a6e6f7a", "uuid": "fe6637e3-03ce-4236-a202-8b28de2c8372", "args": {"project_id": "128501470", "email": "you@example.com"}}]'</span>
 <span class="o">{</span> ...
   <span class="s2">"SyncStatus"</span>: <span class="o">{</span><span class="s2">"fe6637e3-03ce-4236-a202-8b28de2c8372"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">share_project</span><span class="p">(</span><span class="mi">128501470</span><span class="p">,</span> <span class="s">'you@example.com'</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">share_project</span><span class="p">(</span><span class="mi">128501470</span><span class="p">,</span> <span class="s">'you@example.com'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
@@ -4124,18 +4124,6 @@ to history), recurring task is moved forward (due date is updated).</p>
 <tr>
 <td>email</td>
 <td>The user email with whom to share the project (a string value representing a valid email address).</td>
-</tr>
-</tbody></table>
-<h3 id='optional-arguments'>Optional arguments</h3>
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>message</td>
-<td>A message to be sent to the user (a string value).</td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-collaborator'>Delete a collaborator</h2>

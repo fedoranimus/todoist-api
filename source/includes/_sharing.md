@@ -9,7 +9,7 @@ Commands that are related to sharing projects will be described in this section.
 ```shell
 $ curl https://todoist.com/API/v6/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d commands='[{"type": "share_project", "temp_id": "854be9cd-965f-4ddd-a07e-6a1d4a6e6f7a", "uuid": "fe6637e3-03ce-4236-a202-8b28de2c8372", "args": {"project_id": "128501470", "message": "", "email": "you@example.com"}}]'
+    -d commands='[{"type": "share_project", "temp_id": "854be9cd-965f-4ddd-a07e-6a1d4a6e6f7a", "uuid": "fe6637e3-03ce-4236-a202-8b28de2c8372", "args": {"project_id": "128501470", "email": "you@example.com"}}]'
 { ...
   "SyncStatus": {"fe6637e3-03ce-4236-a202-8b28de2c8372": "ok"},
   ... }
@@ -18,7 +18,7 @@ $ curl https://todoist.com/API/v6/sync \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.share_project(128501470, 'you@example.com', message='')
+>>> api.share_project(128501470, 'you@example.com')
 >>> api.commit()
 ```
 
@@ -30,12 +30,6 @@ Argument | Description
 -------- | -----------
 project_id | The project to be shared (a unique number or temp id).
 email | The user email with whom to share the project (a string value representing a valid email address).
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-message | A message to be sent to the user (a string value).
 
 ## Delete a collaborator
 
