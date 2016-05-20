@@ -445,3 +445,185 @@ labels | The task's labels (a list of label ids such as `[2324,2525]`).
 assigned_by_uid | The id of the user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
 responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
 note | Add a note directly to the task (a string value that will become the content of the note).
+
+## Get item info
+
+
+> An example of getting an item's info:
+
+```shell
+$ curl https://todoist.com/API/v6/get_item \
+    -d token=0123456789abcdef0123456789abcdef01234567
+    -d item_id=466
+{
+  "project": {
+    "name": "Inbox",
+    "color": 7,
+    "is_deleted": 0,
+    "collapsed": 0,
+    "inbox_project": true,
+    "item_order": 0,
+    "indent": 1,
+    "id": 1,
+    "shared": false,
+    "is_archived": 0
+  },
+  "item": {
+    "assigned_by_uid": 1,
+    "due_date_utc": null,
+    "is_archived": 0,
+    "labels": [],
+    "sync_id": null,
+    "all_day": false,
+    "in_history": 0,
+    "date_added": "Tue 22 Mar 2016 16:00:00 +0000",
+    "checked": 0,
+    "date_lang": "en",
+    "id": 466,
+    "content": "foo",
+    "indent": 1,
+    "user_id": 1,
+    "is_deleted": 0,
+    "priority": 1,
+    "item_order": 1,
+    "responsible_uid": null,
+    "project_id": 1,
+    "collapsed": 0,
+    "date_string": null
+  },
+  "notes": [
+    {
+      "is_deleted": 0,
+      "is_archived": 0,
+      "file_attachment": null,
+      "content": "1",
+      "posted_uid": 1,
+      "uids_to_notify": null,
+      "item_id": 466,
+      "project_id": 1,
+      "id": 36,
+      "posted": "Wed 18 May 2016 16:45:00 +0000"
+    },
+    {
+      "is_deleted": 0,
+      "is_archived": 0,
+      "file_attachment": null,
+      "content": "2",
+      "posted_uid": 1,
+      "uids_to_notify": null,
+      "item_id": 466,
+      "project_id": 1,
+      "id": 37,
+      "posted": "Wed 18 May 2016 16:45:00 +0000"
+    },
+    {
+      "is_deleted": 0,
+      "is_archived": 0,
+      "file_attachment": null,
+      "content": "3",
+      "posted_uid": 1,
+      "uids_to_notify": null,
+      "item_id": 466,
+      "project_id": 1,
+      "id": 38,
+      "posted": "Wed 18 May 2016 16:45:00 +0000"
+    }
+  ]
+}
+```
+
+```python
+>>> import todoist
+>>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
+>>> api.get_item(466)
+{
+  'project': {
+    'name': 'Inbox',
+    'color': 7,
+    'is_deleted': 0,
+    'collapsed': 0,
+    'inbox_project': true,
+    'item_order': 0,
+    'indent': 1,
+    'id': 1,
+    'shared': false,
+    'is_archived': 0
+  },
+  'item': {
+    'assigned_by_uid': 1,
+    'due_date_utc': null,
+    'is_archived': 0,
+    'labels': [],
+    'sync_id': null,
+    'all_day': false,
+    'in_history': 0,
+    'date_added': 'Tue 22 Mar 2016 16:00:00 +0000',
+    'checked': 0,
+    'date_lang': 'en',
+    'id': 466,
+    'content': 'foo',
+    'indent': 1,
+    'user_id': 1,
+    'is_deleted': 0,
+    'priority': 1,
+    'item_order': 1,
+    'responsible_uid': null,
+    'project_id': 1,
+    'collapsed': 0,
+    'date_string': null
+  },
+  'notes': [
+    {
+      'is_deleted': 0,
+      'is_archived': 0,
+      'file_attachment': null,
+      'content': '1',
+      'posted_uid': 1,
+      'uids_to_notify': null,
+      'item_id': 466,
+      'project_id': 1,
+      'id': 36,
+      'posted': 'Wed 18 May 2016 16:45:00 +0000'
+    },
+    {
+      'is_deleted': 0,
+      'is_archived': 0,
+      'file_attachment': null,
+      'content': '2',
+      'posted_uid': 1,
+      'uids_to_notify': null,
+      'item_id': 466,
+      'project_id': 1,
+      'id': 37,
+      'posted': 'Wed 18 May 2016 16:45:00 +0000'
+    },
+    {
+      'is_deleted': 0,
+      'is_archived': 0,
+      'file_attachment': null,
+      'content': '3',
+      'posted_uid': 1,
+      'uids_to_notify': null,
+      'item_id': 466,
+      'project_id': 1,
+      'id': 38,
+      'posted': 'Wed 18 May 2016 16:45:00 +0000'
+    }
+  ]
+}
+```
+
+This function is used to extract detailed information about the item, including all the notes.
+
+It's especially important, because on initial load we return back no more than
+10 last notes, and if client wants to get more, they can be downloaded with
+`get_item` endpoint.
+
+It returns a JSON object with `project`, `item` and `notes` attributes.
+
+### Required parameters
+
+Parameter | Description
+--------- | -----------
+token *String* | The user's token received on login.
+item_id *Integer* | The item's unique id.

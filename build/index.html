@@ -4089,6 +4089,192 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>Add a note directly to the task (a string value that will become the content of the note).</td>
 </tr>
 </tbody></table>
+<h2 id='get-item-info'>Get item info</h2>
+<blockquote>
+<p>An example of getting an item&rsquo;s info:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/get_item <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
+    -d <span class="nv">item_id</span><span class="o">=</span>466
+<span class="o">{</span>
+  <span class="s2">"project"</span>: <span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Inbox"</span>,
+    <span class="s2">"color"</span>: 7,
+    <span class="s2">"is_deleted"</span>: 0,
+    <span class="s2">"collapsed"</span>: 0,
+    <span class="s2">"inbox_project"</span>: <span class="nb">true</span>,
+    <span class="s2">"item_order"</span>: 0,
+    <span class="s2">"indent"</span>: 1,
+    <span class="s2">"id"</span>: 1,
+    <span class="s2">"shared"</span>: <span class="nb">false</span>,
+    <span class="s2">"is_archived"</span>: 0
+  <span class="o">}</span>,
+  <span class="s2">"item"</span>: <span class="o">{</span>
+    <span class="s2">"assigned_by_uid"</span>: 1,
+    <span class="s2">"due_date_utc"</span>: null,
+    <span class="s2">"is_archived"</span>: 0,
+    <span class="s2">"labels"</span>: <span class="o">[]</span>,
+    <span class="s2">"sync_id"</span>: null,
+    <span class="s2">"all_day"</span>: <span class="nb">false</span>,
+    <span class="s2">"in_history"</span>: 0,
+    <span class="s2">"date_added"</span>: <span class="s2">"Tue 22 Mar 2016 16:00:00 +0000"</span>,
+    <span class="s2">"checked"</span>: 0,
+    <span class="s2">"date_lang"</span>: <span class="s2">"en"</span>,
+    <span class="s2">"id"</span>: 466,
+    <span class="s2">"content"</span>: <span class="s2">"foo"</span>,
+    <span class="s2">"indent"</span>: 1,
+    <span class="s2">"user_id"</span>: 1,
+    <span class="s2">"is_deleted"</span>: 0,
+    <span class="s2">"priority"</span>: 1,
+    <span class="s2">"item_order"</span>: 1,
+    <span class="s2">"responsible_uid"</span>: null,
+    <span class="s2">"project_id"</span>: 1,
+    <span class="s2">"collapsed"</span>: 0,
+    <span class="s2">"date_string"</span>: null
+  <span class="o">}</span>,
+  <span class="s2">"notes"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"is_deleted"</span>: 0,
+      <span class="s2">"is_archived"</span>: 0,
+      <span class="s2">"file_attachment"</span>: null,
+      <span class="s2">"content"</span>: <span class="s2">"1"</span>,
+      <span class="s2">"posted_uid"</span>: 1,
+      <span class="s2">"uids_to_notify"</span>: null,
+      <span class="s2">"item_id"</span>: 466,
+      <span class="s2">"project_id"</span>: 1,
+      <span class="s2">"id"</span>: 36,
+      <span class="s2">"posted"</span>: <span class="s2">"Wed 18 May 2016 16:45:00 +0000"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"is_deleted"</span>: 0,
+      <span class="s2">"is_archived"</span>: 0,
+      <span class="s2">"file_attachment"</span>: null,
+      <span class="s2">"content"</span>: <span class="s2">"2"</span>,
+      <span class="s2">"posted_uid"</span>: 1,
+      <span class="s2">"uids_to_notify"</span>: null,
+      <span class="s2">"item_id"</span>: 466,
+      <span class="s2">"project_id"</span>: 1,
+      <span class="s2">"id"</span>: 37,
+      <span class="s2">"posted"</span>: <span class="s2">"Wed 18 May 2016 16:45:00 +0000"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"is_deleted"</span>: 0,
+      <span class="s2">"is_archived"</span>: 0,
+      <span class="s2">"file_attachment"</span>: null,
+      <span class="s2">"content"</span>: <span class="s2">"3"</span>,
+      <span class="s2">"posted_uid"</span>: 1,
+      <span class="s2">"uids_to_notify"</span>: null,
+      <span class="s2">"item_id"</span>: 466,
+      <span class="s2">"project_id"</span>: 1,
+      <span class="s2">"id"</span>: 38,
+      <span class="s2">"posted"</span>: <span class="s2">"Wed 18 May 2016 16:45:00 +0000"</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span><span class="mi">466</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="s">'project'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'name'</span><span class="p">:</span> <span class="s">'Inbox'</span><span class="p">,</span>
+    <span class="s">'color'</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'collapsed'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'inbox_project'</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'shared'</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="s">'item'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'assigned_by_uid'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'due_date_utc'</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'labels'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s">'sync_id'</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">'all_day'</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">'in_history'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'date_added'</span><span class="p">:</span> <span class="s">'Tue 22 Mar 2016 16:00:00 +0000'</span><span class="p">,</span>
+    <span class="s">'checked'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'date_lang'</span><span class="p">:</span> <span class="s">'en'</span><span class="p">,</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">466</span><span class="p">,</span>
+    <span class="s">'content'</span><span class="p">:</span> <span class="s">'foo'</span><span class="p">,</span>
+    <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'priority'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'responsible_uid'</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">'project_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'collapsed'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'date_string'</span><span class="p">:</span> <span class="n">null</span>
+  <span class="p">},</span>
+  <span class="s">'notes'</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s">'file_attachment'</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s">'content'</span><span class="p">:</span> <span class="s">'1'</span><span class="p">,</span>
+      <span class="s">'posted_uid'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">'uids_to_notify'</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s">'item_id'</span><span class="p">:</span> <span class="mi">466</span><span class="p">,</span>
+      <span class="s">'project_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">'id'</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
+      <span class="s">'posted'</span><span class="p">:</span> <span class="s">'Wed 18 May 2016 16:45:00 +0000'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s">'file_attachment'</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s">'content'</span><span class="p">:</span> <span class="s">'2'</span><span class="p">,</span>
+      <span class="s">'posted_uid'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">'uids_to_notify'</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s">'item_id'</span><span class="p">:</span> <span class="mi">466</span><span class="p">,</span>
+      <span class="s">'project_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">'id'</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+      <span class="s">'posted'</span><span class="p">:</span> <span class="s">'Wed 18 May 2016 16:45:00 +0000'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s">'file_attachment'</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s">'content'</span><span class="p">:</span> <span class="s">'3'</span><span class="p">,</span>
+      <span class="s">'posted_uid'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">'uids_to_notify'</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s">'item_id'</span><span class="p">:</span> <span class="mi">466</span><span class="p">,</span>
+      <span class="s">'project_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">'id'</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span>
+      <span class="s">'posted'</span><span class="p">:</span> <span class="s">'Wed 18 May 2016 16:45:00 +0000'</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>This function is used to extract detailed information about the item, including all the notes.</p>
+
+<p>It&rsquo;s especially important, because on initial load we return back no more than
+10 last notes, and if client wants to get more, they can be downloaded with
+<code class="prettyprint">get_item</code> endpoint.</p>
+
+<p>It returns a JSON object with <code class="prettyprint">project</code>, <code class="prettyprint">item</code> and <code class="prettyprint">notes</code> attributes.</p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
+</tr>
+<tr>
+<td>item_id <em>Integer</em></td>
+<td>The item&rsquo;s unique id.</td>
+</tr>
+</tbody></table>
 
         <h1 id='sharing-projects'>Sharing projects</h1>
 <p>Commands that are related to sharing projects will be described in this section.</p>
