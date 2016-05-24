@@ -21,6 +21,7 @@ includes:
 #  - query
   - miscellaneous
   - sharing
+  - business
   - livenotifications
   - urlschemes
   - backups

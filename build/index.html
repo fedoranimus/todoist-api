@@ -4474,9 +4474,138 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>The shared project of which to take the ownership (a number or temp id).</td>
 </tr>
 </tbody></table>
-<h2 id='accept-a-business-invitation'>Accept a business invitation</h2>
+
+        <h1 id='business'>Business</h1>
 <blockquote>
-<p>An example of accepting a business invitation:</p>
+<p>An example invitation object:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"base_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://todoist.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"business_account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"z@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"inviter_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to our company business account"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0692805f97d9c091debaba52d18f5696"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The set of functions and Sync API commands to manage Todoist Business accounts. All these functionality is only available for Business account admins.</p>
+
+<p>In order to become a business account admin, you should create a new account from <a href="https://todoist.com/business/freeTrial">Todoist Business Free Trial</a>, or to ask another business account admin to invite you, and to make you an admin.</p>
+
+<p>User, who is also a business account admin has the attribute <code class="prettyprint">is_biz_admin</code>, set to <code class="prettyprint">true</code>.</p>
+<h2 id='send-invitation'>Send invitation</h2>
+<blockquote>
+<p>An example of sending an invitation:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/business/users/invite <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">email_list</span><span class="o">=</span><span class="s1">'["spam@example.com","egg@example.com"]'</span>
+    -d <span class="nv">message</span><span class="o">=</span><span class="s1">'Welcome'</span>
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">"base_url"</span>: <span class="s2">"http://todoist.com"</span>,
+    <span class="s2">"business_account_id"</span>: 2,
+    <span class="s2">"email"</span>: <span class="s2">"spam@example.com"</span>,
+    <span class="s2">"id"</span>: 15,
+    <span class="s2">"inviter_id"</span>: 1,
+    <span class="s2">"message"</span>: <span class="s2">"Welcome"</span>,
+    <span class="s2">"secret"</span>: <span class="s2">"21d5a7fc4fa7e9d47a6642069d2af6ef"</span>,
+    <span class="s2">"user_id"</span>: 6
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"base_url"</span>: <span class="s2">"http://todoist.com"</span>,
+    <span class="s2">"business_account_id"</span>: 2,
+    <span class="s2">"email"</span>: <span class="s2">"egg@example.com"</span>,
+    <span class="s2">"id"</span>: 16,
+    <span class="s2">"inviter_id"</span>: 1,
+    <span class="s2">"message"</span>: <span class="s2">"Welcome"</span>,
+    <span class="s2">"secret"</span>: <span class="s2">"4e20a8b58abe07441c4c30fff34798ed"</span>,
+    <span class="s2">"user_id"</span>: 15
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users_invite</span><span class="p">([</span><span class="s">'spam@example.com'</span><span class="p">,</span><span class="s">'egg@example.com'</span><span class="p">])</span>
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s">'base_url'</span><span class="p">:</span> <span class="s">'http://todoist.com'</span><span class="p">,</span>
+    <span class="s">'business_account_id'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s">'email'</span><span class="p">:</span> <span class="s">'spam@example.com'</span><span class="p">,</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="s">'inviter_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'message'</span><span class="p">:</span> <span class="s">'Welcome'</span><span class="p">,</span>
+    <span class="s">'secret'</span><span class="p">:</span> <span class="s">'21d5a7fc4fa7e9d47a6642069d2af6ef'</span><span class="p">,</span>
+    <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">6</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s">'base_url'</span><span class="p">:</span> <span class="s">'http://todoist.com'</span><span class="p">,</span>
+    <span class="s">'business_account_id'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s">'email'</span><span class="p">:</span> <span class="s">'egg@example.com'</span><span class="p">,</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="s">'inviter_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'message'</span><span class="p">:</span> <span class="s">'Welcome'</span><span class="p">,</span>
+    <span class="s">'secret'</span><span class="p">:</span> <span class="s">'4e20a8b58abe07441c4c30fff34798ed'</span><span class="p">,</span>
+    <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">15</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+
+</code></pre>
+
+<p>This function allows you to send invitation to your business account. Every invitation object has unique id and secret code. Anyone who knows this information, can activate invitation and join your business account. Invitation is deactivated at the moment it&rsquo;s accepted or rejected by receiver, or deleted manually by sender.</p>
+
+<p>Invitation objects are not created (quietly skipped), if the invitation recipient is an existing Todoist user and this user already belongs to a business account.</p>
+
+<p>If an invitation for that recipient already exists and hasn&rsquo;t been activated yet, a new invitation object will not be created. Instead, an existing invitation will be re-sent and the corresponding invitation object will be returned back.</p>
+
+<p>The return value is a list of invitation objects.</p>
+<h3 id='required-arguments'>Required arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>User&rsquo;s access token</td>
+</tr>
+<tr>
+<td>email_list <em>List of Strings</em></td>
+<td>The emails of users which will be invited</td>
+</tr>
+</tbody></table>
+<h3 id='optional-arguments'>Optional arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message <em>String</em></td>
+<td>Additional text which will be included to invitation welcome message</td>
+</tr>
+</tbody></table>
+<h2 id='accept-invitation'>Accept invitation</h2>
+<blockquote>
+<p>An example of accepting a business invitation with a direct call:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/business/users/accept_invitation <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">id</span><span class="o">=</span>1234 <span class="se">\</span>
+    -d <span class="nv">secret</span><span class="o">=</span>abcdefghijklmno
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users_accept_invitation</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
+</code></pre>
+
+<blockquote>
+<p>An example of accepting a business invitation with a Sync API command:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
@@ -4491,8 +4620,10 @@ to history), recurring task is moved forward (due date is updated).</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
-<p>Accept an invitation from Todoist for Business.</p>
-<h3 id='required-arguments'>Required arguments</h3>
+<p>Accept an invitation from Todoist for Business.  There are currently 2 ways to accept an invitation, either with a direct call, or by using a Sync API command, as can be seen from the examples on the side, and the different required arguments below.</p>
+
+<p>The invitation is accepted if it&rsquo;s still active and user doesn&rsquo;t belong to any business account yet.  For the direct call, <code class="prettyprint">null</code> denotes a successful return value.</p>
+<h3 id='required-arguments'>Required arguments</h3><h4 id='for-the-direct-call'>For the direct call:</h4>
 <table><thead>
 <tr>
 <th>Argument</th>
@@ -4500,17 +4631,50 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>invitation_id</td>
+<td>token <em>String</em></td>
+<td>User&rsquo;s access token</td>
+</tr>
+<tr>
+<td>id <em>Integer</em></td>
 <td>The invitation id (a number).</td>
 </tr>
 <tr>
-<td>invitation_secret</td>
+<td>secret <em>String</em></td>
 <td>The secret fetched from the live notification (a string value).</td>
 </tr>
 </tbody></table>
-<h2 id='reject-a-business-invitation'>Reject a business invitation</h2>
+<h4 id='for-the-sync-api-command'>For the Sync API command:</h4>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>invitation_id <em>Integer</em></td>
+<td>The invitation id (a number).</td>
+</tr>
+<tr>
+<td>invitation_secret <em>String</em></td>
+<td>The secret fetched from the live notification (a string value).</td>
+</tr>
+</tbody></table>
+<h2 id='reject-invitation'>Reject invitation</h2>
 <blockquote>
-<p>An example of rejecting a business invitation:</p>
+<p>An example of rejecting a business invitation with a direct call:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/business/users/reject_invitation <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">id</span><span class="o">=</span>1234 <span class="se">\</span>
+    -d <span class="nv">secret</span><span class="o">=</span>abcdefghijklmno
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users_reject_invitation</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
+</code></pre>
+
+<blockquote>
+<p>An example of rejecting a business invitation with a Sync API command:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
@@ -4522,8 +4686,10 @@ to history), recurring task is moved forward (due date is updated).</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
-<p>Reject an invitation from Todoist for Business.</p>
-<h3 id='required-arguments'>Required arguments</h3>
+<p>Reject an invitation from Todoist for Business.  There are currently 2 ways to reject an invitation, either with a direct call, or by using a Sync API command, as can be seen from the examples on the side, and the different required arguments below.</p>
+
+<p>The invitation is rejected and deleted.  Note that the client doesn&rsquo;t have to provide the user&rsquo;s token to reject invitation: it&rsquo;s enough to provide knowledge of invitation secret business account yet.  For the direct call, <code class="prettyprint">null</code> denotes a successful return value.</p>
+<h3 id='required-arguments'>Required arguments</h3><h4 id='for-the-direct-call'>For the direct call:</h4>
 <table><thead>
 <tr>
 <th>Argument</th>
@@ -4531,12 +4697,40 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>invitation_id</td>
+<td>id <em>Integer</em></td>
 <td>The invitation id (a number).</td>
 </tr>
 <tr>
-<td>invitation_secret</td>
+<td>secret <em>String</em></td>
 <td>The secret fetched from the live notification (a string value).</td>
+</tr>
+</tbody></table>
+<h4 id='for-the-sync-api-command'>For the Sync API command:</h4>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>invitation_id <em>Integer</em></td>
+<td>The invitation id (a number).</td>
+</tr>
+<tr>
+<td>invitation_secret <em>String</em></td>
+<td>The secret fetched from the live notification (a string value).</td>
+</tr>
+</tbody></table>
+<h3 id='optional-arguments'>Optional arguments</h3><h4 id='for-the-direct-call'>For the direct call:</h4>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>User&rsquo;s access token</td>
 </tr>
 </tbody></table>
 
