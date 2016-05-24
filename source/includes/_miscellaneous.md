@@ -448,7 +448,6 @@ note | Add a note directly to the task (a string value that will become the cont
 
 ## Get item info
 
-
 > An example of getting an item's info:
 
 ```shell
@@ -627,3 +626,56 @@ Parameter | Description
 --------- | -----------
 token *String* | The user's token received on login.
 item_id *Integer* | The item's unique id.
+
+## Get project info
+
+> An example of getting a project's info:
+
+```shell
+$ curl https://todoist.com/API/v6/get_project \
+    -d token=0123456789abcdef0123456789abcdef01234567
+    -d project_id=128501470
+{
+  "id": 128501470,
+  "user_id": 1855589,
+  "name": "Project1",
+  "color": 1,
+  "indent": 1,
+  "item_order": 36,
+  "collapsed": 0,
+  "shared": false,
+  "is_deleted": 0,
+  "is_archived": 0,
+  "archived_date": null,
+  "archived_timestamp": 0
+}
+```
+
+```python
+>>> import todoist
+>>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
+>>> api.get_project(128501470)
+{
+  'id': 128501470,
+  'user_id': 1855589,
+  'name': 'Project1',
+  'color': 1,
+  'indent': 1,
+  'item_order': 36,
+  'collapsed': 0,
+  'shared': false,
+  'is_deleted': 0,
+  'is_archived': 0,
+  'archived_date': null,
+  'archived_timestamp': 0
+}
+```
+
+This function is used to extract detailed information about the project.
+
+### Required parameters
+
+Parameter | Description
+--------- | -----------
+token *String* | The user's token received on login.
+project_id *Integer* | The projects's unique id.

@@ -4275,6 +4275,64 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>The item&rsquo;s unique id.</td>
 </tr>
 </tbody></table>
+<h2 id='get-project-info'>Get project info</h2>
+<blockquote>
+<p>An example of getting a project&rsquo;s info:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/get_project <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
+    -d <span class="nv">project_id</span><span class="o">=</span>128501470
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 128501470,
+  <span class="s2">"user_id"</span>: 1855589,
+  <span class="s2">"name"</span>: <span class="s2">"Project1"</span>,
+  <span class="s2">"color"</span>: 1,
+  <span class="s2">"indent"</span>: 1,
+  <span class="s2">"item_order"</span>: 36,
+  <span class="s2">"collapsed"</span>: 0,
+  <span class="s2">"shared"</span>: <span class="nb">false</span>,
+  <span class="s2">"is_deleted"</span>: 0,
+  <span class="s2">"is_archived"</span>: 0,
+  <span class="s2">"archived_date"</span>: null,
+  <span class="s2">"archived_timestamp"</span>: 0
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_project</span><span class="p">(</span><span class="mi">128501470</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="s">'id'</span><span class="p">:</span> <span class="mi">128501470</span><span class="p">,</span>
+  <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
+  <span class="s">'name'</span><span class="p">:</span> <span class="s">'Project1'</span><span class="p">,</span>
+  <span class="s">'color'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
+  <span class="s">'collapsed'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'shared'</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'archived_date'</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="s">'archived_timestamp'</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>This function is used to extract detailed information about the project.</p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
+</tr>
+<tr>
+<td>project_id <em>Integer</em></td>
+<td>The projects&rsquo;s unique id.</td>
+</tr>
+</tbody></table>
 
         <h1 id='sharing-projects'>Sharing projects</h1>
 <p>Commands that are related to sharing projects will be described in this section.</p>
