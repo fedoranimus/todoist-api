@@ -3,7 +3,7 @@
 > On success, an HTTP 200 OK with a JSON object with the tasks found is returned:
 
 ```shell
-     { "due_date": "Wed 08 Oct 2014 20:59:59 +0000",
+     {
         "is_deleted": 0,
         "assigned_by_uid": 1855589,
         "is_archived": 0,
@@ -28,7 +28,7 @@
         "project_id": 128501470,
         "collapsed": 0,
         "date_string": "8 Oct" },
-      { "due_date": "Wed 08 Oct 2014 20:59:59 +0000",
+      {
         "is_deleted": 0,
         "assigned_by_uid": 1855589,
         "is_archived": 0,
@@ -59,7 +59,7 @@
     "query": "p1",
     "type": "priority",
     "data": [
-      { "due_date": null,
+      {
         "is_deleted": 0,
         "assigned_by_uid": 1855589,
         "is_archived": 0,
@@ -104,7 +104,6 @@
         'date_added': 'Tue 07 Oct 2014 06:11:06 +0000',
         'date_string': '8 Oct',
         'day_order': 0,
-        'due_date': 'Wed 08 Oct 2014 20:59:59 +0000',
         'has_notifications': 0,
         'id': 35825425,
         'in_history': 0,
@@ -129,7 +128,6 @@
         'date_added': 'Tue 07 Oct 2014 06:20:48 +0000',
         'date_string': '8 Oct',
         'day_order': 1,
-        'due_date': 'Wed 08 Oct 2014 20:59:59 +0000',
         'has_notifications': 0,
         'id': 35826737,
         'in_history': 0,
@@ -159,7 +157,6 @@
         'content': 'Task1',
         'date_added': 'Fri 26 Sep 2014 11:54:48 +0000',
         'date_string': '',
-        'due_date': None,
         'has_notifications': 0,
         'id': 33548400,
         'in_history': 0,

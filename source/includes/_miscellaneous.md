@@ -5,7 +5,7 @@
 > An example of getting the user's productivity stats:
 
 ```shell
-$ curl https://todoist.com/API/v6/get_productivity_stats \
+$ curl https://todoist.com/API/v7/get_productivity_stats \
     -d token=0123456789abcdef0123456789abcdef01234567
 {
   "karma_last_update": 50.0,
@@ -137,7 +137,7 @@ token | The user's token received on login (a string hash value).
 > An example of updating the user's notification settings
 
 ```shell
-$ curl https://todoist.com/API/v6/update_notification_setting \
+$ curl https://todoist.com/API/v7/update_notification_setting \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d notification_type=item_completed \
     -d service=email \
@@ -282,7 +282,7 @@ dont_notify | Whether notifications of this service should be notified (`1` to n
 > An example of getting the user's completed tasks
 
 ```shell
-$ curl https://todoist.com/API/v6/get_all_completed_items \
+$ curl https://todoist.com/API/v7/get_all_completed_items \
     -d token=0123456789abcdef0123456789abcdef01234567
 {
   "items": [
@@ -300,14 +300,12 @@ $ curl https://todoist.com/API/v6/get_all_completed_items \
     "128501470":
     { "color": 7,
       "collapsed": 0,
-      "archived_date": null,
       "indent": 1,
       "is_deleted": 0,
       "id": 128501470,
       "user_id": 1855589,
       "name": "Project1",
       "item_order": 36,
-      "archived_timestamp": 0,
       "is_archived": 0 }
   }
 }
@@ -336,11 +334,9 @@ $ curl https://todoist.com/API/v6/get_all_completed_items \
         'is_deleted': 0,
         'collapsed': 0,
         'inbox_project': True,
-        'archived_date': None,
         'item_order': 36,
         'is_archived': 0,
         'indent': 1,
-        'archived_timestamp': 0,
         'id': 128501470 }
   }
 }
@@ -370,10 +366,10 @@ annotate_notes | Return notes together with the completed items (a `true` or `fa
 > An example of adding a task:
 
 ```shell
-$ curl https://todoist.com/API/v6/add_item \
+$ curl https://todoist.com/API/v7/add_item \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d content=Task1
-{ "due_date": null,
+{
   "assigned_by_uid": 1855589,
   "is_archived": 0,
   "labels": [],
@@ -414,7 +410,6 @@ $ curl https://todoist.com/API/v6/add_item \
   'item_order': 1,
   'project_id': 128501411,
   'date_string': '',
-  'due_date': None,
   'assigned_by_uid': 1855589,
   'collapsed': 0,
   'indent': 1,
@@ -451,7 +446,7 @@ note | Add a note directly to the task (a string value that will become the cont
 > An example of getting an item's info:
 
 ```shell
-$ curl https://todoist.com/API/v6/get_item \
+$ curl https://todoist.com/API/v7/get_item \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d item_id=466
 {
@@ -473,7 +468,6 @@ $ curl https://todoist.com/API/v6/get_item \
     "is_archived": 0,
     "labels": [],
     "sync_id": null,
-    "all_day": false,
     "in_history": 0,
     "date_added": "Tue 22 Mar 2016 16:00:00 +0000",
     "checked": 0,
@@ -554,7 +548,6 @@ $ curl https://todoist.com/API/v6/get_item \
     'is_archived': 0,
     'labels': [],
     'sync_id': null,
-    'all_day': false,
     'in_history': 0,
     'date_added': 'Tue 22 Mar 2016 16:00:00 +0000',
     'checked': 0,
@@ -632,13 +625,12 @@ item_id *Integer* | The item's unique id.
 > An example of getting a project's info:
 
 ```shell
-$ curl https://todoist.com/API/v6/get_project \
+$ curl https://todoist.com/API/v7/get_project \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d project_id=128501682
 {
   "project" : {
     "id": 128501682,
-    "user_id": 1855589,
     "name": "Project1",
     "color": 1,
     "indent": 1,
@@ -647,8 +639,6 @@ $ curl https://todoist.com/API/v6/get_project \
     "shared": false,
     "is_deleted": 0,
     "is_archived": 0,
-    "archived_date": null,
-    "archived_timestamp": 0
   },
   "notes" : [
     {
@@ -673,7 +663,6 @@ $ curl https://todoist.com/API/v6/get_project \
 {
   "project" : {
     'id': 128501682,
-    'user_id': 1855589,
     'name': 'Project1',
     'color': 1,
     'indent': 1,
@@ -682,8 +671,6 @@ $ curl https://todoist.com/API/v6/get_project \
     'shared': false,
     'is_deleted': 0,
     'is_archived': 0,
-    'archived_date': null,
-    'archived_timestamp': 0
   },
   "notes" : [
     {

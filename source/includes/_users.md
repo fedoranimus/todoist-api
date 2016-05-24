@@ -11,15 +11,19 @@ A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typic
   "email": "me@xample.com",
   "full_name": "Example User",
   "inbox_project": 128501411,
-  "timezone": "Europe\/Athens",
-  "tz_offset": ["+03:00", 3, 0, 1],
+  "tz_info" : {
+     "timezone" : "Europe/Athens",
+     "minutes" : 0,
+     "hours" : 3,
+     "is_dst" : 1,
+     "gmt_string" : "+03:00"
+  },
   "start_page": "overdue, 7 days",
   "start_day": 1,
   "next_week": 1,
   "date_format": 0,
   "time_format": 0,
   "sort_order": 0,
-  "has_push_reminders": false,
   "default_reminder": null,
   "auto_reminder" : 30,
   "mobile_host": null,
@@ -38,11 +42,11 @@ A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typic
   "avatar_big" : "https://*.cloudfront.net/*_big.jpg",
   "avatar_s640" : "https://*.cloudfront.net/*_s640.jpg",
   "theme" : 0,
-  "guide_mode" : false,
-  "restriction" : 3,
-  "features" : {},
-  "beta": 0,
-  "is_dummy": 0,
+  "features" : {
+    "beta": 0,
+    "restriction" : 3,
+    "has_push_reminders": false,
+  },
   "join_date": "Wed 30 Apr 2014 13:24:38 +0000"
 }
 ```
@@ -56,15 +60,13 @@ token | The user's token that should be used to call the other API methods (a un
 email | The user's email (a string value representing a valid email address).
 full_name | The user's real name (a string value in a `Firstname Surname` format).
 inbox_project | The id of the user's `Inbox` project (a unique number).
-timezone | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`).
-tz_offset | User's timezone offset `[GMT_STRING, HOURS, MINUTES, IS_DAYLIGHT_SAVINGS_TIME]`.
+tz_info | The user's timezone (a dictionary structure), which includes the following elements: the `timezone` as a string value, the `hours` and `minutes` difference from GMT, whether daylight saving time applies denoted by `is_dst`, and a string value of the time difference from GMT that is `gmt_string`.
 start_page | The user's default view on Todoist. The start page can be one of the following: `_info_page` for the info page, `_blank` for a blank page, `_project_<PROJECT_ID>` for project with id `<PROJECT_ID>`, and `<ANY_QUERY>` to query after anything.
 start_day | The first day of the week (a number between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
 next_week | The day of the next week, that tasks will be postponed to (a number between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
 time_format | Whether to use a `24h` format such as `13:00` (if set to `0`) when displaying time, or a `12h` format such as `1:00pm` (if set to `1`).
 date_format | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
 sort_order | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
-has_push_reminders | Whether the user has push reminders enabled (a `true` or `false` value).
 default_reminder | The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
 auto_reminder | The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task (a number).
 mobile_number | The user's mobile number (a string value or `null` if not set).
@@ -83,11 +85,7 @@ avatar_medium | The link to a 60x60 pixels image of the user's avatar (a string 
 avatar_big | The link to a 195x195 pixels image of the user's avatar (a string URL).
 avatar_s640 | The link to a 640x640 pixels image of the user's avatar (a string URL).
 theme | The currently selected Todoist theme (a number between `0` and `10`).
-guide_mode | Whether guide is enabled or not (a `true` or `false` value).
-restriction | Used internally for any special restrictions that apply to the user.
-features | Used internally for any special features that apply to the user.
-beta | Whether the user is in beta status (where `1` is true and `0` is false).
-is_dummy | Whether the user is a dummy user (where `1` is true and `0` is false).
+features | Used internally for any special features that apply to the user.  Current special features include whether any special `restriction` applies to the user, whether the user is in `beta` status, whether the user `has_push_reminders` enabled, and whether `dateist_inline_disabled` that is inline date parsing support is disabled.
 join_date | The date when the user joined Todoist.
 
 
@@ -97,7 +95,7 @@ join_date | The date when the user joined Todoist.
 
 
 ```shell
-$ curl https://todoist.com/API/v6/register \
+$ curl https://todoist.com/API/v7/register \
     -d email=me@example.com \
     -d full_name=Example\ User \
     -d password=secret
@@ -107,15 +105,19 @@ $ curl https://todoist.com/API/v6/register \
   "email": "me@xample.com",
   "full_name": "Example User",
   "inbox_project": 128501411,
-  "timezone": "Europe\/Athens",
-  "tz_offset": ["+03:00", 3, 0, 1],
+  "tz_info": {
+    "timezone": "GMT +1:00",
+    "gmt_string": "+01:00",
+    "hours": 1,
+    "minutes": 0,
+    "is_dst": 0
+  },
   "start_page": "overdue, 7 days",
   "start_day": 1,
   "next_week": 1,
   "date_format": 0,
   "time_format": 0,
   "sort_order": 0,
-  "has_push_reminders": false,
   "default_reminder": null,
   "auto_reminder" : 30,
   "mobile_host": null,
@@ -134,11 +136,11 @@ $ curl https://todoist.com/API/v6/register \
   "avatar_big" : "https://*.cloudfront.net/*_big.jpg",
   "avatar_s640" : "https://*.cloudfront.net/*_s640.jpg",
   "theme" : 0,
-  "guide_mode" : false,
-  "restriction" : 3,
-  "features" : {},
-  "beta": 0,
-  "is_dummy": 0,
+  "features" : {
+    "beta": 0,
+    "restriction" : 3,
+    "has_push_reminders": false,
+  },
   "join_date": "Wed 30 Apr 2014 13:24:38 +0000"
 }
 ```
@@ -153,15 +155,19 @@ $ curl https://todoist.com/API/v6/register \
   'email': 'me@exampe.com',
   'full_name': 'Example User',
   'inbox_project': 128501411,
-  'timezone': 'Europe/Athens',
-  'tz_offset': ['+03:00', 3, 0, 1],
+  'tz_info': {
+    'timezone': 'GMT +1:00',
+    'gmt_string': '+01:00',
+    'hours': 1,
+    'minutes': 0,
+    'is_dst': 0
+  },
   'start_page': 'overdue, 7 days',
   'start_day': 1,
   'next_week': 1,
   'date_format': 0,
   'time_format': 0,
   'sort_order': 0,
-  'has_push_reminders': False,
   'default_reminder': None,
   'auto_reminder' : 30,
   'mobile_host': None,
@@ -180,11 +186,11 @@ $ curl https://todoist.com/API/v6/register \
   'avatar_big' : 'https://*.cloudfront.net/*_big.jpg',
   'avatar_s640' : 'https://*.cloudfront.net/*_s640.jpg',
   'theme' : 0,
-  'guide_mode' : False,
-  'restriction' : 3,
-  'features' : {},
-  'beta': 0,
-  'is_dummy': 0,
+  'features' : {
+    'beta': 0,
+    'restriction' : 3,
+    'has_push_reminders': false,
+  },
   'join_date': 'Wed 30 Apr 2014 13:24:38 +0000',
 }
 
@@ -212,7 +218,7 @@ timezone | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `
 > An example of deleting an existing user:
 
 ```shell
-$ curl https://todoist.com/API/v6/delete_user \
+$ curl https://todoist.com/API/v7/delete_user \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d current_password=secret
 "ok"
@@ -247,11 +253,11 @@ reason_for_delete | A reason for deletion, that is used for sending feedback bac
 > An example of updating the user's properties:
 
 ```shell
-$ curl https://todoist.com/API/v6/sync \
+$ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "user_update", "uuid": "52f83009-7e27-4b9f-9943-1c5e3d1e6889", "args": {"time_format": 0}}]'
 { ...
-  "SyncStatus": {"52f83009-7e27-4b9f-9943-1c5e3d1e6889": "ok"},
+  "sync_status": {"52f83009-7e27-4b9f-9943-1c5e3d1e6889": "ok"},
   ... }
 
 ```
@@ -288,11 +294,11 @@ theme | The currently selected Todoist theme (a number between `0` and `10`).
 ## Update karma goals
 
 ```shell
-$ curl https://todoist.com/API/v6/sync \
+$ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "update_goals", "uuid": "b9bbeaf8-9db6-452a-a843-a192f1542892", "args": {"vacation_mode": 1}}]'
 { ...
-  "SyncStatus": {"b9bbeaf8-9db6-452a-a843-a192f1542892": "ok"},
+  "sync_status": {"b9bbeaf8-9db6-452a-a843-a192f1542892": "ok"},
   ... }
 
 ```

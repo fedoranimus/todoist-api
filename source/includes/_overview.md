@@ -4,7 +4,7 @@ Todoist API (also known as the "Sync API") is specially designed for efficient d
 clients (e.g. our mobile apps) and Todoist.
 
 All Sync API requests share the same endpoint URL:
-**https://todoist.com/API/v6/sync**
+**https://todoist.com/API/v7/sync**
 
 Sync API requests should be made in HTTP POST (application/x-www-form-urlencoded). Sync API responses, including errors, will be returned in JSON.
 
@@ -14,48 +14,35 @@ Sync API supports the following features -
 
 - Incremental sync: You only retrieve data that are updated since the last time you performed a sync request.
 
-
-<br/><br/>
-<script type="text/javascript" src="//www.apichangelog.com/static/widget/follow.js" api="todoist"></script>
-
-
 ## Read resources
 
 > An example response of a read request.
 
 ```shell
-$ curl https://todoist.com/API/v6/sync \
+$ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d seq_no=0 \
+    -d sync_token=* \
     -d resource_types='["all"]'
 
 {
-  "Collaborators": [],
-  "DayOrdersTimestamp": "1344642991.1",
-  "Notes": [],
-  "Labels": [],
-  "UserId": 1855589,
-  "CollaboratorStates": [],
-  "DayOrders": {},
-  "LiveNotifications": [],
-  "seq_no": 2180537512,
-  "WebStaticVersion": 305,
-  "LiveNotificationsLastRead": 0,
-  "User": {
-    ...
-  },
-  "Filters": [
-    ...
-  ],
-  "Items": [
-    ...
-  ],
-  "Reminders": [
-    ...
-  ],
-  "Projects": [
-    ...
-  ],
+  "collaborators": [],
+  "collaborator_states": [],
+  "day_orders": { ... },
+  "day_orders_timestamp": "1344642991.1",
+  "filters": [ ... ],
+  "full_sync" : true,
+  "items": [ ... ],
+  "labels": [ ... ],
+  "live_notifications": [],
+  "live_notifications_last_read_id": 0,
+  "notes": [ ... ],
+  "project_notes": [ ... ],
+  "projects": [ ... ],
+  "reminders": [ ... ],
+  'settings_notifications: { ... },
+  "sync_token": "JLlaPv840mDQK4PLl6-hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS",
+  "temp_id_mapping": {},
+  "user": { ... }
 }
 ```
 
@@ -64,24 +51,24 @@ $ curl https://todoist.com/API/v6/sync \
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
 >>> api.sync(resource_types=['all'])
 {
-  'CollaboratorStates': [],
-  'Collaborators': [],
-  'DayOrders': {},
-  'DayOrdersTimestamp': '1344642991.1',
-  'LiveNotificationsLastRead': 0,
-  'UserId': 1855589,
-  'WebStaticVersion': 305,
-  'seq_no': 2180537512L,
-  'Filters': [],
-  'Items': [],
-  'Labels': [],
-  'LiveNotifications': [],
-  'Notes': [],
-  'Projects': [],
-  'Reminders': [],
-  'User': {
-    ...
-  }
+  'collaborators': [],
+  'collaborator_states': [],
+  'day_orders': { ... },
+  'day_orders_timestamp': '1344642991.1',
+  'filters': [ ... ],
+  'full_sync' : True,
+  'items': [ ... ],
+  'labels': [ ... ],
+  'live_notifications': [],
+  'live_notifications_last_read_id': 0,
+  'notes': [ ... ],
+  'project_notes': [ ... ],
+  'projects': [ ... ],
+  'reminders': [ ... ],
+  'settings_notifications: { ... },
+  'sync_token': 'JLlaPv840mDQK4PLl6-hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS',
+  'temp_id_mapping': {},
+  'user': { ... }
 }
 ```
 
@@ -95,8 +82,8 @@ To retrieve your user resources, make a Sync API request with the following para
 Parameter | Description
 --------- | -----------
 token *String* | User's API token
-seq_no *Integer* | Sequence number, used to allow client to perform incremental sync. Pass `0` to retrieve all active resource data. More details about this below.
-resource_types *JSON array of strings* | Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of avaialbe resource types: `labels`, `projects`,`items`, `notes`, `filters`, `reminders`, `locations`, `user`, `live_notifications`, `day_orders`, `collaborators`, `notification_settings`. You may use `all` to include all the resource types.
+sync_token *String* | A special string, used to allow the client to perform incremental sync.  Pass `*` to retrieve all active resource data.  More details about this below.
+resource_types *JSON array of strings* | Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of avaialbe resource types: `labels`, `projects`,`items`, `notes`, `filters`, `reminders`, `locations`, `user`, `live_notifications`, `collaborators`, `notification_settings`. You may use `all` to include all the resource types.
 
 
 
@@ -104,18 +91,18 @@ resource_types *JSON array of strings* | Used to specify what resources to fetch
 
 Parameter | Description
 --------- | -----------
-day_orders_timestamp | The Sync API requests return `DayOrdersTimestamp` that specifies when the day orders were last updated. If you omit `day_orders_timestamp` then none of them will be fetched. If you specify `day_orders_timestamp` then day orders will be returned if your timestamp is different from the servers. If you send `day_orders_timestamp` and the day orders have not been updated then the server won't return the `DayOrders` entry at all.
+day_orders_timestamp | The Sync API requests return `day_orders_timestamp` that specifies when the day orders were last updated. If you omit `day_orders_timestamp` then none of them will be fetched. If you specify `day_orders_timestamp` then day orders will be returned if your timestamp is different from the servers. If you send `day_orders_timestamp` and the day orders have not been updated then the server won't return the `day_orders` entry at all.
 
 
 
 ### Incremental sync (`seq_no` usage)
 
-The Sync API allows clients to retrieve only updated resources, and this is done by using the "sequence number", `seq_no`, in your Sync API request.
+The Sync API allows clients to retrieve only updated resources, and this is done by using the "synchronization token", `sync_token`, in your Sync API request.
 
-On your initial sync request, specify `seq_no=0` in your request, and all the user's active resource data will be returned.
-Todoist API server will also return a new `seq_no` in the Sync API response.
+On your initial sync request, specify `synt_token=*` in your request, and all the user's active resource data will be returned.
+Todoist API server will also return a new `sync_token` in the Sync API response.
 
-In your subsequent Sync request, use the `seq_no` that you received from your previous Sync response,
+In your subsequent Sync request, use the `sync_token` that you received from your previous sync response,
 and the Todoist API server will return only the updated resource data.
 
 
@@ -125,25 +112,26 @@ and the Todoist API server will return only the updated resource data.
 
 ### Response
 
-When the request succeeds, an HTTP 200 response will be returned with a JSON object containing the requested resources and also a new `seq_no`.
+When the request succeeds, an HTTP 200 response will be returned with a JSON object containing the requested resources and also a new `sync_token`.
 
 
 Field | Description
 ---- | -----------
-seq_no | A new sequence number. Used by the client in the next sync request to perform an incremental sync.
-User | A User object.
-Projects |  An array of Project objects.
-Items | A array of Item objects.
-Labels | An array of Label objects.
-Filters | A array of Filter objects.
-DayOrders |  A JSON object specifying the order of items in daily agenda. If `DayOrdersTimestamp` is sent and day orders have not been updated then `DayOrders` won't be returned at all!
-DayOrdersTimestamp | A string specifying when day orders were last updated. Use this to not fetch day orders on every request.
-Reminders |  An array of Reminder objects.
-Collaborators | A JSON object containing all collaborators for all shared projects. The `projects` field contains the list of all shared projects, where the user acts as one of collaborators.
-CollaboratorsStates | An array specifying the state of each collaborator in each project. The state can be invited, active, inactive, deleted.
-LiveNotifications | An array of LiveNotification objects
-LiveNotificationsLastRead | What is the last live notification the user has seen? This is used to implement unread notifications.
-SettingsNotifications | User's notification setting, used by clients that support native notifications.
+sync_token | A new synchronization token. Used by the client in the next sync request to perform an incremental sync.
+full_sync | Whether the response contains all data (a full synchronization) or just a part of them since the last sync.
+user | A user object.
+projects |  An array of project objects.
+items | A array of item objects.
+labels | An array of label objects.
+filters | A array of filter objects.
+day_orders |  A JSON object specifying the order of items in daily agenda. If `day_orders_timestamp` is sent and day orders have not been updated then `day_orders` won't be returned at all!
+day_orders_timestamp | A string specifying when day orders were last updated. Use this to not fetch day orders on every request.
+reminders |  An array of reminder objects.
+collaborators | A JSON object containing all collaborators for all shared projects. The `projects` field contains the list of all shared projects, where the user acts as one of collaborators.
+collaborators_states | An array specifying the state of each collaborator in each project. The state can be invited, active, inactive, deleted.
+live_notifications | An array of live_notification objects
+live_notifications_last_read | What is the last live notification the user has seen? This is used to implement unread notifications.
+settings_notifications | User's notification setting, used by clients that support native notifications.
 
 
 ## Write resources
@@ -151,14 +139,13 @@ SettingsNotifications | User's notification setting, used by clients that suppor
 > Example API call that creates a new project.
 
 ```shell
-$ curl https://todoist.com/API/v6/sync \
+$ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "project_add", "temp_id": "381e601f-0ef3-4ed6-bf95-58f896d1a314", "uuid": "ed1ce597-e4c7-4a88-ba48-e048d827c067", "args": {"name": "Project1", "item_order": 1, "indent": 1, "color": 1}}]'
 {
-  "UserId": 1855589,
-  "seq_no": 2180537513,
-  "SyncStatus": {"ed1ce597-e4c7-4a88-ba48-e048d827c067": "ok"},
-  "TempIdMapping": {"381e601f-0ef3-4ed6-bf95-58f896d1a314": 128501470}
+  "sync_token": "JLlaPv840mDQK4PLl6-hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS",
+  "sync_status": {"ed1ce597-e4c7-4a88-ba48-e048d827c067": "ok"},
+  "temp_id_mapping": {"381e601f-0ef3-4ed6-bf95-58f896d1a314": 128501470}
 }
 ```
 
@@ -167,10 +154,9 @@ $ curl https://todoist.com/API/v6/sync \
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
 >>> api.sync(commands=[{'type': 'project_add', 'temp_id': '381e601f-0ef3-4ed6-bf95-58f896d1a314', 'uuid': 'ed1ce597-e4c7-4a88-ba48-e048d827c067', 'args': {'name': 'Project1', 'item_order': 1, 'indent': 1, 'color': 1}}]
 {
-  'SyncStatus': {'ed1ce597-e4c7-4a88-ba48-e048d827c067': 'ok'},
-  'TempIdMapping': {'381e601f-0ef3-4ed6-bf95-58f896d1a314': 128501470},
-  'UserId': 1855589,
-  'seq_no': 2180537513L
+  'sync_status': {'ed1ce597-e4c7-4a88-ba48-e048d827c067': 'ok'},
+  'temp_id_mapping': {'381e601f-0ef3-4ed6-bf95-58f896d1a314': 128501470},
+  'sync_token': 'JLlaPv840mDQK4PLl6-hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS'
 }
 ```
 
@@ -200,7 +186,7 @@ temp_id *String* | Temporary resource ID, Optional. Only specified for commands 
 
 API clients should generate a unique string ID for each command and specify it in the `uuid` field. The Command UUID will be used for two purposes:
 
-1. Command result mapping: Each command's result will be stored in the `SyncStatus` field of the response JSON object. The `SyncStatus` object has its key mapped to a command's `uuid` and its value containing the result of
+1. Command result mapping: Each command's result will be stored in the `sync_status` field of the response JSON object. The `sync_status` object has its key mapped to a command's `uuid` and its value containing the result of
 a command.
 
 
@@ -255,15 +241,15 @@ The result of command executions will be stored in the following response JSON o
 
 Data | Description
 ---- | -----------
-TempIdMapping *Object* | A dictionary object that maps temporary resource ids to real resource ids.
-SyncStatus *Object* | A dictionary object containing result of each command execution. The key will be the command's `uuid` field and the value will be the result status of the command execution.
+temp_id_mapping *Object* | A dictionary object that maps temporary resource ids to real resource ids.
+sync_status *Object* | A dictionary object containing result of each command execution. The key will be the command's `uuid` field and the value will be the result status of the command execution.
 
 
 > An example of a single request sync return value:
 
 ```json
 {
-  "SyncStatus": {"863aca2c-65b4-480a-90ae-af160129abbd": "ok"}
+  "sync_status": {"863aca2c-65b4-480a-90ae-af160129abbd": "ok"}
 }
 ```
 
@@ -271,7 +257,7 @@ SyncStatus *Object* | A dictionary object containing result of each command exec
 
 ```json
 {
-  "SyncStatus": {
+  "sync_status": {
     "32eaa699-e9d7-47ed-91ea-e58d475791f1": "ok",
     "bec5b356-3cc1-462a-9887-fe145e3e1ebf": {"error_code": 15, "error": "Invalid temporary id"}
   }
@@ -282,7 +268,7 @@ SyncStatus *Object* | A dictionary object containing result of each command exec
 
 ```json
 {
-  "SyncStatus": {
+  "sync_status": {
     "66386321-fb87-4f95-9dfe-7bf5c3823e85" : {
         "128501470": "ok",
         "128501607": {"error_code": 20, "error": "Project not found"}
@@ -291,13 +277,13 @@ SyncStatus *Object* | A dictionary object containing result of each command exec
 }
 ```
 
-The status result of each command execution is in the `SyncStatus` dictionary object. The key is a command `uuid` and the value will be the result status of the command execution. There are two possible values for each command status -
+The status result of each command execution is in the `sync_status` dictionary object. The key is a command `uuid` and the value will be the result status of the command execution. There are two possible values for each command status -
 
 - an "ok" string which signals success of the command
 
 - an error object containings error information of a command.
 
-Please see the adjacent code examples for the possible format of the `SyncStatus`.
+Please see the adjacent code examples for the possible format of the `sync_status`.
 
 
 
@@ -344,61 +330,3 @@ $ pip install todoist-python
 [Library doc](http://todoist-python.readthedocs.org/en/latest/)
 
 [PyPI](https://pypi.python.org/pypi/todoist-python)
-
-
-## v5 to v6 migration guide
-
-The *Todoist API* is currently in version 6, and it replaces the older *Standard API* and *Sync API*, both of which were considered as version 5.
-
-In this section we document all the changes between the two different versions of our API, in order to make it easier to upgrade your client code.
-
-### The old APIs
-
-Both the *Standard API* and the *Sync API* are considered deprecated since the release of the current *Todoist API*, which means that we are recommending everyone to migrate their clients to use our new API.  For the time being, the old APIs will still be available, and while there is no plan to put an end to them anytime soon, it must be noted that we will not be extending them either.
-
-The [Standard and Sync API reference documentation](https://todoist.com/API/deprecated) will still be available, but from a different location than before, as the old URLs are now redirecting to the present documentation.
-
-### The new API
-
-The new *Todoist API* is actually based on the old *Sync API*, but it was further simplified, while at the same time a lot of effort went into improving different aspects of it.
-
-Some very few calls from the old *Standard API* are now part of the new *Todoist API*, and they are basically those that provide some needed functionality that is unrelated to the user's data and objects.
-
-Another addition is the OAuth support, which means that applications can now use the OAuth2 protocol to obtain a user authorized API access token.
-
-Here follows a list of the most major changes from the old *Sync API*:
-
-* The `get`, `sync` and `syncAndGetUpdated` API calls, were combined into one call, that is called `sync`, and which can be used to fetch and send data.
-* All the `sync` call commands are sending back to client return values, including the bulk commands that operate on multiple items at once.
-* A new error reporting subsystem was added, and now each error in one of the API calls or any of the commands of the `sync` call, is reported back as a JSON object, and it includes details on what went wrong and why.
-* A new input validation mechanism was implemented, and missing arguments or invalid input values are reported back as JSON errors.
-* Special care has been taken to improve the consistency of each the `sync` call commands with each other, for a more unified experience.
-* UUIDs are now the default way for specifying temporary IDs and timestamps for each `sync` call and its commands, which makes it easier for clients to overcome the problem of uniqueness between requests and objects.
-* And while it is not visible, the new API had also had its internals reworked in many places, something important in order to make it faster and less error-prone to introduce new functionality.
-
-A more detailed list of minor changes are included here, because they might be useful to those migrating from the old *Sync API*:
-
-* The `sync` call `items_to_sync` argument has been renamed to `commands`.
-* The `sync` call `resource_types` argument is now required, and also by default no data are returned, unless some resources have been specified with this argument.
-* The `sync` call has a new required argument, the `seq_no_global`, which should be defined in the same way as the `seq_no` argument.
-* The `sync` call `include_notification_settings` argument has been removed, and instead the `notification_settings` resource should be included in the `resource_types` argument.
-* The `sync` call `resource_types` argument has a new resource called `user` that includes the accounts' details in the returned data.
-* The `sync` call `resource_types` argument has a new resource called `all` that makes it possible to fetch all types of objects, ie. all the user data.
-* The `timestamp` parameter of the `sync` call `commands` argument has been replaced by the `uuid` parameter which accepts UUIDs.
-* The `temp_id` parameter of the `sync` call `commands` argument is now accepting UUIDs.
-* The `SyncStatus` list is included in the extra data returned by the `sync` call, in addition to the `TempIdMapping` list.
-* The server now returns different HTTP status codes to indicate whether a request was successful or not and why.
-* The `project_add` command of the `sync` call now accepts `project_id` as a parameter for adding project notes, in addition to `item_id` for adding item notes.
-* The `item_uncomplete_update_meta` command of the `sync` call was removed, and it was replaced by the `restore_state` parameter that can be defined in the `sync` call `item_uncomplete` command.
-* The `label_register` command of the `sync` call was renamed to `label_add`.
-* The `label_update_orders` command was added in the `sync` call, and it can be used to update multiple label orders at once.
-* The `note_id` parameter of the `note_update` and `note_delete` commands of the `sync` call was renamed to `id`.
-* The `update_goals` command was added in the `sync` call, and it can be used to update the user's karma goals.
-
-For those calls that were kept from the old *Standard API*, here follows a list of the changes that took place:
-
-* The `loginWithGoogle`, `uploadFile`, `deleteUser`, `getRedirectLink`, `getProductivityStats`, `updateNotificationSetting`, `getAllCompletedTasks` and `addItem` calls were renamed to `login_with_google`, `upload_file`, `delete_user`, `get_redirect_link`, `get_productivity_stats`, `update_notification_setting`, `get_all_completed_items` and `add_item` respectively.
-* The renamed `get_all_completed_items` call, now takes two additional parameters, `to_date` and `offset`, in order to better select which completed tasks to access.
-
-Finally, and although this affects both the new API and the older APIs, we would nonetheless like to mention here, that due to security reasons, support for callbacks (JSONP) was removed.  This was used for overcoming the same-origin policy of modern browsers, and we can only suggest that a utility like [cURL](http://curl.haxx.se) is used to access our APIs instead.
-

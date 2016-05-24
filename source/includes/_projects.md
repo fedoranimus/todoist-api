@@ -5,7 +5,6 @@
 ```json
 {
   "id": 128501470,
-  "user_id": 1855589,
   "name": "Project1",
   "color": 1,
   "indent": 1,
@@ -14,8 +13,6 @@
   "shared": false,
   "is_deleted": 0,
   "is_archived": 0,
-  "archived_date": null,
-  "archived_timestamp": 0
 }
 ```
 
@@ -24,7 +21,6 @@
 Property | Description
 -------- | -----------
 id *Integer* | The id of the project.
-user_id *Integer* | The id of the user who owns the project.
 name  *String* | The name of the project.
 color *Integer* | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).  The color codes corresponding to these numbers are: `#95ef63`, `#ff8581`, `#ffc471`, `#f9ec75`, `#a8c8e4`, `#d2b8a3`, `#e2a8e4`, `#cccccc`, `#fb886e`, `#ffcc00`, `#74e8d3`, `#3bd5fb`.  And for the additional colors of the premium users: `#dc4fad`, `#ac193d`, `#d24726`, `#82ba00`, `#03b3b2`, `#008299`, `#5db2ff`, `#0072c6`, `#000000`, `#777777`.
 indent *Integer* | The indent of the item (a number between `1` and `4`, where `1` is top-level).
@@ -33,8 +29,6 @@ collapsed  *Integer* | Whether the project's sub-projects are collapsed (where `
 shared  *Boolean* | Whether the project is shared (a `true` or `false` value).
 is_deleted *Integer* | Whether the project is marked as deleted (where `1` is true and `0` is false).
 is_archived *Integer* | Whether the project is marked as archived (where `1` is true and `0` is false).
-archived_date *String* | The date when the project was archived (`null` if not set).
-archived_timestamp *Integer* | The timestamp of when the project was archived (`0` if not set).
 inbox_project *Boolean* | Whether the project is `Inbox` (`true` or otherwise this property is not sent).
 team_inbox *Boolean* | Whether the project is `TeamInbox` (`true` or otherwise this property is not sent).
 
@@ -43,12 +37,12 @@ team_inbox *Boolean* | Whether the project is `TeamInbox` (`true` or otherwise t
 
 
 ```shell
-$ curl https://todoist.com/API/v6/sync \
+$ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "project_add", "temp_id": "4ff1e388-5ca6-453a-b0e8-662ebf373b6b", "uuid": "32774db9-a1da-4550-8d9d-910372124fa4", "args": {"name": "Project4"}}]'
 { ...
-  "SyncStatus": {"32774db9-a1da-4550-8d9d-910372124fa4": "ok"},
-  "TempIdMapping": {"4ff1e388-5ca6-453a-b0e8-662ebf373b6b": 128501815},
+  "sync_status": {"32774db9-a1da-4550-8d9d-910372124fa4": "ok"},
+  "temp_id_mapping": {"4ff1e388-5ca6-453a-b0e8-662ebf373b6b": 128501815},
   ... }
 ```
 
@@ -79,11 +73,11 @@ item_order *Integer* | Project's order in the project list (a number, where the 
 
 
 ```shell
-$ curl https://todoist.com/API/v6/sync \
+$ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_update", "uuid": "1ca42128-d12f-4a66-8413-4d6ff2838fde", "args": {"id": 128501815, "indent": 2}}]'
 { ...
-  "SyncStatus": {"1ca42128-d12f-4a66-8413-4d6ff2838fde": "ok"},
+  "sync_status": {"1ca42128-d12f-4a66-8413-4d6ff2838fde": "ok"},
   ... }
 ```
 
@@ -119,11 +113,11 @@ collapsed  *Integer* | Whether the project's sub-projects are collapsed (where `
 
 ```shell
 
-$ curl https://todoist.com/API/v6/sync \
+$ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_delete", "uuid": "367182ba-125f-4dbb-bff6-c1343fd751e4", "args": {"ids": [128501815]}}]'
 { ...
-  "SyncStatus": {"367182ba-125f-4dbb-bff6-c1343fd751e4": {"128501815": "ok"}},
+  "sync_status": {"367182ba-125f-4dbb-bff6-c1343fd751e4": {"128501815": "ok"}},
   ... }
 ```
 
@@ -148,11 +142,11 @@ ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projec
 
 
 ```shell
-$ curl https://todoist.com/API/v6/sync \
+$ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_archive", "uuid": "bbec1a60-2bdd-48ac-a623-c8eb968e1697", "args": {"ids": [128501682]}}]'
 { ...
-  "SyncStatus": {"bbec1a60-2bdd-48ac-a623-c8eb968e1697": {"128501682": "ok"}},
+  "sync_status": {"bbec1a60-2bdd-48ac-a623-c8eb968e1697": {"128501682": "ok"}},
   ... }
 ```
 
@@ -176,11 +170,11 @@ ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projec
 
 
 ```shell
-$ curl https://todoist.com/API/v6/sync \
+$ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_unarchive", "uuid": "7d86f042-e098-4fa6-9c1f-a61fe8c39d74", "args": {"ids": [128501682]}}]'
 { ...
-  "SyncStatus": {"7d86f042-e098-4fa6-9c1f-a61fe8c39d74": {"128501682": "ok"}},
+  "sync_status": {"7d86f042-e098-4fa6-9c1f-a61fe8c39d74": {"128501682": "ok"}},
   ... }
 ```
 
@@ -204,11 +198,11 @@ ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projec
 
 
 ```shell
-$ curl https://todoist.com/API/v6/sync \
+$ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_update_orders_indents", "uuid": "bf0855a3-0138-4b76-b895-88cad8db9edc", "args": {"ids_to_orders_indents": {"128501470": [42, 1], "128501607": [43, 1]}}}]'
 { ...
-  "SyncStatus": {
+  "sync_status": {
     "bf0855a3-0138-4b76-b895-88cad8db9edc": {
       "128501470": "ok",
       "128501607": "ok"

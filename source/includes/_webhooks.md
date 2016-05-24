@@ -70,7 +70,6 @@ X-Todoist-Hmac-SHA256: UEEq9si3Vf9yRSrLthbpazbb69kP9+CZQ7fXmVyjhPs=
     "event_name": "item:added",
     "user_id": 1234,
     "event_data": {
-      "due_date": null,
       "day_order": -1,
       "assigned_by_uid": 1855589,
       "is_archived": 0,
