@@ -634,44 +634,79 @@ item_id *Integer* | The item's unique id.
 ```shell
 $ curl https://todoist.com/API/v6/get_project \
     -d token=0123456789abcdef0123456789abcdef01234567
-    -d project_id=128501470
+    -d project_id=128501682
 {
-  "id": 128501470,
-  "user_id": 1855589,
-  "name": "Project1",
-  "color": 1,
-  "indent": 1,
-  "item_order": 36,
-  "collapsed": 0,
-  "shared": false,
-  "is_deleted": 0,
-  "is_archived": 0,
-  "archived_date": null,
-  "archived_timestamp": 0
-}
-```
+  "project" : {
+    "id": 128501682,
+    "user_id": 1855589,
+    "name": "Project1",
+    "color": 1,
+    "indent": 1,
+    "item_order": 36,
+    "collapsed": 0,
+    "shared": false,
+    "is_deleted": 0,
+    "is_archived": 0,
+    "archived_date": null,
+    "archived_timestamp": 0
+  },
+  "notes" : [
+    {
+      "is_deleted": 0,
+      "is_archived": 0,
+      "file_attachment": null,
+      "content": "Note1",
+      "posted_uid": 1,
+      "uids_to_notify": null,
+      "project_id": 128501682,
+      "id": 17299568,
+      "posted": "Wed 18 May 2016 16:45:00 +0000"
+    },
+  ]
+}```
 
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.get_project(128501470)
+>>> api.get_project(128501682)
 {
-  'id': 128501470,
-  'user_id': 1855589,
-  'name': 'Project1',
-  'color': 1,
-  'indent': 1,
-  'item_order': 36,
-  'collapsed': 0,
-  'shared': false,
-  'is_deleted': 0,
-  'is_archived': 0,
-  'archived_date': null,
-  'archived_timestamp': 0
+  "project" : {
+    'id': 128501682,
+    'user_id': 1855589,
+    'name': 'Project1',
+    'color': 1,
+    'indent': 1,
+    'item_order': 36,
+    'collapsed': 0,
+    'shared': false,
+    'is_deleted': 0,
+    'is_archived': 0,
+    'archived_date': null,
+    'archived_timestamp': 0
+  },
+  "notes" : [
+    {
+      'is_deleted': 0,
+      'is_archived': 0,
+      'file_attachment': null,
+      'content': 'Note1',
+      'posted_uid': 1,
+      'uids_to_notify': null,
+      'project_id': 128501682,
+      'id': 17299568,
+      'posted': 'Wed 18 May 2016 16:45:00 +0000'
+    },
+  ]
 }
 ```
 
-This function is used to extract detailed information about the project.
+This function is used to extract detailed information about the project, including all the notes.
+
+It's especially important, because on initial load we return back no more than
+10 last notes, and if client wants to get more, they can be downloaded with
+`get_project` endpoint.
+
+It returns a JSON object with `project` and `notes` attributes.
 
 ### Required parameters
 

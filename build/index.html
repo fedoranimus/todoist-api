@@ -4281,42 +4281,79 @@ to history), recurring task is moved forward (due date is updated).</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v6/get_project <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
-    -d <span class="nv">project_id</span><span class="o">=</span>128501470
+    -d <span class="nv">project_id</span><span class="o">=</span>128501682
 <span class="o">{</span>
-  <span class="s2">"id"</span>: 128501470,
-  <span class="s2">"user_id"</span>: 1855589,
-  <span class="s2">"name"</span>: <span class="s2">"Project1"</span>,
-  <span class="s2">"color"</span>: 1,
-  <span class="s2">"indent"</span>: 1,
-  <span class="s2">"item_order"</span>: 36,
-  <span class="s2">"collapsed"</span>: 0,
-  <span class="s2">"shared"</span>: <span class="nb">false</span>,
-  <span class="s2">"is_deleted"</span>: 0,
-  <span class="s2">"is_archived"</span>: 0,
-  <span class="s2">"archived_date"</span>: null,
-  <span class="s2">"archived_timestamp"</span>: 0
+  <span class="s2">"project"</span> : <span class="o">{</span>
+    <span class="s2">"id"</span>: 128501682,
+    <span class="s2">"user_id"</span>: 1855589,
+    <span class="s2">"name"</span>: <span class="s2">"Project1"</span>,
+    <span class="s2">"color"</span>: 1,
+    <span class="s2">"indent"</span>: 1,
+    <span class="s2">"item_order"</span>: 36,
+    <span class="s2">"collapsed"</span>: 0,
+    <span class="s2">"shared"</span>: <span class="nb">false</span>,
+    <span class="s2">"is_deleted"</span>: 0,
+    <span class="s2">"is_archived"</span>: 0,
+    <span class="s2">"archived_date"</span>: null,
+    <span class="s2">"archived_timestamp"</span>: 0
+  <span class="o">}</span>,
+  <span class="s2">"notes"</span> : <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"is_deleted"</span>: 0,
+      <span class="s2">"is_archived"</span>: 0,
+      <span class="s2">"file_attachment"</span>: null,
+      <span class="s2">"content"</span>: <span class="s2">"Note1"</span>,
+      <span class="s2">"posted_uid"</span>: 1,
+      <span class="s2">"uids_to_notify"</span>: null,
+      <span class="s2">"project_id"</span>: 128501682,
+      <span class="s2">"id"</span>: 17299568,
+      <span class="s2">"posted"</span>: <span class="s2">"Wed 18 May 2016 16:45:00 +0000"</span>
+    <span class="o">}</span>,
+  <span class="o">]</span>
+<span class="o">}</span><span class="sb">```</span>
+
+<span class="sb">```</span>python
+<span class="gp">&gt;&gt;&gt; </span>import todoist
+<span class="gp">&gt;&gt;&gt; </span>api <span class="o">=</span> todoist.TodoistAPI<span class="o">(</span><span class="s1">'0123456789abcdef0123456789abcdef01234567'</span><span class="o">)</span>
+<span class="gp">&gt;&gt;&gt; </span>api.get_project<span class="o">(</span>128501682<span class="o">)</span>
+<span class="o">{</span>
+  <span class="s2">"project"</span> : <span class="o">{</span>
+    <span class="s1">'id'</span>: 128501682,
+    <span class="s1">'user_id'</span>: 1855589,
+    <span class="s1">'name'</span>: <span class="s1">'Project1'</span>,
+    <span class="s1">'color'</span>: 1,
+    <span class="s1">'indent'</span>: 1,
+    <span class="s1">'item_order'</span>: 36,
+    <span class="s1">'collapsed'</span>: 0,
+    <span class="s1">'shared'</span>: <span class="nb">false</span>,
+    <span class="s1">'is_deleted'</span>: 0,
+    <span class="s1">'is_archived'</span>: 0,
+    <span class="s1">'archived_date'</span>: null,
+    <span class="s1">'archived_timestamp'</span>: 0
+  <span class="o">}</span>,
+  <span class="s2">"notes"</span> : <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s1">'is_deleted'</span>: 0,
+      <span class="s1">'is_archived'</span>: 0,
+      <span class="s1">'file_attachment'</span>: null,
+      <span class="s1">'content'</span>: <span class="s1">'Note1'</span>,
+      <span class="s1">'posted_uid'</span>: 1,
+      <span class="s1">'uids_to_notify'</span>: null,
+      <span class="s1">'project_id'</span>: 128501682,
+      <span class="s1">'id'</span>: 17299568,
+      <span class="s1">'posted'</span>: <span class="s1">'Wed 18 May 2016 16:45:00 +0000'</span>
+    <span class="o">}</span>,
+  <span class="o">]</span>
 <span class="o">}</span>
 </code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_project</span><span class="p">(</span><span class="mi">128501470</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="s">'id'</span><span class="p">:</span> <span class="mi">128501470</span><span class="p">,</span>
-  <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
-  <span class="s">'name'</span><span class="p">:</span> <span class="s">'Project1'</span><span class="p">,</span>
-  <span class="s">'color'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
-  <span class="s">'collapsed'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'shared'</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'archived_date'</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-  <span class="s">'archived_timestamp'</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">}</span>
-</code></pre>
 
-<p>This function is used to extract detailed information about the project.</p>
+<p>This function is used to extract detailed information about the project, including all the notes.</p>
+
+<p>It&rsquo;s especially important, because on initial load we return back no more than
+10 last notes, and if client wants to get more, they can be downloaded with
+<code class="prettyprint">get_project</code> endpoint.</p>
+
+<p>It returns a JSON object with <code class="prettyprint">project</code> and <code class="prettyprint">notes</code> attributes.</p>
 <h3 id='required-parameters'>Required parameters</h3>
 <table><thead>
 <tr>
