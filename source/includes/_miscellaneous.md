@@ -663,7 +663,8 @@ $ curl https://todoist.com/API/v6/get_project \
       "posted": "Wed 18 May 2016 16:45:00 +0000"
     },
   ]
-}```
+}
+```
 
 ```python
 >>> import todoist
