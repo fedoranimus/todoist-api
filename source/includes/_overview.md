@@ -14,6 +14,8 @@ Sync API supports the following features -
 
 - Incremental sync: You only retrieve data that are updated since the last time you performed a sync request.
 
+**Note that documentation for the older [Todoist API v6](https://developer.todoist.com/v6/) is still available, but we strongly recommend you use or migrate your code to the current versin, as the v6 may be deprecated in the near future.**
+
 ## Read resources
 
 > An example response of a read request.
