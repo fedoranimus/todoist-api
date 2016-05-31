@@ -191,7 +191,7 @@ clients (e.g. our mobile apps) and Todoist.</p>
 <td>The Sync API requests return <code class="prettyprint">day_orders_timestamp</code> that specifies when the day orders were last updated. If you omit <code class="prettyprint">day_orders_timestamp</code> then none of them will be fetched. If you specify <code class="prettyprint">day_orders_timestamp</code> then day orders will be returned if your timestamp is different from the servers. If you send <code class="prettyprint">day_orders_timestamp</code> and the day orders have not been updated then the server won&rsquo;t return the <code class="prettyprint">day_orders</code> entry at all.</td>
 </tr>
 </tbody></table>
-<h3 id='incremental-sync-code-classprettyprintseq_nocode-usage'>Incremental sync (<code class="prettyprint">seq_no</code> usage)</h3>
+<h3 id='incremental-sync'>Incremental sync</h3>
 <p>The Sync API allows clients to retrieve only updated resources, and this is done by using the &ldquo;synchronization token&rdquo;, <code class="prettyprint">sync_token</code>, in your Sync API request.</p>
 
 <p>On your initial sync request, specify <code class="prettyprint">synt_token=*</code> in your request, and all the user&rsquo;s active resource data will be returned.

@@ -97,7 +97,7 @@ day_orders_timestamp | The Sync API requests return `day_orders_timestamp` that 
 
 
 
-### Incremental sync (`seq_no` usage)
+### Incremental sync
 
 The Sync API allows clients to retrieve only updated resources, and this is done by using the "synchronization token", `sync_token`, in your Sync API request.
 
