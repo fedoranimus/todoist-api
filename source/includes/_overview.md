@@ -1,5 +1,7 @@
 # API Overview
 
+**Note, that there is a newer version of this documentation for the [Todoist API v7](http://developer.todoist.com), and we strongly recommended that you use it or migrate your code to it, as the v6 may be deprecated in the near future.**
+
 Todoist API (also known as the "Sync API") is specially designed for efficient data sync between
 clients (e.g. our mobile apps) and Todoist.
 
