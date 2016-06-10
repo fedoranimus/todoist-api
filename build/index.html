@@ -5208,14 +5208,14 @@ to history), recurring task is moved forward (due date is updated).</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "live_notifications_mark_as_read", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8", "args": {"seq_no": 1234}}]'</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "live_notifications_set_last_read", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8", "args": {"id": 1234}}]'</span>
 <span class="o">{</span> ...
   <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"588b9ccf-29c0-4837-8bbc-fc858c0c6df8"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">live_notifications</span><span class="o">.</span><span class="n">mark_as_read</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">live_notifications</span><span class="o">.</span><span class="n">set_last_read</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
@@ -5228,8 +5228,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>seq_no</td>
-<td>The sequence number of the last read notification (a number).</td>
+<td>id</td>
+<td>The id of the last read notification (a number or <code class="prettyprint">0</code> or <code class="prettyprint">null</code> to mark all read).</td>
 </tr>
 </tbody></table>
 

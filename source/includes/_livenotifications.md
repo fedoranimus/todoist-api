@@ -327,7 +327,7 @@ account_name | Business account (company) name.
 ```shell
 $ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d commands='[{"type": "live_notifications_mark_as_read", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8", "args": {"seq_no": 1234}}]'
+    -d commands='[{"type": "live_notifications_set_last_read", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8", "args": {"id": 1234}}]'
 { ...
   "sync_status": {"588b9ccf-29c0-4837-8bbc-fc858c0c6df8": "ok"},
   ... }
@@ -336,7 +336,7 @@ $ curl https://todoist.com/API/v7/sync \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.live_notifications.mark_as_read(1234)
+>>> api.live_notifications.set_last_read(1234)
 >>> api.commit()
 ```
 
@@ -346,4 +346,4 @@ Mark the last read live notification.
 
 Argument | Description
 -------- | -----------
-seq_no | The sequence number of the last read notification (a number).
+id | The id of the last read notification (a number or `0` or `null` to mark all read).
