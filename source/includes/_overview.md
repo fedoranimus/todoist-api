@@ -23,7 +23,7 @@ Sync API supports the following features -
 ```shell
 $ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
-    -d sync_token=* \
+    -d sync_token='*' \
     -d resource_types='["all"]'
 
 {
