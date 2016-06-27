@@ -361,6 +361,53 @@ until | Return items with a completed date same or older than `until` (a string 
 since | Return items with a completed date newer than `since` (a string value formatted as `2007-4-29T10:13`).
 annotate_notes | Return notes together with the completed items (a `true` or `false` value).
 
+## Get archived projects
+
+> An example of getting the user's archived projects
+
+```shell
+$ curl https://todoist.com/API/v7/projects/get_archived \
+    -d token=0123456789abcdef0123456789abcdef01234567
+[
+  {
+    "id" : 150977840,
+    "name" : "Project1",
+    "item_order" : 1,
+    "indent" : 1,
+    "color" : 7,
+    "collapsed" : 0
+    "is_archived" : 1,
+    "is_deleted" : 0,
+  }
+]
+```
+
+```python
+>>> import todoist
+>>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
+>>> api.get_archived_projects()
+[
+  {
+    'id' : 150977840,
+    'name' : 'Project1',
+    'item_order' : 1,
+    'indent' : 1,
+    'color' : 7,
+    'collapsed' : 0
+    'is_archived' : 1,
+    'is_deleted' : 0,
+  }
+]
+```
+
+Get the user's archived projects.
+
+### Required parameters
+
+Parameter | Description
+--------- | -----------
+token | The user's token received on login (a string hash value).
+
 ## Add item
 
 > An example of adding a task:

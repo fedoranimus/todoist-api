@@ -3859,6 +3859,55 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>Return notes together with the completed items (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
 </tr>
 </tbody></table>
+<h2 id='get-archived-projects'>Get archived projects</h2>
+<blockquote>
+<p>An example of getting the user&rsquo;s archived projects</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/projects/get_archived <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">"id"</span> : 150977840,
+    <span class="s2">"name"</span> : <span class="s2">"Project1"</span>,
+    <span class="s2">"item_order"</span> : 1,
+    <span class="s2">"indent"</span> : 1,
+    <span class="s2">"color"</span> : 7,
+    <span class="s2">"collapsed"</span> : 0
+    <span class="s2">"is_archived"</span> : 1,
+    <span class="s2">"is_deleted"</span> : 0,
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_archived_projects</span><span class="p">()</span>
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s">'id'</span> <span class="p">:</span> <span class="mi">150977840</span><span class="p">,</span>
+    <span class="s">'name'</span> <span class="p">:</span> <span class="s">'Project1'</span><span class="p">,</span>
+    <span class="s">'item_order'</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'indent'</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'color'</span> <span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="s">'collapsed'</span> <span class="p">:</span> <span class="mi">0</span>
+    <span class="s">'is_archived'</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'is_deleted'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
+
+<p>Get the user&rsquo;s archived projects.</p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
+</tr>
+</tbody></table>
 <h2 id='add-item'>Add item</h2>
 <blockquote>
 <p>An example of adding a task:</p>
