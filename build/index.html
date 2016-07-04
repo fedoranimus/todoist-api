@@ -4495,6 +4495,306 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </tbody></table>
 
+        <h1 id='activity'>Activity</h1>
+<p>The activity log makes it easy to see everything that is happening across projects, items and notes.</p>
+
+<p><em>Note that, the activity log is only available for Todoist Premium.</em></p>
+<h3 id='logged-events'>Logged events</h3>
+<p>Currently the official Todoist clients present only the most important events that most users are interested in, but actually everything that has to do with projects, items and notes, is stored in our DB, and can be accessed by using our API.</p>
+
+<p>The following events are logged for items:</p>
+
+<ul>
+<li>items added</li>
+<li>items updated (only changes to <code class="prettyprint">content</code>, <code class="prettyprint">due_data</code> and <code class="prettyprint">responsible_uid</code>)</li>
+<li>items deleted</li>
+<li>items completed</li>
+<li>items uncompleted</li>
+</ul>
+
+<p>The following events are logged for notes:</p>
+
+<ul>
+<li>notes added</li>
+<li>notes updated (only changes to <code class="prettyprint">content</code> or <code class="prettyprint">file_name</code> if the former is empty)</li>
+<li>notes deleted</li>
+</ul>
+
+<p>The following events are logged for projects:</p>
+
+<ul>
+<li>projects added</li>
+<li>projects updated (only changes to <code class="prettyprint">name</code>)</li>
+<li>projects deleted</li>
+<li>projects archived</li>
+<li>projects unarchived</li>
+<li>projects shared</li>
+<li>projects left</li>
+</ul>
+<h3 id='event-properties'>Event properties</h3>
+<blockquote>
+<p>An example of an activity log event:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span> : 955333384,
+  <span class="s2">"object_type"</span> : <span class="s2">"item"</span>,
+  <span class="s2">"object_id"</span> : 101157918,
+  <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
+  <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:24:59 +0000"</span>,
+  <span class="s2">"parent_project_id"</span> : 174361513,
+  <span class="s2">"parent_item_id"</span> : null,
+  <span class="s2">"initiator_id"</span> : null,
+  <span class="s2">"extra_data"</span> : <span class="o">{</span>
+    <span class="s2">"content"</span> : <span class="s2">"Task1"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="p">{</span>
+  <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333384</span><span class="p">,</span>
+  <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'item'</span><span class="p">,</span>
+  <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
+  <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
+  <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:24:59 +0000'</span><span class="p">,</span>
+  <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
+  <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id <em>Integer</em></td>
+<td>The id of the event.</td>
+</tr>
+<tr>
+<td>object_type <em>String</em></td>
+<td>The type of object, one of <code class="prettyprint">item</code>, <code class="prettyprint">note</code> or <code class="prettyprint">project</code>.</td>
+</tr>
+<tr>
+<td>object_id <em>Integer</em></td>
+<td>The id of the object.</td>
+</tr>
+<tr>
+<td>event_type <em>String</em></td>
+<td>The type of event, one of <code class="prettyprint">added</code>, <code class="prettyprint">updated</code>, <code class="prettyprint">deleted</code>, <code class="prettyprint">completed</code>, <code class="prettyprint">uncompleted</code>, <code class="prettyprint">archived</code>, <code class="prettyprint">unarchived</code>, <code class="prettyprint">shared</code>, <code class="prettyprint">left</code>.</td>
+</tr>
+<tr>
+<td>event_date <em>String</em></td>
+<td>The date and time when the event took place.</td>
+</tr>
+<tr>
+<td>parent_project_id <em>Integer</em></td>
+<td>The id of the item&rsquo;s or note&rsquo;s parent project, otherwise <code class="prettyprint">null</code>.</td>
+</tr>
+<tr>
+<td>parent_item_id <em>Integer</em></td>
+<td>The id of the note&rsquo;s parent item, otherwise <code class="prettyprint">null</code>.</td>
+</tr>
+<tr>
+<td>initiator_id <em>Integer</em></td>
+<td>The id of the user who is responsible for the event, which only makes sense in shared projects, items and notes, and is <code class="prettyprint">null</code> for non-shared objects.</td>
+</tr>
+<tr>
+<td>extra_data <em>Object</em></td>
+<td>This object contains at least the <code class="prettyprint">name</code> of the project, or the <code class="prettyprint">content</code> of an item or note, and optionally the <code class="prettyprint">last_name</code> if a projects was renamed, the <code class="prettyprint">last_content</code> if an item or note was renamed, the <code class="prettyprint">due_date</code> and <code class="prettyprint">last_due_date</code> if an item&rsquo;s due date changed, the <code class="prettyprint">responsible_uid</code> and <code class="prettyprint">last_responsible_uid</code> if an item&rsquo;s responsible uid changed.</td>
+</tr>
+</tbody></table>
+<h2 id='get-activity-logs'>Get activity logs</h2>
+<blockquote>
+<p>An example of getting the activity logs:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/activity/get <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">"id"</span> : 955344370,
+    <span class="s2">"object_type"</span> : <span class="s2">"item"</span>,
+    <span class="s2">"object_id"</span> : 101157918,
+    <span class="s2">"event_type"</span> : <span class="s2">"updated"</span>,
+    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:28:37 +0000"</span>,
+    <span class="s2">"parent_project_id"</span> : 174361513,
+    <span class="s2">"parent_item_id"</span> : null,
+    <span class="s2">"initiator_id"</span> : null,
+    <span class="s2">"extra_data"</span> : <span class="o">{</span>
+      <span class="s2">"last_due_date"</span> : null,
+      <span class="s2">"due_date"</span> : <span class="s2">"Sat 02 Jul 2016 20:59:59 +0000"</span>,
+      <span class="s2">"content"</span> : <span class="s2">"Task1"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"id"</span> : 955333751,
+    <span class="s2">"object_type"</span> : <span class="s2">"note"</span>,
+    <span class="s2">"object_id"</span> : 23685068,
+    <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
+    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:25:04 +0000"</span>,
+    <span class="s2">"parent_project_id"</span> : 174361513,
+    <span class="s2">"parent_item_id"</span> : 101157918,
+    <span class="s2">"initiator_id"</span> : null,
+    <span class="s2">"extra_data"</span> : <span class="o">{</span>
+      <span class="s2">"content"</span> : <span class="s2">"Note1"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"id"</span> : 955333384,
+    <span class="s2">"object_type"</span> : <span class="s2">"item"</span>,
+    <span class="s2">"object_id"</span> : 101157918,
+    <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
+    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:24:59 +0000"</span>,
+    <span class="s2">"parent_project_id"</span> : 174361513,
+    <span class="s2">"parent_item_id"</span> : null,
+    <span class="s2">"initiator_id"</span> : null,
+    <span class="s2">"extra_data"</span> : <span class="o">{</span>
+      <span class="s2">"content"</span> : <span class="s2">"Task1"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"id"</span> : 955333239,
+    <span class="s2">"object_type"</span> : <span class="s2">"project"</span>,
+    <span class="s2">"object_id"</span> : 174361513,
+    <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
+    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:24:56 +0000"</span>,
+    <span class="s2">"parent_project_id"</span> : null,
+    <span class="s2">"parent_item_id"</span> : null,
+    <span class="s2">"initiator_id"</span> : null,
+    <span class="s2">"extra_data"</span> : <span class="o">{</span>
+      <span class="s2">"name"</span> : <span class="s2">"Project1"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">activity_get</span><span class="p">()</span>
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955344370</span><span class="p">,</span>
+    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'item'</span><span class="p">,</span>
+    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
+    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'updated'</span><span class="p">,</span>
+    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:28:37 +0000'</span><span class="p">,</span>
+    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
+    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span><span class="p">,</span>
+      <span class="s">'due_date'</span><span class="p">:</span> <span class="s">'Sat 02 Jul 2016 20:59:59 +0000'</span><span class="p">,</span>
+      <span class="s">'last_due_date'</span><span class="p">:</span> <span class="bp">None</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333751</span><span class="p">,</span>
+    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'note'</span><span class="p">,</span>
+    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">23685068</span><span class="p">,</span>
+    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
+    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:25:04 +0000'</span><span class="p">,</span>
+    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
+    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
+    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Note1'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333384</span><span class="p">,</span>
+    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'item'</span><span class="p">,</span>
+    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
+    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
+    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:24:59 +0000'</span><span class="p">,</span>
+    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
+    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333239</span><span class="p">,</span>
+    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'project'</span><span class="p">,</span>
+    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
+    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
+    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:24:56 +0000'</span><span class="p">,</span>
+    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">'name'</span><span class="p">:</span> <span class="s">'Project1'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>object_type <em>String</em></td>
+<td>Filters events by a specific object type.</td>
+</tr>
+<tr>
+<td>object_id <em>Integer</em></td>
+<td>Filters events by a specific object id, but only if the <code class="prettyprint">object_type</code> has been also specified.</td>
+</tr>
+<tr>
+<td>event_type <em>String</em></td>
+<td>Filters events by a specific event type.</td>
+</tr>
+<tr>
+<td>object_event_types <em>Array of Strings</em></td>
+<td>An alternative way to filter by multiple object and event types.  This takes a list of strings of the form <code class="prettyprint">[object_type]:[event_type]</code> (where either <code class="prettyprint">object_type</code> part or the <code class="prettyprint">event_type</code> part can be ommited), such as for example <code class="prettyprint">[&quot;item:&quot;, &quot;note:added&quot;]</code>.  When this parameter is specified the <code class="prettyprint">object_type</code>, <code class="prettyprint">event_type</code> and <code class="prettyprint">object_id</code> parameters are ignored.</td>
+</tr>
+<tr>
+<td>parent_project_id <em>Integer</em></td>
+<td>Filters object events by the id of the project they belong to, so this implicitly limits the results to items and notes.</td>
+</tr>
+<tr>
+<td>parent_item_id <em>Integer</em></td>
+<td>Filters object events by the id of the item they belong, so this implicitly limits the results to notes.</td>
+</tr>
+<tr>
+<td>initiator_id <em>Integer</em></td>
+<td>Filters event by the id of the initiator.</td>
+</tr>
+<tr>
+<td>since <em>String</em></td>
+<td>Filters events to those that took place after the specified date and time, formatted as for example <code class="prettyprint">2016-06-28T12:00</code>.</td>
+</tr>
+<tr>
+<td>until <em>String</em></td>
+<td>Filters events to those that took place before the specified date and time, formatted as <code class="prettyprint">2016-06-28T12:00</code>.</td>
+</tr>
+<tr>
+<td>limit <em>Integer</em></td>
+<td>The number of events to return, where the default is <code class="prettyprint">30</code>, and the maximum is <code class="prettyprint">100</code>.</td>
+</tr>
+<tr>
+<td>offset <em>Integer</em></td>
+<td>The number of events to skip, which can be used for pagination in order to get more events than those returned by the previous call.</td>
+</tr>
+</tbody></table>
+
         <h1 id='business'>Business</h1>
 <blockquote>
 <p>An example invitation object:</p>
