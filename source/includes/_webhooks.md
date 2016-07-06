@@ -20,25 +20,25 @@ Here is a list of events that you could subscribe to, and they are configured at
 
 Event Name | Description
 -------- | -----------
-item:added |
-item:updated |
-item:deleted |
-item:completed |
-item:uncompleted |
-note:added |
-note:updated |
-note:deleted |
-project:added |
-project:updated |
-project:deleted |
-project:archived |
-project:unarchived |
-label:added |
-label:deleted |
-label:updated |
-filter:added |
-filter:deleted |
-filter:updated |
+item:added | An item was added
+item:updated | An item was updated
+item:deleted | An item was deleted
+item:completed | An item was completed
+item:uncompleted | An item was uncompleted
+note:added | A note was added
+note:updated | A note was updated
+note:deleted | A note was deleted
+project:added | A project was added
+project:updated | A project was updated
+project:deleted | A project was deleted
+project:archived |  A project was archived
+project:unarchived | A project was unarchived
+label:added | A label was added
+label:deleted | A label was deleted
+label:updated | A label was updated
+filter:added | A filter was added
+filter:deleted | A filter was deleted
+filter:updated | A filter was updated
 
 
 
