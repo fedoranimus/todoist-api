@@ -16,11 +16,6 @@ Sync API supports the following features -
 
 - Incremental sync: You only retrieve data that are updated since the last time you performed a sync request.
 
-
-<br/><br/>
-<script type="text/javascript" src="//www.apichangelog.com/static/widget/follow.js" api="todoist"></script>
-
-
 ## Read resources
 
 > An example response of a read request.
