@@ -1880,43 +1880,43 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The id of the note (a unique number).</td>
+<td>id <em>Integer</em></td>
+<td>The id of the note.</td>
 </tr>
 <tr>
-<td>posted_uid</td>
-<td>The id of the user that posted the note (a unique number).</td>
+<td>posted_uid <em>Integer</em></td>
+<td>The id of the user that posted the note.</td>
 </tr>
 <tr>
-<td>item_id</td>
-<td>The item which the note is part of (a unique number).</td>
+<td>item_id <em>Integer</em></td>
+<td>The item which the note is part of.</td>
 </tr>
 <tr>
-<td>project_id</td>
-<td>The project which the note is part of (a unique number).</td>
+<td>project_id <em>Integer</em></td>
+<td>The project which the note is part of.</td>
 </tr>
 <tr>
-<td>content</td>
-<td>The content of the note (a string value).</td>
+<td>content <em>String</em></td>
+<td>The content of the note.</td>
 </tr>
 <tr>
-<td>file_attachment</td>
+<td>file_attachment <em>Object</em></td>
 <td>A file attached to the note (see more details about attachments later on).</td>
 </tr>
 <tr>
-<td>uids_to_notify</td>
-<td>A list of user ids to notify (unique numbers).</td>
+<td>uids_to_notify <em>Array of Integer</em></td>
+<td>A list of user ids to notify.</td>
 </tr>
 <tr>
-<td>is_deleted</td>
+<td>is_deleted <em>Integer</em></td>
 <td>Whether the note is marked as deleted (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
-<td>is_archived</td>
+<td>is_archived <em>Integer</em></td>
 <td>Whether the note is marked as archived (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
-<td>posted</td>
+<td>posted <em>String</em></td>
 <td>The date when the note was posted.</td>
 </tr>
 </tbody></table>
@@ -1930,24 +1930,24 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>file_name</td>
-<td>The name of the file (a string value).</td>
+<td>file_name <em>String</em></td>
+<td>The name of the file.</td>
 </tr>
 <tr>
-<td>file_size</td>
-<td>The size of the file in bytes (a number).</td>
+<td>file_size <em>Integer</em></td>
+<td>The size of the file in bytes.</td>
 </tr>
 <tr>
-<td>file_type</td>
-<td>MIME type (a string value such as <code class="prettyprint">text/plain</code> or <code class="prettyprint">image/png</code>).</td>
+<td>file_type <em>String</em></td>
+<td>MIME type (for example <code class="prettyprint">text/plain</code> or <code class="prettyprint">image/png</code>).</td>
 </tr>
 <tr>
-<td>file_url</td>
-<td>The URL where the file is located (a string value representing an HTTP URL). Note that we don&rsquo;t cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) resources, as exposing this files in Todoist may issue a browser warning.</td>
+<td>file_url <em>String</em></td>
+<td>The URL where the file is located. Note that we don&rsquo;t cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) resources, as exposing this files in Todoist may issue a browser warning.</td>
 </tr>
 <tr>
-<td>upload_state</td>
-<td>Upload completion state (a string value such as <code class="prettyprint">pending</code> or <code class="prettyprint">completed</code>).</td>
+<td>upload_state <em>String</em></td>
+<td>Upload completion state (for example <code class="prettyprint">pending</code> or <code class="prettyprint">completed</code>).</td>
 </tr>
 </tbody></table>
 <h3 id='image-file-properties'>Image file properties</h3>
@@ -1960,15 +1960,15 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>tn_l</td>
+<td>tn_l <em>Array</em></td>
 <td>Large thumbnail (a list that contains the URL, the width and the height of the thumbnail).</td>
 </tr>
 <tr>
-<td>tn_m</td>
+<td>tn_m <em>Array</em></td>
 <td>Medium thumbnail (a list that contains the URL, the width and the height of the thumbnail).</td>
 </tr>
 <tr>
-<td>tn_s</td>
+<td>tn_s <em>Array</em></td>
 <td>Small thumbnail (a list that contains the URL, the width and the height of the thumbnail).</td>
 </tr>
 </tbody></table>
@@ -2017,12 +2017,12 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>file_attachment</td>
+<td>file_attachment <em>Object</em></td>
 <td>A file attached to the note (see more details about attachments above, and learn how to upload a file in the <code class="prettyprint">Uploads</code> section).</td>
 </tr>
 <tr>
-<td>uids_to_notify</td>
-<td>A list of user ids to notify (unique numbers).</td>
+<td>uids_to_notify <em>Array of Integer</em></td>
+<td>A list of user ids to notify.</td>
 </tr>
 </tbody></table>
 <h2 id='add-a-project-note'>Add a project note</h2>
@@ -2052,12 +2052,12 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>project_id</td>
-<td>The project which the note is part of (a unique number).</td>
+<td>project_id <em>Integer or String (temp_id)</em></td>
+<td>The project which the note is part of.</td>
 </tr>
 <tr>
-<td>content</td>
-<td>The content of the note (a string value).</td>
+<td>content <em>String</em></td>
+<td>The content of the note.</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -2068,7 +2068,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>file_attachment</td>
+<td>file_attachment <em>Object</em></td>
 <td>A file attached to the note (see more details about attachments above, and learn how to upload a file in the <code class="prettyprint">Uploads</code> section).</td>
 </tr>
 </tbody></table>
@@ -2099,8 +2099,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The id of the note (a unique number or temp id).</td>
+<td>id <em>Integer or String (temp_id)</em></td>
+<td>The id of the note.</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -2111,11 +2111,11 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>content</td>
-<td>The content of the note (a string value).</td>
+<td>content <em>String</em></td>
+<td>The content of the note.</td>
 </tr>
 <tr>
-<td>file_attachment</td>
+<td>file_attachment <em>Object</em></td>
 <td>A file attached to the note (see more details about attachments above, and learn how to upload a file in the <code class="prettyprint">Uploads</code> section).</td>
 </tr>
 </tbody></table>
@@ -2146,8 +2146,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The id of the note (a unique number or temp id).</td>
+<td>id <em>Integer or String (temp_id)</em></td>
+<td>The id of the note.</td>
 </tr>
 </tbody></table>
 

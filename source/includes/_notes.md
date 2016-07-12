@@ -29,16 +29,16 @@ Notes are only available for Todoist Premium users.
 
 Property | Description
 -------- | -----------
-id | The id of the note (a unique number).
-posted_uid | The id of the user that posted the note (a unique number).
-item_id | The item which the note is part of (a unique number).
-project_id | The project which the note is part of (a unique number).
-content | The content of the note (a string value).
-file_attachment | A file attached to the note (see more details about attachments later on).
-uids_to_notify | A list of user ids to notify (unique numbers).
-is_deleted | Whether the note is marked as deleted (where `1` is true and `0` is false).
-is_archived | Whether the note is marked as archived (where `1` is true and `0` is false).
-posted | The date when the note was posted.
+id *Integer* | The id of the note.
+posted_uid *Integer* | The id of the user that posted the note.
+item_id *Integer* | The item which the note is part of.
+project_id *Integer* | The project which the note is part of.
+content *String* | The content of the note.
+file_attachment *Object* | A file attached to the note (see more details about attachments later on).
+uids_to_notify *Array of Integer* | A list of user ids to notify.
+is_deleted *Integer* | Whether the note is marked as deleted (where `1` is true and `0` is false).
+is_archived *Integer* | Whether the note is marked as archived (where `1` is true and `0` is false).
+posted *String* | The date when the note was posted.
 
 ### File attachments
 
@@ -48,11 +48,11 @@ A file attachment is represented as a JSON object. The file attachment may point
 
 Attribute | Description
 --------- | -----------
-file_name | The name of the file (a string value).
-file_size | The size of the file in bytes (a number).
-file_type | MIME type (a string value such as `text/plain` or `image/png`).
-file_url | The URL where the file is located (a string value representing an HTTP URL). Note that we don't cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) resources, as exposing this files in Todoist may issue a browser warning.
-upload_state | Upload completion state (a string value such as `pending` or `completed`).
+file_name *String* | The name of the file.
+file_size *Integer* | The size of the file in bytes.
+file_type *String* | MIME type (for example `text/plain` or `image/png`).
+file_url *String* | The URL where the file is located. Note that we don't cache the remote content on our servers and stream or expose files directly from third party resources. In particular this means that you should avoid providing links to non-encrypted (plain HTTP) resources, as exposing this files in Todoist may issue a browser warning.
+upload_state *String* | Upload completion state (for example `pending` or `completed`).
 
 ### Image file properties
 
@@ -60,9 +60,9 @@ If you upload an image, you may provide thumbnail paths to ensure Todoist handle
 
 Attribute | Description
 --------- | -----------
-tn_l | Large thumbnail (a list that contains the URL, the width and the height of the thumbnail).
-tn_m | Medium thumbnail (a list that contains the URL, the width and the height of the thumbnail).
-tn_s | Small thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_l *Array* | Large thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_m *Array* | Medium thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_s *Array* | Small thumbnail (a list that contains the URL, the width and the height of the thumbnail).
 
 ### Audio file properties
 
@@ -103,8 +103,8 @@ content | The content of the note (a string value).
 
 Argument | Description
 -------- | -----------
-file_attachment | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
-uids_to_notify | A list of user ids to notify (unique numbers).
+file_attachment *Object* | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
+uids_to_notify *Array of Integer* | A list of user ids to notify.
 
 
 ## Add a project note
@@ -134,14 +134,14 @@ Add a project note.
 
 Argument | Description
 -------- | -----------
-project_id | The project which the note is part of (a unique number).
-content | The content of the note (a string value).
+project_id *Integer or String (temp_id)* | The project which the note is part of.
+content *String* | The content of the note.
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-file_attachment | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
+file_attachment *Object* | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
 
 ## Update a note
 
@@ -170,14 +170,14 @@ Update a note.
 
 Argument | Description
 -------- | -----------
-id | The id of the note (a unique number or temp id).
+id *Integer or String (temp_id)* | The id of the note.
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-content | The content of the note (a string value).
-file_attachment | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
+content *String* | The content of the note.
+file_attachment *Object* | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
 
 ## Delete a note
 
@@ -206,4 +206,4 @@ Delete a note.
 
 Argument | Description
 -------- | -----------
-id | The id of the note (a unique number or temp id).
+id *Integer or String (temp_id)* | The id of the note.
