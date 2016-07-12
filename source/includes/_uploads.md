@@ -80,9 +80,9 @@ If you upload an image, you may provide thumbnail paths to ensure Todoist handle
 
 Attribute | Description
 --------- | -----------
-tn_l | Large thumbnail (a list that contains the URL, the width and the height of the thumbnail).
-tn_m | Medium thumbnail (a list that contains the URL, the width and the height of the thumbnail).
-tn_s | Small thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_l *Array* | Large thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_m *Array* | Medium thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_s *Array* | Small thumbnail (a list that contains the URL, the width and the height of the thumbnail).
 
 ### Audio file properties
 
