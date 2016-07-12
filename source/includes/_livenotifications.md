@@ -6,6 +6,7 @@
 {
     "created": 1377639720,
     "from_uid": 123,
+    "id": 1,
     "invitation_id": 456,
     "invitation_secret": "abcdefghijklmno",
     "notification_key": "notification_123",
@@ -17,6 +18,7 @@
 {
     "created": 1377639720,
     "from_uid": 123,
+    "id": 2,
     "invitation_id": 456,
     "notification_key": "notification_123",
     "notification_type": "share_invitation_accepted",
@@ -27,6 +29,7 @@
 {
     "created": 1377639720,
     "from_uid": 123,
+    "id": 3,
     "invitation_id": 456,
     "notification_key": "notification_123",
     "notification_type": "share_invitation_rejected",
@@ -38,6 +41,7 @@
 {
     "created": 1377639720,
     "from_uid": 123,
+    "id": 4,
     "notification_key": "notification_123",
     "notification_type": "user_left_project",
     "project_id": 456,
@@ -47,6 +51,7 @@
 {
     "created": 1377639720,
     "from_uid": 123,
+    "id": 5,
     "notification_key": "notification_123",
     "notification_type": "user_removed_from_project",
     "project_id": 456,
@@ -59,6 +64,7 @@
     "assigned_by_uid": 789,
     "created": 1377639720,
     "from_uid": 123,
+    "id": 6,
     "item_content": "NewTask",
     "item_id": 456,
     "notification_key": "notification_123",
@@ -72,6 +78,7 @@
     "assigned_by_uid": 789,
     "created": 1377639720,
     "from_uid": 123,
+    "id": 7,
     "item_content": "NewTask",
     "item_id": 456,
     "notification_key": "notification_123",
@@ -85,6 +92,7 @@
     "assigned_by_uid": 789,
     "created": 1377639720,
     "from_uid": 123,
+    "id": 8,
     "item": 456,
     "item_content": "NewTask",
     "notification_key": "notification_123",
@@ -97,6 +105,7 @@
 {
     "created": 1377639720,
     "from_uid": 123,
+    "id": 9,
     "item_id": 456,
     "note_content": "NewTask",
     "note_id": 789,
@@ -110,6 +119,7 @@
     "created": 1377639720,
     "email": "me@example.com",
     "from_uid": 123,
+    "id": 10,
     "notification_key": "notification_123",
     "notification_type": "biz_policy_disallowed_invitation",
     "project_id": 456,
@@ -125,6 +135,7 @@
 {
     "created": 1377639720,
     "from_uid": 123,
+    "id": 11,
     "inviter_id": 456,
     "notification_key": "notification_123",
     "notification_type": "biz_policy_rejected_invitation",
@@ -141,6 +152,7 @@
     "active_until": 1399299727,
     "created": 1377639720,
     "from_uid": 123,
+    "id": 12,
     "notification_key": "notification_123",
     "notification_type": "biz_trial_will_end",
     "plan": "business_monthly",
@@ -156,6 +168,7 @@
     "currency": "usd",
     "description": "2 x Subscription to Monthly ($3.00/month)",
     "from_uid": 123,
+    "id": 13,
     "next_payment_attempt": 1399299735,
     "notification_key": "notification_123",
     "notification_type": "biz_payment_failed",
@@ -168,6 +181,7 @@
     "active_until": 1399299727,
     "created": 1377639720,
     "from_uid": 123,
+    "id": 14,
     "notification_key": "notification_123",
     "notification_type": "biz_account_disabled",
     "plan": "business_monthly",
@@ -185,6 +199,7 @@
         "id": "456",
         "image_id": "789"
     },
+    "id": 15,
     "invitation_id": 321,
     "invitation_message": "Welcome to our team!",
     "invitation_secret": "abcdefghijklmno",
@@ -204,6 +219,7 @@
         "id": "456",
         "image_id": "789"
     },
+    "id": 16,
     "invitation_id": 321,
     "notification_key": "notification_123",
     "notification_type": "biz_invitation_accepted",
@@ -220,6 +236,7 @@
         "id": "456",
         "image_id": "789"
     },
+    "id": 17,
     "invitation_id": 321,
     "notification_key": "notification_123",
     "notification_type": "biz_invitation_rejected",
@@ -259,6 +276,7 @@ Every live notification has the following properties:
 
 Property | Description
 -------- | -----------
+id | The id of the live notification.
 created | Required. Live notification creation date. Integer representing a timestamp since epoch.
 from_uid | Required. The id of the user who initiated this live notification.
 notification_key | Required. Unique notification key.
