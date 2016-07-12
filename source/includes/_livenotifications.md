@@ -268,7 +268,7 @@ biz_invitation_created | Sent to an invitee, when one of business account admini
 biz_invitation_accepted | Sent to an inviter, when the invitation is accepted.
 biz_invitation_rejected | Sent to an inviter, when the invitation is rejected.
 
-### Properties
+### Required properties
 
 Some properties are common for all types of notifications, whereas some others depend on the notification type.
 
@@ -276,67 +276,74 @@ Every live notification has the following properties:
 
 Property | Description
 -------- | -----------
-id | The id of the live notification.
-created | Required. Live notification creation date. Integer representing a timestamp since epoch.
-from_uid | Required. The id of the user who initiated this live notification.
-notification_key | Required. Unique notification key.
-notification_type | Required. Type of notification. Different notification type define different extra fields which are described below.
-seq_no | Required. Notification sequence number.
-from_user | Optional. User data, useful on `share_invitation_sent`.
-project_name | Optional. The project name, useful for `share_invitation_*` where you may not have the project in the local model.
-invitation_id | Optional. The invitation id. Useful for accepting/rejecting invitations.
-invitation_secret | Optional. The invitation secret key. Useful for accepting/rejecting invitations.
+id *Integer* | The id of the live notification.
+created *Integer* | Live notification creation date. A number representing a timestamp since epoch.
+from_uid *Integer* | The id of the user who initiated this live notification.
+notification_key *String* | Unique notification key.
+notification_type *String* | Type of notification. Different notification type define different extra fields which are described below.
+seq_no *Integer* | Notification sequence number.
+
+### Optional properties
+
+Here are the extra properties for the `*_invitation_*` types of live notifications:
+
+Property | Description
+-------- | -----------
+from_user *Object* | User data, useful on `share_invitation_sent`.
+project_name *String*| The project name, useful for `share_invitation_*` where you may not have the project in the local model.
+invitation_id *Integer* | The invitation id. Useful for accepting/rejecting invitations.
+invitation_secret *String* | The invitation secret key. Useful for accepting/rejecting invitations.
 
 Here are the extra properties for the `share_invitation_sent` type of live notifications:
 
 Property | Description
 -------- | -----------
-state | Invitation state. Initially `invited`, can change the state to `accepted` or `rejected`.
+state *String* | Invitation state. Initially `invited`, can change the state to `accepted` or `rejected`.
 
 Here are the extra properties for the `user_removed_from_project` type of live notifications:
 
 Property | Description
 -------- | -----------
-removed_name | The name of the user removed.
-removed_uid | The uid of the user removed.
+removed_name *String* | The name of the user removed.
+removed_uid *Integer* | The uid of the user removed.
 
 Here are the extra properties for the `biz_trial_will_end` type of live notifications:
 
 Property | Description
 -------- | -----------
-quantity | The number of users under the control of the business account.
+quantity *Integer* | The number of users under the control of the business account.
 plan | Tariff plan name. Valid values are `business_monthly` and `business_yearly`.
-active_until | The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.
+active_until *Integer* | The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.
 
 Here are the extra properties for the `biz_payment_failed` type of live notifications:
 
 Property | Description
 -------- | -----------
-quantity | The number of users under the control of the business account.
-plan | Tariff plan name. Valid values are `business_monthly` and `business_yearly`.
-active_until | The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.
-amount_due | Invoice amount. Integer value in `0.01` of currency.
-attempt_count | Number of automatic payment attempts made for this invoice.
-currency | Currency value. Three-letter ISO currency code representing the currency in which the charge was made.
-description | Invoice description.
-next_payment_attempt | Timestamp value.
+quantity *Integer* | The number of users under the control of the business account.
+plan *String* | Tariff plan name. Valid values are `business_monthly` and `business_yearly`.
+active_until *Integer* | The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.
+amount_due *Integer* | Invoice amount. Integer value in `0.01` of currency.
+attempt_count *Integer* | Number of automatic payment attempts made for this invoice.
+currency *String* | Currency value. Three-letter ISO currency code representing the currency in which the charge was made.
+description *String* | Invoice description.
+next_payment_attempt *String* | Timestamp value.
 
 Here are the extra properties for the `biz_account_disabled` type of live notifications:
 
 Property | Description
 -------- | -----------
-quantity | The number of users under the control of the business account.
-plan | Tariff plan name. Valid values are `business_monthly` and `business_yearly`.
-active_until | The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.
+quantity *Integer* | The number of users under the control of the business account.
+plan *String* | Tariff plan name. Valid values are `business_monthly` and `business_yearly`.
+active_until *Integer* | The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.
 
 Here are the extra properties for the `biz_invitation_created` type of live notifications:
 
 Property | Description
 -------- | -----------
-state | Invitation state. Initially `invited`, can change the state to `accepted` or `rejected`.
-invitation_secret | Invitation secret. Should be used to accept or reject invitation.
-invitation_message | Invitation message.
-account_name | Business account (company) name.
+state *String* | Invitation state. Initially `invited`, can change the state to `accepted` or `rejected`.
+invitation_secret *String* | Invitation secret. Should be used to accept or reject invitation.
+invitation_message *String* | Invitation message.
+account_name *String* | Business account (company) name.
 
 ## Mark last read
 

@@ -5379,7 +5379,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>Sent to an inviter, when the invitation is rejected.</td>
 </tr>
 </tbody></table>
-<h3 id='properties'>Properties</h3>
+<h3 id='required-properties'>Required properties</h3>
 <p>Some properties are common for all types of notifications, whereas some others depend on the notification type.</p>
 
 <p>Every live notification has the following properties:</p>
@@ -5391,44 +5391,54 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
+<td>id <em>Integer</em></td>
 <td>The id of the live notification.</td>
 </tr>
 <tr>
-<td>created</td>
-<td>Required. Live notification creation date. Integer representing a timestamp since epoch.</td>
+<td>created <em>Integer</em></td>
+<td>Live notification creation date. A number representing a timestamp since epoch.</td>
 </tr>
 <tr>
-<td>from_uid</td>
-<td>Required. The id of the user who initiated this live notification.</td>
+<td>from_uid <em>Integer</em></td>
+<td>The id of the user who initiated this live notification.</td>
 </tr>
 <tr>
-<td>notification_key</td>
-<td>Required. Unique notification key.</td>
+<td>notification_key <em>String</em></td>
+<td>Unique notification key.</td>
 </tr>
 <tr>
-<td>notification_type</td>
-<td>Required. Type of notification. Different notification type define different extra fields which are described below.</td>
+<td>notification_type <em>String</em></td>
+<td>Type of notification. Different notification type define different extra fields which are described below.</td>
 </tr>
 <tr>
-<td>seq_no</td>
-<td>Required. Notification sequence number.</td>
+<td>seq_no <em>Integer</em></td>
+<td>Notification sequence number.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-properties'>Optional properties</h3>
+<p>Here are the extra properties for the <code class="prettyprint">*_invitation_*</code> types of live notifications:</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>from_user <em>Object</em></td>
+<td>User data, useful on <code class="prettyprint">share_invitation_sent</code>.</td>
 </tr>
 <tr>
-<td>from_user</td>
-<td>Optional. User data, useful on <code class="prettyprint">share_invitation_sent</code>.</td>
+<td>project_name <em>String</em></td>
+<td>The project name, useful for <code class="prettyprint">share_invitation_*</code> where you may not have the project in the local model.</td>
 </tr>
 <tr>
-<td>project_name</td>
-<td>Optional. The project name, useful for <code class="prettyprint">share_invitation_*</code> where you may not have the project in the local model.</td>
+<td>invitation_id <em>Integer</em></td>
+<td>The invitation id. Useful for accepting/rejecting invitations.</td>
 </tr>
 <tr>
-<td>invitation_id</td>
-<td>Optional. The invitation id. Useful for accepting/rejecting invitations.</td>
-</tr>
-<tr>
-<td>invitation_secret</td>
-<td>Optional. The invitation secret key. Useful for accepting/rejecting invitations.</td>
+<td>invitation_secret <em>String</em></td>
+<td>The invitation secret key. Useful for accepting/rejecting invitations.</td>
 </tr>
 </tbody></table>
 
@@ -5441,7 +5451,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>state</td>
+<td>state <em>String</em></td>
 <td>Invitation state. Initially <code class="prettyprint">invited</code>, can change the state to <code class="prettyprint">accepted</code> or <code class="prettyprint">rejected</code>.</td>
 </tr>
 </tbody></table>
@@ -5455,11 +5465,11 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>removed_name</td>
+<td>removed_name <em>String</em></td>
 <td>The name of the user removed.</td>
 </tr>
 <tr>
-<td>removed_uid</td>
+<td>removed_uid <em>Integer</em></td>
 <td>The uid of the user removed.</td>
 </tr>
 </tbody></table>
@@ -5473,7 +5483,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>quantity</td>
+<td>quantity <em>Integer</em></td>
 <td>The number of users under the control of the business account.</td>
 </tr>
 <tr>
@@ -5481,7 +5491,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>Tariff plan name. Valid values are <code class="prettyprint">business_monthly</code> and <code class="prettyprint">business_yearly</code>.</td>
 </tr>
 <tr>
-<td>active_until</td>
+<td>active_until <em>Integer</em></td>
 <td>The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.</td>
 </tr>
 </tbody></table>
@@ -5495,35 +5505,35 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>quantity</td>
+<td>quantity <em>Integer</em></td>
 <td>The number of users under the control of the business account.</td>
 </tr>
 <tr>
-<td>plan</td>
+<td>plan <em>String</em></td>
 <td>Tariff plan name. Valid values are <code class="prettyprint">business_monthly</code> and <code class="prettyprint">business_yearly</code>.</td>
 </tr>
 <tr>
-<td>active_until</td>
+<td>active_until <em>Integer</em></td>
 <td>The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.</td>
 </tr>
 <tr>
-<td>amount_due</td>
+<td>amount_due <em>Integer</em></td>
 <td>Invoice amount. Integer value in <code class="prettyprint">0.01</code> of currency.</td>
 </tr>
 <tr>
-<td>attempt_count</td>
+<td>attempt_count <em>Integer</em></td>
 <td>Number of automatic payment attempts made for this invoice.</td>
 </tr>
 <tr>
-<td>currency</td>
+<td>currency <em>String</em></td>
 <td>Currency value. Three-letter ISO currency code representing the currency in which the charge was made.</td>
 </tr>
 <tr>
-<td>description</td>
+<td>description <em>String</em></td>
 <td>Invoice description.</td>
 </tr>
 <tr>
-<td>next_payment_attempt</td>
+<td>next_payment_attempt <em>String</em></td>
 <td>Timestamp value.</td>
 </tr>
 </tbody></table>
@@ -5537,15 +5547,15 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>quantity</td>
+<td>quantity <em>Integer</em></td>
 <td>The number of users under the control of the business account.</td>
 </tr>
 <tr>
-<td>plan</td>
+<td>plan <em>String</em></td>
 <td>Tariff plan name. Valid values are <code class="prettyprint">business_monthly</code> and <code class="prettyprint">business_yearly</code>.</td>
 </tr>
 <tr>
-<td>active_until</td>
+<td>active_until <em>Integer</em></td>
 <td>The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.</td>
 </tr>
 </tbody></table>
@@ -5559,19 +5569,19 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>state</td>
+<td>state <em>String</em></td>
 <td>Invitation state. Initially <code class="prettyprint">invited</code>, can change the state to <code class="prettyprint">accepted</code> or <code class="prettyprint">rejected</code>.</td>
 </tr>
 <tr>
-<td>invitation_secret</td>
+<td>invitation_secret <em>String</em></td>
 <td>Invitation secret. Should be used to accept or reject invitation.</td>
 </tr>
 <tr>
-<td>invitation_message</td>
+<td>invitation_message <em>String</em></td>
 <td>Invitation message.</td>
 </tr>
 <tr>
-<td>account_name</td>
+<td>account_name <em>String</em></td>
 <td>Business account (company) name.</td>
 </tr>
 </tbody></table>
