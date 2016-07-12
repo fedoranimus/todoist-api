@@ -268,7 +268,7 @@ biz_invitation_created | Sent to an invitee, when one of business account admini
 biz_invitation_accepted | Sent to an inviter, when the invitation is accepted.
 biz_invitation_rejected | Sent to an inviter, when the invitation is rejected.
 
-### Required properties
+### Common properties
 
 Some properties are common for all types of notifications, whereas some others depend on the notification type.
 
@@ -283,7 +283,7 @@ notification_key *String* | Unique notification key.
 notification_type *String* | Type of notification. Different notification type define different extra fields which are described below.
 seq_no *Integer* | Notification sequence number.
 
-### Optional properties
+### Specific properties
 
 Here are the extra properties for the `*_invitation_*` types of live notifications:
 
