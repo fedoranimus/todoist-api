@@ -17,8 +17,8 @@
 
 Property | Description
 -------- | -----------
-id *Integer* | The id of the label (a unique number).
-name *String* | The name of the label (a string value).
+id *Integer* | The id of the label.
+name *String* | The name of the label.
 color *Integer* | The color of the label (a number between `0` and `7`, or between `0` and `12` for premium users).  The color codes corresponding to these numbers are: `#019412`, `#a39d01`, `#e73d02`, `#e702a4`, `#9902e7`, `#1d02e7`, `#0082c5`, `#555555`.  And for the additional colors of the premium users: `#008299`, `#03b3b2`, `#ac193d`, `#82ba00`, `#111111`.
 item_order *Integer* | Label’s order in the label list (a number, where the smallest value should place the label at the top).
 is_deleted *Integer* | Whether the label is marked as deleted (where `1` is true and `0` is false).
@@ -86,7 +86,7 @@ Update a label.
 
 Argument | Description
 -------- | -----------
-id *Integer* | The id of the label (a number or temp id).
+id *Integer or String (temp_id)* | The id of the label.
 
 ### Optional arguments
 
@@ -123,7 +123,7 @@ Delete a label.
 
 Argument | Description
 -------- | -----------
-id *Integer* | The id of the label (a number or temp id).
+id *Integer or String (temp_id)* | The id of the label.
 
 ## Update multiple orders
 
