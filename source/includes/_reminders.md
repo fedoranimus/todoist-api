@@ -106,7 +106,7 @@ Add a reminder.
 
 Argument | Description
 -------- | -----------
-item_id *Integer or String (temp_id) | The item id for which the reminder is about.
+item_id *Integer or String (temp_id)* | The item id for which the reminder is about.
 
 ### Optional arguments
 
@@ -152,7 +152,7 @@ Update a reminder.
 
 Argument | Description
 -------- | -----------
-id *Integer or String (temp_id) | The id of the reminder.
+id *Integer or String (temp_id)* | The id of the reminder.
 
 ### Optional arguments
 
@@ -198,7 +198,7 @@ Delete a reminder.
 
 Argument | Description
 -------- | -----------
-id *Integer or String (temp_id) | The id of the filter.
+id *Integer or String (temp_id)* | The id of the filter.
 
 
 ## Clear the locations

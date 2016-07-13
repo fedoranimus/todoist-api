@@ -129,7 +129,7 @@ Delete a filter.
 
 Argument | Description
 -------- | -----------
-id *Integer or String (temp_id) | The id of the filter.
+id *Integer or String (temp_id)* | The id of the filter.
 
 ## Update multiple orders
 
