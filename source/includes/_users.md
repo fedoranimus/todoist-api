@@ -55,38 +55,38 @@ A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typic
 
 Property | Description
 -------- | -----------
-id | The user's id (a unique number).
-token | The user's token that should be used to call the other API methods (a unique string hash value).
-email | The user's email (a string value representing a valid email address).
-full_name | The user's real name (a string value in a `Firstname Surname` format).
-inbox_project | The id of the user's `Inbox` project (a unique number).
-tz_info | The user's timezone (a dictionary structure), which includes the following elements: the `timezone` as a string value, the `hours` and `minutes` difference from GMT, whether daylight saving time applies denoted by `is_dst`, and a string value of the time difference from GMT that is `gmt_string`.
-start_page | The user's default view on Todoist. The start page can be one of the following: `_info_page` for the info page, `_blank` for a blank page, `_project_<PROJECT_ID>` for project with id `<PROJECT_ID>`, and `<ANY_QUERY>` to query after anything.
-start_day | The first day of the week (a number between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
-next_week | The day of the next week, that tasks will be postponed to (a number between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
-time_format | Whether to use a `24h` format such as `13:00` (if set to `0`) when displaying time, or a `12h` format such as `1:00pm` (if set to `1`).
-date_format | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
-sort_order | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
-default_reminder | The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
-auto_reminder | The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task (a number).
-mobile_number | The user's mobile number (a string value or `null` if not set).
-mobile_host | The user's mobile host (a string value or `null` if not set).
-completed_count | The total number of completed tasks (a number).
-completed_today | The number of completed tasks for today (a number).
-karma | The user's karma score (a float number).
-karma_trend | The user's karma trend (a string value like `up`).
-is_premium | Whether the user has a Premium subscription (a `true` or `false` value).
-premium_until | The date when the user's Premium subscription ends (`null` if not a Premium user).
-is_biz_admin | Whether the user is a business account administrator (a `true` or `false` value).
-business_account_id | The id of the user's business account (a unique number).
-image_id | The id of the user's avatar (a unique string hash value).
-avatar_small | The link to a 35x35 pixels image of the user's avatar (a string URL).
-avatar_medium | The link to a 60x60 pixels image of the user's avatar (a string URL).
-avatar_big | The link to a 195x195 pixels image of the user's avatar (a string URL).
-avatar_s640 | The link to a 640x640 pixels image of the user's avatar (a string URL).
-theme | The currently selected Todoist theme (a number between `0` and `10`).
-features | Used internally for any special features that apply to the user.  Current special features include whether any special `restriction` applies to the user, whether the user is in `beta` status, whether the user `has_push_reminders` enabled, and whether `dateist_inline_disabled` that is inline date parsing support is disabled.
-join_date | The date when the user joined Todoist.
+id *Integer* | The user's id.
+token *String* | The user's token that should be used to call the other API methods.
+email *String* | The user's email.
+full_name *String* | The user's real name formatted as `Firstname Lastname`.
+inbox_project *Integer* | The id of the user's `Inbox` project.
+tz_info *Object* | The user's timezone (a dictionary structure), which includes the following elements: the `timezone` as a string value, the `hours` and `minutes` difference from GMT, whether daylight saving time applies denoted by `is_dst`, and a string value of the time difference from GMT that is `gmt_string`.
+start_page *String* | The user's default view on Todoist. The start page can be one of the following: `_info_page` for the info page, `_blank` for a blank page, `_project_<PROJECT_ID>` for project with id `<PROJECT_ID>`, and `<ANY_QUERY>` to query after anything.
+start_day *Integer* | The first day of the week (between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
+next_week *Integer* | The day of the next week, that tasks will be postponed to (between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
+time_format *Integer* | Whether to use a `24h` format such as `13:00` (if set to `0`) when displaying time, or a `12h` format such as `1:00pm` (if set to `1`).
+date_format *Integer* | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
+sort_order *Integer* | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
+default_reminder *String* | The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
+auto_reminder *Integer* | The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task.
+mobile_number *String* | The user's mobile number (`null` if not set).
+mobile_host *String* | The user's mobile host (`null` if not set).
+completed_count *Integer* | The total number of completed tasks.
+completed_today *Integer* | The number of completed tasks for today.
+karma *Number* | The user's karma score.
+karma_trend *String* | The user's karma trend (for example `up`).
+is_premium *String* | Whether the user has a Premium subscription (a `true` or `false` value).
+premium_until *String* | The date when the user's Premium subscription ends (`null` if not a Premium user).
+is_biz_admin *String* | Whether the user is a business account administrator (a `true` or `false` value).
+business_account_id *Integer* | The id of the user's business account.
+image_id *String* | The id of the user's avatar.
+avatar_small *String* | The link to a 35x35 pixels image of the user's avatar.
+avatar_medium *String* | The link to a 60x60 pixels image of the user's avatar.
+avatar_big *String* | The link to a 195x195 pixels image of the user's avatar.
+avatar_s640 *String* | The link to a 640x640 pixels image of the user's avatar.
+theme *Integer* | The currently selected Todoist theme (a number between `0` and `10`).
+features *Object* | Used internally for any special features that apply to the user.  Current special features include whether any special `restriction` applies to the user, whether the user is in `beta` status, whether the user `has_push_reminders` enabled, and whether `dateist_inline_disabled` that is inline date parsing support is disabled.
+join_date *String* | The date when the user joined Todoist.
 
 
 ## Register a new user
@@ -202,16 +202,16 @@ Register a new user.
 
 Parameter | Description
 --------- | -----------
-email | The user's email (a string value representing a valid email address).
-full_name | The user's real name (a string value in a `Firstname Surname` format).
-password | The user's password (a string value).
+email *String* | The user's email.
+full_name *String* | The user's real name formatted as `Firstname Lastname`.
+password *String* | The user's password.
 
 ### Optional parameters
 
 Parameter | Description
 --------- | -----------
-lang | The user's language, which can take one of the following values: `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `hi`, `ko`, `pt`, `ru`, `zh_TW`.
-timezone | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`). By default we use the user's IP address to determine the timezone.
+lang *String* | The user's language, which can take one of the following values: `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `hi`, `ko`, `pt`, `ru`, `zh_TW`.
+timezone *String* | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`). By default we use the user's IP address to determine the timezone.
 
 ## Delete an existing user
 
@@ -237,14 +237,14 @@ Delete an existing user.
 
 Parameter | Description
 --------- | -----------
-token | The user's token (a string hash value).
-current_password | The user's current password (a string value).
+token *String* | The user's token.
+current_password *String* | The user's current password.
 
 ### Optional parameters
 
 Parameter | Description
 --------- | -----------
-reason_for_delete | A reason for deletion, that is used for sending feedback back to Todoist (a string value).
+reason_for_delete *String* | A reason for deletion, that is used for sending feedback back to Todoist.
 
 
 ## Update user's properties
@@ -274,21 +274,21 @@ Update the details of the user.
 
 Parameter | Description
 --------- | -----------
-email | The user's email (a string value representing a valid email address).
-full_name | The user's real name (a string value in a `Name Surname` format).
-password | The user's password (a string value).
-timezone | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`).
-start_page | The user's default view on Todoist. The start page can be one of the following: `_info_page` for the info page, `_blank` for a blank page, `_project_<PROJECT_ID>` for project with id `<PROJECT_ID>`, and `<ANY_QUERY>` to query after anything.
-start_day | The first day of the week (a number between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
-next_week | The day of the next week, that tasks will be postponed to (a number between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
-time_format | Whether to use a `24h` format such as `13:00` (if set to `0`) when displaying time, or a `12h` format such as `1:00pm` (if set to `1`).
-date_format | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
-sort_order | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
-default_reminder | The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
-auto_reminder | The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task (a number).
-mobile_number | The user's mobile number (a string value or `null` if not set).
-mobile_host | The user's mobile host (a string value or `null` if not set).
-theme | The currently selected Todoist theme (a number between `0` and `10`).
+email *String* | The user's email.
+full_name *String* | The user's real name formatted as `Firstname Lastname`.
+password *String* | The user's password.
+timezone *String* | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`).
+start_page *String* | The user's default view on Todoist. The start page can be one of the following: `_info_page` for the info page, `_blank` for a blank page, `_project_<PROJECT_ID>` for project with id `<PROJECT_ID>`, and `<ANY_QUERY>` to query after anything.
+start_day *Integer* | The first day of the week (between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
+next_week *Integer* | The day of the next week, that tasks will be postponed to (between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
+time_format *Integer* | Whether to use a `24h` format such as `13:00` (if set to `0`) when displaying time, or a `12h` format such as `1:00pm` (if set to `1`).
+date_format *Integer* | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
+sort_order *Integer* | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
+default_reminder *String* | The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
+auto_reminder *Integer* | The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task.
+mobile_number *String* | The user's mobile number (`null` if not set).
+mobile_host *String* | The user's mobile host (or `null` if not set).
+theme *Integer* | The currently selected Todoist theme (between `0` and `10`).
 
 
 ## Update karma goals
@@ -315,8 +315,8 @@ Update the karma goals of the user.
 
 Parameter | Description
 --------- | -----------
-daily_goal | The target number of tasks to complete per day (a number).
-weekly_goal | The target number of tasks to complete per week (a number).
-ignore_days | A list with the days of the week to ignore (`1` for `Monday` and `7` for `Sunday`).
-vacation_mode | Marks the user as being on vacation (where `1` is true and `0` is false).
-karma_disabled | Whether to disable the karma and goals measuring altogether (where `1` is true and `0` is false).
+daily_goal *Integer* | The target number of tasks to complete per day.
+weekly_goal *Integer* | The target number of tasks to complete per week.
+ignore_days *Integer* | A list with the days of the week to ignore (`1` for `Monday` and `7` for `Sunday`).
+vacation_mode *Integer* | Marks the user as being on vacation (where `1` is true and `0` is false).
+karma_disabled *Integer* | Whether to disable the karma and goals measuring altogether (where `1` is true and `0` is false).

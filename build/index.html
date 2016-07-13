@@ -3024,131 +3024,131 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The user&rsquo;s id (a unique number).</td>
+<td>id <em>Integer</em></td>
+<td>The user&rsquo;s id.</td>
 </tr>
 <tr>
-<td>token</td>
-<td>The user&rsquo;s token that should be used to call the other API methods (a unique string hash value).</td>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token that should be used to call the other API methods.</td>
 </tr>
 <tr>
-<td>email</td>
-<td>The user&rsquo;s email (a string value representing a valid email address).</td>
+<td>email <em>String</em></td>
+<td>The user&rsquo;s email.</td>
 </tr>
 <tr>
-<td>full_name</td>
-<td>The user&rsquo;s real name (a string value in a <code class="prettyprint">Firstname Surname</code> format).</td>
+<td>full_name <em>String</em></td>
+<td>The user&rsquo;s real name formatted as <code class="prettyprint">Firstname Lastname</code>.</td>
 </tr>
 <tr>
-<td>inbox_project</td>
-<td>The id of the user&rsquo;s <code class="prettyprint">Inbox</code> project (a unique number).</td>
+<td>inbox_project <em>Integer</em></td>
+<td>The id of the user&rsquo;s <code class="prettyprint">Inbox</code> project.</td>
 </tr>
 <tr>
-<td>tz_info</td>
+<td>tz_info <em>Object</em></td>
 <td>The user&rsquo;s timezone (a dictionary structure), which includes the following elements: the <code class="prettyprint">timezone</code> as a string value, the <code class="prettyprint">hours</code> and <code class="prettyprint">minutes</code> difference from GMT, whether daylight saving time applies denoted by <code class="prettyprint">is_dst</code>, and a string value of the time difference from GMT that is <code class="prettyprint">gmt_string</code>.</td>
 </tr>
 <tr>
-<td>start_page</td>
+<td>start_page <em>String</em></td>
 <td>The user&rsquo;s default view on Todoist. The start page can be one of the following: <code class="prettyprint">_info_page</code> for the info page, <code class="prettyprint">_blank</code> for a blank page, <code class="prettyprint">_project_&lt;PROJECT_ID&gt;</code> for project with id <code class="prettyprint">&lt;PROJECT_ID&gt;</code>, and <code class="prettyprint">&lt;ANY_QUERY&gt;</code> to query after anything.</td>
 </tr>
 <tr>
-<td>start_day</td>
-<td>The first day of the week (a number between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+<td>start_day <em>Integer</em></td>
+<td>The first day of the week (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
 </tr>
 <tr>
-<td>next_week</td>
-<td>The day of the next week, that tasks will be postponed to (a number between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+<td>next_week <em>Integer</em></td>
+<td>The day of the next week, that tasks will be postponed to (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
 </tr>
 <tr>
-<td>time_format</td>
+<td>time_format <em>Integer</em></td>
 <td>Whether to use a <code class="prettyprint">24h</code> format such as <code class="prettyprint">13:00</code> (if set to <code class="prettyprint">0</code>) when displaying time, or a <code class="prettyprint">12h</code> format such as <code class="prettyprint">1:00pm</code> (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
-<td>date_format</td>
+<td>date_format <em>Integer</em></td>
 <td>Whether to use the <code class="prettyprint">DD-MM-YYYY</code> date format (if set to <code class="prettyprint">0</code>), or the <code class="prettyprint">MM-DD-YYYY</code> format (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
-<td>sort_order</td>
+<td>sort_order <em>Integer</em></td>
 <td>Whether to show projects in an <code class="prettyprint">oldest dates first</code> order (if set to <code class="prettyprint">0</code>, or a <code class="prettyprint">oldest dates last</code> order (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
-<td>default_reminder</td>
+<td>default_reminder <em>String</em></td>
 <td>The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
 </tr>
 <tr>
-<td>auto_reminder</td>
-<td>The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task (a number).</td>
+<td>auto_reminder <em>Integer</em></td>
+<td>The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task.</td>
 </tr>
 <tr>
-<td>mobile_number</td>
-<td>The user&rsquo;s mobile number (a string value or <code class="prettyprint">null</code> if not set).</td>
+<td>mobile_number <em>String</em></td>
+<td>The user&rsquo;s mobile number (<code class="prettyprint">null</code> if not set).</td>
 </tr>
 <tr>
-<td>mobile_host</td>
-<td>The user&rsquo;s mobile host (a string value or <code class="prettyprint">null</code> if not set).</td>
+<td>mobile_host <em>String</em></td>
+<td>The user&rsquo;s mobile host (<code class="prettyprint">null</code> if not set).</td>
 </tr>
 <tr>
-<td>completed_count</td>
-<td>The total number of completed tasks (a number).</td>
+<td>completed_count <em>Integer</em></td>
+<td>The total number of completed tasks.</td>
 </tr>
 <tr>
-<td>completed_today</td>
-<td>The number of completed tasks for today (a number).</td>
+<td>completed_today <em>Integer</em></td>
+<td>The number of completed tasks for today.</td>
 </tr>
 <tr>
-<td>karma</td>
-<td>The user&rsquo;s karma score (a float number).</td>
+<td>karma <em>Number</em></td>
+<td>The user&rsquo;s karma score.</td>
 </tr>
 <tr>
-<td>karma_trend</td>
-<td>The user&rsquo;s karma trend (a string value like <code class="prettyprint">up</code>).</td>
+<td>karma_trend <em>String</em></td>
+<td>The user&rsquo;s karma trend (for example <code class="prettyprint">up</code>).</td>
 </tr>
 <tr>
-<td>is_premium</td>
+<td>is_premium <em>String</em></td>
 <td>Whether the user has a Premium subscription (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
 </tr>
 <tr>
-<td>premium_until</td>
+<td>premium_until <em>String</em></td>
 <td>The date when the user&rsquo;s Premium subscription ends (<code class="prettyprint">null</code> if not a Premium user).</td>
 </tr>
 <tr>
-<td>is_biz_admin</td>
+<td>is_biz_admin <em>String</em></td>
 <td>Whether the user is a business account administrator (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
 </tr>
 <tr>
-<td>business_account_id</td>
-<td>The id of the user&rsquo;s business account (a unique number).</td>
+<td>business_account_id <em>Integer</em></td>
+<td>The id of the user&rsquo;s business account.</td>
 </tr>
 <tr>
-<td>image_id</td>
-<td>The id of the user&rsquo;s avatar (a unique string hash value).</td>
+<td>image_id <em>String</em></td>
+<td>The id of the user&rsquo;s avatar.</td>
 </tr>
 <tr>
-<td>avatar_small</td>
-<td>The link to a 35x35 pixels image of the user&rsquo;s avatar (a string URL).</td>
+<td>avatar_small <em>String</em></td>
+<td>The link to a 35x35 pixels image of the user&rsquo;s avatar.</td>
 </tr>
 <tr>
-<td>avatar_medium</td>
-<td>The link to a 60x60 pixels image of the user&rsquo;s avatar (a string URL).</td>
+<td>avatar_medium <em>String</em></td>
+<td>The link to a 60x60 pixels image of the user&rsquo;s avatar.</td>
 </tr>
 <tr>
-<td>avatar_big</td>
-<td>The link to a 195x195 pixels image of the user&rsquo;s avatar (a string URL).</td>
+<td>avatar_big <em>String</em></td>
+<td>The link to a 195x195 pixels image of the user&rsquo;s avatar.</td>
 </tr>
 <tr>
-<td>avatar_s640</td>
-<td>The link to a 640x640 pixels image of the user&rsquo;s avatar (a string URL).</td>
+<td>avatar_s640 <em>String</em></td>
+<td>The link to a 640x640 pixels image of the user&rsquo;s avatar.</td>
 </tr>
 <tr>
-<td>theme</td>
+<td>theme <em>Integer</em></td>
 <td>The currently selected Todoist theme (a number between <code class="prettyprint">0</code> and <code class="prettyprint">10</code>).</td>
 </tr>
 <tr>
-<td>features</td>
+<td>features <em>Object</em></td>
 <td>Used internally for any special features that apply to the user.  Current special features include whether any special <code class="prettyprint">restriction</code> applies to the user, whether the user is in <code class="prettyprint">beta</code> status, whether the user <code class="prettyprint">has_push_reminders</code> enabled, and whether <code class="prettyprint">dateist_inline_disabled</code> that is inline date parsing support is disabled.</td>
 </tr>
 <tr>
-<td>join_date</td>
+<td>join_date <em>String</em></td>
 <td>The date when the user joined Todoist.</td>
 </tr>
 </tbody></table>
@@ -3264,16 +3264,16 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>email</td>
-<td>The user&rsquo;s email (a string value representing a valid email address).</td>
+<td>email <em>String</em></td>
+<td>The user&rsquo;s email.</td>
 </tr>
 <tr>
-<td>full_name</td>
-<td>The user&rsquo;s real name (a string value in a <code class="prettyprint">Firstname Surname</code> format).</td>
+<td>full_name <em>String</em></td>
+<td>The user&rsquo;s real name formatted as <code class="prettyprint">Firstname Lastname</code>.</td>
 </tr>
 <tr>
-<td>password</td>
-<td>The user&rsquo;s password (a string value).</td>
+<td>password <em>String</em></td>
+<td>The user&rsquo;s password.</td>
 </tr>
 </tbody></table>
 <h3 id='optional-parameters'>Optional parameters</h3>
@@ -3284,11 +3284,11 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>lang</td>
+<td>lang <em>String</em></td>
 <td>The user&rsquo;s language, which can take one of the following values: <code class="prettyprint">de</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">pt_BR</code>, <code class="prettyprint">zh_CN</code>, <code class="prettyprint">es</code>, <code class="prettyprint">hi</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">zh_TW</code>.</td>
 </tr>
 <tr>
-<td>timezone</td>
+<td>timezone <em>String</em></td>
 <td>The user&rsquo;s timezone (a string value such as <code class="prettyprint">UTC</code>, <code class="prettyprint">Europe/Lisbon</code>, <code class="prettyprint">US/Eastern</code>, <code class="prettyprint">Asian/Taipei</code>). By default we use the user&rsquo;s IP address to determine the timezone.</td>
 </tr>
 </tbody></table>
@@ -3316,12 +3316,12 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
-<td>The user&rsquo;s token (a string hash value).</td>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token.</td>
 </tr>
 <tr>
-<td>current_password</td>
-<td>The user&rsquo;s current password (a string value).</td>
+<td>current_password <em>String</em></td>
+<td>The user&rsquo;s current password.</td>
 </tr>
 </tbody></table>
 <h3 id='optional-parameters'>Optional parameters</h3>
@@ -3332,8 +3332,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>reason_for_delete</td>
-<td>A reason for deletion, that is used for sending feedback back to Todoist (a string value).</td>
+<td>reason_for_delete <em>String</em></td>
+<td>A reason for deletion, that is used for sending feedback back to Todoist.</td>
 </tr>
 </tbody></table>
 <h2 id='update-user39s-properties'>Update user&rsquo;s properties</h2>
@@ -3362,64 +3362,64 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>email</td>
-<td>The user&rsquo;s email (a string value representing a valid email address).</td>
+<td>email <em>String</em></td>
+<td>The user&rsquo;s email.</td>
 </tr>
 <tr>
-<td>full_name</td>
-<td>The user&rsquo;s real name (a string value in a <code class="prettyprint">Name Surname</code> format).</td>
+<td>full_name <em>String</em></td>
+<td>The user&rsquo;s real name formatted as <code class="prettyprint">Firstname Lastname</code>.</td>
 </tr>
 <tr>
-<td>password</td>
-<td>The user&rsquo;s password (a string value).</td>
+<td>password <em>String</em></td>
+<td>The user&rsquo;s password.</td>
 </tr>
 <tr>
-<td>timezone</td>
+<td>timezone <em>String</em></td>
 <td>The user&rsquo;s timezone (a string value such as <code class="prettyprint">UTC</code>, <code class="prettyprint">Europe/Lisbon</code>, <code class="prettyprint">US/Eastern</code>, <code class="prettyprint">Asian/Taipei</code>).</td>
 </tr>
 <tr>
-<td>start_page</td>
+<td>start_page <em>String</em></td>
 <td>The user&rsquo;s default view on Todoist. The start page can be one of the following: <code class="prettyprint">_info_page</code> for the info page, <code class="prettyprint">_blank</code> for a blank page, <code class="prettyprint">_project_&lt;PROJECT_ID&gt;</code> for project with id <code class="prettyprint">&lt;PROJECT_ID&gt;</code>, and <code class="prettyprint">&lt;ANY_QUERY&gt;</code> to query after anything.</td>
 </tr>
 <tr>
-<td>start_day</td>
-<td>The first day of the week (a number between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+<td>start_day <em>Integer</em></td>
+<td>The first day of the week (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
 </tr>
 <tr>
-<td>next_week</td>
-<td>The day of the next week, that tasks will be postponed to (a number between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+<td>next_week <em>Integer</em></td>
+<td>The day of the next week, that tasks will be postponed to (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
 </tr>
 <tr>
-<td>time_format</td>
+<td>time_format <em>Integer</em></td>
 <td>Whether to use a <code class="prettyprint">24h</code> format such as <code class="prettyprint">13:00</code> (if set to <code class="prettyprint">0</code>) when displaying time, or a <code class="prettyprint">12h</code> format such as <code class="prettyprint">1:00pm</code> (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
-<td>date_format</td>
+<td>date_format <em>Integer</em></td>
 <td>Whether to use the <code class="prettyprint">DD-MM-YYYY</code> date format (if set to <code class="prettyprint">0</code>), or the <code class="prettyprint">MM-DD-YYYY</code> format (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
-<td>sort_order</td>
+<td>sort_order <em>Integer</em></td>
 <td>Whether to show projects in an <code class="prettyprint">oldest dates first</code> order (if set to <code class="prettyprint">0</code>, or a <code class="prettyprint">oldest dates last</code> order (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
-<td>default_reminder</td>
-<td>The default reminder fo the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
+<td>default_reminder <em>String</em></td>
+<td>The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
 </tr>
 <tr>
-<td>auto_reminder</td>
-<td>The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task (a number).</td>
+<td>auto_reminder <em>Integer</em></td>
+<td>The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task.</td>
 </tr>
 <tr>
-<td>mobile_number</td>
-<td>The user&rsquo;s mobile number (a string value or <code class="prettyprint">null</code> if not set).</td>
+<td>mobile_number <em>String</em></td>
+<td>The user&rsquo;s mobile number (<code class="prettyprint">null</code> if not set).</td>
 </tr>
 <tr>
-<td>mobile_host</td>
-<td>The user&rsquo;s mobile host (a string value or <code class="prettyprint">null</code> if not set).</td>
+<td>mobile_host <em>String</em></td>
+<td>The user&rsquo;s mobile host (or <code class="prettyprint">null</code> if not set).</td>
 </tr>
 <tr>
-<td>theme</td>
-<td>The currently selected Todoist theme (a number between <code class="prettyprint">0</code> and <code class="prettyprint">10</code>).</td>
+<td>theme <em>Integer</em></td>
+<td>The currently selected Todoist theme (between <code class="prettyprint">0</code> and <code class="prettyprint">10</code>).</td>
 </tr>
 </tbody></table>
 <h2 id='update-karma-goals'>Update karma goals</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
@@ -3444,23 +3444,23 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>daily_goal</td>
-<td>The target number of tasks to complete per day (a number).</td>
+<td>daily_goal <em>Integer</em></td>
+<td>The target number of tasks to complete per day.</td>
 </tr>
 <tr>
-<td>weekly_goal</td>
-<td>The target number of tasks to complete per week (a number).</td>
+<td>weekly_goal <em>Integer</em></td>
+<td>The target number of tasks to complete per week.</td>
 </tr>
 <tr>
-<td>ignore_days</td>
+<td>ignore_days <em>Integer</em></td>
 <td>A list with the days of the week to ignore (<code class="prettyprint">1</code> for <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> for <code class="prettyprint">Sunday</code>).</td>
 </tr>
 <tr>
-<td>vacation_mode</td>
+<td>vacation_mode <em>Integer</em></td>
 <td>Marks the user as being on vacation (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
-<td>karma_disabled</td>
+<td>karma_disabled <em>Integer</em></td>
 <td>Whether to disable the karma and goals measuring altogether (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 </tbody></table>
