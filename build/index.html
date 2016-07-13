@@ -2426,27 +2426,27 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The id of the filter (a unique number).</td>
+<td>id <em>Integer</em></td>
+<td>The id of the filter.</td>
 </tr>
 <tr>
-<td>name</td>
-<td>The name of the filter (a string value).</td>
+<td>name <em>String</em></td>
+<td>The name of the filter.</td>
 </tr>
 <tr>
-<td>query</td>
+<td>query <em>String</em></td>
 <td>The query to search for. <a href="https://todoist.com/Help/Filtering">Examples of searches</a> can be found in the Todoist help page.</td>
 </tr>
 <tr>
-<td>color</td>
-<td>The color of the filter (a number between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).  The color codes corresponding to these numbers are: <code class="prettyprint">#019412</code>, <code class="prettyprint">#a39d01</code>, <code class="prettyprint">#e73d02</code>, <code class="prettyprint">#e702a4</code>, <code class="prettyprint">#9902e7</code>, <code class="prettyprint">#1d02e7</code>, <code class="prettyprint">#0082c5</code>, <code class="prettyprint">#555555</code>.  And for the additional colors of the premium users: <code class="prettyprint">#008299</code>, <code class="prettyprint">#03b3b2</code>, <code class="prettyprint">#ac193d</code>, <code class="prettyprint">#82ba00</code>, <code class="prettyprint">#111111</code>.</td>
+<td>color <em>Integer</em></td>
+<td>The color of the filter (between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).  The color codes corresponding to these numbers are: <code class="prettyprint">#019412</code>, <code class="prettyprint">#a39d01</code>, <code class="prettyprint">#e73d02</code>, <code class="prettyprint">#e702a4</code>, <code class="prettyprint">#9902e7</code>, <code class="prettyprint">#1d02e7</code>, <code class="prettyprint">#0082c5</code>, <code class="prettyprint">#555555</code>.  And for the additional colors of the premium users: <code class="prettyprint">#008299</code>, <code class="prettyprint">#03b3b2</code>, <code class="prettyprint">#ac193d</code>, <code class="prettyprint">#82ba00</code>, <code class="prettyprint">#111111</code>.</td>
 </tr>
 <tr>
-<td>item_order</td>
-<td>Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).</td>
+<td>item_order <em>Integer</em></td>
+<td>Filter’s order in the filter list (where the smallest value should place the filter at the top).</td>
 </tr>
 <tr>
-<td>is_deleted</td>
+<td>is_deleted <em>Integer</em></td>
 <td>Whether the filter is marked as deleted (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 </tbody></table>
@@ -2478,11 +2478,11 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
-<td>The name of the filter (a string value).</td>
+<td>name <em>String</em></td>
+<td>The name of the filter.</td>
 </tr>
 <tr>
-<td>query</td>
+<td>query <em>String</em></td>
 <td>The query to search for. <a href="https://todoist.com/Help/Filtering">Examples of searches</a> can be found in the Todoist help page.</td>
 </tr>
 </tbody></table>
@@ -2494,12 +2494,12 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>color</td>
-<td>The color of the filter (a number between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).</td>
+<td>color <em>Integer</em></td>
+<td>The color of the filter (between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).</td>
 </tr>
 <tr>
-<td>item_order</td>
-<td>Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).</td>
+<td>item_order <em>Integer</em></td>
+<td>Filter’s order in the filter list (the smallest value should place the filter at the top).</td>
 </tr>
 </tbody></table>
 <h2 id='update-a-filter'>Update a filter</h2>
@@ -2529,8 +2529,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The id of the filter (a number or temp id).</td>
+<td>id <em>Integer or String (temp_id)</em></td>
+<td>The id of the filter.</td>
 </tr>
 </tbody></table>
 <h3 id='optional-arguments'>Optional arguments</h3>
@@ -2550,11 +2550,11 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>color</td>
-<td>The color of the filter (a number between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).</td>
+<td>The color of the filter (between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).</td>
 </tr>
 <tr>
 <td>item_order</td>
-<td>Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).</td>
+<td>Filter’s order in the filter list (where the smallest value should place the filter at the top).</td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-filter'>Delete a filter</h2>
@@ -2584,8 +2584,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The id of the filter (a number or temp id).</td>
+<td>id *Integer or String (temp_id)</td>
+<td>The id of the filter.</td>
 </tr>
 </tbody></table>
 <h2 id='update-multiple-orders'>Update multiple orders</h2>
@@ -2619,7 +2619,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id_order_mapping</td>
+<td>id_order_mapping <em>Object</em></td>
 <td>A dictionary, where a filter id is the key, and the order its value: <code class="prettyprint">filter_id: order</code>.</td>
 </tr>
 </tbody></table>

@@ -19,12 +19,12 @@ Filters are only available for Todoist Premium users.
 
 Property | Description
 -------- | -----------
-id | The id of the filter (a unique number).
-name | The name of the filter (a string value).
-query | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
-color | The color of the filter (a number between `0` and `7`, or between `0` and `12` for premium users).  The color codes corresponding to these numbers are: `#019412`, `#a39d01`, `#e73d02`, `#e702a4`, `#9902e7`, `#1d02e7`, `#0082c5`, `#555555`.  And for the additional colors of the premium users: `#008299`, `#03b3b2`, `#ac193d`, `#82ba00`, `#111111`.
-item_order | Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).
-is_deleted | Whether the filter is marked as deleted (where `1` is true and `0` is false).
+id *Integer* | The id of the filter.
+name *String* | The name of the filter.
+query *String* | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
+color *Integer* | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).  The color codes corresponding to these numbers are: `#019412`, `#a39d01`, `#e73d02`, `#e702a4`, `#9902e7`, `#1d02e7`, `#0082c5`, `#555555`.  And for the additional colors of the premium users: `#008299`, `#03b3b2`, `#ac193d`, `#82ba00`, `#111111`.
+item_order *Integer* | Filter’s order in the filter list (where the smallest value should place the filter at the top).
+is_deleted *Integer* | Whether the filter is marked as deleted (where `1` is true and `0` is false).
 
 ## Add a filter
 
@@ -54,15 +54,15 @@ Add a filter.
 
 Argument | Description
 -------- | -----------
-name | The name of the filter (a string value).
-query | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
+name *String* | The name of the filter.
+query *String* | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-color | The color of the filter (a number between `0` and `7`, or between `0` and `12` for premium users).
-item_order | Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).
+color *Integer* | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).
+item_order *Integer* | Filter’s order in the filter list (the smallest value should place the filter at the top).
 
 ## Update a filter
 
@@ -91,7 +91,7 @@ Update a filter.
 
 Argument | Description
 -------- | -----------
-id | The id of the filter (a number or temp id).
+id *Integer or String (temp_id)* | The id of the filter.
 
 ### Optional arguments
 
@@ -99,8 +99,8 @@ Argument | Description
 -------- | -----------
 name | The name of the filter (a string value).
 query | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
-color | The color of the filter (a number between `0` and `7`, or between `0` and `12` for premium users).
-item_order | Filter’s order in the filter list (a number, where the smallest value should place the filter at the top).
+color | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).
+item_order | Filter’s order in the filter list (where the smallest value should place the filter at the top).
 
 ## Delete a filter
 
@@ -129,7 +129,7 @@ Delete a filter.
 
 Argument | Description
 -------- | -----------
-id | The id of the filter (a number or temp id).
+id *Integer or String (temp_id) | The id of the filter.
 
 ## Update multiple orders
 
@@ -162,4 +162,4 @@ Update the orders of multiple filters at once.
 
 Argument | Description
 -------- | -----------
-id_order_mapping| A dictionary, where a filter id is the key, and the order its value: `filter_id: order`.
+id_order_mapping *Object* | A dictionary, where a filter id is the key, and the order its value: `filter_id: order`.
