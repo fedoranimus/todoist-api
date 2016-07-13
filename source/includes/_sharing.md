@@ -28,8 +28,8 @@ Share a project.
 
 Argument | Description
 -------- | -----------
-project_id | The project to be shared (a unique number or temp id).
-email | The user email with whom to share the project (a string value representing a valid email address).
+project_id *Integer or String (temp_id)* | The project to be shared.
+email *String* | The user email with whom to share the project.
 
 ## Delete a collaborator
 
@@ -57,8 +57,8 @@ Delete a person from a shared project.
 
 Argument | Description
 -------- | -----------
-project_id | The project to be affected (a number or temp id).
-email | The user email with whom the project was shared with (a string value representing a valid email address).
+project_id *Integer or String (temp_id)* | The project to be affected.
+email *String* | The user email with whom the project was shared with.
 
 ## Accept an invitation
 
@@ -86,8 +86,8 @@ Accept an invitation.
 
 Argument | Description
 -------- | -----------
-invitation_id | The invitation id (a number).
-invitation_secret | The secret fetched from the live notification (a string value).
+invitation_id *Integer* | The invitation id.
+invitation_secret *String* | The secret fetched from the live notification.
 
 ## Reject an invitation
 
@@ -115,8 +115,8 @@ Reject an invitation.
 
 Argument | Description
 -------- | -----------
-invitation_id | The invitation id (a number).
-invitation_secret | The secret fetched from the live notification (a string value).
+invitation_id *Integer* | The invitation id.
+invitation_secret *String* | The secret fetched from the live notification.
 
 ## Delete an invitation
 
@@ -144,7 +144,7 @@ Delete an invitation.
 
 Argument | Description
 -------- | -----------
-invitation_id | The invitation to be deleted (a number).
+invitation_id *Integer* | The invitation to be deleted.
 
 ## Take ownership
 
@@ -172,4 +172,4 @@ Take ownership of a shared project.
 
 Argument | Description
 -------- | -----------
-project_id | The shared project of which to take the ownership (a number or temp id).
+project_id *Integer or String (temp_id)* | The shared project of which to take the ownership.

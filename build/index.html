@@ -4327,12 +4327,12 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>project_id</td>
-<td>The project to be shared (a unique number or temp id).</td>
+<td>project_id <em>Integer or String (temp_id)</em></td>
+<td>The project to be shared.</td>
 </tr>
 <tr>
-<td>email</td>
-<td>The user email with whom to share the project (a string value representing a valid email address).</td>
+<td>email <em>String</em></td>
+<td>The user email with whom to share the project.</td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-collaborator'>Delete a collaborator</h2>
@@ -4361,12 +4361,12 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>project_id</td>
-<td>The project to be affected (a number or temp id).</td>
+<td>project_id <em>Integer or String (temp_id)</em></td>
+<td>The project to be affected.</td>
 </tr>
 <tr>
-<td>email</td>
-<td>The user email with whom the project was shared with (a string value representing a valid email address).</td>
+<td>email <em>String</em></td>
+<td>The user email with whom the project was shared with.</td>
 </tr>
 </tbody></table>
 <h2 id='accept-an-invitation'>Accept an invitation</h2>
@@ -4395,12 +4395,12 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>invitation_id</td>
-<td>The invitation id (a number).</td>
+<td>invitation_id <em>Integer</em></td>
+<td>The invitation id.</td>
 </tr>
 <tr>
-<td>invitation_secret</td>
-<td>The secret fetched from the live notification (a string value).</td>
+<td>invitation_secret <em>String</em></td>
+<td>The secret fetched from the live notification.</td>
 </tr>
 </tbody></table>
 <h2 id='reject-an-invitation'>Reject an invitation</h2>
@@ -4429,12 +4429,12 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>invitation_id</td>
-<td>The invitation id (a number).</td>
+<td>invitation_id <em>Integer</em></td>
+<td>The invitation id.</td>
 </tr>
 <tr>
-<td>invitation_secret</td>
-<td>The secret fetched from the live notification (a string value).</td>
+<td>invitation_secret <em>String</em></td>
+<td>The secret fetched from the live notification.</td>
 </tr>
 </tbody></table>
 <h2 id='delete-an-invitation'>Delete an invitation</h2>
@@ -4463,8 +4463,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>invitation_id</td>
-<td>The invitation to be deleted (a number).</td>
+<td>invitation_id <em>Integer</em></td>
+<td>The invitation to be deleted.</td>
 </tr>
 </tbody></table>
 <h2 id='take-ownership'>Take ownership</h2>
@@ -4493,8 +4493,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>project_id</td>
-<td>The shared project of which to take the ownership (a number or temp id).</td>
+<td>project_id <em>Integer or String (temp_id)</em></td>
+<td>The shared project of which to take the ownership.</td>
 </tr>
 </tbody></table>
 
