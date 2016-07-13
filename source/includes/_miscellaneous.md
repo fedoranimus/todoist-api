@@ -130,7 +130,7 @@ Get the user's productivity stats.
 
 Parameter | Description
 --------- | -----------
-token | The user's token received on login (a string hash value).
+token *String* | The user's token received on login.
 
 ## Update notification settings
 
@@ -272,10 +272,10 @@ Update the user's notification settings.
 
 Parameter | Description
 --------- | -----------
-token | The user's token received on login (a string hash value).
-notification_type | The notification type (a string value).  For a list of notifications have a look at the `Live Notifications` section.
-service | The service type, which can take the values: `email` or `push`.
-dont_notify | Whether notifications of this service should be notified (`1` to not notify, and `0` to nofify).
+token *String* | The user's token received on login.
+notification_type *String* | The notification type.  For a list of notifications have a look at the `Live Notifications` section.
+service *String* | The service type, which can take the values: `email` or `push`.
+dont_notify *Integer* | Whether notifications of this service should be notified (`1` to not notify, and `0` to nofify).
 
 ## Get all completed items
 
@@ -348,18 +348,18 @@ Get all the user's completed items (tasks). Only available for Todoist Premium u
 
 Parameter | Description
 --------- | -----------
-token | The user's token received on login (a string hash value).
+token *String* | The user's token received on login.
 
 ### Optional parameters
 
 Parameter | Description
 --------- | -----------
-project_id | Filter the tasks by project id (a unique number).
-limit | The number of items to return (a number, where the default is `30`, and the maximum is `50`).
-offset | Can be used for pagination, when more than the `limit` number of tasks are returned (a number).
-until | Return items with a completed date same or older than `until` (a string value formatted as `2007-4-29T10:13`).
-since | Return items with a completed date newer than `since` (a string value formatted as `2007-4-29T10:13`).
-annotate_notes | Return notes together with the completed items (a `true` or `false` value).
+project_id *Integer* | Filter the tasks by project id.
+limit *Integer* | The number of items to return (where the default is `30`, and the maximum is `50`).
+offset *Integer* | Can be used for pagination, when more than the `limit` number of tasks are returned.
+until *String* | Return items with a completed date same or older than `until` (a string value formatted as `2007-4-29T10:13`).
+since *String* | Return items with a completed date newer than `since` (a string value formatted as `2007-4-29T10:13`).
+annotate_notes *String* | Return notes together with the completed items (a `true` or `false` value).
 
 ## Get archived projects
 
@@ -406,7 +406,7 @@ Get the user's archived projects.
 
 Parameter | Description
 --------- | -----------
-token | The user's token received on login (a string hash value).
+token *String* | The user's token received on login.
 
 ## Add item
 
@@ -471,22 +471,22 @@ Add a new task to a project.  Note, that this is provided as a helper method, a 
 
 Parameter | Description
 --------- | -----------
-token | The user's token received on login (a string hash value).
-content | The text of the task (a string value).
+token *String* | The user's token received on login.
+content *String* | The text of the task.
 
 ### Optional parameters
 
 Parameter | Description
 --------- | -----------
-project_id | The id of the project to add the task to (a unique number), while the default is the user's `Inbox` project.
-date_string | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-priority | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
-indent | The indent of the task (a number between `1` and `4`, where `1` is top-level).
-item_order | The order of the task inside a project (a number, where the smallest value would place the task at the top).
-labels | The task's labels (a list of label ids such as `[2324,2525]`).
-assigned_by_uid | The id of the user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
-responsible_uid | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
-note | Add a note directly to the task (a string value that will become the content of the note).
+project_id *Integer* | The id of the project to add the task to, while the default is the user's `Inbox` project.
+date_string *String* | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+priority *Integer* | The priority of the task (between `1` and `4`, `4` for very urgent and `1` for natural).
+indent *Integer* | The indent of the task (between `1` and `4`, where `1` is top-level).
+item_order *Integer* | The order of the task inside a project (where the smallest value would place the task at the top).
+labels *Array of Integer* | The task's labels (a list of label ids such as `[2324,2525]`).
+assigned_by_uid *Integer* | The id of the user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
+responsible_uid *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
+note *String* | Add a note directly to the task (a string value that will become the content of the note).
 
 ## Get item info
 

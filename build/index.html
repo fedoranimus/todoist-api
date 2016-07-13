@@ -3595,8 +3595,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
-<td>The user&rsquo;s token received on login (a string hash value).</td>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
 </tr>
 </tbody></table>
 <h2 id='update-notification-settings'>Update notification settings</h2>
@@ -3739,19 +3739,19 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
-<td>The user&rsquo;s token received on login (a string hash value).</td>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
 </tr>
 <tr>
-<td>notification_type</td>
-<td>The notification type (a string value).  For a list of notifications have a look at the <code class="prettyprint">Live Notifications</code> section.</td>
+<td>notification_type <em>String</em></td>
+<td>The notification type.  For a list of notifications have a look at the <code class="prettyprint">Live Notifications</code> section.</td>
 </tr>
 <tr>
-<td>service</td>
+<td>service <em>String</em></td>
 <td>The service type, which can take the values: <code class="prettyprint">email</code> or <code class="prettyprint">push</code>.</td>
 </tr>
 <tr>
-<td>dont_notify</td>
+<td>dont_notify <em>Integer</em></td>
 <td>Whether notifications of this service should be notified (<code class="prettyprint">1</code> to not notify, and <code class="prettyprint">0</code> to nofify).</td>
 </tr>
 </tbody></table>
@@ -3826,8 +3826,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
-<td>The user&rsquo;s token received on login (a string hash value).</td>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
 </tr>
 </tbody></table>
 <h3 id='optional-parameters'>Optional parameters</h3>
@@ -3838,27 +3838,27 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>project_id</td>
-<td>Filter the tasks by project id (a unique number).</td>
+<td>project_id <em>Integer</em></td>
+<td>Filter the tasks by project id.</td>
 </tr>
 <tr>
-<td>limit</td>
-<td>The number of items to return (a number, where the default is <code class="prettyprint">30</code>, and the maximum is <code class="prettyprint">50</code>).</td>
+<td>limit <em>Integer</em></td>
+<td>The number of items to return (where the default is <code class="prettyprint">30</code>, and the maximum is <code class="prettyprint">50</code>).</td>
 </tr>
 <tr>
-<td>offset</td>
-<td>Can be used for pagination, when more than the <code class="prettyprint">limit</code> number of tasks are returned (a number).</td>
+<td>offset <em>Integer</em></td>
+<td>Can be used for pagination, when more than the <code class="prettyprint">limit</code> number of tasks are returned.</td>
 </tr>
 <tr>
-<td>until</td>
+<td>until <em>String</em></td>
 <td>Return items with a completed date same or older than <code class="prettyprint">until</code> (a string value formatted as <code class="prettyprint">2007-4-29T10:13</code>).</td>
 </tr>
 <tr>
-<td>since</td>
+<td>since <em>String</em></td>
 <td>Return items with a completed date newer than <code class="prettyprint">since</code> (a string value formatted as <code class="prettyprint">2007-4-29T10:13</code>).</td>
 </tr>
 <tr>
-<td>annotate_notes</td>
+<td>annotate_notes <em>String</em></td>
 <td>Return notes together with the completed items (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
 </tr>
 </tbody></table>
@@ -3907,8 +3907,8 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
-<td>The user&rsquo;s token received on login (a string hash value).</td>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
 </tr>
 </tbody></table>
 <h2 id='add-item'>Add item</h2>
@@ -3974,12 +3974,12 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
-<td>The user&rsquo;s token received on login (a string hash value).</td>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
 </tr>
 <tr>
-<td>content</td>
-<td>The text of the task (a string value).</td>
+<td>content <em>String</em></td>
+<td>The text of the task.</td>
 </tr>
 </tbody></table>
 <h3 id='optional-parameters'>Optional parameters</h3>
@@ -3990,39 +3990,39 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>project_id</td>
-<td>The id of the project to add the task to (a unique number), while the default is the user&rsquo;s <code class="prettyprint">Inbox</code> project.</td>
+<td>project_id <em>Integer</em></td>
+<td>The id of the project to add the task to, while the default is the user&rsquo;s <code class="prettyprint">Inbox</code> project.</td>
 </tr>
 <tr>
-<td>date_string</td>
+<td>date_string <em>String</em></td>
 <td>The date of the task, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code> (or <code class="prettyprint">null</code> or an empty string to unset). Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>
 </tr>
 <tr>
-<td>priority</td>
-<td>The priority of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, <code class="prettyprint">4</code> for very urgent and <code class="prettyprint">1</code> for natural).</td>
+<td>priority <em>Integer</em></td>
+<td>The priority of the task (between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, <code class="prettyprint">4</code> for very urgent and <code class="prettyprint">1</code> for natural).</td>
 </tr>
 <tr>
-<td>indent</td>
-<td>The indent of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
+<td>indent <em>Integer</em></td>
+<td>The indent of the task (between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
-<td>item_order</td>
-<td>The order of the task inside a project (a number, where the smallest value would place the task at the top).</td>
+<td>item_order <em>Integer</em></td>
+<td>The order of the task inside a project (where the smallest value would place the task at the top).</td>
 </tr>
 <tr>
-<td>labels</td>
+<td>labels <em>Array of Integer</em></td>
 <td>The task&rsquo;s labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>).</td>
 </tr>
 <tr>
-<td>assigned_by_uid</td>
+<td>assigned_by_uid <em>Integer</em></td>
 <td>The id of the user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
 </tr>
 <tr>
-<td>responsible_uid</td>
+<td>responsible_uid <em>Integer</em></td>
 <td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to <code class="prettyprint">null</code>.</td>
 </tr>
 <tr>
-<td>note</td>
+<td>note <em>String</em></td>
 <td>Add a note directly to the task (a string value that will become the content of the note).</td>
 </tr>
 </tbody></table>
