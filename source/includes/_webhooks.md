@@ -39,6 +39,7 @@ label:updated | A label was updated
 filter:added | A filter was added
 filter:deleted | A filter was deleted
 filter:updated | A filter was updated
+reminder:fired | A reminder has fired
 
 
 
