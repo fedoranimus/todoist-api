@@ -753,9 +753,9 @@ project_id *Integer* | The projects's unique id.
 all_data *Boolean* | Whether to return the notes of the project (a `true` or `false` value, while the default is `true`).
 
 
-## Get project items
+## Get project data
 
-> An example of getting a project's items:
+> An example of getting a project's data:
 
 ```shell
 $ curl https://todoist.com/API/v7/projects/get_data \
