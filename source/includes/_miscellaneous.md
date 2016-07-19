@@ -359,7 +359,7 @@ limit *Integer* | The number of items to return (where the default is `30`, and 
 offset *Integer* | Can be used for pagination, when more than the `limit` number of tasks are returned.
 until *String* | Return items with a completed date same or older than `until` (a string value formatted as `2007-4-29T10:13`).
 since *String* | Return items with a completed date newer than `since` (a string value formatted as `2007-4-29T10:13`).
-annotate_notes *String* | Return notes together with the completed items (a `true` or `false` value).
+annotate_notes *Boolean* | Return notes together with the completed items (a `true` or `false` value).
 
 ## Get archived projects
 
@@ -658,7 +658,7 @@ It's especially important, because on initial load we return back no more than
 10 last notes, and if client wants to get more, they can be downloaded with
 `get_item` endpoint.
 
-It returns a JSON object with `project`, `item` and `notes` attributes.
+It returns a JSON object with the `item`, and optionally the `project` and `notes` attributes.
 
 ### Required parameters
 
@@ -666,6 +666,7 @@ Parameter | Description
 --------- | -----------
 token *String* | The user's token received on login.
 item_id *Integer* | The item's unique id.
+all_data *Boolean* | Whether to return the parent project and notes of the item (a `true` or `false` value, while the default is `true`).
 
 ## Get project info
 
@@ -741,7 +742,7 @@ It's especially important, because on initial load we return back no more than
 10 last notes, and if client wants to get more, they can be downloaded with
 `get_project` endpoint.
 
-It returns a JSON object with `project` and `notes` attributes.
+It returns a JSON object with the `project`, and optionally the `notes` attributes.
 
 ### Required parameters
 
@@ -749,3 +750,4 @@ Parameter | Description
 --------- | -----------
 token *String* | The user's token received on login.
 project_id *Integer* | The projects's unique id.
+all_data *Boolean* | Whether to return the notes of the project (a `true` or `false` value, while the default is `true`).

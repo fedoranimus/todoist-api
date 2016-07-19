@@ -3881,7 +3881,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>Return items with a completed date newer than <code class="prettyprint">since</code> (a string value formatted as <code class="prettyprint">2007-4-29T10:13</code>).</td>
 </tr>
 <tr>
-<td>annotate_notes <em>String</em></td>
+<td>annotate_notes <em>Boolean</em></td>
 <td>Return notes together with the completed items (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
 </tr>
 </tbody></table>
@@ -4216,7 +4216,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 10 last notes, and if client wants to get more, they can be downloaded with
 <code class="prettyprint">get_item</code> endpoint.</p>
 
-<p>It returns a JSON object with <code class="prettyprint">project</code>, <code class="prettyprint">item</code> and <code class="prettyprint">notes</code> attributes.</p>
+<p>It returns a JSON object with the <code class="prettyprint">item</code>, and optionally the <code class="prettyprint">project</code> and <code class="prettyprint">notes</code> attributes.</p>
 <h3 id='required-parameters'>Required parameters</h3>
 <table><thead>
 <tr>
@@ -4231,6 +4231,10 @@ to history), recurring task is moved forward (due date is updated).</p>
 <tr>
 <td>item_id <em>Integer</em></td>
 <td>The item&rsquo;s unique id.</td>
+</tr>
+<tr>
+<td>all_data <em>Boolean</em></td>
+<td>Whether to return the parent project and notes of the item (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value, while the default is <code class="prettyprint">true</code>).</td>
 </tr>
 </tbody></table>
 <h2 id='get-project-info'>Get project info</h2>
@@ -4304,7 +4308,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 10 last notes, and if client wants to get more, they can be downloaded with
 <code class="prettyprint">get_project</code> endpoint.</p>
 
-<p>It returns a JSON object with <code class="prettyprint">project</code> and <code class="prettyprint">notes</code> attributes.</p>
+<p>It returns a JSON object with the <code class="prettyprint">project</code>, and optionally the <code class="prettyprint">notes</code> attributes.</p>
 <h3 id='required-parameters'>Required parameters</h3>
 <table><thead>
 <tr>
@@ -4319,6 +4323,10 @@ to history), recurring task is moved forward (due date is updated).</p>
 <tr>
 <td>project_id <em>Integer</em></td>
 <td>The projects&rsquo;s unique id.</td>
+</tr>
+<tr>
+<td>all_data <em>Boolean</em></td>
+<td>Whether to return the notes of the project (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value, while the default is <code class="prettyprint">true</code>).</td>
 </tr>
 </tbody></table>
 
