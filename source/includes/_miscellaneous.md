@@ -751,3 +751,102 @@ Parameter | Description
 token *String* | The user's token received on login.
 project_id *Integer* | The projects's unique id.
 all_data *Boolean* | Whether to return the notes of the project (a `true` or `false` value, while the default is `true`).
+
+
+## Get project items
+
+> An example of getting a project's items:
+
+```shell
+$ curl https://todoist.com/API/v7/projects/get_data \
+    -d token=0123456789abcdef0123456789abcdef01234567
+    -d project_id=128501682
+{
+  "project" : {
+    "item_order" : 4,
+    "user_id" : 1855589,
+    "is_archived" : 0,
+    "is_deleted" : 0,
+    "id" : 175655925,
+    "archived_date" : null,
+    "collapsed" : 0,
+    "indent" : 1,
+    "archived_timestamp" : 0,
+    "color" : 7,
+    "name" : "Project1"
+  },
+  "items" : [
+    {
+      "is_deleted" : 0,
+      "date_string" : "",
+      "date_added" : "Tue 19 Jul 2016 12:50:49 +0000",
+      "item_order" : 1,
+      "responsible_uid" : null,
+      "due_date" : null,
+      "content" : "Task1",
+      "id" : 101964377,
+      "user_id" : 1855589,
+      "date_lang" : "en",
+      "assigned_by_uid" : 1855589,
+      "in_history" : 0,
+      "is_archived" : 0,
+      "project_id" : 175655925,
+      "sync_id" : null,
+      "collapsed" : 0,
+      "due_date_utc" : null,
+      "indent" : 1,
+      "labels" : [],
+      "checked" : 0,
+      "priority" : 1
+    }
+  ]
+}
+```
+
+```python
+>>> import todoist
+>>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
+>>> api.get_project_data(128501682)
+{
+  'project' : {
+    'item_order' : 4,
+    'user_id' : 1855589,
+    'is_archived' : 0,
+    'is_deleted' : 0,
+    'id' : 175655925,
+    'archived_date' : None,
+    'collapsed' : 0,
+    'indent' : 1,
+    'archived_timestamp' : 0,
+    'color' : 7,
+    'name' : 'Project1'
+  },
+  'items' : [
+    {
+      'is_deleted' : 0,
+      'date_string' : '',
+      'date_added' : 'Tue 19 Jul 2016 12:50:49 +0000',
+      'item_order' : 1,
+      'responsible_uid' : None,
+      'due_date' : None,
+      'content' : 'Task1',
+      'id' : 101964377,
+      'user_id' : 1855589,
+      'date_lang' : 'en',
+      'assigned_by_uid' : 1855589,
+      'in_history' : 0,
+      'is_archived' : 0,
+      'project_id' : 175655925,
+      'sync_id' : None,
+      'collapsed' : 0,
+      'due_date_utc' : None,
+      'indent' : 1,
+      'labels' : [],
+      'checked' : 0,
+      'priority' : 1
+    }
+  ]
+}
+```
+
+Get a project's uncompleted items.

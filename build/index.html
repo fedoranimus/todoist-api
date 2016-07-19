@@ -4329,6 +4329,100 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>Whether to return the notes of the project (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value, while the default is <code class="prettyprint">true</code>).</td>
 </tr>
 </tbody></table>
+<h2 id='get-project-items'>Get project items</h2>
+<blockquote>
+<p>An example of getting a project&rsquo;s items:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/projects/get_data <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
+    -d <span class="nv">project_id</span><span class="o">=</span>128501682
+<span class="o">{</span>
+  <span class="s2">"project"</span> : <span class="o">{</span>
+    <span class="s2">"item_order"</span> : 4,
+    <span class="s2">"user_id"</span> : 1855589,
+    <span class="s2">"is_archived"</span> : 0,
+    <span class="s2">"is_deleted"</span> : 0,
+    <span class="s2">"id"</span> : 175655925,
+    <span class="s2">"archived_date"</span> : null,
+    <span class="s2">"collapsed"</span> : 0,
+    <span class="s2">"indent"</span> : 1,
+    <span class="s2">"archived_timestamp"</span> : 0,
+    <span class="s2">"color"</span> : 7,
+    <span class="s2">"name"</span> : <span class="s2">"Project1"</span>
+  <span class="o">}</span>,
+  <span class="s2">"items"</span> : <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"is_deleted"</span> : 0,
+      <span class="s2">"date_string"</span> : <span class="s2">""</span>,
+      <span class="s2">"date_added"</span> : <span class="s2">"Tue 19 Jul 2016 12:50:49 +0000"</span>,
+      <span class="s2">"item_order"</span> : 1,
+      <span class="s2">"responsible_uid"</span> : null,
+      <span class="s2">"due_date"</span> : null,
+      <span class="s2">"content"</span> : <span class="s2">"Task1"</span>,
+      <span class="s2">"id"</span> : 101964377,
+      <span class="s2">"user_id"</span> : 1855589,
+      <span class="s2">"date_lang"</span> : <span class="s2">"en"</span>,
+      <span class="s2">"assigned_by_uid"</span> : 1855589,
+      <span class="s2">"in_history"</span> : 0,
+      <span class="s2">"is_archived"</span> : 0,
+      <span class="s2">"project_id"</span> : 175655925,
+      <span class="s2">"sync_id"</span> : null,
+      <span class="s2">"collapsed"</span> : 0,
+      <span class="s2">"due_date_utc"</span> : null,
+      <span class="s2">"indent"</span> : 1,
+      <span class="s2">"labels"</span> : <span class="o">[]</span>,
+      <span class="s2">"checked"</span> : 0,
+      <span class="s2">"priority"</span> : 1
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_project_data</span><span class="p">(</span><span class="mi">128501682</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="s">'project'</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="s">'item_order'</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s">'user_id'</span> <span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
+    <span class="s">'is_archived'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'is_deleted'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'id'</span> <span class="p">:</span> <span class="mi">175655925</span><span class="p">,</span>
+    <span class="s">'archived_date'</span> <span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'collapsed'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'indent'</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'archived_timestamp'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'color'</span> <span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="s">'name'</span> <span class="p">:</span> <span class="s">'Project1'</span>
+  <span class="p">},</span>
+  <span class="s">'items'</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">'is_deleted'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s">'date_string'</span> <span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+      <span class="s">'date_added'</span> <span class="p">:</span> <span class="s">'Tue 19 Jul 2016 12:50:49 +0000'</span><span class="p">,</span>
+      <span class="s">'item_order'</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">'responsible_uid'</span> <span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+      <span class="s">'due_date'</span> <span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+      <span class="s">'content'</span> <span class="p">:</span> <span class="s">'Task1'</span><span class="p">,</span>
+      <span class="s">'id'</span> <span class="p">:</span> <span class="mi">101964377</span><span class="p">,</span>
+      <span class="s">'user_id'</span> <span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
+      <span class="s">'date_lang'</span> <span class="p">:</span> <span class="s">'en'</span><span class="p">,</span>
+      <span class="s">'assigned_by_uid'</span> <span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
+      <span class="s">'in_history'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s">'is_archived'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s">'project_id'</span> <span class="p">:</span> <span class="mi">175655925</span><span class="p">,</span>
+      <span class="s">'sync_id'</span> <span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+      <span class="s">'collapsed'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s">'due_date_utc'</span> <span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+      <span class="s">'indent'</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">'labels'</span> <span class="p">:</span> <span class="p">[],</span>
+      <span class="s">'checked'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s">'priority'</span> <span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Get a project&rsquo;s uncompleted items.</p>
 
         <h1 id='sharing-projects'>Sharing projects</h1>
 <p>Commands that are related to sharing projects will be described in this section.</p>
