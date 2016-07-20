@@ -1,4 +1,4 @@
-# Sharing projects
+# Sharing
 
 Commands that are related to sharing projects will be described in this section.
 

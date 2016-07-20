@@ -17,16 +17,16 @@ includes:
   - uploads
   - filters
   - reminders
-  - users
-#  - query
   - miscellaneous
+  - user
   - sharing
-  - activity
-  - business
   - livenotifications
-  - urlschemes
+  - business
+  - activity
   - backups
+  - urlschemes
   - webhooks
+#  - query
 
 search: false
 layout: doc_layout

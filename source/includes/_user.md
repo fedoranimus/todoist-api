@@ -1,4 +1,4 @@
-# Users
+# User
 
 A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typically a user object will have the following properties:
 
@@ -320,3 +320,151 @@ weekly_goal *Integer* | The target number of tasks to complete per week.
 ignore_days *Integer* | A list with the days of the week to ignore (`1` for `Monday` and `7` for `Sunday`).
 vacation_mode *Integer* | Marks the user as being on vacation (where `1` is true and `0` is false).
 karma_disabled *Integer* | Whether to disable the karma and goals measuring altogether (where `1` is true and `0` is false).
+
+
+## Update notification settings
+
+> An example of updating the user's notification settings
+
+```shell
+$ curl https://todoist.com/API/v7/notification_settings/update \
+    -d token=0123456789abcdef0123456789abcdef01234567 \
+    -d notification_type=item_completed \
+    -d service=email \
+    -d dont_notify=1
+{
+  "user_left_project": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "biz_trial_will_end": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "biz_trial_enter_cc": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "item_completed": {
+    "notify_push": true,
+    "notify_email": false
+  },
+  "share_invitation_rejected": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "note_added": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "biz_account_disabled": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "biz_invitation_rejected": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "item_uncompleted": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "item_assigned": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "share_invitation_accepted": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "user_removed_from_project": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "biz_invitation_accepted": {
+    "notify_push": true,
+    "notify_email": true
+  },
+  "biz_payment_failed": {
+    "notify_push": true,
+    "notify_email": true
+  }
+}
+```
+
+```python
+>>> import todoist
+>>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
+>>> api.user.update_notification_setting('item_completed', 'email', 1)
+{
+  'biz_invitation_rejected': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'user_left_project': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'note_added': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'biz_trial_enter_cc': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'item_completed': {
+    'notify_push': True,
+    'notify_email': False
+  },
+  'biz_trial_will_end': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'biz_account_disabled': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'share_invitation_rejected': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'item_uncompleted': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'item_assigned': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'share_invitation_accepted': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'user_removed_from_project': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'biz_invitation_accepted': {
+    'notify_push': True,
+    'notify_email': True
+  },
+  'biz_payment_failed': {
+    'notify_push': True,
+    'notify_email': True
+  }
+}
+```
+
+Update the user's notification settings.
+
+### Required parameters
+
+Parameter | Description
+--------- | -----------
+token *String* | The user's token received on login.
+notification_type *String* | The notification type.  For a list of notifications have a look at the `Live Notifications` section.
+service *String* | The service type, which can take the values: `email` or `push`.
+dont_notify *Integer* | Whether notifications of this service should be notified (`1` to not notify, and `0` to nofify).
+
+

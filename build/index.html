@@ -2988,506 +2988,6 @@ to history), recurring task is moved forward (due date is updated).</p>
 
 <p>Clears the locations list, which is used for the location reminders.</p>
 
-        <h1 id='users'>Users</h1>
-<p>A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typically a user object will have the following properties:</p>
-
-<blockquote>
-<p>An example user object</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@xample.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"inbox_project"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501411</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"tz_info"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"timezone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Athens"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"hours"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"is_dst"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"gmt_string"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+03:00"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"start_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"overdue, 7 days"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"start_day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"next_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"date_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"time_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"default_reminder"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"auto_reminder"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"mobile_host"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"completed_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"completed_today"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"karma"</span><span class="p">:</span><span class="w"> </span><span class="mf">684.0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"karma_trend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"is_premium"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"premium_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"is_biz_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"business_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"avatar_small"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_small.jpg"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"avatar_medium"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_medium.jpg"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"avatar_big"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_big.jpg"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"avatar_s640"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_s640.jpg"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"theme"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"features"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"beta"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"restriction"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"has_push_reminders"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="err">}</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id='properties'>Properties</h3>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id <em>Integer</em></td>
-<td>The user&rsquo;s id.</td>
-</tr>
-<tr>
-<td>token <em>String</em></td>
-<td>The user&rsquo;s token that should be used to call the other API methods.</td>
-</tr>
-<tr>
-<td>email <em>String</em></td>
-<td>The user&rsquo;s email.</td>
-</tr>
-<tr>
-<td>full_name <em>String</em></td>
-<td>The user&rsquo;s real name formatted as <code class="prettyprint">Firstname Lastname</code>.</td>
-</tr>
-<tr>
-<td>inbox_project <em>Integer</em></td>
-<td>The id of the user&rsquo;s <code class="prettyprint">Inbox</code> project.</td>
-</tr>
-<tr>
-<td>tz_info <em>Object</em></td>
-<td>The user&rsquo;s timezone (a dictionary structure), which includes the following elements: the <code class="prettyprint">timezone</code> as a string value, the <code class="prettyprint">hours</code> and <code class="prettyprint">minutes</code> difference from GMT, whether daylight saving time applies denoted by <code class="prettyprint">is_dst</code>, and a string value of the time difference from GMT that is <code class="prettyprint">gmt_string</code>.</td>
-</tr>
-<tr>
-<td>start_page <em>String</em></td>
-<td>The user&rsquo;s default view on Todoist. The start page can be one of the following: <code class="prettyprint">_info_page</code> for the info page, <code class="prettyprint">_blank</code> for a blank page, <code class="prettyprint">_project_&lt;PROJECT_ID&gt;</code> for project with id <code class="prettyprint">&lt;PROJECT_ID&gt;</code>, and <code class="prettyprint">&lt;ANY_QUERY&gt;</code> to query after anything.</td>
-</tr>
-<tr>
-<td>start_day <em>Integer</em></td>
-<td>The first day of the week (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
-</tr>
-<tr>
-<td>next_week <em>Integer</em></td>
-<td>The day of the next week, that tasks will be postponed to (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
-</tr>
-<tr>
-<td>time_format <em>Integer</em></td>
-<td>Whether to use a <code class="prettyprint">24h</code> format such as <code class="prettyprint">13:00</code> (if set to <code class="prettyprint">0</code>) when displaying time, or a <code class="prettyprint">12h</code> format such as <code class="prettyprint">1:00pm</code> (if set to <code class="prettyprint">1</code>).</td>
-</tr>
-<tr>
-<td>date_format <em>Integer</em></td>
-<td>Whether to use the <code class="prettyprint">DD-MM-YYYY</code> date format (if set to <code class="prettyprint">0</code>), or the <code class="prettyprint">MM-DD-YYYY</code> format (if set to <code class="prettyprint">1</code>).</td>
-</tr>
-<tr>
-<td>sort_order <em>Integer</em></td>
-<td>Whether to show projects in an <code class="prettyprint">oldest dates first</code> order (if set to <code class="prettyprint">0</code>, or a <code class="prettyprint">oldest dates last</code> order (if set to <code class="prettyprint">1</code>).</td>
-</tr>
-<tr>
-<td>default_reminder <em>String</em></td>
-<td>The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
-</tr>
-<tr>
-<td>auto_reminder <em>Integer</em></td>
-<td>The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task.</td>
-</tr>
-<tr>
-<td>mobile_number <em>String</em></td>
-<td>The user&rsquo;s mobile number (<code class="prettyprint">null</code> if not set).</td>
-</tr>
-<tr>
-<td>mobile_host <em>String</em></td>
-<td>The user&rsquo;s mobile host (<code class="prettyprint">null</code> if not set).</td>
-</tr>
-<tr>
-<td>completed_count <em>Integer</em></td>
-<td>The total number of completed tasks.</td>
-</tr>
-<tr>
-<td>completed_today <em>Integer</em></td>
-<td>The number of completed tasks for today.</td>
-</tr>
-<tr>
-<td>karma <em>Number</em></td>
-<td>The user&rsquo;s karma score.</td>
-</tr>
-<tr>
-<td>karma_trend <em>String</em></td>
-<td>The user&rsquo;s karma trend (for example <code class="prettyprint">up</code>).</td>
-</tr>
-<tr>
-<td>is_premium <em>String</em></td>
-<td>Whether the user has a Premium subscription (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
-</tr>
-<tr>
-<td>premium_until <em>String</em></td>
-<td>The date when the user&rsquo;s Premium subscription ends (<code class="prettyprint">null</code> if not a Premium user).</td>
-</tr>
-<tr>
-<td>is_biz_admin <em>String</em></td>
-<td>Whether the user is a business account administrator (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
-</tr>
-<tr>
-<td>business_account_id <em>Integer</em></td>
-<td>The id of the user&rsquo;s business account.</td>
-</tr>
-<tr>
-<td>image_id <em>String</em></td>
-<td>The id of the user&rsquo;s avatar.</td>
-</tr>
-<tr>
-<td>avatar_small <em>String</em></td>
-<td>The link to a 35x35 pixels image of the user&rsquo;s avatar.</td>
-</tr>
-<tr>
-<td>avatar_medium <em>String</em></td>
-<td>The link to a 60x60 pixels image of the user&rsquo;s avatar.</td>
-</tr>
-<tr>
-<td>avatar_big <em>String</em></td>
-<td>The link to a 195x195 pixels image of the user&rsquo;s avatar.</td>
-</tr>
-<tr>
-<td>avatar_s640 <em>String</em></td>
-<td>The link to a 640x640 pixels image of the user&rsquo;s avatar.</td>
-</tr>
-<tr>
-<td>theme <em>Integer</em></td>
-<td>The currently selected Todoist theme (a number between <code class="prettyprint">0</code> and <code class="prettyprint">10</code>).</td>
-</tr>
-<tr>
-<td>features <em>Object</em></td>
-<td>Used internally for any special features that apply to the user.  Current special features include whether any special <code class="prettyprint">restriction</code> applies to the user, whether the user is in <code class="prettyprint">beta</code> status, whether the user <code class="prettyprint">has_push_reminders</code> enabled, and whether <code class="prettyprint">dateist_inline_disabled</code> that is inline date parsing support is disabled.</td>
-</tr>
-<tr>
-<td>join_date <em>String</em></td>
-<td>The date when the user joined Todoist.</td>
-</tr>
-</tbody></table>
-<h2 id='register-a-new-user'>Register a new user</h2>
-<blockquote>
-<p>An example of registering a new user:</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/user/register <span class="se">\</span>
-    -d <span class="nv">email</span><span class="o">=</span>me@example.com <span class="se">\</span>
-    -d <span class="nv">full_name</span><span class="o">=</span>Example<span class="se">\ </span>User <span class="se">\</span>
-    -d <span class="nv">password</span><span class="o">=</span>secret
-<span class="o">{</span>
-  <span class="s2">"id"</span>: 1855589,
-  <span class="s2">"token"</span>: <span class="s2">"0123456789abcdef0123456789abcdef01234567"</span>,
-  <span class="s2">"email"</span>: <span class="s2">"me@xample.com"</span>,
-  <span class="s2">"full_name"</span>: <span class="s2">"Example User"</span>,
-  <span class="s2">"inbox_project"</span>: 128501411,
-  <span class="s2">"tz_info"</span>: <span class="o">{</span>
-    <span class="s2">"timezone"</span>: <span class="s2">"GMT +1:00"</span>,
-    <span class="s2">"gmt_string"</span>: <span class="s2">"+01:00"</span>,
-    <span class="s2">"hours"</span>: 1,
-    <span class="s2">"minutes"</span>: 0,
-    <span class="s2">"is_dst"</span>: 0
-  <span class="o">}</span>,
-  <span class="s2">"start_page"</span>: <span class="s2">"overdue, 7 days"</span>,
-  <span class="s2">"start_day"</span>: 1,
-  <span class="s2">"next_week"</span>: 1,
-  <span class="s2">"date_format"</span>: 0,
-  <span class="s2">"time_format"</span>: 0,
-  <span class="s2">"sort_order"</span>: 0,
-  <span class="s2">"default_reminder"</span>: null,
-  <span class="s2">"auto_reminder"</span> : 30,
-  <span class="s2">"mobile_host"</span>: null,
-  <span class="s2">"mobile_number"</span>: null,
-  <span class="s2">"completed_count"</span>: 20,
-  <span class="s2">"completed_today"</span> : 2,
-  <span class="s2">"karma"</span>: 684.0,
-  <span class="s2">"karma_trend"</span>: <span class="s2">"-"</span>,
-  <span class="s2">"is_premium"</span>: <span class="nb">false</span>,
-  <span class="s2">"premium_until"</span>: null,
-  <span class="s2">"is_biz_admin"</span>: <span class="nb">false</span>,
-  <span class="s2">"business_account_id"</span>: null,
-  <span class="s2">"image_id"</span>: null,
-  <span class="s2">"avatar_small"</span> : <span class="s2">"https://*.cloudfront.net/*_small.jpg"</span>,
-  <span class="s2">"avatar_medium"</span> : <span class="s2">"https://*.cloudfront.net/*_medium.jpg"</span>,
-  <span class="s2">"avatar_big"</span> : <span class="s2">"https://*.cloudfront.net/*_big.jpg"</span>,
-  <span class="s2">"avatar_s640"</span> : <span class="s2">"https://*.cloudfront.net/*_s640.jpg"</span>,
-  <span class="s2">"theme"</span> : 0,
-  <span class="s2">"features"</span> : <span class="o">{</span>
-    <span class="s2">"beta"</span>: 0,
-    <span class="s2">"restriction"</span> : 3,
-    <span class="s2">"has_push_reminders"</span>: <span class="nb">false</span>,
-  <span class="o">}</span>,
-  <span class="s2">"join_date"</span>: <span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span>
-<span class="o">}</span>
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s">'me@example.com'</span><span class="p">,</span> <span class="s">'Example User'</span><span class="p">,</span> <span class="s">'secret'</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="s">'id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
-  <span class="s">'token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
-  <span class="s">'email'</span><span class="p">:</span> <span class="s">'me@exampe.com'</span><span class="p">,</span>
-  <span class="s">'full_name'</span><span class="p">:</span> <span class="s">'Example User'</span><span class="p">,</span>
-  <span class="s">'inbox_project'</span><span class="p">:</span> <span class="mi">128501411</span><span class="p">,</span>
-  <span class="s">'tz_info'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'timezone'</span><span class="p">:</span> <span class="s">'GMT +1:00'</span><span class="p">,</span>
-    <span class="s">'gmt_string'</span><span class="p">:</span> <span class="s">'+01:00'</span><span class="p">,</span>
-    <span class="s">'hours'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s">'minutes'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s">'is_dst'</span><span class="p">:</span> <span class="mi">0</span>
-  <span class="p">},</span>
-  <span class="s">'start_page'</span><span class="p">:</span> <span class="s">'overdue, 7 days'</span><span class="p">,</span>
-  <span class="s">'start_day'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'next_week'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">'date_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'time_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'sort_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'default_reminder'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'auto_reminder'</span> <span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-  <span class="s">'mobile_host'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'mobile_number'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'completed_count'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-  <span class="s">'completed_today'</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-  <span class="s">'karma'</span><span class="p">:</span> <span class="mf">684.0</span><span class="p">,</span>
-  <span class="s">'karma_trend'</span><span class="p">:</span> <span class="s">'-'</span><span class="p">,</span>
-  <span class="s">'is_premium'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">'premium_until'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'is_biz_admin'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">'business_account_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'image_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'avatar_small'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_small.jpg'</span><span class="p">,</span>
-  <span class="s">'avatar_medium'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_medium.jpg'</span><span class="p">,</span>
-  <span class="s">'avatar_big'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_big.jpg'</span><span class="p">,</span>
-  <span class="s">'avatar_s640'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_s640.jpg'</span><span class="p">,</span>
-  <span class="s">'theme'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">'features'</span> <span class="p">:</span> <span class="p">{</span>
-    <span class="s">'beta'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s">'restriction'</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s">'has_push_reminders'</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="s">'join_date'</span><span class="p">:</span> <span class="s">'Wed 30 Apr 2014 13:24:38 +0000'</span><span class="p">,</span>
-<span class="p">}</span>
-
-</code></pre>
-
-<p>Register a new user.</p>
-<h3 id='required-parameters'>Required parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email <em>String</em></td>
-<td>The user&rsquo;s email.</td>
-</tr>
-<tr>
-<td>full_name <em>String</em></td>
-<td>The user&rsquo;s real name formatted as <code class="prettyprint">Firstname Lastname</code>.</td>
-</tr>
-<tr>
-<td>password <em>String</em></td>
-<td>The user&rsquo;s password.</td>
-</tr>
-</tbody></table>
-<h3 id='optional-parameters'>Optional parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>lang <em>String</em></td>
-<td>The user&rsquo;s language, which can take one of the following values: <code class="prettyprint">de</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">pt_BR</code>, <code class="prettyprint">zh_CN</code>, <code class="prettyprint">es</code>, <code class="prettyprint">hi</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">zh_TW</code>.</td>
-</tr>
-<tr>
-<td>timezone <em>String</em></td>
-<td>The user&rsquo;s timezone (a string value such as <code class="prettyprint">UTC</code>, <code class="prettyprint">Europe/Lisbon</code>, <code class="prettyprint">US/Eastern</code>, <code class="prettyprint">Asian/Taipei</code>). By default we use the user&rsquo;s IP address to determine the timezone.</td>
-</tr>
-</tbody></table>
-<h2 id='delete-an-existing-user'>Delete an existing user</h2>
-<blockquote>
-<p>An example of deleting an existing user:</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/user/delete <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">current_password</span><span class="o">=</span>secret
-<span class="s2">"ok"</span>
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'secret'</span><span class="p">)</span>
-<span class="n">ok</span>
-</code></pre>
-
-<p>Delete an existing user.</p>
-<h3 id='required-parameters'>Required parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>token <em>String</em></td>
-<td>The user&rsquo;s token.</td>
-</tr>
-<tr>
-<td>current_password <em>String</em></td>
-<td>The user&rsquo;s current password.</td>
-</tr>
-</tbody></table>
-<h3 id='optional-parameters'>Optional parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>reason_for_delete <em>String</em></td>
-<td>A reason for deletion, that is used for sending feedback back to Todoist.</td>
-</tr>
-</tbody></table>
-<h2 id='update-user39s-properties'>Update user&rsquo;s properties</h2>
-<blockquote>
-<p>An example of updating the user&rsquo;s properties:</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "user_update", "uuid": "52f83009-7e27-4b9f-9943-1c5e3d1e6889", "args": {"time_format": 0}}]'</span>
-<span class="o">{</span> ...
-  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"52f83009-7e27-4b9f-9943-1c5e3d1e6889"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
-  ... <span class="o">}</span>
-
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">time_format</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</code></pre>
-
-<p>Update the details of the user.</p>
-<h3 id='optional-parameters'>Optional parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email <em>String</em></td>
-<td>The user&rsquo;s email.</td>
-</tr>
-<tr>
-<td>full_name <em>String</em></td>
-<td>The user&rsquo;s real name formatted as <code class="prettyprint">Firstname Lastname</code>.</td>
-</tr>
-<tr>
-<td>password <em>String</em></td>
-<td>The user&rsquo;s password.</td>
-</tr>
-<tr>
-<td>timezone <em>String</em></td>
-<td>The user&rsquo;s timezone (a string value such as <code class="prettyprint">UTC</code>, <code class="prettyprint">Europe/Lisbon</code>, <code class="prettyprint">US/Eastern</code>, <code class="prettyprint">Asian/Taipei</code>).</td>
-</tr>
-<tr>
-<td>start_page <em>String</em></td>
-<td>The user&rsquo;s default view on Todoist. The start page can be one of the following: <code class="prettyprint">_info_page</code> for the info page, <code class="prettyprint">_blank</code> for a blank page, <code class="prettyprint">_project_&lt;PROJECT_ID&gt;</code> for project with id <code class="prettyprint">&lt;PROJECT_ID&gt;</code>, and <code class="prettyprint">&lt;ANY_QUERY&gt;</code> to query after anything.</td>
-</tr>
-<tr>
-<td>start_day <em>Integer</em></td>
-<td>The first day of the week (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
-</tr>
-<tr>
-<td>next_week <em>Integer</em></td>
-<td>The day of the next week, that tasks will be postponed to (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
-</tr>
-<tr>
-<td>time_format <em>Integer</em></td>
-<td>Whether to use a <code class="prettyprint">24h</code> format such as <code class="prettyprint">13:00</code> (if set to <code class="prettyprint">0</code>) when displaying time, or a <code class="prettyprint">12h</code> format such as <code class="prettyprint">1:00pm</code> (if set to <code class="prettyprint">1</code>).</td>
-</tr>
-<tr>
-<td>date_format <em>Integer</em></td>
-<td>Whether to use the <code class="prettyprint">DD-MM-YYYY</code> date format (if set to <code class="prettyprint">0</code>), or the <code class="prettyprint">MM-DD-YYYY</code> format (if set to <code class="prettyprint">1</code>).</td>
-</tr>
-<tr>
-<td>sort_order <em>Integer</em></td>
-<td>Whether to show projects in an <code class="prettyprint">oldest dates first</code> order (if set to <code class="prettyprint">0</code>, or a <code class="prettyprint">oldest dates last</code> order (if set to <code class="prettyprint">1</code>).</td>
-</tr>
-<tr>
-<td>default_reminder <em>String</em></td>
-<td>The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
-</tr>
-<tr>
-<td>auto_reminder <em>Integer</em></td>
-<td>The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task.</td>
-</tr>
-<tr>
-<td>mobile_number <em>String</em></td>
-<td>The user&rsquo;s mobile number (<code class="prettyprint">null</code> if not set).</td>
-</tr>
-<tr>
-<td>mobile_host <em>String</em></td>
-<td>The user&rsquo;s mobile host (or <code class="prettyprint">null</code> if not set).</td>
-</tr>
-<tr>
-<td>theme <em>Integer</em></td>
-<td>The currently selected Todoist theme (between <code class="prettyprint">0</code> and <code class="prettyprint">10</code>).</td>
-</tr>
-</tbody></table>
-<h2 id='update-karma-goals'>Update karma goals</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "update_goals", "uuid": "b9bbeaf8-9db6-452a-a843-a192f1542892", "args": {"vacation_mode": 1}}]'</span>
-<span class="o">{</span> ...
-  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"b9bbeaf8-9db6-452a-a843-a192f1542892"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
-  ... <span class="o">}</span>
-
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">update_goals</span><span class="p">(</span><span class="n">vacation_mode</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre>
-
-<p>Update the karma goals of the user.</p>
-<h3 id='optional-parameters'>Optional parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>daily_goal <em>Integer</em></td>
-<td>The target number of tasks to complete per day.</td>
-</tr>
-<tr>
-<td>weekly_goal <em>Integer</em></td>
-<td>The target number of tasks to complete per week.</td>
-</tr>
-<tr>
-<td>ignore_days <em>Integer</em></td>
-<td>A list with the days of the week to ignore (<code class="prettyprint">1</code> for <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> for <code class="prettyprint">Sunday</code>).</td>
-</tr>
-<tr>
-<td>vacation_mode <em>Integer</em></td>
-<td>Marks the user as being on vacation (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
-</tr>
-<tr>
-<td>karma_disabled <em>Integer</em></td>
-<td>Whether to disable the karma and goals measuring altogether (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
-</tr>
-</tbody></table>
-
         <h1 id='miscellaneous'>Miscellaneous</h1><h2 id='get-productivity-stats'>Get productivity stats</h2>
 <blockquote>
 <p>An example of getting the user&rsquo;s productivity stats:</p>
@@ -3620,162 +3120,6 @@ to history), recurring task is moved forward (due date is updated).</p>
 <tr>
 <td>token <em>String</em></td>
 <td>The user&rsquo;s token received on login.</td>
-</tr>
-</tbody></table>
-<h2 id='update-notification-settings'>Update notification settings</h2>
-<blockquote>
-<p>An example of updating the user&rsquo;s notification settings</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/notification_settings/update <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">notification_type</span><span class="o">=</span>item_completed <span class="se">\</span>
-    -d <span class="nv">service</span><span class="o">=</span>email <span class="se">\</span>
-    -d <span class="nv">dont_notify</span><span class="o">=</span>1
-<span class="o">{</span>
-  <span class="s2">"user_left_project"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"biz_trial_will_end"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"biz_trial_enter_cc"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"item_completed"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">false</span>
-  <span class="o">}</span>,
-  <span class="s2">"share_invitation_rejected"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"note_added"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"biz_account_disabled"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"biz_invitation_rejected"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"item_uncompleted"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"item_assigned"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"share_invitation_accepted"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"user_removed_from_project"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"biz_invitation_accepted"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>,
-  <span class="s2">"biz_payment_failed"</span>: <span class="o">{</span>
-    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
-    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">update_notification_setting</span><span class="p">(</span><span class="s">'item_completed'</span><span class="p">,</span> <span class="s">'email'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="s">'biz_invitation_rejected'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'user_left_project'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'note_added'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'biz_trial_enter_cc'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'item_completed'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">False</span>
-  <span class="p">},</span>
-  <span class="s">'biz_trial_will_end'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'biz_account_disabled'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'share_invitation_rejected'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'item_uncompleted'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'item_assigned'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'share_invitation_accepted'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'user_removed_from_project'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'biz_invitation_accepted'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">},</span>
-  <span class="s">'biz_payment_failed'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-
-<p>Update the user&rsquo;s notification settings.</p>
-<h3 id='required-parameters'>Required parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
-</tr>
-<tr>
-<td>notification_type <em>String</em></td>
-<td>The notification type.  For a list of notifications have a look at the <code class="prettyprint">Live Notifications</code> section.</td>
-</tr>
-<tr>
-<td>service <em>String</em></td>
-<td>The service type, which can take the values: <code class="prettyprint">email</code> or <code class="prettyprint">push</code>.</td>
-</tr>
-<tr>
-<td>dont_notify <em>Integer</em></td>
-<td>Whether notifications of this service should be notified (<code class="prettyprint">1</code> to not notify, and <code class="prettyprint">0</code> to nofify).</td>
 </tr>
 </tbody></table>
 <h2 id='get-all-completed-items'>Get all completed items</h2>
@@ -4424,7 +3768,663 @@ to history), recurring task is moved forward (due date is updated).</p>
 
 <p>Get a project&rsquo;s uncompleted items.</p>
 
-        <h1 id='sharing-projects'>Sharing projects</h1>
+        <h1 id='user'>User</h1>
+<p>A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typically a user object will have the following properties:</p>
+
+<blockquote>
+<p>An example user object</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123456789abcdef0123456789abcdef01234567"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@xample.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"inbox_project"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501411</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tz_info"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"timezone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Athens"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"hours"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"is_dst"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"gmt_string"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+03:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"start_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"overdue, 7 days"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"next_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time_format"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"default_reminder"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"auto_reminder"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobile_host"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"completed_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"completed_today"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"karma"</span><span class="p">:</span><span class="w"> </span><span class="mf">684.0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"karma_trend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_premium"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"premium_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_biz_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"business_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avatar_small"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_small.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avatar_medium"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_medium.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avatar_big"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_big.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avatar_s640"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://*.cloudfront.net/*_s640.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"theme"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"features"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"beta"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"restriction"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"has_push_reminders"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="err">}</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id <em>Integer</em></td>
+<td>The user&rsquo;s id.</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token that should be used to call the other API methods.</td>
+</tr>
+<tr>
+<td>email <em>String</em></td>
+<td>The user&rsquo;s email.</td>
+</tr>
+<tr>
+<td>full_name <em>String</em></td>
+<td>The user&rsquo;s real name formatted as <code class="prettyprint">Firstname Lastname</code>.</td>
+</tr>
+<tr>
+<td>inbox_project <em>Integer</em></td>
+<td>The id of the user&rsquo;s <code class="prettyprint">Inbox</code> project.</td>
+</tr>
+<tr>
+<td>tz_info <em>Object</em></td>
+<td>The user&rsquo;s timezone (a dictionary structure), which includes the following elements: the <code class="prettyprint">timezone</code> as a string value, the <code class="prettyprint">hours</code> and <code class="prettyprint">minutes</code> difference from GMT, whether daylight saving time applies denoted by <code class="prettyprint">is_dst</code>, and a string value of the time difference from GMT that is <code class="prettyprint">gmt_string</code>.</td>
+</tr>
+<tr>
+<td>start_page <em>String</em></td>
+<td>The user&rsquo;s default view on Todoist. The start page can be one of the following: <code class="prettyprint">_info_page</code> for the info page, <code class="prettyprint">_blank</code> for a blank page, <code class="prettyprint">_project_&lt;PROJECT_ID&gt;</code> for project with id <code class="prettyprint">&lt;PROJECT_ID&gt;</code>, and <code class="prettyprint">&lt;ANY_QUERY&gt;</code> to query after anything.</td>
+</tr>
+<tr>
+<td>start_day <em>Integer</em></td>
+<td>The first day of the week (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+</tr>
+<tr>
+<td>next_week <em>Integer</em></td>
+<td>The day of the next week, that tasks will be postponed to (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+</tr>
+<tr>
+<td>time_format <em>Integer</em></td>
+<td>Whether to use a <code class="prettyprint">24h</code> format such as <code class="prettyprint">13:00</code> (if set to <code class="prettyprint">0</code>) when displaying time, or a <code class="prettyprint">12h</code> format such as <code class="prettyprint">1:00pm</code> (if set to <code class="prettyprint">1</code>).</td>
+</tr>
+<tr>
+<td>date_format <em>Integer</em></td>
+<td>Whether to use the <code class="prettyprint">DD-MM-YYYY</code> date format (if set to <code class="prettyprint">0</code>), or the <code class="prettyprint">MM-DD-YYYY</code> format (if set to <code class="prettyprint">1</code>).</td>
+</tr>
+<tr>
+<td>sort_order <em>Integer</em></td>
+<td>Whether to show projects in an <code class="prettyprint">oldest dates first</code> order (if set to <code class="prettyprint">0</code>, or a <code class="prettyprint">oldest dates last</code> order (if set to <code class="prettyprint">1</code>).</td>
+</tr>
+<tr>
+<td>default_reminder <em>String</em></td>
+<td>The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
+</tr>
+<tr>
+<td>auto_reminder <em>Integer</em></td>
+<td>The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task.</td>
+</tr>
+<tr>
+<td>mobile_number <em>String</em></td>
+<td>The user&rsquo;s mobile number (<code class="prettyprint">null</code> if not set).</td>
+</tr>
+<tr>
+<td>mobile_host <em>String</em></td>
+<td>The user&rsquo;s mobile host (<code class="prettyprint">null</code> if not set).</td>
+</tr>
+<tr>
+<td>completed_count <em>Integer</em></td>
+<td>The total number of completed tasks.</td>
+</tr>
+<tr>
+<td>completed_today <em>Integer</em></td>
+<td>The number of completed tasks for today.</td>
+</tr>
+<tr>
+<td>karma <em>Number</em></td>
+<td>The user&rsquo;s karma score.</td>
+</tr>
+<tr>
+<td>karma_trend <em>String</em></td>
+<td>The user&rsquo;s karma trend (for example <code class="prettyprint">up</code>).</td>
+</tr>
+<tr>
+<td>is_premium <em>String</em></td>
+<td>Whether the user has a Premium subscription (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
+</tr>
+<tr>
+<td>premium_until <em>String</em></td>
+<td>The date when the user&rsquo;s Premium subscription ends (<code class="prettyprint">null</code> if not a Premium user).</td>
+</tr>
+<tr>
+<td>is_biz_admin <em>String</em></td>
+<td>Whether the user is a business account administrator (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
+</tr>
+<tr>
+<td>business_account_id <em>Integer</em></td>
+<td>The id of the user&rsquo;s business account.</td>
+</tr>
+<tr>
+<td>image_id <em>String</em></td>
+<td>The id of the user&rsquo;s avatar.</td>
+</tr>
+<tr>
+<td>avatar_small <em>String</em></td>
+<td>The link to a 35x35 pixels image of the user&rsquo;s avatar.</td>
+</tr>
+<tr>
+<td>avatar_medium <em>String</em></td>
+<td>The link to a 60x60 pixels image of the user&rsquo;s avatar.</td>
+</tr>
+<tr>
+<td>avatar_big <em>String</em></td>
+<td>The link to a 195x195 pixels image of the user&rsquo;s avatar.</td>
+</tr>
+<tr>
+<td>avatar_s640 <em>String</em></td>
+<td>The link to a 640x640 pixels image of the user&rsquo;s avatar.</td>
+</tr>
+<tr>
+<td>theme <em>Integer</em></td>
+<td>The currently selected Todoist theme (a number between <code class="prettyprint">0</code> and <code class="prettyprint">10</code>).</td>
+</tr>
+<tr>
+<td>features <em>Object</em></td>
+<td>Used internally for any special features that apply to the user.  Current special features include whether any special <code class="prettyprint">restriction</code> applies to the user, whether the user is in <code class="prettyprint">beta</code> status, whether the user <code class="prettyprint">has_push_reminders</code> enabled, and whether <code class="prettyprint">dateist_inline_disabled</code> that is inline date parsing support is disabled.</td>
+</tr>
+<tr>
+<td>join_date <em>String</em></td>
+<td>The date when the user joined Todoist.</td>
+</tr>
+</tbody></table>
+<h2 id='register-a-new-user'>Register a new user</h2>
+<blockquote>
+<p>An example of registering a new user:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/user/register <span class="se">\</span>
+    -d <span class="nv">email</span><span class="o">=</span>me@example.com <span class="se">\</span>
+    -d <span class="nv">full_name</span><span class="o">=</span>Example<span class="se">\ </span>User <span class="se">\</span>
+    -d <span class="nv">password</span><span class="o">=</span>secret
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 1855589,
+  <span class="s2">"token"</span>: <span class="s2">"0123456789abcdef0123456789abcdef01234567"</span>,
+  <span class="s2">"email"</span>: <span class="s2">"me@xample.com"</span>,
+  <span class="s2">"full_name"</span>: <span class="s2">"Example User"</span>,
+  <span class="s2">"inbox_project"</span>: 128501411,
+  <span class="s2">"tz_info"</span>: <span class="o">{</span>
+    <span class="s2">"timezone"</span>: <span class="s2">"GMT +1:00"</span>,
+    <span class="s2">"gmt_string"</span>: <span class="s2">"+01:00"</span>,
+    <span class="s2">"hours"</span>: 1,
+    <span class="s2">"minutes"</span>: 0,
+    <span class="s2">"is_dst"</span>: 0
+  <span class="o">}</span>,
+  <span class="s2">"start_page"</span>: <span class="s2">"overdue, 7 days"</span>,
+  <span class="s2">"start_day"</span>: 1,
+  <span class="s2">"next_week"</span>: 1,
+  <span class="s2">"date_format"</span>: 0,
+  <span class="s2">"time_format"</span>: 0,
+  <span class="s2">"sort_order"</span>: 0,
+  <span class="s2">"default_reminder"</span>: null,
+  <span class="s2">"auto_reminder"</span> : 30,
+  <span class="s2">"mobile_host"</span>: null,
+  <span class="s2">"mobile_number"</span>: null,
+  <span class="s2">"completed_count"</span>: 20,
+  <span class="s2">"completed_today"</span> : 2,
+  <span class="s2">"karma"</span>: 684.0,
+  <span class="s2">"karma_trend"</span>: <span class="s2">"-"</span>,
+  <span class="s2">"is_premium"</span>: <span class="nb">false</span>,
+  <span class="s2">"premium_until"</span>: null,
+  <span class="s2">"is_biz_admin"</span>: <span class="nb">false</span>,
+  <span class="s2">"business_account_id"</span>: null,
+  <span class="s2">"image_id"</span>: null,
+  <span class="s2">"avatar_small"</span> : <span class="s2">"https://*.cloudfront.net/*_small.jpg"</span>,
+  <span class="s2">"avatar_medium"</span> : <span class="s2">"https://*.cloudfront.net/*_medium.jpg"</span>,
+  <span class="s2">"avatar_big"</span> : <span class="s2">"https://*.cloudfront.net/*_big.jpg"</span>,
+  <span class="s2">"avatar_s640"</span> : <span class="s2">"https://*.cloudfront.net/*_s640.jpg"</span>,
+  <span class="s2">"theme"</span> : 0,
+  <span class="s2">"features"</span> : <span class="o">{</span>
+    <span class="s2">"beta"</span>: 0,
+    <span class="s2">"restriction"</span> : 3,
+    <span class="s2">"has_push_reminders"</span>: <span class="nb">false</span>,
+  <span class="o">}</span>,
+  <span class="s2">"join_date"</span>: <span class="s2">"Wed 30 Apr 2014 13:24:38 +0000"</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s">'me@example.com'</span><span class="p">,</span> <span class="s">'Example User'</span><span class="p">,</span> <span class="s">'secret'</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="s">'id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
+  <span class="s">'token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
+  <span class="s">'email'</span><span class="p">:</span> <span class="s">'me@exampe.com'</span><span class="p">,</span>
+  <span class="s">'full_name'</span><span class="p">:</span> <span class="s">'Example User'</span><span class="p">,</span>
+  <span class="s">'inbox_project'</span><span class="p">:</span> <span class="mi">128501411</span><span class="p">,</span>
+  <span class="s">'tz_info'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'timezone'</span><span class="p">:</span> <span class="s">'GMT +1:00'</span><span class="p">,</span>
+    <span class="s">'gmt_string'</span><span class="p">:</span> <span class="s">'+01:00'</span><span class="p">,</span>
+    <span class="s">'hours'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'minutes'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'is_dst'</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="s">'start_page'</span><span class="p">:</span> <span class="s">'overdue, 7 days'</span><span class="p">,</span>
+  <span class="s">'start_day'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'next_week'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'date_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'time_format'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'sort_order'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'default_reminder'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'auto_reminder'</span> <span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="s">'mobile_host'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'mobile_number'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'completed_count'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="s">'completed_today'</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s">'karma'</span><span class="p">:</span> <span class="mf">684.0</span><span class="p">,</span>
+  <span class="s">'karma_trend'</span><span class="p">:</span> <span class="s">'-'</span><span class="p">,</span>
+  <span class="s">'is_premium'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+  <span class="s">'premium_until'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'is_biz_admin'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+  <span class="s">'business_account_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'image_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'avatar_small'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_small.jpg'</span><span class="p">,</span>
+  <span class="s">'avatar_medium'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_medium.jpg'</span><span class="p">,</span>
+  <span class="s">'avatar_big'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_big.jpg'</span><span class="p">,</span>
+  <span class="s">'avatar_s640'</span> <span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_s640.jpg'</span><span class="p">,</span>
+  <span class="s">'theme'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'features'</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="s">'beta'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">'restriction'</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s">'has_push_reminders'</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s">'join_date'</span><span class="p">:</span> <span class="s">'Wed 30 Apr 2014 13:24:38 +0000'</span><span class="p">,</span>
+<span class="p">}</span>
+
+</code></pre>
+
+<p>Register a new user.</p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email <em>String</em></td>
+<td>The user&rsquo;s email.</td>
+</tr>
+<tr>
+<td>full_name <em>String</em></td>
+<td>The user&rsquo;s real name formatted as <code class="prettyprint">Firstname Lastname</code>.</td>
+</tr>
+<tr>
+<td>password <em>String</em></td>
+<td>The user&rsquo;s password.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lang <em>String</em></td>
+<td>The user&rsquo;s language, which can take one of the following values: <code class="prettyprint">de</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">pt_BR</code>, <code class="prettyprint">zh_CN</code>, <code class="prettyprint">es</code>, <code class="prettyprint">hi</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">zh_TW</code>.</td>
+</tr>
+<tr>
+<td>timezone <em>String</em></td>
+<td>The user&rsquo;s timezone (a string value such as <code class="prettyprint">UTC</code>, <code class="prettyprint">Europe/Lisbon</code>, <code class="prettyprint">US/Eastern</code>, <code class="prettyprint">Asian/Taipei</code>). By default we use the user&rsquo;s IP address to determine the timezone.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-an-existing-user'>Delete an existing user</h2>
+<blockquote>
+<p>An example of deleting an existing user:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/user/delete <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">current_password</span><span class="o">=</span>secret
+<span class="s2">"ok"</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'secret'</span><span class="p">)</span>
+<span class="n">ok</span>
+</code></pre>
+
+<p>Delete an existing user.</p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token.</td>
+</tr>
+<tr>
+<td>current_password <em>String</em></td>
+<td>The user&rsquo;s current password.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reason_for_delete <em>String</em></td>
+<td>A reason for deletion, that is used for sending feedback back to Todoist.</td>
+</tr>
+</tbody></table>
+<h2 id='update-user39s-properties'>Update user&rsquo;s properties</h2>
+<blockquote>
+<p>An example of updating the user&rsquo;s properties:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "user_update", "uuid": "52f83009-7e27-4b9f-9943-1c5e3d1e6889", "args": {"time_format": 0}}]'</span>
+<span class="o">{</span> ...
+  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"52f83009-7e27-4b9f-9943-1c5e3d1e6889"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
+  ... <span class="o">}</span>
+
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">time_format</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre>
+
+<p>Update the details of the user.</p>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email <em>String</em></td>
+<td>The user&rsquo;s email.</td>
+</tr>
+<tr>
+<td>full_name <em>String</em></td>
+<td>The user&rsquo;s real name formatted as <code class="prettyprint">Firstname Lastname</code>.</td>
+</tr>
+<tr>
+<td>password <em>String</em></td>
+<td>The user&rsquo;s password.</td>
+</tr>
+<tr>
+<td>timezone <em>String</em></td>
+<td>The user&rsquo;s timezone (a string value such as <code class="prettyprint">UTC</code>, <code class="prettyprint">Europe/Lisbon</code>, <code class="prettyprint">US/Eastern</code>, <code class="prettyprint">Asian/Taipei</code>).</td>
+</tr>
+<tr>
+<td>start_page <em>String</em></td>
+<td>The user&rsquo;s default view on Todoist. The start page can be one of the following: <code class="prettyprint">_info_page</code> for the info page, <code class="prettyprint">_blank</code> for a blank page, <code class="prettyprint">_project_&lt;PROJECT_ID&gt;</code> for project with id <code class="prettyprint">&lt;PROJECT_ID&gt;</code>, and <code class="prettyprint">&lt;ANY_QUERY&gt;</code> to query after anything.</td>
+</tr>
+<tr>
+<td>start_day <em>Integer</em></td>
+<td>The first day of the week (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+</tr>
+<tr>
+<td>next_week <em>Integer</em></td>
+<td>The day of the next week, that tasks will be postponed to (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
+</tr>
+<tr>
+<td>time_format <em>Integer</em></td>
+<td>Whether to use a <code class="prettyprint">24h</code> format such as <code class="prettyprint">13:00</code> (if set to <code class="prettyprint">0</code>) when displaying time, or a <code class="prettyprint">12h</code> format such as <code class="prettyprint">1:00pm</code> (if set to <code class="prettyprint">1</code>).</td>
+</tr>
+<tr>
+<td>date_format <em>Integer</em></td>
+<td>Whether to use the <code class="prettyprint">DD-MM-YYYY</code> date format (if set to <code class="prettyprint">0</code>), or the <code class="prettyprint">MM-DD-YYYY</code> format (if set to <code class="prettyprint">1</code>).</td>
+</tr>
+<tr>
+<td>sort_order <em>Integer</em></td>
+<td>Whether to show projects in an <code class="prettyprint">oldest dates first</code> order (if set to <code class="prettyprint">0</code>, or a <code class="prettyprint">oldest dates last</code> order (if set to <code class="prettyprint">1</code>).</td>
+</tr>
+<tr>
+<td>default_reminder <em>String</em></td>
+<td>The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
+</tr>
+<tr>
+<td>auto_reminder <em>Integer</em></td>
+<td>The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task.</td>
+</tr>
+<tr>
+<td>mobile_number <em>String</em></td>
+<td>The user&rsquo;s mobile number (<code class="prettyprint">null</code> if not set).</td>
+</tr>
+<tr>
+<td>mobile_host <em>String</em></td>
+<td>The user&rsquo;s mobile host (or <code class="prettyprint">null</code> if not set).</td>
+</tr>
+<tr>
+<td>theme <em>Integer</em></td>
+<td>The currently selected Todoist theme (between <code class="prettyprint">0</code> and <code class="prettyprint">10</code>).</td>
+</tr>
+</tbody></table>
+<h2 id='update-karma-goals'>Update karma goals</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "update_goals", "uuid": "b9bbeaf8-9db6-452a-a843-a192f1542892", "args": {"vacation_mode": 1}}]'</span>
+<span class="o">{</span> ...
+  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"b9bbeaf8-9db6-452a-a843-a192f1542892"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
+  ... <span class="o">}</span>
+
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">update_goals</span><span class="p">(</span><span class="n">vacation_mode</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre>
+
+<p>Update the karma goals of the user.</p>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>daily_goal <em>Integer</em></td>
+<td>The target number of tasks to complete per day.</td>
+</tr>
+<tr>
+<td>weekly_goal <em>Integer</em></td>
+<td>The target number of tasks to complete per week.</td>
+</tr>
+<tr>
+<td>ignore_days <em>Integer</em></td>
+<td>A list with the days of the week to ignore (<code class="prettyprint">1</code> for <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> for <code class="prettyprint">Sunday</code>).</td>
+</tr>
+<tr>
+<td>vacation_mode <em>Integer</em></td>
+<td>Marks the user as being on vacation (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
+</tr>
+<tr>
+<td>karma_disabled <em>Integer</em></td>
+<td>Whether to disable the karma and goals measuring altogether (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
+</tr>
+</tbody></table>
+<h2 id='update-notification-settings'>Update notification settings</h2>
+<blockquote>
+<p>An example of updating the user&rsquo;s notification settings</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/notification_settings/update <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">notification_type</span><span class="o">=</span>item_completed <span class="se">\</span>
+    -d <span class="nv">service</span><span class="o">=</span>email <span class="se">\</span>
+    -d <span class="nv">dont_notify</span><span class="o">=</span>1
+<span class="o">{</span>
+  <span class="s2">"user_left_project"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"biz_trial_will_end"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"biz_trial_enter_cc"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"item_completed"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">false</span>
+  <span class="o">}</span>,
+  <span class="s2">"share_invitation_rejected"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"note_added"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"biz_account_disabled"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"biz_invitation_rejected"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"item_uncompleted"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"item_assigned"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"share_invitation_accepted"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"user_removed_from_project"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"biz_invitation_accepted"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>,
+  <span class="s2">"biz_payment_failed"</span>: <span class="o">{</span>
+    <span class="s2">"notify_push"</span>: <span class="nb">true</span>,
+    <span class="s2">"notify_email"</span>: <span class="nb">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">update_notification_setting</span><span class="p">(</span><span class="s">'item_completed'</span><span class="p">,</span> <span class="s">'email'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="s">'biz_invitation_rejected'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'user_left_project'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'note_added'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'biz_trial_enter_cc'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'item_completed'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">False</span>
+  <span class="p">},</span>
+  <span class="s">'biz_trial_will_end'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'biz_account_disabled'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'share_invitation_rejected'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'item_uncompleted'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'item_assigned'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'share_invitation_accepted'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'user_removed_from_project'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'biz_invitation_accepted'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">},</span>
+  <span class="s">'biz_payment_failed'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'notify_email'</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Update the user&rsquo;s notification settings.</p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
+</tr>
+<tr>
+<td>notification_type <em>String</em></td>
+<td>The notification type.  For a list of notifications have a look at the <code class="prettyprint">Live Notifications</code> section.</td>
+</tr>
+<tr>
+<td>service <em>String</em></td>
+<td>The service type, which can take the values: <code class="prettyprint">email</code> or <code class="prettyprint">push</code>.</td>
+</tr>
+<tr>
+<td>dont_notify <em>Integer</em></td>
+<td>Whether notifications of this service should be notified (<code class="prettyprint">1</code> to not notify, and <code class="prettyprint">0</code> to nofify).</td>
+</tr>
+</tbody></table>
+
+        <h1 id='sharing'>Sharing</h1>
 <p>Commands that are related to sharing projects will be described in this section.</p>
 <h2 id='share-a-project'>Share a project</h2>
 <blockquote>
@@ -4590,565 +4590,6 @@ to history), recurring task is moved forward (due date is updated).</p>
 <tr>
 <td>invitation_id <em>Integer</em></td>
 <td>The invitation to be deleted.</td>
-</tr>
-</tbody></table>
-
-        <h1 id='activity'>Activity</h1>
-<p>The activity log makes it easy to see everything that is happening across projects, items and notes.</p>
-
-<p><em>Note that, the activity log is only available for Todoist Premium.</em></p>
-<h3 id='logged-events'>Logged events</h3>
-<p>Currently the official Todoist clients present only the most important events that most users are interested in, but actually everything that has to do with projects, items and notes, is stored in our DB, and can be accessed by using our API.</p>
-
-<p>The following events are logged for items:</p>
-
-<ul>
-<li>items added</li>
-<li>items updated (only changes to <code class="prettyprint">content</code>, <code class="prettyprint">due_data</code> and <code class="prettyprint">responsible_uid</code>)</li>
-<li>items deleted</li>
-<li>items completed</li>
-<li>items uncompleted</li>
-</ul>
-
-<p>The following events are logged for notes:</p>
-
-<ul>
-<li>notes added</li>
-<li>notes updated (only changes to <code class="prettyprint">content</code> or <code class="prettyprint">file_name</code> if the former is empty)</li>
-<li>notes deleted</li>
-</ul>
-
-<p>The following events are logged for projects:</p>
-
-<ul>
-<li>projects added</li>
-<li>projects updated (only changes to <code class="prettyprint">name</code>)</li>
-<li>projects deleted</li>
-<li>projects archived</li>
-<li>projects unarchived</li>
-<li>projects shared</li>
-<li>projects left</li>
-</ul>
-<h3 id='event-properties'>Event properties</h3>
-<blockquote>
-<p>An example of an activity log event:</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span> : 955333384,
-  <span class="s2">"object_type"</span> : <span class="s2">"item"</span>,
-  <span class="s2">"object_id"</span> : 101157918,
-  <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
-  <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:24:59 +0000"</span>,
-  <span class="s2">"parent_project_id"</span> : 174361513,
-  <span class="s2">"parent_item_id"</span> : null,
-  <span class="s2">"initiator_id"</span> : null,
-  <span class="s2">"extra_data"</span> : <span class="o">{</span>
-    <span class="s2">"content"</span> : <span class="s2">"Task1"</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-<pre class="highlight python"><code><span class="p">{</span>
-  <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333384</span><span class="p">,</span>
-  <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'item'</span><span class="p">,</span>
-  <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
-  <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
-  <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:24:59 +0000'</span><span class="p">,</span>
-  <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
-  <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id <em>Integer</em></td>
-<td>The id of the event.</td>
-</tr>
-<tr>
-<td>object_type <em>String</em></td>
-<td>The type of object, one of <code class="prettyprint">item</code>, <code class="prettyprint">note</code> or <code class="prettyprint">project</code>.</td>
-</tr>
-<tr>
-<td>object_id <em>Integer</em></td>
-<td>The id of the object.</td>
-</tr>
-<tr>
-<td>event_type <em>String</em></td>
-<td>The type of event, one of <code class="prettyprint">added</code>, <code class="prettyprint">updated</code>, <code class="prettyprint">deleted</code>, <code class="prettyprint">completed</code>, <code class="prettyprint">uncompleted</code>, <code class="prettyprint">archived</code>, <code class="prettyprint">unarchived</code>, <code class="prettyprint">shared</code>, <code class="prettyprint">left</code>.</td>
-</tr>
-<tr>
-<td>event_date <em>String</em></td>
-<td>The date and time when the event took place.</td>
-</tr>
-<tr>
-<td>parent_project_id <em>Integer</em></td>
-<td>The id of the item&rsquo;s or note&rsquo;s parent project, otherwise <code class="prettyprint">null</code>.</td>
-</tr>
-<tr>
-<td>parent_item_id <em>Integer</em></td>
-<td>The id of the note&rsquo;s parent item, otherwise <code class="prettyprint">null</code>.</td>
-</tr>
-<tr>
-<td>initiator_id <em>Integer</em></td>
-<td>The id of the user who is responsible for the event, which only makes sense in shared projects, items and notes, and is <code class="prettyprint">null</code> for non-shared objects.</td>
-</tr>
-<tr>
-<td>extra_data <em>Object</em></td>
-<td>This object contains at least the <code class="prettyprint">name</code> of the project, or the <code class="prettyprint">content</code> of an item or note, and optionally the <code class="prettyprint">last_name</code> if a projects was renamed, the <code class="prettyprint">last_content</code> if an item or note was renamed, the <code class="prettyprint">due_date</code> and <code class="prettyprint">last_due_date</code> if an item&rsquo;s due date changed, the <code class="prettyprint">responsible_uid</code> and <code class="prettyprint">last_responsible_uid</code> if an item&rsquo;s responsible uid changed.</td>
-</tr>
-</tbody></table>
-<h2 id='get-activity-logs'>Get activity logs</h2>
-<blockquote>
-<p>An example of getting the activity logs:</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/activity/get <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-<span class="o">[</span>
-  <span class="o">{</span>
-    <span class="s2">"id"</span> : 955344370,
-    <span class="s2">"object_type"</span> : <span class="s2">"item"</span>,
-    <span class="s2">"object_id"</span> : 101157918,
-    <span class="s2">"event_type"</span> : <span class="s2">"updated"</span>,
-    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:28:37 +0000"</span>,
-    <span class="s2">"parent_project_id"</span> : 174361513,
-    <span class="s2">"parent_item_id"</span> : null,
-    <span class="s2">"initiator_id"</span> : null,
-    <span class="s2">"extra_data"</span> : <span class="o">{</span>
-      <span class="s2">"last_due_date"</span> : null,
-      <span class="s2">"due_date"</span> : <span class="s2">"Sat 02 Jul 2016 20:59:59 +0000"</span>,
-      <span class="s2">"content"</span> : <span class="s2">"Task1"</span>
-    <span class="o">}</span>
-  <span class="o">}</span>,
-  <span class="o">{</span>
-    <span class="s2">"id"</span> : 955333751,
-    <span class="s2">"object_type"</span> : <span class="s2">"note"</span>,
-    <span class="s2">"object_id"</span> : 23685068,
-    <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
-    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:25:04 +0000"</span>,
-    <span class="s2">"parent_project_id"</span> : 174361513,
-    <span class="s2">"parent_item_id"</span> : 101157918,
-    <span class="s2">"initiator_id"</span> : null,
-    <span class="s2">"extra_data"</span> : <span class="o">{</span>
-      <span class="s2">"content"</span> : <span class="s2">"Note1"</span>
-    <span class="o">}</span>
-  <span class="o">}</span>,
-  <span class="o">{</span>
-    <span class="s2">"id"</span> : 955333384,
-    <span class="s2">"object_type"</span> : <span class="s2">"item"</span>,
-    <span class="s2">"object_id"</span> : 101157918,
-    <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
-    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:24:59 +0000"</span>,
-    <span class="s2">"parent_project_id"</span> : 174361513,
-    <span class="s2">"parent_item_id"</span> : null,
-    <span class="s2">"initiator_id"</span> : null,
-    <span class="s2">"extra_data"</span> : <span class="o">{</span>
-      <span class="s2">"content"</span> : <span class="s2">"Task1"</span>
-    <span class="o">}</span>
-  <span class="o">}</span>,
-  <span class="o">{</span>
-    <span class="s2">"id"</span> : 955333239,
-    <span class="s2">"object_type"</span> : <span class="s2">"project"</span>,
-    <span class="s2">"object_id"</span> : 174361513,
-    <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
-    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:24:56 +0000"</span>,
-    <span class="s2">"parent_project_id"</span> : null,
-    <span class="s2">"parent_item_id"</span> : null,
-    <span class="s2">"initiator_id"</span> : null,
-    <span class="s2">"extra_data"</span> : <span class="o">{</span>
-      <span class="s2">"name"</span> : <span class="s2">"Project1"</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-<span class="o">]</span>
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">activity</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955344370</span><span class="p">,</span>
-    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'item'</span><span class="p">,</span>
-    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
-    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'updated'</span><span class="p">,</span>
-    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:28:37 +0000'</span><span class="p">,</span>
-    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
-    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span><span class="p">,</span>
-      <span class="s">'due_date'</span><span class="p">:</span> <span class="s">'Sat 02 Jul 2016 20:59:59 +0000'</span><span class="p">,</span>
-      <span class="s">'last_due_date'</span><span class="p">:</span> <span class="bp">None</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="p">{</span>
-    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333751</span><span class="p">,</span>
-    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'note'</span><span class="p">,</span>
-    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">23685068</span><span class="p">,</span>
-    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
-    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:25:04 +0000'</span><span class="p">,</span>
-    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
-    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
-    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Note1'</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="p">{</span>
-    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333384</span><span class="p">,</span>
-    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'item'</span><span class="p">,</span>
-    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
-    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
-    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:24:59 +0000'</span><span class="p">,</span>
-    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
-    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="p">{</span>
-    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333239</span><span class="p">,</span>
-    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'project'</span><span class="p">,</span>
-    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
-    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
-    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:24:56 +0000'</span><span class="p">,</span>
-    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s">'name'</span><span class="p">:</span> <span class="s">'Project1'</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">]</span>
-</code></pre>
-<h3 id='required-parameters'>Required parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>token</td>
-<td>The user&rsquo;s token received on login (a string hash value).</td>
-</tr>
-</tbody></table>
-<h3 id='optional-parameters'>Optional parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>object_type <em>String</em></td>
-<td>Filters events by a specific object type.</td>
-</tr>
-<tr>
-<td>object_id <em>Integer</em></td>
-<td>Filters events by a specific object id, but only if the <code class="prettyprint">object_type</code> has been also specified.</td>
-</tr>
-<tr>
-<td>event_type <em>String</em></td>
-<td>Filters events by a specific event type.</td>
-</tr>
-<tr>
-<td>object_event_types <em>Array of Strings</em></td>
-<td>An alternative way to filter by multiple object and event types.  This takes a list of strings of the form <code class="prettyprint">[object_type]:[event_type]</code> (where either <code class="prettyprint">object_type</code> part or the <code class="prettyprint">event_type</code> part can be ommited), such as for example <code class="prettyprint">[&quot;item:&quot;, &quot;note:added&quot;]</code>.  When this parameter is specified the <code class="prettyprint">object_type</code>, <code class="prettyprint">event_type</code> and <code class="prettyprint">object_id</code> parameters are ignored.</td>
-</tr>
-<tr>
-<td>parent_project_id <em>Integer</em></td>
-<td>Filters object events by the id of the project they belong to, so this implicitly limits the results to items and notes.</td>
-</tr>
-<tr>
-<td>parent_item_id <em>Integer</em></td>
-<td>Filters object events by the id of the item they belong, so this implicitly limits the results to notes.</td>
-</tr>
-<tr>
-<td>initiator_id <em>Integer</em></td>
-<td>Filters event by the id of the initiator.</td>
-</tr>
-<tr>
-<td>since <em>String</em></td>
-<td>Filters events to those that took place after the specified date and time, formatted as for example <code class="prettyprint">2016-06-28T12:00</code>.</td>
-</tr>
-<tr>
-<td>until <em>String</em></td>
-<td>Filters events to those that took place before the specified date and time, formatted as <code class="prettyprint">2016-06-28T12:00</code>.</td>
-</tr>
-<tr>
-<td>limit <em>Integer</em></td>
-<td>The number of events to return, where the default is <code class="prettyprint">30</code>, and the maximum is <code class="prettyprint">100</code>.</td>
-</tr>
-<tr>
-<td>offset <em>Integer</em></td>
-<td>The number of events to skip, which can be used for pagination in order to get more events than those returned by the previous call.</td>
-</tr>
-</tbody></table>
-
-        <h1 id='business'>Business</h1>
-<blockquote>
-<p>An example invitation object:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"base_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://todoist.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"business_account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"z@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"inviter_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to our company business account"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0692805f97d9c091debaba52d18f5696"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>The set of functions and Sync API commands to manage Todoist Business accounts. All these functionality is only available for Business account admins.</p>
-
-<p>In order to become a business account admin, you should create a new account from <a href="https://todoist.com/business/freeTrial">Todoist Business Free Trial</a>, or to ask another business account admin to invite you, and to make you an admin.</p>
-
-<p>User, who is also a business account admin has the attribute <code class="prettyprint">is_biz_admin</code>, set to <code class="prettyprint">true</code>.</p>
-<h2 id='send-invitation'>Send invitation</h2>
-<blockquote>
-<p>An example of sending an invitation:</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/business/users/invite <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">email_list</span><span class="o">=</span><span class="s1">'["spam@example.com","egg@example.com"]'</span>
-    -d <span class="nv">message</span><span class="o">=</span><span class="s1">'Welcome'</span>
-<span class="o">[</span>
-  <span class="o">{</span>
-    <span class="s2">"base_url"</span>: <span class="s2">"http://todoist.com"</span>,
-    <span class="s2">"business_account_id"</span>: 2,
-    <span class="s2">"email"</span>: <span class="s2">"spam@example.com"</span>,
-    <span class="s2">"id"</span>: 15,
-    <span class="s2">"inviter_id"</span>: 1,
-    <span class="s2">"message"</span>: <span class="s2">"Welcome"</span>,
-    <span class="s2">"secret"</span>: <span class="s2">"21d5a7fc4fa7e9d47a6642069d2af6ef"</span>,
-    <span class="s2">"user_id"</span>: 6
-  <span class="o">}</span>,
-  <span class="o">{</span>
-    <span class="s2">"base_url"</span>: <span class="s2">"http://todoist.com"</span>,
-    <span class="s2">"business_account_id"</span>: 2,
-    <span class="s2">"email"</span>: <span class="s2">"egg@example.com"</span>,
-    <span class="s2">"id"</span>: 16,
-    <span class="s2">"inviter_id"</span>: 1,
-    <span class="s2">"message"</span>: <span class="s2">"Welcome"</span>,
-    <span class="s2">"secret"</span>: <span class="s2">"4e20a8b58abe07441c4c30fff34798ed"</span>,
-    <span class="s2">"user_id"</span>: 15
-  <span class="o">}</span>
-<span class="o">]</span>
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users</span><span class="o">.</span><span class="n">invite</span><span class="p">([</span><span class="s">'spam@example.com'</span><span class="p">,</span><span class="s">'egg@example.com'</span><span class="p">])</span>
-<span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s">'base_url'</span><span class="p">:</span> <span class="s">'http://todoist.com'</span><span class="p">,</span>
-    <span class="s">'business_account_id'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="s">'email'</span><span class="p">:</span> <span class="s">'spam@example.com'</span><span class="p">,</span>
-    <span class="s">'id'</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
-    <span class="s">'inviter_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s">'message'</span><span class="p">:</span> <span class="s">'Welcome'</span><span class="p">,</span>
-    <span class="s">'secret'</span><span class="p">:</span> <span class="s">'21d5a7fc4fa7e9d47a6642069d2af6ef'</span><span class="p">,</span>
-    <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">6</span>
-  <span class="p">},</span>
-  <span class="p">{</span>
-    <span class="s">'base_url'</span><span class="p">:</span> <span class="s">'http://todoist.com'</span><span class="p">,</span>
-    <span class="s">'business_account_id'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="s">'email'</span><span class="p">:</span> <span class="s">'egg@example.com'</span><span class="p">,</span>
-    <span class="s">'id'</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-    <span class="s">'inviter_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s">'message'</span><span class="p">:</span> <span class="s">'Welcome'</span><span class="p">,</span>
-    <span class="s">'secret'</span><span class="p">:</span> <span class="s">'4e20a8b58abe07441c4c30fff34798ed'</span><span class="p">,</span>
-    <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">15</span>
-  <span class="p">}</span>
-<span class="p">]</span>
-
-</code></pre>
-
-<p>This function allows you to send invitation to your business account. Every invitation object has unique id and secret code. Anyone who knows this information, can activate invitation and join your business account. Invitation is deactivated at the moment it&rsquo;s accepted or rejected by receiver, or deleted manually by sender.</p>
-
-<p>Invitation objects are not created (quietly skipped), if the invitation recipient is an existing Todoist user and this user already belongs to a business account.</p>
-
-<p>If an invitation for that recipient already exists and hasn&rsquo;t been activated yet, a new invitation object will not be created. Instead, an existing invitation will be re-sent and the corresponding invitation object will be returned back.</p>
-
-<p>The return value is a list of invitation objects.</p>
-<h3 id='required-arguments'>Required arguments</h3>
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>token <em>String</em></td>
-<td>User&rsquo;s access token</td>
-</tr>
-<tr>
-<td>email_list <em>List of Strings</em></td>
-<td>The emails of users which will be invited</td>
-</tr>
-</tbody></table>
-<h3 id='optional-arguments'>Optional arguments</h3>
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>message <em>String</em></td>
-<td>Additional text which will be included to invitation welcome message</td>
-</tr>
-</tbody></table>
-<h2 id='accept-invitation'>Accept invitation</h2>
-<blockquote>
-<p>An example of accepting a business invitation with a direct call:</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/business/users/accept_invitation <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">id</span><span class="o">=</span>1234 <span class="se">\</span>
-    -d <span class="nv">secret</span><span class="o">=</span>abcdefghijklmno
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users</span><span class="o">.</span><span class="n">accept_invitation</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
-</code></pre>
-
-<blockquote>
-<p>An example of accepting a business invitation with a Sync API command:</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "biz_accept_invitation", "uuid": "48538e47-7a9f-4f3d-927a-463ea997675e", "args": {"invitation_id": 1234,  "invitation_secret": "abcdefghijklmno"}}]'</span>
-<span class="o">{</span> ...
-  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"48538e47-7a9f-4f3d-927a-463ea997675e"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
-  ... <span class="o">}</span>
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">biz_invitations</span><span class="o">.</span><span class="n">accept</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</code></pre>
-
-<p>Accept an invitation from Todoist for Business.  There are currently 2 ways to accept an invitation, either with a direct call, or by using a Sync API command, as can be seen from the examples on the side, and the different required arguments below.</p>
-
-<p>The invitation is accepted if it&rsquo;s still active and user doesn&rsquo;t belong to any business account yet.  For the direct call, <code class="prettyprint">null</code> denotes a successful return value.</p>
-<h3 id='required-arguments'>Required arguments</h3><h4 id='for-the-direct-call'>For the direct call:</h4>
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>token <em>String</em></td>
-<td>User&rsquo;s access token</td>
-</tr>
-<tr>
-<td>id <em>Integer</em></td>
-<td>The invitation id (a number).</td>
-</tr>
-<tr>
-<td>secret <em>String</em></td>
-<td>The secret fetched from the live notification (a string value).</td>
-</tr>
-</tbody></table>
-<h4 id='for-the-sync-api-command'>For the Sync API command:</h4>
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>invitation_id <em>Integer</em></td>
-<td>The invitation id (a number).</td>
-</tr>
-<tr>
-<td>invitation_secret <em>String</em></td>
-<td>The secret fetched from the live notification (a string value).</td>
-</tr>
-</tbody></table>
-<h2 id='reject-invitation'>Reject invitation</h2>
-<blockquote>
-<p>An example of rejecting a business invitation with a direct call:</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/business/users/reject_invitation <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">id</span><span class="o">=</span>1234 <span class="se">\</span>
-    -d <span class="nv">secret</span><span class="o">=</span>abcdefghijklmno
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users</span><span class="o">.</span><span class="n">reject_invitation</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
-</code></pre>
-
-<blockquote>
-<p>An example of rejecting a business invitation with a Sync API command:</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
-    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "biz_reject_invitation", "uuid": "a1b0460a-aab3-4555-9109-779cd0cb0966", "args": {"invitation_id": 1234,  "invitation_secret": "abcdefghijklmno"}}]'</span>
-</code></pre>
-<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">biz_invitations</span><span class="o">.</span><span class="n">reject</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</code></pre>
-
-<p>Reject an invitation from Todoist for Business.  There are currently 2 ways to reject an invitation, either with a direct call, or by using a Sync API command, as can be seen from the examples on the side, and the different required arguments below.</p>
-
-<p>The invitation is rejected and deleted.  Note that the client doesn&rsquo;t have to provide the user&rsquo;s token to reject invitation: it&rsquo;s enough to provide knowledge of invitation secret business account yet.  For the direct call, <code class="prettyprint">null</code> denotes a successful return value.</p>
-<h3 id='required-arguments'>Required arguments</h3><h4 id='for-the-direct-call'>For the direct call:</h4>
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id <em>Integer</em></td>
-<td>The invitation id (a number).</td>
-</tr>
-<tr>
-<td>secret <em>String</em></td>
-<td>The secret fetched from the live notification (a string value).</td>
-</tr>
-</tbody></table>
-<h4 id='for-the-sync-api-command'>For the Sync API command:</h4>
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>invitation_id <em>Integer</em></td>
-<td>The invitation id (a number).</td>
-</tr>
-<tr>
-<td>invitation_secret <em>String</em></td>
-<td>The secret fetched from the live notification (a string value).</td>
-</tr>
-</tbody></table>
-<h3 id='optional-arguments'>Optional arguments</h3><h4 id='for-the-direct-call'>For the direct call:</h4>
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>token <em>String</em></td>
-<td>User&rsquo;s access token</td>
 </tr>
 </tbody></table>
 
@@ -5711,6 +5152,598 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </tbody></table>
 
+        <h1 id='business'>Business</h1>
+<blockquote>
+<p>An example invitation object:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"base_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://todoist.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"business_account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"z@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"inviter_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to our company business account"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0692805f97d9c091debaba52d18f5696"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The set of functions and Sync API commands to manage Todoist Business accounts. All these functionality is only available for Business account admins.</p>
+
+<p>In order to become a business account admin, you should create a new account from <a href="https://todoist.com/business/freeTrial">Todoist Business Free Trial</a>, or to ask another business account admin to invite you, and to make you an admin.</p>
+
+<p>User, who is also a business account admin has the attribute <code class="prettyprint">is_biz_admin</code>, set to <code class="prettyprint">true</code>.</p>
+<h2 id='send-invitation'>Send invitation</h2>
+<blockquote>
+<p>An example of sending an invitation:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/business/users/invite <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">email_list</span><span class="o">=</span><span class="s1">'["spam@example.com","egg@example.com"]'</span>
+    -d <span class="nv">message</span><span class="o">=</span><span class="s1">'Welcome'</span>
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">"base_url"</span>: <span class="s2">"http://todoist.com"</span>,
+    <span class="s2">"business_account_id"</span>: 2,
+    <span class="s2">"email"</span>: <span class="s2">"spam@example.com"</span>,
+    <span class="s2">"id"</span>: 15,
+    <span class="s2">"inviter_id"</span>: 1,
+    <span class="s2">"message"</span>: <span class="s2">"Welcome"</span>,
+    <span class="s2">"secret"</span>: <span class="s2">"21d5a7fc4fa7e9d47a6642069d2af6ef"</span>,
+    <span class="s2">"user_id"</span>: 6
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"base_url"</span>: <span class="s2">"http://todoist.com"</span>,
+    <span class="s2">"business_account_id"</span>: 2,
+    <span class="s2">"email"</span>: <span class="s2">"egg@example.com"</span>,
+    <span class="s2">"id"</span>: 16,
+    <span class="s2">"inviter_id"</span>: 1,
+    <span class="s2">"message"</span>: <span class="s2">"Welcome"</span>,
+    <span class="s2">"secret"</span>: <span class="s2">"4e20a8b58abe07441c4c30fff34798ed"</span>,
+    <span class="s2">"user_id"</span>: 15
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users</span><span class="o">.</span><span class="n">invite</span><span class="p">([</span><span class="s">'spam@example.com'</span><span class="p">,</span><span class="s">'egg@example.com'</span><span class="p">])</span>
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s">'base_url'</span><span class="p">:</span> <span class="s">'http://todoist.com'</span><span class="p">,</span>
+    <span class="s">'business_account_id'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s">'email'</span><span class="p">:</span> <span class="s">'spam@example.com'</span><span class="p">,</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="s">'inviter_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'message'</span><span class="p">:</span> <span class="s">'Welcome'</span><span class="p">,</span>
+    <span class="s">'secret'</span><span class="p">:</span> <span class="s">'21d5a7fc4fa7e9d47a6642069d2af6ef'</span><span class="p">,</span>
+    <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">6</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s">'base_url'</span><span class="p">:</span> <span class="s">'http://todoist.com'</span><span class="p">,</span>
+    <span class="s">'business_account_id'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s">'email'</span><span class="p">:</span> <span class="s">'egg@example.com'</span><span class="p">,</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="s">'inviter_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'message'</span><span class="p">:</span> <span class="s">'Welcome'</span><span class="p">,</span>
+    <span class="s">'secret'</span><span class="p">:</span> <span class="s">'4e20a8b58abe07441c4c30fff34798ed'</span><span class="p">,</span>
+    <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">15</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+
+</code></pre>
+
+<p>This function allows you to send invitation to your business account. Every invitation object has unique id and secret code. Anyone who knows this information, can activate invitation and join your business account. Invitation is deactivated at the moment it&rsquo;s accepted or rejected by receiver, or deleted manually by sender.</p>
+
+<p>Invitation objects are not created (quietly skipped), if the invitation recipient is an existing Todoist user and this user already belongs to a business account.</p>
+
+<p>If an invitation for that recipient already exists and hasn&rsquo;t been activated yet, a new invitation object will not be created. Instead, an existing invitation will be re-sent and the corresponding invitation object will be returned back.</p>
+
+<p>The return value is a list of invitation objects.</p>
+<h3 id='required-arguments'>Required arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>User&rsquo;s access token</td>
+</tr>
+<tr>
+<td>email_list <em>List of Strings</em></td>
+<td>The emails of users which will be invited</td>
+</tr>
+</tbody></table>
+<h3 id='optional-arguments'>Optional arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message <em>String</em></td>
+<td>Additional text which will be included to invitation welcome message</td>
+</tr>
+</tbody></table>
+<h2 id='accept-invitation'>Accept invitation</h2>
+<blockquote>
+<p>An example of accepting a business invitation with a direct call:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/business/users/accept_invitation <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">id</span><span class="o">=</span>1234 <span class="se">\</span>
+    -d <span class="nv">secret</span><span class="o">=</span>abcdefghijklmno
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users</span><span class="o">.</span><span class="n">accept_invitation</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
+</code></pre>
+
+<blockquote>
+<p>An example of accepting a business invitation with a Sync API command:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "biz_accept_invitation", "uuid": "48538e47-7a9f-4f3d-927a-463ea997675e", "args": {"invitation_id": 1234,  "invitation_secret": "abcdefghijklmno"}}]'</span>
+<span class="o">{</span> ...
+  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"48538e47-7a9f-4f3d-927a-463ea997675e"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
+  ... <span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">biz_invitations</span><span class="o">.</span><span class="n">accept</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre>
+
+<p>Accept an invitation from Todoist for Business.  There are currently 2 ways to accept an invitation, either with a direct call, or by using a Sync API command, as can be seen from the examples on the side, and the different required arguments below.</p>
+
+<p>The invitation is accepted if it&rsquo;s still active and user doesn&rsquo;t belong to any business account yet.  For the direct call, <code class="prettyprint">null</code> denotes a successful return value.</p>
+<h3 id='required-arguments'>Required arguments</h3><h4 id='for-the-direct-call'>For the direct call:</h4>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>User&rsquo;s access token</td>
+</tr>
+<tr>
+<td>id <em>Integer</em></td>
+<td>The invitation id (a number).</td>
+</tr>
+<tr>
+<td>secret <em>String</em></td>
+<td>The secret fetched from the live notification (a string value).</td>
+</tr>
+</tbody></table>
+<h4 id='for-the-sync-api-command'>For the Sync API command:</h4>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>invitation_id <em>Integer</em></td>
+<td>The invitation id (a number).</td>
+</tr>
+<tr>
+<td>invitation_secret <em>String</em></td>
+<td>The secret fetched from the live notification (a string value).</td>
+</tr>
+</tbody></table>
+<h2 id='reject-invitation'>Reject invitation</h2>
+<blockquote>
+<p>An example of rejecting a business invitation with a direct call:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/business/users/reject_invitation <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">id</span><span class="o">=</span>1234 <span class="se">\</span>
+    -d <span class="nv">secret</span><span class="o">=</span>abcdefghijklmno
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users</span><span class="o">.</span><span class="n">reject_invitation</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
+</code></pre>
+
+<blockquote>
+<p>An example of rejecting a business invitation with a Sync API command:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "biz_reject_invitation", "uuid": "a1b0460a-aab3-4555-9109-779cd0cb0966", "args": {"invitation_id": 1234,  "invitation_secret": "abcdefghijklmno"}}]'</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">biz_invitations</span><span class="o">.</span><span class="n">reject</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre>
+
+<p>Reject an invitation from Todoist for Business.  There are currently 2 ways to reject an invitation, either with a direct call, or by using a Sync API command, as can be seen from the examples on the side, and the different required arguments below.</p>
+
+<p>The invitation is rejected and deleted.  Note that the client doesn&rsquo;t have to provide the user&rsquo;s token to reject invitation: it&rsquo;s enough to provide knowledge of invitation secret business account yet.  For the direct call, <code class="prettyprint">null</code> denotes a successful return value.</p>
+<h3 id='required-arguments'>Required arguments</h3><h4 id='for-the-direct-call'>For the direct call:</h4>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id <em>Integer</em></td>
+<td>The invitation id (a number).</td>
+</tr>
+<tr>
+<td>secret <em>String</em></td>
+<td>The secret fetched from the live notification (a string value).</td>
+</tr>
+</tbody></table>
+<h4 id='for-the-sync-api-command'>For the Sync API command:</h4>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>invitation_id <em>Integer</em></td>
+<td>The invitation id (a number).</td>
+</tr>
+<tr>
+<td>invitation_secret <em>String</em></td>
+<td>The secret fetched from the live notification (a string value).</td>
+</tr>
+</tbody></table>
+<h3 id='optional-arguments'>Optional arguments</h3><h4 id='for-the-direct-call'>For the direct call:</h4>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>User&rsquo;s access token</td>
+</tr>
+</tbody></table>
+
+        <h1 id='activity'>Activity</h1>
+<p>The activity log makes it easy to see everything that is happening across projects, items and notes.</p>
+
+<p><em>Note that, the activity log is only available for Todoist Premium.</em></p>
+<h3 id='logged-events'>Logged events</h3>
+<p>Currently the official Todoist clients present only the most important events that most users are interested in, but actually everything that has to do with projects, items and notes, is stored in our DB, and can be accessed by using our API.</p>
+
+<p>The following events are logged for items:</p>
+
+<ul>
+<li>items added</li>
+<li>items updated (only changes to <code class="prettyprint">content</code>, <code class="prettyprint">due_data</code> and <code class="prettyprint">responsible_uid</code>)</li>
+<li>items deleted</li>
+<li>items completed</li>
+<li>items uncompleted</li>
+</ul>
+
+<p>The following events are logged for notes:</p>
+
+<ul>
+<li>notes added</li>
+<li>notes updated (only changes to <code class="prettyprint">content</code> or <code class="prettyprint">file_name</code> if the former is empty)</li>
+<li>notes deleted</li>
+</ul>
+
+<p>The following events are logged for projects:</p>
+
+<ul>
+<li>projects added</li>
+<li>projects updated (only changes to <code class="prettyprint">name</code>)</li>
+<li>projects deleted</li>
+<li>projects archived</li>
+<li>projects unarchived</li>
+<li>projects shared</li>
+<li>projects left</li>
+</ul>
+<h3 id='event-properties'>Event properties</h3>
+<blockquote>
+<p>An example of an activity log event:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span> : 955333384,
+  <span class="s2">"object_type"</span> : <span class="s2">"item"</span>,
+  <span class="s2">"object_id"</span> : 101157918,
+  <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
+  <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:24:59 +0000"</span>,
+  <span class="s2">"parent_project_id"</span> : 174361513,
+  <span class="s2">"parent_item_id"</span> : null,
+  <span class="s2">"initiator_id"</span> : null,
+  <span class="s2">"extra_data"</span> : <span class="o">{</span>
+    <span class="s2">"content"</span> : <span class="s2">"Task1"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="p">{</span>
+  <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333384</span><span class="p">,</span>
+  <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'item'</span><span class="p">,</span>
+  <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
+  <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
+  <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:24:59 +0000'</span><span class="p">,</span>
+  <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
+  <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id <em>Integer</em></td>
+<td>The id of the event.</td>
+</tr>
+<tr>
+<td>object_type <em>String</em></td>
+<td>The type of object, one of <code class="prettyprint">item</code>, <code class="prettyprint">note</code> or <code class="prettyprint">project</code>.</td>
+</tr>
+<tr>
+<td>object_id <em>Integer</em></td>
+<td>The id of the object.</td>
+</tr>
+<tr>
+<td>event_type <em>String</em></td>
+<td>The type of event, one of <code class="prettyprint">added</code>, <code class="prettyprint">updated</code>, <code class="prettyprint">deleted</code>, <code class="prettyprint">completed</code>, <code class="prettyprint">uncompleted</code>, <code class="prettyprint">archived</code>, <code class="prettyprint">unarchived</code>, <code class="prettyprint">shared</code>, <code class="prettyprint">left</code>.</td>
+</tr>
+<tr>
+<td>event_date <em>String</em></td>
+<td>The date and time when the event took place.</td>
+</tr>
+<tr>
+<td>parent_project_id <em>Integer</em></td>
+<td>The id of the item&rsquo;s or note&rsquo;s parent project, otherwise <code class="prettyprint">null</code>.</td>
+</tr>
+<tr>
+<td>parent_item_id <em>Integer</em></td>
+<td>The id of the note&rsquo;s parent item, otherwise <code class="prettyprint">null</code>.</td>
+</tr>
+<tr>
+<td>initiator_id <em>Integer</em></td>
+<td>The id of the user who is responsible for the event, which only makes sense in shared projects, items and notes, and is <code class="prettyprint">null</code> for non-shared objects.</td>
+</tr>
+<tr>
+<td>extra_data <em>Object</em></td>
+<td>This object contains at least the <code class="prettyprint">name</code> of the project, or the <code class="prettyprint">content</code> of an item or note, and optionally the <code class="prettyprint">last_name</code> if a projects was renamed, the <code class="prettyprint">last_content</code> if an item or note was renamed, the <code class="prettyprint">due_date</code> and <code class="prettyprint">last_due_date</code> if an item&rsquo;s due date changed, the <code class="prettyprint">responsible_uid</code> and <code class="prettyprint">last_responsible_uid</code> if an item&rsquo;s responsible uid changed.</td>
+</tr>
+</tbody></table>
+<h2 id='get-activity-logs'>Get activity logs</h2>
+<blockquote>
+<p>An example of getting the activity logs:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/activity/get <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">"id"</span> : 955344370,
+    <span class="s2">"object_type"</span> : <span class="s2">"item"</span>,
+    <span class="s2">"object_id"</span> : 101157918,
+    <span class="s2">"event_type"</span> : <span class="s2">"updated"</span>,
+    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:28:37 +0000"</span>,
+    <span class="s2">"parent_project_id"</span> : 174361513,
+    <span class="s2">"parent_item_id"</span> : null,
+    <span class="s2">"initiator_id"</span> : null,
+    <span class="s2">"extra_data"</span> : <span class="o">{</span>
+      <span class="s2">"last_due_date"</span> : null,
+      <span class="s2">"due_date"</span> : <span class="s2">"Sat 02 Jul 2016 20:59:59 +0000"</span>,
+      <span class="s2">"content"</span> : <span class="s2">"Task1"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"id"</span> : 955333751,
+    <span class="s2">"object_type"</span> : <span class="s2">"note"</span>,
+    <span class="s2">"object_id"</span> : 23685068,
+    <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
+    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:25:04 +0000"</span>,
+    <span class="s2">"parent_project_id"</span> : 174361513,
+    <span class="s2">"parent_item_id"</span> : 101157918,
+    <span class="s2">"initiator_id"</span> : null,
+    <span class="s2">"extra_data"</span> : <span class="o">{</span>
+      <span class="s2">"content"</span> : <span class="s2">"Note1"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"id"</span> : 955333384,
+    <span class="s2">"object_type"</span> : <span class="s2">"item"</span>,
+    <span class="s2">"object_id"</span> : 101157918,
+    <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
+    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:24:59 +0000"</span>,
+    <span class="s2">"parent_project_id"</span> : 174361513,
+    <span class="s2">"parent_item_id"</span> : null,
+    <span class="s2">"initiator_id"</span> : null,
+    <span class="s2">"extra_data"</span> : <span class="o">{</span>
+      <span class="s2">"content"</span> : <span class="s2">"Task1"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"id"</span> : 955333239,
+    <span class="s2">"object_type"</span> : <span class="s2">"project"</span>,
+    <span class="s2">"object_id"</span> : 174361513,
+    <span class="s2">"event_type"</span> : <span class="s2">"added"</span>,
+    <span class="s2">"event_date"</span> : <span class="s2">"Fri 01 Jul 2016 14:24:56 +0000"</span>,
+    <span class="s2">"parent_project_id"</span> : null,
+    <span class="s2">"parent_item_id"</span> : null,
+    <span class="s2">"initiator_id"</span> : null,
+    <span class="s2">"extra_data"</span> : <span class="o">{</span>
+      <span class="s2">"name"</span> : <span class="s2">"Project1"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">activity</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955344370</span><span class="p">,</span>
+    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'item'</span><span class="p">,</span>
+    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
+    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'updated'</span><span class="p">,</span>
+    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:28:37 +0000'</span><span class="p">,</span>
+    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
+    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span><span class="p">,</span>
+      <span class="s">'due_date'</span><span class="p">:</span> <span class="s">'Sat 02 Jul 2016 20:59:59 +0000'</span><span class="p">,</span>
+      <span class="s">'last_due_date'</span><span class="p">:</span> <span class="bp">None</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333751</span><span class="p">,</span>
+    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'note'</span><span class="p">,</span>
+    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">23685068</span><span class="p">,</span>
+    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
+    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:25:04 +0000'</span><span class="p">,</span>
+    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
+    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
+    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Note1'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333384</span><span class="p">,</span>
+    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'item'</span><span class="p">,</span>
+    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
+    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
+    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:24:59 +0000'</span><span class="p">,</span>
+    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
+    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s">'id'</span><span class="p">:</span> <span class="mi">955333239</span><span class="p">,</span>
+    <span class="s">'object_type'</span><span class="p">:</span> <span class="s">'project'</span><span class="p">,</span>
+    <span class="s">'object_id'</span><span class="p">:</span> <span class="mi">174361513</span><span class="p">,</span>
+    <span class="s">'event_type'</span><span class="p">:</span> <span class="s">'added'</span><span class="p">,</span>
+    <span class="s">'event_date'</span><span class="p">:</span> <span class="s">'Fri 01 Jul 2016 14:24:56 +0000'</span><span class="p">,</span>
+    <span class="s">'parent_project_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">'name'</span><span class="p">:</span> <span class="s">'Project1'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>object_type <em>String</em></td>
+<td>Filters events by a specific object type.</td>
+</tr>
+<tr>
+<td>object_id <em>Integer</em></td>
+<td>Filters events by a specific object id, but only if the <code class="prettyprint">object_type</code> has been also specified.</td>
+</tr>
+<tr>
+<td>event_type <em>String</em></td>
+<td>Filters events by a specific event type.</td>
+</tr>
+<tr>
+<td>object_event_types <em>Array of Strings</em></td>
+<td>An alternative way to filter by multiple object and event types.  This takes a list of strings of the form <code class="prettyprint">[object_type]:[event_type]</code> (where either <code class="prettyprint">object_type</code> part or the <code class="prettyprint">event_type</code> part can be ommited), such as for example <code class="prettyprint">[&quot;item:&quot;, &quot;note:added&quot;]</code>.  When this parameter is specified the <code class="prettyprint">object_type</code>, <code class="prettyprint">event_type</code> and <code class="prettyprint">object_id</code> parameters are ignored.</td>
+</tr>
+<tr>
+<td>parent_project_id <em>Integer</em></td>
+<td>Filters object events by the id of the project they belong to, so this implicitly limits the results to items and notes.</td>
+</tr>
+<tr>
+<td>parent_item_id <em>Integer</em></td>
+<td>Filters object events by the id of the item they belong, so this implicitly limits the results to notes.</td>
+</tr>
+<tr>
+<td>initiator_id <em>Integer</em></td>
+<td>Filters event by the id of the initiator.</td>
+</tr>
+<tr>
+<td>since <em>String</em></td>
+<td>Filters events to those that took place after the specified date and time, formatted as for example <code class="prettyprint">2016-06-28T12:00</code>.</td>
+</tr>
+<tr>
+<td>until <em>String</em></td>
+<td>Filters events to those that took place before the specified date and time, formatted as <code class="prettyprint">2016-06-28T12:00</code>.</td>
+</tr>
+<tr>
+<td>limit <em>Integer</em></td>
+<td>The number of events to return, where the default is <code class="prettyprint">30</code>, and the maximum is <code class="prettyprint">100</code>.</td>
+</tr>
+<tr>
+<td>offset <em>Integer</em></td>
+<td>The number of events to skip, which can be used for pagination in order to get more events than those returned by the previous call.</td>
+</tr>
+</tbody></table>
+
+        <h1 id='backups'>Backups</h1>
+<p>Todoist creates a backup archive of users&#39; data on a daily basis. Backup archives can be accessed from the web app
+(Todoist Setting / Backups). The list of recent backup archives can also be accessed via the following API endpoints:</p>
+
+<p><code class="prettyprint">/API/v7/backups/get</code> (HTTP POST, application/x-www-form-urlencoded)</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/backups/get <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
+</code></pre>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>access token</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Upon successful request, a HTTP 200 response will be returned with a list of backup archives in JSON format.</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"version"</span>: <span class="s2">"2016-01-13 02:03"</span>,
+        <span class="s2">"url"</span>: <span class="s2">"https://s3.amazonaws.com/user_backups.todoist.com/..."</span>
+    <span class="o">}</span>,
+    ...
+<span class="o">]</span>
+</code></pre>
+
         <h1 id='url-schemes'>URL schemes</h1>
 <p>The following URL schemes might also be useful when accessing the Todoist applications (iOS and Android) or when performing certain actions with them, so they are also included here for completeness.</p>
 <h2 id='views'>Views</h2>
@@ -5997,39 +6030,6 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>The query to search in the Todoist application, which should be a string that is in <code class="prettyprint">Percent-encoding</code> (also known as URL encoding).</td>
 </tr>
 </tbody></table>
-
-        <h1 id='backups'>Backups</h1>
-<p>Todoist creates a backup archive of users&#39; data on a daily basis. Backup archives can be accessed from the web app
-(Todoist Setting / Backups). The list of recent backup archives can also be accessed via the following API endpoints:</p>
-
-<p><code class="prettyprint">/API/v7/backups/get</code> (HTTP POST, application/x-www-form-urlencoded)</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/backups/get <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
-</code></pre>
-<h3 id='required-parameters'>Required parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>token <em>String</em></td>
-<td>access token</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Upon successful request, a HTTP 200 response will be returned with a list of backup archives in JSON format.</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"version"</span>: <span class="s2">"2016-01-13 02:03"</span>,
-        <span class="s2">"url"</span>: <span class="s2">"https://s3.amazonaws.com/user_backups.todoist.com/..."</span>
-    <span class="o">}</span>,
-    ...
-<span class="o">]</span>
-</code></pre>
 
         <h1 id='webhooks'>Webhooks</h1>
 <p>The Todoist Webhooks API allows applications to receive real-time notification (in the form of HTTP POST payload) on the subscribed user events.
