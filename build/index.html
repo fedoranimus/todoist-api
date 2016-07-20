@@ -5654,7 +5654,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
+<td>token <em>String</em></td>
 <td>The user&rsquo;s token received on login (a string hash value).</td>
 </tr>
 </tbody></table>
@@ -5711,13 +5711,33 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 </tbody></table>
 
-        <h1 id='backups'>Backups</h1>
-<p>Todoist creates a backup archive of users&#39; data on a daily basis. Backup archives can be accessed from the web app
-(Todoist Setting / Backups). The list of recent backup archives can also be accessed via the following API endpoints:</p>
+        <h1 id='backups'>Backups</h1><h2 id='get-backups'>Get backups</h2>
+<p>Todoist creates a backup archive of users&#39; data on a daily basis. Backup archives can also be accessed from the web app
+(<code class="prettyprint">Todoist Settings</code> -&gt; <code class="prettyprint">Backups</code>).</p>
 
-<p><code class="prettyprint">/API/v7/backups/get</code> (HTTP POST, application/x-www-form-urlencoded)</p>
+<blockquote>
+<p>The list of recent backup archives can be accessed via the following API endpoint, and upon successful request, a HTTP 200 response will be returned with a list of backup archives in JSON format:</p>
+</blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/backups/get <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">"version"</span>: <span class="s2">"2016-01-13 02:03"</span>,
+    <span class="s2">"url"</span>: <span class="s2">"https://s3.amazonaws.com/user_backups.todoist.com/..."</span>
+  <span class="o">}</span>,
+    ...
+<span class="o">]</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">backups</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s">'version'</span><span class="p">:</span> <span class="s">'2016-01-13 02:03'</span><span class="p">,</span>
+    <span class="s">'url'</span><span class="p">:</span> <span class="s">'https://s3.amazonaws.com/user_backups.todoist.com/...'</span>
+  <span class="p">},</span>
+  <span class="o">...</span>
+<span class="p">]</span>
 </code></pre>
 <h3 id='required-parameters'>Required parameters</h3>
 <table><thead>
@@ -5728,21 +5748,9 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>access token</td>
+<td>The user&rsquo;s token received on login (a string hash value).</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Upon successful request, a HTTP 200 response will be returned with a list of backup archives in JSON format.</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"version"</span>: <span class="s2">"2016-01-13 02:03"</span>,
-        <span class="s2">"url"</span>: <span class="s2">"https://s3.amazonaws.com/user_backups.todoist.com/..."</span>
-    <span class="o">}</span>,
-    ...
-<span class="o">]</span>
-</code></pre>
 
         <h1 id='url-schemes'>URL schemes</h1>
 <p>The following URL schemes might also be useful when accessing the Todoist applications (iOS and Android) or when performing certain actions with them, so they are also included here for completeness.</p>

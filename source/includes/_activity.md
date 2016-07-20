@@ -212,7 +212,7 @@ $ curl https://todoist.com/API/v7/activity/get \
 
 Parameter | Description
 --------- | -----------
-token | The user's token received on login (a string hash value).
+token *String* | The user's token received on login (a string hash value).
 
 
 ### Optional parameters
