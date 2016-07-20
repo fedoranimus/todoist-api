@@ -19,7 +19,7 @@ $ curl https://todoist.com/API/v7/templates/import_into_project \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.import_template_into_project(128501470, 'example.csv')
+>>> api.templates.import_into_project(128501470, 'example.csv')
 {
   'status': 'ok'
 }
@@ -45,7 +45,7 @@ task,Task1,4,1,Firstname (1),,,en
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.export_template_as_file(128501470)
+>>> api.templates.export_as_file(128501470)
 TYPE,CONTENT,PRIORITY,INDENT,AUTHOR,RESPONSIBLE,DATE,DATE_LANG
 task,Task1,4,1,Firstname (1),,,en
 ,,,,,,,
@@ -70,7 +70,7 @@ $ curl https://todoist.com/API/v7/templates/export_as_url \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.export_template_as_url(128501470)
+>>> api.templates.export_as_url(128501470)
 {
   'file_name': '*_Project1.csv',
   'file_url': 'https://*.cloudfront.net/*_Project1.csv'

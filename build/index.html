@@ -1053,7 +1053,7 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">import_template_into_project</span><span class="p">(</span><span class="mi">128501470</span><span class="p">,</span> <span class="s">'example.csv'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">templates</span><span class="o">.</span><span class="n">import_into_project</span><span class="p">(</span><span class="mi">128501470</span><span class="p">,</span> <span class="s">'example.csv'</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="s">'status'</span><span class="p">:</span> <span class="s">'ok'</span>
 <span class="p">}</span>
@@ -1074,7 +1074,7 @@ task,Task1,4,1,Firstname <span class="o">(</span>1<span class="o">)</span>,,,en
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">export_template_as_file</span><span class="p">(</span><span class="mi">128501470</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">templates</span><span class="o">.</span><span class="n">export_as_file</span><span class="p">(</span><span class="mi">128501470</span><span class="p">)</span>
 <span class="n">TYPE</span><span class="p">,</span><span class="n">CONTENT</span><span class="p">,</span><span class="n">PRIORITY</span><span class="p">,</span><span class="n">INDENT</span><span class="p">,</span><span class="n">AUTHOR</span><span class="p">,</span><span class="n">RESPONSIBLE</span><span class="p">,</span><span class="n">DATE</span><span class="p">,</span><span class="n">DATE_LANG</span>
 <span class="n">task</span><span class="p">,</span><span class="n">Task1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">Firstname</span> <span class="p">(</span><span class="mi">1</span><span class="p">),,,</span><span class="n">en</span>
 <span class="p">,,,,,,,</span>
@@ -1095,7 +1095,7 @@ task,Task1,4,1,Firstname <span class="o">(</span>1<span class="o">)</span>,,,en
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">export_template_as_url</span><span class="p">(</span><span class="mi">128501470</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">templates</span><span class="o">.</span><span class="n">export_as_url</span><span class="p">(</span><span class="mi">128501470</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="s">'file_name'</span><span class="p">:</span> <span class="s">'*_Project1.csv'</span><span class="p">,</span>
   <span class="s">'file_url'</span><span class="p">:</span> <span class="s">'https://*.cloudfront.net/*_Project1.csv'</span>
@@ -2205,7 +2205,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">'example.jpg'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">uploads</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">'example.jpg'</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="s">'file_name'</span><span class="p">:</span> <span class="s">'example.jpg'</span><span class="p">,</span>
   <span class="s">'file_size'</span><span class="p">:</span> <span class="mi">85665</span><span class="p">,</span>
@@ -2333,7 +2333,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_uploads</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">uploads</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 <span class="p">[</span>
     <span class="p">{</span>
         <span class="s">"file_size"</span><span class="p">:</span> <span class="mi">86406</span><span class="p">,</span>
@@ -2404,7 +2404,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">delete_upload</span><span class="p">(</span><span class="s">'https://*.cloudfront.net/*/example.jpg'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">uploads</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'https://*.cloudfront.net/*/example.jpg'</span><span class="p">)</span>
 <span class="n">ok</span>
 </code></pre>
 
@@ -3179,7 +3179,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <blockquote>
 <p>An example of registering a new user:</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/register <span class="se">\</span>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/user/register <span class="se">\</span>
     -d <span class="nv">email</span><span class="o">=</span>me@example.com <span class="se">\</span>
     -d <span class="nv">full_name</span><span class="o">=</span>Example<span class="se">\ </span>User <span class="se">\</span>
     -d <span class="nv">password</span><span class="o">=</span>secret
@@ -3230,7 +3230,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s">'me@example.com'</span><span class="p">,</span> <span class="s">'Example User'</span><span class="p">,</span> <span class="s">'secret'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s">'me@example.com'</span><span class="p">,</span> <span class="s">'Example User'</span><span class="p">,</span> <span class="s">'secret'</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="s">'id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
   <span class="s">'token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">,</span>
@@ -3319,14 +3319,14 @@ to history), recurring task is moved forward (due date is updated).</p>
 <blockquote>
 <p>An example of deleting an existing user:</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/delete_user <span class="se">\</span>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/user/delete <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">current_password</span><span class="o">=</span>secret
 <span class="s2">"ok"</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">delete_user</span><span class="p">(</span><span class="s">'secret'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'secret'</span><span class="p">)</span>
 <span class="n">ok</span>
 </code></pre>
 
@@ -3492,7 +3492,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <blockquote>
 <p>An example of getting the user&rsquo;s productivity stats:</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/get_productivity_stats <span class="se">\</span>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/completed/get_stats <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
 <span class="o">{</span>
   <span class="s2">"karma_last_update"</span>: 50.0,
@@ -3551,7 +3551,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_productivity_stats</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">completed</span><span class="o">.</span><span class="n">get_stats</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="s">'karma_last_update'</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span>
   <span class="s">'karma_trend'</span><span class="p">:</span> <span class="s">'up'</span><span class="p">,</span>
@@ -3626,7 +3626,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <blockquote>
 <p>An example of updating the user&rsquo;s notification settings</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/update_notification_setting <span class="se">\</span>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/notification_settings/update <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">notification_type</span><span class="o">=</span>item_completed <span class="se">\</span>
     -d <span class="nv">service</span><span class="o">=</span>email <span class="se">\</span>
@@ -3692,7 +3692,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">update_notification_setting</span><span class="p">(</span><span class="s">'item_completed'</span><span class="p">,</span> <span class="s">'email'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">update_notification_setting</span><span class="p">(</span><span class="s">'item_completed'</span><span class="p">,</span> <span class="s">'email'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="s">'biz_invitation_rejected'</span><span class="p">:</span> <span class="p">{</span>
     <span class="s">'notify_push'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
@@ -3782,7 +3782,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <blockquote>
 <p>An example of getting the user&rsquo;s completed tasks</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/get_all_completed_items <span class="se">\</span>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/completed/get_all <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
 <span class="o">{</span>
   <span class="s2">"items"</span>: <span class="o">[</span>
@@ -3812,7 +3812,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_all_completed_items</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">completed</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="s">'items'</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span> <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
@@ -3906,7 +3906,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_archived_projects</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get_archived</span><span class="p">()</span>
 <span class="p">[</span>
   <span class="p">{</span>
     <span class="s">'id'</span> <span class="p">:</span> <span class="mi">150977840</span><span class="p">,</span>
@@ -3938,7 +3938,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <blockquote>
 <p>An example of adding a task:</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/add_item <span class="se">\</span>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/items/add <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
     -d <span class="nv">content</span><span class="o">=</span>Task1
 <span class="o">{</span>
@@ -4053,7 +4053,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <blockquote>
 <p>An example of getting an item&rsquo;s info:</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/get_item <span class="se">\</span>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/items/get <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
     -d <span class="nv">item_id</span><span class="o">=</span>466
 <span class="o">{</span>
@@ -4133,7 +4133,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span><span class="mi">466</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">466</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="s">'project'</span><span class="p">:</span> <span class="p">{</span>
     <span class="s">'name'</span><span class="p">:</span> <span class="s">'Inbox'</span><span class="p">,</span>
@@ -4241,7 +4241,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <blockquote>
 <p>An example of getting a project&rsquo;s info:</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/get_project <span class="se">\</span>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/projects/get <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
     -d <span class="nv">project_id</span><span class="o">=</span>128501682
 <span class="o">{</span>
@@ -4273,7 +4273,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_project</span><span class="p">(</span><span class="mi">128501682</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">128501682</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="s">"project"</span> <span class="p">:</span> <span class="p">{</span>
     <span class="s">'id'</span><span class="p">:</span> <span class="mi">128501682</span><span class="p">,</span>
@@ -4379,7 +4379,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">get_project_data</span><span class="p">(</span><span class="mi">128501682</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="mi">128501682</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="s">'project'</span> <span class="p">:</span> <span class="p">{</span>
     <span class="s">'item_order'</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
@@ -4439,7 +4439,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">share_project</span><span class="p">(</span><span class="mi">128501470</span><span class="p">,</span> <span class="s">'you@example.com'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">share</span><span class="p">(</span><span class="mi">128501470</span><span class="p">,</span> <span class="s">'you@example.com'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
@@ -4473,7 +4473,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">delete_collaborator</span><span class="p">(</span><span class="mi">128501470</span><span class="p">,</span> <span class="s">'you@example.com'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">collaborators</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">128501470</span><span class="p">,</span> <span class="s">'you@example.com'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
@@ -4800,7 +4800,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">activity_get</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">activity</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 <span class="p">[</span>
   <span class="p">{</span>
     <span class="s">'id'</span><span class="p">:</span> <span class="mi">955344370</span><span class="p">,</span>
@@ -4977,7 +4977,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users_invite</span><span class="p">([</span><span class="s">'spam@example.com'</span><span class="p">,</span><span class="s">'egg@example.com'</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users</span><span class="o">.</span><span class="n">invite</span><span class="p">([</span><span class="s">'spam@example.com'</span><span class="p">,</span><span class="s">'egg@example.com'</span><span class="p">])</span>
 <span class="p">[</span>
   <span class="p">{</span>
     <span class="s">'base_url'</span><span class="p">:</span> <span class="s">'http://todoist.com'</span><span class="p">,</span>
@@ -5049,7 +5049,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users_accept_invitation</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users</span><span class="o">.</span><span class="n">accept_invitation</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -5118,7 +5118,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users_reject_invitation</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">business_users</span><span class="o">.</span><span class="n">reject_invitation</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'abcdefghijklmno'</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>

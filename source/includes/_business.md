@@ -57,7 +57,7 @@ $ curl https://todoist.com/API/v7/business/users/invite \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.business_users_invite(['spam@example.com','egg@example.com'])
+>>> api.business_users.invite(['spam@example.com','egg@example.com'])
 [
   {
     'base_url': 'http://todoist.com',
@@ -118,7 +118,7 @@ $ curl https://todoist.com/API/v7/business/users/accept_invitation \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.business_users_accept_invitation(1234, 'abcdefghijklmno')
+>>> api.business_users.accept_invitation(1234, 'abcdefghijklmno')
 ```
 
 > An example of accepting a business invitation with a Sync API command:
@@ -176,7 +176,7 @@ $ curl https://todoist.com/API/v7/business/users/reject_invitation \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.business_users_reject_invitation(1234, 'abcdefghijklmno')
+>>> api.business_users.reject_invitation(1234, 'abcdefghijklmno')
 ```
 
 > An example of rejecting a business invitation with a Sync API command:

@@ -18,7 +18,7 @@ $ curl https://todoist.com/API/v7/sync \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.share_project(128501470, 'you@example.com')
+>>> api.projects.share(128501470, 'you@example.com')
 >>> api.commit()
 ```
 
@@ -47,7 +47,7 @@ $ curl https://todoist.com/API/v7/sync \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.delete_collaborator(128501470, 'you@example.com')
+>>> api.collaborators.delete(128501470, 'you@example.com')
 >>> api.commit()
 ```
 

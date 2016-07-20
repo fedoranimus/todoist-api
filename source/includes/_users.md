@@ -95,7 +95,7 @@ join_date *String* | The date when the user joined Todoist.
 
 
 ```shell
-$ curl https://todoist.com/API/v7/register \
+$ curl https://todoist.com/API/v7/user/register \
     -d email=me@example.com \
     -d full_name=Example\ User \
     -d password=secret
@@ -148,7 +148,7 @@ $ curl https://todoist.com/API/v7/register \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI()
->>> api.register('me@example.com', 'Example User', 'secret')
+>>> api.user.register('me@example.com', 'Example User', 'secret')
 {
   'id': 1855589,
   'token': '0123456789abcdef0123456789abcdef01234567',
@@ -218,7 +218,7 @@ timezone *String* | The user's timezone (a string value such as `UTC`, `Europe/L
 > An example of deleting an existing user:
 
 ```shell
-$ curl https://todoist.com/API/v7/delete_user \
+$ curl https://todoist.com/API/v7/user/delete \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d current_password=secret
 "ok"
@@ -227,7 +227,7 @@ $ curl https://todoist.com/API/v7/delete_user \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.delete_user('secret')
+>>> api.user.delete('secret')
 ok
 ```
 

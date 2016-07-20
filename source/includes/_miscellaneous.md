@@ -5,7 +5,7 @@
 > An example of getting the user's productivity stats:
 
 ```shell
-$ curl https://todoist.com/API/v7/get_productivity_stats \
+$ curl https://todoist.com/API/v7/completed/get_stats \
     -d token=0123456789abcdef0123456789abcdef01234567
 {
   "karma_last_update": 50.0,
@@ -66,7 +66,7 @@ $ curl https://todoist.com/API/v7/get_productivity_stats \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.get_productivity_stats()
+>>> api.completed.get_stats()
 {
   'karma_last_update': 50.0,
   'karma_trend': 'up',
@@ -137,7 +137,7 @@ token *String* | The user's token received on login.
 > An example of updating the user's notification settings
 
 ```shell
-$ curl https://todoist.com/API/v7/update_notification_setting \
+$ curl https://todoist.com/API/v7/notification_settings/update \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d notification_type=item_completed \
     -d service=email \
@@ -205,7 +205,7 @@ $ curl https://todoist.com/API/v7/update_notification_setting \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.update_notification_setting('item_completed', 'email', 1)
+>>> api.user.update_notification_setting('item_completed', 'email', 1)
 {
   'biz_invitation_rejected': {
     'notify_push': True,
@@ -282,7 +282,7 @@ dont_notify *Integer* | Whether notifications of this service should be notified
 > An example of getting the user's completed tasks
 
 ```shell
-$ curl https://todoist.com/API/v7/get_all_completed_items \
+$ curl https://todoist.com/API/v7/completed/get_all \
     -d token=0123456789abcdef0123456789abcdef01234567
 {
   "items": [
@@ -314,7 +314,7 @@ $ curl https://todoist.com/API/v7/get_all_completed_items \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.get_all_completed_items()
+>>> api.completed.get_all()
 {
   'items': [
     { 'user_id': 1855589,
@@ -385,7 +385,7 @@ $ curl https://todoist.com/API/v7/projects/get_archived \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.get_archived_projects()
+>>> api.projects.get_archived()
 [
   {
     'id' : 150977840,
@@ -413,7 +413,7 @@ token *String* | The user's token received on login.
 > An example of adding a task:
 
 ```shell
-$ curl https://todoist.com/API/v7/add_item \
+$ curl https://todoist.com/API/v7/items/add \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d content=Task1
 {
@@ -493,7 +493,7 @@ note *String* | Add a note directly to the task (a string value that will become
 > An example of getting an item's info:
 
 ```shell
-$ curl https://todoist.com/API/v7/get_item \
+$ curl https://todoist.com/API/v7/items/get \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d item_id=466
 {
@@ -575,7 +575,7 @@ $ curl https://todoist.com/API/v7/get_item \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.get_item(466)
+>>> api.items.get(466)
 {
   'project': {
     'name': 'Inbox',
@@ -673,7 +673,7 @@ all_data *Boolean* | Whether to return the parent project and notes of the item 
 > An example of getting a project's info:
 
 ```shell
-$ curl https://todoist.com/API/v7/get_project \
+$ curl https://todoist.com/API/v7/projects/get \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d project_id=128501682
 {
@@ -707,7 +707,7 @@ $ curl https://todoist.com/API/v7/get_project \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.get_project(128501682)
+>>> api.projects.get(128501682)
 {
   "project" : {
     'id': 128501682,
@@ -806,7 +806,7 @@ $ curl https://todoist.com/API/v7/projects/get_data \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.get_project_data(128501682)
+>>> api.projects.get_data(128501682)
 {
   'project' : {
     'item_order' : 4,

@@ -34,7 +34,7 @@ $ curl https://todoist.com/API/v7/uploads/add \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.upload_file('example.jpg')
+>>> api.uploads.add('example.jpg')
 {
   'file_name': 'example.jpg',
   'file_size': 85665,
@@ -128,7 +128,7 @@ $ curl https://todoist.com/API/v7/uploads/get \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.get_uploads()
+>>> api.uploads.get()
 [
     {
         "file_size": 86406,
@@ -188,7 +188,7 @@ $ curl https://todoist.com/API/v7/uploads/delete \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.delete_upload('https://*.cloudfront.net/*/example.jpg')
+>>> api.uploads.delete('https://*.cloudfront.net/*/example.jpg')
 ok
 ```
 

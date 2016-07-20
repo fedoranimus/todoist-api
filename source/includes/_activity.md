@@ -149,7 +149,7 @@ $ curl https://todoist.com/API/v7/activity/get \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.activity_get()
+>>> api.activity.get()
 [
   {
     'id': 955344370,
