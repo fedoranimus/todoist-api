@@ -16,9 +16,6 @@ Sync API supports the following features -
 
 **Note that documentation for the older [Todoist API v6](https://developer.todoist.com/v6/) is still available, but we strongly recommend you use or migrate your code to the current version, as the v6 may be deprecated in the near future.**
 
-<br/><br/>
-<script type="text/javascript" src="//www.apichangelog.com/static/widget/follow.js" api="todoist"></script>
-
 ## Read resources
 
 > An example response of a read request.
