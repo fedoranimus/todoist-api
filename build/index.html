@@ -113,15 +113,15 @@ clients (e.g. our mobile apps) and Todoist.</p>
     -d <span class="nv">resource_types</span><span class="o">=</span><span class="s1">'["all"]'</span>
 
 <span class="o">{</span>
-  <span class="s2">"collaborators"</span>: <span class="o">[]</span>,
-  <span class="s2">"collaborator_states"</span>: <span class="o">[]</span>,
+  <span class="s2">"collaborators"</span>: <span class="o">[</span> ... <span class="o">]</span>,
+  <span class="s2">"collaborator_states"</span>: <span class="o">[</span> ... <span class="o">]</span>,
   <span class="s2">"day_orders"</span>: <span class="o">{</span> ... <span class="o">}</span>,
   <span class="s2">"day_orders_timestamp"</span>: <span class="s2">"1344642991.1"</span>,
   <span class="s2">"filters"</span>: <span class="o">[</span> ... <span class="o">]</span>,
   <span class="s2">"full_sync"</span> : <span class="nb">true</span>,
   <span class="s2">"items"</span>: <span class="o">[</span> ... <span class="o">]</span>,
   <span class="s2">"labels"</span>: <span class="o">[</span> ... <span class="o">]</span>,
-  <span class="s2">"live_notifications"</span>: <span class="o">[]</span>,
+  <span class="s2">"live_notifications"</span>: <span class="o">[</span> ... <span class="o">]</span>,
   <span class="s2">"live_notifications_last_read_id"</span>: 0,
   <span class="s2">"notes"</span>: <span class="o">[</span> ... <span class="o">]</span>,
   <span class="s2">"project_notes"</span>: <span class="o">[</span> ... <span class="o">]</span>,
@@ -129,7 +129,7 @@ clients (e.g. our mobile apps) and Todoist.</p>
   <span class="s2">"reminders"</span>: <span class="o">[</span> ... <span class="o">]</span>,
   <span class="s1">'settings_notifications: { ... },
   "sync_token": "JLlaPv840mDQK4PLl6-hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS",
-  "temp_id_mapping": {},
+  "temp_id_mapping": { ... },
   "user": { ... }
 }
 </span></code></pre>
@@ -137,15 +137,15 @@ clients (e.g. our mobile apps) and Todoist.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">resource_types</span><span class="o">=</span><span class="p">[</span><span class="s">'all'</span><span class="p">])</span>
 <span class="p">{</span>
-  <span class="s">'collaborators'</span><span class="p">:</span> <span class="p">[],</span>
-  <span class="s">'collaborator_states'</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">'collaborators'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
+  <span class="s">'collaborator_states'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
   <span class="s">'day_orders'</span><span class="p">:</span> <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>
   <span class="s">'day_orders_timestamp'</span><span class="p">:</span> <span class="s">'1344642991.1'</span><span class="p">,</span>
   <span class="s">'filters'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
   <span class="s">'full_sync'</span> <span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
   <span class="s">'items'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
   <span class="s">'labels'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
-  <span class="s">'live_notifications'</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">'live_notifications'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
   <span class="s">'live_notifications_last_read_id'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s">'notes'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
   <span class="s">'project_notes'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
@@ -153,7 +153,7 @@ clients (e.g. our mobile apps) and Todoist.</p>
   <span class="s">'reminders'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
   <span class="s">'settings_notifications: { ... },</span><span class="err">
 </span><span class="s">  '</span><span class="n">sync_token</span><span class="s">': '</span><span class="n">JLlaPv840mDQK4PLl6</span><span class="o">-</span><span class="n">hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS</span><span class="s">',</span><span class="err">
-</span><span class="s">  '</span><span class="n">temp_id_mapping</span><span class="s">': {},</span><span class="err">
+</span><span class="s">  '</span><span class="n">temp_id_mapping</span><span class="s">': { ... },</span><span class="err">
 </span><span class="s">  '</span><span class="n">user</span><span class="s">': { ... }</span><span class="err">
 </span><span class="s">}</span><span class="err">
 </span></code></pre>

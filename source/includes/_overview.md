@@ -27,15 +27,15 @@ $ curl https://todoist.com/API/v7/sync \
     -d resource_types='["all"]'
 
 {
-  "collaborators": [],
-  "collaborator_states": [],
+  "collaborators": [ ... ],
+  "collaborator_states": [ ... ],
   "day_orders": { ... },
   "day_orders_timestamp": "1344642991.1",
   "filters": [ ... ],
   "full_sync" : true,
   "items": [ ... ],
   "labels": [ ... ],
-  "live_notifications": [],
+  "live_notifications": [ ... ],
   "live_notifications_last_read_id": 0,
   "notes": [ ... ],
   "project_notes": [ ... ],
@@ -43,7 +43,7 @@ $ curl https://todoist.com/API/v7/sync \
   "reminders": [ ... ],
   'settings_notifications: { ... },
   "sync_token": "JLlaPv840mDQK4PLl6-hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS",
-  "temp_id_mapping": {},
+  "temp_id_mapping": { ... },
   "user": { ... }
 }
 ```
@@ -53,15 +53,15 @@ $ curl https://todoist.com/API/v7/sync \
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
 >>> api.sync(resource_types=['all'])
 {
-  'collaborators': [],
-  'collaborator_states': [],
+  'collaborators': [ ... ],
+  'collaborator_states': [ ... ],
   'day_orders': { ... },
   'day_orders_timestamp': '1344642991.1',
   'filters': [ ... ],
   'full_sync' : True,
   'items': [ ... ],
   'labels': [ ... ],
-  'live_notifications': [],
+  'live_notifications': [ ... ],
   'live_notifications_last_read_id': 0,
   'notes': [ ... ],
   'project_notes': [ ... ],
@@ -69,7 +69,7 @@ $ curl https://todoist.com/API/v7/sync \
   'reminders': [ ... ],
   'settings_notifications: { ... },
   'sync_token': 'JLlaPv840mDQK4PLl6-hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS',
-  'temp_id_mapping': {},
+  'temp_id_mapping': { ... },
   'user': { ... }
 }
 ```
