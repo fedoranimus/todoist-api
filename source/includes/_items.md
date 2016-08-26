@@ -264,7 +264,6 @@ ids *Array of Integer or String (temp id)*| A list of items to uncomplete.
 
 Argument | Description
 -------- | -----------
-update_item_orders *Integer* | Whether the item orders should be updated (where `1` is true and `0` is false, and the default is `1`).
 restore_state *Object* | A dictionary object, where the item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent - `item_id: [in_history, checked, item_order, indent]`
 
 
