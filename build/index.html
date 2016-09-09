@@ -749,6 +749,28 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 <code class="prettyprint">
 {&quot;access_token&quot;: &quot;....&quot;, &quot;token_type&quot;: &quot;Bearer&quot;}
 </code></p>
+<h2 id='cross-origin-resource-sharing'>Cross Origin Resource Sharing</h2>
+<p>All API endpoints support Cross Origin Resource Sharing (CORS) for 
+requests from any origin. The header <code class="prettyprint">Access-Control-Allow-Origin: *</code> 
+is set for successfully authenticated requests.</p>
+
+<blockquote>
+<p>CORS headers example:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -H <span class="s1">'Origin: http://example.com'</span>
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: <span class="nb">false
+</span>Access-Control-Allow-Origin: <span class="k">*</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://todoist.com/API/v7/sync'</span><span class="p">,</span> 
+<span class="o">...</span>               <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">'token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">},</span> 
+<span class="o">...</span>               <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Origin'</span><span class="p">:</span> <span class="s">'https://example.com'</span><span class="p">})</span><span class="o">.</span><span class="n">headers</span>
+
+<span class="p">{</span><span class="s">'Access-Control-Allow-Credentials'</span><span class="p">:</span> <span class="s">'false'</span><span class="p">,</span> <span class="s">'Access-Control-Allow-Origin'</span><span class="p">:</span> <span class="s">'*'</span><span class="p">,</span> <span class="o">&lt;...&gt;</span><span class="p">}</span>
+</code></pre>
 
         <h1 id='projects'>Projects</h1>
 <blockquote>
