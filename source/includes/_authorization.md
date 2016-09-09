@@ -150,3 +150,29 @@ Upon succesful request, a HTTP 200 response will be returned with a new OAuth to
 ```
 
 
+## Cross Origin Resource Sharing
+
+All API endpoints support Cross Origin Resource Sharing (CORS) for 
+requests from any origin. The header `Access-Control-Allow-Origin: *` 
+is set for successfully authenticated requests.
+
+> CORS headers example:
+
+```shell
+$ curl https://todoist.com/API/v7/sync \
+    -d token=0123456789abcdef0123456789abcdef01234567 \
+    -H 'Origin: http://example.com'
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: false
+Access-Control-Allow-Origin: *
+```
+
+
+```python
+>>> import requests
+>>> requests.post('https://todoist.com/API/v7/sync', 
+...               data={'token': '0123456789abcdef0123456789abcdef01234567'}, 
+...               headers={'Origin': 'https://example.com'}).headers
+
+{'Access-Control-Allow-Credentials': 'false', 'Access-Control-Allow-Origin': '*', <...>}
+```
