@@ -165,7 +165,7 @@ $ curl https://todoist.com/API/v7/sync \
 }
 ```
 
-*Note that the Python example is only there to show what is the equivalent for sending commands, but actually there's no need to use that with the Python library, as it has its own object oriented API which is a lot easier to do various things, so many of the parameters mentioned below do not make much sense for the Python library, and instead you can just use the methods described in the following sections..
+*Note that the Python example is only there to show what is the equivalent for sending commands, but actually there's no need to use that with the Python library, as it has its own object oriented API which is a lot easier to do various things, so many of the parameters mentioned below do not make much sense for the Python library, and instead you can just use the methods described in the following sections.*
 
 To write to your user's Todoist resources, make a Sync API request with the following parameters
 
