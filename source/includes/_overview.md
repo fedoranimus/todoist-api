@@ -51,7 +51,7 @@ $ curl https://todoist.com/API/v7/sync \
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
->>> api.sync(resource_types=['all'])
+>>> api.sync()
 {
   'collaborators': [ ... ],
   'collaborator_states': [ ... ],
@@ -74,6 +74,7 @@ $ curl https://todoist.com/API/v7/sync \
 }
 ```
 
+*Note that the following parameters mostly make sense when sending commands in the shell with curl, and not with the Python library, as many things are automated there.  For example by default the Python library fetches all resource types and then always does incremental syncs, so there's no need to specify most of the following parameters.*
 
 To retrieve your user resources, make a Sync API request with the following parameters:
 
@@ -98,6 +99,8 @@ day_orders_timestamp | The Sync API requests return `day_orders_timestamp` that 
 
 
 ### Incremental sync
+
+*Note that the Python library always does incremental syncs under the hood, so there's no reason to worry about them if you use it.*
 
 The Sync API allows clients to retrieve only updated resources, and this is done by using the "synchronization token", `sync_token`, in your Sync API request.
 
@@ -162,6 +165,7 @@ $ curl https://todoist.com/API/v7/sync \
 }
 ```
 
+*Note that the Python example is only there to show what is the equivalent for sending commands, but actually there's no need to use that with the Python library, as it has its own object oriented API which is a lot easier to do various things, so many of the parameters mentioned below do not make much sense for the Python library, and instead you can just use the methods described in the following sections..
 
 To write to your user's Todoist resources, make a Sync API request with the following parameters
 
@@ -185,6 +189,8 @@ temp_id *String* | Temporary resource ID, Optional. Only specified for commands 
 
 
 ### Command UUID
+
+*Note that the Python library takes care of sending UUIDs, so there's no need to worry about them if you use it.*
 
 API clients should generate a unique string ID for each command and specify it in the `uuid` field. The Command UUID will be used for two purposes:
 
@@ -225,6 +231,8 @@ a command.
 
 >  You can see that the project_add command specified a temp_id property ("c7beb07f-b226-4eb1-bf63-30d782b07b1a") as placeholder of the actual project_id. The item_add command can refrence to this temporary project id. The API will automatically resolve these ids.
 ```
+
+*Note that the Python library takes care of handling temporary ids, so there's no reason to worry about them if you use it.*
 
 Some commands depend on the result of previous command. For instance, you have a command sequence: `"project_add"` and `"item_add"` which first creates a project and then add a new task to the newly created project. In order to run the later `item_add` command, we need to obtain the project ID returned from the previous command. Therefore, the normal approach would be to run these two commands in two separate HTTP requests.
 

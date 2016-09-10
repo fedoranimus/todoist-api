@@ -135,7 +135,7 @@ clients (e.g. our mobile apps) and Todoist.</p>
 </span></code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">resource_types</span><span class="o">=</span><span class="p">[</span><span class="s">'all'</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">sync</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="s">'collaborators'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
   <span class="s">'collaborator_states'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
@@ -157,6 +157,8 @@ clients (e.g. our mobile apps) and Todoist.</p>
 </span><span class="s">  '</span><span class="n">user</span><span class="s">': { ... }</span><span class="err">
 </span><span class="s">}</span><span class="err">
 </span></code></pre>
+
+<p><em>Note that the following parameters mostly make sense when sending commands in the shell with curl, and not with the Python library, as many things are automated there.  For example by default the Python library fetches all resource types and then always does incremental syncs, so there&rsquo;s no need to specify most of the following parameters.</em></p>
 
 <p>To retrieve your user resources, make a Sync API request with the following parameters:</p>
 <h3 id='required-parameters'>Required parameters</h3>
@@ -192,6 +194,8 @@ clients (e.g. our mobile apps) and Todoist.</p>
 </tr>
 </tbody></table>
 <h3 id='incremental-sync'>Incremental sync</h3>
+<p><em>Note that the Python library always does incremental syncs under the hood, so there&rsquo;s no reason to worry about them if you use it.</em></p>
+
 <p>The Sync API allows clients to retrieve only updated resources, and this is done by using the &ldquo;synchronization token&rdquo;, <code class="prettyprint">sync_token</code>, in your Sync API request.</p>
 
 <p>On your initial sync request, specify <code class="prettyprint">synt_token=*</code> in your request, and all the user&rsquo;s active resource data will be returned.
@@ -292,6 +296,8 @@ and the Todoist API server will return only the updated resource data.</p>
 <span class="p">}</span>
 </code></pre>
 
+<p>*Note that the Python example is only there to show what is the equivalent for sending commands, but actually there&rsquo;s no need to use that with the Python library, as it has its own object oriented API which is a lot easier to do various things, so many of the parameters mentioned below do not make much sense for the Python library, and instead you can just use the methods described in the following sections..</p>
+
 <p>To write to your user&rsquo;s Todoist resources, make a Sync API request with the following parameters</p>
 <h3 id='required-parameters'>Required parameters</h3>
 <table><thead>
@@ -334,6 +340,8 @@ and the Todoist API server will return only the updated resource data.</p>
 </tr>
 </tbody></table>
 <h3 id='command-uuid'>Command UUID</h3>
+<p><em>Note that the Python library takes care of sending UUIDs, so there&rsquo;s no need to worry about them if you use it.</em></p>
+
 <p>API clients should generate a unique string ID for each command and specify it in the <code class="prettyprint">uuid</code> field. The Command UUID will be used for two purposes:</p>
 
 <ol>
@@ -369,6 +377,8 @@ a command.</p></li>
 <p>You can see that the project_add command specified a temp_id property (&ldquo;c7beb07f-b226-4eb1-bf63-30d782b07b1a&rdquo;) as placeholder of the actual project_id. The item_add command can refrence to this temporary project id. The API will automatically resolve these ids.
 &ldquo;`</p>
 </blockquote>
+
+<p><em>Note that the Python library takes care of handling temporary ids, so there&rsquo;s no reason to worry about them if you use it.</em></p>
 
 <p>Some commands depend on the result of previous command. For instance, you have a command sequence: <code class="prettyprint">&quot;project_add&quot;</code> and <code class="prettyprint">&quot;item_add&quot;</code> which first creates a project and then add a new task to the newly created project. In order to run the later <code class="prettyprint">item_add</code> command, we need to obtain the project ID returned from the previous command. Therefore, the normal approach would be to run these two commands in two separate HTTP requests.</p>
 
