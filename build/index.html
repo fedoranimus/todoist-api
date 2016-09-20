@@ -4450,7 +4450,90 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tbody></table>
 
         <h1 id='sharing'>Sharing</h1>
-<p>Commands that are related to sharing projects will be described in this section.</p>
+<p>Project can be shared with other users, which are then called collaborators, and this section describes the different commands that are related to sharing.</p>
+<h3 id='collaborators'>Collaborators</h3>
+<blockquote>
+<p>An example of a collaborator object:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GMT +3:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>There are two types of objects to get information about a user’s collaborators and their participation in shared projects: <code class="prettyprint">collaborators</code> and <code class="prettyprint">collaborator_states</code></p>
+
+<p>Every user who shares at least one project with a user, has a collaborators record in the API response. The record contains a restricted subset of user-specific properties.</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id <em>Integer</em></td>
+<td>The user id of the collaborator.</td>
+</tr>
+<tr>
+<td>email <em>String</em></td>
+<td>The email of the collaborator.</td>
+</tr>
+<tr>
+<td>full_name <em>String</em></td>
+<td>The full name of the collaborator.</td>
+</tr>
+<tr>
+<td>timezone <em>String</em></td>
+<td>The timezone of the collaborator.</td>
+</tr>
+<tr>
+<td>image_id <em>Integer</em></td>
+<td>The image id for the collaborator&rsquo;s avatar, which can be used to get an avatar from a specific URL.  Specifically the <code class="prettyprint">https://dcff1xvirvpfp.cloudfront.net/&lt;image_id&gt;_big.jpg</code> can be used for a big (195x195 pixels) avatar, <code class="prettyprint">https://dcff1xvirvpfp.cloudfront.net/&lt;image_id&gt;_medium.jpg</code> for a medium (60x60 pixels) avatar, and <code class="prettyprint">https://dcff1xvirvpfp.cloudfront.net/&lt;image_id&gt;_small.jpg</code> for a small (35x35 pixels) avatar.</td>
+</tr>
+</tbody></table>
+
+<p>Partial sync returns updated collaborator objects for users that have changed their attributes, such as their name or email.</p>
+<h3 id='collaborator-states'>Collaborator states</h3>
+<blockquote>
+<p>An example of a collaborator state:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">128501470</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1855589</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The list of collaborators doesn’t contain any information on how users are connected to shared projects. To provide information about these connections, the <code class="prettyprint">collaborator_states</code> field should be used. Every collaborator state record is a mere &ldquo;user to shared project&rdquo; mapping.</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>project_id <em>Integer</em></td>
+<td>The shared project id of the user.</td>
+</tr>
+<tr>
+<td>user_id <em>Integer</em></td>
+<td>The user id of the collaborator.</td>
+</tr>
+<tr>
+<td>state <em>String</em></td>
+<td>The status of the collaborator state, either <code class="prettyprint">active</code> or <code class="prettyprint">deleted</code> (when the collaborator left the shared project).</td>
+</tr>
+<tr>
+<td>is_deleted <em>Boolean</em></td>
+<td>Set to <code class="prettyprint">true</code> when the collaborator leaves the shared project.</td>
+</tr>
+</tbody></table>
 <h2 id='share-a-project'>Share a project</h2>
 <blockquote>
 <p>An example of sharing a project:</p>

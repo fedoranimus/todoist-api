@@ -1,6 +1,57 @@
 # Sharing
 
-Commands that are related to sharing projects will be described in this section.
+Project can be shared with other users, which are then called collaborators, and this section describes the different commands that are related to sharing.
+
+### Collaborators
+
+> An example of a collaborator object:
+
+```
+{
+  "id": 1855589,
+  "email": "you@example.com",
+  "full_name": "Example User",
+  "timezone": "GMT +3:00",
+  "image_id": null
+}
+```
+
+There are two types of objects to get information about a user’s collaborators and their participation in shared projects: `collaborators` and `collaborator_states`
+
+Every user who shares at least one project with a user, has a collaborators record in the API response. The record contains a restricted subset of user-specific properties.
+
+Property | Description
+-------- | -----------
+id *Integer* | The user id of the collaborator.
+email *String* | The email of the collaborator.
+full_name *String* | The full name of the collaborator.
+timezone *String* | The timezone of the collaborator.
+image_id *Integer* | The image id for the collaborator's avatar, which can be used to get an avatar from a specific URL.  Specifically the `https://dcff1xvirvpfp.cloudfront.net/<image_id>_big.jpg` can be used for a big (195x195 pixels) avatar, `https://dcff1xvirvpfp.cloudfront.net/<image_id>_medium.jpg` for a medium (60x60 pixels) avatar, and `https://dcff1xvirvpfp.cloudfront.net/<image_id>_small.jpg` for a small (35x35 pixels) avatar.
+
+Partial sync returns updated collaborator objects for users that have changed their attributes, such as their name or email.
+
+
+### Collaborator states
+
+> An example of a collaborator state:
+
+```
+{
+  "project_id": 128501470,
+  "user_id": 1855589,
+  "state": "active",
+  "is_deleted": false
+}
+```
+
+The list of collaborators doesn’t contain any information on how users are connected to shared projects. To provide information about these connections, the `collaborator_states` field should be used. Every collaborator state record is a mere "user to shared project" mapping.
+
+Property | Description
+-------- | -----------
+project_id *Integer* | The shared project id of the user.
+user_id *Integer* | The user id of the collaborator.
+state *String* | The status of the collaborator state, either `active` or `deleted` (when the collaborator left the shared project).
+is_deleted *Boolean* | Set to `true` when the collaborator leaves the shared project.
 
 ## Share a project
 
