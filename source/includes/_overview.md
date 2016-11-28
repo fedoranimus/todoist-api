@@ -104,7 +104,7 @@ day_orders_timestamp | The Sync API requests return `day_orders_timestamp` that 
 
 The Sync API allows clients to retrieve only updated resources, and this is done by using the "synchronization token", `sync_token`, in your Sync API request.
 
-On your initial sync request, specify `synt_token=*` in your request, and all the user's active resource data will be returned.
+On your initial sync request, specify `sync_token=*` in your request, and all the user's active resource data will be returned.
 Todoist API server will also return a new `sync_token` in the Sync API response.
 
 In your subsequent Sync request, use the `sync_token` that you received from your previous sync response,
