@@ -50,7 +50,7 @@ Property | Description
 -------- | -----------
 project_id *Integer* | The shared project id of the user.
 user_id *Integer* | The user id of the collaborator.
-state *String* | The status of the collaborator state, either `active` or `deleted` (when the collaborator left the shared project).
+state *String* | The status of the collaborator state, either `active` or `invited`.
 is_deleted *Boolean* | Set to `true` when the collaborator leaves the shared project.
 
 ## Share a project

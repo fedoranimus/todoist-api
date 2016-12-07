@@ -12,7 +12,7 @@
 
     <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
       <script src="javascripts/all_nosearch.js" type="text/javascript"></script>
 
@@ -33,11 +33,11 @@
         <a class="link-index" href="/index.html">API Doc</a>
         <a class="link-appconsole" href="/appconsole.html">Manage App</a>
       </nav>
-
+    
     </header>
 
     <div class="main-content">
-
+      
 
   <a href="#" id="nav-button">
     <span>
@@ -760,8 +760,8 @@ https://todoist.com/api/access_tokens/migrate_personal_token
 {&quot;access_token&quot;: &quot;....&quot;, &quot;token_type&quot;: &quot;Bearer&quot;}
 </code></p>
 <h2 id='cross-origin-resource-sharing'>Cross Origin Resource Sharing</h2>
-<p>All API endpoints support Cross Origin Resource Sharing (CORS) for
-requests from any origin. The header <code class="prettyprint">Access-Control-Allow-Origin: *</code>
+<p>All API endpoints support Cross Origin Resource Sharing (CORS) for 
+requests from any origin. The header <code class="prettyprint">Access-Control-Allow-Origin: *</code> 
 is set for successfully authenticated requests.</p>
 
 <blockquote>
@@ -775,8 +775,8 @@ Access-Control-Allow-Credentials: <span class="nb">false
 </span>Access-Control-Allow-Origin: <span class="k">*</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://todoist.com/API/v7/sync'</span><span class="p">,</span>
-<span class="o">...</span>               <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">'token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">},</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://todoist.com/API/v7/sync'</span><span class="p">,</span> 
+<span class="o">...</span>               <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">'token'</span><span class="p">:</span> <span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">},</span> 
 <span class="o">...</span>               <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Origin'</span><span class="p">:</span> <span class="s">'https://example.com'</span><span class="p">})</span><span class="o">.</span><span class="n">headers</span>
 
 <span class="p">{</span><span class="s">'Access-Control-Allow-Credentials'</span><span class="p">:</span> <span class="s">'false'</span><span class="p">,</span> <span class="s">'Access-Control-Allow-Origin'</span><span class="p">:</span> <span class="s">'*'</span><span class="p">,</span> <span class="o">&lt;...&gt;</span><span class="p">}</span>
@@ -4527,7 +4527,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>state <em>String</em></td>
-<td>The status of the collaborator state, either <code class="prettyprint">active</code> or <code class="prettyprint">deleted</code> (when the collaborator left the shared project).</td>
+<td>The status of the collaborator state, either <code class="prettyprint">active</code> or <code class="prettyprint">invited</code>.</td>
 </tr>
 <tr>
 <td>is_deleted <em>Boolean</em></td>
@@ -6328,6 +6328,6 @@ it would be re-delivered after 15 mins, and each notification would be re-delive
 
 
     </div>
-
+    
   </body>
 </html>
