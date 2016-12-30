@@ -1339,6 +1339,10 @@ task,Task1,4,1,Firstname <span class="o">(</span>1<span class="o">)</span>,,,en
 <td>responsible_uid <em>Integer</em></td>
 <td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or <code class="prettyprint">null</code> or an empty string to unset.</td>
 </tr>
+<tr>
+<td>auto_reminder <em>Boolean</em></td>
+<td>When this option is enabled, the default reminder will be added to the new item if it has a due date with time set.  See also the <a href="#user">auto_reminder option</a> in the user&rsquo;s properties for more info about the default reminder.</td>
+</tr>
 </tbody></table>
 <h2 id='update-an-item'>Update an item</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
@@ -3416,6 +3420,10 @@ to history), recurring task is moved forward (due date is updated).</p>
 <tr>
 <td>note <em>String</em></td>
 <td>Add a note directly to the task (a string value that will become the content of the note).</td>
+</tr>
+<tr>
+<td>auto_reminder <em>Boolean</em></td>
+<td>When this option is enabled, the default reminder will be added to the new item if it has a due date with time set.  See also the <a href="#user">auto_reminder option</a> in the user&rsquo;s properties for more info about the default reminder.</td>
 </tr>
 </tbody></table>
 <h2 id='get-item-info'>Get item info</h2>

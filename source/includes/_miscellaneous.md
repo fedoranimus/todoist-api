@@ -342,6 +342,7 @@ labels *Array of Integer* | The task's labels (a list of label ids such as `[232
 assigned_by_uid *Integer* | The id of the user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
 responsible_uid *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
 note *String* | Add a note directly to the task (a string value that will become the content of the note).
+auto_reminder *Boolean* | When this option is enabled, the default reminder will be added to the new item if it has a due date with time set.  See also the [auto_reminder option](#user) in the user's properties for more info about the default reminder.
 
 ## Get item info
 
