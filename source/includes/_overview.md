@@ -274,19 +274,6 @@ sync_status *Object* | A dictionary object containing result of each command exe
 }
 ```
 
-> An example of a single request operating on multiple objects return value:
-
-```json
-{
-  "sync_status": {
-    "66386321-fb87-4f95-9dfe-7bf5c3823e85" : {
-        "128501470": "ok",
-        "128501607": {"error_code": 20, "error": "Project not found"}
-    }
-  }
-}
-```
-
 The status result of each command execution is in the `sync_status` dictionary object. The key is a command `uuid` and the value will be the result status of the command execution. There are two possible values for each command status -
 
 - an "ok" string which signals success of the command

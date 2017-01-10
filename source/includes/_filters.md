@@ -140,12 +140,7 @@ $ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "filter_update_orders", "uuid": "517560cc-f165-4ff6-947b-3adda8aef744", "args": {"id_order_mapping": {"9":  1, "10": 2}}}]'
 { ...
-  "sync_status": {
-    "517560cc-f165-4ff6-947b-3adda8aef744": {
-      "9": "ok",
-      "10": "ok"
-    }
-  },
+  "sync_status": {"517560cc-f165-4ff6-947b-3adda8aef744": "ok"},
   ... }
 ```
 

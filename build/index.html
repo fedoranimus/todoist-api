@@ -424,19 +424,6 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<blockquote>
-<p>An example of a single request operating on multiple objects return value:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"sync_status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"66386321-fb87-4f95-9dfe-7bf5c3823e85"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"128501470"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"128501607"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project not found"</span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
 <p>The status result of each command execution is in the <code class="prettyprint">sync_status</code> dictionary object. The key is a command <code class="prettyprint">uuid</code> and the value will be the result status of the command execution. There are two possible values for each command status -</p>
 
 <ul>
@@ -957,7 +944,7 @@ Access-Control-Allow-Credentials: <span class="nb">false
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"project_delete"</span>, <span class="s2">"uuid"</span>: <span class="s2">"367182ba-125f-4dbb-bff6-c1343fd751e4"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"ids"</span>: <span class="o">[</span>128501815]<span class="o">}}]</span><span class="s1">'
 { ...
-  "sync_status": {"367182ba-125f-4dbb-bff6-c1343fd751e4": {"128501815": "ok"}},
+  "sync_status": {"367182ba-125f-4dbb-bff6-c1343fd751e4": "ok"},
   ... }
 </span></code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -984,7 +971,7 @@ Access-Control-Allow-Credentials: <span class="nb">false
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"project_archive"</span>, <span class="s2">"uuid"</span>: <span class="s2">"bbec1a60-2bdd-48ac-a623-c8eb968e1697"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"ids"</span>: <span class="o">[</span>128501682]<span class="o">}}]</span><span class="s1">'
 { ...
-  "sync_status": {"bbec1a60-2bdd-48ac-a623-c8eb968e1697": {"128501682": "ok"}},
+  "sync_status": {"bbec1a60-2bdd-48ac-a623-c8eb968e1697": "ok"},
   ... }
 </span></code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -1011,7 +998,7 @@ Access-Control-Allow-Credentials: <span class="nb">false
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"project_unarchive"</span>, <span class="s2">"uuid"</span>: <span class="s2">"7d86f042-e098-4fa6-9c1f-a61fe8c39d74"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"ids"</span>: <span class="o">[</span>128501682]<span class="o">}}]</span><span class="s1">'
 { ...
-  "sync_status": {"7d86f042-e098-4fa6-9c1f-a61fe8c39d74": {"128501682": "ok"}},
+  "sync_status": {"7d86f042-e098-4fa6-9c1f-a61fe8c39d74": "ok"},
   ... }
 </span></code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -1038,12 +1025,7 @@ Access-Control-Allow-Credentials: <span class="nb">false
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"project_update_orders_indents"</span>, <span class="s2">"uuid"</span>: <span class="s2">"bf0855a3-0138-4b76-b895-88cad8db9edc"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"ids_to_orders_indents"</span>: <span class="o">{</span><span class="s2">"128501470"</span>: <span class="o">[</span>42, 1], <span class="s2">"128501607"</span>: <span class="o">[</span>43, 1]<span class="o">}}}]</span><span class="s1">'
 { ...
-  "sync_status": {
-    "bf0855a3-0138-4b76-b895-88cad8db9edc": {
-      "128501470": "ok",
-      "128501607": "ok"
-    },
-  },
+  "sync_status": {"bf0855a3-0138-4b76-b895-88cad8db9edc": "ok"},
   ... }
 </span></code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -1458,7 +1440,7 @@ task,Task1,4,1,Firstname <span class="o">(</span>1<span class="o">)</span>,,,en
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "item_move", "uuid": "818f108a-36d3-423d-857f-62837c245f3b", "args": {"project_items": {"128501470": [33548400]}, "to_project": 128501607}}]'</span>
 <span class="o">{</span> ...
-  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"818f108a-36d3-423d-857f-62837c245f3b"</span>: <span class="o">{</span><span class="s2">"33548400"</span>: <span class="s2">"ok"</span><span class="o">}}</span>,
+  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"818f108a-36d3-423d-857f-62837c245f3b"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
   ... <span class="o">}</span>
 
 </code></pre>
@@ -1490,7 +1472,7 @@ task,Task1,4,1,Firstname <span class="o">(</span>1<span class="o">)</span>,,,en
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "item_complete", "uuid": "a74bfb5c-5f1d-4d14-baea-b7415446a871", "args": {"ids": [33548400]}}]'</span>
 <span class="o">{</span> ...
-  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"a74bfb5c-5f1d-4d14-baea-b7415446a871"</span>: <span class="o">{</span><span class="s2">"33548400"</span>: <span class="s2">"ok"</span><span class="o">}}</span>,
+  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"a74bfb5c-5f1d-4d14-baea-b7415446a871"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -1530,7 +1512,7 @@ a simplified version of the command.</p>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "item_uncomplete", "uuid": "710a60e1-174a-4313-bb9f-4df01e0349fd", "args": {"ids": [33548400]}}]'</span>
 <span class="o">{</span> ...
-  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"710a60e1-174a-4313-bb9f-4df01e0349fd"</span>: <span class="o">{</span><span class="s2">"33548400"</span>: <span class="s2">"ok"</span><span class="o">}}</span>,
+  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"710a60e1-174a-4313-bb9f-4df01e0349fd"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -1645,7 +1627,7 @@ to history), recurring task is moved forward (due date is updated).</p>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "item_update_orders_indents", "uuid": "a2bf0c06-f834-4442-99ab-b86fdfc66ed5", "args": {"ids_to_orders_indents": {"33548400": [1, 1]}}}]'</span>
 <span class="o">{</span> ...
-  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"a2bf0c06-f834-4442-99ab-b86fdfc66ed5"</span>: <span class="o">{</span><span class="s2">"33548400"</span>: <span class="s2">"ok"</span><span class="o">}}</span>,
+  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"a2bf0c06-f834-4442-99ab-b86fdfc66ed5"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -1671,7 +1653,7 @@ to history), recurring task is moved forward (due date is updated).</p>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "item_update_day_orders", "uuid": "dbeb40fc-905f-4d8a-8bae-547d3bbd6e91", "args": {"ids_to_orders": {"33548400": 1}}}]'</span>
 <span class="o">{</span> ...
-  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"dbeb40fc-905f-4d8a-8bae-547d3bbd6e91"</span>: <span class="o">{</span><span class="s2">"33548400"</span>: <span class="s2">"ok"</span><span class="o">}}</span>,
+  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"dbeb40fc-905f-4d8a-8bae-547d3bbd6e91"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
   ... <span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -1872,11 +1854,7 @@ to history), recurring task is moved forward (due date is updated).</p>
     -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"label_update_orders"</span>, <span class="s2">"uuid"</span>: <span class="s2">"1402a911-5b7a-4beb-bb1f-fb9e1ed798fb"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"id_order_mapping"</span>: <span class="o">{</span><span class="s2">"790748"</span>:  1, <span class="s2">"790749"</span>: 2<span class="o">}}}]</span><span class="s1">'
 { ...
   "sync_status": {
-    "517560cc-f165-4ff6-947b-3adda8aef744": {
-      "790748": "ok",
-      "790749": "ok"
-    }
-  },
+    "517560cc-f165-4ff6-947b-3adda8aef744": "ok"},
   ... }
 </span></code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -2648,12 +2626,7 @@ to history), recurring task is moved forward (due date is updated).</p>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=[{</span><span class="s2">"type"</span>: <span class="s2">"filter_update_orders"</span>, <span class="s2">"uuid"</span>: <span class="s2">"517560cc-f165-4ff6-947b-3adda8aef744"</span>, <span class="s2">"args"</span>: <span class="o">{</span><span class="s2">"id_order_mapping"</span>: <span class="o">{</span><span class="s2">"9"</span>:  1, <span class="s2">"10"</span>: 2<span class="o">}}}]</span><span class="s1">'
 { ...
-  "sync_status": {
-    "517560cc-f165-4ff6-947b-3adda8aef744": {
-      "9": "ok",
-      "10": "ok"
-    }
-  },
+  "sync_status": {"517560cc-f165-4ff6-947b-3adda8aef744": "ok"},
   ... }
 </span></code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
