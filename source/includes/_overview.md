@@ -86,7 +86,7 @@ Parameter | Description
 --------- | -----------
 token *String* | User's API token
 sync_token *String* | A special string, used to allow the client to perform incremental sync.  Pass `*` to retrieve all active resource data.  More details about this below.
-resource_types *JSON array of strings* | Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of avaialbe resource types: `labels`, `projects`,`items`, `notes`, `filters`, `reminders`, `locations`, `user`, `live_notifications`, `collaborators`, `notification_settings`. You may use `all` to include all the resource types.
+resource_types *JSON array of strings* | Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of available resource types: `labels`, `projects`,`items`, `notes`, `filters`, `reminders`, `locations`, `user`, `live_notifications`, `collaborators`, `notification_settings`. You may use `all` to include all the resource types.
 
 
 
