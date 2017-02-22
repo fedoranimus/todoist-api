@@ -152,7 +152,7 @@ $ curl https://todoist.com/API/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_delete", "uuid": "f8539c77-7fd7-4846-afad-3b201f0be8a5", "args": {"ids": [33548400]}}]'
 { ...
-  "sync_status": {"f8539c77-7fd7-4846-afad-3b201f0be8a5": {"33548400": "ok"}},
+  "sync_status": {"f8539c77-7fd7-4846-afad-3b201f0be8a5": "ok"},
   ... }
 ```
 
