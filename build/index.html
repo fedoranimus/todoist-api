@@ -116,7 +116,6 @@ clients (e.g. our mobile apps) and Todoist.</p>
   <span class="s2">"collaborators"</span>: <span class="o">[</span> ... <span class="o">]</span>,
   <span class="s2">"collaborator_states"</span>: <span class="o">[</span> ... <span class="o">]</span>,
   <span class="s2">"day_orders"</span>: <span class="o">{</span> ... <span class="o">}</span>,
-  <span class="s2">"day_orders_timestamp"</span>: <span class="s2">"1344642991.1"</span>,
   <span class="s2">"filters"</span>: <span class="o">[</span> ... <span class="o">]</span>,
   <span class="s2">"full_sync"</span> : <span class="nb">true</span>,
   <span class="s2">"items"</span>: <span class="o">[</span> ... <span class="o">]</span>,
@@ -140,7 +139,6 @@ clients (e.g. our mobile apps) and Todoist.</p>
   <span class="s">'collaborators'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
   <span class="s">'collaborator_states'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
   <span class="s">'day_orders'</span><span class="p">:</span> <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>
-  <span class="s">'day_orders_timestamp'</span><span class="p">:</span> <span class="s">'1344642991.1'</span><span class="p">,</span>
   <span class="s">'filters'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
   <span class="s">'full_sync'</span> <span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
   <span class="s">'items'</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
@@ -179,18 +177,6 @@ clients (e.g. our mobile apps) and Todoist.</p>
 <tr>
 <td>resource_types <em>JSON array of strings</em></td>
 <td>Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of avaialbe resource types: <code class="prettyprint">labels</code>, <code class="prettyprint">projects</code>,<code class="prettyprint">items</code>, <code class="prettyprint">notes</code>, <code class="prettyprint">filters</code>, <code class="prettyprint">reminders</code>, <code class="prettyprint">locations</code>, <code class="prettyprint">user</code>, <code class="prettyprint">live_notifications</code>, <code class="prettyprint">collaborators</code>, <code class="prettyprint">notification_settings</code>. You may use <code class="prettyprint">all</code> to include all the resource types.</td>
-</tr>
-</tbody></table>
-<h3 id='optional-parameters'>Optional parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>day_orders_timestamp</td>
-<td>The Sync API requests return <code class="prettyprint">day_orders_timestamp</code> that specifies when the day orders were last updated. If you omit <code class="prettyprint">day_orders_timestamp</code> then none of them will be fetched. If you specify <code class="prettyprint">day_orders_timestamp</code> then day orders will be returned if your timestamp is different from the servers. If you send <code class="prettyprint">day_orders_timestamp</code> and the day orders have not been updated then the server won&rsquo;t return the <code class="prettyprint">day_orders</code> entry at all.</td>
 </tr>
 </tbody></table>
 <h3 id='incremental-sync'>Incremental sync</h3>
@@ -242,11 +228,7 @@ and the Todoist API server will return only the updated resource data.</p>
 </tr>
 <tr>
 <td>day_orders</td>
-<td>A JSON object specifying the order of items in daily agenda. If <code class="prettyprint">day_orders_timestamp</code> is sent and day orders have not been updated then <code class="prettyprint">day_orders</code> won&rsquo;t be returned at all!</td>
-</tr>
-<tr>
-<td>day_orders_timestamp</td>
-<td>A string specifying when day orders were last updated. Use this to not fetch day orders on every request.</td>
+<td>A JSON object specifying the order of items in daily agenda.</td>
 </tr>
 <tr>
 <td>reminders</td>
@@ -501,7 +483,8 @@ the same sequence could directly refer to <code class="prettyprint">temp_id</cod
 
 <ul>
 <li>The <code class="prettyprint">sync_token</code> value is not returned by the <code class="prettyprint">sync</code> call anymore, but the <code class="prettyprint">sync_token</code> and the <code class="prettyprint">full_sync</code> variables are returned instead.</li>
-<li>The <code class="prettyprint">sync</code> call now returns all objects in underscore naming convention, instead of CamelCase, so the <code class="prettyprint">Collaborators</code>, <code class="prettyprint">CollaboratorStates</code>, <code class="prettyprint">DayOrders</code>, <code class="prettyprint">DayOrdersTimestamp</code>, <code class="prettyprint">Filters</code>, <code class="prettyprint">Items</code>, <code class="prettyprint">Labels</code>, <code class="prettyprint">LiveNotifications</code>, <code class="prettyprint">LiveNotificationsLastRead</code>, <code class="prettyprint">Notes</code>, <code class="prettyprint">Projects</code>, <code class="prettyprint">Reminders</code>, <code class="prettyprint">SettingsNotifications</code>, <code class="prettyprint">SyncStatus</code>, <code class="prettyprint">TempIdMapping</code>, and <code class="prettyprint">User</code> objects, where renamed to <code class="prettyprint">collaborators</code>, <code class="prettyprint">collaborator_states</code>, <code class="prettyprint">day_orders</code>, <code class="prettyprint">day_orders_timestamp</code>, <code class="prettyprint">filters</code>, <code class="prettyprint">items</code>, <code class="prettyprint">labels</code>, <code class="prettyprint">live_notifications</code>, <code class="prettyprint">live_notifications_last_read</code>, <code class="prettyprint">notes</code>, <code class="prettyprint">projects</code>, <code class="prettyprint">reminders</code>, <code class="prettyprint">settings_notifications</code>, <code class="prettyprint">sync_status</code>, <code class="prettyprint">temp_id_mapping</code>, and <code class="prettyprint">user</code>, respectively</li>
+<li>The <code class="prettyprint">sync</code> call now returns all objects in underscore naming convention, instead of CamelCase, so the <code class="prettyprint">Collaborators</code>, <code class="prettyprint">CollaboratorStates</code>, <code class="prettyprint">DayOrders</code>, <code class="prettyprint">Filters</code>, <code class="prettyprint">Items</code>, <code class="prettyprint">Labels</code>, <code class="prettyprint">LiveNotifications</code>, <code class="prettyprint">LiveNotificationsLastRead</code>, <code class="prettyprint">Notes</code>, <code class="prettyprint">Projects</code>, <code class="prettyprint">Reminders</code>, <code class="prettyprint">SettingsNotifications</code>, <code class="prettyprint">SyncStatus</code>, <code class="prettyprint">TempIdMapping</code>, and <code class="prettyprint">User</code> objects, where renamed to <code class="prettyprint">collaborators</code>, <code class="prettyprint">collaborator_states</code>, <code class="prettyprint">day_orders</code>, <code class="prettyprint">filters</code>, <code class="prettyprint">items</code>, <code class="prettyprint">labels</code>, <code class="prettyprint">live_notifications</code>, <code class="prettyprint">live_notifications_last_read</code>, <code class="prettyprint">notes</code>, <code class="prettyprint">projects</code>, <code class="prettyprint">reminders</code>, <code class="prettyprint">settings_notifications</code>, <code class="prettyprint">sync_status</code>, <code class="prettyprint">temp_id_mapping</code>, and <code class="prettyprint">user</code>, respectively</li>
+<li>The <code class="prettyprint">DayOrdersTimestamp</code> has been deprecated, and instead the <code class="prettyprint">sync_token</code> is used to keep track of updates.</li>
 <li>The <code class="prettyprint">UserId</code> variable is not returned by the <code class="prettyprint">sync</code> call anymore.</li>
 <li>The <code class="prettyprint">timezone</code> and <code class="prettyprint">tz_offset</code> properties of the user were replaced by the <code class="prettyprint">tz_info</code> object.</li>
 <li>The <code class="prettyprint">is_dummy</code> and <code class="prettyprint">guide_mode</code> properties of the user were removed.</li>

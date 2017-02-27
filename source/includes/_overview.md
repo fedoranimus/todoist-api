@@ -30,7 +30,6 @@ $ curl https://todoist.com/API/v7/sync \
   "collaborators": [ ... ],
   "collaborator_states": [ ... ],
   "day_orders": { ... },
-  "day_orders_timestamp": "1344642991.1",
   "filters": [ ... ],
   "full_sync" : true,
   "items": [ ... ],
@@ -56,7 +55,6 @@ $ curl https://todoist.com/API/v7/sync \
   'collaborators': [ ... ],
   'collaborator_states': [ ... ],
   'day_orders': { ... },
-  'day_orders_timestamp': '1344642991.1',
   'filters': [ ... ],
   'full_sync' : True,
   'items': [ ... ],
@@ -87,14 +85,6 @@ Parameter | Description
 token *String* | User's API token
 sync_token *String* | A special string, used to allow the client to perform incremental sync.  Pass `*` to retrieve all active resource data.  More details about this below.
 resource_types *JSON array of strings* | Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of avaialbe resource types: `labels`, `projects`,`items`, `notes`, `filters`, `reminders`, `locations`, `user`, `live_notifications`, `collaborators`, `notification_settings`. You may use `all` to include all the resource types.
-
-
-
-### Optional parameters
-
-Parameter | Description
---------- | -----------
-day_orders_timestamp | The Sync API requests return `day_orders_timestamp` that specifies when the day orders were last updated. If you omit `day_orders_timestamp` then none of them will be fetched. If you specify `day_orders_timestamp` then day orders will be returned if your timestamp is different from the servers. If you send `day_orders_timestamp` and the day orders have not been updated then the server won't return the `day_orders` entry at all.
 
 
 
@@ -129,8 +119,7 @@ projects |  An array of project objects.
 items | A array of item objects.
 labels | An array of label objects.
 filters | A array of filter objects.
-day_orders |  A JSON object specifying the order of items in daily agenda. If `day_orders_timestamp` is sent and day orders have not been updated then `day_orders` won't be returned at all!
-day_orders_timestamp | A string specifying when day orders were last updated. Use this to not fetch day orders on every request.
+day_orders |  A JSON object specifying the order of items in daily agenda.
 reminders |  An array of reminder objects.
 collaborators | A JSON object containing all collaborators for all shared projects. The `projects` field contains the list of all shared projects, where the user acts as one of collaborators.
 collaborators_states | An array specifying the state of each collaborator in each project. The state can be invited, active, inactive, deleted.
@@ -340,7 +329,8 @@ The main difference between the two APIs is that the `seq_no`, ie. the sequence 
 Here follows a list of various minor changes from the previous API version:
 
 * The `sync_token` value is not returned by the `sync` call anymore, but the `sync_token` and the `full_sync` variables are returned instead.
-* The `sync` call now returns all objects in underscore naming convention, instead of CamelCase, so the `Collaborators`, `CollaboratorStates`, `DayOrders`, `DayOrdersTimestamp`, `Filters`, `Items`, `Labels`, `LiveNotifications`, `LiveNotificationsLastRead`, `Notes`, `Projects`, `Reminders`, `SettingsNotifications`, `SyncStatus`, `TempIdMapping`, and `User` objects, where renamed to `collaborators`, `collaborator_states`, `day_orders`, `day_orders_timestamp`, `filters`, `items`, `labels`, `live_notifications`, `live_notifications_last_read`, `notes`, `projects`, `reminders`, `settings_notifications`, `sync_status`, `temp_id_mapping`, and `user`, respectively
+* The `sync` call now returns all objects in underscore naming convention, instead of CamelCase, so the `Collaborators`, `CollaboratorStates`, `DayOrders`, `Filters`, `Items`, `Labels`, `LiveNotifications`, `LiveNotificationsLastRead`, `Notes`, `Projects`, `Reminders`, `SettingsNotifications`, `SyncStatus`, `TempIdMapping`, and `User` objects, where renamed to `collaborators`, `collaborator_states`, `day_orders`, `filters`, `items`, `labels`, `live_notifications`, `live_notifications_last_read`, `notes`, `projects`, `reminders`, `settings_notifications`, `sync_status`, `temp_id_mapping`, and `user`, respectively
+* The `DayOrdersTimestamp` has been deprecated, and instead the `sync_token` is used to keep track of updates.
 * The `UserId` variable is not returned by the `sync` call anymore.
 * The `timezone` and `tz_offset` properties of the user were replaced by the `tz_info` object.
 * The `is_dummy` and `guide_mode` properties of the user were removed.
