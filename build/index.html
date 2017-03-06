@@ -5592,7 +5592,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 </tr>
 <tr>
 <td>extra_data <em>Object</em></td>
-<td>This object contains at least the <code class="prettyprint">name</code> of the project, or the <code class="prettyprint">content</code> of an item or note, and optionally the <code class="prettyprint">last_name</code> if a projects was renamed, the <code class="prettyprint">last_content</code> if an item or note was renamed, the <code class="prettyprint">due_date</code> and <code class="prettyprint">last_due_date</code> if an item&rsquo;s due date changed, the <code class="prettyprint">responsible_uid</code> and <code class="prettyprint">last_responsible_uid</code> if an item&rsquo;s responsible uid changed.</td>
+<td>This object contains at least the <code class="prettyprint">name</code> of the project, or the <code class="prettyprint">content</code> of an item or note, and optionally the <code class="prettyprint">last_name</code> if a projects was renamed, the <code class="prettyprint">last_content</code> if an item or note was renamed, the <code class="prettyprint">due_date</code> and <code class="prettyprint">last_due_date</code> if an item&rsquo;s due date changed, the <code class="prettyprint">responsible_uid</code> and <code class="prettyprint">last_responsible_uid</code> if an item&rsquo;s responsible uid changed, and the <code class="prettyprint">client</code> that caused the logging of the event.</td>
 </tr>
 </tbody></table>
 <h2 id='get-activity-logs'>Get activity logs</h2>
@@ -5614,7 +5614,8 @@ to history), recurring task is moved forward (due date is updated).</p>
     <span class="s2">"extra_data"</span> : <span class="o">{</span>
       <span class="s2">"last_due_date"</span> : null,
       <span class="s2">"due_date"</span> : <span class="s2">"Sat 02 Jul 2016 20:59:59 +0000"</span>,
-      <span class="s2">"content"</span> : <span class="s2">"Task1"</span>
+      <span class="s2">"content"</span> : <span class="s2">"Task1"</span>,
+      <span class="s2">"client"</span> : <span class="s2">"Mozilla/5.0; Todoist/830"</span>
     <span class="o">}</span>
   <span class="o">}</span>,
   <span class="o">{</span>
@@ -5627,7 +5628,9 @@ to history), recurring task is moved forward (due date is updated).</p>
     <span class="s2">"parent_item_id"</span> : 101157918,
     <span class="s2">"initiator_id"</span> : null,
     <span class="s2">"extra_data"</span> : <span class="o">{</span>
-      <span class="s2">"content"</span> : <span class="s2">"Note1"</span>
+      <span class="s2">"content"</span> : <span class="s2">"Note1"</span>,
+      <span class="s2">"client"</span>: <span class="s2">"Todoist/11.2.1"</span>
+
     <span class="o">}</span>
   <span class="o">}</span>,
   <span class="o">{</span>
@@ -5640,7 +5643,8 @@ to history), recurring task is moved forward (due date is updated).</p>
     <span class="s2">"parent_item_id"</span> : null,
     <span class="s2">"initiator_id"</span> : null,
     <span class="s2">"extra_data"</span> : <span class="o">{</span>
-      <span class="s2">"content"</span> : <span class="s2">"Task1"</span>
+      <span class="s2">"content"</span> : <span class="s2">"Task1"</span>,
+      <span class="s2">"client"</span>: <span class="s2">"Todoist 2051"</span>
     <span class="o">}</span>
   <span class="o">}</span>,
   <span class="o">{</span>
@@ -5653,7 +5657,8 @@ to history), recurring task is moved forward (due date is updated).</p>
     <span class="s2">"parent_item_id"</span> : null,
     <span class="s2">"initiator_id"</span> : null,
     <span class="s2">"extra_data"</span> : <span class="o">{</span>
-      <span class="s2">"name"</span> : <span class="s2">"Project1"</span>
+      <span class="s2">"name"</span> : <span class="s2">"Project1"</span>,
+      <span class="s2">"client"</span>: <span class="s2">"TodoistForWindows10"</span>
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">]</span>
@@ -5674,7 +5679,8 @@ to history), recurring task is moved forward (due date is updated).</p>
     <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
       <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span><span class="p">,</span>
       <span class="s">'due_date'</span><span class="p">:</span> <span class="s">'Sat 02 Jul 2016 20:59:59 +0000'</span><span class="p">,</span>
-      <span class="s">'last_due_date'</span><span class="p">:</span> <span class="bp">None</span>
+      <span class="s">'last_due_date'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+      <span class="s">'client'</span> <span class="p">:</span> <span class="s">'Mozilla/5.0; Todoist/830'</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="p">{</span>
@@ -5687,7 +5693,8 @@ to history), recurring task is moved forward (due date is updated).</p>
     <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="mi">101157918</span><span class="p">,</span>
     <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
     <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Note1'</span>
+      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Note1'</span><span class="p">,</span>
+      <span class="s">'client'</span><span class="p">:</span> <span class="s">'Todoist/11.2.1'</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="p">{</span>
@@ -5700,7 +5707,8 @@ to history), recurring task is moved forward (due date is updated).</p>
     <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
     <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
     <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span>
+      <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span><span class="p">,</span>
+      <span class="s">'client'</span><span class="p">:</span> <span class="s">'Todoist 2051'</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="p">{</span>
@@ -5713,7 +5721,8 @@ to history), recurring task is moved forward (due date is updated).</p>
     <span class="s">'parent_item_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
     <span class="s">'initiator_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
     <span class="s">'extra_data'</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s">'name'</span><span class="p">:</span> <span class="s">'Project1'</span>
+      <span class="s">'name'</span><span class="p">:</span> <span class="s">'Project1'</span><span class="p">,</span>
+      <span class="s">'client'</span><span class="p">:</span> <span class="s">'TodoistForWindows10'</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">]</span>

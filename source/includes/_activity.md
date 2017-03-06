@@ -78,7 +78,7 @@ event_date *String* | The date and time when the event took place.
 parent_project_id *Integer* | The id of the item's or note's parent project, otherwise `null`.
 parent_item_id *Integer* | The id of the note's parent item, otherwise `null`.
 initiator_id *Integer* | The id of the user who is responsible for the event, which only makes sense in shared projects, items and notes, and is `null` for non-shared objects.
-extra_data *Object* | This object contains at least the `name` of the project, or the `content` of an item or note, and optionally the `last_name` if a projects was renamed, the `last_content` if an item or note was renamed, the `due_date` and `last_due_date` if an item's due date changed, the `responsible_uid` and `last_responsible_uid` if an item's responsible uid changed.
+extra_data *Object* | This object contains at least the `name` of the project, or the `content` of an item or note, and optionally the `last_name` if a projects was renamed, the `last_content` if an item or note was renamed, the `due_date` and `last_due_date` if an item's due date changed, the `responsible_uid` and `last_responsible_uid` if an item's responsible uid changed, and the `client` that caused the logging of the event.
 
 ## Get activity logs
 
@@ -100,7 +100,8 @@ $ curl https://todoist.com/API/v7/activity/get \
     "extra_data" : {
       "last_due_date" : null,
       "due_date" : "Sat 02 Jul 2016 20:59:59 +0000",
-      "content" : "Task1"
+      "content" : "Task1",
+      "client" : "Mozilla/5.0; Todoist/830"
     }
   },
   {
@@ -113,7 +114,9 @@ $ curl https://todoist.com/API/v7/activity/get \
     "parent_item_id" : 101157918,
     "initiator_id" : null,
     "extra_data" : {
-      "content" : "Note1"
+      "content" : "Note1",
+      "client": "Todoist/11.2.1"
+
     }
   },
   {
@@ -126,7 +129,8 @@ $ curl https://todoist.com/API/v7/activity/get \
     "parent_item_id" : null,
     "initiator_id" : null,
     "extra_data" : {
-      "content" : "Task1"
+      "content" : "Task1",
+      "client": "Todoist 2051"
     }
   },
   {
@@ -139,7 +143,8 @@ $ curl https://todoist.com/API/v7/activity/get \
     "parent_item_id" : null,
     "initiator_id" : null,
     "extra_data" : {
-      "name" : "Project1"
+      "name" : "Project1",
+      "client": "TodoistForWindows10"
     }
   }
 ]
@@ -163,7 +168,8 @@ $ curl https://todoist.com/API/v7/activity/get \
     'extra_data': {
       'content': 'Task1',
       'due_date': 'Sat 02 Jul 2016 20:59:59 +0000',
-      'last_due_date': None
+      'last_due_date': None,
+      'client' : 'Mozilla/5.0; Todoist/830'
     }
   },
   {
@@ -176,7 +182,8 @@ $ curl https://todoist.com/API/v7/activity/get \
     'parent_item_id': 101157918,
     'initiator_id': None,
     'extra_data': {
-      'content': 'Note1'
+      'content': 'Note1',
+      'client': 'Todoist/11.2.1'
     }
   },
   {
@@ -189,7 +196,8 @@ $ curl https://todoist.com/API/v7/activity/get \
     'parent_item_id': None,
     'initiator_id': None,
     'extra_data': {
-      'content': 'Task1'
+      'content': 'Task1',
+      'client': 'Todoist 2051'
     }
   },
   {
@@ -202,7 +210,8 @@ $ curl https://todoist.com/API/v7/activity/get \
     'parent_item_id': None,
     'initiator_id': None,
     'extra_data': {
-      'name': 'Project1'
+      'name': 'Project1',
+      'client': 'TodoistForWindows10'
     }
   }
 ]
