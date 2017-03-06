@@ -47,7 +47,8 @@ The following events are logged for projects:
   "parent_item_id" : null,
   "initiator_id" : null,
   "extra_data" : {
-    "content" : "Task1"
+    "content" : "Task1",
+    "client" : "Mozilla/5.0; Todoist/830"
   }
 }
 ```
@@ -63,7 +64,8 @@ The following events are logged for projects:
   'parent_item_id': None,
   'initiator_id': None,
   'extra_data': {
-    'content': 'Task1'
+    'content': 'Task1',
+    'client' : 'Mozilla/5.0; Todoist/830'
   }
 }
 ```
