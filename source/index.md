@@ -18,6 +18,7 @@ includes:
   - filters
   - reminders
   - miscellaneous
+  - quick
   - user
   - sharing
   - livenotifications

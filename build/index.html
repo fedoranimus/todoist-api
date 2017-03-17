@@ -3757,6 +3757,101 @@ to history), recurring task is moved forward (due date is updated).</p>
 
 <p>Get a project&rsquo;s uncompleted items.</p>
 
+        <h1 id='quick'>Quick</h1><h2 id='quick-add-task'>Quick add task</h2>
+<blockquote>
+<p>An example of quick add task:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/quick/add <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
+    -d <span class="nv">text</span><span class="o">=</span><span class="s1">'Task1 @Label1 #Project1 +ExampleUser'</span>
+<span class="o">{</span>
+  <span class="s2">"assigned_by_uid"</span>: 1855589,
+  <span class="s2">"is_archived"</span>: 0,
+  <span class="s2">"labels"</span>: <span class="o">[</span>
+    874,
+  <span class="o">]</span>,
+  <span class="s2">"sync_id"</span>: null,
+  <span class="s2">"in_history"</span>: 0,
+  <span class="s2">"date_added"</span>: <span class="s2">"Wed 18 Feb 2015 11:09:11 +0000"</span>,
+  <span class="s2">"indent"</span>: 1,
+  <span class="s2">"children"</span>: null,
+  <span class="s2">"content"</span>: <span class="s2">"Task1"</span>,
+  <span class="s2">"is_deleted"</span>: 0,
+  <span class="s2">"user_id"</span>: 1855589,
+  <span class="s2">"due_date_utc"</span>: null,
+  <span class="s2">"id"</span>: 33548400,
+  <span class="s2">"priority"</span>: 4,
+  <span class="s2">"item_order"</span>: 1,
+  <span class="s2">"responsible_uid"</span>: 1855589,
+  <span class="s2">"project_id"</span>: 128501411,
+  <span class="s2">"collapsed"</span>: 0,
+  <span class="s2">"checked"</span>: 0,
+  <span class="s2">"date_string"</span>: <span class="s2">""</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">quick</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">'Task1 @Label1 #Project1 +ExampleUser'</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'labels'</span><span class="p">:</span> <span class="p">[</span>
+    <span class="mi">874</span>
+  <span class="p">],</span>
+  <span class="s">'sync_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'in_history'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'checked'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'id'</span><span class="p">:</span> <span class="mi">33548400</span><span class="p">,</span>
+  <span class="s">'priority'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="s">'user_id'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
+  <span class="s">'date_added'</span><span class="p">:</span> <span class="s">'Wed 18 Feb 2015 11:09:11 +0000'</span><span class="p">,</span>
+  <span class="s">'children'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'content'</span><span class="p">:</span> <span class="s">'Task1'</span><span class="p">,</span>
+  <span class="s">'item_order'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'project_id'</span><span class="p">:</span> <span class="mi">128501411</span><span class="p">,</span>
+  <span class="s">'date_string'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+  <span class="s">'assigned_by_uid'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
+  <span class="s">'collapsed'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">'due_date_utc'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+  <span class="s">'responsible_uid'</span><span class="p">:</span> <span class="mi">1855589</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Implementation of the Quick Add Task available in the official clients.</p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
+</tr>
+<tr>
+<td>text <em>String</em></td>
+<td>The text of the task that is parsed.  It can include a due date in free form text, a project name starting with the <code class="prettyprint">#</code> character, a label starting with the <code class="prettyprint">@</code> character, and an assignee starting with the <code class="prettyprint">+</code> character.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>note <em>String</em></td>
+<td>The content of the note.</td>
+</tr>
+<tr>
+<td>reminder <em>String</em></td>
+<td>The date of the reminder, added in free form text.</td>
+</tr>
+</tbody></table>
+
         <h1 id='user'>User</h1>
 <p>A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typically a user object will have the following properties:</p>
 
