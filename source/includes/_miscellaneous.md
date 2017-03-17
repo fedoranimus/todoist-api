@@ -291,14 +291,16 @@ $ curl https://todoist.com/API/v7/items/add \
   "project_id": 128501411,
   "collapsed": 0,
   "checked": 0,
-  "date_string": "" }
+  "date_string": ""
+}
 ```
 
 ```python
 >>> import todoist
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
 >>> api.add_item("Task1")
-{ 'is_archived': 0,
+{
+  'is_archived': 0,
   'labels': [],
   'sync_id': None,
   'in_history': 0,
@@ -317,7 +319,8 @@ $ curl https://todoist.com/API/v7/items/add \
   'indent': 1,
   'is_deleted': 0,
   'due_date_utc': None,
-  'responsible_uid': None }
+  'responsible_uid': None
+}
 ```
 
 Add a new task to a project.  Note, that this is provided as a helper method, a shortcut, to quickly add a task without going through the `Sync workflow` described in a previous section.

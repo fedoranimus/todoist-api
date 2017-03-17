@@ -3290,12 +3290,14 @@ to history), recurring task is moved forward (due date is updated).</p>
   <span class="s2">"project_id"</span>: 128501411,
   <span class="s2">"collapsed"</span>: 0,
   <span class="s2">"checked"</span>: 0,
-  <span class="s2">"date_string"</span>: <span class="s2">""</span> <span class="o">}</span>
+  <span class="s2">"date_string"</span>: <span class="s2">""</span>
+<span class="o">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s">"Task1"</span><span class="p">)</span>
-<span class="p">{</span> <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="s">'is_archived'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s">'labels'</span><span class="p">:</span> <span class="p">[],</span>
   <span class="s">'sync_id'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
   <span class="s">'in_history'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
@@ -3314,7 +3316,8 @@ to history), recurring task is moved forward (due date is updated).</p>
   <span class="s">'indent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
   <span class="s">'is_deleted'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s">'due_date_utc'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-  <span class="s">'responsible_uid'</span><span class="p">:</span> <span class="bp">None</span> <span class="p">}</span>
+  <span class="s">'responsible_uid'</span><span class="p">:</span> <span class="bp">None</span>
+<span class="p">}</span>
 </code></pre>
 
 <p>Add a new task to a project.  Note, that this is provided as a helper method, a shortcut, to quickly add a task without going through the <code class="prettyprint">Sync workflow</code> described in a previous section.</p>
