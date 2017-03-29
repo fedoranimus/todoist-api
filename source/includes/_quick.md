@@ -6,7 +6,7 @@
 
 ```shell
 $ curl https://todoist.com/API/v7/quick/add \
-    -d token=0123456789abcdef0123456789abcdef01234567
+    -d token=0123456789abcdef0123456789abcdef01234567 \
     -d text='Task1 @Label1 #Project1 +ExampleUser'
 {
   "assigned_by_uid": 1855589,

@@ -3765,7 +3765,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <p>An example of quick add task:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/quick/add <span class="se">\</span>
-    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">text</span><span class="o">=</span><span class="s1">'Task1 @Label1 #Project1 +ExampleUser'</span>
 <span class="o">{</span>
   <span class="s2">"assigned_by_uid"</span>: 1855589,
@@ -5930,6 +5930,89 @@ to history), recurring task is moved forward (due date is updated).</p>
 <tr>
 <td>token <em>String</em></td>
 <td>The user&rsquo;s token received on login (a string hash value).</td>
+</tr>
+</tbody></table>
+
+        <h1 id='emails'>Emails</h1><h2 id='get-or-create'>Get or create</h2>
+<blockquote>
+<p>An example creating an email to an object:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/emails/get_or_create <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">obj_type</span><span class="o">=</span>project <span class="se">\</span>
+    -d <span class="nv">obj_id</span><span class="o">=</span>128501411
+<span class="o">{</span>
+  <span class="s2">"email"</span>: <span class="s2">"Inbox &lt;add.task.1855589.128501411.9a3ae36588cf36df@todoist.net&gt;"</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">emails</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="s">'project'</span><span class="p">,</span> <span class="mi">128501411</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="s">'email'</span><span class="p">:</span> <span class="s">'Inbox &lt;add.task.1855589.128501411.9a3ae36588cf36df@todoist.net&gt;'</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Creates a new email address for an object, or gets an existing email.</p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
+</tr>
+<tr>
+<td>obj_type <em>String</em></td>
+<td>The object&rsquo;s type, one of <code class="prettyprint">project</code>, <code class="prettyprint">project_comments</code> or <code class="prettyprint">item</code>.</td>
+</tr>
+<tr>
+<td>obj_id <em>Number</em></td>
+<td>The object&rsquo;s id.</td>
+</tr>
+</tbody></table>
+<h2 id='disable'>Disable</h2>
+<blockquote>
+<p>An example disabling an email to an object:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/emails/disable <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">obj_type</span><span class="o">=</span>project <span class="se">\</span>
+    -d <span class="nv">obj_id</span><span class="o">=</span>128501411
+<span class="o">{</span>
+  <span class="s2">"status"</span>: <span class="s2">"ok"</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">emails</span><span class="o">.</span><span class="n">disable</span><span class="p">(</span><span class="s">'project'</span><span class="p">,</span> <span class="mi">128501411</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="s">'status'</span><span class="p">:</span> <span class="s">'ok'</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Disables an email address for an object.</p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>The user&rsquo;s token received on login.</td>
+</tr>
+<tr>
+<td>obj_type <em>String</em></td>
+<td>The object&rsquo;s type, one of <code class="prettyprint">project</code>, <code class="prettyprint">project_comments</code> or <code class="prettyprint">item</code>.</td>
+</tr>
+<tr>
+<td>obj_id <em>Number</em></td>
+<td>The object&rsquo;s id.</td>
 </tr>
 </tbody></table>
 

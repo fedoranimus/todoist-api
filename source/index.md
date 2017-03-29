@@ -25,6 +25,7 @@ includes:
   - business
   - activity
   - backups
+  - emails
   - urlschemes
   - webhooks
 #  - query
