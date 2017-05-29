@@ -282,6 +282,7 @@ from_uid *Integer* | The id of the user who initiated this live notification.
 notification_key *String* | Unique notification key.
 notification_type *String* | Type of notification. Different notification type define different extra fields which are described below.
 seq_no *Integer* | Notification sequence number.
+is_unread *Integer* | Whether the notification is marked as unread (`1`) or read (`0`).
 
 ### Specific properties
 
@@ -345,9 +346,9 @@ invitation_secret *String* | Invitation secret. Should be used to accept or reje
 invitation_message *String* | Invitation message.
 account_name *String* | Business account (company) name.
 
-## Mark last read
+## Set last known
 
-> An example of marking the last read notification:
+> An example of setting the last known notification:
 
 ```shell
 $ curl https://todoist.com/API/v7/sync \
@@ -365,10 +366,89 @@ $ curl https://todoist.com/API/v7/sync \
 >>> api.commit()
 ```
 
-Mark the last read live notification.
+Set the last known notification.
 
 ### Required arguments
 
 Argument | Description
 -------- | -----------
-id | The id of the last read notification (a number or `0` or `null` to mark all read).
+id | The id of the last known notification (a number or `0` or `null` to mark all read).
+
+## Mark as read
+
+  > An example of marking a notification as read:
+
+```shell
+$ curl https://todoist.com/API/v7/sync \
+    -d token=0123456789abcdef0123456789abcdef01234567 \
+    -d commands='[{"type": "live_notifications_mark_read", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8", "args": {"id": 1234}}]'
+{ ...
+  "sync_status": {"588b9ccf-29c0-4837-8bbc-fc858c0c6df8": "ok"},
+  ... }
+```
+
+```python
+>>> import todoist
+>>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
+>>> api.live_notifications.mark_read(1234)
+>>> api.commit()
+```
+
+Mark the notification as read.
+
+### Required arguments
+
+Argument | Description
+-------- | -----------
+id | The id of the notification.
+
+## Mark all as read
+
+> An example of marking all notifications as read:
+
+```shell
+$ curl https://todoist.com/API/v7/sync \
+    -d token=0123456789abcdef0123456789abcdef01234567 \
+    -d commands='[{"type": "live_notifications_mark_read_all", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8"}]'
+{ ...
+  "sync_status": {"588b9ccf-29c0-4837-8bbc-fc858c0c6df8": "ok"},
+  ... }
+```
+
+```python
+>>> import todoist
+>>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
+>>> api.live_notifications.mark_read_all()
+>>> api.commit()
+```
+
+Mark all notifications as read.
+
+
+## Mark as unread
+
+> An example of marking a notification as unread:
+
+```shell
+$ curl https://todoist.com/API/v7/sync \
+    -d token=0123456789abcdef0123456789abcdef01234567 \
+    -d commands='[{"type": "live_notifications_mark_unread", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8", "args": {"id": 1234}}]'
+{ ...
+  "sync_status": {"588b9ccf-29c0-4837-8bbc-fc858c0c6df8": "ok"},
+  ... }
+```
+
+```python
+>>> import todoist
+>>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
+>>> api.live_notifications.mark_unread(1234)
+>>> api.commit()
+```
+
+Mark the notification as unread.
+
+### Required arguments
+
+Argument | Description
+-------- | -----------
+id | The id of the notification.

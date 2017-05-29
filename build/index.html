@@ -5120,6 +5120,10 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>seq_no <em>Integer</em></td>
 <td>Notification sequence number.</td>
 </tr>
+<tr>
+<td>is_unread <em>Integer</em></td>
+<td>Whether the notification is marked as unread (<code class="prettyprint">1</code>) or read (<code class="prettyprint">0</code>).</td>
+</tr>
 </tbody></table>
 <h3 id='specific-properties'>Specific properties</h3>
 <p>Here are the extra properties for the <code class="prettyprint">*_invitation_*</code> types of live notifications:</p>
@@ -5291,9 +5295,9 @@ to history), recurring task is moved forward (due date is updated).</p>
 <td>Business account (company) name.</td>
 </tr>
 </tbody></table>
-<h2 id='mark-last-read'>Mark last read</h2>
+<h2 id='set-last-known'>Set last known</h2>
 <blockquote>
-<p>An example of marking the last read notification:</p>
+<p>An example of setting the last known notification:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
@@ -5308,7 +5312,7 @@ to history), recurring task is moved forward (due date is updated).</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 
-<p>Mark the last read live notification.</p>
+<p>Set the last known notification.</p>
 <h3 id='required-arguments'>Required arguments</h3>
 <table><thead>
 <tr>
@@ -5318,7 +5322,85 @@ to history), recurring task is moved forward (due date is updated).</p>
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the last read notification (a number or <code class="prettyprint">0</code> or <code class="prettyprint">null</code> to mark all read).</td>
+<td>The id of the last known notification (a number or <code class="prettyprint">0</code> or <code class="prettyprint">null</code> to mark all read).</td>
+</tr>
+</tbody></table>
+<h2 id='mark-as-read'>Mark as read</h2>
+<blockquote>
+<p>An example of marking a notification as read:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "live_notifications_mark_read", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8", "args": {"id": 1234}}]'</span>
+<span class="o">{</span> ...
+  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"588b9ccf-29c0-4837-8bbc-fc858c0c6df8"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
+  ... <span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">live_notifications</span><span class="o">.</span><span class="n">mark_read</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre>
+
+<p>Mark the notification as read.</p>
+<h3 id='required-arguments'>Required arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the notification.</td>
+</tr>
+</tbody></table>
+<h2 id='mark-all-as-read'>Mark all as read</h2>
+<blockquote>
+<p>An example of marking all notifications as read:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "live_notifications_mark_read_all", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8"}]'</span>
+<span class="o">{</span> ...
+  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"588b9ccf-29c0-4837-8bbc-fc858c0c6df8"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
+  ... <span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">live_notifications</span><span class="o">.</span><span class="n">mark_read_all</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre>
+
+<p>Mark all notifications as read.</p>
+<h2 id='mark-as-unread'>Mark as unread</h2>
+<blockquote>
+<p>An example of marking a notification as unread:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://todoist.com/API/v7/sync <span class="se">\</span>
+    -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
+    -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "live_notifications_mark_unread", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8", "args": {"id": 1234}}]'</span>
+<span class="o">{</span> ...
+  <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"588b9ccf-29c0-4837-8bbc-fc858c0c6df8"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
+  ... <span class="o">}</span>
+</code></pre>
+<pre class="highlight python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">live_notifications</span><span class="o">.</span><span class="n">mark_unread</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre>
+
+<p>Mark the notification as unread.</p>
+<h3 id='required-arguments'>Required arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the notification.</td>
 </tr>
 </tbody></table>
 
