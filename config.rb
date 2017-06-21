@@ -1,20 +1,22 @@
-require './lib/redcarpet_header_fix'
+require 'tilt'
 
 set :css_dir, 'stylesheets'
-
 set :js_dir, 'javascripts'
-
 set :images_dir, 'images'
-
 set :fonts_dir, 'fonts'
-
 set :markdown_engine, :redcarpet
-
-set :markdown, :fenced_code_blocks => true, :smartypants => true, :disable_indented_code_blocks => true, :prettify => true, :tables => true, :with_toc_data => true, :no_intra_emphasis => true
-
+set :markdown,
+  :disable_indented_code_blocks => true,
+  :fenced_code_blocks           => true,
+  :no_intra_emphasis            => true,
+  :prettify                     => true,
+  :smartypants                  => true,
+  :tables                       => true,
+  :with_toc_data                => true
 
 # Activate the syntax highlighter
 activate :syntax
+activate :sprockets
 
 # This is needed for Github pages, since they're hosted on a subdomain
 activate :relative_assets
@@ -37,4 +39,3 @@ configure :build do
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
 end
-
