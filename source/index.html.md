@@ -27,10 +27,8 @@ includes:
   - emails
   - urlschemes
   - webhooks
-#  - query
 
 search: false
-layout: doc_layout
 ---
 
 <!--

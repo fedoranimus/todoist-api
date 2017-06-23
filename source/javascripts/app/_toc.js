@@ -40,11 +40,9 @@
   // Hack to make already open sections to start opened,
   // instead of displaying an ugly animation
   function animate() {
-    if(toc){
-      setTimeout(function() {
-        toc.setOption('showEffectSpeed', 180);
-      }, 50);
-    }
+    setTimeout(function() {
+      toc.setOption('showEffectSpeed', 180);
+    }, 50);
   }
 
   $(function() {
@@ -52,9 +50,8 @@
     animate();
     setupLanguages($('body').data('languages'));
     $('.content').imagesLoaded( function() {
-      if(global.toc){
-        global.toc.calculateHeights();
-      }
+      global.toc.calculateHeights();
     });
   });
 })(window);
+
