@@ -219,9 +219,8 @@ a command.
 ```
 
 >  You can see that the project_add command specified a temp_id property ("c7beb07f-b226-4eb1-bf63-30d782b07b1a") as placeholder of the actual project_id. The item_add command can refrence to this temporary project id. The API will automatically resolve these ids.
-```
 
-*Note that the Python library takes care of handling temporary ids, so there's no reason to worry about them if you use it.*
+* Note that the Python library takes care of handling temporary ids, so there's no reason to worry about them if you use it.*
 
 Some commands depend on the result of previous command. For instance, you have a command sequence: `"project_add"` and `"item_add"` which first creates a project and then add a new task to the newly created project. In order to run the later `item_add` command, we need to obtain the project ID returned from the previous command. Therefore, the normal approach would be to run these two commands in two separate HTTP requests.
 
@@ -307,7 +306,7 @@ There's also a maximum number of 50 sync requests per minute for each user, in o
 
 > install todoist python library via pip:
 
-```
+```shell
 $ pip install todoist-python
 ```
 

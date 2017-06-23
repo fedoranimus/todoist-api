@@ -60,7 +60,7 @@ The "event_data" will represent the newly added item.
 
 > Example Delivery
 
-```
+```json
 POST /payload HTTP/1.1
 
 Host: your_callback_url_host

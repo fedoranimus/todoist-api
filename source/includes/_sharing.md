@@ -6,7 +6,7 @@ Project can be shared with other users, which are then called collaborators, and
 
 > An example of a collaborator object:
 
-```
+```json
 {
   "id": 1855589,
   "email": "you@example.com",
@@ -35,7 +35,7 @@ Partial sync returns updated collaborator objects for users that have changed th
 
 > An example of a collaborator state:
 
-```
+```json
 {
   "project_id": 128501470,
   "user_id": 1855589,

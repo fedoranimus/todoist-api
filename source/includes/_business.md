@@ -2,7 +2,7 @@
 
 > An example invitation object:
 
-```
+```json
 {
   "base_url": "http://todoist.com",
   "business_account_id": 2,
