@@ -20,7 +20,7 @@ todoist://notifications | Opens notifications view.
 
 > Example of adding a task:
 
-```css
+```text
 todoist://addtask?content=mytask&date=tomorrow&priority=4
 ```
 
@@ -32,25 +32,25 @@ todoist://addtask | Opens the add task view to add a new task to Todoist.
 
 > Here's an example of a content value:
 
-```
+```text
 Create document about URL Schemes!
 ```
 
 > And how it should be supplied using Percent-encoding:
 
-```
+```text
 Create&20document%20about%20URL%20Schemes%21
 ```
 
 > Here's an example of a date value:
 
-```
+```text
 Tomorrow @ 14:00
 ```
 
 > And how it should be supplied using Percent-encoding:
 
-```
+```text
 Tomorrow%20@%2014:00
 ```
 
@@ -74,7 +74,7 @@ todoist://projects | Opens the projects view (shows all projects).
 
 > Example of opening a specific project:
 
-```
+```text
 todoist://project?id=128501470
 ```
 
@@ -100,7 +100,7 @@ todoist://labels | Opens the labels view (shows all labels)
 
 > Example of opening a specific label:
 
-```
+```text
 todoist://label?id=1234
 ```
 
@@ -126,7 +126,7 @@ todoist://filters | Opens the filters view (shows all filters)
 
 > Example of opening a specific filter:
 
-```
+```text
 todoist://filter?id=9
 ```
 
@@ -147,7 +147,7 @@ id | The id of the filter to view. If the id doesn't exist, you don’t have acc
 
 > Example of searching for "Test & Today":
 
-```
+```text
 todoist://search?query=Test%20%26%20Today
 ```
 
