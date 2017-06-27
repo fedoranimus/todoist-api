@@ -102,9 +102,6 @@ and the Todoist API server will return only the updated resource data.
 
 
 
-
-
-
 ### Response
 
 When the request succeeds, an HTTP 200 response will be returned with a JSON object containing the requested resources and also a new `sync_token`.
