@@ -58,7 +58,7 @@ is_deleted *Boolean* | Set to `true` when the collaborator leaves the shared pro
 > An example of sharing a project:
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "share_project", "temp_id": "854be9cd-965f-4ddd-a07e-6a1d4a6e6f7a", "uuid": "fe6637e3-03ce-4236-a202-8b28de2c8372", "args": {"project_id": "128501470", "email": "you@example.com"}}]'
 { ...
@@ -87,7 +87,7 @@ email *String* | The user email with whom to share the project.
 > An example of deleting a person from a shared project:
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "delete_collaborator", "uuid": "0ae55ac0-3b8d-4835-b7c3-59ba30e73ae4", "args": {"project_id": 128501470, "email": "you@example.com"}}]'
 { ...
@@ -116,7 +116,7 @@ email *String* | The user email with whom the project was shared with.
 > An example of accepting an invitation:
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "accept_invitation", "uuid": "4b254da4-fa2b-4a88-9439-b27903a90f7f", "args": {"invitation_id": 1234,  "invitation_secret": "abcdefghijklmno"}}]'
 { ...
@@ -145,7 +145,7 @@ invitation_secret *String* | The secret fetched from the live notification.
 > An example of rejecting an invitation:
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "reject_invitation", "uuid": "284fd900-c36f-44e5-ab92-ee93455e50e0", "args": {"invitation_id": 1234,  "invitation_secret": "abcdefghijklmno"}}]'
 { ...
@@ -174,7 +174,7 @@ invitation_secret *String* | The secret fetched from the live notification.
 > An example of deleting an invitation:
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "delete_invitation", "uuid": "399f6a8d-ddea-4146-ae8e-b41fb8ff6945", "args": {"invitation_id": 128501470}}]'
 { ...

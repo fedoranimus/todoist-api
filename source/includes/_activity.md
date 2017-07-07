@@ -87,7 +87,7 @@ extra_data *Object* | This object contains at least the `name` of the project, o
 > An example of getting the activity logs:
 
 ```shell
-$ curl https://todoist.com/API/v7/activity/get \
+$ curl https://todoist.com/api/v7/activity/get \
     -d token=0123456789abcdef0123456789abcdef01234567 \
 [
   {

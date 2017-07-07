@@ -37,7 +37,7 @@ team_inbox *Boolean* | Whether the project is `TeamInbox` (`true` or otherwise t
 
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "project_add", "temp_id": "4ff1e388-5ca6-453a-b0e8-662ebf373b6b", "uuid": "32774db9-a1da-4550-8d9d-910372124fa4", "args": {"name": "Project4"}}]'
 { ...
@@ -73,7 +73,7 @@ item_order *Integer* | Project's order in the project list (a number, where the 
 
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_update", "uuid": "1ca42128-d12f-4a66-8413-4d6ff2838fde", "args": {"id": 128501815, "indent": 2}}]'
 { ...
@@ -113,7 +113,7 @@ collapsed  *Integer* | Whether the project's sub-projects are collapsed (where `
 
 ```shell
 
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_delete", "uuid": "367182ba-125f-4dbb-bff6-c1343fd751e4", "args": {"ids": [128501815]}}]'
 { ...
@@ -142,7 +142,7 @@ ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projec
 
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_archive", "uuid": "bbec1a60-2bdd-48ac-a623-c8eb968e1697", "args": {"ids": [128501682]}}]'
 { ...
@@ -170,7 +170,7 @@ ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projec
 
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_unarchive", "uuid": "7d86f042-e098-4fa6-9c1f-a61fe8c39d74", "args": {"ids": [128501682]}}]'
 { ...
@@ -198,7 +198,7 @@ ids  *Array of Integer (id) or String (temp id)* | List of the ids of the projec
 
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "project_update_orders_indents", "uuid": "bf0855a3-0138-4b76-b895-88cad8db9edc", "args": {"ids_to_orders_indents": {"128501470": [42, 1], "128501607": [43, 1]}}}]'
 { ...

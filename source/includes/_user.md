@@ -95,7 +95,7 @@ join_date *String* | The date when the user joined Todoist.
 
 
 ```shell
-$ curl https://todoist.com/API/v7/user/register \
+$ curl https://todoist.com/api/v7/user/register \
     -d email=me@example.com \
     -d full_name=Example\ User \
     -d password=secret
@@ -218,7 +218,7 @@ timezone *String* | The user's timezone (a string value such as `UTC`, `Europe/L
 > An example of deleting an existing user:
 
 ```shell
-$ curl https://todoist.com/API/v7/user/delete \
+$ curl https://todoist.com/api/v7/user/delete \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d current_password=secret
 "ok"
@@ -253,7 +253,7 @@ reason_for_delete *String* | A reason for deletion, that is used for sending fee
 > An example of updating the user's properties:
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "user_update", "uuid": "52f83009-7e27-4b9f-9943-1c5e3d1e6889", "args": {"time_format": 0}}]'
 { ...
@@ -294,7 +294,7 @@ theme *Integer* | The currently selected Todoist theme (between `0` and `10`).
 ## Update karma goals
 
 ```shell
-$ curl https://todoist.com/API/v7/sync \
+$ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "update_goals", "uuid": "b9bbeaf8-9db6-452a-a843-a192f1542892", "args": {"vacation_mode": 1}}]'
 { ...
@@ -327,7 +327,7 @@ karma_disabled *Integer* | Whether to disable the karma and goals measuring alto
 > An example of updating the user's notification settings
 
 ```shell
-$ curl https://todoist.com/API/v7/notification_settings/update \
+$ curl https://todoist.com/api/v7/notification_settings/update \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d notification_type=item_completed \
     -d service=email \

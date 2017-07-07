@@ -5,7 +5,7 @@
 > An example of getting the user's productivity stats:
 
 ```shell
-$ curl https://todoist.com/API/v7/completed/get_stats \
+$ curl https://todoist.com/api/v7/completed/get_stats \
     -d token=0123456789abcdef0123456789abcdef01234567
 {
   "karma_last_update": 50.0,
@@ -137,7 +137,7 @@ token *String* | The user's token received on login.
 > An example of getting the user's completed tasks
 
 ```shell
-$ curl https://todoist.com/API/v7/completed/get_all \
+$ curl https://todoist.com/api/v7/completed/get_all \
     -d token=0123456789abcdef0123456789abcdef01234567
 {
   "items": [
@@ -221,7 +221,7 @@ annotate_notes *Boolean* | Return notes together with the completed items (a `tr
 > An example of getting the user's archived projects
 
 ```shell
-$ curl https://todoist.com/API/v7/projects/get_archived \
+$ curl https://todoist.com/api/v7/projects/get_archived \
     -d token=0123456789abcdef0123456789abcdef01234567
 [
   {
@@ -268,7 +268,7 @@ token *String* | The user's token received on login.
 > An example of adding a task:
 
 ```shell
-$ curl https://todoist.com/API/v7/items/add \
+$ curl https://todoist.com/api/v7/items/add \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d content=Task1
 {
@@ -352,7 +352,7 @@ auto_reminder *Boolean* | When this option is enabled, the default reminder will
 > An example of getting an item's info:
 
 ```shell
-$ curl https://todoist.com/API/v7/items/get \
+$ curl https://todoist.com/api/v7/items/get \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d item_id=466
 {
@@ -532,7 +532,7 @@ all_data *Boolean* | Whether to return the parent project and notes of the item 
 > An example of getting a project's info:
 
 ```shell
-$ curl https://todoist.com/API/v7/projects/get \
+$ curl https://todoist.com/api/v7/projects/get \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d project_id=128501682
 {
@@ -617,7 +617,7 @@ all_data *Boolean* | Whether to return the notes of the project (a `true` or `fa
 > An example of getting a project's data:
 
 ```shell
-$ curl https://todoist.com/API/v7/projects/get_data \
+$ curl https://todoist.com/api/v7/projects/get_data \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d project_id=128501682
 {

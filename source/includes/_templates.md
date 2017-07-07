@@ -7,7 +7,7 @@ Templates allow exporting of a projects tasks into a file or URL, and then impor
 > On success, an HTTP 200 OK with JSON data of file data is returned:
 
 ```shell
-$ curl https://todoist.com/API/v7/templates/import_into_project \
+$ curl https://todoist.com/api/v7/templates/import_into_project \
     -F token=0123456789abcdef0123456789abcdef01234567 \
     -F project_id=128501470 \
     -F file=@example.csv
@@ -34,7 +34,7 @@ Upload a file suitable to be passed as a template to be imported into a project.
 > On success, a CSV template is returned:
 
 ```shell
-$ curl https://todoist.com/API/v7/templates/export_as_file \
+$ curl https://todoist.com/api/v7/templates/export_as_file \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d project_id=128501470
 TYPE,CONTENT,PRIORITY,INDENT,AUTHOR,RESPONSIBLE,DATE,DATE_LANG
@@ -58,7 +58,7 @@ Get a template for a project as a file.
 > On success, a URL is returned:
 
 ```shell
-$ curl https://todoist.com/API/v7/templates/export_as_url \
+$ curl https://todoist.com/api/v7/templates/export_as_url \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d project_id=128501470
 {

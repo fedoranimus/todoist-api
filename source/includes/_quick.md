@@ -5,7 +5,7 @@
 > An example of quick add task:
 
 ```shell
-$ curl https://todoist.com/API/v7/quick/add \
+$ curl https://todoist.com/api/v7/quick/add \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d text='Task1 @Label1 #Project1 +ExampleUser'
 {

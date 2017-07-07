@@ -9,7 +9,7 @@ Todoist creates a backup archive of users' data on a daily basis. Backup archive
 
 
 ```shell
-$ curl https://todoist.com/API/v7/backups/get \
+$ curl https://todoist.com/api/v7/backups/get \
     -d token=0123456789abcdef0123456789abcdef01234567
 [
   {

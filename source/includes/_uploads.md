@@ -7,7 +7,7 @@ Files can be uploaded to our servers and used as file attachments in Notes.
 > On success, an HTTP 200 OK with JSON data of file data is returned:
 
 ```shell
-$ curl https://todoist.com/API/v7/uploads/add \
+$ curl https://todoist.com/api/v7/uploads/add \
     -F token=0123456789abcdef0123456789abcdef01234567 \
     -F file_name=example.jpg \
     -F file=@/path/to/example.jpg
@@ -93,7 +93,7 @@ If you upload an audio file, you may provide an extra attribute `file_duration` 
 > An example of getting the user's uploads
 
 ```shell
-$ curl https://todoist.com/API/v7/uploads/get \
+$ curl https://todoist.com/api/v7/uploads/get \
     -d token=0123456789abcdef0123456789abcdef01234567
 [
     {
@@ -179,7 +179,7 @@ last_id *Integer* | Can be used for pagination. This should be the minimum uploa
 > An example of deleting an upload
 
 ```shell
-$ curl https://todoist.com/API/v7/uploads/delete \
+$ curl https://todoist.com/api/v7/uploads/delete \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d file_url='https://*.cloudfront.net/*/example.jpg'
 "ok"

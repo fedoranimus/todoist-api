@@ -3,7 +3,7 @@
 > On success, an HTTP 200 OK with a JSON object with the tasks found is returned:
 
 ```shell
-$ curl https://todoist.com/API/v7/query \
+$ curl https://todoist.com/api/v7/query \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d queries='["tomorrow","p1"]'
 [
