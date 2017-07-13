@@ -1,0 +1,170 @@
+title: Comments
+object:
+  name: Comment object
+  attrs:
+    - name: id
+      value: 1234
+      description: Comment id
+    - name: task_id
+      value: 2345
+      description: Comment's task id (for task comments).
+    - name: project_id
+      value: 2345
+      description: Comment's project id (for project comments)
+    - name: posted
+      value: "2016-09-22T07:00:00Z"
+      description: Comment's posted timestamp in UTC
+    - name: content
+      value: "Hello world"
+      description: Comment content
+    - name: attachment
+      value: {"resource_type": "file", "file_url": "https://cdn-domain.tld/path/to/file.pdf", "file_type": "application/pdf", "file_name": "File.pdf"}
+      description: optional object with comment attachment info, see below for details
+
+endpoints:
+
+  - name: Get all comments for given task or project
+    description: One of `task_id` or `project_id` arguments is required.
+    verb: GET
+    url: comments
+    get_args:
+      - name: project_id
+        description: Project id to filter
+      - name: task_id
+        description: Task id to filter
+    returns: JSON-encoded array of all comments
+    shell_sample: >
+      curl -X GET "$root/comments?task_id=2345&token=$my_token"
+    python_sample: >
+      >>> print requests.get(root + "/comments", args={"token": my_token, "task_id": 2345}).json()
+    output_sample: >
+      [
+        {
+          "id": 123,
+          "task_id": 2345,
+          "content": "Hello world",
+          "posted": "2016-09-22T07:00:00Z",
+          "attachment": {
+            "resource_type": "file",
+            "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+            "file_type": "application/pdf",
+            "file_name": "File.pdf"
+          }
+        }
+      ]
+
+
+  - name: Create new comment
+    verb: POST
+    url: comments
+    post_attrs:
+      - name: task_id
+        description: Comment's task id (for task comments).
+      - name: project_id
+        description: Comment's project id (for project comments)
+      - name: content
+        description: Comment content
+      - name: attachment
+        description: optional object for attachment object
+    returns: newly created comment
+    shell_sample: >
+      $ cat /tmp/note.json
+      {
+          "task_id": 2345,
+          "content": "Hello world"
+          "attachment": {
+              "resource_type": "file",
+              "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+              "file_type": "application/pdf",
+              "file_name": "File.pdf"
+          }
+      }
+
+      $ curl -X POST "$root/comments?token=$my_token"
+          --data @/tmp/note.json
+          -H "Content-Type: application/json"
+          -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
+    python_sample: >
+      requests.post(root + "/comments",
+          args={"token": my_token},
+          data=json.dumps({
+              "task_id": 2345,
+              "content": "Hello world"
+              "attachment": {
+                  "resource_type": "file",
+                  "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+                  "file_type": "application/pdf",
+                  "file_name": "File.pdf"
+              }
+          }),
+          headers={
+              "Content-Type": "application/json",
+              "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+          }
+      ).json()
+    output_sample: >
+      {
+        "id": 123,
+        "content": "Hello world",
+        "task_id": 2345,
+        "posted": "2016-09-22T07:00:00Z",
+        "attachment": {
+          "resource_type": "file",
+          "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+          "file_type": "application/pdf",
+          "file_name": "File.pdf"
+        }
+      }
+
+  - name: Get specific comment
+    verb: GET
+    url: comments/<comment_id>
+    returns: comment by id
+    shell_sample: >
+      curl -X GET "$root/comments/1234?token=$my_token"
+    python_sample: >
+      requests.get(root + "/comments/1234", args={"token": my_token}).json()
+    output_sample: >
+      {
+        "id": 123,
+        "content": "Hello world",
+        "task_id": 2345,
+        "posted": "2016-09-22T07:00:00Z",
+        "attachment": {
+          "resource_type": "file",
+          "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+          "file_type": "application/pdf",
+          "file_name": "File.pdf"
+        }
+      }
+
+  - name: Update specific comment
+    verb: POST
+    url: comments/<comment_id>
+    post_attrs:
+      - name: content
+        description: New content of the comment
+    returns: HTTP status code 204 and empty body
+    shell_sample: >
+      curl -X POST "$root/comments/1234?token=$my_token"
+          --data '{"content": "Goodbye world"}'
+          -H "Content-Type: application/json"
+          -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
+    python_sample: >
+      requests.post(root + "/comments/1234",
+          args={"token": my_token},
+          data=json.dumps({"content": "Goodbye world"}),
+          headers={
+              "Content-Type": "application/json",
+              "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+          }
+      )
+
+  - name: Delete specific comment
+    verb: DELETE
+    url: comments/<comment_id>
+    returns: empty response
+    shell_sample: >
+      curl -X DELETE "$root/comments/1234?token=$my_token"
+    python_sample: >
+      requests.delete(root + "/comments/1234", args={"token": my_token})

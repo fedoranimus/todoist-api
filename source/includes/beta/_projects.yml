@@ -1,0 +1,103 @@
+title: Projects
+object:
+  name: Project object
+  attrs:
+    - name: id
+      value: 1234
+      description: Project id
+    - name: name
+      value: My project
+      description: Project name
+    - name: order
+      value: 123
+      description: Project order (read-only, position in the list of projects)
+    - name: indent
+      value: 1
+      description: Project indentation level (read-only, value from 1 to 4)
+    - name: comment_count
+      value: 10
+      description: Number of project comments
+
+endpoints:
+
+
+  - name: Get all projects
+    verb: GET
+    url: projects
+    returns: JSON-encoded array of all user projects
+    shell_sample: >
+      curl -X GET "$root/projects?token=$my_token"
+    python_sample: >
+      >>> print requests.get(root + "/projects", args={"token": my_token}).json()
+    output_sample: >
+      [
+        {"id": 123, "name": "Inbox", "comment_count": 10, "order": 1, "indent": 1}
+      ]
+
+
+  - name: Create new project
+    verb: POST
+    url: projects
+    post_attrs:
+      - name: name
+        description: Name of the project
+    returns: newly created project
+    shell_sample: >
+      curl -X POST "$root/projects?token=$my_token"
+          --data '{"name": "Movies to watch"}'
+          -H "Content-Type: application/json"
+          -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
+    python_sample: >
+      requests.post(root + "/projects",
+          args={"token": my_token},
+          data=json.dumps({"name": "Movies to watch"}),
+          headers={
+              "Content-Type": "application/json",
+              "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+          }
+      ).json()
+    output_sample: >
+      {"id": 123, "name": "Movies to watch", "comment_count": 0, "order": 1, "indent": 1}
+
+
+  - name: Get specific project
+    verb: GET
+    url: projects/<project_id>
+    returns: project by id
+    shell_sample: >
+      curl -X GET "$root/projects/1234?token=$my_token"
+    python_sample: >
+      requests.get(root + "/projects/1234", args={"token": my_token}).json()
+    output_sample: >
+      {"id": 123, "name": "Movies to watch", "comment_count": 0, "order": 1, "indent": 1}
+
+  - name: Update specific project
+    verb: POST
+    url: projects/<project_id>
+    post_attrs:
+      - name: name
+        description: New name of the project
+    returns: HTTP status code 204 and empty body
+    shell_sample: >
+      curl -X POST "$root/projects/1234?token=$my_token"
+          --data '{"name": "Movies to watch"}'
+          -H "Content-Type: application/json"
+          -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
+    python_sample: >
+      requests.post(root + "/projects/1234",
+          args={"token": my_token},
+          data=json.dumps({"name": "Movies to watch"}),
+          headers={
+              "Content-Type": "application/json",
+              "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+          }
+      )
+
+  - name: Delete specific project
+    verb: DELETE
+    url: projects/<project_id>
+    returns: empty response
+    shell_sample: >
+      curl -X DELETE "$root/projects/1234?token=$my_token"
+    python_sample: >
+      requests.delete(root + "/projects/1234", args={"token": my_token})
