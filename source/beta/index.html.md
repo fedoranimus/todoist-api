@@ -7,12 +7,12 @@ language_tabs:
   - python
 
 includes:
-  - beta/intro
-  - beta/projects
-  - beta/tasks
-  - beta/comments
-  - beta/attachments
-  - beta/labels
+  - v8/intro
+  - v8/projects
+  - v8/tasks
+  - v8/comments
+  - v8/attachments
+  - v8/labels
 
 search: false
 ---
