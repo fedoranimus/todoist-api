@@ -6,30 +6,30 @@ language_tabs:
   - python
 
 includes:
-  - overview
-  - tutorial
-  - authorization
-  - sync
-  - projects
-  - templates
-  - items
-  - labels
-  - notes
-  - uploads
-  - filters
-  - reminders
-  - miscellaneous
-  - quick
-  - user
-  - sharing
-  - livenotifications
-  - business
-  - activity
-  - backups
-  - emails
-  - urlschemes
-  - webhooks
-  - changelog
+  - v7/overview
+  - v7/tutorial
+  - v7/authorization
+  - v7/sync
+  - v7/projects
+  - v7/templates
+  - v7/items
+  - v7/labels
+  - v7/notes
+  - v7/uploads
+  - v7/filters
+  - v7/reminders
+  - v7/miscellaneous
+  - v7/quick
+  - v7/user
+  - v7/sharing
+  - v7/livenotifications
+  - v7/business
+  - v7/activity
+  - v7/backups
+  - v7/emails
+  - v7/urlschemes
+  - v7/webhooks
+  - v7/changelog
 
 search: false
 ---

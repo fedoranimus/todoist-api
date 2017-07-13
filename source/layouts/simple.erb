@@ -41,7 +41,7 @@ under the License.
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
     <header class="site-header">
       <a href="/" class="site-logo">
-        <%= image_tag "td_logo.svg" %>
+        <%= image_tag current_page.data.logo || "td_logo.svg" %>
       </a>
       <nav class="site-nav <%= page_classes %>">
         <a class="link-index" href="/index.html">API Doc</a>
