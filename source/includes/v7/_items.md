@@ -40,7 +40,7 @@ content *String* | The text of the task
 date_string *String* | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string if not set). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang *String* | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
 due_date_utc  *String* | The date of the task in the format `Mon 07 Aug 2006 12:34:56 +0000` (or `null` if not set). For all day task (i.e. task due "Today"), the time part will be set as xx:xx:59.
-priority *Integer* | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
+priority *Integer* | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural). <br>**Note**: Keep in mind that `very urgent` is the priority 1 on clients. So, `p1` will return `4` in the API.
 indent *Integer* | The indent of the task (a number between `1` and `4`, where `1` is top-level).
 item_order *Integer* | The order of the task inside a project (the smallest value would place the task at the top).
 day_order *Integer* | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
@@ -94,7 +94,7 @@ project_id  *Integer or String (temp id)* | The id of the project to add the tas
 date_string *String* | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang *String* | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
 due_date_utc *String* | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. Note that, when the `due_date_utc` argument is specified, the `date_string` is required and has to specified as well, and also, the `date_string` argument will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
-priority *Integer* | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
+priority *Integer* | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural). <br>**Note**: Keep in mind that `very urgent` is the priority 1 on clients. So, `p1` will return `4` in the API.
 indent *Integer* | The indent of the task (a number between `1` and `4`, where `1` is top-level).
 item_order *Integer* | The order of the task inside a project (a number, where the smallest value would place the task at the top).
 day_order *Integer* | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
@@ -142,7 +142,7 @@ content *String* | The text of the task.
 date_string *String* | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
 date_lang  *String* | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
 due_date_utc  *String* | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. Note that, when the `due_date_utc` argument is specified, the `date_string` is required and has to specified as well, and also, the `date_string` argument will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
-priority *Integer* | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural).
+priority *Integer* | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural). <br>**Note**: Keep in mind that `very urgent` is the priority 1 on clients. So, `p1` will return `4` in the API.
 indent  *Integer* | The indent of the task (a number between `1` and `4`, where `1` is top-level).
 item_order  *Integer* | The order of the task inside a project (a number, where the smallest value would place the task at the top).
 day_order  *Integer* | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).

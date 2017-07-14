@@ -62,7 +62,7 @@ Value | Description
 ----  | -----------
 content *URL encoding*| The content of the task, which should be a string that in `Percent-encoding` (also known as URL encoding).
 date *URL encoding*| The due date of the task, which should be a string that in `Percent-encoding` (also known as URL encoding). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-priority *Integer*| The priority of the task, which should be a string with a value from `1` to `4`.
+priority *Integer*| The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural). <br>**Note**: Keep in mind that `very urgent` is the priority 1 on clients. So, `p1` will return `4` in the API.
 
 If all the values are empty, it will just open the add task view. This URL
 Scheme will not automatically add the task to Todoist, it will just open the add

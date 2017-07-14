@@ -346,7 +346,7 @@ Parameter | Description
 --------- | -----------
 project_id *Integer* | The id of the project to add the task to, while the default is the user's `Inbox` project.
 date_string *String* | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-priority *Integer* | The priority of the task (between `1` and `4`, `4` for very urgent and `1` for natural).
+priority *Integer* | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural). <br>**Note**: Keep in mind that `very urgent` is the priority 1 on clients. So, `p1` will return `4` in the API.
 indent *Integer* | The indent of the task (between `1` and `4`, where `1` is top-level).
 item_order *Integer* | The order of the task inside a project (where the smallest value would place the task at the top).
 labels *Array of Integer* | The task's labels (a list of label ids such as `[2324,2525]`).
