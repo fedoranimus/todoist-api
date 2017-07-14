@@ -144,6 +144,7 @@ settings_notifications | User's notification setting, used by clients that suppo
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "project_add", "temp_id": "381e601f-0ef3-4ed6-bf95-58f896d1a314", "uuid": "ed1ce597-e4c7-4a88-ba48-e048d827c067", "args": {"name": "Project1", "item_order": 1, "indent": 1, "color": 1}}]'
+
 {
   "sync_token": "JLlaPv840mDQK4PLl6-hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS",
   "sync_status": {"ed1ce597-e4c7-4a88-ba48-e048d827c067": "ok"},
@@ -177,8 +178,8 @@ following parameters
 
 Parameter | Description
 --------- | -----------
-commands | A JSON array of Command object. Each command will be processed in the specified order.
-token | API token
+commands *JSON* | A JSON array of Command object. Each command will be processed in the specified order.
+token *String* | API token
 
 
 ### Command object
