@@ -105,8 +105,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Adds a new note to the user account related to the API credentials.
-
 ### Required arguments
 
 Argument | Description
@@ -146,8 +144,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Adds a new note to a project.
-
 ### Required arguments
 
 Argument | Description
@@ -185,8 +181,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Updates a note for the user account related to the API credentials.
-
 ### Required arguments
 
 Argument | Description
@@ -220,8 +214,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> note.delete()
 >>> api.commit()
 ```
-
-Deletes a note from the user account related to the API credentials.
 
 ### Required arguments
 

@@ -55,8 +55,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Adds a new project to the user account related to the API credentials.
-
 ### Required arguments
 
 Argument | Description
@@ -94,7 +92,7 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Updates an existing project.
+Update an existing project.
 
 ### Required parameters
 
@@ -135,7 +133,7 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Deletes an existing project.
+Delete an existing project.
 
 ### Required arguments
 

@@ -46,8 +46,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Adds a new label to the user account related to the API credentials.
-
 ### Required arguments
 
 Argument | Description
@@ -84,8 +82,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> label.update(color=3)
 >>> api.commit()
 ```
-
-Updates a label on the user account related to the API credentials.
 
 ### Required arguments
 
@@ -125,8 +121,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Deletes a label from the user account related to the API credentials.
-
 ### Required arguments
 
 Argument | Description
@@ -156,8 +150,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.labels.update_orders({790748: 1, 790749: 2})
 >>> api.commit()
 ```
-
-Update the orders of multiple labels at once.
 
 ### Required arguments
 

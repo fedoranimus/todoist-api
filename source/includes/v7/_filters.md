@@ -51,8 +51,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Adds a new filter to the user related to the API credentials.
-
 ### Required arguments
 
 Argument | Description
@@ -90,8 +88,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> filter.update(query='tomorrow')
 >>> api.commit()
 ```
-
-Updates a filter of the user related to the API credentials.
 
 ### Required arguments
 
@@ -131,8 +127,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> filter.delete()
 >>> api.commit()
 ```
-
-Deletes a filter for the user related to the API credentials.
 
 ### Required arguments
 
