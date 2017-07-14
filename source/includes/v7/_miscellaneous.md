@@ -227,6 +227,7 @@ annotate_notes *Boolean* | Return notes together with the completed items (a `tr
 ```shell
 $ curl https://todoist.com/api/v7/projects/get_archived \
     -d token=0123456789abcdef0123456789abcdef01234567
+
 [
   {
     "id" : 150977840,
@@ -275,6 +276,7 @@ token *String* | The user's token received on login.
 $ curl https://todoist.com/api/v7/items/add \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d content=Task1
+
 {
   "assigned_by_uid": 1855589,
   "is_archived": 0,

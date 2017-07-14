@@ -35,6 +35,7 @@ $ curl https://todoist.com/api/v7/business/users/invite \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d email_list='["spam@example.com","egg@example.com"]'
     -d message='Welcome'
+
 [
   {
     "base_url": "http://todoist.com",
@@ -140,9 +141,12 @@ $ curl https://todoist.com/api/v7/business/users/accept_invitation \
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "biz_accept_invitation", "uuid": "48538e47-7a9f-4f3d-927a-463ea997675e", "args": {"invitation_id": 1234,  "invitation_secret": "abcdefghijklmno"}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"48538e47-7a9f-4f3d-927a-463ea997675e": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python

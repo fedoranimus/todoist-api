@@ -14,6 +14,7 @@ Settings` -> `Backups`).
 ```shell
 $ curl https://todoist.com/api/v7/backups/get \
     -d token=0123456789abcdef0123456789abcdef01234567
+
 [
   {
     "version": "2016-01-13 02:03",

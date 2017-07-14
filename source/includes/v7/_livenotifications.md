@@ -314,9 +314,9 @@ Here are the extra properties for the `biz_trial_will_end` type of live notifica
 
 Property | Description
 -------- | -----------
-quantity *Integer* | The number of users under the control of the business account.
-plan | Tariff plan name. Valid values are `business_monthly` and `business_yearly`.
-active_until *Integer* | The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.
+quantity *Integer*| The number of users under the control of the business account.
+plan *String*| Tariff plan name. Valid values are `business_monthly` and `business_yearly`.
+active_until *Integer*| The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.
 
 Here are the extra properties for the `biz_payment_failed` type of live notifications:
 
@@ -378,7 +378,7 @@ Set the last known notification.
 
 Argument | Description
 -------- | -----------
-id | The id of the last known notification (a number or `0` or `null` to mark all read).
+id *Integer*| The id of the last known notification (a number or `0` or `null` to mark all read).
 
 ## Mark as read
 
@@ -409,7 +409,7 @@ Mark the notification as read.
 
 Argument | Description
 -------- | -----------
-id | The id of the notification.
+id *Integer*| The id of the notification.
 
 ## Mark all as read
 
@@ -466,4 +466,4 @@ Mark the notification as unread.
 
 Argument | Description
 -------- | -----------
-id | The id of the notification.
+id *Integer*| The id of the notification.
