@@ -29,7 +29,6 @@
 }
 ```
 
-
 ### Properties
 
 Property | Description
@@ -63,10 +62,13 @@ date_added  *String* | The date when the task was created.
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_add", "temp_id": "43f7ed23-a038-46b5-b2c9-4abda9097ffa", "uuid": "997d4b43-55f1-48a9-9e66-de5785dfd69b", "args": {"content": "Task1", "project_id": 128501470}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"997d4b43-55f1-48a9-9e66-de5785dfd69b": "ok"},
   "temp_id_mapping": {"43f7ed23-a038-46b5-b2c9-4abda9097ffa": 33548400},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -82,7 +84,7 @@ Add a new task to a project.
 
 Argument | Description
 -------- | -----------
-content *String* | The text of the task (a string value).
+content *String* | The text of the task.
 
 ### Optional arguments
 
@@ -108,9 +110,12 @@ auto_reminder *Boolean* | When this option is enabled, the default reminder will
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_update", "uuid": "318d16a7-0c88-46e0-9eb5-cde6c72477c8", "args": {"id": 33548400, "priority": 2}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"318d16a7-0c88-46e0-9eb5-cde6c72477c8": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -121,9 +126,10 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Update a task.
+Updates an item for the user related to the API credentials.
 
 ### Required arguments
+
 Argument | Description
 -------- | -----------
 id *Integer or String (temp id)* | The id of the task.
@@ -151,9 +157,12 @@ responsible_uid *Integer* | The id of user who is responsible for accomplishing 
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_delete", "uuid": "f8539c77-7fd7-4846-afad-3b201f0be8a5", "args": {"ids": [33548400]}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"f8539c77-7fd7-4846-afad-3b201f0be8a5": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -178,10 +187,12 @@ ids  *Array of Integer (id) or String (temp id)* | List of the ids of the tasks 
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_move", "uuid": "818f108a-36d3-423d-857f-62837c245f3b", "args": {"project_items": {"128501470": [33548400]}, "to_project": 128501607}}]'
-{ ...
-  "sync_status": {"818f108a-36d3-423d-857f-62837c245f3b": "ok"},
-  ... }
 
+{
+  ...
+  "sync_status": {"818f108a-36d3-423d-857f-62837c245f3b": "ok"},
+  ...
+}
 ```
 
 ```python
@@ -219,8 +230,8 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Complete tasks and optionally move them to history. See also `item_close` for
-a simplified version of the command.
+Complete tasks and optionally move them to history. See also `item_close` for a
+simplified version of the command.
 
 ### Required arguments
 
@@ -240,9 +251,12 @@ force_history *Integer* | Whether these tasks should be moved to history (where 
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_uncomplete", "uuid": "710a60e1-174a-4313-bb9f-4df01e0349fd", "args": {"ids": [33548400]}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"710a60e1-174a-4313-bb9f-4df01e0349fd": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -275,9 +289,12 @@ restore_state *Object* | A dictionary object, where the item id is the key, and 
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_update_date_complete", "uuid": "c5888360-96b1-46be-aaac-b49b1135feab", "args": {"id": 33548400, "new_date_utc": "2014-10-30T23:59", "date_string": "every day", "is_forward": 1}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"c5888360-96b1-46be-aaac-b49b1135feab": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -287,7 +304,9 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Complete a recurring task, and the reason why this is a special case is because we need to mark a recurring completion (and using `item_update` won't do this). See also `item_close` for a simplified version of the command.
+Complete a recurring task, and the reason why this is a special case is because
+we need to mark a recurring completion (and using `item_update` won't do
+this). See also `item_close` for a simplified version of the command.
 
 ### Required arguments
 
@@ -304,17 +323,18 @@ date_string  *String* | The date of the task, added in free form text, for examp
 is_forward  *Integer* | Whether the task is to be completed (value `1`) or uncompleted (value `0`), while the default is `1`.
 
 
-
-
 ## Close item
 
 ```shell
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_close", "uuid": "c5888360-96b1-46be-aaac-b49b1135feab", "args": {"id": 33548400}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"c5888360-96b1-46be-aaac-b49b1135feab": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -337,17 +357,18 @@ Argument | Description
 id *Integer or String (temp id)* | The id of the item to close (a number or a temp id).
 
 
-
-
 ## Update multiple orders/indents
 
 ```shell
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_update_orders_indents", "uuid": "a2bf0c06-f834-4442-99ab-b86fdfc66ed5", "args": {"ids_to_orders_indents": {"33548400": [1, 1]}}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"a2bf0c06-f834-4442-99ab-b86fdfc66ed5": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -366,17 +387,18 @@ Argument | Description
 ids_to_orders_indents *Object* | A dictionary, where an item id is the key, and a list with two elements, the order and the indent, are its value: `item_id: [item_order, indent]`.
 
 
-
-
 ## Update day orders
 
 ```shell
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_update_day_orders", "uuid": "dbeb40fc-905f-4d8a-8bae-547d3bbd6e91", "args": {"ids_to_orders": {"33548400": 1}}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"dbeb40fc-905f-4d8a-8bae-547d3bbd6e91": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
