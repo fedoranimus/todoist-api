@@ -15,11 +15,16 @@
 }
 ```
 
-The set of functions and Sync API commands to manage Todoist Business accounts. All these functionality is only available for Business account admins.
+The set of functions and Sync API commands to
+manage [Todoist Business](https://en.todoist.com/business) accounts. All these
+functionality is only available for Business account admins.
 
-In order to become a business account admin, you should create a new account from [Todoist Business Free Trial](https://todoist.com/business/freeTrial), or to ask another business account admin to invite you, and to make you an admin.
+In order to become a business account admin, you should create a new account
+from [Todoist Business Free Trial](https://todoist.com/business/freeTrial), or
+to ask another business account admin to invite you, and to make you an admin.
 
-User, who is also a business account admin has the attribute `is_biz_admin`, set to `true`.
+User, who is also a business account admin has the attribute `is_biz_admin`, set
+to `true`.
 
 ## Send invitation
 
@@ -80,14 +85,22 @@ $ curl https://todoist.com/api/v7/business/users/invite \
     'user_id': 15
   }
 ]
-
 ```
 
-This function allows you to send invitation to your business account. Every invitation object has unique id and secret code. Anyone who knows this information, can activate invitation and join your business account. Invitation is deactivated at the moment it's accepted or rejected by receiver, or deleted manually by sender.
+This function allows you to send invitation to your business account. Every
+invitation object has an unique id and secret code. Anyone who knows this
+information, can activate invitation and join your business account. Invitation
+is deactivated at the moment it's accepted or rejected by receiver, or deleted
+manually by sender.
  
-Invitation objects are not created (quietly skipped), if the invitation recipient is an existing Todoist user and this user already belongs to a business account.
+Invitation objects are not created (quietly skipped), if the invitation
+recipient is an existing Todoist user and this user already belongs to a
+business account.
 
-If an invitation for that recipient already exists and hasn't been activated yet, a new invitation object will not be created. Instead, an existing invitation will be re-sent and the corresponding invitation object will be returned back.
+If an invitation for that recipient already exists and hasn't been activated
+yet, a new invitation object will not be created. Instead, an existing
+invitation will be re-sent and the corresponding invitation object will be
+returned back.
 
 The return value is a list of invitation objects.
 
@@ -139,11 +152,13 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Accept an invitation from Todoist for Business.  There are currently 2 ways to accept an invitation, either with a direct call, or by using a Sync API command, as can be seen from the examples on the side, and the different required arguments below.
+There are currently 2 ways to accept an invitation, either with a direct call,
+or by using a Sync API command, as can be seen from the examples on the side,
+and the different required arguments below.
 
-The invitation is accepted if it's still active and user doesn't belong to any business account yet.  For the direct call, `null` denotes a successful return value.
-
-
+The invitation is accepted if it's still active and user doesn't belong to any
+business account yet.  For the direct call, `null` denotes a successful return
+value.
 
 ### Required arguments
 
@@ -194,9 +209,14 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Reject an invitation from Todoist for Business.  There are currently 2 ways to reject an invitation, either with a direct call, or by using a Sync API command, as can be seen from the examples on the side, and the different required arguments below.
+There are currently 2 ways to reject an invitation, either with a direct call,
+or by using a Sync API command, as can be seen from the examples on the side,
+and the different required arguments below.
 
-The invitation is rejected and deleted.  Note that the client doesn't have to provide the user's token to reject invitation: it's enough to provide knowledge of invitation secret business account yet.  For the direct call, `null` denotes a successful return value.
+The invitation is rejected and deleted. Note that the client doesn't have to
+provide the user's token to reject invitation: it's enough to provide knowledge
+of invitation secret business account yet. For the direct call, `null` denotes
+a successful return value.
 
 ### Required arguments
 
