@@ -1,6 +1,7 @@
 # User
 
-A user in Todoist is a JSON object. The dates will be in the UTC timezone. Typically a user object will have the following properties:
+A user in Todoist is a JSON object. The dates will be in the UTC
+timezone. Typically a user object will have the following properties:
 
 > An example user object
 
@@ -93,12 +94,12 @@ join_date *String* | The date when the user joined Todoist.
 
 > An example of registering a new user:
 
-
 ```shell
 $ curl https://todoist.com/api/v7/user/register \
     -d email=me@example.com \
     -d full_name=Example\ User \
     -d password=secret
+
 {
   "id": 1855589,
   "token": "0123456789abcdef0123456789abcdef01234567",
@@ -196,8 +197,6 @@ $ curl https://todoist.com/api/v7/user/register \
 
 ```
 
-Register a new user.
-
 ### Required parameters
 
 Parameter | Description
@@ -231,8 +230,6 @@ $ curl https://todoist.com/api/v7/user/delete \
 ok
 ```
 
-Delete an existing user.
-
 ### Required parameters
 
 Parameter | Description
@@ -256,10 +253,12 @@ reason_for_delete *String* | A reason for deletion, that is used for sending fee
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "user_update", "uuid": "52f83009-7e27-4b9f-9943-1c5e3d1e6889", "args": {"time_format": 0}}]'
-{ ...
-  "sync_status": {"52f83009-7e27-4b9f-9943-1c5e3d1e6889": "ok"},
-  ... }
 
+{
+  ...
+  "sync_status": {"52f83009-7e27-4b9f-9943-1c5e3d1e6889": "ok"},
+  ...
+}
 ```
 
 ```python
@@ -267,8 +266,6 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api = todoist.TodoistAPI('0123456789abcdef0123456789abcdef01234567')
 >>> api.user.update(time_format=0)
 ```
-
-Update the details of the user.
 
 ### Optional parameters
 
@@ -297,10 +294,12 @@ theme *Integer* | The currently selected Todoist theme (between `0` and `10`).
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "update_goals", "uuid": "b9bbeaf8-9db6-452a-a843-a192f1542892", "args": {"vacation_mode": 1}}]'
-{ ...
-  "sync_status": {"b9bbeaf8-9db6-452a-a843-a192f1542892": "ok"},
-  ... }
 
+{
+  ...
+  "sync_status": {"b9bbeaf8-9db6-452a-a843-a192f1542892": "ok"},
+  ...
+}
 ```
 
 ```python
@@ -465,6 +464,4 @@ Parameter | Description
 token *String* | The user's token received on login.
 notification_type *String* | The notification type.  For a list of notifications have a look at the `Live Notifications` section.
 service *String* | The service type, which can take the values: `email` or `push`.
-dont_notify *Integer* | Whether notifications of this service should be notified (`1` to not notify, and `0` to nofify).
-
-
+dont_notify *Integer* | Whether notifications of this service should be notified (`1` to not notify, and `0` to notify).
