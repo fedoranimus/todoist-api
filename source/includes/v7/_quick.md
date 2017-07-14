@@ -8,6 +8,7 @@
 $ curl https://todoist.com/api/v7/quick/add \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d text='Task1 @Label1 #Project1 +ExampleUser'
+
 {
   "assigned_by_uid": 1855589,
   "is_archived": 0,
@@ -64,7 +65,8 @@ $ curl https://todoist.com/api/v7/quick/add \
 }
 ```
 
-Implementation of the Quick Add Task available in the official clients.
+Add a new task using the Quick Add Task implementation available in the official
+clients.
 
 ### Required parameters
 
