@@ -2,10 +2,13 @@
 
 ## Get backups
 
-Todoist creates a backup archive of users' data on a daily basis. Backup archives can also be accessed from the web app
-(`Todoist Settings` -> `Backups`).
+Todoist creates a backup archive of users' data on a daily
+basis. Backup archives can also be accessed from the web app (`Todoist
+Settings` -> `Backups`).
 
-> The list of recent backup archives can be accessed via the following API endpoint, and upon successful request, a HTTP 200 response will be returned with a list of backup archives in JSON format:
+> The list of recent backup archives can be accessed via the following
+> API endpoint, and upon successful request, a HTTP 200 response will
+> be returned with a list of backup archives in JSON format:
 
 
 ```shell
