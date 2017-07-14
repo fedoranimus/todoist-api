@@ -1,6 +1,7 @@
 # Uploads
 
-Files can be uploaded to our servers and used as file attachments in Notes.
+Files can be uploaded to our servers and used as file attachments
+in [Notes](#notes).
 
 ## Upload a file
 
@@ -11,6 +12,7 @@ $ curl https://todoist.com/api/v7/uploads/add \
     -F token=0123456789abcdef0123456789abcdef01234567 \
     -F file_name=example.jpg \
     -F file=@/path/to/example.jpg
+
 {
   "file_name": "example.jpg",
   "file_size": 85665,
@@ -53,9 +55,10 @@ $ curl https://todoist.com/api/v7/uploads/add \
     96, 74
   ]
 }
-
 ```
-Upload a file suitable to be passed as a `file_attachment` attribute to the `note_add` or `note_update` calls.
+
+Upload a file suitable to be passed as a `file_attachment` attribute to the
+`note_add` or `note_update` calls.
 
 ### Required parameters
 
@@ -76,17 +79,27 @@ upload_state *String* | Upload completion state (either `pending` or `completed`
 
 ### Image file properties
 
-If you upload an image, you may provide thumbnail paths to ensure Todoist handles them appropriately. Valid thumbnail information is a JSON array with URL, width in pixels, height in pixels. Ex.: `["http://example.com/img.jpg",400,300]`. "Canonical" thumbnails (ones we create by `upload_file` API call) have following sizes: `96x96`, `288x288`, `528x528`.
+If you upload an image, you may provide thumbnail paths to ensure Todoist
+handles them appropriately. Valid thumbnail information is a JSON array with
+URL, width in pixels, height in pixels. Ex.:
+`["http://example.com/img.jpg",400,300]`. "Canonical" thumbnails (ones we create
+by `upload_file` API call) have following sizes: `96x96`, `288x288`, `528x528`.
 
 Attribute | Description
 --------- | -----------
-tn_l *Array* | Large thumbnail (a list that contains the URL, the width and the height of the thumbnail).
-tn_m *Array* | Medium thumbnail (a list that contains the URL, the width and the height of the thumbnail).
-tn_s *Array* | Small thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_l *List* | Large thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_m *List* | Medium thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_s *List* | Small thumbnail (a list that contains the URL, the width and the height of the thumbnail).
 
 ### Audio file properties
 
-If you upload an audio file, you may provide an extra attribute `file_duration` (duration of the audio file in seconds, which takes an integer value). In the web interface the file is rendered back with a `<audio>` tag, so you should make sure it's supported in current web browsers. See [supported media formats](https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats) for the reference.
+If you upload an audio file, you may provide an extra attribute `file_duration`
+(duration of the audio file in seconds, which takes an integer value). In the
+web interface the file is rendered back with a `<audio>` tag, so you should make
+sure it's supported in current web
+browsers. See
+[supported media formats](https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats) for
+the reference.
 
 ## Get uploads
 
@@ -182,6 +195,7 @@ last_id *Integer* | Can be used for pagination. This should be the minimum uploa
 $ curl https://todoist.com/api/v7/uploads/delete \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d file_url='https://*.cloudfront.net/*/example.jpg'
+
 "ok"
 ```
 
@@ -192,7 +206,7 @@ $ curl https://todoist.com/api/v7/uploads/delete \
 ok
 ```
 
-Delete an upload.
+Delete an uploaded file.
 
 ### Required parameters
 
