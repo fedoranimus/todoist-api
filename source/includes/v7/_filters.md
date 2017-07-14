@@ -1,5 +1,7 @@
 # Filters
 
+*Filters are only available for Todoist Premium users.*
+
 > An example filter object
 
 ```json
@@ -12,8 +14,6 @@
   "is_deleted": 0
 }
 ```
-
-Filters are only available for Todoist Premium users.
 
 ### Properties
 
@@ -34,10 +34,13 @@ is_deleted *Integer* | Whether the filter is marked as deleted (where `1` is tru
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "filter_add", "temp_id": "9204ca9f-e91c-436b-b408-ea02b3972686", "uuid": "0b8690b8-59e6-4d5b-9c08-6b4f1e8e0eb8", "args": {"name": "Filter1", "query": "no due date"}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"0b8690b8-59e6-4d5b-9c08-6b4f1e8e0eb8": "ok"},
   "temp_id_mapping": {"9204ca9f-e91c-436b-b408-ea02b3972686": 9},
-  ... }
+  ...
+}
 
 ```
 
@@ -48,7 +51,7 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Add a filter.
+Adds a new filter to the user related to the API credentials.
 
 ### Required arguments
 
@@ -72,9 +75,12 @@ item_order *Integer* | Filter’s order in the filter list (the smallest value s
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "filter_update", "uuid": "a68b588a-44f7-434c-b3c5-a699949f755c", "args": {"id": 9, "query": "tomorrow"}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"a68b588a-44f7-434c-b3c5-a699949f755c": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -85,7 +91,7 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Update a filter.
+Updates a filter of the user related to the API credentials.
 
 ### Required arguments
 
@@ -97,10 +103,10 @@ id *Integer or String (temp_id)* | The id of the filter.
 
 Argument | Description
 -------- | -----------
-name | The name of the filter (a string value).
-query | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
-color | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).
-item_order | Filter’s order in the filter list (where the smallest value should place the filter at the top).
+name *String* | The name of the filter
+query *String* | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
+color *Number* | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).
+item_order *Number* | Filter’s order in the filter list (where the smallest value should place the filter at the top).
 
 ## Delete a filter
 
@@ -110,9 +116,12 @@ item_order | Filter’s order in the filter list (where the smallest value shoul
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "filter_delete", "uuid": "b8186025-66d5-4eae-b0dd-befa541abbed", "args": {"id": 9}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"b8186025-66d5-4eae-b0dd-befa541abbed": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -123,7 +132,7 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Delete a filter.
+Deletes a filter for the user related to the API credentials.
 
 ### Required arguments
 
@@ -139,9 +148,12 @@ id *Integer or String (temp_id)* | The id of the filter.
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands=[{"type": "filter_update_orders", "uuid": "517560cc-f165-4ff6-947b-3adda8aef744", "args": {"id_order_mapping": {"9":  1, "10": 2}}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"517560cc-f165-4ff6-947b-3adda8aef744": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
