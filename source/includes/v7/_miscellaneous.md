@@ -7,6 +7,7 @@
 ```shell
 $ curl https://todoist.com/api/v7/completed/get_stats \
     -d token=0123456789abcdef0123456789abcdef01234567
+
 {
   "karma_last_update": 50.0,
   "karma_trend": "up",
@@ -139,6 +140,7 @@ token *String* | The user's token received on login.
 ```shell
 $ curl https://todoist.com/api/v7/completed/get_all \
     -d token=0123456789abcdef0123456789abcdef01234567
+
 {
   "items": [
     { "content": "Item11",
@@ -197,7 +199,9 @@ $ curl https://todoist.com/api/v7/completed/get_all \
 }
 ```
 
-Get all the user's completed items (tasks). Only available for Todoist Premium users.
+*Only available for Todoist Premium users.*
+
+Get all the user's completed items (tasks).
 
 ### Required parameters
 
@@ -323,7 +327,9 @@ $ curl https://todoist.com/api/v7/items/add \
 }
 ```
 
-Add a new task to a project.  Note, that this is provided as a helper method, a shortcut, to quickly add a task without going through the `Sync workflow` described in a previous section.
+Add a new task to a project. Note, that this is provided as a helper
+method, a shortcut, to quickly add a task without going through the
+`Sync workflow` described in a previous section.
 
 ### Required parameters
 
@@ -355,6 +361,7 @@ auto_reminder *Boolean* | When this option is enabled, the default reminder will
 $ curl https://todoist.com/api/v7/items/get \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d item_id=466
+
 {
   "project": {
     "name": "Inbox",
@@ -511,13 +518,15 @@ $ curl https://todoist.com/api/v7/items/get \
 }
 ```
 
-This function is used to extract detailed information about the item, including all the notes.
+This function is used to extract detailed information about the item,
+including all the notes.
 
 It's especially important, because on initial load we return back no more than
 10 last notes, and if client wants to get more, they can be downloaded with
 `get_item` endpoint.
 
-It returns a JSON object with the `item`, and optionally the `project` and `notes` attributes.
+It returns a JSON object with the `item`, and optionally the `project`
+and `notes` attributes.
 
 ### Required parameters
 
@@ -535,6 +544,7 @@ all_data *Boolean* | Whether to return the parent project and notes of the item 
 $ curl https://todoist.com/api/v7/projects/get \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d project_id=128501682
+
 {
   "project" : {
     "id": 128501682,
@@ -595,7 +605,8 @@ $ curl https://todoist.com/api/v7/projects/get \
 }
 ```
 
-This function is used to extract detailed information about the project, including all the notes.
+This function is used to extract detailed information about the
+project, including all the notes.
 
 It's especially important, because on initial load we return back no more than
 10 last notes, and if client wants to get more, they can be downloaded with
@@ -620,6 +631,7 @@ all_data *Boolean* | Whether to return the notes of the project (a `true` or `fa
 $ curl https://todoist.com/api/v7/projects/get_data \
     -d token=0123456789abcdef0123456789abcdef01234567
     -d project_id=128501682
+
 {
   "project" : {
     "item_order" : 4,
