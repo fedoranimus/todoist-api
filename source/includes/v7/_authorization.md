@@ -1,12 +1,21 @@
 # Authorization
 
-In order to make authorized calls to Todoist APIs, your application must first obtain an access token from the users. This section describes the different ways of obtaining such a token.
+In order to make authorized calls to Todoist APIs, your application must first
+obtain an access token from the users. This section describes the different ways
+of obtaining such a token.
 
-Note that we encourage your application to use the [OAuth](http://en.wikipedia.org/wiki/OAuth) protocol to obtain the access token from the user, as the other authentication methods (`login` and `login_with_google`) are scheduled for deprecation.
+Note that we encourage your application to use
+the [OAuth](http://en.wikipedia.org/wiki/OAuth) protocol to obtain the access
+token from the user, as the other authentication methods (`login` and
+`login_with_google`) are scheduled for deprecation.
 
 ## OAuth
 
-External applications could obtain a user authorized API token via the OAuth2 protocol. Before getting started, developers need to create their applications in App Management Console and configure a valid OAuth redirect URL. A registered Todoist application is assigned a unique Client ID and Client Secret which are needed for the OAuth2 flow.
+External applications could obtain a user authorized API token via the OAuth2
+protocol. Before getting started, developers need to create their applications
+in [App Management Console](/appconsole.html) and configure a valid OAuth
+redirect URL. A registered Todoist application is assigned a unique `Client ID`
+and `Client Secret` which are needed for the OAuth2 flow.
 
 This procedure is comprised of 3 steps, which will be described below.
 
@@ -21,7 +30,8 @@ $ curl "https://todoist.com/oauth/authorize" \
     -d "state=secretstring"
 ```
 
-Redirect users to the authorization URL at the endpoint `https://todoist.com/oauth/authorize`, with the specified request parameters.
+Redirect users to the authorization URL at the endpoint
+`https://todoist.com/oauth/authorize`, with the specified request parameters.
 
 Here follow the required parameters:
 
@@ -30,7 +40,6 @@ Name | Description
 client_id | The unique Client ID of the Todoist application that you registered.
 scope | A comma separated list of permissions that you would like the users to grant to your application. See below a table with more details about this.
 state | A unique and unguessable string. It is used to protect you against cross-site request forgery attacks.
-
 
 Here are the scope parameters mentioned before:
 
@@ -53,9 +62,15 @@ Invalid Scope | When the `scope` parameter is invalid, Todoist will redirect the
 
 ### Step 2: The redirection to your application site
 
-When the user grants your authorization request , the user will be redirected to the redirect URL configured in your application setting. The redirect request will come with two query parameters attached: `code` and `state`.
+When the user grants your authorization request, the user will be redirected to
+the redirect URL configured in your application setting. The redirect request
+will come with two query parameters attached: `code` and `state`.
 
-The `code` parameter contains the authorization code that you will use to exchange for an access token. The `state` parameter should match the `state` parameter that you supplied in the previous step.  If the `state` is unmatched, your request has been compromised by other parties, and the process should be aborted.
+The `code` parameter contains the authorization code that you will use to
+exchange for an access token. The `state` parameter should match the `state`
+parameter that you supplied in the previous step.  If the `state` is unmatched,
+your request has been compromised by other parties, and the process should be
+aborted.
 
 ### Step 3: The token exchange
 
@@ -78,7 +93,10 @@ $ curl "https://todoist.com/oauth/access_token" \
 }
 ```
 
-Once you have the authorization `code`, you can exchange it for the access token at the endpoint `POST https://todoist.com/oauth/access_token`.
+Once you have the authorization `code`, you can exchange it for the access token
+by doing a `POST` request to the following endpoint:
+
+`https://todoist.com/oauth/access_token`.
 
 Here follow the required parameters:
 
@@ -98,10 +116,10 @@ Incorrect Client Credentials Error | Occurs when the `client_id` or `client_secr
 
 ## Revoke Access Tokens
 
-Access tokens obtained via OAuth could be revoked making a JSON request (HTTP POST) to the following endpoint:
-```
-https://todoist.com/api/access_tokens/revoke
-```
+Access tokens obtained via OAuth could be revoked making a JSON request (HTTP
+POST) to the following endpoint:
+
+`https://todoist.com/api/access_tokens/revoke`
 
 
 ```shell
@@ -121,13 +139,14 @@ Upon successful request, a HTTP 204 response will be returned.
 
 ## Migrate Personal Tokens to OAuth Tokens
 
-Tokens obtained via the old email/password authentication method could
-be migrated to the new OAuth access token. Migrating your users' personal tokens will allow users to see your app in their Todoist Setting page and give them the ability to manage their app authorization.
+Tokens obtained via the old email/password authentication method could be
+migrated to the new OAuth access token. Migrating your users' personal tokens
+will allow users to see your app in their Todoist Settings page and give them
+the ability to manage their app authorization.
 
-Migration API endpoint (HTTP POST, with JSON request parameters):
-```
-https://todoist.com/api/access_tokens/migrate_personal_token
-```
+Here is the migration API endpoint (HTTP POST, with JSON request parameters):
+
+`https://todoist.com/api/access_tokens/migrate_personal_token`
 
 ```shell
 curl https://todoist.com/api/access_tokens/migrate_personal_token -H "Content-Type: application/json" -X POST -d '{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}'
