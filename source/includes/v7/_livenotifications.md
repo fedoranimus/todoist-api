@@ -270,7 +270,8 @@ biz_invitation_rejected | Sent to an inviter, when the invitation is rejected.
 
 ### Common properties
 
-Some properties are common for all types of notifications, whereas some others depend on the notification type.
+Some properties are common for all types of notifications, whereas some others
+depend on the notification type.
 
 Every live notification has the following properties:
 
@@ -286,7 +287,8 @@ is_unread *Integer* | Whether the notification is marked as unread (`1`) or read
 
 ### Specific properties
 
-Here are the extra properties for the `*_invitation_*` types of live notifications:
+Here are the extra properties for the `*_invitation_*` types of live
+notifications:
 
 Property | Description
 -------- | -----------
@@ -337,7 +339,8 @@ quantity *Integer* | The number of users under the control of the business accou
 plan *String* | Tariff plan name. Valid values are `business_monthly` and `business_yearly`.
 active_until *Integer* | The timestamp when the business account will be disabled. The value may not match the business account subscription end date, as we give some extra days (up to two weeks) to pay the invoice.
 
-Here are the extra properties for the `biz_invitation_created` type of live notifications:
+Here are the extra properties for the `biz_invitation_created` type of live
+notifications:
 
 Property | Description
 -------- | -----------
@@ -354,9 +357,12 @@ account_name *String* | Business account (company) name.
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "live_notifications_set_last_read", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8", "args": {"id": 1234}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"588b9ccf-29c0-4837-8bbc-fc858c0c6df8": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -382,9 +388,12 @@ id | The id of the last known notification (a number or `0` or `null` to mark al
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "live_notifications_mark_read", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8", "args": {"id": 1234}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"588b9ccf-29c0-4837-8bbc-fc858c0c6df8": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -410,9 +419,12 @@ id | The id of the notification.
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "live_notifications_mark_read_all", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8"}]'
-{ ...
+
+{
+  ...
   "sync_status": {"588b9ccf-29c0-4837-8bbc-fc858c0c6df8": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -433,9 +445,12 @@ Mark all notifications as read.
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "live_notifications_mark_unread", "uuid": "588b9ccf-29c0-4837-8bbc-fc858c0c6df8", "args": {"id": 1234}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"588b9ccf-29c0-4837-8bbc-fc858c0c6df8": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
