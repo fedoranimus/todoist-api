@@ -1,6 +1,8 @@
 # Templates
 
-Templates allow exporting of a projects tasks into a file or URL, and then importing of the complete task list to a new or existing project.  Note that, templates are only available for Todoist Premium users.
+Templates allow exporting of a projects tasks into a file or URL, and then
+importing of the complete task list to a new or existing project.  Note that,
+templates are only available for Todoist Premium users.
 
 ## Import into project
 
@@ -11,6 +13,7 @@ $ curl https://todoist.com/api/v7/templates/import_into_project \
     -F token=0123456789abcdef0123456789abcdef01234567 \
     -F project_id=128501470 \
     -F file=@example.csv
+
 {
   "status": "ok"
 }
@@ -23,7 +26,6 @@ $ curl https://todoist.com/api/v7/templates/import_into_project \
 {
   'status': 'ok'
 }
-
 ```
 
 Upload a file suitable to be passed as a template to be imported into a project.
@@ -61,6 +63,7 @@ Get a template for a project as a file.
 $ curl https://todoist.com/api/v7/templates/export_as_url \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d project_id=128501470
+
 {
   "file_name": "*_Project1.csv",
   "file_url": "https://*.cloudfront.net/*_Project1.csv"
@@ -75,9 +78,10 @@ $ curl https://todoist.com/api/v7/templates/export_as_url \
   'file_name': '*_Project1.csv',
   'file_url': 'https://*.cloudfront.net/*_Project1.csv'
 }
-
 ```
 
 Get a template for a project as a shareable URL.
 
-The URL can then be passed to `https://todoist.com/importFromTemplate?t_url=<url>` to make a sharable template.
+The URL can then be passed to
+`https://todoist.com/importFromTemplate?t_url=<url>` to make a shareable
+template.
