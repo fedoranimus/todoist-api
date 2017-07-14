@@ -23,7 +23,7 @@
 }
 ```
 
-Notes are only available for Todoist Premium users.
+*Notes are only available for Todoist Premium users.*
 
 ### Properties
 
@@ -42,7 +42,9 @@ posted *String* | The date when the note was posted.
 
 ### File attachments
 
-A file attachment is represented as a JSON object. The file attachment may point to a document, previously uploaded by the `upload_file` API call, or by any external resource.
+A file attachment is represented as a JSON object. The file attachment may point
+to a document previously uploaded by the `upload_file` API call, or by any
+external resource.
 
 ### Base file properties
 
@@ -56,17 +58,27 @@ upload_state *String* | Upload completion state (for example `pending` or `compl
 
 ### Image file properties
 
-If you upload an image, you may provide thumbnail paths to ensure Todoist handles them appropriately. Valid thumbnail information is a JSON array with URL, width in pixels, height in pixels. Ex.: ["http://example.com/img.jpg",400,300]. "Canonical" thumbnails (ones we create by `upload_file` API call) have the following sizes: 96x96, 288x288, 528x528.
+If you upload an image, you may provide thumbnail paths to ensure Todoist
+handles them appropriately. Valid thumbnail information is a JSON array with
+URL, width in pixels, height in pixels. Ex.:
+["http://example.com/img.jpg",400,300]. "Canonical" thumbnails (ones we create
+by `upload_file` API call) have the following sizes: `96x96`, `288x288`,
+`528x528`.
 
 Attribute | Description
 --------- | -----------
-tn_l *Array* | Large thumbnail (a list that contains the URL, the width and the height of the thumbnail).
-tn_m *Array* | Medium thumbnail (a list that contains the URL, the width and the height of the thumbnail).
-tn_s *Array* | Small thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_l *List* | Large thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_m *List* | Medium thumbnail (a list that contains the URL, the width and the height of the thumbnail).
+tn_s *List* | Small thumbnail (a list that contains the URL, the width and the height of the thumbnail).
 
 ### Audio file properties
 
-If you upload an audio file, you may provide an extra attribute `file_duration` (duration of the audio file in seconds, which takes an integer value). In the web interface the file is rendered with a `<audio>` tag, so you should make sure it's supported in current web browsers. See [supported media formats](https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats) for the reference.
+If you upload an audio file, you may provide an extra attribute `file_duration`
+(duration of the audio file in seconds, which takes an integer value). In the
+web interface the file is rendered with a `<audio>` tag, so you should make sure
+it's supported in current web browsers. See
+[supported media formats](https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats) for
+the reference.
 
 
 ## Add a note
@@ -77,10 +89,13 @@ If you upload an audio file, you may provide an extra attribute `file_duration` 
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "note_add", "temp_id": "59fe4461-287b-4b00-bacc-ee771137a732", "uuid": "e1005f08-acd6-4172-bab1-4338f8616e49", "args": {"item_id": 33548400, "content": "Note1"}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"e1005f08-acd6-4172-bab1-4338f8616e49": "ok"},
   "temp_id_mapping": {"59fe4461-287b-4b00-bacc-ee771137a732": 17299568},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -90,20 +105,20 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Add a note.
+Adds a new note to the user account related to the API credentials.
 
 ### Required arguments
 
 Argument | Description
 -------- | -----------
-item_id | The item which the note is part of (a unique number or temp id).
-content | The content of the note (a string value).
+item_id *Integer* | The item which the note is part of (a unique number or temp id).
+content *String* | The content of the note (a string value).
 
 ### Optional arguments
 
 Argument | Description
 -------- | -----------
-file_attachment *Object* | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
+file_attachment *Object* | A file attached to the note (see more details about attachments above, and learn how to upload a file in the [Uploads section](#uploads)).
 uids_to_notify *Array of Integer* | A list of user ids to notify.
 
 
@@ -115,10 +130,13 @@ uids_to_notify *Array of Integer* | A list of user ids to notify.
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "note_add", "temp_id": "95653826-fc43-47b3-86c8-c11f90fe7aba", "uuid": "f5d12bd9-d14d-4529-b223-9cd7d593119e", "args": {"project_id": 128501682, "content": "Note1"}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"f5d12bd9-d14d-4529-b223-9cd7d593119e": "ok"},
   "temp_id_mapping": {"95653826-fc43-47b3-86c8-c11f90fe7aba": 17299568},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -128,7 +146,7 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Add a project note.
+Adds a new note to a project.
 
 ### Required arguments
 
@@ -141,7 +159,7 @@ content *String* | The content of the note.
 
 Argument | Description
 -------- | -----------
-file_attachment *Object* | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
+file_attachment *Object* | A file attached to the note (see more details about attachments above, and learn how to upload a file in the [Uploads section](#uploads)).
 
 ## Update a note
 
@@ -151,9 +169,12 @@ file_attachment *Object* | A file attached to the note (see more details about a
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "note_update", "uuid": "8a38f9c5-2cd0-4da5-87c1-26d617b354e0", "args": {"id": 17299568, "content": "UpdatedNote1"}}]'
-{ ...
+
+{
+  ...
   "sync_status": {"8a38f9c5-2cd0-4da5-87c1-26d617b354e0": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -164,7 +185,7 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Update a note.
+Updates a note for the user account related to the API credentials.
 
 ### Required arguments
 
@@ -177,7 +198,7 @@ id *Integer or String (temp_id)* | The id of the note.
 Argument | Description
 -------- | -----------
 content *String* | The content of the note.
-file_attachment *Object* | A file attached to the note (see more details about attachments above, and learn how to upload a file in the `Uploads` section).
+file_attachment *Object* | A file attached to the note (see more details about attachments above, and learn how to upload a file in the [Uploads section](#uploads)).
 
 ## Delete a note
 
@@ -200,7 +221,7 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-Delete a note.
+Deletes a note from the user account related to the API credentials.
 
 ### Required arguments
 
