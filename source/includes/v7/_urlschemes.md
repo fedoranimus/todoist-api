@@ -1,6 +1,8 @@
 # URL schemes
 
-The following URL schemes might also be useful when accessing the Todoist applications (iOS and Android) or when performing certain actions with them, so they are also included here for completeness.
+The following URL schemes might also be useful when accessing the Todoist
+applications (iOS and Android) or when performing certain actions with them, so
+they are also included here for completeness.
 
 ## Views
 
@@ -58,11 +60,13 @@ The `todoist://addtask` scheme accepts the following optional values:
 
 Value | Description
 ----  | -----------
-content | The content of the task, which should be a string that in `Percent-encoding` (also known as URL encoding).
-date | The due date of the task, which should be a string that in `Percent-encoding` (also known as URL encoding). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-priority | The priority of the task, which should be a string with a value from `1` to `4`.
+content *URL encoding*| The content of the task, which should be a string that in `Percent-encoding` (also known as URL encoding).
+date *URL encoding*| The due date of the task, which should be a string that in `Percent-encoding` (also known as URL encoding). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+priority *Integer*| The priority of the task, which should be a string with a value from `1` to `4`.
 
-If all the values are empty, it will just open the add task view. This URL Scheme will not automatically add the task to Todoist, it will just open the add task view and fill the fields.
+If all the values are empty, it will just open the add task view. This URL
+Scheme will not automatically add the task to Todoist, it will just open the add
+task view and fill the fields.
 
 ## Projects
 
@@ -88,7 +92,7 @@ The `todoist://project` scheme accepts the following required value:
 
 Value | Description
 ----  | -----------
-id | The id of the project to view. If the id doesn't exist, you don’t have access to the project, or the value is empty, an alert will be showed and the user will be redirected to the projects view.
+id *Integer*| The id of the project to view. If the id doesn't exist, you don’t have access to the project, or the value is empty, an alert will be showed and the user will be redirected to the projects view.
 
 ## Labels
 
@@ -114,7 +118,7 @@ The `todoist://label` scheme accepts the following required value:
 
 Value | Description
 ----  | -----------
-id | The id of the label to view. If the id doesn't exist, you don’t have access to the label, or the value is empty, an alert will be showed and the user will be redirected to the labels view.
+id *Integer*| The id of the label to view. If the id doesn't exist, you don’t have access to the label, or the value is empty, an alert will be showed and the user will be redirected to the labels view.
 
 ## Filters
 
@@ -140,7 +144,7 @@ The `todoist://filter` scheme accepts the following required value:
 
 Value | Description
 ----  | -----------
-id | The id of the filter to view. If the id doesn't exist, you don’t have access to the filter, or the value is empty, an alert will be showed and the user will be redirected to the filters view.
+id *Integer*| The id of the filter to view. If the id doesn't exist, you don’t have access to the filter, or the value is empty, an alert will be showed and the user will be redirected to the filters view.
 
 
 ## Search
@@ -161,4 +165,4 @@ The `todoist://search` scheme accepts the following required value:
 
 Value | Description
 ----  | -----------
-query | The query to search in the Todoist application, which should be a string that is in `Percent-encoding` (also known as URL encoding).
+query *URL encoding*| The query to search in the Todoist application, which should be a string that is in `Percent-encoding` (also known as URL encoding).
