@@ -1,12 +1,15 @@
 # Activity
 
-The activity log makes it easy to see everything that is happening across projects, items and notes.
+*Activity log is only available for Todoist Premium.*
 
-*Note that, the activity log is only available for Todoist Premium.*
+The activity log makes it easy to see everything that is happening across projects, items and notes.
 
 ### Logged events
 
-Currently the official Todoist clients present only the most important events that most users are interested in, but actually everything that has to do with projects, items and notes, is stored in our DB, and can be accessed by using our API.
+Currently the official Todoist clients present only the most important events
+that most users are interested in, but actually everything that has to do with
+projects, items and notes, is stored in our DB, and can be accessed by using our
+API.
 
 The following events are logged for items:
 
