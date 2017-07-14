@@ -31,7 +31,7 @@ Parameter | Description
 --------- | -----------
 token *String* | The user's token received on login.
 obj_type *String* | The object's type, one of `project`, `project_comments` or `item`.
-obj_id *Number* | The object's id.
+obj_id *Integer* | The object's id.
 
 
 ## Disable
@@ -65,4 +65,4 @@ Parameter | Description
 --------- | -----------
 token *String* | The user's token received on login.
 obj_type *String* | The object's type, one of `project`, `project_comments` or `item`.
-obj_id *Number* | The object's id.
+obj_id *Integer* | The object's id.

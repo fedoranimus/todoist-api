@@ -101,8 +101,8 @@ Argument | Description
 -------- | -----------
 name *String* | The name of the filter
 query *String* | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
-color *Number* | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).
-item_order *Number* | Filter’s order in the filter list (where the smallest value should place the filter at the top).
+color *Integer* | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).
+item_order *Integer* | Filter’s order in the filter list (where the smallest value should place the filter at the top).
 
 ## Delete a filter
 

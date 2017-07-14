@@ -74,7 +74,7 @@ mobile_number *String* | The user's mobile number (`null` if not set).
 mobile_host *String* | The user's mobile host (`null` if not set).
 completed_count *Integer* | The total number of completed tasks.
 completed_today *Integer* | The number of completed tasks for today.
-karma *Number* | The user's karma score.
+karma *Integer* | The user's karma score.
 karma_trend *String* | The user's karma trend (for example `up`).
 is_premium *String* | Whether the user has a Premium subscription (a `true` or `false` value).
 premium_until *String* | The date when the user's Premium subscription ends (`null` if not a Premium user).
