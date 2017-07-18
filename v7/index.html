@@ -280,12 +280,10 @@ should read it next, where the way that the API works is explained.</p>
 Todoist objects and endpoints, and you can continue reading them in
 the order you need them.</p>
 
-<h2 id="client-libraries">Client libraries</h2>
+<h2 id="python-library">Python library</h2>
 
-<p>Currently there is official support in the form of a Python library,
-but soon more languages might follow.</p>
-
-<h3 id="python">Python</h3>
+<p>We currently have an official Python library supported by Doist to make the
+developer life easier.</p>
 
 <blockquote>
 <p>You can install todoist python library via pip:</p>
@@ -1230,15 +1228,15 @@ and <code class="prettyprint">Client Secret</code> which are needed for the OAut
 </tr>
 </thead><tbody>
 <tr>
-<td>client_id</td>
+<td>client_id <em>String</em></td>
 <td>The unique Client ID of the Todoist application that you registered.</td>
 </tr>
 <tr>
-<td>scope</td>
+<td>scope <em>String</em></td>
 <td>A comma separated list of permissions that you would like the users to grant to your application. See below a table with more details about this.</td>
 </tr>
 <tr>
-<td>state</td>
+<td>state <em>String</em></td>
 <td>A unique and unguessable string. It is used to protect you against cross-site request forgery attacks.</td>
 </tr>
 </tbody></table>
@@ -1344,20 +1342,21 @@ by doing a <code class="prettyprint">POST</code> request to the following endpoi
 </tr>
 </thead><tbody>
 <tr>
-<td>client_id</td>
+<td>client_id <em>String</em></td>
 <td>The unique Client ID of the Todoist application that you registered.</td>
 </tr>
 <tr>
-<td>client_secret</td>
+<td>client_secret <em>String</em></td>
 <td>The unique Client Secret of the Todoist application that you registered.</td>
 </tr>
 <tr>
-<td>code</td>
+<td>code <em>String</em></td>
 <td>The unique string code that you obtained in the previous step.</td>
 </tr>
 </tbody></table>
 
-<p>And here are some common errors that you may encounter (all the error responses will be in JSON format):</p>
+<p>And here are some common errors that you may encounter (all the error responses
+will be in JSON format):</p>
 
 <table><thead>
 <tr>
@@ -1381,26 +1380,32 @@ by doing a <code class="prettyprint">POST</code> request to the following endpoi
 POST) to the following endpoint:</p>
 
 <p><code class="prettyprint">https://todoist.com/api/access_tokens/revoke</code></p>
-<pre class="highlight shell tab-shell"><code>curl https://todoist.com/api/access_tokens/revoke -H <span class="s2">"Content-Type: application/json"</span> -X POST -d <span class="s1">'{"client_id":"xyz", "client_secret":"xyz", "access_token":"xyz"}'</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://todoist.com/api/access_tokens/revoke <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    -d <span class="s1">'{"client_id":"xyz", "client_secret":"xyz", "access_token":"xyz"}'</span>
 </code></pre>
-<h3 id="required-parameters">Required parameters:</h3>
+<h3 id="parameters">Parameters:</h3>
 
 <table><thead>
 <tr>
 <th>Name</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>client_id</td>
+<td>client_id <em>String</em></td>
+<td>Yes</td>
 <td>The unique Client ID of the Todoist application that you registered.</td>
 </tr>
 <tr>
-<td>client_secret</td>
+<td>client_secret <em>String</em></td>
+<td>Yes</td>
 <td>The unique Client Secret of the Todoist application that you registered.</td>
 </tr>
 <tr>
-<td>access_token</td>
+<td>access_token <em>String</em></td>
+<td>Yes</td>
 <td>Access token obtained from the OAuth authentication</td>
 </tr>
 </tbody></table>
@@ -1417,46 +1422,53 @@ the ability to manage their app authorization.</p>
 <p>Here is the migration API endpoint (HTTP POST, with JSON request parameters):</p>
 
 <p><code class="prettyprint">https://todoist.com/api/access_tokens/migrate_personal_token</code></p>
-<pre class="highlight shell tab-shell"><code>curl https://todoist.com/api/access_tokens/migrate_personal_token -H <span class="s2">"Content-Type: application/json"</span> -X POST -d <span class="s1">'{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}'</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://todoist.com/api/access_tokens/migrate_personal_token <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    -d <span class="s1">'{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}'</span>
 
 <span class="o">{</span><span class="s2">"access_token"</span>: <span class="s2">"...."</span>, <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span><span class="o">}</span>
 </code></pre>
-<h3 id="required-parameters">Required parameters:</h3>
+<h3 id="parameters">Parameters:</h3>
 
 <table><thead>
 <tr>
 <th>Name</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>client_id</td>
+<td>client_id <em>String</em></td>
+<td>Yes</td>
 <td>The unique Client ID of the Todoist application that you registered.</td>
 </tr>
 <tr>
-<td>client_secret</td>
+<td>client_secret <em>String</em></td>
+<td>Yes</td>
 <td>The unique Client Secret of the Todoist application that you registered.</td>
 </tr>
 <tr>
-<td>personal_token</td>
+<td>personal_token <em>String</em></td>
+<td>Yes</td>
 <td>Token obtained from the email/password authentication</td>
 </tr>
 <tr>
-<td>scope</td>
+<td>scope <em>String</em></td>
+<td>Yes</td>
 <td>Scopes of the OAuth token. Please refer to the <a href="https://developer.todoist.com/#oauth">OAuth</a> section for the detailed list of available scopes.</td>
 </tr>
 </tbody></table>
 
-<p>Upon succesful request, a HTTP 200 response will be returned with a new OAuth token in JSON format:
-<code class="prettyprint">
-{&quot;access_token&quot;: &quot;....&quot;, &quot;token_type&quot;: &quot;Bearer&quot;}
-</code></p>
+<p>Upon succesful request, a HTTP 200 response will be returned with a new OAuth
+token in JSON format:</p>
+
+<p><code class="prettyprint">{&quot;access_token&quot;: &quot;....&quot;, &quot;token_type&quot;: &quot;Bearer&quot;}</code></p>
 
 <h2 id="cross-origin-resource-sharing">Cross Origin Resource Sharing</h2>
 
-<p>All API endpoints support Cross Origin Resource Sharing (CORS) for 
-requests from any origin. The header <code class="prettyprint">Access-Control-Allow-Origin: *</code> 
-is set for successfully authenticated requests.</p>
+<p>All API endpoints support Cross Origin Resource Sharing (CORS) for requests from
+any origin. The header <code class="prettyprint">Access-Control-Allow-Origin: *</code> is set for successfully
+authenticated requests.</p>
 
 <blockquote>
 <p>CORS headers example:</p>
@@ -1464,6 +1476,7 @@ is set for successfully authenticated requests.</p>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl https://todoist.com/api/v7/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -H <span class="s1">'Origin: http://example.com'</span>
+
 HTTP/1.1 200 OK
 Access-Control-Allow-Credentials: <span class="nb">false
 </span>Access-Control-Allow-Origin: <span class="k">*</span>
@@ -1557,30 +1570,31 @@ of the following parameters.</em></p>
 <p>To retrieve your user resources, make a Sync API request with the following
 parameters:</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>User&rsquo;s API token</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>sync_token <em>String</em></td>
+<td>Yes</td>
 <td>A special string, used to allow the client to perform incremental sync.  Pass <code class="prettyprint">*</code> to retrieve all active resource data.  More details about this below.</td>
 </tr>
 <tr>
 <td>resource_types <em>JSON array of strings</em></td>
-<td>Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of str</td>
+<td>Yes</td>
+<td>Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of available resource types: <code class="prettyprint">labels</code>, <code class="prettyprint">projects</code>,<code class="prettyprint">items</code>, <code class="prettyprint">notes</code>, <code class="prettyprint">filters</code>, <code class="prettyprint">reminders</code>, <code class="prettyprint">locations</code>, <code class="prettyprint">user</code>, <code class="prettyprint">live_notifications</code>, <code class="prettyprint">collaborators</code>, <code class="prettyprint">notification_settings</code>. You may use <code class="prettyprint">all</code> to include all the resource types.</td>
 </tr>
 </tbody></table>
-
-<p>ings. Here is a list of available resource types: <code class="prettyprint">labels</code>, <code class="prettyprint">projects</code>,<code class="prettyprint">items</code>, <code class="prettyprint">notes</code>, <code class="prettyprint">filters</code>, <code class="prettyprint">reminders</code>, <code class="prettyprint">locations</code>, <code class="prettyprint">user</code>, <code class="prettyprint">live_
-notifications</code>, <code class="prettyprint">collaborators</code>, <code class="prettyprint">notification_settings</code>. You may use <code class="prettyprint">all</code> to include all the resource types.</p>
 
 <h3 id="incremental-sync">Incremental sync</h3>
 
@@ -1700,21 +1714,24 @@ in the following sections.</em></p>
 <p>To write to your user&rsquo;s Todoist resources, make a Sync API request with the
 following parameters</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>commands <em>JSON</em></td>
+<td>Yes</td>
 <td>A JSON array of Command object. Each command will be processed in the specified order.</td>
 </tr>
 <tr>
 <td>token <em>String</em></td>
-<td>API token</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -1732,7 +1749,7 @@ following parameters</p>
 </tr>
 <tr>
 <td>args <em>Object</em></td>
-<td>The arguments of this specific command.</td>
+<td>The parameters of this specific command.</td>
 </tr>
 <tr>
 <td>uuid <em>String</em></td>
@@ -2001,38 +2018,38 @@ order to prevent clients from accidentally overloading our servers.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">project</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">'Project4'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>name <em>String</em></td>
+<td>Yes</td>
 <td>The name of the project (a string value).</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>color <em>Integer</em></td>
+<td>No</td>
 <td>The color of the project (a number between <code class="prettyprint">0</code> and <code class="prettyprint">11</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">21</code> for premium users).</td>
 </tr>
 <tr>
 <td>indent <em>Integer</em></td>
+<td>No</td>
 <td>The indent of the item (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
 <td>item_order <em>Integer</em></td>
+<td>No</td>
 <td>Project&rsquo;s order in the project list (a number, where the smallest value should place the project at the top).</td>
 </tr>
 </tbody></table>
@@ -2055,46 +2072,48 @@ order to prevent clients from accidentally overloading our servers.</p>
 </code></pre>
 <p>Update an existing project.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id  <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The id of the project (could be temp id).</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>name <em>String</em></td>
+<td>No</td>
 <td>The name of the project (a string value).</td>
 </tr>
 <tr>
 <td>color <em>Integer</em></td>
+<td>No</td>
 <td>The color of the project (a number between <code class="prettyprint">0</code> and <code class="prettyprint">11</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">21</code> for premium users).</td>
 </tr>
 <tr>
 <td>indent <em>Integer</em></td>
+<td>No</td>
 <td>The indent of the item (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
 <td>item_order <em>Integer</em></td>
+<td>No</td>
 <td>Project&rsquo;s order in the project list (a number, where the smallest value should place the project at the top).</td>
 </tr>
 <tr>
 <td>collapsed <em>Integer</em></td>
+<td>No</td>
 <td>Whether the project&rsquo;s sub-projects are collapsed (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 </tbody></table>
@@ -2117,16 +2136,23 @@ order to prevent clients from accidentally overloading our servers.</p>
 </code></pre>
 <p>Delete an existing project.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>ids <em>Array of Integer (id) or String (temp id)</em></td>
+<td>Yes</td>
 <td>List of the ids of the projects to delete (could be temp ids).</td>
 </tr>
 </tbody></table>
@@ -2151,16 +2177,23 @@ order to prevent clients from accidentally overloading our servers.</p>
 
 <p>Archive project and its children.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>ids <em>Array of Integer (id) or String (temp id)</em></td>
+<td>Yes</td>
 <td>List of the ids of the projects to archive (could be temp ids).</td>
 </tr>
 </tbody></table>
@@ -2185,16 +2218,23 @@ order to prevent clients from accidentally overloading our servers.</p>
 
 <p>Unarchive project and its children.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>ids  <em>Array of Integer (id) or String (temp id)</em></td>
+<td>Yes</td>
 <td>List of the ids of the projects to unarchive (could be temp ids).</td>
 </tr>
 </tbody></table>
@@ -2216,16 +2256,23 @@ order to prevent clients from accidentally overloading our servers.</p>
 </code></pre>
 <p>Update the orders and indents of multiple projects at once.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>ids_to_orders_indents <em>Object</em></td>
+<td>Yes</td>
 <td>A dictionary object, with a project id as key and a two elements list as value: <code class="prettyprint">project_id: [item_order, indent]</code></td>
 </tr>
 </tbody></table>
@@ -2447,78 +2494,88 @@ template.</p>
 </code></pre>
 <p>Add a new task to a project.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
 <tr>
 <td>content <em>String</em></td>
+<td>Yes</td>
 <td>The text of the task.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>project_id  <em>Integer or String (temp id)</em></td>
+<td>No</td>
 <td>The id of the project to add the task to (a number or a temp id).  By default the task is added to the user’s <code class="prettyprint">Inbox</code> project.</td>
 </tr>
 <tr>
 <td>date_string <em>String</em></td>
+<td>No</td>
 <td>The date of the task, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code> (or <code class="prettyprint">null</code> or an empty string to unset). Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>
 </tr>
 <tr>
 <td>date_lang <em>String</em></td>
+<td>No</td>
 <td>The language of the <code class="prettyprint">date_string</code> (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc <em>String</em></td>
+<td>No</td>
 <td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. Note that, when the <code class="prettyprint">due_date_utc</code> argument is specified, the <code class="prettyprint">date_string</code> is required and has to specified as well, and also, the <code class="prettyprint">date_string</code> argument will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
 </tr>
 <tr>
 <td>priority <em>Integer</em></td>
+<td>No</td>
 <td>The priority of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, <code class="prettyprint">4</code> for very urgent and <code class="prettyprint">1</code> for natural). <br><strong>Note</strong>: Keep in mind that <code class="prettyprint">very urgent</code> is the priority 1 on clients. So, <code class="prettyprint">p1</code> will return <code class="prettyprint">4</code> in the API.</td>
 </tr>
 <tr>
 <td>indent <em>Integer</em></td>
+<td>No</td>
 <td>The indent of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
 <td>item_order <em>Integer</em></td>
+<td>No</td>
 <td>The order of the task inside a project (a number, where the smallest value would place the task at the top).</td>
 </tr>
 <tr>
 <td>day_order <em>Integer</em></td>
+<td>No</td>
 <td>The order of the task inside the <code class="prettyprint">Today</code> or <code class="prettyprint">Next 7 days</code> view (a number, where the smallest value would place the task at the top).</td>
 </tr>
 <tr>
 <td>collapsed <em>Integer</em></td>
+<td>No</td>
 <td>Whether the task&rsquo;s sub-tasks are collapsed (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
 <td>labels <em>Array of Integer</em></td>
+<td>No</td>
 <td>The tasks labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>).</td>
 </tr>
 <tr>
 <td>assigned_by_uid <em>Integer</em></td>
+<td>No</td>
 <td>The id of user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will be automatically setup to your uid.</td>
 </tr>
 <tr>
 <td>responsible_uid <em>Integer</em></td>
+<td>No</td>
 <td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or <code class="prettyprint">null</code> or an empty string to unset.</td>
 </tr>
 <tr>
 <td>auto_reminder <em>Boolean</em></td>
+<td>No</td>
 <td>When this option is enabled, the default reminder will be added to the new item if it has a due date with time set.  See also the <a href="#user">auto_reminder user option</a> for more info about the default reminder.</td>
 </tr>
 </tbody></table>
@@ -2541,74 +2598,83 @@ template.</p>
 </code></pre>
 <p>Updates an item for the user related to the API credentials.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id <em>Integer or String (temp id)</em></td>
+<td>Yes</td>
 <td>The id of the task.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>content <em>String</em></td>
+<td>No</td>
 <td>The text of the task.</td>
 </tr>
 <tr>
 <td>date_string <em>String</em></td>
+<td>No</td>
 <td>The date of the task, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code> (or <code class="prettyprint">null</code> or an empty string to unset). Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>
 </tr>
 <tr>
 <td>date_lang  <em>String</em></td>
+<td>No</td>
 <td>The language of the <code class="prettyprint">date_string</code> (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc  <em>String</em></td>
+<td>No</td>
 <td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. Note that, when the <code class="prettyprint">due_date_utc</code> argument is specified, the <code class="prettyprint">date_string</code> is required and has to specified as well, and also, the <code class="prettyprint">date_string</code> argument will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
 </tr>
 <tr>
 <td>priority <em>Integer</em></td>
+<td>No</td>
 <td>The priority of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, <code class="prettyprint">4</code> for very urgent and <code class="prettyprint">1</code> for natural). <br><strong>Note</strong>: Keep in mind that <code class="prettyprint">very urgent</code> is the priority 1 on clients. So, <code class="prettyprint">p1</code> will return <code class="prettyprint">4</code> in the API.</td>
 </tr>
 <tr>
 <td>indent  <em>Integer</em></td>
+<td>No</td>
 <td>The indent of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
 <td>item_order  <em>Integer</em></td>
+<td>No</td>
 <td>The order of the task inside a project (a number, where the smallest value would place the task at the top).</td>
 </tr>
 <tr>
 <td>day_order  <em>Integer</em></td>
+<td>No</td>
 <td>The order of the task inside the <code class="prettyprint">Today</code> or <code class="prettyprint">Next 7 days</code> view (a number, where the smallest value would place the task at the top).</td>
 </tr>
 <tr>
 <td>collapsed <em>Integer</em></td>
+<td>No</td>
 <td>Whether the task&rsquo;s sub-tasks are collapsed (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
 <td>labels  <em>Array of Integer</em></td>
+<td>No</td>
 <td>The tasks labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>).</td>
 </tr>
 <tr>
 <td>assigned_by_uid <em>Integer</em></td>
+<td>No</td>
 <td>The id of the user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will be automatically setup to your uid.</td>
 </tr>
 <tr>
 <td>responsible_uid <em>Integer</em></td>
+<td>No</td>
 <td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or <code class="prettyprint">null</code> or an empty string to unset.</td>
 </tr>
 </tbody></table>
@@ -2631,17 +2697,24 @@ template.</p>
 </code></pre>
 <p>Delete an existing task.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ids  <em>Array of Integer (id) or String (temp id)</em></td>
+<td>Yes</td>
 <td>List of the ids of the tasks to delete.</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -2663,20 +2736,28 @@ template.</p>
 </code></pre>
 <p>Move a task from one project to another project.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>project_items <em>Object</em></td>
+<td>Yes</td>
 <td>A JSON mapping telling Todoist where the items are currently found. From project ids to item ids, for example <code class="prettyprint">{&quot;1523&quot;:[&quot;9637423&quot;]}</code>, where <code class="prettyprint">1523</code> is the project id and <code class="prettyprint">9637423</code> is the item id.</td>
 </tr>
 <tr>
 <td>to_project <em>Integer</em></td>
+<td>Yes</td>
 <td>The project id that the tasks should be moved to, for example <code class="prettyprint">1245</code>.</td>
 </tr>
 </tbody></table>
@@ -2685,9 +2766,12 @@ template.</p>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl https://todoist.com/api/v7/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "item_complete", "uuid": "a74bfb5c-5f1d-4d14-baea-b7415446a871", "args": {"ids": [33548400]}}]'</span>
-<span class="o">{</span> ...
+
+<span class="o">{</span> 
+  ...
   <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"a74bfb5c-5f1d-4d14-baea-b7415446a871"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
-  ... <span class="o">}</span>
+  ...
+<span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="mi">33548400</span><span class="p">)</span>
@@ -2697,30 +2781,28 @@ template.</p>
 <p>Complete tasks and optionally move them to history. See also <code class="prettyprint">item_close</code> for a
 simplified version of the command.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ids <em>Array of Integer or String (temp id)</em></td>
+<td>Yes</td>
 <td>A JSON list of ids to complete (numbers or temp ids).</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>force_history <em>Integer</em></td>
+<td>No</td>
 <td>Whether these tasks should be moved to history (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false, and the default is <code class="prettyprint">1</code>) This is useful when checking off sub tasks.</td>
 </tr>
 </tbody></table>
@@ -2743,30 +2825,28 @@ simplified version of the command.</p>
 </code></pre>
 <p>Uncomplete tasks and move them to the active projects.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ids <em>Array of Integer or String (temp id)</em></td>
+<td>Yes</td>
 <td>A list of items to uncomplete.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>restore_state <em>Object</em></td>
+<td>No</td>
 <td>A dictionary object, where the item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent - <code class="prettyprint">item_id: [in_history, checked, item_order, indent]</code></td>
 </tr>
 </tbody></table>
@@ -2790,38 +2870,38 @@ simplified version of the command.</p>
 we need to mark a recurring completion (and using <code class="prettyprint">item_update</code> won&rsquo;t do
 this). See also <code class="prettyprint">item_close</code> for a simplified version of the command.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id <em>Integer or String</em></td>
+<td>Yes</td>
 <td>The id of the item to update (a number or a temp id).</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>new_date_utc <em>String</em></td>
+<td>No</td>
 <td>The date of the task in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">new_date_utc</code> must be in UTC. Note that, when the <code class="prettyprint">new_date_utc</code> argument is specified, the <code class="prettyprint">date_string</code> is required and has to specified as well, and also, the <code class="prettyprint">date_string</code> argument will be parsed as local timestamp, and converted to UTC internally, according to the user&rsquo;s profile settings.</td>
 </tr>
 <tr>
 <td>date_string  <em>String</em></td>
+<td>No</td>
 <td>The date of the task, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code> (or <code class="prettyprint">null</code> or an empty string to unset). Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>
 </tr>
 <tr>
 <td>is_forward  <em>Integer</em></td>
+<td>No</td>
 <td>Whether the task is to be completed (value <code class="prettyprint">1</code>) or uncompleted (value <code class="prettyprint">0</code>), while the default is <code class="prettyprint">1</code>.</td>
 </tr>
 </tbody></table>
@@ -2847,17 +2927,24 @@ does exactly what official clients do when you close a task: regular task is
 completed and moved to history, subtask is checked (marked as done, but not moved
 to history), recurring task is moved forward (due date is updated).</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id <em>Integer or String (temp id)</em></td>
+<td>Yes</td>
 <td>The id of the item to close (a number or a temp id).</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -2878,17 +2965,24 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <p>Update the orders and indents of multiple items at once.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ids_to_orders_indents <em>Object</em></td>
+<td>Yes</td>
 <td>A dictionary, where an item id is the key, and a list with two elements, the order and the indent, are its value: <code class="prettyprint">item_id: [item_order, indent]</code>.</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -2909,17 +3003,24 @@ to history), recurring task is moved forward (due date is updated).</p>
 </code></pre>
 <p>Update the day orders of multiple items at once.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ids_to_orders <em>Object</em></td>
+<td>Yes</td>
 <td>A dictionary, where an item id is the key, and the day order its value: <code class="prettyprint">item_id: day_order</code>.</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -2986,34 +3087,33 @@ to history), recurring task is moved forward (due date is updated).</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">label</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">'Label1'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>name <em>String</em></td>
+<td>Yes</td>
 <td>The name of the label</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>color <em>Integer</em></td>
+<td>No</td>
 <td>The color of the label (a number between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).</td>
 </tr>
 <tr>
 <td>item_order <em>Integer</em></td>
+<td>No</td>
 <td>Label’s order in the label list (a number, where the smallest value should place the label at the top).</td>
 </tr>
 </tbody></table>
@@ -3038,38 +3138,38 @@ to history), recurring task is moved forward (due date is updated).</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">label</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The id of the label.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>name <em>String</em></td>
+<td>No</td>
 <td>The name of the label.</td>
 </tr>
 <tr>
 <td>color <em>Integer</em></td>
+<td>No</td>
 <td>The color of the label (a number between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).</td>
 </tr>
 <tr>
 <td>item_order <em>Integer</em></td>
+<td>No</td>
 <td>Label’s order in the label list.</td>
 </tr>
 </tbody></table>
@@ -3094,17 +3194,24 @@ to history), recurring task is moved forward (due date is updated).</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">label</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The id of the label.</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -3121,6 +3228,8 @@ to history), recurring task is moved forward (due date is updated).</p>
   ...
   "sync_status": {
     "517560cc-f165-4ff6-947b-3adda8aef744": "ok"},
+    ...
+  },
   ...
 }
 </span></code></pre><pre class="highlight python tab-python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
@@ -3128,17 +3237,24 @@ to history), recurring task is moved forward (due date is updated).</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">update_orders</span><span class="p">({</span><span class="mi">790748</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">790749</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id_order_mapping <em>Object</em></td>
+<td>Yes</td>
 <td>A dictionary, where a label id is the key, and the order its value: <code class="prettyprint">label_id: order</code>.</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -3312,38 +3428,38 @@ the reference.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">note</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">notes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">33548400</span><span class="p">,</span> <span class="s">'Note1'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>item_id <em>Integer</em></td>
+<td>Yes</td>
 <td>The item which the note is part of (a unique number or temp id).</td>
 </tr>
 <tr>
 <td>content <em>String</em></td>
+<td>Yes</td>
 <td>The content of the note (a string value).</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>file_attachment <em>Object</em></td>
+<td>No</td>
 <td>A file attached to the note (see more details about attachments above, and learn how to upload a file in the <a href="#uploads">Uploads section</a>).</td>
 </tr>
 <tr>
 <td>uids_to_notify <em>Array of Integer</em></td>
+<td>No</td>
 <td>A list of user ids to notify.</td>
 </tr>
 </tbody></table>
@@ -3368,34 +3484,33 @@ the reference.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">note</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">notes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">128501682</span><span class="p">,</span> <span class="s">'Note1'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>project_id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The project which the note is part of.</td>
 </tr>
 <tr>
 <td>content <em>String</em></td>
+<td>Yes</td>
 <td>The content of the note.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>file_attachment <em>Object</em></td>
+<td>No</td>
 <td>A file attached to the note (see more details about attachments above, and learn how to upload a file in the <a href="#uploads">Uploads section</a>).</td>
 </tr>
 </tbody></table>
@@ -3420,34 +3535,33 @@ the reference.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">note</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s">'UpdatedNote1'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The id of the note.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>content <em>String</em></td>
+<td>Yes</td>
 <td>The content of the note.</td>
 </tr>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>file_attachment <em>Object</em></td>
+<td>No</td>
 <td>A file attached to the note (see more details about attachments above, and learn how to upload a file in the <a href="#uploads">Uploads section</a>).</td>
 </tr>
 </tbody></table>
@@ -3469,17 +3583,24 @@ the reference.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">note</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The id of the note.</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -3541,20 +3662,23 @@ in <a href="#notes">Notes</a>.</p>
 <p>Upload a file suitable to be passed as a <code class="prettyprint">file_attachment</code> attribute to the
 <code class="prettyprint">note_add</code> or <code class="prettyprint">note_update</code> calls.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>file_name <em>String</em></td>
+<td>Yes</td>
 <td>The file name to be uploaded.</td>
 </tr>
 </tbody></table>
@@ -3696,34 +3820,28 @@ the reference.</p>
 </code></pre>
 <p>Get all user&rsquo;s uploads.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login (a string hash value).</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-parameters">Optional parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>limit <em>Integer</em></td>
+<td>No</td>
 <td>The number of items to return (a number, where the default is <code class="prettyprint">30</code>, and the maximum is <code class="prettyprint">50</code>).</td>
 </tr>
 <tr>
 <td>last_id <em>Integer</em></td>
+<td>No</td>
 <td>Can be used for pagination. This should be the minimum upload id you&rsquo;ve fetched so far. All results will be listed before that id.</td>
 </tr>
 </tbody></table>
@@ -3745,20 +3863,23 @@ the reference.</p>
 </code></pre>
 <p>Delete an uploaded file.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login (a string hash value).</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>file_url <em>String</em></td>
+<td>Yes</td>
 <td>The file URL to delete.</td>
 </tr>
 </tbody></table>
@@ -3834,38 +3955,38 @@ the reference.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">filter</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">'Filter1'</span><span class="p">,</span> <span class="s">'no due date'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>name <em>String</em></td>
+<td>Yes</td>
 <td>The name of the filter.</td>
 </tr>
 <tr>
 <td>query <em>String</em></td>
+<td>Yes</td>
 <td>The query to search for. <a href="https://todoist.com/Help/Filtering">Examples of searches</a> can be found in the Todoist help page.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>color <em>Integer</em></td>
+<td>No</td>
 <td>The color of the filter (between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).</td>
 </tr>
 <tr>
 <td>item_order <em>Integer</em></td>
+<td>No</td>
 <td>Filter’s order in the filter list (the smallest value should place the filter at the top).</td>
 </tr>
 </tbody></table>
@@ -3890,42 +4011,43 @@ the reference.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">filter</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s">'tomorrow'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
 <tr>
 <td>id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The id of the filter.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>name <em>String</em></td>
+<td>No</td>
 <td>The name of the filter</td>
 </tr>
 <tr>
 <td>query <em>String</em></td>
+<td>No</td>
 <td>The query to search for. <a href="https://todoist.com/Help/Filtering">Examples of searches</a> can be found in the Todoist help page.</td>
 </tr>
 <tr>
 <td>color <em>Integer</em></td>
+<td>No</td>
 <td>The color of the filter (between <code class="prettyprint">0</code> and <code class="prettyprint">7</code>, or between <code class="prettyprint">0</code> and <code class="prettyprint">12</code> for premium users).</td>
 </tr>
 <tr>
 <td>item_order <em>Integer</em></td>
+<td>No</td>
 <td>Filter’s order in the filter list (where the smallest value should place the filter at the top).</td>
 </tr>
 </tbody></table>
@@ -3950,16 +4072,23 @@ the reference.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">filter</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The id of the filter.</td>
 </tr>
 </tbody></table>
@@ -3985,16 +4114,23 @@ the reference.</p>
 </code></pre>
 <p>Update the orders of multiple filters at once.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>id_order_mapping <em>Object</em></td>
+<td>Yes</td>
 <td>A dictionary, where a filter id is the key, and the order its value: <code class="prettyprint">filter_id: order</code>.</td>
 </tr>
 </tbody></table>
@@ -4147,74 +4283,83 @@ the reference.</p>
 </code></pre>
 <p>Add a new reminder to the user account related to the API credentials.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>item_id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The item id for which the reminder is about.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>notify_uid <em>Integer</em></td>
+<td>No</td>
 <td>The user id which should be notified of the reminder, typically the current user id creating the reminder.</td>
 </tr>
 <tr>
 <td>service <em>String</em></td>
+<td>No</td>
 <td>The way to get notified of the reminder: <code class="prettyprint">email</code> for e-mail, <code class="prettyprint">mobile</code> for mobile text message, or <code class="prettyprint">push</code> for mobile push notification.</td>
 </tr>
 <tr>
 <td>type <em>String</em></td>
+<td>No</td>
 <td>The type of the reminder: <code class="prettyprint">relative</code> for a time-based reminder specified in minutes from now, <code class="prettyprint">absolute</code> for a time-based reminder with a specific time and date in the future, and <code class="prettyprint">location</code> for a location-based reminder.</td>
 </tr>
 <tr>
 <td>date_string <em>String</em></td>
+<td>No</td>
 <td>The date of the reminder, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code> (or <code class="prettyprint">null</code> or an empty string to unset). Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>
 </tr>
 <tr>
 <td>date_lang <em>String</em></td>
+<td>No</td>
 <td>The language of the <code class="prettyprint">date_string</code> (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc <em>String</em></td>
+<td>No</td>
 <td>The date of the reminder in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). The value of <code class="prettyprint">due_date_utc</code> must be in UTC. Either <code class="prettyprint">due_date_utc</code> or <code class="prettyprint">date_string</code> can be used to set the reminder date, but the value of <code class="prettyprint">due_date_utc</code> takes precedence over the value of <code class="prettyprint">date_string</code>.</td>
 </tr>
 <tr>
 <td>minute_offset <em>Integer</em></td>
+<td>No</td>
 <td>The relative time in minutes before the due date of the item, in which the reminder should be triggered. Note, that the item should have a due date set in order to add a relative reminder.</td>
 </tr>
 <tr>
 <td>name <em>String</em></td>
+<td>No</td>
 <td>An alias name for the location.</td>
 </tr>
 <tr>
 <td>loc_lat <em>String</em></td>
+<td>No</td>
 <td>The location latitude.</td>
 </tr>
 <tr>
 <td>loc_long <em>String</em></td>
+<td>No</td>
 <td>The location longitude.</td>
 </tr>
 <tr>
 <td>loc_trigger <em>String</em></td>
+<td>No</td>
 <td>What should trigger the reminder: <code class="prettyprint">on_enter</code> for entering the location, or <code class="prettyprint">on_leave</code> for leaving the location.</td>
 </tr>
 <tr>
 <td>radius <em>Integer</em></td>
+<td>No</td>
 <td>The radius around the location that is still considered as part of the location (in meters).</td>
 </tr>
 </tbody></table>
@@ -4241,74 +4386,83 @@ the reference.</p>
 </code></pre>
 <p>Update a reminder from the user account related to the API credentials.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The id of the reminder.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
 <tr>
-<th>Argument</th>
-<th>Description</th>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</thead><tbody>
 <tr>
 <td>notify_uid <em>Integer</em></td>
+<td>No</td>
 <td>The user id which should be notified of the reminder, typically the current user id creating the reminder.</td>
 </tr>
 <tr>
 <td>service <em>String</em></td>
+<td>No</td>
 <td>The way to get notified of the reminder: <code class="prettyprint">email</code> for e-mail, <code class="prettyprint">mobile</code> for mobile text message, or <code class="prettyprint">push</code> for mobile push notification.</td>
 </tr>
 <tr>
 <td>type <em>String</em></td>
+<td>No</td>
 <td>The type of the reminder: <code class="prettyprint">relative</code> for a time-based reminder specified in minutes from now, <code class="prettyprint">absolute</code> for a time-based reminder with a specific time and date in the future, and <code class="prettyprint">location</code> for a location-based reminder.</td>
 </tr>
 <tr>
 <td>date_string <em>String</em></td>
+<td>No</td>
 <td>The date of the reminder, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code> (or <code class="prettyprint">null</code> or an empty string to unset). Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>
 </tr>
 <tr>
 <td>date_lang <em>String</em></td>
+<td>No</td>
 <td>The language of the <code class="prettyprint">date_string</code> (valid languages are: <code class="prettyprint">en</code>, <code class="prettyprint">da</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">zh</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">de</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">it</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">sv</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">es</code>, <code class="prettyprint">nl</code>).</td>
 </tr>
 <tr>
 <td>due_date_utc <em>String</em></td>
+<td>No</td>
 <td>The date of the reminder in the format <code class="prettyprint">YYYY-MM-DDTHH:MM</code> (for example: <code class="prettyprint">2012-3-24T23:59</code>). Either <code class="prettyprint">due_date_utc</code> or <code class="prettyprint">date_string</code> can be used to set the reminder date, but the value of <code class="prettyprint">due_date_utc</code> takes precedence over the value of <code class="prettyprint">date_string</code>.</td>
 </tr>
 <tr>
 <td>minute_offset <em>Integer</em></td>
+<td>No</td>
 <td>The relative time in minutes before the due date of the item, in which the reminder should be triggered. Note, that the item should have a due date set in order to add a relative reminder.</td>
 </tr>
 <tr>
 <td>name <em>String</em></td>
+<td>No</td>
 <td>An alias name for the location.</td>
 </tr>
 <tr>
 <td>loc_lat <em>String</em></td>
+<td>No</td>
 <td>The location latitude.</td>
 </tr>
 <tr>
 <td>loc_long <em>String</em></td>
+<td>No</td>
 <td>The location longitude.</td>
 </tr>
 <tr>
 <td>loc_trigger <em>String</em></td>
+<td>No</td>
 <td>What should trigger the reminder: <code class="prettyprint">on_enter</code> for entering the location, or <code class="prettyprint">on_leave</code> for leaving the location.</td>
 </tr>
 <tr>
 <td>radius <em>Integer</em></td>
+<td>No</td>
 <td>The radius around the location that is still considered as part of the location (in meters).</td>
 </tr>
 </tbody></table>
@@ -4335,16 +4489,23 @@ the reference.</p>
 </code></pre>
 <p>Delete a reminder from the user account related to the API credentials.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The id of the filter.</td>
 </tr>
 </tbody></table>
@@ -4353,6 +4514,7 @@ the reference.</p>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl https://todoist.com/api/v7/sync <span class="se">\</span>
     -d <span class="nv">token</span><span class="o">=</span>0123456789abcdef0123456789abcdef01234567 <span class="se">\</span>
     -d <span class="nv">commands</span><span class="o">=</span><span class="s1">'[{"type": "clear_locations", "uuid": "d285ae02-80c6-477c-bfa9-45272d7bddfb", "args": {}}]'</span>
+
 <span class="o">{</span>
   ...
   <span class="s2">"sync_status"</span>: <span class="o">{</span><span class="s2">"d285ae02-80c6-477c-bfa9-45272d7bddfb"</span>: <span class="s2">"ok"</span><span class="o">}</span>,
@@ -4364,6 +4526,22 @@ the reference.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre>
 <p>Clears the locations list, which is used for the location reminders.</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+</tbody></table>
 
           <h1 id="miscellaneous">Miscellaneous</h1>
 
@@ -4490,17 +4668,19 @@ the reference.</p>
 </code></pre>
 <p>Get the user&rsquo;s productivity stats.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -4570,50 +4750,48 @@ the reference.</p>
 
 <p>Get all the user&rsquo;s completed items (tasks).</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-parameters">Optional parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>project_id <em>Integer</em></td>
+<td>No</td>
 <td>Filter the tasks by project id.</td>
 </tr>
 <tr>
 <td>limit <em>Integer</em></td>
+<td>No</td>
 <td>The number of items to return (where the default is <code class="prettyprint">30</code>, and the maximum is <code class="prettyprint">50</code>).</td>
 </tr>
 <tr>
 <td>offset <em>Integer</em></td>
+<td>No</td>
 <td>Can be used for pagination, when more than the <code class="prettyprint">limit</code> number of tasks are returned.</td>
 </tr>
 <tr>
 <td>until <em>String</em></td>
+<td>No</td>
 <td>Return items with a completed date same or older than <code class="prettyprint">until</code> (a string value formatted as <code class="prettyprint">2007-4-29T10:13</code>).</td>
 </tr>
 <tr>
 <td>since <em>String</em></td>
+<td>No</td>
 <td>Return items with a completed date newer than <code class="prettyprint">since</code> (a string value formatted as <code class="prettyprint">2007-4-29T10:13</code>).</td>
 </tr>
 <tr>
 <td>annotate_notes <em>Boolean</em></td>
+<td>No</td>
 <td>Return notes together with the completed items (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value).</td>
 </tr>
 </tbody></table>
@@ -4656,17 +4834,19 @@ the reference.</p>
 </code></pre>
 <p>Get the user&rsquo;s archived projects.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -4731,70 +4911,73 @@ the reference.</p>
 method, a shortcut, to quickly add a task without going through the
 <code class="prettyprint">Sync workflow</code> described in a previous section.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>content <em>String</em></td>
+<td>Yes</td>
 <td>The text of the task.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-parameters">Optional parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>project_id <em>Integer</em></td>
+<td>No</td>
 <td>The id of the project to add the task to, while the default is the user&rsquo;s <code class="prettyprint">Inbox</code> project.</td>
 </tr>
 <tr>
 <td>date_string <em>String</em></td>
+<td>No</td>
 <td>The date of the task, added in free form text, for example it can be <code class="prettyprint">every day @ 10</code> (or <code class="prettyprint">null</code> or an empty string to unset). Look at our reference to see <a href="https://todoist.com/Help/DatesTimes">which formats are supported</a>.</td>
 </tr>
 <tr>
 <td>priority <em>Integer</em></td>
+<td>No</td>
 <td>The priority of the task (a number between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, <code class="prettyprint">4</code> for very urgent and <code class="prettyprint">1</code> for natural). <br><strong>Note</strong>: Keep in mind that <code class="prettyprint">very urgent</code> is the priority 1 on clients. So, <code class="prettyprint">p1</code> will return <code class="prettyprint">4</code> in the API.</td>
 </tr>
 <tr>
 <td>indent <em>Integer</em></td>
+<td>No</td>
 <td>The indent of the task (between <code class="prettyprint">1</code> and <code class="prettyprint">4</code>, where <code class="prettyprint">1</code> is top-level).</td>
 </tr>
 <tr>
 <td>item_order <em>Integer</em></td>
+<td>No</td>
 <td>The order of the task inside a project (where the smallest value would place the task at the top).</td>
 </tr>
 <tr>
 <td>labels <em>Array of Integer</em></td>
+<td>No</td>
 <td>The task&rsquo;s labels (a list of label ids such as <code class="prettyprint">[2324,2525]</code>).</td>
 </tr>
 <tr>
 <td>assigned_by_uid <em>Integer</em></td>
+<td>No</td>
 <td>The id of the user who assigns the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.</td>
 </tr>
 <tr>
 <td>responsible_uid <em>Integer</em></td>
+<td>No</td>
 <td>The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts <code class="prettyprint">0</code> or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to <code class="prettyprint">null</code>.</td>
 </tr>
 <tr>
 <td>note <em>String</em></td>
+<td>No</td>
 <td>Add a note directly to the task (a string value that will become the content of the note).</td>
 </tr>
 <tr>
 <td>auto_reminder <em>Boolean</em></td>
+<td>No</td>
 <td>When this option is enabled, the default reminder will be added to the new item if it has a due date with time set.  See also the <a href="#user">auto_reminder user option</a> for more info about the default reminder.</td>
 </tr>
 </tbody></table>
@@ -4970,24 +5153,28 @@ including all the notes.</p>
 <p>It returns a JSON object with the <code class="prettyprint">item</code>, and optionally the <code class="prettyprint">project</code>
 and <code class="prettyprint">notes</code> attributes.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>item_id <em>Integer</em></td>
+<td>Yes</td>
 <td>The item&rsquo;s unique id.</td>
 </tr>
 <tr>
 <td>all_data <em>Boolean</em></td>
+<td>No</td>
 <td>Whether to return the parent project and notes of the item (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value, while the default is <code class="prettyprint">true</code>).</td>
 </tr>
 </tbody></table>
@@ -5066,24 +5253,28 @@ project, including all the notes.</p>
 
 <p>It returns a JSON object with the <code class="prettyprint">project</code>, and optionally the <code class="prettyprint">notes</code> attributes.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>project_id <em>Integer</em></td>
+<td>Yes</td>
 <td>The projects&rsquo;s unique id.</td>
 </tr>
 <tr>
 <td>all_data <em>Boolean</em></td>
+<td>No</td>
 <td>Whether to return the notes of the project (a <code class="prettyprint">true</code> or <code class="prettyprint">false</code> value, while the default is <code class="prettyprint">true</code>).</td>
 </tr>
 </tbody></table>
@@ -5183,6 +5374,27 @@ project, including all the notes.</p>
 </code></pre>
 <p>Get a project&rsquo;s uncompleted items.</p>
 
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
+<td>project_id <em>Integer</em></td>
+<td>Yes</td>
+<td>The projects&rsquo;s unique id.</td>
+</tr>
+</tbody></table>
+
           <h1 id="quick">Quick</h1>
 
 <h2 id="quick-add-task">Quick add task</h2>
@@ -5249,38 +5461,33 @@ project, including all the notes.</p>
 <p>Add a new task using the Quick Add Task implementation available in the official
 clients.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>text <em>String</em></td>
+<td>Yes</td>
 <td>The text of the task that is parsed.  It can include a due date in free form text, a project name starting with the <code class="prettyprint">#</code> character, a label starting with the <code class="prettyprint">@</code> character, and an assignee starting with the <code class="prettyprint">+</code> character.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-parameters">Optional parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>note <em>String</em></td>
+<td>No</td>
 <td>The content of the note.</td>
 </tr>
 <tr>
 <td>reminder <em>String</em></td>
+<td>No</td>
 <td>The date of the reminder, added in free form text.</td>
 </tr>
 </tbody></table>
@@ -5579,42 +5786,38 @@ timezone. Typically a user object will have the following properties:</p>
 <span class="p">}</span>
 
 </code></pre>
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>email <em>String</em></td>
+<td>Yes</td>
 <td>The user&rsquo;s email.</td>
 </tr>
 <tr>
 <td>full_name <em>String</em></td>
+<td>Yes</td>
 <td>The user&rsquo;s real name formatted as <code class="prettyprint">Firstname Lastname</code>.</td>
 </tr>
 <tr>
 <td>password <em>String</em></td>
+<td>Yes</td>
 <td>The user&rsquo;s password.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-parameters">Optional parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>lang <em>String</em></td>
+<td>No</td>
 <td>The user&rsquo;s language, which can take one of the following values: <code class="prettyprint">de</code>, <code class="prettyprint">fr</code>, <code class="prettyprint">ja</code>, <code class="prettyprint">pl</code>, <code class="prettyprint">pt_BR</code>, <code class="prettyprint">zh_CN</code>, <code class="prettyprint">es</code>, <code class="prettyprint">hi</code>, <code class="prettyprint">ko</code>, <code class="prettyprint">pt</code>, <code class="prettyprint">ru</code>, <code class="prettyprint">zh_TW</code>.</td>
 </tr>
 <tr>
 <td>timezone <em>String</em></td>
+<td>No</td>
 <td>The user&rsquo;s timezone (a string value such as <code class="prettyprint">UTC</code>, <code class="prettyprint">Europe/Lisbon</code>, <code class="prettyprint">US/Eastern</code>, <code class="prettyprint">Asian/Taipei</code>). By default we use the user&rsquo;s IP address to determine the timezone.</td>
 </tr>
 </tbody></table>
@@ -5633,34 +5836,28 @@ timezone. Typically a user object will have the following properties:</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'secret'</span><span class="p">)</span>
 <span class="n">ok</span>
 </code></pre>
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
+<td>Yes</td>
 <td>The user&rsquo;s token.</td>
 </tr>
 <tr>
 <td>current_password <em>String</em></td>
+<td>Yes</td>
 <td>The user&rsquo;s current password.</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-parameters">Optional parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>reason_for_delete <em>String</em></td>
+<td>No</td>
 <td>A reason for deletion, that is used for sending feedback back to Todoist.</td>
 </tr>
 </tbody></table>
@@ -5683,72 +5880,93 @@ timezone. Typically a user object will have the following properties:</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">time_format</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre>
-<h3 id="optional-parameters">Optional parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>email <em>String</em></td>
+<td>No</td>
 <td>The user&rsquo;s email.</td>
 </tr>
 <tr>
 <td>full_name <em>String</em></td>
+<td>No</td>
 <td>The user&rsquo;s real name formatted as <code class="prettyprint">Firstname Lastname</code>.</td>
 </tr>
 <tr>
 <td>password <em>String</em></td>
+<td>No</td>
 <td>The user&rsquo;s password.</td>
 </tr>
 <tr>
 <td>timezone <em>String</em></td>
+<td>No</td>
 <td>The user&rsquo;s timezone (a string value such as <code class="prettyprint">UTC</code>, <code class="prettyprint">Europe/Lisbon</code>, <code class="prettyprint">US/Eastern</code>, <code class="prettyprint">Asian/Taipei</code>).</td>
 </tr>
 <tr>
 <td>start_page <em>String</em></td>
+<td>No</td>
 <td>The user&rsquo;s default view on Todoist. The start page can be one of the following: <code class="prettyprint">_info_page</code> for the info page, <code class="prettyprint">_blank</code> for a blank page, <code class="prettyprint">_project_&lt;PROJECT_ID&gt;</code> for project with id <code class="prettyprint">&lt;PROJECT_ID&gt;</code>, and <code class="prettyprint">&lt;ANY_QUERY&gt;</code> to query after anything.</td>
 </tr>
 <tr>
 <td>start_day <em>Integer</em></td>
+<td>No</td>
 <td>The first day of the week (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
 </tr>
 <tr>
 <td>next_week <em>Integer</em></td>
+<td>No</td>
 <td>The day of the next week, that tasks will be postponed to (between <code class="prettyprint">1</code> and <code class="prettyprint">7</code>, where <code class="prettyprint">1</code> is <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> is <code class="prettyprint">Sunday</code>).</td>
 </tr>
 <tr>
 <td>time_format <em>Integer</em></td>
+<td>No</td>
 <td>Whether to use a <code class="prettyprint">24h</code> format such as <code class="prettyprint">13:00</code> (if set to <code class="prettyprint">0</code>) when displaying time, or a <code class="prettyprint">12h</code> format such as <code class="prettyprint">1:00pm</code> (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
 <td>date_format <em>Integer</em></td>
+<td>No</td>
 <td>Whether to use the <code class="prettyprint">DD-MM-YYYY</code> date format (if set to <code class="prettyprint">0</code>), or the <code class="prettyprint">MM-DD-YYYY</code> format (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
 <td>sort_order <em>Integer</em></td>
+<td>No</td>
 <td>Whether to show projects in an <code class="prettyprint">oldest dates first</code> order (if set to <code class="prettyprint">0</code>, or a <code class="prettyprint">oldest dates last</code> order (if set to <code class="prettyprint">1</code>).</td>
 </tr>
 <tr>
 <td>default_reminder <em>String</em></td>
+<td>No</td>
 <td>The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: <code class="prettyprint">email</code> to send reminders by email, <code class="prettyprint">mobile</code> to send reminders to mobile devices via SMS, <code class="prettyprint">push</code> to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), <code class="prettyprint">no_default</code> to turn off sending default reminders.</td>
 </tr>
 <tr>
 <td>auto_reminder <em>Integer</em></td>
+<td>No</td>
 <td>The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task.</td>
 </tr>
 <tr>
 <td>mobile_number <em>String</em></td>
+<td>No</td>
 <td>The user&rsquo;s mobile number (<code class="prettyprint">null</code> if not set).</td>
 </tr>
 <tr>
 <td>mobile_host <em>String</em></td>
+<td>No</td>
 <td>The user&rsquo;s mobile host (or <code class="prettyprint">null</code> if not set).</td>
 </tr>
 <tr>
 <td>theme <em>Integer</em></td>
+<td>No</td>
 <td>The currently selected Todoist theme (between <code class="prettyprint">0</code> and <code class="prettyprint">10</code>).</td>
 </tr>
 </tbody></table>
@@ -5769,32 +5987,43 @@ timezone. Typically a user object will have the following properties:</p>
 </code></pre>
 <p>Update the karma goals of the user.</p>
 
-<h3 id="optional-parameters">Optional parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>daily_goal <em>Integer</em></td>
+<td>No</td>
 <td>The target number of tasks to complete per day.</td>
 </tr>
 <tr>
 <td>weekly_goal <em>Integer</em></td>
+<td>No</td>
 <td>The target number of tasks to complete per week.</td>
 </tr>
 <tr>
 <td>ignore_days <em>Integer</em></td>
+<td>No</td>
 <td>A list with the days of the week to ignore (<code class="prettyprint">1</code> for <code class="prettyprint">Monday</code> and <code class="prettyprint">7</code> for <code class="prettyprint">Sunday</code>).</td>
 </tr>
 <tr>
 <td>vacation_mode <em>Integer</em></td>
+<td>No</td>
 <td>Marks the user as being on vacation (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 <tr>
 <td>karma_disabled <em>Integer</em></td>
+<td>No</td>
 <td>Whether to disable the karma and goals measuring altogether (where <code class="prettyprint">1</code> is true and <code class="prettyprint">0</code> is false).</td>
 </tr>
 </tbody></table>
@@ -5936,23 +6165,28 @@ timezone. Typically a user object will have the following properties:</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>notification_type <em>String</em></td>
+<td>Yes</td>
 <td>The notification type.  For a list of notifications have a look at the <code class="prettyprint">Live Notifications</code> section.</td>
 </tr>
 <tr>
 <td>service <em>String</em></td>
+<td>Yes</td>
 <td>The service type, which can take the values: <code class="prettyprint">email</code> or <code class="prettyprint">push</code>.</td>
 </tr>
 <tr>
 <td>dont_notify <em>Integer</em></td>
+<td>Yes</td>
 <td>Whether notifications of this service should be notified (<code class="prettyprint">1</code> to not notify, and <code class="prettyprint">0</code> to notify).</td>
 </tr>
 </tbody></table>
@@ -6076,20 +6310,28 @@ is a mere &ldquo;user to shared project&rdquo; mapping.</p>
 </code></pre>
 <p>Share a project with another user.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>project_id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The project to be shared.</td>
 </tr>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>email <em>String</em></td>
+<td>Yes</td>
 <td>The user email with whom to share the project.</td>
 </tr>
 </tbody></table>
@@ -6115,20 +6357,28 @@ is a mere &ldquo;user to shared project&rdquo; mapping.</p>
 </code></pre>
 <p>Remove an user from a shared project.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>project_id <em>Integer or String (temp_id)</em></td>
+<td>Yes</td>
 <td>The project to be affected.</td>
 </tr>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>email <em>String</em></td>
+<td>Yes</td>
 <td>The user email with whom the project was shared with.</td>
 </tr>
 </tbody></table>
@@ -6154,20 +6404,28 @@ is a mere &ldquo;user to shared project&rdquo; mapping.</p>
 </code></pre>
 <p>Accept an invitation to join a shared project.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>invitation_id <em>Integer</em></td>
+<td>Yes</td>
 <td>The invitation id.</td>
 </tr>
 <tr>
 <td>invitation_secret <em>String</em></td>
+<td>Yes</td>
 <td>The secret fetched from the live notification.</td>
 </tr>
 </tbody></table>
@@ -6193,20 +6451,28 @@ is a mere &ldquo;user to shared project&rdquo; mapping.</p>
 </code></pre>
 <p>Reject an invitation to join a shared project.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>invitation_id <em>Integer</em></td>
+<td>Yes</td>
 <td>The invitation id.</td>
 </tr>
 <tr>
 <td>invitation_secret <em>String</em></td>
+<td>Yes</td>
 <td>The secret fetched from the live notification.</td>
 </tr>
 </tbody></table>
@@ -6232,16 +6498,23 @@ is a mere &ldquo;user to shared project&rdquo; mapping.</p>
 </code></pre>
 <p>Delete an invitation to join a shared project.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>invitation_id <em>Integer</em></td>
+<td>Yes</td>
 <td>The invitation to be deleted.</td>
 </tr>
 </tbody></table>
@@ -6809,17 +7082,24 @@ notifications:</p>
 </code></pre>
 <p>Set the last known notification.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id <em>Integer</em></td>
+<td>Yes</td>
 <td>The id of the last known notification (a number or <code class="prettyprint">0</code> or <code class="prettyprint">null</code> to mark all read).</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -6844,17 +7124,24 @@ notifications:</p>
 </code></pre>
 <p>Mark the notification as read.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id <em>Integer</em></td>
+<td>Yes</td>
 <td>The id of the notification.</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -6879,6 +7166,22 @@ notifications:</p>
 </code></pre>
 <p>Mark all notifications as read.</p>
 
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+</tbody></table>
+
 <h2 id="mark-as-unread">Mark as unread</h2>
 
 <blockquote>
@@ -6900,17 +7203,24 @@ notifications:</p>
 </code></pre>
 <p>Mark the notification as unread.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id <em>Integer</em></td>
+<td>Yes</td>
 <td>The id of the notification.</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -7016,34 +7326,28 @@ returned back.</p>
 
 <p>The return value is a list of invitation objects.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>User&rsquo;s access token</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>email_list <em>List of Strings</em></td>
+<td>Yes</td>
 <td>The emails of users which will be invited</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>message <em>String</em></td>
+<td>No</td>
 <td>Additional text which will be included to invitation welcome message</td>
 </tr>
 </tbody></table>
@@ -7080,32 +7384,36 @@ returned back.</p>
 </code></pre>
 <p>There are currently 2 ways to accept an invitation, either with a direct call,
 or by using a Sync API command, as can be seen from the examples on the side,
-and the different required arguments below.</p>
+and the different required parameters below.</p>
 
 <p>The invitation is accepted if it&rsquo;s still active and user doesn&rsquo;t belong to any
 business account yet.  For the direct call, <code class="prettyprint">null</code> denotes a successful return
 value.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <h4 id="for-the-direct-call">For the direct call:</h4>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>User&rsquo;s access token</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>id <em>Integer</em></td>
+<td>Yes</td>
 <td>The invitation id (a number).</td>
 </tr>
 <tr>
 <td>secret <em>String</em></td>
+<td>Yes</td>
 <td>The secret fetched from the live notification (a string value).</td>
 </tr>
 </tbody></table>
@@ -7114,16 +7422,19 @@ value.</p>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>invitation_id <em>Integer</em></td>
+<td>Yes</td>
 <td>The invitation id (a number).</td>
 </tr>
 <tr>
 <td>invitation_secret <em>String</em></td>
+<td>Yes</td>
 <td>The secret fetched from the live notification (a string value).</td>
 </tr>
 </tbody></table>
@@ -7154,30 +7465,43 @@ value.</p>
 </code></pre>
 <p>There are currently 2 ways to reject an invitation, either with a direct call,
 or by using a Sync API command, as can be seen from the examples on the side,
-and the different required arguments below.</p>
+and the different required parameters below.</p>
 
 <p>The invitation is rejected and deleted. Note that the client doesn&rsquo;t have to
 provide the user&rsquo;s token to reject invitation: it&rsquo;s enough to provide knowledge
 of invitation secret business account yet. For the direct call, <code class="prettyprint">null</code> denotes
 a successful return value.</p>
 
-<h3 id="required-arguments">Required arguments</h3>
+<h3 id="parameters">Parameters</h3>
 
 <h4 id="for-the-direct-call">For the direct call:</h4>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>token <em>String</em></td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
+</tr>
+<tr>
 <td>id <em>Integer</em></td>
+<td>Yes</td>
 <td>The invitation id (a number).</td>
 </tr>
 <tr>
 <td>secret <em>String</em></td>
+<td>Yes</td>
 <td>The secret fetched from the live notification (a string value).</td>
+</tr>
+<tr>
+<td>token <em>String</em></td>
+<td>No</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -7185,33 +7509,20 @@ a successful return value.</p>
 
 <table><thead>
 <tr>
-<th>Argument</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>invitation_id <em>Integer</em></td>
+<td>Yes</td>
 <td>The invitation id (a number).</td>
 </tr>
 <tr>
 <td>invitation_secret <em>String</em></td>
+<td>Yes</td>
 <td>The secret fetched from the live notification (a string value).</td>
-</tr>
-</tbody></table>
-
-<h3 id="optional-arguments">Optional arguments</h3>
-
-<h4 id="for-the-direct-call">For the direct call:</h4>
-
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>token <em>String</em></td>
-<td>User&rsquo;s access token</td>
 </tr>
 </tbody></table>
 
@@ -7468,70 +7779,73 @@ API.</p>
   <span class="p">}</span>
 <span class="p">]</span>
 </code></pre>
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login (a string hash value).</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
-</tbody></table>
-
-<h3 id="optional-parameters">Optional parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>object_type <em>String</em></td>
+<td>No</td>
 <td>Filters events by a specific object type.</td>
 </tr>
 <tr>
 <td>object_id <em>Integer</em></td>
+<td>No</td>
 <td>Filters events by a specific object id, but only if the <code class="prettyprint">object_type</code> has been also specified.</td>
 </tr>
 <tr>
 <td>event_type <em>String</em></td>
+<td>No</td>
 <td>Filters events by a specific event type.</td>
 </tr>
 <tr>
 <td>object_event_types <em>Array of Strings</em></td>
+<td>No</td>
 <td>An alternative way to filter by multiple object and event types.  This takes a list of strings of the form <code class="prettyprint">[object_type]:[event_type]</code> (where either <code class="prettyprint">object_type</code> part or the <code class="prettyprint">event_type</code> part can be ommited), such as for example <code class="prettyprint">[&quot;item:&quot;, &quot;note:added&quot;]</code>.  When this parameter is specified the <code class="prettyprint">object_type</code>, <code class="prettyprint">event_type</code> and <code class="prettyprint">object_id</code> parameters are ignored.</td>
 </tr>
 <tr>
 <td>parent_project_id <em>Integer</em></td>
+<td>No</td>
 <td>Filters object events by the id of the project they belong to, so this implicitly limits the results to items and notes.</td>
 </tr>
 <tr>
 <td>parent_item_id <em>Integer</em></td>
+<td>No</td>
 <td>Filters object events by the id of the item they belong, so this implicitly limits the results to notes.</td>
 </tr>
 <tr>
 <td>initiator_id <em>Integer</em></td>
+<td>No</td>
 <td>Filters event by the id of the initiator.</td>
 </tr>
 <tr>
 <td>since <em>String</em></td>
+<td>No</td>
 <td>Filters events to those that took place after the specified date and time, formatted as for example <code class="prettyprint">2016-06-28T12:00</code>.</td>
 </tr>
 <tr>
 <td>until <em>String</em></td>
+<td>No</td>
 <td>Filters events to those that took place before the specified date and time, formatted as <code class="prettyprint">2016-06-28T12:00</code>.</td>
 </tr>
 <tr>
 <td>limit <em>Integer</em></td>
+<td>No</td>
 <td>The number of events to return, where the default is <code class="prettyprint">30</code>, and the maximum is <code class="prettyprint">100</code>.</td>
 </tr>
 <tr>
 <td>offset <em>Integer</em></td>
+<td>No</td>
 <td>The number of events to skip, which can be used for pagination in order to get more events than those returned by the previous call.</td>
 </tr>
 </tbody></table>
@@ -7570,17 +7884,19 @@ be returned with a list of backup archives in JSON format:</p>
   <span class="o">...</span>
 <span class="p">]</span>
 </code></pre>
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login (a string hash value).</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 </tbody></table>
 
@@ -7607,24 +7923,28 @@ be returned with a list of backup archives in JSON format:</p>
 </code></pre>
 <p>Creates a new email address for an object, or gets an existing email.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>obj_type <em>String</em></td>
+<td>Yes</td>
 <td>The object&rsquo;s type, one of <code class="prettyprint">project</code>, <code class="prettyprint">project_comments</code> or <code class="prettyprint">item</code>.</td>
 </tr>
 <tr>
 <td>obj_id <em>Integer</em></td>
+<td>Yes</td>
 <td>The object&rsquo;s id.</td>
 </tr>
 </tbody></table>
@@ -7651,24 +7971,28 @@ be returned with a list of backup archives in JSON format:</p>
 </code></pre>
 <p>Disables an email address for an object.</p>
 
-<h3 id="required-parameters">Required parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token <em>String</em></td>
-<td>The user&rsquo;s token received on login.</td>
+<td>Yes</td>
+<td>The user&rsquo;s API token</td>
 </tr>
 <tr>
 <td>obj_type <em>String</em></td>
+<td>Yes</td>
 <td>The object&rsquo;s type, one of <code class="prettyprint">project</code>, <code class="prettyprint">project_comments</code> or <code class="prettyprint">item</code>.</td>
 </tr>
 <tr>
 <td>obj_id <em>Integer</em></td>
+<td>Yes</td>
 <td>The object&rsquo;s id.</td>
 </tr>
 </tbody></table>
