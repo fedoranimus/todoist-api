@@ -1,8 +1,8 @@
 # Overview
 
-This is the official Todoist API documentation, a reference to the
-functionality our public API provides, with detailed description of
-each API endpoint, its parameters, and examples.
+This is the official documentation for Todoist Sync API. A reference to the
+functionality our public API provides, with detailed description of each API
+endpoint, its parameters, and examples.
 
 ## Summary of contents
 

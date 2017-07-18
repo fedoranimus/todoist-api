@@ -6,30 +6,30 @@ language_tabs:
   - python
 
 includes:
-  - v7/overview
-  - v7/tutorial
-  - v7/authorization
-  - v7/sync
-  - v7/projects
-  - v7/templates
-  - v7/items
-  - v7/labels
-  - v7/notes
-  - v7/uploads
-  - v7/filters
-  - v7/reminders
-  - v7/miscellaneous
-  - v7/quick
-  - v7/user
-  - v7/sharing
-  - v7/livenotifications
-  - v7/business
-  - v7/activity
-  - v7/backups
-  - v7/emails
-  - v7/urlschemes
-  - v7/webhooks
-  - v7/changelog
+  - sync/v7/overview
+  - sync/v7/tutorial
+  - sync/v7/authorization
+  - sync/v7/sync
+  - sync/v7/projects
+  - sync/v7/templates
+  - sync/v7/items
+  - sync/v7/labels
+  - sync/v7/notes
+  - sync/v7/uploads
+  - sync/v7/filters
+  - sync/v7/reminders
+  - sync/v7/miscellaneous
+  - sync/v7/quick
+  - sync/v7/user
+  - sync/v7/sharing
+  - sync/v7/livenotifications
+  - sync/v7/business
+  - sync/v7/activity
+  - sync/v7/backups
+  - sync/v7/emails
+  - sync/v7/urlschemes
+  - sync/v7/webhooks
+  - sync/v7/changelog
 
 search: false
 ---
