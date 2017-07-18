@@ -84,15 +84,13 @@ To retrieve your user resources, make a Sync API request with the following
 parameters:
 
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | User's API token
-sync_token *String* | A special string, used to allow the client to perform incremental sync.  Pass `*` to retrieve all active resource data.  More details about this below.
-resource_types *JSON array of strings* | Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of str
-ings. Here is a list of available resource types: `labels`, `projects`,`items`, `notes`, `filters`, `reminders`, `locations`, `user`, `live_
-notifications`, `collaborators`, `notification_settings`. You may use `all` to include all the resource types.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+sync_token *String* | Yes | A special string, used to allow the client to perform incremental sync.  Pass `*` to retrieve all active resource data.  More details about this below.
+resource_types *JSON array of strings* | Yes | Used to specify what resources to fetch from the server.  It should be a JSON-encoded array of strings. Here is a list of available resource types: `labels`, `projects`,`items`, `notes`, `filters`, `reminders`, `locations`, `user`, `live_notifications`, `collaborators`, `notification_settings`. You may use `all` to include all the resource types.
 
 
 ### Incremental sync
@@ -174,12 +172,12 @@ To write to your user's Todoist resources, make a Sync API request with the
 following parameters
 
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-commands *JSON* | A JSON array of Command object. Each command will be processed in the specified order.
-token *String* | API token
+Parameter | Required | Description
+--------- | -------- | -----------
+commands *JSON* | Yes | A JSON array of Command object. Each command will be processed in the specified order.
+token *String* | Yes | The user's API token
 
 
 ### Command object
@@ -187,7 +185,7 @@ token *String* | API token
 Field | Description
 ------| -----------
 type *String* | The type of the command.
-args *Object* | The arguments of this specific command.
+args *Object* | The parameters of this specific command.
 uuid *String* | Command UUID. More details about this below.
 temp_id *String* | Temporary resource ID, Optional. Only specified for commands that create new resource ("item_add" command). More details about this below.
 

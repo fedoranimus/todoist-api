@@ -110,28 +110,24 @@ $ curl https://todoist.com/api/v7/sync \
 
 Add a new reminder to the user account related to the API credentials.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-item_id *Integer or String (temp_id)* | The item id for which the reminder is about.
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-notify_uid *Integer* | The user id which should be notified of the reminder, typically the current user id creating the reminder.
-service *String* | The way to get notified of the reminder: `email` for e-mail, `mobile` for mobile text message, or `push` for mobile push notification.
-type *String* | The type of the reminder: `relative` for a time-based reminder specified in minutes from now, `absolute` for a time-based reminder with a specific time and date in the future, and `location` for a location-based reminder.
-date_string *String* | The date of the reminder, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-date_lang *String* | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
-due_date_utc *String* | The date of the reminder in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. Either `due_date_utc` or `date_string` can be used to set the reminder date, but the value of `due_date_utc` takes precedence over the value of `date_string`.
-minute_offset *Integer* | The relative time in minutes before the due date of the item, in which the reminder should be triggered. Note, that the item should have a due date set in order to add a relative reminder.
-name *String* | An alias name for the location.
-loc_lat *String* | The location latitude.
-loc_long *String* | The location longitude.
-loc_trigger *String* | What should trigger the reminder: `on_enter` for entering the location, or `on_leave` for leaving the location.
-radius *Integer* | The radius around the location that is still considered as part of the location (in meters).
+Parameter | Required | Description
+--------- | -------- | -----------
+item_id *Integer or String (temp_id)* | Yes | The item id for which the reminder is about.
+token *String* | Yes | The user's API token
+notify_uid *Integer* | No | The user id which should be notified of the reminder, typically the current user id creating the reminder.
+service *String* | No | The way to get notified of the reminder: `email` for e-mail, `mobile` for mobile text message, or `push` for mobile push notification.
+type *String* | No | The type of the reminder: `relative` for a time-based reminder specified in minutes from now, `absolute` for a time-based reminder with a specific time and date in the future, and `location` for a location-based reminder.
+date_string *String* | No | The date of the reminder, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_lang *String* | No | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
+due_date_utc *String* | No | The date of the reminder in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. Either `due_date_utc` or `date_string` can be used to set the reminder date, but the value of `due_date_utc` takes precedence over the value of `date_string`.
+minute_offset *Integer* | No | The relative time in minutes before the due date of the item, in which the reminder should be triggered. Note, that the item should have a due date set in order to add a relative reminder.
+name *String* | No | An alias name for the location.
+loc_lat *String* | No | The location latitude.
+loc_long *String* | No | The location longitude.
+loc_trigger *String* | No | What should trigger the reminder: `on_enter` for entering the location, or `on_leave` for leaving the location.
+radius *Integer* | No | The radius around the location that is still considered as part of the location (in meters).
 
 ## Update a reminder
 
@@ -159,28 +155,24 @@ $ curl https://todoist.com/api/v7/sync \
 
 Update a reminder from the user account related to the API credentials.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-id *Integer or String (temp_id)* | The id of the reminder.
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-notify_uid *Integer* | The user id which should be notified of the reminder, typically the current user id creating the reminder.
-service *String* | The way to get notified of the reminder: `email` for e-mail, `mobile` for mobile text message, or `push` for mobile push notification.
-type *String* | The type of the reminder: `relative` for a time-based reminder specified in minutes from now, `absolute` for a time-based reminder with a specific time and date in the future, and `location` for a location-based reminder.
-date_string *String* | The date of the reminder, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-date_lang *String* | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
-due_date_utc *String* | The date of the reminder in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). Either `due_date_utc` or `date_string` can be used to set the reminder date, but the value of `due_date_utc` takes precedence over the value of `date_string`.
-minute_offset *Integer* | The relative time in minutes before the due date of the item, in which the reminder should be triggered. Note, that the item should have a due date set in order to add a relative reminder.
-name *String* | An alias name for the location.
-loc_lat *String* | The location latitude.
-loc_long *String* | The location longitude.
-loc_trigger *String* | What should trigger the reminder: `on_enter` for entering the location, or `on_leave` for leaving the location.
-radius *Integer* | The radius around the location that is still considered as part of the location (in meters).
+Parameter | Required | Description
+--------- | -------- | -----------
+id *Integer or String (temp_id)* | Yes | The id of the reminder.
+token *String* | Yes | The user's API token
+notify_uid *Integer* | No | The user id which should be notified of the reminder, typically the current user id creating the reminder.
+service *String* | No | The way to get notified of the reminder: `email` for e-mail, `mobile` for mobile text message, or `push` for mobile push notification.
+type *String* | No | The type of the reminder: `relative` for a time-based reminder specified in minutes from now, `absolute` for a time-based reminder with a specific time and date in the future, and `location` for a location-based reminder.
+date_string *String* | No | The date of the reminder, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_lang *String* | No | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
+due_date_utc *String* | No | The date of the reminder in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). Either `due_date_utc` or `date_string` can be used to set the reminder date, but the value of `due_date_utc` takes precedence over the value of `date_string`.
+minute_offset *Integer* | No | The relative time in minutes before the due date of the item, in which the reminder should be triggered. Note, that the item should have a due date set in order to add a relative reminder.
+name *String* | No | An alias name for the location.
+loc_lat *String* | No | The location latitude.
+loc_long *String* | No | The location longitude.
+loc_trigger *String* | No | What should trigger the reminder: `on_enter` for entering the location, or `on_leave` for leaving the location.
+radius *Integer* | No | The radius around the location that is still considered as part of the location (in meters).
 
 ## Delete a reminder
 
@@ -208,11 +200,12 @@ $ curl https://todoist.com/api/v7/sync \
 
 Delete a reminder from the user account related to the API credentials.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-id *Integer or String (temp_id)* | The id of the filter.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+id *Integer or String (temp_id)* | Yes | The id of the filter.
 
 
 ## Clear the locations
@@ -221,6 +214,7 @@ id *Integer or String (temp_id)* | The id of the filter.
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "clear_locations", "uuid": "d285ae02-80c6-477c-bfa9-45272d7bddfb", "args": {}}]'
+
 {
   ...
   "sync_status": {"d285ae02-80c6-477c-bfa9-45272d7bddfb": "ok"},
@@ -236,3 +230,9 @@ $ curl https://todoist.com/api/v7/sync \
 ```
 
 Clears the locations list, which is used for the location reminders.
+
+### Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token

@@ -105,18 +105,13 @@ returned back.
 
 The return value is a list of invitation objects.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-token *String* | User's access token
-email_list *List of Strings* | The emails of users which will be invited
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-message *String* | Additional text which will be included to invitation welcome message
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+email_list *List of Strings* | Yes | The emails of users which will be invited
+message *String* | No | Additional text which will be included to invitation welcome message
 
 ## Accept invitation
 
@@ -158,28 +153,28 @@ $ curl https://todoist.com/api/v7/sync \
 
 There are currently 2 ways to accept an invitation, either with a direct call,
 or by using a Sync API command, as can be seen from the examples on the side,
-and the different required arguments below.
+and the different required parameters below.
 
 The invitation is accepted if it's still active and user doesn't belong to any
 business account yet.  For the direct call, `null` denotes a successful return
 value.
 
-### Required arguments
+### Parameters
 
 #### For the direct call:
 
-Argument | Description
--------- | -----------
-token *String* | User's access token
-id *Integer* | The invitation id (a number).
-secret *String* | The secret fetched from the live notification (a string value).
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+id *Integer* | Yes | The invitation id (a number).
+secret *String* | Yes | The secret fetched from the live notification (a string value).
 
 #### For the Sync API command:
 
-Argument | Description
--------- | -----------
-invitation_id *Integer* | The invitation id (a number).
-invitation_secret *String* | The secret fetched from the live notification (a string value).
+Parameter | Required | Description
+--------- | -------- | -----------
+invitation_id *Integer* | Yes | The invitation id (a number).
+invitation_secret *String* | Yes | The secret fetched from the live notification (a string value).
 
 ## Reject invitation
 
@@ -215,34 +210,27 @@ $ curl https://todoist.com/api/v7/sync \
 
 There are currently 2 ways to reject an invitation, either with a direct call,
 or by using a Sync API command, as can be seen from the examples on the side,
-and the different required arguments below.
+and the different required parameters below.
 
 The invitation is rejected and deleted. Note that the client doesn't have to
 provide the user's token to reject invitation: it's enough to provide knowledge
 of invitation secret business account yet. For the direct call, `null` denotes
 a successful return value.
 
-### Required arguments
+### Parameters
 
 #### For the direct call:
 
-Argument | Description
--------- | -----------
-id *Integer* | The invitation id (a number).
-secret *String* | The secret fetched from the live notification (a string value).
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+id *Integer* | Yes | The invitation id (a number).
+secret *String* | Yes | The secret fetched from the live notification (a string value).
+token *String* | No | The user's API token
 
 #### For the Sync API command:
 
-Argument | Description
--------- | -----------
-invitation_id *Integer* | The invitation id (a number).
-invitation_secret *String* | The secret fetched from the live notification (a string value).
-
-
-### Optional arguments
-
-#### For the direct call:
-
-Argument | Description
--------- | -----------
-token *String* | User's access token
+Parameter | Required | Description
+--------- | -------- | -----------
+invitation_id *Integer* | Yes | The invitation id (a number).
+invitation_secret *String* | Yes | The secret fetched from the live notification (a string value).

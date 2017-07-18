@@ -25,13 +25,13 @@ $ curl https://todoist.com/api/v7/emails/get_or_create \
 
 Creates a new email address for an object, or gets an existing email.
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login.
-obj_type *String* | The object's type, one of `project`, `project_comments` or `item`.
-obj_id *Integer* | The object's id.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+obj_type *String* | Yes | The object's type, one of `project`, `project_comments` or `item`.
+obj_id *Integer* | Yes | The object's id.
 
 
 ## Disable
@@ -60,10 +60,10 @@ $ curl https://todoist.com/api/v7/emails/disable \
 
 Disables an email address for an object.
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login.
-obj_type *String* | The object's type, one of `project`, `project_comments` or `item`.
-obj_id *Integer* | The object's id.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+obj_type *String* | Yes | The object's type, one of `project`, `project_comments` or `item`.
+obj_id *Integer* | Yes | The object's id.

@@ -37,8 +37,8 @@ $ curl https://todoist.com/api/v7/backups/get \
 ]
 ```
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login (a string hash value).
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token

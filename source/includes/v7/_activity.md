@@ -222,25 +222,19 @@ $ curl https://todoist.com/api/v7/activity/get \
 ]
 ```
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login (a string hash value).
-
-
-### Optional parameters
-
-Parameter | Description
---------- | -----------
-object_type *String* | Filters events by a specific object type.
-object_id *Integer* | Filters events by a specific object id, but only if the `object_type` has been also specified.
-event_type *String* | Filters events by a specific event type.
-object_event_types *Array of Strings*| An alternative way to filter by multiple object and event types.  This takes a list of strings of the form `[object_type]:[event_type]` (where either `object_type` part or the `event_type` part can be ommited), such as for example `["item:", "note:added"]`.  When this parameter is specified the `object_type`, `event_type` and `object_id` parameters are ignored.
-parent_project_id *Integer* | Filters object events by the id of the project they belong to, so this implicitly limits the results to items and notes.
-parent_item_id *Integer* | Filters object events by the id of the item they belong, so this implicitly limits the results to notes.
-initiator_id *Integer* | Filters event by the id of the initiator.
-since *String* | Filters events to those that took place after the specified date and time, formatted as for example `2016-06-28T12:00`.
-until *String* | Filters events to those that took place before the specified date and time, formatted as `2016-06-28T12:00`.
-limit *Integer* | The number of events to return, where the default is `30`, and the maximum is `100`.
-offset *Integer* | The number of events to skip, which can be used for pagination in order to get more events than those returned by the previous call.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+object_type *String* | No | Filters events by a specific object type.
+object_id *Integer* | No | Filters events by a specific object id, but only if the `object_type` has been also specified.
+event_type *String* | No | Filters events by a specific event type.
+object_event_types *Array of Strings*| No | An alternative way to filter by multiple object and event types.  This takes a list of strings of the form `[object_type]:[event_type]` (where either `object_type` part or the `event_type` part can be ommited), such as for example `["item:", "note:added"]`.  When this parameter is specified the `object_type`, `event_type` and `object_id` parameters are ignored.
+parent_project_id *Integer* | No | Filters object events by the id of the project they belong to, so this implicitly limits the results to items and notes.
+parent_item_id *Integer* | No | Filters object events by the id of the item they belong, so this implicitly limits the results to notes.
+initiator_id *Integer* | No | Filters event by the id of the initiator.
+since *String* | No | Filters events to those that took place after the specified date and time, formatted as for example `2016-06-28T12:00`.
+until *String* | No | Filters events to those that took place before the specified date and time, formatted as `2016-06-28T12:00`.
+limit *Integer* | No | The number of events to return, where the default is `30`, and the maximum is `100`.
+offset *Integer* | No | The number of events to skip, which can be used for pagination in order to get more events than those returned by the previous call.

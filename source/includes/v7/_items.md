@@ -80,29 +80,25 @@ $ curl https://todoist.com/api/v7/sync \
 
 Add a new task to a project.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-content *String* | The text of the task.
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-project_id  *Integer or String (temp id)* | The id of the project to add the task to (a number or a temp id).  By default the task is added to the user’s `Inbox` project.
-date_string *String* | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-date_lang *String* | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
-due_date_utc *String* | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. Note that, when the `due_date_utc` argument is specified, the `date_string` is required and has to specified as well, and also, the `date_string` argument will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
-priority *Integer* | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural). <br>**Note**: Keep in mind that `very urgent` is the priority 1 on clients. So, `p1` will return `4` in the API.
-indent *Integer* | The indent of the task (a number between `1` and `4`, where `1` is top-level).
-item_order *Integer* | The order of the task inside a project (a number, where the smallest value would place the task at the top).
-day_order *Integer* | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
-collapsed *Integer* | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
-labels *Array of Integer* | The tasks labels (a list of label ids such as `[2324,2525]`).
-assigned_by_uid *Integer* | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will be automatically setup to your uid.
-responsible_uid *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or `null` or an empty string to unset.
-auto_reminder *Boolean* | When this option is enabled, the default reminder will be added to the new item if it has a due date with time set.  See also the [auto_reminder user option](#user) for more info about the default reminder.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+content *String* | Yes | The text of the task.
+project_id  *Integer or String (temp id)* | No | The id of the project to add the task to (a number or a temp id).  By default the task is added to the user’s `Inbox` project.
+date_string *String* | No | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_lang *String* | No | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
+due_date_utc *String* | No | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. Note that, when the `due_date_utc` argument is specified, the `date_string` is required and has to specified as well, and also, the `date_string` argument will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
+priority *Integer* | No | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural). <br>**Note**: Keep in mind that `very urgent` is the priority 1 on clients. So, `p1` will return `4` in the API.
+indent *Integer* | No | The indent of the task (a number between `1` and `4`, where `1` is top-level).
+item_order *Integer* | No | The order of the task inside a project (a number, where the smallest value would place the task at the top).
+day_order *Integer* | No | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
+collapsed *Integer* | No | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
+labels *Array of Integer* | No | The tasks labels (a list of label ids such as `[2324,2525]`).
+assigned_by_uid *Integer* | No | The id of user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will be automatically setup to your uid.
+responsible_uid *Integer* | No | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or `null` or an empty string to unset.
+auto_reminder *Boolean* | No | When this option is enabled, the default reminder will be added to the new item if it has a due date with time set.  See also the [auto_reminder user option](#user) for more info about the default reminder.
 
 ## Update an item
 
@@ -128,28 +124,24 @@ $ curl https://todoist.com/api/v7/sync \
 
 Updates an item for the user related to the API credentials.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-id *Integer or String (temp id)* | The id of the task.
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-content *String* | The text of the task.
-date_string *String* | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-date_lang  *String* | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
-due_date_utc  *String* | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. Note that, when the `due_date_utc` argument is specified, the `date_string` is required and has to specified as well, and also, the `date_string` argument will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
-priority *Integer* | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural). <br>**Note**: Keep in mind that `very urgent` is the priority 1 on clients. So, `p1` will return `4` in the API.
-indent  *Integer* | The indent of the task (a number between `1` and `4`, where `1` is top-level).
-item_order  *Integer* | The order of the task inside a project (a number, where the smallest value would place the task at the top).
-day_order  *Integer* | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
-collapsed *Integer* | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
-labels  *Array of Integer* | The tasks labels (a list of label ids such as `[2324,2525]`).
-assigned_by_uid *Integer* | The id of the user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will be automatically setup to your uid.
-responsible_uid *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or `null` or an empty string to unset.
+Parameter | Required | Description
+--------- | -------- | -----------
+id *Integer or String (temp id)* | Yes | The id of the task.
+token *String* | Yes | The user's API token
+content *String* | No | The text of the task.
+date_string *String* | No | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+date_lang  *String* | No | The language of the `date_string` (valid languages are: `en`, `da`, `pl`, `zh`, `ko`, `de`, `pt`, `ja`, `it`, `fr`, `sv`, `ru`, `es`, `nl`).
+due_date_utc  *String* | No | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `due_date_utc` must be in UTC. Note that, when the `due_date_utc` argument is specified, the `date_string` is required and has to specified as well, and also, the `date_string` argument will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
+priority *Integer* | No | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural). <br>**Note**: Keep in mind that `very urgent` is the priority 1 on clients. So, `p1` will return `4` in the API.
+indent  *Integer* | No | The indent of the task (a number between `1` and `4`, where `1` is top-level).
+item_order  *Integer* | No | The order of the task inside a project (a number, where the smallest value would place the task at the top).
+day_order  *Integer* | No | The order of the task inside the `Today` or `Next 7 days` view (a number, where the smallest value would place the task at the top).
+collapsed *Integer* | No | Whether the task's sub-tasks are collapsed (where `1` is true and `0` is false).
+labels  *Array of Integer* | No | The tasks labels (a list of label ids such as `[2324,2525]`).
+assigned_by_uid *Integer* | No | The id of the user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will be automatically setup to your uid.
+responsible_uid *Integer* | No | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts any user id from the list of project collaborators or `null` or an empty string to unset.
 
 ## Delete items
 
@@ -175,11 +167,12 @@ $ curl https://todoist.com/api/v7/sync \
 
 Delete an existing task.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-ids  *Array of Integer (id) or String (temp id)* | List of the ids of the tasks to delete.
+Parameter | Required | Description
+--------- | -------- | -----------
+ids  *Array of Integer (id) or String (temp id)* | Yes | List of the ids of the tasks to delete.
+token *String* | Yes | The user's API token
 
 ## Move an item
 
@@ -205,11 +198,13 @@ $ curl https://todoist.com/api/v7/sync \
 
 Move a task from one project to another project.
 
-### Required arguments
-Argument | Description
--------- | -----------
-project_items *Object* | A JSON mapping telling Todoist where the items are currently found. From project ids to item ids, for example `{"1523":["9637423"]}`, where `1523` is the project id and `9637423` is the item id.
-to_project *Integer* | The project id that the tasks should be moved to, for example `1245`.
+### Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+project_items *Object* | Yes | A JSON mapping telling Todoist where the items are currently found. From project ids to item ids, for example `{"1523":["9637423"]}`, where `1523` is the project id and `9637423` is the item id.
+to_project *Integer* | Yes | The project id that the tasks should be moved to, for example `1245`.
 
 ## Complete items
 
@@ -217,9 +212,12 @@ to_project *Integer* | The project id that the tasks should be moved to, for exa
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -d commands='[{"type": "item_complete", "uuid": "a74bfb5c-5f1d-4d14-baea-b7415446a871", "args": {"ids": [33548400]}}]'
-{ ...
+
+{ 
+  ...
   "sync_status": {"a74bfb5c-5f1d-4d14-baea-b7415446a871": "ok"},
-  ... }
+  ...
+}
 ```
 
 ```python
@@ -233,17 +231,13 @@ $ curl https://todoist.com/api/v7/sync \
 Complete tasks and optionally move them to history. See also `item_close` for a
 simplified version of the command.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-ids *Array of Integer or String (temp id)* | A JSON list of ids to complete (numbers or temp ids).
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-force_history *Integer* | Whether these tasks should be moved to history (where `1` is true and `0` is false, and the default is `1`) This is useful when checking off sub tasks.
+Parameter | Required | Description
+--------- | -------- | -----------
+ids *Array of Integer or String (temp id)* | Yes | A JSON list of ids to complete (numbers or temp ids).
+token *String* | Yes | The user's API token
+force_history *Integer* | No | Whether these tasks should be moved to history (where `1` is true and `0` is false, and the default is `1`) This is useful when checking off sub tasks.
 
 ## Uncomplete items
 
@@ -269,17 +263,13 @@ $ curl https://todoist.com/api/v7/sync \
 
 Uncomplete tasks and move them to the active projects.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-ids *Array of Integer or String (temp id)*| A list of items to uncomplete.
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-restore_state *Object* | A dictionary object, where the item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent - `item_id: [in_history, checked, item_order, indent]`
+Parameter | Required | Description
+--------- | -------- | -----------
+ids *Array of Integer or String (temp id)*| Yes | A list of items to uncomplete.
+token *String* | Yes | The user's API token
+restore_state *Object* | No | A dictionary object, where the item id is the key, and its value is a list of four elements, whether the item is in history, whether it is checked, its order and indent - `item_id: [in_history, checked, item_order, indent]`
 
 
 ## Complete a recurring task
@@ -308,19 +298,15 @@ Complete a recurring task, and the reason why this is a special case is because
 we need to mark a recurring completion (and using `item_update` won't do
 this). See also `item_close` for a simplified version of the command.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-id *Integer or String* | The id of the item to update (a number or a temp id).
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-new_date_utc *String* | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `new_date_utc` must be in UTC. Note that, when the `new_date_utc` argument is specified, the `date_string` is required and has to specified as well, and also, the `date_string` argument will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
-date_string  *String* | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-is_forward  *Integer* | Whether the task is to be completed (value `1`) or uncompleted (value `0`), while the default is `1`.
+Parameter | Required | Description
+--------- | -------- | -----------
+id *Integer or String* | Yes | The id of the item to update (a number or a temp id).
+token *String* | Yes | The user's API token
+new_date_utc *String* | No | The date of the task in the format `YYYY-MM-DDTHH:MM` (for example: `2012-3-24T23:59`). The value of `new_date_utc` must be in UTC. Note that, when the `new_date_utc` argument is specified, the `date_string` is required and has to specified as well, and also, the `date_string` argument will be parsed as local timestamp, and converted to UTC internally, according to the user's profile settings.
+date_string  *String* | No | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+is_forward  *Integer* | No | Whether the task is to be completed (value `1`) or uncompleted (value `0`), while the default is `1`.
 
 
 ## Close item
@@ -350,11 +336,12 @@ does exactly what official clients do when you close a task: regular task is
 completed and moved to history, subtask is checked (marked as done, but not moved
 to history), recurring task is moved forward (due date is updated).
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-id *Integer or String (temp id)* | The id of the item to close (a number or a temp id).
+Parameter | Required | Description
+--------- | -------- | -----------
+id *Integer or String (temp id)* | Yes | The id of the item to close (a number or a temp id).
+token *String* | Yes | The user's API token
 
 
 ## Update multiple orders/indents
@@ -380,11 +367,12 @@ $ curl https://todoist.com/api/v7/sync \
 
 Update the orders and indents of multiple items at once.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-ids_to_orders_indents *Object* | A dictionary, where an item id is the key, and a list with two elements, the order and the indent, are its value: `item_id: [item_order, indent]`.
+Parameter | Required | Description
+--------- | -------- | -----------
+ids_to_orders_indents *Object* | Yes | A dictionary, where an item id is the key, and a list with two elements, the order and the indent, are its value: `item_id: [item_order, indent]`.
+token *String* | Yes | The user's API token
 
 
 ## Update day orders
@@ -410,8 +398,9 @@ $ curl https://todoist.com/api/v7/sync \
 
 Update the day orders of multiple items at once.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-ids_to_orders *Object* | A dictionary, where an item id is the key, and the day order its value: `item_id: day_order`.
+Parameter | Required | Description
+--------- | -------- | -----------
+ids_to_orders *Object* | Yes | A dictionary, where an item id is the key, and the day order its value: `item_id: day_order`.
+token *String* | Yes | The user's API token

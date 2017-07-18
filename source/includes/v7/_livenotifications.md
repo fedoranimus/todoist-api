@@ -374,15 +374,16 @@ $ curl https://todoist.com/api/v7/sync \
 
 Set the last known notification.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-id *Integer*| The id of the last known notification (a number or `0` or `null` to mark all read).
+Parameter | Required | Description
+--------- | -------- | -----------
+id *Integer* | Yes | The id of the last known notification (a number or `0` or `null` to mark all read).
+token *String* | Yes | The user's API token
 
 ## Mark as read
 
-  > An example of marking a notification as read:
+> An example of marking a notification as read:
 
 ```shell
 $ curl https://todoist.com/api/v7/sync \
@@ -405,11 +406,12 @@ $ curl https://todoist.com/api/v7/sync \
 
 Mark the notification as read.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-id *Integer*| The id of the notification.
+Parameter | Required | Description
+--------- | -------- | -----------
+id *Integer* | Yes |  The id of the notification.
+token *String* | Yes | The user's API token
 
 ## Mark all as read
 
@@ -436,6 +438,11 @@ $ curl https://todoist.com/api/v7/sync \
 
 Mark all notifications as read.
 
+### Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
 
 ## Mark as unread
 
@@ -462,8 +469,9 @@ $ curl https://todoist.com/api/v7/sync \
 
 Mark the notification as unread.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-id *Integer*| The id of the notification.
+Parameter | Required | Description
+--------- | -------- | -----------
+id *Integer* | Yes | The id of the notification.
+token *String* | Yes | The user's API token

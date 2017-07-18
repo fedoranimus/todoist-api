@@ -180,15 +180,10 @@
 
 You can query after date, priority or labels.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-token *String* | The user's token (received on login).
-queries *JSON* | A JSON list of queries to search. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-as_count *Integer* | If set to `1` then no data will be returned, instead the count of tasks matching will be returned.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+queries *JSON* | Yes | A JSON list of queries to search. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
+as_count *Integer* | No | If set to `1` then no data will be returned, instead the count of tasks matching will be returned.

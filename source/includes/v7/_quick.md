@@ -68,16 +68,11 @@ $ curl https://todoist.com/api/v7/quick/add \
 Add a new task using the Quick Add Task implementation available in the official
 clients.
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login.
-text *String* | The text of the task that is parsed.  It can include a due date in free form text, a project name starting with the `#` character, a label starting with the `@` character, and an assignee starting with the `+` character.
-
-### Optional parameters
-
-Parameter | Description
---------- | -----------
-note *String* | The content of the note.
-reminder *String* | The date of the reminder, added in free form text.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+text *String* | Yes | The text of the task that is parsed.  It can include a due date in free form text, a project name starting with the `#` character, a label starting with the `@` character, and an assignee starting with the `+` character.
+note *String* | No | The content of the note.
+reminder *String* | No | The date of the reminder, added in free form text.

@@ -197,20 +197,15 @@ $ curl https://todoist.com/api/v7/user/register \
 
 ```
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-email *String* | The user's email.
-full_name *String* | The user's real name formatted as `Firstname Lastname`.
-password *String* | The user's password.
-
-### Optional parameters
-
-Parameter | Description
---------- | -----------
-lang *String* | The user's language, which can take one of the following values: `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `hi`, `ko`, `pt`, `ru`, `zh_TW`.
-timezone *String* | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`). By default we use the user's IP address to determine the timezone.
+Parameter | Required | Description
+--------- | -------- | -----------
+email *String* | Yes | The user's email.
+full_name *String* | Yes | The user's real name formatted as `Firstname Lastname`.
+password *String* | Yes | The user's password.
+lang *String* | No | The user's language, which can take one of the following values: `de`, `fr`, `ja`, `pl`, `pt_BR`, `zh_CN`, `es`, `hi`, `ko`, `pt`, `ru`, `zh_TW`.
+timezone *String* | No | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`). By default we use the user's IP address to determine the timezone.
 
 ## Delete an existing user
 
@@ -230,18 +225,13 @@ $ curl https://todoist.com/api/v7/user/delete \
 ok
 ```
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token.
-current_password *String* | The user's current password.
-
-### Optional parameters
-
-Parameter | Description
---------- | -----------
-reason_for_delete *String* | A reason for deletion, that is used for sending feedback back to Todoist.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's token.
+current_password *String* | Yes | The user's current password.
+reason_for_delete *String* | No | A reason for deletion, that is used for sending feedback back to Todoist.
 
 
 ## Update user's properties
@@ -267,25 +257,26 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.user.update(time_format=0)
 ```
 
-### Optional parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-email *String* | The user's email.
-full_name *String* | The user's real name formatted as `Firstname Lastname`.
-password *String* | The user's password.
-timezone *String* | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`).
-start_page *String* | The user's default view on Todoist. The start page can be one of the following: `_info_page` for the info page, `_blank` for a blank page, `_project_<PROJECT_ID>` for project with id `<PROJECT_ID>`, and `<ANY_QUERY>` to query after anything.
-start_day *Integer* | The first day of the week (between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
-next_week *Integer* | The day of the next week, that tasks will be postponed to (between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
-time_format *Integer* | Whether to use a `24h` format such as `13:00` (if set to `0`) when displaying time, or a `12h` format such as `1:00pm` (if set to `1`).
-date_format *Integer* | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
-sort_order *Integer* | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
-default_reminder *String* | The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
-auto_reminder *Integer* | The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task.
-mobile_number *String* | The user's mobile number (`null` if not set).
-mobile_host *String* | The user's mobile host (or `null` if not set).
-theme *Integer* | The currently selected Todoist theme (between `0` and `10`).
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+email *String* | No | The user's email.
+full_name *String* | No | The user's real name formatted as `Firstname Lastname`.
+password *String* | No | The user's password.
+timezone *String* | No | The user's timezone (a string value such as `UTC`, `Europe/Lisbon`, `US/Eastern`, `Asian/Taipei`).
+start_page *String* | No | The user's default view on Todoist. The start page can be one of the following: `_info_page` for the info page, `_blank` for a blank page, `_project_<PROJECT_ID>` for project with id `<PROJECT_ID>`, and `<ANY_QUERY>` to query after anything.
+start_day *Integer* | No | The first day of the week (between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
+next_week *Integer* | No | The day of the next week, that tasks will be postponed to (between `1` and `7`, where `1` is `Monday` and `7` is `Sunday`).
+time_format *Integer* | No | Whether to use a `24h` format such as `13:00` (if set to `0`) when displaying time, or a `12h` format such as `1:00pm` (if set to `1`).
+date_format *Integer* | No | Whether to use the `DD-MM-YYYY` date format (if set to `0`), or the `MM-DD-YYYY` format (if set to `1`).
+sort_order *Integer* | No | Whether to show projects in an `oldest dates first` order (if set to `0`, or a `oldest dates last` order (if set to `1`).
+default_reminder *String* | No | The default reminder for the user. Reminders are only possible for Premium users. The default reminder can be one of the following: `email` to send reminders by email, `mobile` to send reminders to mobile devices via SMS, `push` to send reminders to smart devices using push notifications (one of the Android or iOS official clients must be installed on the client side to receive these notifications), `no_default` to turn off sending default reminders.
+auto_reminder *Integer* | No | The default time in minutes for the automatic reminders set, whenever a due date has been specified for a task.
+mobile_number *String* | No | The user's mobile number (`null` if not set).
+mobile_host *String* | No | The user's mobile host (or `null` if not set).
+theme *Integer* | No | The currently selected Todoist theme (between `0` and `10`).
 
 
 ## Update karma goals
@@ -310,15 +301,16 @@ $ curl https://todoist.com/api/v7/sync \
 
 Update the karma goals of the user.
 
-### Optional parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-daily_goal *Integer* | The target number of tasks to complete per day.
-weekly_goal *Integer* | The target number of tasks to complete per week.
-ignore_days *Integer* | A list with the days of the week to ignore (`1` for `Monday` and `7` for `Sunday`).
-vacation_mode *Integer* | Marks the user as being on vacation (where `1` is true and `0` is false).
-karma_disabled *Integer* | Whether to disable the karma and goals measuring altogether (where `1` is true and `0` is false).
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+daily_goal *Integer* | No | The target number of tasks to complete per day.
+weekly_goal *Integer* | No | The target number of tasks to complete per week.
+ignore_days *Integer* | No | A list with the days of the week to ignore (`1` for `Monday` and `7` for `Sunday`).
+vacation_mode *Integer* | No | Marks the user as being on vacation (where `1` is true and `0` is false).
+karma_disabled *Integer* | No | Whether to disable the karma and goals measuring altogether (where `1` is true and `0` is false).
 
 
 ## Update notification settings
@@ -459,9 +451,9 @@ Update the user's notification settings.
 
 ### Required parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login.
-notification_type *String* | The notification type.  For a list of notifications have a look at the `Live Notifications` section.
-service *String* | The service type, which can take the values: `email` or `push`.
-dont_notify *Integer* | Whether notifications of this service should be notified (`1` to not notify, and `0` to notify).
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+notification_type *String* | Yes | The notification type.  For a list of notifications have a look at the `Live Notifications` section.
+service *String* | Yes | The service type, which can take the values: `email` or `push`.
+dont_notify *Integer* | Yes | Whether notifications of this service should be notified (`1` to not notify, and `0` to notify).

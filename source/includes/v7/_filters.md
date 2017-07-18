@@ -51,19 +51,15 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-name *String* | The name of the filter.
-query *String* | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-color *Integer* | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).
-item_order *Integer* | Filter’s order in the filter list (the smallest value should place the filter at the top).
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+name *String* | Yes | The name of the filter.
+query *String* | Yes | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
+color *Integer* | No | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).
+item_order *Integer* | No | Filter’s order in the filter list (the smallest value should place the filter at the top).
 
 ## Update a filter
 
@@ -89,20 +85,16 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-id *Integer or String (temp_id)* | The id of the filter.
-
-### Optional arguments
-
-Argument | Description
--------- | -----------
-name *String* | The name of the filter
-query *String* | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
-color *Integer* | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).
-item_order *Integer* | Filter’s order in the filter list (where the smallest value should place the filter at the top).
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+id *Integer or String (temp_id)* | Yes | The id of the filter.
+name *String* | No | The name of the filter
+query *String* | No | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
+color *Integer* | No | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).
+item_order *Integer* | No | Filter’s order in the filter list (where the smallest value should place the filter at the top).
 
 ## Delete a filter
 
@@ -128,11 +120,12 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-id *Integer or String (temp_id)* | The id of the filter.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+id *Integer or String (temp_id)* | Yes | The id of the filter.
 
 ## Update multiple orders
 
@@ -159,8 +152,9 @@ $ curl https://todoist.com/api/v7/sync \
 
 Update the orders of multiple filters at once.
 
-### Required arguments
+### Parameters
 
-Argument | Description
--------- | -----------
-id_order_mapping *Object* | A dictionary, where a filter id is the key, and the order its value: `filter_id: order`.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+id_order_mapping *Object* | Yes | A dictionary, where a filter id is the key, and the order its value: `filter_id: order`.

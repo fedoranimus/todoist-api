@@ -37,9 +37,9 @@ Here follow the required parameters:
 
 Name | Description
 ---- | -----------
-client_id | The unique Client ID of the Todoist application that you registered.
-scope | A comma separated list of permissions that you would like the users to grant to your application. See below a table with more details about this.
-state | A unique and unguessable string. It is used to protect you against cross-site request forgery attacks.
+client_id *String* | The unique Client ID of the Todoist application that you registered.
+scope *String* | A comma separated list of permissions that you would like the users to grant to your application. See below a table with more details about this.
+state *String* | A unique and unguessable string. It is used to protect you against cross-site request forgery attacks.
 
 Here are the scope parameters mentioned before:
 
@@ -102,11 +102,12 @@ Here follow the required parameters:
 
 Name | Description
 ---- | -----------
-client_id | The unique Client ID of the Todoist application that you registered.
-client_secret | The unique Client Secret of the Todoist application that you registered.
-code | The unique string code that you obtained in the previous step.
+client_id *String* | The unique Client ID of the Todoist application that you registered.
+client_secret *String* | The unique Client Secret of the Todoist application that you registered.
+code *String* | The unique string code that you obtained in the previous step.
 
-And here are some common errors that you may encounter (all the error responses will be in JSON format):
+And here are some common errors that you may encounter (all the error responses
+will be in JSON format):
 
 Error | Description
 ----- | -----------
@@ -123,16 +124,18 @@ POST) to the following endpoint:
 
 
 ```shell
-curl https://todoist.com/api/access_tokens/revoke -H "Content-Type: application/json" -X POST -d '{"client_id":"xyz", "client_secret":"xyz", "access_token":"xyz"}'
+curl -X POST https://todoist.com/api/access_tokens/revoke \
+    -H "Content-Type: application/json" \
+    -d '{"client_id":"xyz", "client_secret":"xyz", "access_token":"xyz"}'
 ```
 
-### Required parameters:
+### Parameters:
 
-Name | Description
----- | -----------
-client_id | The unique Client ID of the Todoist application that you registered.
-client_secret | The unique Client Secret of the Todoist application that you registered.
-access_token | Access token obtained from the OAuth authentication
+Name | Required | Description
+---- | -------- | -----------
+client_id *String* | Yes | The unique Client ID of the Todoist application that you registered.
+client_secret *String* | Yes | The unique Client Secret of the Todoist application that you registered.
+access_token *String* | Yes | Access token obtained from the OAuth authentication
 
 Upon successful request, a HTTP 204 response will be returned.
 
@@ -149,31 +152,33 @@ Here is the migration API endpoint (HTTP POST, with JSON request parameters):
 `https://todoist.com/api/access_tokens/migrate_personal_token`
 
 ```shell
-curl https://todoist.com/api/access_tokens/migrate_personal_token -H "Content-Type: application/json" -X POST -d '{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}'
+curl -X POST https://todoist.com/api/access_tokens/migrate_personal_token \
+    -H "Content-Type: application/json" \
+    -d '{"client_id":"xyz", "client_secret":"xyz", "personal_token":"xyz", "scope": "data:read"}'
 
 {"access_token": "....", "token_type": "Bearer"}
 ```
 
-### Required parameters:
+### Parameters:
 
-Name | Description
----- | -----------
-client_id | The unique Client ID of the Todoist application that you registered.
-client_secret | The unique Client Secret of the Todoist application that you registered.
-personal_token | Token obtained from the email/password authentication
-scope | Scopes of the OAuth token. Please refer to the [OAuth](https://developer.todoist.com/#oauth) section for the detailed list of available scopes.
+Name | Required | Description
+---- | -------- | -----------
+client_id *String* | Yes | The unique Client ID of the Todoist application that you registered.
+client_secret *String* | Yes | The unique Client Secret of the Todoist application that you registered.
+personal_token *String* | Yes | Token obtained from the email/password authentication
+scope *String* | Yes | Scopes of the OAuth token. Please refer to the [OAuth](https://developer.todoist.com/#oauth) section for the detailed list of available scopes.
 
-Upon succesful request, a HTTP 200 response will be returned with a new OAuth token in JSON format:
-```
-{"access_token": "....", "token_type": "Bearer"}
-```
+Upon succesful request, a HTTP 200 response will be returned with a new OAuth
+token in JSON format:
+
+`{"access_token": "....", "token_type": "Bearer"}`
 
 
 ## Cross Origin Resource Sharing
 
-All API endpoints support Cross Origin Resource Sharing (CORS) for 
-requests from any origin. The header `Access-Control-Allow-Origin: *` 
-is set for successfully authenticated requests.
+All API endpoints support Cross Origin Resource Sharing (CORS) for requests from
+any origin. The header `Access-Control-Allow-Origin: *` is set for successfully
+authenticated requests.
 
 > CORS headers example:
 
@@ -181,6 +186,7 @@ is set for successfully authenticated requests.
 $ curl https://todoist.com/api/v7/sync \
     -d token=0123456789abcdef0123456789abcdef01234567 \
     -H 'Origin: http://example.com'
+
 HTTP/1.1 200 OK
 Access-Control-Allow-Credentials: false
 Access-Control-Allow-Origin: *

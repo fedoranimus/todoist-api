@@ -127,11 +127,11 @@ $ curl https://todoist.com/api/v7/completed/get_stats \
 
 Get the user's productivity stats.
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
 
 ## Get all completed items
 
@@ -203,22 +203,17 @@ $ curl https://todoist.com/api/v7/completed/get_all \
 
 Get all the user's completed items (tasks).
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login.
-
-### Optional parameters
-
-Parameter | Description
---------- | -----------
-project_id *Integer* | Filter the tasks by project id.
-limit *Integer* | The number of items to return (where the default is `30`, and the maximum is `50`).
-offset *Integer* | Can be used for pagination, when more than the `limit` number of tasks are returned.
-until *String* | Return items with a completed date same or older than `until` (a string value formatted as `2007-4-29T10:13`).
-since *String* | Return items with a completed date newer than `since` (a string value formatted as `2007-4-29T10:13`).
-annotate_notes *Boolean* | Return notes together with the completed items (a `true` or `false` value).
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+project_id *Integer* | No | Filter the tasks by project id.
+limit *Integer* | No | The number of items to return (where the default is `30`, and the maximum is `50`).
+offset *Integer* | No | Can be used for pagination, when more than the `limit` number of tasks are returned.
+until *String* | No | Return items with a completed date same or older than `until` (a string value formatted as `2007-4-29T10:13`).
+since *String* | No | Return items with a completed date newer than `since` (a string value formatted as `2007-4-29T10:13`).
+annotate_notes *Boolean* | No | Return notes together with the completed items (a `true` or `false` value).
 
 ## Get archived projects
 
@@ -262,11 +257,11 @@ $ curl https://todoist.com/api/v7/projects/get_archived \
 
 Get the user's archived projects.
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
 
 ## Add item
 
@@ -333,27 +328,22 @@ Add a new task to a project. Note, that this is provided as a helper
 method, a shortcut, to quickly add a task without going through the
 `Sync workflow` described in a previous section.
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login.
-content *String* | The text of the task.
-
-### Optional parameters
-
-Parameter | Description
---------- | -----------
-project_id *Integer* | The id of the project to add the task to, while the default is the user's `Inbox` project.
-date_string *String* | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
-priority *Integer* | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural). <br>**Note**: Keep in mind that `very urgent` is the priority 1 on clients. So, `p1` will return `4` in the API.
-indent *Integer* | The indent of the task (between `1` and `4`, where `1` is top-level).
-item_order *Integer* | The order of the task inside a project (where the smallest value would place the task at the top).
-labels *Array of Integer* | The task's labels (a list of label ids such as `[2324,2525]`).
-assigned_by_uid *Integer* | The id of the user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
-responsible_uid *Integer* | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
-note *String* | Add a note directly to the task (a string value that will become the content of the note).
-auto_reminder *Boolean* | When this option is enabled, the default reminder will be added to the new item if it has a due date with time set.  See also the [auto_reminder user option](#user) for more info about the default reminder.
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+content *String* | Yes | The text of the task.
+project_id *Integer* | No | The id of the project to add the task to, while the default is the user's `Inbox` project.
+date_string *String* | No | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
+priority *Integer* | No | The priority of the task (a number between `1` and `4`, `4` for very urgent and `1` for natural). <br>**Note**: Keep in mind that `very urgent` is the priority 1 on clients. So, `p1` will return `4` in the API.
+indent *Integer* | No | The indent of the task (between `1` and `4`, where `1` is top-level).
+item_order *Integer* | No | The order of the task inside a project (where the smallest value would place the task at the top).
+labels *Array of Integer* | No | The task's labels (a list of label ids such as `[2324,2525]`).
+assigned_by_uid *Integer* | No | The id of the user who assigns the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set up to your uid.
+responsible_uid *Integer* | No | The id of user who is responsible for accomplishing the current task. This makes sense for shared projects only. Accepts `0` or any user id from the list of project collaborators. If this value is unset or invalid, it will automatically be set to `null`.
+note *String* | No | Add a note directly to the task (a string value that will become the content of the note).
+auto_reminder *Boolean* | No | When this option is enabled, the default reminder will be added to the new item if it has a due date with time set.  See also the [auto_reminder user option](#user) for more info about the default reminder.
 
 ## Get item info
 
@@ -530,13 +520,13 @@ It's especially important, because on initial load we return back no more than
 It returns a JSON object with the `item`, and optionally the `project`
 and `notes` attributes.
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login.
-item_id *Integer* | The item's unique id.
-all_data *Boolean* | Whether to return the parent project and notes of the item (a `true` or `false` value, while the default is `true`).
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+item_id *Integer* | Yes | The item's unique id.
+all_data *Boolean* | No | Whether to return the parent project and notes of the item (a `true` or `false` value, while the default is `true`).
 
 ## Get project info
 
@@ -616,13 +606,13 @@ It's especially important, because on initial load we return back no more than
 
 It returns a JSON object with the `project`, and optionally the `notes` attributes.
 
-### Required parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-token *String* | The user's token received on login.
-project_id *Integer* | The projects's unique id.
-all_data *Boolean* | Whether to return the notes of the project (a `true` or `false` value, while the default is `true`).
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+project_id *Integer* | Yes | The projects's unique id.
+all_data *Boolean* | No | Whether to return the notes of the project (a `true` or `false` value, while the default is `true`).
 
 
 ## Get project data
@@ -723,3 +713,10 @@ $ curl https://todoist.com/api/v7/projects/get_data \
 ```
 
 Get a project's uncompleted items.
+
+### Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+token *String* | Yes | The user's API token
+project_id *Integer* | Yes | The projects's unique id.
