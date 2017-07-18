@@ -23,12 +23,10 @@ Todoist objects and endpoints, and you can continue reading them in
 the order you need them.
 
 
-## Client libraries
+## Python library
 
-Currently there is official support in the form of a Python library,
-but soon more languages might follow.
-
-### Python
+We currently have an official Python library supported by Doist to make the
+developer life easier.
 
 > You can install todoist python library via pip:
 
