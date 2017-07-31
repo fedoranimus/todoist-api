@@ -42,7 +42,7 @@ $ curl https://todoist.com/api/v7/sync \
   "project_notes": [ ... ],
   "projects": [ ... ],
   "reminders": [ ... ],
-  'settings_notifications: { ... },
+  "settings_notifications": { ... },
   "sync_token": "JLlaPv840mDQK4PLl6-hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS",
   "temp_id_mapping": { ... },
   "user": { ... }
