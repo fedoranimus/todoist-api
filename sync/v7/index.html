@@ -1533,12 +1533,12 @@ you performed a sync request.</li>
   <span class="s2">"project_notes"</span>: <span class="o">[</span> ... <span class="o">]</span>,
   <span class="s2">"projects"</span>: <span class="o">[</span> ... <span class="o">]</span>,
   <span class="s2">"reminders"</span>: <span class="o">[</span> ... <span class="o">]</span>,
-  <span class="s1">'settings_notifications: { ... },
-  "sync_token": "JLlaPv840mDQK4PLl6-hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS",
-  "temp_id_mapping": { ... },
-  "user": { ... }
-}
-</span></code></pre><pre class="highlight python tab-python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
+  <span class="s2">"settings_notifications"</span>: <span class="o">{</span> ... <span class="o">}</span>,
+  <span class="s2">"sync_token"</span>: <span class="s2">"JLlaPv840mDQK4PLl6-hmjYMbP2h_RHsfPmIXuqmJI_zRiQHFww9olfDvSSpw74nrdvS"</span>,
+  <span class="s2">"temp_id_mapping"</span>: <span class="o">{</span> ... <span class="o">}</span>,
+  <span class="s2">"user"</span>: <span class="o">{</span> ... <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">todoist</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span> <span class="o">=</span> <span class="n">todoist</span><span class="o">.</span><span class="n">TodoistAPI</span><span class="p">(</span><span class="s">'0123456789abcdef0123456789abcdef01234567'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api</span><span class="o">.</span><span class="n">sync</span><span class="p">()</span>
 <span class="p">{</span>
