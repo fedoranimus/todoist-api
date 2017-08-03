@@ -176,9 +176,9 @@ token in JSON format:
 
 ## Cross Origin Resource Sharing
 
-All API endpoints support Cross Origin Resource Sharing (CORS) for requests from
-any origin. The header `Access-Control-Allow-Origin: *` is set for successfully
-authenticated requests.
+All API endpoints not related to the 3 OAuth steps support Cross Origin Resource
+Sharing (CORS) for requests from any origin. The header
+`Access-Control-Allow-Origin: *` is set for successfully authenticated requests.
 
 > CORS headers example:
 
