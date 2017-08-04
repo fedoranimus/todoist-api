@@ -21,6 +21,7 @@ includes:
   - sync/v7/miscellaneous
   - sync/v7/quick
   - sync/v7/user
+  - sync/v7/view_options
   - sync/v7/sharing
   - sync/v7/livenotifications
   - sync/v7/business
