@@ -87,12 +87,11 @@ $ curl https://todoist.com/api/v7/sync \
 
 Share a project with another user.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 project_id *Integer or String (temp_id)* | Yes | The project to be shared.
-token *String* | Yes | The user's API token
 email *String* | Yes | The user email with whom to share the project.
 
 ## Delete a collaborator
@@ -120,12 +119,11 @@ $ curl https://todoist.com/api/v7/sync \
 
 Remove an user from a shared project.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 project_id *Integer or String (temp_id)* | Yes | The project to be affected.
-token *String* | Yes | The user's API token
 email *String* | Yes | The user email with whom the project was shared with.
 
 ## Accept an invitation
@@ -153,11 +151,10 @@ $ curl https://todoist.com/api/v7/sync \
 
 Accept an invitation to join a shared project.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 invitation_id *Integer* | Yes | The invitation id.
 invitation_secret *String* | Yes | The secret fetched from the live notification.
 
@@ -186,11 +183,10 @@ $ curl https://todoist.com/api/v7/sync \
 
 Reject an invitation to join a shared project.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 invitation_id *Integer* | Yes | The invitation id.
 invitation_secret *String* | Yes | The secret fetched from the live notification.
 
@@ -219,9 +215,8 @@ $ curl https://todoist.com/api/v7/sync \
 
 Delete an invitation to join a shared project.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 invitation_id *Integer* | Yes | The invitation to be deleted.

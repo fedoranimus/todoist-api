@@ -374,12 +374,11 @@ $ curl https://todoist.com/api/v7/sync \
 
 Set the last known notification.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 id *Integer* | Yes | The id of the last known notification (a number or `0` or `null` to mark all read).
-token *String* | Yes | The user's API token
 
 ## Mark as read
 
@@ -406,12 +405,11 @@ $ curl https://todoist.com/api/v7/sync \
 
 Mark the notification as read.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 id *Integer* | Yes |  The id of the notification.
-token *String* | Yes | The user's API token
 
 ## Mark all as read
 
@@ -438,11 +436,6 @@ $ curl https://todoist.com/api/v7/sync \
 
 Mark all notifications as read.
 
-### Parameters
-
-Parameter | Required | Description
---------- | -------- | -----------
-token *String* | Yes | The user's API token
 
 ## Mark as unread
 
@@ -469,9 +462,8 @@ $ curl https://todoist.com/api/v7/sync \
 
 Mark the notification as unread.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 id *Integer* | Yes | The id of the notification.
-token *String* | Yes | The user's API token

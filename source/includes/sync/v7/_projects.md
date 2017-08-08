@@ -55,12 +55,11 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 name *String* | Yes | The name of the project (a string value).
-token *String* | Yes | The user's API token
 color *Integer* | No | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
 indent *Integer* | No | The indent of the item (a number between `1` and `4`, where `1` is top-level).
 item_order *Integer* | No | Project's order in the project list (a number, where the smallest value should place the project at the top).
@@ -90,12 +89,11 @@ $ curl https://todoist.com/api/v7/sync \
 
 Update an existing project.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 id  *Integer or String (temp_id)* | Yes | The id of the project (could be temp id).
-token *String* | Yes | The user's API token
 name *String* | No | The name of the project (a string value).
 color *Integer* | No | The color of the project (a number between `0` and `11`, or between `0` and `21` for premium users).
 indent *Integer* | No | The indent of the item (a number between `1` and `4`, where `1` is top-level).
@@ -127,11 +125,10 @@ $ curl https://todoist.com/api/v7/sync \
 
 Delete an existing project.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 ids *Array of Integer (id) or String (temp id)* | Yes | List of the ids of the projects to delete (could be temp ids).
 
 
@@ -161,11 +158,10 @@ $ curl https://todoist.com/api/v7/sync \
 
 Archive project and its children.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 ids *Array of Integer (id) or String (temp id)* | Yes | List of the ids of the projects to archive (could be temp ids).
 
 ## Unarchive a project
@@ -194,11 +190,10 @@ $ curl https://todoist.com/api/v7/sync \
 
 Unarchive project and its children.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 ids  *Array of Integer (id) or String (temp id)* | Yes | List of the ids of the projects to unarchive (could be temp ids).
 
 ## Update multiple orders/indents
@@ -224,9 +219,8 @@ $ curl https://todoist.com/api/v7/sync \
 
 Update the orders and indents of multiple projects at once.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 ids_to_orders_indents *Object* | Yes | A dictionary object, with a project id as key and a two elements list as value: `project_id: [item_order, indent]`

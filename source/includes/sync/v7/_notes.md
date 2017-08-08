@@ -105,13 +105,12 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 item_id *Integer* | Yes | The item which the note is part of (a unique number or temp id).
 content *String* | Yes | The content of the note (a string value).
-token *String* | Yes | The user's API token
 file_attachment *Object* | No | A file attached to the note (see more details about attachments above, and learn how to upload a file in the [Uploads section](#uploads)).
 uids_to_notify *Array of Integer* | No | A list of user ids to notify.
 
@@ -140,13 +139,12 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 project_id *Integer or String (temp_id)* | Yes | The project which the note is part of.
 content *String* | Yes | The content of the note.
-token *String* | Yes | The user's API token
 file_attachment *Object* | No | A file attached to the note (see more details about attachments above, and learn how to upload a file in the [Uploads section](#uploads)).
 
 ## Update a note
@@ -173,13 +171,12 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 id *Integer or String (temp_id)* | Yes | The id of the note.
 content *String* | Yes | The content of the note.
-token *String* | Yes | The user's API token
 file_attachment *Object* | No | A file attached to the note (see more details about attachments above, and learn how to upload a file in the [Uploads section](#uploads)).
 
 ## Delete a note
@@ -203,9 +200,8 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 id *Integer or String (temp_id)* | Yes | The id of the note.
-token *String* | Yes | The user's API token

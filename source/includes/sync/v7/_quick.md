@@ -72,7 +72,6 @@ clients.
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 text *String* | Yes | The text of the task that is parsed.  It can include a due date in free form text, a project name starting with the `#` character, a label starting with the `@` character, and an assignee starting with the `+` character.
 note *String* | No | The content of the note.
 reminder *String* | No | The date of the reminder, added in free form text.

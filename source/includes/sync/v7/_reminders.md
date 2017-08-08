@@ -110,12 +110,11 @@ $ curl https://todoist.com/api/v7/sync \
 
 Add a new reminder to the user account related to the API credentials.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 item_id *Integer or String (temp_id)* | Yes | The item id for which the reminder is about.
-token *String* | Yes | The user's API token
 notify_uid *Integer* | No | The user id which should be notified of the reminder, typically the current user id creating the reminder.
 service *String* | No | The way to get notified of the reminder: `email` for e-mail, `mobile` for mobile text message, or `push` for mobile push notification.
 type *String* | No | The type of the reminder: `relative` for a time-based reminder specified in minutes from now, `absolute` for a time-based reminder with a specific time and date in the future, and `location` for a location-based reminder.
@@ -155,12 +154,11 @@ $ curl https://todoist.com/api/v7/sync \
 
 Update a reminder from the user account related to the API credentials.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 id *Integer or String (temp_id)* | Yes | The id of the reminder.
-token *String* | Yes | The user's API token
 notify_uid *Integer* | No | The user id which should be notified of the reminder, typically the current user id creating the reminder.
 service *String* | No | The way to get notified of the reminder: `email` for e-mail, `mobile` for mobile text message, or `push` for mobile push notification.
 type *String* | No | The type of the reminder: `relative` for a time-based reminder specified in minutes from now, `absolute` for a time-based reminder with a specific time and date in the future, and `location` for a location-based reminder.
@@ -200,11 +198,10 @@ $ curl https://todoist.com/api/v7/sync \
 
 Delete a reminder from the user account related to the API credentials.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 id *Integer or String (temp_id)* | Yes | The id of the filter.
 
 
@@ -230,9 +227,3 @@ $ curl https://todoist.com/api/v7/sync \
 ```
 
 Clears the locations list, which is used for the location reminders.
-
-### Parameters
-
-Parameter | Required | Description
---------- | -------- | -----------
-token *String* | Yes | The user's API token

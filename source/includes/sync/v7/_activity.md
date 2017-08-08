@@ -222,11 +222,10 @@ $ curl https://todoist.com/api/v7/activity/get \
 ]
 ```
 
-### Parameters
+### Properties
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 object_type *String* | No | Filters events by a specific object type.
 object_id *Integer* | No | Filters events by a specific object id, but only if the `object_type` has been also specified.
 event_type *String* | No | Filters events by a specific event type.

@@ -64,7 +64,6 @@ Upload a file suitable to be passed as a `file_attachment` attribute to the
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 file_name *String* | Yes | The file name to be uploaded.
 
 ### Base file properties
@@ -178,7 +177,6 @@ Get all user's uploads.
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 limit *Integer* | No | The number of items to return (a number, where the default is `30`, and the maximum is `50`).
 last_id *Integer* | No | Can be used for pagination. This should be the minimum upload id you've fetched so far. All results will be listed before that id.
 
@@ -207,5 +205,4 @@ Delete an uploaded file.
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 file_url *String* | Yes | The file URL to delete.

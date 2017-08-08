@@ -51,11 +51,10 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 name *String* | Yes | The name of the filter.
 query *String* | Yes | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
 color *Integer* | No | The color of the filter (between `0` and `7`, or between `0` and `12` for premium users).
@@ -85,11 +84,10 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 id *Integer or String (temp_id)* | Yes | The id of the filter.
 name *String* | No | The name of the filter
 query *String* | No | The query to search for. [Examples of searches](https://todoist.com/Help/Filtering) can be found in the Todoist help page.
@@ -120,11 +118,10 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 id *Integer or String (temp_id)* | Yes | The id of the filter.
 
 ## Update multiple orders
@@ -152,9 +149,8 @@ $ curl https://todoist.com/api/v7/sync \
 
 Update the orders of multiple filters at once.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 id_order_mapping *Object* | Yes | A dictionary, where a filter id is the key, and the order its value: `filter_id: order`.

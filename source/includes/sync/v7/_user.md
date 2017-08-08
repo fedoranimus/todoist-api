@@ -229,7 +229,6 @@ ok
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's token.
 current_password *String* | Yes | The user's current password.
 reason_for_delete *String* | No | A reason for deletion, that is used for sending feedback back to Todoist.
 
@@ -257,11 +256,10 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.user.update(time_format=0)
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 email *String* | No | The user's email.
 full_name *String* | No | The user's real name formatted as `Firstname Lastname`.
 password *String* | No | The user's password.
@@ -301,11 +299,10 @@ $ curl https://todoist.com/api/v7/sync \
 
 Update the karma goals of the user.
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 daily_goal *Integer* | No | The target number of tasks to complete per day.
 weekly_goal *Integer* | No | The target number of tasks to complete per week.
 ignore_days *Integer* | No | A list with the days of the week to ignore (`1` for `Monday` and `7` for `Sunday`).
@@ -449,11 +446,10 @@ $ curl https://todoist.com/api/v7/notification_settings/update \
 
 Update the user's notification settings.
 
-### Required parameters
+### Parameters
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 notification_type *String* | Yes | The notification type.  For a list of notifications have a look at the `Live Notifications` section.
 service *String* | Yes | The service type, which can take the values: `email` or `push`.
 dont_notify *Integer* | Yes | Whether notifications of this service should be notified (`1` to not notify, and `0` to notify).

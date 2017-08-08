@@ -29,7 +29,6 @@ Creates a new email address for an object, or gets an existing email.
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 obj_type *String* | Yes | The object's type, one of `project`, `project_comments` or `item`.
 obj_id *Integer* | Yes | The object's id.
 
@@ -64,6 +63,5 @@ Disables an email address for an object.
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 obj_type *String* | Yes | The object's type, one of `project`, `project_comments` or `item`.
 obj_id *Integer* | Yes | The object's id.

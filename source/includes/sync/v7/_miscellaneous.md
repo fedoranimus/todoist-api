@@ -127,11 +127,6 @@ $ curl https://todoist.com/api/v7/completed/get_stats \
 
 Get the user's productivity stats.
 
-### Parameters
-
-Parameter | Required | Description
---------- | -------- | -----------
-token *String* | Yes | The user's API token
 
 ## Get all completed items
 
@@ -207,7 +202,6 @@ Get all the user's completed items (tasks).
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 project_id *Integer* | No | Filter the tasks by project id.
 limit *Integer* | No | The number of items to return (where the default is `30`, and the maximum is `50`).
 offset *Integer* | No | Can be used for pagination, when more than the `limit` number of tasks are returned.
@@ -257,11 +251,6 @@ $ curl https://todoist.com/api/v7/projects/get_archived \
 
 Get the user's archived projects.
 
-### Parameters
-
-Parameter | Required | Description
---------- | -------- | -----------
-token *String* | Yes | The user's API token
 
 ## Add item
 
@@ -332,7 +321,6 @@ method, a shortcut, to quickly add a task without going through the
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 content *String* | Yes | The text of the task.
 project_id *Integer* | No | The id of the project to add the task to, while the default is the user's `Inbox` project.
 date_string *String* | No | The date of the task, added in free form text, for example it can be `every day @ 10` (or `null` or an empty string to unset). Look at our reference to see [which formats are supported](https://todoist.com/Help/DatesTimes).
@@ -524,7 +512,6 @@ and `notes` attributes.
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 item_id *Integer* | Yes | The item's unique id.
 all_data *Boolean* | No | Whether to return the parent project and notes of the item (a `true` or `false` value, while the default is `true`).
 
@@ -610,7 +597,6 @@ It returns a JSON object with the `project`, and optionally the `notes` attribut
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 project_id *Integer* | Yes | The projects's unique id.
 all_data *Boolean* | No | Whether to return the notes of the project (a `true` or `false` value, while the default is `true`).
 
@@ -718,5 +704,4 @@ Get a project's uncompleted items.
 
 Parameter | Required | Description
 --------- | -------- | -----------
-token *String* | Yes | The user's API token
 project_id *Integer* | Yes | The projects's unique id.

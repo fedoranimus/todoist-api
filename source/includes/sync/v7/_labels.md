@@ -46,12 +46,11 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 name *String* | Yes | The name of the label
-token *String* | Yes | The user's API token
 color *Integer* | No | The color of the label (a number between `0` and `7`, or between `0` and `12` for premium users).
 item_order *Integer* | No | Label’s order in the label list (a number, where the smallest value should place the label at the top).
 
@@ -79,12 +78,11 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 id *Integer or String (temp_id)* | Yes | The id of the label.
-token *String* | Yes | The user's API token
 name *String* | No | The name of the label.
 color *Integer* | No | The color of the label (a number between `0` and `7`, or between `0` and `12` for premium users).
 item_order *Integer* | No | Label’s order in the label list.
@@ -113,12 +111,11 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 id *Integer or String (temp_id)* | Yes | The id of the label.
-token *String* | Yes | The user's API token
 
 ## Update multiple orders
 
@@ -146,9 +143,8 @@ $ curl https://todoist.com/api/v7/sync \
 >>> api.commit()
 ```
 
-### Parameters
+### Command arguments
 
 Parameter | Required | Description
 --------- | -------- | -----------
 id_order_mapping *Object* | Yes | A dictionary, where a label id is the key, and the order its value: `label_id: order`.
-token *String* | Yes | The user's API token
