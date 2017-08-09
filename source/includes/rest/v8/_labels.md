@@ -1,40 +1,30 @@
-<!--
-This file is generated automatically from .yml data file and _template.mako.
-
-Please don't modify it, and modify source files instead. To compile the
-file, ensure you have Python and Mako installed, and build all .md files
-with Makefile (as simple as "make -C source/includes")
--->
 # Labels
-
-## Label object
 
 > Label object sample
 
 ```shell
 {
-  "id": 1234, 
-  "name": "Project X", 
+  "id": 1234,
+  "name": "Project X",
   "order": 10
 }
 ```
 
 ```python
 {
-  "id": 1234, 
-  "name": "Project X", 
+  "id": 1234,
+  "name": "Project X",
   "order": 10
 }
 ```
 
+### Properties
 
-Attribute | Description
+Property | Description
 ----------|------------
-id | Label id
-name | Label name
-order | Order of label (position in the UI)
-
-
+id *Integer* | Label id
+name *String* | Label name
+order *Integer* | Number used by clients to sort list of labels
 
 
 ## Get all labels
@@ -42,168 +32,152 @@ order | Order of label (position in the UI)
 > Get all labels
 
 ```shell
-# command
-curl -X GET "$root/labels?token=$my_token"
+curl "https://beta.todoist.com/API/v8/labels?token=$token"
 
-# output
 [
-  {"id": 123, "name": "Project X", "order": 10}
+  {
+    "id": 1234,
+    "name": "Project X",
+    "order": 10
+  }
 ]
-
 ```
 
 ```python
-# command
->>> print requests.get(root + "/labels", args={"token": my_token}).json()
+import requests
+requests.get("https://beta.todoist.com/API/v8/labels", params={"token": token}).json()
 
-# output
 [
-  {"id": 123, "name": "Project X", "order": 10}
+  {
+    "id": 1234,
+    "name": "Project X",
+    "order": 10
+  }
 ]
-
 ```
 
+Return a JSON-encoded array containing all user labels
 
 
-### HTTP Request
-`GET https://beta.todoist.com/API/v8/labels` returns JSON-encoded array of all user labels
+## Create a new label
 
-
-
-## Create new label
-
-> Create new label
+> Create a new label
 
 ```shell
-# command
-curl -X POST "$root/labels?token=$my_token"
-    --data '{"name": "Movies to watch"}'
-    -H "Content-Type: application/json"
-    -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
+curl "https://beta.todoist.com/API/v8/labels?token=$token" \
+    -X POST \
+    --data '{"name": "Movies to watch"}' \
+    -H "Content-Type: application/json" \
+    -H "X-Request-Id: $(uuidgen)"
 
-# output
-{"id": 123, "name": "Project X", "order": 10}
-
+{
+  "id": 1234,
+  "name": "Project X",
+  "order": 10
+}
 ```
 
 ```python
-# command
-requests.post(root + "/labels",
-    args={"token": my_token},
-    data=json.dumps({"name": "Project X"}),
+import requests
+requests.post("https://beta.todoist.com/API/v8/labels",
+    params={"token": token},
+    data=json.dumps({"name": "Movies to watch"}),
     headers={
         "Content-Type": "application/json",
-        "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+        "X-Request-Id": str(uuid.uuid4()),
     }
 ).json()
 
-# output
-{"id": 123, "name": "Project X", "order": 10}
-
+{
+  "id": 1234,
+  "name": "Project X",
+  "order": 10
+}
 ```
 
+Create a new label and return its object as JSON.
+
+### JSON body parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name *String* | Yes | Name of the label
+order *Integer* | No | Label order
 
 
-### HTTP Request
-`POST https://beta.todoist.com/API/v8/labels` returns newly created label
+## Get a label
 
-
-### Request body attributes
-
-Attribute | Description
-----------|------------
-name | Name of the label
-order | Label order
-
-## Get specific label
-
-> Get specific label
+> Get a label
 
 ```shell
-# command
-curl -X GET "$root/labels/1234?token=$my_token"
+curl "https://beta.todoist.com/API/v8/labels/1234?token=$token"
 
-# output
-{"id": 123, "name": "Project X", "order": 10}
-
+{
+  "id": 1234,
+  "name": "Project X",
+  "order": 10
+}
 ```
 
 ```python
-# command
-requests.get(root + "/labels/1234", args={"token": my_token}).json()
+import requests
+requests.get("https://beta.todoist.com/API/v8/labels/1234", params={"token": token}).json()
 
-# output
-{"id": 123, "name": "Project X", "order": 10}
-
+{
+  "id": 1234,
+  "name": "Project X",
+  "order": 10
+}
 ```
 
+Return a label by id
 
 
-### HTTP Request
-`GET https://beta.todoist.com/API/v8/labels/<label_id>` returns label by id
+## Update a label
 
-
-
-## Update specific label
-
-> Update specific label
+> Update a label
 
 ```shell
-# command
-curl -X POST "$root/labels/1234?token=$my_token"
-    --data '{"name": "Project Y"}'
-    -H "Content-Type: application/json"
-    -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
-
+curl "https://beta.todoist.com/API/v8/labels/1234?token=$token" \
+    -X POST \
+    --data '{"name": "Project Y"}' \
+    -H "Content-Type: application/json" \
+    -H "X-Request-Id: $(uuidgen)"
 ```
 
 ```python
-# command
-requests.post(root + "/labels/1234",
-    args={"token": my_token},
-    data=json.dumps({"name": "Project Y"}),
+import requests
+requests.post("https://beta.todoist.com/API/v8/labels/2148300211",
+    params={"token": token},
+    data=json.dumps({"name": "Project Z"}),
     headers={
         "Content-Type": "application/json",
-        "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+        "X-Request-Id": str(uuid.uuid4()),
     }
 )
-
 ```
 
+Update a label and return an empty body with a HTTP status code 204.
+
+### JSON body parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name *String* | No | New name of the label
+order *Integer* | No | Number that is used by clients to sort list of labels
 
 
-### HTTP Request
-`POST https://beta.todoist.com/API/v8/labels/<label_id>` returns HTTP status code 204 and empty body
+## Delete a label
 
-
-### Request body attributes
-
-Attribute | Description
-----------|------------
-name | New name of the label (optional)
-order | Label order (optional)
-
-## Delete specific label
-
-> Delete specific label
+> Delete a label
 
 ```shell
-# command
-curl -X DELETE "$root/labels/1234?token=$my_token"
-
+curl -X DELETE "https://beta.todoist.com/API/v8/labels/1234?token=$token"
 ```
 
 ```python
-# command
-requests.delete(root + "/labels/1234", args={"token": my_token})
-
+import requests
+requests.delete("https://beta.todoist.com/API/v8/labels/1234", params={"token": token})
 ```
 
-
-
-### HTTP Request
-`DELETE https://beta.todoist.com/API/v8/labels/<label_id>` returns empty response
-
-
-
-
+Delete a label and return an empty body with a HTTP status code 204.
