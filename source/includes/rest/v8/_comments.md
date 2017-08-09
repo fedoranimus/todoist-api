@@ -1,13 +1,4 @@
-<!--
-This file is generated automatically from .yml data file and _template.mako.
-
-Please don't modify it, and modify source files instead. To compile the
-file, ensure you have Python and Mako installed, and build all .md files
-with Makefile (as simple as "make -C source/includes")
--->
 # Comments
-
-## Comment object
 
 > Comment object sample
 
@@ -43,28 +34,29 @@ with Makefile (as simple as "make -C source/includes")
 }
 ```
 
+### Properties
 
-Attribute | Description
+Property | Description
 ----------|------------
-id | Comment id
-task_id | Comment's task id (for task comments).
-project_id | Comment's project id (for project comments)
-posted | Comment's posted timestamp in UTC
-content | Comment content
-attachment | optional object with comment attachment info, see below for details
+id *Integer* | Comment id
+task_id *Integer* | Comment's task id (for task comments).
+project_id *Integer* | Comment's project id (for project comments)
+posted *String* | Date and time when comment was added, [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format in UTC
+content *String* | Comment content
+attachment *Object* | Object with comment attachment info, see below for details (optional)
+
+Optional attachment attribute describes object with attachment
+metadata. Format of this object depends on kind of attachment it
+describes, see [sync API documentation for format details](https://developer.todoist.com/sync/v7#uploads).
 
 
+## Get all comments for a given task or project
 
-
-## Get all comments for given task or project
-
-> Get all comments for given task or project
+> Get all comments for a given task or project
 
 ```shell
-# command
-curl -X GET "$root/comments?task_id=2345&token=$my_token"
+curl "https://beta.todoist.com/API/v8/comments?task_id=2345&token=$token"
 
-# output
 [
   {
     "id": 123,
@@ -83,10 +75,9 @@ curl -X GET "$root/comments?task_id=2345&token=$my_token"
 ```
 
 ```python
-# command
->>> print requests.get(root + "/comments", args={"token": my_token, "task_id": 2345}).json()
+import requests
+requests.get("https://beta.todoist.com/API/v8/comments", params={"token": token, "task_id": 2345}).json()
 
-# output
 [
   {
     "id": 123,
@@ -104,41 +95,44 @@ curl -X GET "$root/comments?task_id=2345&token=$my_token"
 
 ```
 
-One of `task_id` or `project_id` arguments is required.
 
-### HTTP Request
-`GET https://beta.todoist.com/API/v8/comments` returns JSON-encoded array of all comments
+Returns JSON-encoded array of all comments for a given `task_id` or
+`project_id`. Note that one of `task_id` or `project_id` arguments is
+required.
 
-### Request GET arguments
+### Parameters
 
-Attribute | Description
-----------|------------
-project_id | Project id to filter
-task_id | Task id to filter
+Parameter | Required | Description
+--------- | -------- | -----------
+project_id *Integer* | No | Id of the project used to filter comments
+task_id *Integer* | No | Id of the task used to filter comments
 
+**Note**: You **must** use at least one of them
 
-## Create new comment
+## Create a new comment
 
-> Create new comment
+> Create a new comment
 
 ```shell
-# command
-$ cat /tmp/note.json {
+$ cat > /tmp/note.json 
+{
     "task_id": 2345,
-    "content": "Hello world"
+    "content": "Hello world",
     "attachment": {
         "resource_type": "file",
-        "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+        "file_url": "https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf",
         "file_type": "application/pdf",
         "file_name": "File.pdf"
     }
 }
-$ curl -X POST "$root/comments?token=$my_token"
-    --data @/tmp/note.json
-    -H "Content-Type: application/json"
-    -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
+^C
 
-# output
+$ curl "https://beta.todoist.com/API/v8/comments?token=$token" \
+    -X POST \
+    --data @/tmp/note.json \
+    -H "Content-Type: application/json" \
+    -H "X-Request-Id: $(uuidgen)"
+
 {
   "id": 123,
   "content": "Hello world",
@@ -146,35 +140,33 @@ $ curl -X POST "$root/comments?token=$my_token"
   "posted": "2016-09-22T07:00:00Z",
   "attachment": {
     "resource_type": "file",
-    "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+    "file_url": "https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf",
     "file_type": "application/pdf",
     "file_name": "File.pdf"
   }
 }
-
 ```
 
 ```python
-# command
-requests.post(root + "/comments",
-    args={"token": my_token},
+import requests
+requests.post("https://beta.todoist.com/API/v8/comments",
+    params={"token": token},
     data=json.dumps({
-        "task_id": 2345,
-        "content": "Hello world"
+        "task_id": 2248549994,
+        "content": "Hello world",
         "attachment": {
             "resource_type": "file",
-            "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+            "file_url": "https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf",
             "file_type": "application/pdf",
             "file_name": "File.pdf"
         }
     }),
     headers={
         "Content-Type": "application/json",
-        "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+        "X-Request-Id": str(uuid.uuid4()),
     }
 ).json()
 
-# output
 {
   "id": 123,
   "content": "Hello world",
@@ -182,28 +174,24 @@ requests.post(root + "/comments",
   "posted": "2016-09-22T07:00:00Z",
   "attachment": {
     "resource_type": "file",
-    "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+    "file_url": "https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf",
     "file_type": "application/pdf",
     "file_name": "File.pdf"
   }
 }
-
 ```
 
+Create a new comment on a project or task and return its object
 
+### JSON body parameters
 
-### HTTP Request
-`POST https://beta.todoist.com/API/v8/comments` returns newly created comment
+Parameter | Required | Description
+--------- | -------- | -----------
+task_id *Integer* | Yes (or `project_id`) | Comment's task id (for task comments).
+project_id *Integer* | Yes (or `task_id`) | Comment's project id (for project comments)
+content *String* | Yes | Comment content
+attachment *Object* | No | Object for attachment object
 
-
-### Request body attributes
-
-Attribute | Description
-----------|------------
-task_id | Comment's task id (for task comments).
-project_id | Comment's project id (for project comments)
-content | Comment content
-attachment | optional object for attachment object
 
 ## Get specific comment
 
