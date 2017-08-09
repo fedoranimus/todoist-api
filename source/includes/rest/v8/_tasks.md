@@ -1,13 +1,4 @@
-<!--
-This file is generated automatically from .yml data file and _template.mako.
-
-Please don't modify it, and modify source files instead. To compile the
-file, ensure you have Python and Mako installed, and build all .md files
-with Makefile (as simple as "make -C source/includes")
--->
 # Tasks
-
-## Task object
 
 > Task object sample
 
@@ -18,7 +9,7 @@ with Makefile (as simple as "make -C source/includes")
   "content": "My task", 
   "due": {
     "date": "2016-09-01", 
-    "date_lang": "en", 
+    "recurring": true,
     "datetime": "2016-09-01T09:00:00Z", 
     "string": "tomorrow at 12", 
     "timezone": "Europe/Moscow"
@@ -44,7 +35,7 @@ with Makefile (as simple as "make -C source/includes")
   "content": "My task", 
   "due": {
     "date": "2016-09-01", 
-    "date_lang": "en", 
+    "recurring": true,
     "datetime": "2016-09-01T09:00:00Z", 
     "string": "tomorrow at 12", 
     "timezone": "Europe/Moscow"
@@ -63,33 +54,38 @@ with Makefile (as simple as "make -C source/includes")
 }
 ```
 
+### Properties
 
-Attribute | Description
+Property | Description
 ----------|------------
-id | Task id
-project_id | Tasks's project id
-content | Task content
-completed | Flag to mark completed tasks
-label_ids | Array of label ids, associated with a task
-order | Task order (read-only, position in project)
-indent | Task indentation level (read-only, value from 1 to 5)
-priority | task priority from 1 (normal, default value) to 4 (urgent)
-due | object representing task due date/time.<br>	- `string` (string) — human defined date in arbitrary format;<br>	- `date` (string) — date in format `YYYY-MM-DD` corrected to user's time<br>	  zone;<br>	- `datetime` (optional, string) — only returned if exact due time set<br>	  (i.e. it's not a whole-day task), date and time in RFC3339 format in<br>	  UTC;<br>	- `timezone` (optional, string) — only returned if exact due time set,<br>	  user's timezone definition either in tzdata-compatible format<br>	  ("Europe/Berlin") or as a string specifying east of UTC offset as<br>	  "UTC±HH:MM" (i.e. "UTC-01:00");
-url | URL to access this task in Todoist web interface
-comment_count | Number of task comments
+id *Integer* | Task id
+project_id *Integer* | Tasks's project id
+content *String* | Task content
+completed *Boolean* | Flag to mark completed tasks
+label_ids *List of Integers* | Array of label ids, associated with a task
+order *Integer* | Position in the project (read-only)
+indent *Integer* | Task indentation level from 1 to 5 (read-only)
+priority *Integer* | Task priority from 1 (normal, default value) to 4 (urgent)
+due *Object* | object representing task due date/time (described below)
+url *String* | URL to access this task in Todoist web interface
+comment_count *Integer* | Number of task comments
 
+### Due object
 
+Parameter | Optional | Description
+--------- | -------- | -----------
+string *String* | No | Human defined date in arbitrary format
+date *String* | No | Date in format `YYYY-MM-DD` corrected to user's timezone
+datetime *String* | Yes | Only returned if exact due time set (i.e. it's not a whole-day task), date and time in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format in UTC;
+timezone *String* | Yes | only returned if exact due time set, user's timezone definition either in tzdata-compatible format ("Europe/Berlin") or as a string specifying east of UTC offset as "UTC±HH:MM" (i.e. "UTC-01:00");
 
+## Get tasks
 
-## Get all tasks
-
-> Get all tasks
+> Get tasks
 
 ```shell
-# command
-curl -X GET "$root/tasks?token=$my_token&project_id=234"
+curl "https://beta.todoist.com/API/v8/tasks?token=$token"
 
-# output
 [
   {
     "id": 123,
@@ -100,16 +96,15 @@ curl -X GET "$root/tasks?token=$my_token&project_id=234"
     "indent": 1,
     "priority": 1,
     "url": "https://todoist.com/showTask?id=123"
-  }
+  },
+  ...
 ]
-
 ```
 
 ```python
-# command
->>> print requests.get(root + "/tasks", args={"token": my_token, "project_id": 234}).json()
+import requests
+requests.get("https://beta.todoist.com/API/v8/tasks", params={"token": token, "project_id": 123}).json()
 
-# output
 [
   {
     "id": 123,
@@ -120,36 +115,39 @@ curl -X GET "$root/tasks?token=$my_token&project_id=234"
     "indent": 1,
     "priority": 1,
     "url": "https://todoist.com/showTask?id=123"
-  }
+  },
+  ...
 ]
 
 ```
 
+Return a JSON-encoded array containing all user tasks
 
 
-### HTTP Request
-`GET https://beta.todoist.com/API/v8/tasks` returns JSON-encoded array of all user tasks, optionally filtered by project or by label
+### Parameters
 
-### Request GET arguments
+Parameter | Required | Description
+--------- | -------- | -----------
+project_id *Integer* | No | Filter tasks by project id
+label_id *Integer* | No | Filter tasks by label
+filter *String* | No | Filter by any [supported filter](https://support.todoist.com/hc/en-us/articles/205248842)
+lang *String* | No | IETF language tag defining what language filter is written in, if differs from default English
 
-Attribute | Description
-----------|------------
-project_id | Project id to filter
-label_id | Label id to filter
+Note that **filters are premium-only feature**, if used for non-premium users,
+server would return 402 Payment Required.
 
 
-## Create new task
+## Create a new task
 
-> Create new task
+> Create a new task
 
 ```shell
-# command
-curl -X POST "$root/tasks?token=$my_token"
-    --data '{"content": "Appointment with Maria", "project_id": 2345, "due_string": "tomorrow at 12:00", "due_lang": "en", "priority": 4}'
-    -H "Content-Type: application/json"
-    -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
+curl "https://beta.todoist.com/API/v8/tasks?token=$token" \
+    -X POST \
+    --data '{"content": "Appointment with Maria", "due_string": "tomorrow at 12:00", "due_lang": "en", "priority": 4}' \
+    -H "Content-Type: application/json" \
+    -H "X-Request-Id: $(uuidgen)"
 
-# output
 {
     "comment_count": 0,
     "completed": false,
@@ -166,25 +164,22 @@ curl -X POST "$root/tasks?token=$my_token"
     "project_id": 234,
     "url": "https://todoist.com/showTask?id=123"
 }
-
 ```
 
 ```python
-# command
-requests.post(root + "/tasks",
-    args={"token": my_token},
+import uuid, requests, json
+requests.post("https://beta.todoist.com/API/v8/tasks",
+    params={"token": token},
     data=json.dumps({"content": "Appointment with Maria",
-                     "project_id": 2345,
                      "due_string": "tomorrow at 12:00",
                      "due_lang": "en",
                      "priority": 4}),
     headers={
         "Content-Type": "application/json",
-        "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+        "X-Request-Id": str(uuid.uuid4()),
     }
 ).json()
 
-# output
 {
     "comment_count": 0,
     "completed": false,
@@ -201,38 +196,35 @@ requests.post(root + "/tasks",
     "project_id": 234,
     "url": "https://todoist.com/showTask?id=123"
 }
-
 ```
 
+Create a new tasks and return the JSON object according for it.
 
 
-### HTTP Request
-`POST https://beta.todoist.com/API/v8/tasks` returns newly created task
+### JSON body parameters
 
+Parameter | Required | Description
+--------- | -------- | -----------
+content *String* | Yes | Task content
+project_id *Integer* | No | Task project id. If not set, task is put to user's Inbox
+order *Integer* | No | Non-zero integer value used by clients to sort tasks inside project
+label_ids *List of Integers* | No | Ids of labels associated with the task
+priority *Integer* | No | Task priority from 1 (normal) to 4 (urgent)
+due_string *String* | No | [human-defined](https://todoist.com/Help/DatesTimes) task due date (ex.: "next Monday", "Tomorrow"). Value is set using local (not UTC) time.
+due_date *String* | No | Specific date in `YYYY-MM-DD` format relative to user’s timezone
+due_datetime *String* | No | specific date and time in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format in UTC
+due_lang *String* | No | 2-letter code specifying language in case `due_string` is not written in English
 
-### Request body attributes
+Please note that you can only use one of the `due_*` fields can be used at
+once (`due_lang` is a special case).
 
-Attribute | Description
-----------|------------
-content | Task content
-project_id | Task project id (optional). If not set, task is put to user's Inbox
-order | non-zero integer value to set the "order" task field (optional, used by clients to sort tasks inside project)
-label_ids | ids of labels associated with the task (optional, list of integers)
-priority | optional priority value, from 1 (normal) to 4 (urgent)
-due_string | Optional [human-defined](https://todoist.com/Help/DatesTimes) task due date (ex.: "next Monday", "Tomorrow", "every monday at 12:00"). Value is set using local (not UTC) time.
-due_date | Alternative optional way to set task due date. Should be the string in `YYYY-MM-DD`
-due_datetime | Another optinal alternative to set a specific date and time in RFC3339 format in UTC;
-due_lang | If value of `due_string` is not in English, this attribute can be provided with 2-letter code specifying the language.
+## Get one specific task
 
-## Get specific task
-
-> Get specific task
+> Get one specific task
 
 ```shell
-# command
-curl -X GET "$root/tasks/1234?token=$my_token"
+curl "https://beta.todoist.com/API/v8/tasks/1234?token=$token"
 
-# output
 {
     "comment_count": 0,
     "completed": false,
@@ -243,7 +235,7 @@ curl -X GET "$root/tasks/1234?token=$my_token"
         "string": "2017-07-01 12:00",
         "timezone": "Europe/Lisbon"
     },
-    "id": 123,
+    "id": 1234,
     "order": 20,
     "indent": 1,
     "priority": 4,
@@ -254,10 +246,9 @@ curl -X GET "$root/tasks/1234?token=$my_token"
 ```
 
 ```python
-# command
-requests.get(root + "/tasks/1234", args={"token": my_token}).json()
+import requests
+requests.get("https://beta.todoist.com/API/v8/tasks/1234", params={"token": token}).json()
 
-# output
 {
     "comment_count": 0,
     "completed": false,
@@ -268,7 +259,7 @@ requests.get(root + "/tasks/1234", args={"token": my_token}).json()
         "string": "2017-07-01 12:00",
         "timezone": "Europe/Lisbon"
     },
-    "id": 123,
+    "id": 1234,
     "order": 20,
     "indent": 1,
     "priority": 4,
@@ -278,132 +269,111 @@ requests.get(root + "/tasks/1234", args={"token": my_token}).json()
 
 ```
 
+Return a task by id
 
 
-### HTTP Request
-`GET https://beta.todoist.com/API/v8/tasks/<task_id>` returns task by id
+## Update a task
 
-
-
-## Update specific task
-
-> Update specific task
+> Update a task
 
 ```shell
-# command
-curl -X POST "$root/tasks/1234?token=$my_token"
-    --data '{"name": "Movies to watch"}'
-    -H "Content-Type: application/json"
-    -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
-
+curl "https://beta.todoist.com/API/v8/tasks/1234?token=$token" \
+    -X POST \
+    --data '{"content": "Movies to watch"}' \
+    -H "Content-Type: application/json" \
+    -H "X-Request-Id: $(uuidgen)"
 ```
 
 ```python
-# command
-requests.post(root + "/tasks/1234",
-    args={"token": my_token},
-    data=json.dumps({"name": "Movies to watch"}),
+import uuid, requests, json
+requests.post("https://beta.todoist.com/API/v8/tasks/1234",
+    params={"token": token},
+    data=json.dumps({"content": "Movies to watch"}),
     headers={
         "Content-Type": "application/json",
-        "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+        "X-Request-Id": str(uuid.uuid4()),
     }
 )
-
 ```
 
+Update a task and return an empty body with the HTTP status code 204
+
+### JSON body parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+content *String* | Yes | Task content
+project_id *Integer* | No | Task project id. If not set, task is put to user's Inbox
+order *Integer* | No | Non-zero integer value used by clients to sort tasks inside project
+label_ids *List of Integers* | No | Ids of labels associated with the task
+priority *Integer* | No | Task priority from 1 (normal) to 4 (urgent)
+due_string *String* | No | [human-defined](https://todoist.com/Help/DatesTimes) task due date (ex.: "next Monday", "Tomorrow"). Value is set using local (not UTC) time.
+due_date *String* | No | Specific date in `YYYY-MM-DD` format relative to user’s timezone
+due_datetime *String* | No | specific date and time in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format in UTC
+due_lang *String* | No | 2-letter code specifying language in case `due_string` is not written in English
+
+Please note that you can only use one of the `due_*` fields can be used at
+once (`due_lang` is a special case).
 
 
-### HTTP Request
-`POST https://beta.todoist.com/API/v8/tasks/<task_id>` returns HTTP status code 204 and empty body
+## Close a task
 
-
-### Request body attributes
-
-Attribute | Description
-----------|------------
-content | Task content
-label_ids | ids of labels associated with the task (optional, list of integers)
-priority | optional priority value, from 1 (normal) to 4 (urgent)
-due_string | Optional [human-defined](https://todoist.com/Help/DatesTimes) task due date (ex.: "next Monday", "Tomorrow", "every monday at 12:00"). Value is set using local (not UTC) time.
-due_date | Alternative optional way to set task due date. Should be the string in `YYYY-MM-DD`
-due_datetime | Another optinal alternative to set a specific date and time in RFC3339 format in UTC;
-due_lang | If value of `due_string` is not in English, this attribute can be provided with 2-letter code specifying the language.
-
-## Close specifc task
-
-> Close specifc task
+> Close a task
 
 ```shell
-# command
-curl -X POST "$root/tasks/1234/close?token=$my_token"
-
+curl -X POST "https://beta.todoist.com/API/v8/tasks/1234/close?token=$token"
 ```
 
 ```python
-# command
-requests.delete(root + "/tasks/1234/close", args={"token": my_token})
-
+import requests
+requests.post("https://beta.todoist.com/API/v8/tasks/1234/close", params={"token": token})
 ```
 
-The command does exactly what official clients do when you close a task: r egular task is completed and moved to history, subtask is checked (marked as done, but not moved to history), recurring task is moved forward (due date is updated)
+Close a task and return an empty body with a HTTP status code 204.
+
+The command does exactly what official clients do when you close a task. Regular
+tasks are completed and moved to history, subtasks are checked (marked as done,
+but not moved to history), recurring task is moved forward (due date is updated).
 
 
-### HTTP Request
-`POST https://beta.todoist.com/API/v8/tasks/<task_id>/close` returns HTTP status code 204 and empty body
+## Reopen a task
 
-
-
-## Reopen specific task
-
-> Reopen specific task
+> Reopen a task
 
 ```shell
-# command
-curl -X POST "$root/tasks/1234/reopen?token=$my_token"
-
+curl -X POST "https://beta.todoist.com/API/v8/tasks/1234/reopen?token=$token"
 ```
 
 ```python
-# command
-requests.delete(root + "/tasks/1234/reopen", args={"token": my_token})
-
+import requests
+requests.post("https://beta.todoist.com/API/v8/tasks/1234/reopen", params={"token": token})
 ```
 
-This command reopens a previously closed task. Works both with checked tasks in user's workspace and tasks moved to history. The behaviour varies for different types of tasks (the command follows the behaviour of official clients when tasks uncompleted or extracted from the history)
+Reopen a tasks and return an empty body with a HTTP status code 204.
 
-- Regular tasks extracted from the history and added back to the workspace as normal unchecked tasks (without their subtasks though).
+This command reopens a previously closed task. Works both with checked tasks in
+user's workspace and tasks moved to history. The behaviour varies for different
+types of tasks (the command follows the behaviour of official clients when tasks
+are uncompleted or extracted from the history)
+
+- Regular tasks are extracted from the history and added back to the user
+  workspace as normal unchecked tasks (without their subtasks though).
 - Completed subtasks of a non-completed task simply marked as uncompleted.
 - Moved to history subtasks added back to the workspace as first-level tasks.
 - Non-completed recurring tasks ignored.
 
 
-### HTTP Request
-`POST https://beta.todoist.com/API/v8/tasks/<task_id>/reopen` returns HTTP status code 204 and empty body if task was found, or 404 it task is not found either in workspace, or in history.
+## Delete a task
 
-
-
-
-## Delete specific task
-
-> Delete specific task
+> Delete a task
 
 ```shell
-# command
-curl -X DELETE "$root/tasks/1234?token=$my_token"
-
+curl -X DELETE "https://beta.todoist.com/API/v8/tasks/1234?token=$token"
 ```
 
 ```python
-# command
-requests.delete(root + "/tasks/1234", args={"token": my_token})
-
+import requests
+requests.delete("https://beta.todoist.com/API/v8/tasks/1234", params={"token": token})
 ```
 
-
-
-### HTTP Request
-`DELETE https://beta.todoist.com/API/v8/tasks/<task_id>` returns empty response
-
-
-
-
+Delete a task and return an empty body with a HTTP status 204.
