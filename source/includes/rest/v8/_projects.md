@@ -1,15 +1,6 @@
-<!--
-This file is generated automatically from .yml data file and _template.mako.
-
-Please don't modify it, and modify source files instead. To compile the
-file, ensure you have Python and Mako installed, and build all .md files
-with Makefile (as simple as "make -C source/includes")
--->
 # Projects
 
-## Project object
-
-> Project object sample
+> An example project object
 
 ```shell
 {
@@ -17,7 +8,7 @@ with Makefile (as simple as "make -C source/includes")
   "id": 1234, 
   "indent": 1, 
   "name": "My project", 
-  "order": 123
+  "order": 1
 }
 ```
 
@@ -27,20 +18,19 @@ with Makefile (as simple as "make -C source/includes")
   "id": 1234, 
   "indent": 1, 
   "name": "My project", 
-  "order": 123
+  "order": 1
 }
 ```
 
+### Properties
 
-Attribute | Description
+Property | Description
 ----------|------------
-id | Project id
-name | Project name
-order | Project order (read-only, position in the list of projects)
-indent | Project indentation level (read-only, value from 1 to 4)
-comment_count | Number of project comments
-
-
+id *Integer* | Project id
+name *String* | Project name
+order *Integer* | Project position in the list of projects Project order (read-only)
+indent *Integer* | Value from 1 to 4 for the Project indentation level (read-only)
+comment_count *Integer* | Number of project comments
 
 
 ## Get all projects
@@ -48,32 +38,35 @@ comment_count | Number of project comments
 > Get all projects
 
 ```shell
-# command
-curl -X GET "$root/projects?token=$my_token"
+curl "https://beta.todoist.com/API/v8/projects?token=$token"
 
-# output
 [
-  {"id": 123, "name": "Inbox", "comment_count": 10, "order": 1, "indent": 1}
+  {
+    "id": 1234,
+    "name": "Inbox",
+    "comment_count": 10,
+    "order": 1,
+    "indent": 1
+  }
 ]
-
 ```
 
 ```python
-# command
->>> print requests.get(root + "/projects", args={"token": my_token}).json()
+import requests
+requests.get("https://beta.todoist.com/API/v8/projects", params={"token": token}).json()
 
-# output
 [
-  {"id": 123, "name": "Inbox", "comment_count": 10, "order": 1, "indent": 1}
+  {
+    "id": 1234,
+    "name": "Inbox",
+    "comment_count": 10,
+    "order": 1,
+    "indent": 1
+  }
 ]
-
 ```
 
-
-
-### HTTP Request
-`GET https://beta.todoist.com/API/v8/projects` returns JSON-encoded array of all user projects
-
+Returns JSON-encoded array containing all user projects.
 
 
 ## Create new project
@@ -81,133 +74,127 @@ curl -X GET "$root/projects?token=$my_token"
 > Create new project
 
 ```shell
-# command
-curl -X POST "$root/projects?token=$my_token"
-    --data '{"name": "Movies to watch"}'
-    -H "Content-Type: application/json"
-    -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
+curl "https://beta.todoist.com/API/v8/projects?token=$token" \
+    -X POST \
+    --data '{"name": "Movies to watch"}' \
+    -H "Content-Type: application/json" \
+    -H "X-Request-Id: $(uuidgen)"
 
-# output
-{"id": 123, "name": "Movies to watch", "comment_count": 0, "order": 1, "indent": 1}
-
+{
+  "id": 1234,
+  "name": "Movies to watch",
+  "comment_count": 0,
+  "order": 1,
+  "indent": 1
+}
 ```
 
 ```python
-# command
-requests.post(root + "/projects",
-    args={"token": my_token},
+import uuid, requests, json
+requests.post("https://beta.todoist.com/API/v8/projects",
+    params={"token": token},
     data=json.dumps({"name": "Movies to watch"}),
     headers={
         "Content-Type": "application/json",
-        "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+        "X-Request-Id": str(uuid.uuid4()),
     }
 ).json()
 
-# output
-{"id": 123, "name": "Movies to watch", "comment_count": 0, "order": 1, "indent": 1}
-
+{
+  "id": 1234,
+  "name": "Movies to watch",
+  "comment_count": 0,
+  "order": 1,
+  "indent": 1
+}
 ```
 
+Creates a new project and return its value in a JSON format
 
+### Parameters
 
-### HTTP Request
-`POST https://beta.todoist.com/API/v8/projects` returns newly created project
+Parameter | Required | Description
+--------- | -------- | -----------
+name *String* | Yes | Name of the project
 
-
-### Request body attributes
-
-Attribute | Description
-----------|------------
-name | Name of the project
 
 ## Get specific project
 
 > Get specific project
 
 ```shell
-# command
-curl -X GET "$root/projects/1234?token=$my_token"
+curl "https://beta.todoist.com/API/v8/projects/1234?token=$token"
 
-# output
-{"id": 123, "name": "Movies to watch", "comment_count": 0, "order": 1, "indent": 1}
-
+{
+  "id": 1234,
+  "name": "Movies to watch",
+  "comment_count": 0,
+  "order": 1,
+  "indent": 1
+}
 ```
 
 ```python
-# command
-requests.get(root + "/projects/1234", args={"token": my_token}).json()
+import uuid, requests, json
+requests.get("https://beta.todoist.com/API/v8/projects/1234", params={"token": token}).json()
 
-# output
-{"id": 123, "name": "Movies to watch", "comment_count": 0, "order": 1, "indent": 1}
-
+{
+  "id": 1234,
+  "name": "Movies to watch",
+  "comment_count": 0,
+  "order": 1,
+  "indent": 1
+}
 ```
 
+Returns a JSON object containing a project object related to the given id
 
 
-### HTTP Request
-`GET https://beta.todoist.com/API/v8/projects/<project_id>` returns project by id
+## Update a project
 
-
-
-## Update specific project
-
-> Update specific project
+> Update a project
 
 ```shell
-# command
-curl -X POST "$root/projects/1234?token=$my_token"
-    --data '{"name": "Movies to watch"}'
-    -H "Content-Type: application/json"
-    -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
-
+curl "https://beta.todoist.com/API/v8/projects/1234?token=$token" \
+    -X POST \
+    --data '{"name": "Movies to review"}' \
+    -H "Content-Type: application/json" \
+    -H "X-Request-Id: $(uuidgen)"
 ```
 
 ```python
-# command
-requests.post(root + "/projects/1234",
-    args={"token": my_token},
-    data=json.dumps({"name": "Movies to watch"}),
+import uuid, requests, json
+requests.post("https://beta.todoist.com/API/v8/projects/1234",
+    params={"token": token},
+    data=json.dumps({"name": "Movies to review"}),
     headers={
         "Content-Type": "application/json",
-        "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+        "X-Request-Id": str(uuid.uuid4()),
     }
 )
-
 ```
 
+Updates the project for the given id and returns HTTP status code 204
+with an empty body.
+
+### Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name *String* | Yes | Name of the project
 
 
-### HTTP Request
-`POST https://beta.todoist.com/API/v8/projects/<project_id>` returns HTTP status code 204 and empty body
+## Delete a project
 
-
-### Request body attributes
-
-Attribute | Description
-----------|------------
-name | New name of the project
-
-## Delete specific project
-
-> Delete specific project
+> Delete a project
 
 ```shell
-# command
-curl -X DELETE "$root/projects/1234?token=$my_token"
-
+curl -X DELETE "https://beta.todoist.com/API/v8/projects/1234?token=$token"
 ```
 
 ```python
-# command
-requests.delete(root + "/projects/1234", args={"token": my_token})
-
+import requests, json
+requests.delete("https://beta.todoist.com/API/v8/projects/1234", params={"token": token}).json()
 ```
 
-
-
-### HTTP Request
-`DELETE https://beta.todoist.com/API/v8/projects/<project_id>` returns empty response
-
-
-
-
+Delete a project and returns an empty response.
