@@ -208,7 +208,8 @@
         <img src="../../images/td_logo.svg" alt="Td logo" />
       </a>
       <nav class="site-nav sync sync_v7 sync_v7_index">
-        <a class="link-index" href="/index.html">API Doc</a>
+        <a class="link-index" href="/rest">REST API</a>
+        <a class="link-index" href="/sync">Sync API</a>
         <a class="link-appconsole" href="/appconsole.html">Manage App</a>
       </nav>
     </header>
@@ -1191,10 +1192,10 @@ the new note and reminder respectively. And we store the results to the
 obtain an access token from the users. This section describes the different ways
 of obtaining such a token.</p>
 
-<p>Note that we encourage your application to use
+<p>In case you&rsquo;re building an application and needs to access Todoist as an user,
+we encourage your application to use
 the <a href="http://en.wikipedia.org/wiki/OAuth">OAuth</a> protocol to obtain the access
-token from the user, as the other authentication methods (<code class="prettyprint">login</code> and
-<code class="prettyprint">login_with_google</code>) are scheduled for deprecation.</p>
+token from the user.</p>
 
 <h2 id="oauth">OAuth</h2>
 
