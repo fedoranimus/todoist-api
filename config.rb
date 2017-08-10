@@ -47,3 +47,18 @@ end
 # Deploy Configuration
 # If you want Middleman to listen on a different port, you can set that below
 set :port, 4567
+
+# Redirects old API versions to the latest one
+redirect "v1/index.html", to: "/sync/v7/"
+redirect "v2/index.html", to: "/sync/v7/"
+redirect "v3/index.html", to: "/sync/v7/"
+redirect "v4/index.html", to: "/sync/v7/"
+redirect "v5/index.html", to: "/sync/v7/"
+# redirect "v6/index.html", to: "/sync/v7/" # We still have the documentation for v6
+redirect "v7/index.html", to: "/sync/v7/"
+
+redirect "sync/index.html", to: "/sync/v7/"
+redirect "rest/index.html", to: "/rest/v8/"
+redirect "beta/index.html", to: "/rest/v8/"
+
+redirect "index.html", to: "/sync/v7/"
