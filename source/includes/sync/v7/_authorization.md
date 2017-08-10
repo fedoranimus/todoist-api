@@ -4,10 +4,10 @@ In order to make authorized calls to Todoist APIs, your application must first
 obtain an access token from the users. This section describes the different ways
 of obtaining such a token.
 
-Note that we encourage your application to use
+In case you're building an application and needs to access Todoist as an user,
+we encourage your application to use
 the [OAuth](http://en.wikipedia.org/wiki/OAuth) protocol to obtain the access
-token from the user, as the other authentication methods (`login` and
-`login_with_google`) are scheduled for deprecation.
+token from the user.
 
 ## OAuth
 
