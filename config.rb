@@ -54,7 +54,7 @@ redirect "v2/index.html", to: "/sync/v7/"
 redirect "v3/index.html", to: "/sync/v7/"
 redirect "v4/index.html", to: "/sync/v7/"
 redirect "v5/index.html", to: "/sync/v7/"
-# redirect "v6/index.html", to: "/sync/v7/" # We still have the documentation for v6
+redirect "v6/index.html", to: "/sync/v6/"
 redirect "v7/index.html", to: "/sync/v7/"
 
 redirect "sync/index.html", to: "/sync/v7/"
