@@ -8,6 +8,7 @@ language_tabs:
 
 includes:
   - rest/v8/intro
+  - rest/v8/authorization
   - rest/v8/projects
   - rest/v8/tasks
   - rest/v8/comments
