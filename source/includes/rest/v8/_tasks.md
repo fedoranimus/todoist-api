@@ -218,9 +218,9 @@ due_lang *String* | No | 2-letter code specifying language in case `due_string` 
 Please note that you can only use one of the `due_*` fields can be used at
 once (`due_lang` is a special case).
 
-## Get one specific task
+## Get a task
 
-> Get one specific task
+> Get a task
 
 ```shell
 curl "https://beta.todoist.com/API/v8/tasks/1234?token=$token"

@@ -69,9 +69,9 @@ requests.get("https://beta.todoist.com/API/v8/projects", params={"token": token}
 Returns JSON-encoded array containing all user projects.
 
 
-## Create new project
+## Create a new project
 
-> Create new project
+> Create a new project
 
 ```shell
 curl "https://beta.todoist.com/API/v8/projects?token=$token" \
@@ -118,9 +118,9 @@ Parameter | Required | Description
 name *String* | Yes | Name of the project
 
 
-## Get specific project
+## Get a project
 
-> Get specific project
+> Get a project
 
 ```shell
 curl "https://beta.todoist.com/API/v8/projects/1234?token=$token"
