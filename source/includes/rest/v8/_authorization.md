@@ -4,6 +4,7 @@
 
 ```shell
 $ curl "https://beta.todoist.com/API/v8/projects?token=$token"
+
 [
         {
                 "id": 1234,
@@ -14,12 +15,15 @@ $ curl "https://beta.todoist.com/API/v8/projects?token=$token"
 ```
 
 ```python
->>> requests.get('https://beta.todoist.com/API/v8/projects',
-...     query_string={'token': your_token)}
-... ).json()
+import requests
+requests.get('https://beta.todoist.com/API/v8/projects',
+    query_string={'token': your_token)}
+).json()
+
 [{u'comment_count': 0, u'id': 1234, u'name': u'Inbox'}]
 ```
 
-API endpoints accept GET arguments as url-encoded values.  Every endpoint
-requires a mandatory `token` query string parameter that holds Todoist personal
-API token or OAuth API token.
+API endpoints accept GET arguments as `url-encoded` values. Every endpoint
+requires a `token` query string parameter that holds the
+[Todoist personal API token](https://todoist.com/Users/viewPrefs?page=authorizations) or
+[OAuth API token](https://developer.todoist.com/sync/v7/#oauth).
