@@ -1,10 +1,9 @@
 # Overview
 
 This is the official documentation for Todoist REST API. Our original API,
-named [Sync API](/sync/), was created for our own applications and provide an
-easy way to deal with full and partial syncs, but it's not so simple for
-individual calls. REST API aims to provide a API developer friendly way to deal
-with the most basic features of Todoist API.
+named [Sync API](/sync/), provides an easy way to deal with full and partial
+syncs, but it's not so simple for individual calls. REST API aims to provide API
+developers a friendly way to deal with the most basic features of Todoist API.
 
 ### Request and response format
 
