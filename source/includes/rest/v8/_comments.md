@@ -50,9 +50,9 @@ metadata. Format of this object depends on kind of attachment it
 describes, see [sync API documentation for format details](https://developer.todoist.com/sync/v7#uploads).
 
 
-## Get all comments for a given task or project
+## Get all comments
 
-> Get all comments for a given task or project
+> Get all comments
 
 ```shell
 curl "https://beta.todoist.com/API/v8/comments?task_id=2345&token=$token"
@@ -92,9 +92,7 @@ requests.get("https://beta.todoist.com/API/v8/comments", params={"token": token,
     }
   }
 ]
-
 ```
-
 
 Returns JSON-encoded array of all comments for a given `task_id` or
 `project_id`. Note that one of `task_id` or `project_id` arguments is
@@ -108,6 +106,7 @@ project_id *Integer* | No | Id of the project used to filter comments
 task_id *Integer* | No | Id of the task used to filter comments
 
 **Note**: You **must** use at least one of them
+
 
 ## Create a new comment
 
@@ -193,17 +192,15 @@ content *String* | Yes | Comment content
 attachment *Object* | No | Object for attachment object
 
 
-## Get specific comment
+## Get a comment
 
-> Get specific comment
+> Get a comment
 
 ```shell
-# command
-curl -X GET "$root/comments/1234?token=$my_token"
+curl "https://beta.todoist.com/API/v8/comments/1234?token=$token"
 
-# output
 {
-  "id": 123,
+  "id": 1234,
   "content": "Hello world",
   "task_id": 2345,
   "posted": "2016-09-22T07:00:00Z",
@@ -214,16 +211,14 @@ curl -X GET "$root/comments/1234?token=$my_token"
     "file_name": "File.pdf"
   }
 }
-
 ```
 
 ```python
-# command
-requests.get(root + "/comments/1234", args={"token": my_token}).json()
+import requests
+requests.get("https://beta.todoist.com/API/v8/comments/1234", params={"token": token}).json()
 
-# output
 {
-  "id": 123,
+  "id": 1234,
   "content": "Hello world",
   "task_id": 2345,
   "posted": "2016-09-22T07:00:00Z",
@@ -234,75 +229,55 @@ requests.get(root + "/comments/1234", args={"token": my_token}).json()
     "file_name": "File.pdf"
   }
 }
-
 ```
 
+Returns a comment by id
 
 
-### HTTP Request
-`GET https://beta.todoist.com/API/v8/comments/<comment_id>` returns comment by id
+## Update a comment
 
-
-
-## Update specific comment
-
-> Update specific comment
+> Update a comment
 
 ```shell
-# command
-curl -X POST "$root/comments/1234?token=$my_token"
-    --data '{"content": "Goodbye world"}'
-    -H "Content-Type: application/json"
-    -H "X-Request-Id: 29290B91-F437-42EB-8AA9-C6814CAF16B5"
-
+curl "https://beta.todoist.com/API/v8/comments/1234?token=$token" \
+    -X POST \
+    --data '{"content": "Goodbye world"}' \
+    -H "Content-Type: application/json" \
+    -H "X-Request-Id: $(uuidgen)"
 ```
 
 ```python
-# command
-requests.post(root + "/comments/1234",
-    args={"token": my_token},
+import requests
+requests.post("https://beta.todoist.com/API/v8/comments/1234",
+    params={"token": token},
     data=json.dumps({"content": "Goodbye world"}),
     headers={
         "Content-Type": "application/json",
-        "X-Request-Id": "29290B91-F437-42EB-8AA9-C6814CAF16B5",
+        "X-Request-Id": str(uuid.uuid4()),
     }
 )
-
 ```
 
+Update a comment and return an empty body with a HTTP status code 204
+
+### JSON body parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+content *String* | Yes | New content for the comment
 
 
-### HTTP Request
-`POST https://beta.todoist.com/API/v8/comments/<comment_id>` returns HTTP status code 204 and empty body
+## Delete a comment
 
-
-### Request body attributes
-
-Attribute | Description
-----------|------------
-content | New content of the comment
-
-## Delete specific comment
-
-> Delete specific comment
+> Delete a comment
 
 ```shell
-# command
-curl -X DELETE "$root/comments/1234?token=$my_token"
-
+curl -X DELETE "https://beta.todoist.com/API/v8/comments/1234?token=$token"
 ```
 
 ```python
-# command
-requests.delete(root + "/comments/1234", args={"token": my_token})
-
+import requests
+requests.delete("https://beta.todoist.com/API/v8/comments/1234", params={"token": token})
 ```
 
-
-
-### HTTP Request
-`DELETE https://beta.todoist.com/API/v8/comments/<comment_id>` returns empty response
-
-
-
-
+Delete a comment and return an empty body with a HTTP status code 204
