@@ -1,7 +1,7 @@
 ---
-title: Rest API Reference
+title: REST API Reference
 
-logo: "td_logo_beta.svg"
+logo: "td_logo.svg"
 language_tabs:
   - shell
   - python

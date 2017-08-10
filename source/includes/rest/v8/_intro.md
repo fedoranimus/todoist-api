@@ -1,6 +1,6 @@
 # Overview
 
-This is the official documentation for Todoist Rest API. Our original API,
+This is the official documentation for Todoist REST API. Our original API,
 named [Sync API](/sync/), was created for our own applications and provide an
 easy way to deal with full and partial syncs, but it's not so simple for
 individual calls. REST API aims to provide a API developer friendly way to deal
