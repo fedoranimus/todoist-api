@@ -12,7 +12,6 @@ includes:
   - rest/v8/projects
   - rest/v8/tasks
   - rest/v8/comments
-  - rest/v8/attachments
   - rest/v8/labels
 
 search: false

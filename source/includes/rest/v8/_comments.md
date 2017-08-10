@@ -43,11 +43,11 @@ task_id *Integer* | Comment's task id (for task comments).
 project_id *Integer* | Comment's project id (for project comments)
 posted *String* | Date and time when comment was added, [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format in UTC
 content *String* | Comment content
-attachment *Object* | Object with comment attachment info, see below for details (optional)
+attachment *Object* | Attachment file (optional)
 
-Optional attachment attribute describes object with attachment
-metadata. Format of this object depends on kind of attachment it
-describes, see [sync API documentation for format details](https://developer.todoist.com/sync/v7#uploads).
+The optional attachment attribute describes object with attachment
+metadata. Format of this object depends on kind of attachment it describes,
+see [sync API documentation for format details](https://developer.todoist.com/sync/v7#uploads).
 
 
 ## Get all comments
