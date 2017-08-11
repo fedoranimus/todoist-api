@@ -6,11 +6,11 @@
 $ curl "https://beta.todoist.com/API/v8/projects?token=$token"
 
 [
-        {
-                "id": 1234,
-                "name": "Inbox",
-                "comment_count": 0
-        }
+    {
+        "id": 1234,
+        "name": "Inbox",
+        "comment_count": 0
+    }
 ]
 ```
 

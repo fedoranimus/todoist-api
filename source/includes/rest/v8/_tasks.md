@@ -4,53 +4,53 @@
 
 ```shell
 {
-  "comment_count": 10, 
-  "completed": true, 
-  "content": "My task", 
-  "due": {
-    "date": "2016-09-01", 
-    "recurring": true,
-    "datetime": "2016-09-01T09:00:00Z", 
-    "string": "tomorrow at 12", 
-    "timezone": "Europe/Moscow"
-  }, 
-  "id": 1234, 
-  "indent": 1, 
-  "label_ids": [
-    124, 
-    125, 
-    128
-  ], 
-  "order": 123, 
-  "priority": 1, 
-  "project_id": 2345, 
-  "url": "https://todoist.com/showTask?id=12345&sync_id=56789"
+    "comment_count": 10,
+    "completed": true,
+    "content": "My task",
+    "due": {
+        "date": "2016-09-01",
+        "recurring": true,
+        "datetime": "2016-09-01T09:00:00Z",
+        "string": "tomorrow at 12",
+        "timezone": "Europe/Moscow"
+    },
+    "id": 1234,
+    "indent": 1,
+    "label_ids": [
+        124,
+        125,
+        128
+    ],
+    "order": 123,
+    "priority": 1,
+    "project_id": 2345,
+    "url": "https://todoist.com/showTask?id=12345&sync_id=56789"
 }
 ```
 
 ```python
 {
-  "comment_count": 10, 
-  "completed": true, 
-  "content": "My task", 
-  "due": {
-    "date": "2016-09-01", 
-    "recurring": true,
-    "datetime": "2016-09-01T09:00:00Z", 
-    "string": "tomorrow at 12", 
-    "timezone": "Europe/Moscow"
-  }, 
-  "id": 1234, 
-  "indent": 1, 
-  "label_ids": [
-    124, 
-    125, 
-    128
-  ], 
-  "order": 123, 
-  "priority": 1, 
-  "project_id": 2345, 
-  "url": "https://todoist.com/showTask?id=12345&sync_id=56789"
+    "comment_count": 10,
+    "completed": true,
+    "content": "My task",
+    "due": {
+        "date": "2016-09-01",
+        "recurring": true,
+        "datetime": "2016-09-01T09:00:00Z",
+        "string": "tomorrow at 12",
+        "timezone": "Europe/Moscow"
+    },
+    "id": 1234,
+    "indent": 1,
+    "label_ids": [
+        124,
+        125,
+        128
+    ],
+    "order": 123,
+    "priority": 1,
+    "project_id": 2345,
+    "url": "https://todoist.com/showTask?id=12345&sync_id=56789"
 }
 ```
 
@@ -87,17 +87,17 @@ timezone *String* | No | only returned if exact due time set, user's timezone de
 curl "https://beta.todoist.com/API/v8/tasks?token=$token"
 
 [
-  {
-    "id": 123,
-    "project_id": 234,
-    "content": "Inbox",
-    "comment_count": 10,
-    "order": 1,
-    "indent": 1,
-    "priority": 1,
-    "url": "https://todoist.com/showTask?id=123"
-  },
-  ...
+    {
+        "id": 123,
+        "project_id": 234,
+        "content": "Inbox",
+        "comment_count": 10,
+        "order": 1,
+        "indent": 1,
+        "priority": 1,
+        "url": "https://todoist.com/showTask?id=123"
+    },
+    ...
 ]
 ```
 
@@ -106,17 +106,17 @@ import requests
 requests.get("https://beta.todoist.com/API/v8/tasks", params={"token": token, "project_id": 123}).json()
 
 [
-  {
-    "id": 123,
-    "project_id": 234,
-    "content": "Inbox",
-    "comment_count": 10,
-    "order": 1,
-    "indent": 1,
-    "priority": 1,
-    "url": "https://todoist.com/showTask?id=123"
-  },
-  ...
+    {
+        "id": 123,
+        "project_id": 234,
+        "content": "Inbox",
+        "comment_count": 10,
+        "order": 1,
+        "indent": 1,
+        "priority": 1,
+        "url": "https://todoist.com/showTask?id=123"
+    },
+    ...
 ]
 
 ```

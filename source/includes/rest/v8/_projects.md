@@ -4,21 +4,21 @@
 
 ```shell
 {
-  "comment_count": 10, 
-  "id": 1234, 
-  "indent": 1, 
-  "name": "My project", 
-  "order": 1
+    "comment_count": 10,
+    "id": 1234,
+    "indent": 1,
+    "name": "My project",
+    "order": 1
 }
 ```
 
 ```python
 {
-  "comment_count": 10, 
-  "id": 1234, 
-  "indent": 1, 
-  "name": "My project", 
-  "order": 1
+    "comment_count": 10,
+    "id": 1234,
+    "indent": 1,
+    "name": "My project",
+    "order": 1
 }
 ```
 
@@ -41,13 +41,13 @@ comment_count *Integer* | Number of project comments
 curl "https://beta.todoist.com/API/v8/projects?token=$token"
 
 [
-  {
-    "id": 1234,
-    "name": "Inbox",
-    "comment_count": 10,
-    "order": 1,
-    "indent": 1
-  }
+    {
+        "id": 1234,
+        "name": "Inbox",
+        "comment_count": 10,
+        "order": 1,
+        "indent": 1
+    }
 ]
 ```
 
@@ -56,13 +56,13 @@ import requests
 requests.get("https://beta.todoist.com/API/v8/projects", params={"token": token}).json()
 
 [
-  {
-    "id": 1234,
-    "name": "Inbox",
-    "comment_count": 10,
-    "order": 1,
-    "indent": 1
-  }
+    {
+        "id": 1234,
+        "name": "Inbox",
+        "comment_count": 10,
+        "order": 1,
+        "indent": 1
+    }
 ]
 ```
 
@@ -81,11 +81,11 @@ curl "https://beta.todoist.com/API/v8/projects?token=$token" \
     -H "X-Request-Id: $(uuidgen)"
 
 {
-  "id": 1234,
-  "name": "Movies to watch",
-  "comment_count": 0,
-  "order": 1,
-  "indent": 1
+    "id": 1234,
+    "name": "Movies to watch",
+    "comment_count": 0,
+    "order": 1,
+    "indent": 1
 }
 ```
 
@@ -101,11 +101,11 @@ requests.post("https://beta.todoist.com/API/v8/projects",
 ).json()
 
 {
-  "id": 1234,
-  "name": "Movies to watch",
-  "comment_count": 0,
-  "order": 1,
-  "indent": 1
+    "id": 1234,
+    "name": "Movies to watch",
+    "comment_count": 0,
+    "order": 1,
+    "indent": 1
 }
 ```
 
@@ -126,11 +126,11 @@ name *String* | Yes | Name of the project
 curl "https://beta.todoist.com/API/v8/projects/1234?token=$token"
 
 {
-  "id": 1234,
-  "name": "Movies to watch",
-  "comment_count": 0,
-  "order": 1,
-  "indent": 1
+    "id": 1234,
+    "name": "Movies to watch",
+    "comment_count": 0,
+    "order": 1,
+    "indent": 1
 }
 ```
 
@@ -139,11 +139,11 @@ import uuid, requests, json
 requests.get("https://beta.todoist.com/API/v8/projects/1234", params={"token": token}).json()
 
 {
-  "id": 1234,
-  "name": "Movies to watch",
-  "comment_count": 0,
-  "order": 1,
-  "indent": 1
+    "id": 1234,
+    "name": "Movies to watch",
+    "comment_count": 0,
+    "order": 1,
+    "indent": 1
 }
 ```
 

@@ -4,33 +4,33 @@
 
 ```shell
 {
-  "attachment": {
-    "file_name": "File.pdf", 
-    "file_type": "application/pdf", 
-    "file_url": "https://cdn-domain.tld/path/to/file.pdf", 
-    "resource_type": "file"
-  }, 
-  "content": "Hello world", 
-  "id": 1234, 
-  "posted": "2016-09-22T07:00:00Z", 
-  "project_id": 2345, 
-  "task_id": 2345
+    "attachment": {
+        "file_name": "File.pdf",
+        "file_type": "application/pdf",
+        "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+        "resource_type": "file"
+    },
+    "content": "Hello world",
+    "id": 1234,
+    "posted": "2016-09-22T07:00:00Z",
+    "project_id": 2345,
+    "task_id": 2345
 }
 ```
 
 ```python
 {
-  "attachment": {
-    "file_name": "File.pdf", 
-    "file_type": "application/pdf", 
-    "file_url": "https://cdn-domain.tld/path/to/file.pdf", 
-    "resource_type": "file"
-  }, 
-  "content": "Hello world", 
-  "id": 1234, 
-  "posted": "2016-09-22T07:00:00Z", 
-  "project_id": 2345, 
-  "task_id": 2345
+    "attachment": {
+        "file_name": "File.pdf",
+        "file_type": "application/pdf",
+        "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+        "resource_type": "file"
+    },
+    "content": "Hello world",
+    "id": 1234,
+    "posted": "2016-09-22T07:00:00Z",
+    "project_id": 2345,
+    "task_id": 2345
 }
 ```
 
@@ -58,18 +58,18 @@ see [sync API documentation for format details](https://developer.todoist.com/sy
 curl "https://beta.todoist.com/API/v8/comments?task_id=2345&token=$token"
 
 [
-  {
-    "id": 123,
-    "task_id": 2345,
-    "content": "Hello world",
-    "posted": "2016-09-22T07:00:00Z",
-    "attachment": {
-      "resource_type": "file",
-      "file_url": "https://cdn-domain.tld/path/to/file.pdf",
-      "file_type": "application/pdf",
-      "file_name": "File.pdf"
+    {
+        "id": 123,
+        "task_id": 2345,
+        "content": "Hello world",
+        "posted": "2016-09-22T07:00:00Z",
+        "attachment": {
+            "resource_type": "file",
+            "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+            "file_type": "application/pdf",
+            "file_name": "File.pdf"
+        }
     }
-  }
 ]
 
 ```
@@ -79,18 +79,18 @@ import requests
 requests.get("https://beta.todoist.com/API/v8/comments", params={"token": token, "task_id": 2345}).json()
 
 [
-  {
-    "id": 123,
-    "task_id": 2345,
-    "content": "Hello world",
-    "posted": "2016-09-22T07:00:00Z",
-    "attachment": {
-      "resource_type": "file",
-      "file_url": "https://cdn-domain.tld/path/to/file.pdf",
-      "file_type": "application/pdf",
-      "file_name": "File.pdf"
+    {
+        "id": 123,
+        "task_id": 2345,
+        "content": "Hello world",
+        "posted": "2016-09-22T07:00:00Z",
+        "attachment": {
+            "resource_type": "file",
+            "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+            "file_type": "application/pdf",
+            "file_name": "File.pdf"
+        }
     }
-  }
 ]
 ```
 
@@ -113,7 +113,7 @@ task_id *Integer* | No | Id of the task used to filter comments
 > Create a new comment
 
 ```shell
-$ cat > /tmp/note.json 
+$ cat > /tmp/note.json
 {
     "task_id": 2345,
     "content": "Hello world",
@@ -133,16 +133,16 @@ $ curl "https://beta.todoist.com/API/v8/comments?token=$token" \
     -H "X-Request-Id: $(uuidgen)"
 
 {
-  "id": 123,
-  "content": "Hello world",
-  "task_id": 2345,
-  "posted": "2016-09-22T07:00:00Z",
-  "attachment": {
-    "resource_type": "file",
-    "file_url": "https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf",
-    "file_type": "application/pdf",
-    "file_name": "File.pdf"
-  }
+    "id": 123,
+    "content": "Hello world",
+    "task_id": 2345,
+    "posted": "2016-09-22T07:00:00Z",
+    "attachment": {
+        "resource_type": "file",
+        "file_url": "https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf",
+        "file_type": "application/pdf",
+        "file_name": "File.pdf"
+    }
 }
 ```
 
@@ -167,16 +167,16 @@ requests.post("https://beta.todoist.com/API/v8/comments",
 ).json()
 
 {
-  "id": 123,
-  "content": "Hello world",
-  "task_id": 2345,
-  "posted": "2016-09-22T07:00:00Z",
-  "attachment": {
-    "resource_type": "file",
-    "file_url": "https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf",
-    "file_type": "application/pdf",
-    "file_name": "File.pdf"
-  }
+    "id": 123,
+    "content": "Hello world",
+    "task_id": 2345,
+    "posted": "2016-09-22T07:00:00Z",
+    "attachment": {
+        "resource_type": "file",
+        "file_url": "https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf",
+        "file_type": "application/pdf",
+        "file_name": "File.pdf"
+    }
 }
 ```
 
@@ -200,16 +200,16 @@ attachment *Object* | No | Object for attachment object
 curl "https://beta.todoist.com/API/v8/comments/1234?token=$token"
 
 {
-  "id": 1234,
-  "content": "Hello world",
-  "task_id": 2345,
-  "posted": "2016-09-22T07:00:00Z",
-  "attachment": {
-    "resource_type": "file",
-    "file_url": "https://cdn-domain.tld/path/to/file.pdf",
-    "file_type": "application/pdf",
-    "file_name": "File.pdf"
-  }
+    "id": 1234,
+    "content": "Hello world",
+    "task_id": 2345,
+    "posted": "2016-09-22T07:00:00Z",
+    "attachment": {
+        "resource_type": "file",
+        "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+        "file_type": "application/pdf",
+        "file_name": "File.pdf"
+    }
 }
 ```
 
@@ -218,16 +218,16 @@ import requests
 requests.get("https://beta.todoist.com/API/v8/comments/1234", params={"token": token}).json()
 
 {
-  "id": 1234,
-  "content": "Hello world",
-  "task_id": 2345,
-  "posted": "2016-09-22T07:00:00Z",
-  "attachment": {
-    "resource_type": "file",
-    "file_url": "https://cdn-domain.tld/path/to/file.pdf",
-    "file_type": "application/pdf",
-    "file_name": "File.pdf"
-  }
+    "id": 1234,
+    "content": "Hello world",
+    "task_id": 2345,
+    "posted": "2016-09-22T07:00:00Z",
+    "attachment": {
+        "resource_type": "file",
+        "file_url": "https://cdn-domain.tld/path/to/file.pdf",
+        "file_type": "application/pdf",
+        "file_name": "File.pdf"
+    }
 }
 ```
 

@@ -4,17 +4,17 @@
 
 ```shell
 {
-  "id": 1234,
-  "name": "Project X",
-  "order": 10
+    "id": 1234,
+    "name": "Project X",
+    "order": 10
 }
 ```
 
 ```python
 {
-  "id": 1234,
-  "name": "Project X",
-  "order": 10
+    "id": 1234,
+    "name": "Project X",
+    "order": 10
 }
 ```
 
@@ -35,11 +35,11 @@ order *Integer* | Number used by clients to sort list of labels
 curl "https://beta.todoist.com/API/v8/labels?token=$token"
 
 [
-  {
-    "id": 1234,
-    "name": "Project X",
-    "order": 10
-  }
+    {
+        "id": 1234,
+        "name": "Project X",
+        "order": 10
+    }
 ]
 ```
 
@@ -48,11 +48,11 @@ import requests
 requests.get("https://beta.todoist.com/API/v8/labels", params={"token": token}).json()
 
 [
-  {
-    "id": 1234,
-    "name": "Project X",
-    "order": 10
-  }
+    {
+        "id": 1234,
+        "name": "Project X",
+        "order": 10
+    }
 ]
 ```
 
@@ -71,9 +71,9 @@ curl "https://beta.todoist.com/API/v8/labels?token=$token" \
     -H "X-Request-Id: $(uuidgen)"
 
 {
-  "id": 1234,
-  "name": "Project X",
-  "order": 10
+    "id": 1234,
+    "name": "Project X",
+    "order": 10
 }
 ```
 
@@ -113,9 +113,9 @@ order *Integer* | No | Label order
 curl "https://beta.todoist.com/API/v8/labels/1234?token=$token"
 
 {
-  "id": 1234,
-  "name": "Project X",
-  "order": 10
+    "id": 1234,
+    "name": "Project X",
+    "order": 10
 }
 ```
 
@@ -124,9 +124,9 @@ import requests
 requests.get("https://beta.todoist.com/API/v8/labels/1234", params={"token": token}).json()
 
 {
-  "id": 1234,
-  "name": "Project X",
-  "order": 10
+    "id": 1234,
+    "name": "Project X",
+    "order": 10
 }
 ```
 
