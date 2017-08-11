@@ -230,7 +230,7 @@ token *String* | Yes | The user's API token
 object_type *String* | No | Filters events by a specific object type.
 object_id *Integer* | No | Filters events by a specific object id, but only if the `object_type` has been also specified.
 event_type *String* | No | Filters events by a specific event type.
-object_event_types *Array of Strings*| No | An alternative way to filter by multiple object and event types.  This takes a list of strings of the form `[object_type]:[event_type]` (where either `object_type` part or the `event_type` part can be ommited), such as for example `["item:", "note:added"]`.  When this parameter is specified the `object_type`, `event_type` and `object_id` parameters are ignored.
+object_event_types *Array of Strings* | No | An alternative way to filter by multiple object and event types.  This takes a list of strings of the form `[object_type]:[event_type]` (where either `object_type` part or the `event_type` part can be omitted), such as for example `["item:", "note:added"]`.  When this parameter is specified the `object_type`, `event_type` and `object_id` parameters are ignored.
 parent_project_id *Integer* | No | Filters object events by the id of the project they belong to, so this implicitly limits the results to items and notes.
 parent_item_id *Integer* | No | Filters object events by the id of the item they belong, so this implicitly limits the results to notes.
 initiator_id *Integer* | No | Filters event by the id of the initiator.

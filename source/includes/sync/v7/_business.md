@@ -110,7 +110,7 @@ The return value is a list of invitation objects.
 Parameter | Required | Description
 --------- | -------- | -----------
 token *String* | Yes | The user's API token
-email_list *List of Strings* | Yes | The emails of users which will be invited
+email_list *Array of Strings* | Yes | The emails of users which will be invited
 message *String* | No | Additional text which will be included to invitation welcome message
 
 ## Accept invitation
