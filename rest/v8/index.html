@@ -627,7 +627,7 @@ with an empty body.</p>
 <td>Flag to mark completed tasks</td>
 </tr>
 <tr>
-<td>label_ids <em>List of Integers</em></td>
+<td>label_ids <em>Array of Integers</em></td>
 <td>Array of label ids, associated with a task</td>
 </tr>
 <tr>
@@ -661,28 +661,28 @@ with an empty body.</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Optional</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>string <em>String</em></td>
-<td>No</td>
+<td>Yes</td>
 <td>Human defined date in arbitrary format</td>
 </tr>
 <tr>
 <td>date <em>String</em></td>
-<td>No</td>
+<td>Yes</td>
 <td>Date in format <code class="prettyprint">YYYY-MM-DD</code> corrected to user&rsquo;s timezone</td>
 </tr>
 <tr>
 <td>datetime <em>String</em></td>
-<td>Yes</td>
+<td>No</td>
 <td>Only returned if exact due time set (i.e. it&rsquo;s not a whole-day task), date and time in <a href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339</a> format in UTC;</td>
 </tr>
 <tr>
 <td>timezone <em>String</em></td>
-<td>Yes</td>
+<td>No</td>
 <td>only returned if exact due time set, user&rsquo;s timezone definition either in tzdata-compatible format (&ldquo;Europe/Berlin&rdquo;) or as a string specifying east of UTC offset as &ldquo;UTC±HH:MM&rdquo; (i.e. &ldquo;UTC-01:00&rdquo;);</td>
 </tr>
 </tbody></table>
@@ -845,7 +845,7 @@ server would return 402 Payment Required.</p>
 <td>Non-zero integer value used by clients to sort tasks inside project</td>
 </tr>
 <tr>
-<td>label_ids <em>List of Integers</em></td>
+<td>label_ids <em>Array of Integers</em></td>
 <td>No</td>
 <td>Ids of labels associated with the task</td>
 </tr>
@@ -975,7 +975,7 @@ once (<code class="prettyprint">due_lang</code> is a special case).</p>
 <td>Non-zero integer value used by clients to sort tasks inside project</td>
 </tr>
 <tr>
-<td>label_ids <em>List of Integers</em></td>
+<td>label_ids <em>Array of Integers</em></td>
 <td>No</td>
 <td>Ids of labels associated with the task</td>
 </tr>

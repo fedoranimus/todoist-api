@@ -1563,7 +1563,7 @@ you performed a sync request.</li>
 </span><span class="s">}</span><span class="err">
 </span></code></pre>
 <p><em>Note that the following parameters mostly make sense when sending commands in
-the shell with curl, and not with the Python library, as man y things are
+the shell with curl, and not with the Python library, as many things are
 automated there. For example by default the Python library fetches all resource
 types and then always does incremental syncs, so there&rsquo;s no need to specify most
 of the following parameters.</em></p>
@@ -7342,7 +7342,7 @@ returned back.</p>
 <td>The user&rsquo;s API token</td>
 </tr>
 <tr>
-<td>email_list <em>List of Strings</em></td>
+<td>email_list <em>Array of Strings</em></td>
 <td>Yes</td>
 <td>The emails of users which will be invited</td>
 </tr>
@@ -7812,7 +7812,7 @@ API.</p>
 <tr>
 <td>object_event_types <em>Array of Strings</em></td>
 <td>No</td>
-<td>An alternative way to filter by multiple object and event types.  This takes a list of strings of the form <code class="prettyprint">[object_type]:[event_type]</code> (where either <code class="prettyprint">object_type</code> part or the <code class="prettyprint">event_type</code> part can be ommited), such as for example <code class="prettyprint">[&quot;item:&quot;, &quot;note:added&quot;]</code>.  When this parameter is specified the <code class="prettyprint">object_type</code>, <code class="prettyprint">event_type</code> and <code class="prettyprint">object_id</code> parameters are ignored.</td>
+<td>An alternative way to filter by multiple object and event types.  This takes a list of strings of the form <code class="prettyprint">[object_type]:[event_type]</code> (where either <code class="prettyprint">object_type</code> part or the <code class="prettyprint">event_type</code> part can be omitted), such as for example <code class="prettyprint">[&quot;item:&quot;, &quot;note:added&quot;]</code>.  When this parameter is specified the <code class="prettyprint">object_type</code>, <code class="prettyprint">event_type</code> and <code class="prettyprint">object_id</code> parameters are ignored.</td>
 </tr>
 <tr>
 <td>parent_project_id <em>Integer</em></td>
