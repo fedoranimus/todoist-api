@@ -320,11 +320,11 @@ JSON-encoded representation of one or more objects.</p>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl <span class="s2">"https://beta.todoist.com/API/v8/projects?token=</span><span class="nv">$token</span><span class="s2">"</span>
 
 <span class="o">[</span>
-        <span class="o">{</span>
-                <span class="s2">"id"</span>: 1234,
-                <span class="s2">"name"</span>: <span class="s2">"Inbox"</span>,
-                <span class="s2">"comment_count"</span>: 0
-        <span class="o">}</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1234,
+        <span class="s2">"name"</span>: <span class="s2">"Inbox"</span>,
+        <span class="s2">"comment_count"</span>: 0
+    <span class="o">}</span>
 <span class="o">]</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://beta.todoist.com/API/v8/projects'</span><span class="p">,</span>
@@ -344,18 +344,18 @@ requires a <code class="prettyprint">token</code> query string parameter that ho
 <p>An example project object</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"comment_count"</span>: 10, 
-  <span class="s2">"id"</span>: 1234, 
-  <span class="s2">"indent"</span>: 1, 
-  <span class="s2">"name"</span>: <span class="s2">"My project"</span>, 
-  <span class="s2">"order"</span>: 1
+    <span class="s2">"comment_count"</span>: 10,
+    <span class="s2">"id"</span>: 1234,
+    <span class="s2">"indent"</span>: 1,
+    <span class="s2">"name"</span>: <span class="s2">"My project"</span>,
+    <span class="s2">"order"</span>: 1
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="p">{</span>
-  <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> 
-  <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span> 
-  <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
-  <span class="s">"name"</span><span class="p">:</span> <span class="s">"My project"</span><span class="p">,</span> 
-  <span class="s">"order"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"My project"</span><span class="p">,</span>
+    <span class="s">"order"</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
 </code></pre>
 <h3 id="properties">Properties</h3>
@@ -396,25 +396,25 @@ requires a <code class="prettyprint">token</code> query string parameter that ho
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://beta.todoist.com/API/v8/projects?token=</span><span class="nv">$token</span><span class="s2">"</span>
 
 <span class="o">[</span>
-  <span class="o">{</span>
-    <span class="s2">"id"</span>: 1234,
-    <span class="s2">"name"</span>: <span class="s2">"Inbox"</span>,
-    <span class="s2">"comment_count"</span>: 10,
-    <span class="s2">"order"</span>: 1,
-    <span class="s2">"indent"</span>: 1
-  <span class="o">}</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1234,
+        <span class="s2">"name"</span>: <span class="s2">"Inbox"</span>,
+        <span class="s2">"comment_count"</span>: 10,
+        <span class="s2">"order"</span>: 1,
+        <span class="s2">"indent"</span>: 1
+    <span class="o">}</span>
 <span class="o">]</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"https://beta.todoist.com/API/v8/projects"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
 <span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
-    <span class="s">"name"</span><span class="p">:</span> <span class="s">"Inbox"</span><span class="p">,</span>
-    <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-    <span class="s">"order"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span>
-  <span class="p">}</span>
+    <span class="p">{</span>
+        <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+        <span class="s">"name"</span><span class="p">:</span> <span class="s">"Inbox"</span><span class="p">,</span>
+        <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s">"order"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
 <span class="p">]</span>
 </code></pre>
 <p>Returns JSON-encoded array containing all user projects.</p>
@@ -431,11 +431,11 @@ requires a <code class="prettyprint">token</code> query string parameter that ho
     -H <span class="s2">"X-Request-Id: </span><span class="k">$(</span>uuidgen<span class="k">)</span><span class="s2">"</span>
 
 <span class="o">{</span>
-  <span class="s2">"id"</span>: 1234,
-  <span class="s2">"name"</span>: <span class="s2">"Movies to watch"</span>,
-  <span class="s2">"comment_count"</span>: 0,
-  <span class="s2">"order"</span>: 1,
-  <span class="s2">"indent"</span>: 1
+    <span class="s2">"id"</span>: 1234,
+    <span class="s2">"name"</span>: <span class="s2">"Movies to watch"</span>,
+    <span class="s2">"comment_count"</span>: 0,
+    <span class="s2">"order"</span>: 1,
+    <span class="s2">"indent"</span>: 1
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">uuid</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="n">json</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"https://beta.todoist.com/API/v8/projects"</span><span class="p">,</span>
@@ -448,11 +448,11 @@ requires a <code class="prettyprint">token</code> query string parameter that ho
 <span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
 <span class="p">{</span>
-  <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
-  <span class="s">"name"</span><span class="p">:</span> <span class="s">"Movies to watch"</span><span class="p">,</span>
-  <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">"order"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"Movies to watch"</span><span class="p">,</span>
+    <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"order"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
 </code></pre>
 <p>Creates a new project and return its value in a JSON format</p>
@@ -481,21 +481,21 @@ requires a <code class="prettyprint">token</code> query string parameter that ho
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://beta.todoist.com/API/v8/projects/1234?token=</span><span class="nv">$token</span><span class="s2">"</span>
 
 <span class="o">{</span>
-  <span class="s2">"id"</span>: 1234,
-  <span class="s2">"name"</span>: <span class="s2">"Movies to watch"</span>,
-  <span class="s2">"comment_count"</span>: 0,
-  <span class="s2">"order"</span>: 1,
-  <span class="s2">"indent"</span>: 1
+    <span class="s2">"id"</span>: 1234,
+    <span class="s2">"name"</span>: <span class="s2">"Movies to watch"</span>,
+    <span class="s2">"comment_count"</span>: 0,
+    <span class="s2">"order"</span>: 1,
+    <span class="s2">"indent"</span>: 1
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">uuid</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="n">json</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"https://beta.todoist.com/API/v8/projects/1234"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
 <span class="p">{</span>
-  <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
-  <span class="s">"name"</span><span class="p">:</span> <span class="s">"Movies to watch"</span><span class="p">,</span>
-  <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s">"order"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"Movies to watch"</span><span class="p">,</span>
+    <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"order"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
 </code></pre>
 <p>Returns a JSON object containing a project object related to the given id</p>
@@ -556,50 +556,50 @@ with an empty body.</p>
 <p>Task object sample</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"comment_count"</span>: 10, 
-  <span class="s2">"completed"</span>: <span class="nb">true</span>, 
-  <span class="s2">"content"</span>: <span class="s2">"My task"</span>, 
-  <span class="s2">"due"</span>: <span class="o">{</span>
-    <span class="s2">"date"</span>: <span class="s2">"2016-09-01"</span>, 
-    <span class="s2">"recurring"</span>: <span class="nb">true</span>,
-    <span class="s2">"datetime"</span>: <span class="s2">"2016-09-01T09:00:00Z"</span>, 
-    <span class="s2">"string"</span>: <span class="s2">"tomorrow at 12"</span>, 
-    <span class="s2">"timezone"</span>: <span class="s2">"Europe/Moscow"</span>
-  <span class="o">}</span>, 
-  <span class="s2">"id"</span>: 1234, 
-  <span class="s2">"indent"</span>: 1, 
-  <span class="s2">"label_ids"</span>: <span class="o">[</span>
-    124, 
-    125, 
-    128
-  <span class="o">]</span>, 
-  <span class="s2">"order"</span>: 123, 
-  <span class="s2">"priority"</span>: 1, 
-  <span class="s2">"project_id"</span>: 2345, 
-  <span class="s2">"url"</span>: <span class="s2">"https://todoist.com/showTask?id=12345&amp;sync_id=56789"</span>
+    <span class="s2">"comment_count"</span>: 10,
+    <span class="s2">"completed"</span>: <span class="nb">true</span>,
+    <span class="s2">"content"</span>: <span class="s2">"My task"</span>,
+    <span class="s2">"due"</span>: <span class="o">{</span>
+        <span class="s2">"date"</span>: <span class="s2">"2016-09-01"</span>,
+        <span class="s2">"recurring"</span>: <span class="nb">true</span>,
+        <span class="s2">"datetime"</span>: <span class="s2">"2016-09-01T09:00:00Z"</span>,
+        <span class="s2">"string"</span>: <span class="s2">"tomorrow at 12"</span>,
+        <span class="s2">"timezone"</span>: <span class="s2">"Europe/Moscow"</span>
+    <span class="o">}</span>,
+    <span class="s2">"id"</span>: 1234,
+    <span class="s2">"indent"</span>: 1,
+    <span class="s2">"label_ids"</span>: <span class="o">[</span>
+        124,
+        125,
+        128
+    <span class="o">]</span>,
+    <span class="s2">"order"</span>: 123,
+    <span class="s2">"priority"</span>: 1,
+    <span class="s2">"project_id"</span>: 2345,
+    <span class="s2">"url"</span>: <span class="s2">"https://todoist.com/showTask?id=12345&amp;sync_id=56789"</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="p">{</span>
-  <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> 
-  <span class="s">"completed"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span> 
-  <span class="s">"content"</span><span class="p">:</span> <span class="s">"My task"</span><span class="p">,</span> 
-  <span class="s">"due"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">"date"</span><span class="p">:</span> <span class="s">"2016-09-01"</span><span class="p">,</span> 
-    <span class="s">"recurring"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-    <span class="s">"datetime"</span><span class="p">:</span> <span class="s">"2016-09-01T09:00:00Z"</span><span class="p">,</span> 
-    <span class="s">"string"</span><span class="p">:</span> <span class="s">"tomorrow at 12"</span><span class="p">,</span> 
-    <span class="s">"timezone"</span><span class="p">:</span> <span class="s">"Europe/Moscow"</span>
-  <span class="p">},</span> 
-  <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span> 
-  <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
-  <span class="s">"label_ids"</span><span class="p">:</span> <span class="p">[</span>
-    <span class="mi">124</span><span class="p">,</span> 
-    <span class="mi">125</span><span class="p">,</span> 
-    <span class="mi">128</span>
-  <span class="p">],</span> 
-  <span class="s">"order"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> 
-  <span class="s">"priority"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
-  <span class="s">"project_id"</span><span class="p">:</span> <span class="mi">2345</span><span class="p">,</span> 
-  <span class="s">"url"</span><span class="p">:</span> <span class="s">"https://todoist.com/showTask?id=12345&amp;sync_id=56789"</span>
+    <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s">"completed"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s">"content"</span><span class="p">:</span> <span class="s">"My task"</span><span class="p">,</span>
+    <span class="s">"due"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"date"</span><span class="p">:</span> <span class="s">"2016-09-01"</span><span class="p">,</span>
+        <span class="s">"recurring"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s">"datetime"</span><span class="p">:</span> <span class="s">"2016-09-01T09:00:00Z"</span><span class="p">,</span>
+        <span class="s">"string"</span><span class="p">:</span> <span class="s">"tomorrow at 12"</span><span class="p">,</span>
+        <span class="s">"timezone"</span><span class="p">:</span> <span class="s">"Europe/Moscow"</span>
+    <span class="p">},</span>
+    <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">"label_ids"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">124</span><span class="p">,</span>
+        <span class="mi">125</span><span class="p">,</span>
+        <span class="mi">128</span>
+    <span class="p">],</span>
+    <span class="s">"order"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="s">"priority"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">"project_id"</span><span class="p">:</span> <span class="mi">2345</span><span class="p">,</span>
+    <span class="s">"url"</span><span class="p">:</span> <span class="s">"https://todoist.com/showTask?id=12345&amp;sync_id=56789"</span>
 <span class="p">}</span>
 </code></pre>
 <h3 id="properties">Properties</h3>
@@ -695,33 +695,33 @@ with an empty body.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://beta.todoist.com/API/v8/tasks?token=</span><span class="nv">$token</span><span class="s2">"</span>
 
 <span class="o">[</span>
-  <span class="o">{</span>
-    <span class="s2">"id"</span>: 123,
-    <span class="s2">"project_id"</span>: 234,
-    <span class="s2">"content"</span>: <span class="s2">"Inbox"</span>,
-    <span class="s2">"comment_count"</span>: 10,
-    <span class="s2">"order"</span>: 1,
-    <span class="s2">"indent"</span>: 1,
-    <span class="s2">"priority"</span>: 1,
-    <span class="s2">"url"</span>: <span class="s2">"https://todoist.com/showTask?id=123"</span>
-  <span class="o">}</span>,
-  ...
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 123,
+        <span class="s2">"project_id"</span>: 234,
+        <span class="s2">"content"</span>: <span class="s2">"Inbox"</span>,
+        <span class="s2">"comment_count"</span>: 10,
+        <span class="s2">"order"</span>: 1,
+        <span class="s2">"indent"</span>: 1,
+        <span class="s2">"priority"</span>: 1,
+        <span class="s2">"url"</span>: <span class="s2">"https://todoist.com/showTask?id=123"</span>
+    <span class="o">}</span>,
+    ...
 <span class="o">]</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"https://beta.todoist.com/API/v8/tasks"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span> <span class="s">"project_id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
 <span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s">"id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
-    <span class="s">"project_id"</span><span class="p">:</span> <span class="mi">234</span><span class="p">,</span>
-    <span class="s">"content"</span><span class="p">:</span> <span class="s">"Inbox"</span><span class="p">,</span>
-    <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-    <span class="s">"order"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s">"priority"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s">"url"</span><span class="p">:</span> <span class="s">"https://todoist.com/showTask?id=123"</span>
-  <span class="p">},</span>
-  <span class="o">...</span>
+    <span class="p">{</span>
+        <span class="s">"id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+        <span class="s">"project_id"</span><span class="p">:</span> <span class="mi">234</span><span class="p">,</span>
+        <span class="s">"content"</span><span class="p">:</span> <span class="s">"Inbox"</span><span class="p">,</span>
+        <span class="s">"comment_count"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s">"order"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">"indent"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">"priority"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">"url"</span><span class="p">:</span> <span class="s">"https://todoist.com/showTask?id=123"</span>
+    <span class="p">},</span>
+    <span class="o">...</span>
 <span class="p">]</span>
 
 </code></pre>
@@ -1065,30 +1065,30 @@ workspace as normal unchecked tasks (without their subtasks though).</li>
 <p>Comment object sample</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"attachment"</span>: <span class="o">{</span>
-    <span class="s2">"file_name"</span>: <span class="s2">"File.pdf"</span>, 
-    <span class="s2">"file_type"</span>: <span class="s2">"application/pdf"</span>, 
-    <span class="s2">"file_url"</span>: <span class="s2">"https://cdn-domain.tld/path/to/file.pdf"</span>, 
-    <span class="s2">"resource_type"</span>: <span class="s2">"file"</span>
-  <span class="o">}</span>, 
-  <span class="s2">"content"</span>: <span class="s2">"Hello world"</span>, 
-  <span class="s2">"id"</span>: 1234, 
-  <span class="s2">"posted"</span>: <span class="s2">"2016-09-22T07:00:00Z"</span>, 
-  <span class="s2">"project_id"</span>: 2345, 
-  <span class="s2">"task_id"</span>: 2345
+    <span class="s2">"attachment"</span>: <span class="o">{</span>
+        <span class="s2">"file_name"</span>: <span class="s2">"File.pdf"</span>,
+        <span class="s2">"file_type"</span>: <span class="s2">"application/pdf"</span>,
+        <span class="s2">"file_url"</span>: <span class="s2">"https://cdn-domain.tld/path/to/file.pdf"</span>,
+        <span class="s2">"resource_type"</span>: <span class="s2">"file"</span>
+    <span class="o">}</span>,
+    <span class="s2">"content"</span>: <span class="s2">"Hello world"</span>,
+    <span class="s2">"id"</span>: 1234,
+    <span class="s2">"posted"</span>: <span class="s2">"2016-09-22T07:00:00Z"</span>,
+    <span class="s2">"project_id"</span>: 2345,
+    <span class="s2">"task_id"</span>: 2345
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="p">{</span>
-  <span class="s">"attachment"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">"file_name"</span><span class="p">:</span> <span class="s">"File.pdf"</span><span class="p">,</span> 
-    <span class="s">"file_type"</span><span class="p">:</span> <span class="s">"application/pdf"</span><span class="p">,</span> 
-    <span class="s">"file_url"</span><span class="p">:</span> <span class="s">"https://cdn-domain.tld/path/to/file.pdf"</span><span class="p">,</span> 
-    <span class="s">"resource_type"</span><span class="p">:</span> <span class="s">"file"</span>
-  <span class="p">},</span> 
-  <span class="s">"content"</span><span class="p">:</span> <span class="s">"Hello world"</span><span class="p">,</span> 
-  <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span> 
-  <span class="s">"posted"</span><span class="p">:</span> <span class="s">"2016-09-22T07:00:00Z"</span><span class="p">,</span> 
-  <span class="s">"project_id"</span><span class="p">:</span> <span class="mi">2345</span><span class="p">,</span> 
-  <span class="s">"task_id"</span><span class="p">:</span> <span class="mi">2345</span>
+    <span class="s">"attachment"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"file_name"</span><span class="p">:</span> <span class="s">"File.pdf"</span><span class="p">,</span>
+        <span class="s">"file_type"</span><span class="p">:</span> <span class="s">"application/pdf"</span><span class="p">,</span>
+        <span class="s">"file_url"</span><span class="p">:</span> <span class="s">"https://cdn-domain.tld/path/to/file.pdf"</span><span class="p">,</span>
+        <span class="s">"resource_type"</span><span class="p">:</span> <span class="s">"file"</span>
+    <span class="p">},</span>
+    <span class="s">"content"</span><span class="p">:</span> <span class="s">"Hello world"</span><span class="p">,</span>
+    <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="s">"posted"</span><span class="p">:</span> <span class="s">"2016-09-22T07:00:00Z"</span><span class="p">,</span>
+    <span class="s">"project_id"</span><span class="p">:</span> <span class="mi">2345</span><span class="p">,</span>
+    <span class="s">"task_id"</span><span class="p">:</span> <span class="mi">2345</span>
 <span class="p">}</span>
 </code></pre>
 <h3 id="properties">Properties</h3>
@@ -1137,36 +1137,36 @@ see <a href="https://developer.todoist.com/sync/v7#uploads">sync API documentati
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://beta.todoist.com/API/v8/comments?task_id=2345&amp;token=</span><span class="nv">$token</span><span class="s2">"</span>
 
 <span class="o">[</span>
-  <span class="o">{</span>
-    <span class="s2">"id"</span>: 123,
-    <span class="s2">"task_id"</span>: 2345,
-    <span class="s2">"content"</span>: <span class="s2">"Hello world"</span>,
-    <span class="s2">"posted"</span>: <span class="s2">"2016-09-22T07:00:00Z"</span>,
-    <span class="s2">"attachment"</span>: <span class="o">{</span>
-      <span class="s2">"resource_type"</span>: <span class="s2">"file"</span>,
-      <span class="s2">"file_url"</span>: <span class="s2">"https://cdn-domain.tld/path/to/file.pdf"</span>,
-      <span class="s2">"file_type"</span>: <span class="s2">"application/pdf"</span>,
-      <span class="s2">"file_name"</span>: <span class="s2">"File.pdf"</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 123,
+        <span class="s2">"task_id"</span>: 2345,
+        <span class="s2">"content"</span>: <span class="s2">"Hello world"</span>,
+        <span class="s2">"posted"</span>: <span class="s2">"2016-09-22T07:00:00Z"</span>,
+        <span class="s2">"attachment"</span>: <span class="o">{</span>
+            <span class="s2">"resource_type"</span>: <span class="s2">"file"</span>,
+            <span class="s2">"file_url"</span>: <span class="s2">"https://cdn-domain.tld/path/to/file.pdf"</span>,
+            <span class="s2">"file_type"</span>: <span class="s2">"application/pdf"</span>,
+            <span class="s2">"file_name"</span>: <span class="s2">"File.pdf"</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-  <span class="o">}</span>
 <span class="o">]</span>
 
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"https://beta.todoist.com/API/v8/comments"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span> <span class="s">"task_id"</span><span class="p">:</span> <span class="mi">2345</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
 <span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s">"id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
-    <span class="s">"task_id"</span><span class="p">:</span> <span class="mi">2345</span><span class="p">,</span>
-    <span class="s">"content"</span><span class="p">:</span> <span class="s">"Hello world"</span><span class="p">,</span>
-    <span class="s">"posted"</span><span class="p">:</span> <span class="s">"2016-09-22T07:00:00Z"</span><span class="p">,</span>
-    <span class="s">"attachment"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s">"resource_type"</span><span class="p">:</span> <span class="s">"file"</span><span class="p">,</span>
-      <span class="s">"file_url"</span><span class="p">:</span> <span class="s">"https://cdn-domain.tld/path/to/file.pdf"</span><span class="p">,</span>
-      <span class="s">"file_type"</span><span class="p">:</span> <span class="s">"application/pdf"</span><span class="p">,</span>
-      <span class="s">"file_name"</span><span class="p">:</span> <span class="s">"File.pdf"</span>
+    <span class="p">{</span>
+        <span class="s">"id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+        <span class="s">"task_id"</span><span class="p">:</span> <span class="mi">2345</span><span class="p">,</span>
+        <span class="s">"content"</span><span class="p">:</span> <span class="s">"Hello world"</span><span class="p">,</span>
+        <span class="s">"posted"</span><span class="p">:</span> <span class="s">"2016-09-22T07:00:00Z"</span><span class="p">,</span>
+        <span class="s">"attachment"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">"resource_type"</span><span class="p">:</span> <span class="s">"file"</span><span class="p">,</span>
+            <span class="s">"file_url"</span><span class="p">:</span> <span class="s">"https://cdn-domain.tld/path/to/file.pdf"</span><span class="p">,</span>
+            <span class="s">"file_type"</span><span class="p">:</span> <span class="s">"application/pdf"</span><span class="p">,</span>
+            <span class="s">"file_name"</span><span class="p">:</span> <span class="s">"File.pdf"</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-  <span class="p">}</span>
 <span class="p">]</span>
 </code></pre>
 <p>Returns JSON-encoded array of all comments for a given <code class="prettyprint">task_id</code> or
@@ -1201,7 +1201,7 @@ required.</p>
 <blockquote>
 <p>Create a new comment</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>cat &gt; /tmp/note.json 
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>cat &gt; /tmp/note.json
 <span class="o">{</span>
     <span class="s2">"task_id"</span>: 2345,
     <span class="s2">"content"</span>: <span class="s2">"Hello world"</span>,
@@ -1221,16 +1221,16 @@ required.</p>
     -H <span class="s2">"X-Request-Id: </span><span class="k">$(</span>uuidgen<span class="k">)</span><span class="s2">"</span>
 
 <span class="o">{</span>
-  <span class="s2">"id"</span>: 123,
-  <span class="s2">"content"</span>: <span class="s2">"Hello world"</span>,
-  <span class="s2">"task_id"</span>: 2345,
-  <span class="s2">"posted"</span>: <span class="s2">"2016-09-22T07:00:00Z"</span>,
-  <span class="s2">"attachment"</span>: <span class="o">{</span>
-    <span class="s2">"resource_type"</span>: <span class="s2">"file"</span>,
-    <span class="s2">"file_url"</span>: <span class="s2">"https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf"</span>,
-    <span class="s2">"file_type"</span>: <span class="s2">"application/pdf"</span>,
-    <span class="s2">"file_name"</span>: <span class="s2">"File.pdf"</span>
-  <span class="o">}</span>
+    <span class="s2">"id"</span>: 123,
+    <span class="s2">"content"</span>: <span class="s2">"Hello world"</span>,
+    <span class="s2">"task_id"</span>: 2345,
+    <span class="s2">"posted"</span>: <span class="s2">"2016-09-22T07:00:00Z"</span>,
+    <span class="s2">"attachment"</span>: <span class="o">{</span>
+        <span class="s2">"resource_type"</span>: <span class="s2">"file"</span>,
+        <span class="s2">"file_url"</span>: <span class="s2">"https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf"</span>,
+        <span class="s2">"file_type"</span>: <span class="s2">"application/pdf"</span>,
+        <span class="s2">"file_name"</span>: <span class="s2">"File.pdf"</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"https://beta.todoist.com/API/v8/comments"</span><span class="p">,</span>
@@ -1252,16 +1252,16 @@ required.</p>
 <span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
 <span class="p">{</span>
-  <span class="s">"id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
-  <span class="s">"content"</span><span class="p">:</span> <span class="s">"Hello world"</span><span class="p">,</span>
-  <span class="s">"task_id"</span><span class="p">:</span> <span class="mi">2345</span><span class="p">,</span>
-  <span class="s">"posted"</span><span class="p">:</span> <span class="s">"2016-09-22T07:00:00Z"</span><span class="p">,</span>
-  <span class="s">"attachment"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">"resource_type"</span><span class="p">:</span> <span class="s">"file"</span><span class="p">,</span>
-    <span class="s">"file_url"</span><span class="p">:</span> <span class="s">"https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf"</span><span class="p">,</span>
-    <span class="s">"file_type"</span><span class="p">:</span> <span class="s">"application/pdf"</span><span class="p">,</span>
-    <span class="s">"file_name"</span><span class="p">:</span> <span class="s">"File.pdf"</span>
-  <span class="p">}</span>
+    <span class="s">"id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="s">"content"</span><span class="p">:</span> <span class="s">"Hello world"</span><span class="p">,</span>
+    <span class="s">"task_id"</span><span class="p">:</span> <span class="mi">2345</span><span class="p">,</span>
+    <span class="s">"posted"</span><span class="p">:</span> <span class="s">"2016-09-22T07:00:00Z"</span><span class="p">,</span>
+    <span class="s">"attachment"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"resource_type"</span><span class="p">:</span> <span class="s">"file"</span><span class="p">,</span>
+        <span class="s">"file_url"</span><span class="p">:</span> <span class="s">"https://s3.amazonaws.com/domorebetter/Todoist+Setup+Guide.pdf"</span><span class="p">,</span>
+        <span class="s">"file_type"</span><span class="p">:</span> <span class="s">"application/pdf"</span><span class="p">,</span>
+        <span class="s">"file_name"</span><span class="p">:</span> <span class="s">"File.pdf"</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
 <p>Create a new comment on a project or task and return its object</p>
@@ -1305,31 +1305,31 @@ required.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://beta.todoist.com/API/v8/comments/1234?token=</span><span class="nv">$token</span><span class="s2">"</span>
 
 <span class="o">{</span>
-  <span class="s2">"id"</span>: 1234,
-  <span class="s2">"content"</span>: <span class="s2">"Hello world"</span>,
-  <span class="s2">"task_id"</span>: 2345,
-  <span class="s2">"posted"</span>: <span class="s2">"2016-09-22T07:00:00Z"</span>,
-  <span class="s2">"attachment"</span>: <span class="o">{</span>
-    <span class="s2">"resource_type"</span>: <span class="s2">"file"</span>,
-    <span class="s2">"file_url"</span>: <span class="s2">"https://cdn-domain.tld/path/to/file.pdf"</span>,
-    <span class="s2">"file_type"</span>: <span class="s2">"application/pdf"</span>,
-    <span class="s2">"file_name"</span>: <span class="s2">"File.pdf"</span>
-  <span class="o">}</span>
+    <span class="s2">"id"</span>: 1234,
+    <span class="s2">"content"</span>: <span class="s2">"Hello world"</span>,
+    <span class="s2">"task_id"</span>: 2345,
+    <span class="s2">"posted"</span>: <span class="s2">"2016-09-22T07:00:00Z"</span>,
+    <span class="s2">"attachment"</span>: <span class="o">{</span>
+        <span class="s2">"resource_type"</span>: <span class="s2">"file"</span>,
+        <span class="s2">"file_url"</span>: <span class="s2">"https://cdn-domain.tld/path/to/file.pdf"</span>,
+        <span class="s2">"file_type"</span>: <span class="s2">"application/pdf"</span>,
+        <span class="s2">"file_name"</span>: <span class="s2">"File.pdf"</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"https://beta.todoist.com/API/v8/comments/1234"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
 <span class="p">{</span>
-  <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
-  <span class="s">"content"</span><span class="p">:</span> <span class="s">"Hello world"</span><span class="p">,</span>
-  <span class="s">"task_id"</span><span class="p">:</span> <span class="mi">2345</span><span class="p">,</span>
-  <span class="s">"posted"</span><span class="p">:</span> <span class="s">"2016-09-22T07:00:00Z"</span><span class="p">,</span>
-  <span class="s">"attachment"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">"resource_type"</span><span class="p">:</span> <span class="s">"file"</span><span class="p">,</span>
-    <span class="s">"file_url"</span><span class="p">:</span> <span class="s">"https://cdn-domain.tld/path/to/file.pdf"</span><span class="p">,</span>
-    <span class="s">"file_type"</span><span class="p">:</span> <span class="s">"application/pdf"</span><span class="p">,</span>
-    <span class="s">"file_name"</span><span class="p">:</span> <span class="s">"File.pdf"</span>
-  <span class="p">}</span>
+    <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="s">"content"</span><span class="p">:</span> <span class="s">"Hello world"</span><span class="p">,</span>
+    <span class="s">"task_id"</span><span class="p">:</span> <span class="mi">2345</span><span class="p">,</span>
+    <span class="s">"posted"</span><span class="p">:</span> <span class="s">"2016-09-22T07:00:00Z"</span><span class="p">,</span>
+    <span class="s">"attachment"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"resource_type"</span><span class="p">:</span> <span class="s">"file"</span><span class="p">,</span>
+        <span class="s">"file_url"</span><span class="p">:</span> <span class="s">"https://cdn-domain.tld/path/to/file.pdf"</span><span class="p">,</span>
+        <span class="s">"file_type"</span><span class="p">:</span> <span class="s">"application/pdf"</span><span class="p">,</span>
+        <span class="s">"file_name"</span><span class="p">:</span> <span class="s">"File.pdf"</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
 <p>Returns a comment by id</p>
@@ -1389,14 +1389,14 @@ required.</p>
 <p>Label object sample</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1234,
-  <span class="s2">"name"</span>: <span class="s2">"Project X"</span>,
-  <span class="s2">"order"</span>: 10
+    <span class="s2">"id"</span>: 1234,
+    <span class="s2">"name"</span>: <span class="s2">"Project X"</span>,
+    <span class="s2">"order"</span>: 10
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="p">{</span>
-  <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
-  <span class="s">"name"</span><span class="p">:</span> <span class="s">"Project X"</span><span class="p">,</span>
-  <span class="s">"order"</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"Project X"</span><span class="p">,</span>
+    <span class="s">"order"</span><span class="p">:</span> <span class="mi">10</span>
 <span class="p">}</span>
 </code></pre>
 <h3 id="properties">Properties</h3>
@@ -1429,21 +1429,21 @@ required.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://beta.todoist.com/API/v8/labels?token=</span><span class="nv">$token</span><span class="s2">"</span>
 
 <span class="o">[</span>
-  <span class="o">{</span>
-    <span class="s2">"id"</span>: 1234,
-    <span class="s2">"name"</span>: <span class="s2">"Project X"</span>,
-    <span class="s2">"order"</span>: 10
-  <span class="o">}</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1234,
+        <span class="s2">"name"</span>: <span class="s2">"Project X"</span>,
+        <span class="s2">"order"</span>: 10
+    <span class="o">}</span>
 <span class="o">]</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"https://beta.todoist.com/API/v8/labels"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
 <span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
-    <span class="s">"name"</span><span class="p">:</span> <span class="s">"Project X"</span><span class="p">,</span>
-    <span class="s">"order"</span><span class="p">:</span> <span class="mi">10</span>
-  <span class="p">}</span>
+    <span class="p">{</span>
+        <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+        <span class="s">"name"</span><span class="p">:</span> <span class="s">"Project X"</span><span class="p">,</span>
+        <span class="s">"order"</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
 <span class="p">]</span>
 </code></pre>
 <p>Return a JSON-encoded array containing all user labels</p>
@@ -1460,9 +1460,9 @@ required.</p>
     -H <span class="s2">"X-Request-Id: </span><span class="k">$(</span>uuidgen<span class="k">)</span><span class="s2">"</span>
 
 <span class="o">{</span>
-  <span class="s2">"id"</span>: 1234,
-  <span class="s2">"name"</span>: <span class="s2">"Project X"</span>,
-  <span class="s2">"order"</span>: 10
+    <span class="s2">"id"</span>: 1234,
+    <span class="s2">"name"</span>: <span class="s2">"Project X"</span>,
+    <span class="s2">"order"</span>: 10
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"https://beta.todoist.com/API/v8/labels"</span><span class="p">,</span>
@@ -1511,17 +1511,17 @@ required.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://beta.todoist.com/API/v8/labels/1234?token=</span><span class="nv">$token</span><span class="s2">"</span>
 
 <span class="o">{</span>
-  <span class="s2">"id"</span>: 1234,
-  <span class="s2">"name"</span>: <span class="s2">"Project X"</span>,
-  <span class="s2">"order"</span>: 10
+    <span class="s2">"id"</span>: 1234,
+    <span class="s2">"name"</span>: <span class="s2">"Project X"</span>,
+    <span class="s2">"order"</span>: 10
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"https://beta.todoist.com/API/v8/labels/1234"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
 <span class="p">{</span>
-  <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
-  <span class="s">"name"</span><span class="p">:</span> <span class="s">"Project X"</span><span class="p">,</span>
-  <span class="s">"order"</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="s">"id"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"Project X"</span><span class="p">,</span>
+    <span class="s">"order"</span><span class="p">:</span> <span class="mi">10</span>
 <span class="p">}</span>
 </code></pre>
 <p>Return a label by id</p>
