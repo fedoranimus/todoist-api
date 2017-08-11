@@ -75,7 +75,7 @@ $ curl https://todoist.com/api/v7/sync \
 ```
 
 *Note that the following parameters mostly make sense when sending commands in
-the shell with curl, and not with the Python library, as man y things are
+the shell with curl, and not with the Python library, as many things are
 automated there. For example by default the Python library fetches all resource
 types and then always does incremental syncs, so there's no need to specify most
 of the following parameters.*
