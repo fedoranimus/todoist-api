@@ -62,7 +62,7 @@ id *Integer* | Task id
 project_id *Integer* | Tasks's project id
 content *String* | Task content
 completed *Boolean* | Flag to mark completed tasks
-label_ids *List of Integers* | Array of label ids, associated with a task
+label_ids *Array of Integers* | Array of label ids, associated with a task
 order *Integer* | Position in the project (read-only)
 indent *Integer* | Task indentation level from 1 to 5 (read-only)
 priority *Integer* | Task priority from 1 (normal, default value) to 4 (urgent)
@@ -72,12 +72,12 @@ comment_count *Integer* | Number of task comments
 
 ### Due object
 
-Parameter | Optional | Description
+Parameter | Required | Description
 --------- | -------- | -----------
-string *String* | No | Human defined date in arbitrary format
-date *String* | No | Date in format `YYYY-MM-DD` corrected to user's timezone
-datetime *String* | Yes | Only returned if exact due time set (i.e. it's not a whole-day task), date and time in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format in UTC;
-timezone *String* | Yes | only returned if exact due time set, user's timezone definition either in tzdata-compatible format ("Europe/Berlin") or as a string specifying east of UTC offset as "UTC±HH:MM" (i.e. "UTC-01:00");
+string *String* | Yes | Human defined date in arbitrary format
+date *String* | Yes | Date in format `YYYY-MM-DD` corrected to user's timezone
+datetime *String* | No | Only returned if exact due time set (i.e. it's not a whole-day task), date and time in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format in UTC;
+timezone *String* | No | only returned if exact due time set, user's timezone definition either in tzdata-compatible format ("Europe/Berlin") or as a string specifying east of UTC offset as "UTC±HH:MM" (i.e. "UTC-01:00");
 
 ## Get tasks
 
@@ -208,7 +208,7 @@ Parameter | Required | Description
 content *String* | Yes | Task content
 project_id *Integer* | No | Task project id. If not set, task is put to user's Inbox
 order *Integer* | No | Non-zero integer value used by clients to sort tasks inside project
-label_ids *List of Integers* | No | Ids of labels associated with the task
+label_ids *Array of Integers* | No | Ids of labels associated with the task
 priority *Integer* | No | Task priority from 1 (normal) to 4 (urgent)
 due_string *String* | No | [human-defined](https://todoist.com/Help/DatesTimes) task due date (ex.: "next Monday", "Tomorrow"). Value is set using local (not UTC) time.
 due_date *String* | No | Specific date in `YYYY-MM-DD` format relative to user’s timezone
@@ -305,7 +305,7 @@ Parameter | Required | Description
 content *String* | Yes | Task content
 project_id *Integer* | No | Task project id. If not set, task is put to user's Inbox
 order *Integer* | No | Non-zero integer value used by clients to sort tasks inside project
-label_ids *List of Integers* | No | Ids of labels associated with the task
+label_ids *Array of Integers* | No | Ids of labels associated with the task
 priority *Integer* | No | Task priority from 1 (normal) to 4 (urgent)
 due_string *String* | No | [human-defined](https://todoist.com/Help/DatesTimes) task due date (ex.: "next Monday", "Tomorrow"). Value is set using local (not UTC) time.
 due_date *String* | No | Specific date in `YYYY-MM-DD` format relative to user’s timezone
